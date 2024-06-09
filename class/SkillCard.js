@@ -9,6 +9,7 @@ export class SkillCard {
                 this[propertyName] = skillCard[propertyName];
             }
         }
+        this.available = false; 
     }
     
     get score () {
@@ -17,6 +18,10 @@ export class SkillCard {
 
     get block () {
         return this.effects.reduce((p, v) => (v.type == 'block' ? v.actualValue : 0), 0)
+    }
+
+    setAvailable (available) {
+        this.available = available;
     }
 
     setEffectActualValue () {

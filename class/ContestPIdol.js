@@ -3,15 +3,16 @@ import { PItemManager } from './PItemManager.js';
 
 export class ContestPIdol {
 
-    constructor ({ status, pItemIds, skillCardIds }) {
-        this.status = {
-            vocal : status.vocal,
-            dance : status.dance,
-            visual: status.visual,
+    constructor ({ parameter, pItemIds, skillCardIds }) {
+        this.parameter = {
+            vocal : parameter.vocal,
+            dance : parameter.dance,
+            visual: parameter.visual,
         };
-        this.hp = status.hp;
+        this.hp = parameter.hp;
+        this.maxHp = this.hp;
         this.block = 0;
-        this.condition = {
+        this.status = {
             concentration: 0,
             koucho: 0,
             zekkoucho: 0,
@@ -25,41 +26,76 @@ export class ContestPIdol {
     }
 
     draw (number) {
-        this.deck.draw(3);
+        this.deck.draw(number);
         const handCards = this.getDeck('handCards');
+        this.calcHandCardsEffectActualValue(handCards);
+        this.checkHandCardsAvailable(handCards);
+    }
+
+    checkHandCardsAvailable (handCards) {
+        for (const handCard of handCards) {
+            const conditionQuery = handCard.condition;
+            if (conditionQuery == '') handCard.setAvailable(true);
+            else handCard.setAvailable(this.checkConditionQuery(conditionQuery));
+        }
+    }
+
+    checkConditionQuery (query) {
+        if (~query.indexOf('==')) {
+            const [key, value] = query.split('==');
+            return this.status[key] == value;
+        } else if (~query.indexOf('!=')) {
+            const [key, value] = query.split('!=');
+            return this.status[key] != value;
+        } else if (~query.indexOf('>=')) {
+            const [key, value] = query.split('>=');
+            return this.status[key] >= value;
+        } else if (~query.indexOf('<=')) {
+            const [key, value] = query.split('<=');
+            return this.status[key] <= value;
+        } else if (~query.indexOf('>')) {
+            const [key, value] = query.split('>');
+            return this.status[key] > value;
+        } else if (~query.indexOf('<')) {
+            const [key, value] = query.split('<');
+            return this.status[key] < value;
+        }
+    }
+
+    calcHandCardsEffectActualValue (handCards) {
         for (const handCard of handCards) {
             for (const effect of handCard.effects) {
-                if (effect.type == 'score') {
-                    const concentrationCoef = this.condition.concentration;
-                    const kouchoCoef = this.condition.koucho > 0 ? 1.5 : 1;
-                    const zekkouchoCoef = 
-                        this.condition.zekkoucho > 0 ? this.condition.koucho * 0.1 : 0;
-                    const statusCoef = 1;
-
-                    // console.log(`( ${effect.value} + ${concentrationCoef} ) * ( ${kouchoCoef} + ${zekkouchoCoef} )`);
-                    const actualValue = Math.floor(
-                        ( effect.value + concentrationCoef )
-                        *( kouchoCoef + zekkouchoCoef)
-                        *statusCoef
-                    );
-    
-                    effect.actualValue = actualValue;
-        
-                } else if (effect.type == 'block') {
-                    effect.actualValue = effect.value + this.condition.yaruki;
-                } else {
-                    effect.actualValue = effect.value;
-                }
+                this.calcEffectActualValue(effect)
             }
+        }
+    }
+
+    calcEffectActualValue (effect) {
+        if (effect.type == 'score') {
+            const concentrationCoef = this.status.concentration;
+            const kouchoCoef = this.status.koucho > 0 ? 1.5 : 1;
+            const zekkouchoCoef = 
+                this.status.zekkoucho > 0 ? this.status.koucho * 0.1 : 0;
+            const parameterCoef = 1;
+
+            // console.log(`( ${effect.value} + ${concentrationCoef} ) * ( ${kouchoCoef} + ${zekkouchoCoef} )`);
+            const actualValue = Math.floor(
+                ( effect.value + concentrationCoef )
+                *( kouchoCoef + zekkouchoCoef)
+                *parameterCoef
+            );
+
+            effect.actualValue = actualValue;
+
+        } else if (effect.type == 'block') {
+            effect.actualValue = effect.value + this.status.yaruki;
+        } else {
+            effect.actualValue = effect.value;
         }
     }
 
     finishTurn () {
         this.deck.discardAll();
-    }
-
-    checkCondition(query) {
-        return true;
     }
 
     useCost (cost) {
@@ -76,6 +112,10 @@ export class ContestPIdol {
                 this.hp -= cost.value;
                 break;
         }
+    }
+
+    rest () {
+        this.useEffect({type: 'heal', actualValue: 2});
     }
 
     useCard (cardNumber) {
@@ -95,6 +135,8 @@ export class ContestPIdol {
         const effectResults = []
         switch (type) {
             case 'heal': // 体力回復
+                this.hp += actualValue;
+                if (this.hp > this.maxHp) this.hp = this.maxHp;
                 break;
             case 'score': // スコア
                 effectResults.push({ type: 'score', value: actualValue });

@@ -22,7 +22,7 @@ export class Contest {
         console.log(`==========\n${this.currentTurn}ターン目\n==========`);
         this.pIdol.draw(3);
         this.handCards = this.pIdol.getDeck('handCards');
-        console.log(this.handCards.map(item=>`${item.name}(${item.score}|${item.block}|-${item.cost.value})`));
+        console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|-${item.cost.value})`));
     }
 
     finishTurn () {
@@ -34,15 +34,17 @@ export class Contest {
         console.log(
             `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.score}`
         );
-        if (this.pIdol.hp <= 0) {
-            this.isFinish = true;
-        }
+        this.checkFinishContest();
     }
 
     useCard (cardNumber) {
-        this.processActionResults(
-            this.pIdol.useCard(cardNumber)
-        );
+        if (cardNumber < 0) {
+            this.pIdol.rest();
+        } else {
+            this.processActionResults(
+                this.pIdol.useCard(cardNumber)
+            );
+        }
     }
 
     processActionResults (actionResults) {
@@ -56,6 +58,12 @@ export class Contest {
             case 'score':
                 this.score += actionResult.value;
                 break;
+        }
+    }
+
+    checkFinishContest () {
+        if (this.currentTurn >= this.maxTurn) {
+            this.isFinish = true;
         }
     }
 

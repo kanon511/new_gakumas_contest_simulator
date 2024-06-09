@@ -27,7 +27,7 @@ export const skillCardData = [
         name: '挑戦',
         type: 'active',
         cost: { type: 'normal', value: 7 },
-        condition: 'goodCondition>0',
+        condition: 'koucho>0',
         effects: [
             { type: 'score', value: 25 },
         ],

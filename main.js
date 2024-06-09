@@ -1,5 +1,6 @@
 import { Contest } from './class/Contest.js';
 import { ContestPIdol } from './class/ContestPIdol.js';
+import { AutoContest } from './class/AutoContest.js';
 import { BufReader } from "https://deno.land/std/io/mod.ts";
 
 const encoder = new TextEncoder();
@@ -25,7 +26,7 @@ const pItemIds = [0, 1, 2];
 const skillCardIds = [0, 0, 1, 1, 2, 3, 6, 6];
 
 const contestPIdol = new ContestPIdol({
-    status: {
+    parameter: {
         vocal: vocal,
         dance: dance,
         visual: visual,
@@ -38,7 +39,7 @@ const contestPIdol = new ContestPIdol({
 
 const contest = new Contest({
     pIdol: contestPIdol,
-    turn: 12,
+    maxTurn: 12,
 });
 
 while (true) {
