@@ -534,6 +534,65 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 3000010,
+        name: '前途洋々',
+        type: 'active',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 8 },
+            { type: 'block', value: 7 },
+        ],
+        afterUse: null,
+    },
+    {
+        id: 3000020,
+        name: '決めポーズ',
+        type: 'active',
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 18 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 3000030,
+        name: 'アドリブ',
+        type: 'active',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 5 },
+            { type: 'koucho', value: 3 },
+        ],
+        afterUse: null,
+    },
+    {
+        id: 3000040,
+        name: '情熱ターン',
+        type: 'active',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 11 },
+            { type: 'concentration', value: 3 },
+        ],
+        afterUse: null,
+    },
+    {
+        id: 3000050,
+        name: '飛躍',
+        type: 'active',
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 13 },
+            { type: 'score', value: 15, condition: 'concentration>=6' },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 2000120,
         name: 'template',
         type: 'active',
