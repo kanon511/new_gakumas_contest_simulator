@@ -35,9 +35,22 @@ export class ContestPIdol {
     checkHandCardsAvailable (handCards) {
         for (const handCard of handCards) {
             const conditionQuery = handCard.condition;
-            if (conditionQuery == '') handCard.setAvailable(true);
-            else handCard.setAvailable(this.checkConditionQuery(conditionQuery));
+
+            let conditionFlag = conditionQuery == '' ? true : this.checkConditionQuery(conditionQuery);
+            let costFlag = this.checkEnoughCost(handCard.cost);
+
+            handCard.setAvailable(conditionFlag && costFlag);
         }
+    }
+
+    checkEnoughCost (cost) { 
+        if (cost.type == 'normal') {
+            return this.hp + this.block >= cost.value;
+        }
+        if (cost.type == 'direct') {
+            return this.hp >= cost.value;
+        }
+        throw new Error('cost no type ga humei');
     }
 
     checkConditionQuery (query) {
@@ -78,9 +91,41 @@ export class ContestPIdol {
                 this.status.zekkoucho > 0 ? this.status.koucho * 0.1 : 0;
             const parameterCoef = 1;
 
+            // optionはstatic class作って計算させよう
+            const optionCoef = {
+                concentration: 1,
+                favorable: 0,
+                block: 0,
+            }
+
+            if (effect.options) {
+                for (const effectOption of effect.options) {
+                    switch (effectOption.type) {
+                        case 'concentration': 
+                            optionCoef.concentration = effectOption.value;
+                            break;
+                        case 'favorable': 
+                            optionCoef.favorable = (1 + effectOption.value/100) * this.status.favorable;
+                            break;
+                        case 'block':
+                            optionCoef.block = (1 + effectOption.value/100) * this.block;
+                            break;
+                    }
+                }
+            }
+
             // console.log(`( ${effect.value} + ${concentrationCoef} ) * ( ${kouchoCoef} + ${zekkouchoCoef} )`);
+
+            const baseScore = isNaN(effect.value) ? 0 : effect.value;
+            const adjustScore = ( 
+                baseScore 
+                + concentrationCoef * optionCoef.concentration 
+                + optionCoef.favorable
+                + optionCoef.block
+            );
+
             const actualValue = Math.floor(
-                ( effect.value + concentrationCoef )
+                ( adjustScore )
                 *( kouchoCoef + zekkouchoCoef)
                 *parameterCoef
             );

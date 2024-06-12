@@ -9,6 +9,9 @@ class SkillCardList {
         }
     }
     getSkillCardById (id) {
+        if (!(id in this.index)) {
+            throw new Error('idと一致するskillCardがありません。');
+        }
         return this.skillCardData[this.index[id]];
     }
 }

@@ -38,13 +38,24 @@ export class Contest {
     }
 
     useCard (cardNumber) {
-        if (cardNumber < 0) {
+        // -1は休憩
+        if (cardNumber == -1) {
             this.pIdol.rest();
-        } else {
-            this.processActionResults(
-                this.pIdol.useCard(cardNumber)
-            );
+            return true;
         }
+        // -1以外の不正な値　もしくは　カードが使用不可
+        if (
+            cardNumber < -1 || 
+            cardNumber >= this.handCards.length || 
+            !this.handCards[cardNumber].available
+        ) {
+            return false;
+        }
+        // カードの使用
+        this.processActionResults(
+            this.pIdol.useCard(cardNumber)
+        );
+        return true;
     }
 
     processActionResults (actionResults) {
