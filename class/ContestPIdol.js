@@ -54,6 +54,9 @@ export class ContestPIdol {
     }
 
     checkConditionQuery (query) {
+        if (!query) {
+            return true;
+        }
         if (~query.indexOf('==')) {
             const [key, value] = query.split('==');
             return this.status[key] == value;
@@ -163,12 +166,20 @@ export class ContestPIdol {
         this.useEffect({type: 'heal', actualValue: 2});
     }
 
+
+
     useCard (cardNumber) {
         const usedCard = this.deck.getHandCardByNumber(cardNumber);
         console.log(`"${usedCard.name}"を使った`);
         this.useCost(usedCard.cost);
         const actionResults = [];
+        // effect条件判定
         for (const effect of usedCard.effects) {
+            effect.isActive = this.checkConditionQuery(effect.condition);
+        }
+        // effect効果
+        for (const effect of usedCard.effects) {
+            if (!effect.isActive) continue;
             const effectResults = this.useEffect(effect);
             actionResults.push(...effectResults);
         }
