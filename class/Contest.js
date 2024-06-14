@@ -27,7 +27,9 @@ export class Contest {
 
     finishTurn () {
         console.log(`ターンエンド`);
-        this.pIdol.finishTurn();
+        this.processActionResults(
+            this.pIdol.finishTurn()
+        );
         console.log(`山札`, this.pIdol.getDeck('drawPile').map(item=>item.name));
         console.log(`捨札`, this.pIdol.getDeck('discardPile').map(item=>item.name));
         console.log(`廃棄`, this.pIdol.getDeck('exhaustedCards').map(item=>item.name));

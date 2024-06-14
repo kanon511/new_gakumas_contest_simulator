@@ -144,8 +144,13 @@ export class ContestPIdol {
     }
 
     finishTurn () {
+        const actionResults = [];
         this.deck.discardAll();
+        if (this.status.get('好印象') > 0) {
+            actionResults.push(...this.useEffect({ type: 'score', actualValue: this.status.get('好印象') }));
+        }
         this.status.reduceInTurnend();
+        return actionResults;
     }
 
     useCost (cost) {
@@ -165,7 +170,7 @@ export class ContestPIdol {
     }
 
     rest () {
-        this.useEffect({type: 'heal', actualValue: 2});
+        this.useEffect({ type: 'heal', actualValue: 2 });
     }
 
 
