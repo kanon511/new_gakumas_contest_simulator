@@ -1,4 +1,5 @@
 import { Deck } from './Deck.js';
+import { PIdolStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
 
 export class ContestPIdol {
@@ -12,12 +13,7 @@ export class ContestPIdol {
         this.hp = parameter.hp;
         this.maxHp = this.hp;
         this.block = 0;
-        this.status = {
-            concentration: 0,
-            koucho: 0,
-            zekkoucho: 0,
-            yaruki: 0,
-        };
+        this.status = new PIdolStatus();
         // this.pItemIds = pItemIds;
         this.skillCardIds = skillCardIds;
 
@@ -44,13 +40,18 @@ export class ContestPIdol {
     }
 
     checkEnoughCost (cost) { 
-        if (cost.type == 'normal') {
-            return this.hp + this.block >= cost.value;
+        switch (cost.type) {
+            case 'normal':
+                return this.hp + this.block >= cost.value;
+            case 'direct':
+                return this.hp >= cost.value;
+            case '集中':
+            case '好調':
+            case '好印象':
+            case 'やる気':
+                return this.status.get(cost.type) > 0;
         }
-        if (cost.type == 'direct') {
-            return this.hp >= cost.value;
-        }
-        throw new Error('cost no type ga humei');
+        throw new Error(`コストのタイプ${cost.type}が不明です。`);
     }
 
     checkConditionQuery (query) {
@@ -59,22 +60,22 @@ export class ContestPIdol {
         }
         if (~query.indexOf('==')) {
             const [key, value] = query.split('==');
-            return this.status[key] == value;
+            return this.status.get(key) == value;
         } else if (~query.indexOf('!=')) {
             const [key, value] = query.split('!=');
-            return this.status[key] != value;
+            return this.status.get(key) != value;
         } else if (~query.indexOf('>=')) {
             const [key, value] = query.split('>=');
-            return this.status[key] >= value;
+            return this.status.get(key) >= value;
         } else if (~query.indexOf('<=')) {
             const [key, value] = query.split('<=');
-            return this.status[key] <= value;
+            return this.status.get(key) <= value;
         } else if (~query.indexOf('>')) {
             const [key, value] = query.split('>');
-            return this.status[key] > value;
+            return this.status.get(key) > value;
         } else if (~query.indexOf('<')) {
             const [key, value] = query.split('<');
-            return this.status[key] < value;
+            return this.status.get(key) < value;
         }
     }
 
@@ -88,30 +89,30 @@ export class ContestPIdol {
 
     calcEffectActualValue (effect) {
         if (effect.type == 'score') {
-            const concentrationCoef = this.status.concentration;
-            const kouchoCoef = this.status.koucho > 0 ? 1.5 : 1;
+            const concentrationCoef = this.status.get('集中');
+            const kouchoCoef = this.status.get('好調') > 0 ? 1.5 : 1;
             const zekkouchoCoef = 
-                this.status.zekkoucho > 0 ? this.status.koucho * 0.1 : 0;
+                this.status.get('絶好調') > 0 ? this.status.get('好調') * 0.1 : 0;
             const parameterCoef = 1;
 
             // optionはstatic class作って計算させよう
             const optionCoef = {
-                concentration: 1,
-                favorable: 0,
-                block: 0,
+                '集中': 1,
+                '好印象': 0,
+                'block': 0,
             }
 
             if (effect.options) {
                 for (const effectOption of effect.options) {
                     switch (effectOption.type) {
-                        case 'concentration': 
-                            optionCoef.concentration = effectOption.value;
+                        case '集中': 
+                            optionCoef['集中'] = effectOption.value;
                             break;
-                        case 'favorable': 
-                            optionCoef.favorable = (1 + effectOption.value/100) * this.status.favorable;
+                        case '好印象': 
+                            optionCoef['好印象'] = (1 + effectOption.value/100) * this.status.好印象;
                             break;
                         case 'block':
-                            optionCoef.block = (1 + effectOption.value/100) * this.block;
+                            optionCoef['block'] = (1 + effectOption.value/100) * this.block;
                             break;
                     }
                 }
@@ -122,9 +123,9 @@ export class ContestPIdol {
             const baseScore = isNaN(effect.value) ? 0 : effect.value;
             const adjustScore = ( 
                 baseScore 
-                + concentrationCoef * optionCoef.concentration 
-                + optionCoef.favorable
-                + optionCoef.block
+                + concentrationCoef * optionCoef['集中'] 
+                + optionCoef['好印象']
+                + optionCoef['block']
             );
 
             const actualValue = Math.floor(
@@ -136,7 +137,7 @@ export class ContestPIdol {
             effect.actualValue = actualValue;
 
         } else if (effect.type == 'block') {
-            effect.actualValue = effect.value + this.status.yaruki;
+            effect.actualValue = effect.value + this.status.get('やる気');
         } else {
             effect.actualValue = effect.value;
         }
@@ -144,6 +145,7 @@ export class ContestPIdol {
 
     finishTurn () {
         this.deck.discardAll();
+        this.status.reduceInTurnend();
     }
 
     useCost (cost) {
@@ -201,6 +203,14 @@ export class ContestPIdol {
             case 'block': // ブロック
                 this.block += actualValue;
                 console.log(` ブロック+${actualValue}`);
+                break;
+            case '集中':
+            case '好調':
+            case '絶好調':
+            case '好印象':
+            case 'やる気':
+                this.status.add(type, actualValue);
+                console.log(` ${type}+${actualValue}`);
                 break;
         }
         return effectResults;

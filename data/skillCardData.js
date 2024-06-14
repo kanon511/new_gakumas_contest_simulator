@@ -36,7 +36,7 @@ export const skillCardData = [
         name: '挑戦',
         type: 'active',
         cost: { type: 'normal', value: 7 },
-        condition: 'koucho>0',
+        condition: '好調>0',
         effects: [
             { type: 'score', value: 25 },
         ],
@@ -61,8 +61,8 @@ export const skillCardData = [
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
-            { type: 'favorable', value: 2 },
-            { type: 'score', value: null, options: [{ type: 'favorable', value: 100 }] },
+            { type: '好印象', value: 2 },
+            { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -96,7 +96,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'koucho', value: 2 },
+            { type: '好調', value: 2 },
         ],
         afterUse: null
     },
@@ -108,7 +108,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'concentration', value: 2 },
+            { type: '集中', value: 2 },
         ],
         afterUse: null
     },
@@ -120,7 +120,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'favorable', value: 2 },
+            { type: '好印象', value: 2 },
         ],
         afterUse: null
     },
@@ -132,7 +132,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'yaruki', value: 2 },
+            { type: 'やる気', value: 2 },
         ],
         afterUse: null
     },
@@ -154,7 +154,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: 'koucho', value: 2 },
+            { type: '好調', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -177,7 +177,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: 'concentration', value: 2 },
+            { type: '集中', value: 2 },
         ],
         afterUse: null
     },
@@ -200,7 +200,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: 'concentration', value: 3, condition: 'koucho>0' },
+            { type: '集中', value: 3, condition: '好調>0' },
         ],
         afterUse: null
     },
@@ -211,7 +211,7 @@ export const skillCardData = [
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
-            { type: 'score', value: 17, options: [{ type: 'concentration', value: 1.5 }] },
+            { type: 'score', value: 17, options: [{ type: '集中', value: 1.5 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -220,7 +220,7 @@ export const skillCardData = [
         name: 'トークタイム',
         type: 'active',
         cost: { type: 'normal', value: 6 },
-        condition: 'koucho>0',
+        condition: '好調>0',
         effects: [
             { type: 'score', value: 27 },
         ],
@@ -234,7 +234,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 7 },
-            { type: 'favorable', value: 3 },
+            { type: '好印象', value: 3 },
         ],
         afterUse: null
     },
@@ -257,7 +257,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 10 },
-            { type: 'yaruki', value: 3 },
+            { type: 'やる気', value: 3 },
         ],
         afterUse: null
     },
@@ -268,7 +268,7 @@ export const skillCardData = [
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
-            { type: 'score', value: null, options: [{ type: 'favorable', value: 150 }] },
+            { type: 'score', value: null, options: [{ type: '好印象', value: 150 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -314,7 +314,7 @@ export const skillCardData = [
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
-            { type: 'concentration', value: 3 },
+            { type: '集中', value: 3 },
         ],
         afterUse: null
     },
@@ -325,8 +325,8 @@ export const skillCardData = [
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
-            { type: 'koucho', value: 3 },
-            { type: 'concentration', value: 1, condition: 'koucho>0' },
+            { type: '好調', value: 3 },
+            { type: '集中', value: 1, condition: '好調>0' },
         ],
         afterUse: null
     },
@@ -337,8 +337,8 @@ export const skillCardData = [
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
-            { type: 'concentration', value: 2 },
-            { type: 'koucho', value: 3, condition: 'concentration>=3' },
+            { type: '集中', value: 2 },
+            { type: '好調', value: 3, condition: '集中>=3' },
         ],
         afterUse: null
     },
@@ -350,7 +350,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: 'favorable', value: 3 },
+            { type: '好印象', value: 3 },
         ],
         afterUse: null
     },
@@ -362,7 +362,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'yaruki', value: 3 },
+            { type: 'やる気', value: 3 },
         ],
         afterUse: null
     },
@@ -384,8 +384,8 @@ export const skillCardData = [
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
-            { type: 'favorable', value: 3 },
-            { type: 'yaruki', value: 2, condition: 'favorable>=3' },
+            { type: '好印象', value: 3 },
+            { type: 'やる気', value: 2, condition: '好印象>=3' },
         ],
         afterUse: null
     },
@@ -397,7 +397,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 5 },
-            { type: 'favorable', value: 3, condition: 'yaruki>=3' },
+            { type: '好印象', value: 3, condition: 'やる気>=3' },
         ],
         afterUse: null
     },
@@ -408,8 +408,8 @@ export const skillCardData = [
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
-            { type: 'yaruki', value: 3 },
-            { type: 'favorable', value: 4, condition: 'yaruki>=6' },
+            { type: 'やる気', value: 3 },
+            { type: '好印象', value: 4, condition: 'やる気>=6' },
         ],
         afterUse: null
     },
@@ -432,7 +432,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 7 },
-            { type: 'concentration', value: 3 },
+            { type: '集中', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -444,7 +444,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 8 },
-            { type: 'score', value: 3, condition: 'koucho>0' },
+            { type: 'score', value: 3, condition: '好調>0' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -469,7 +469,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 10 },
-            { type: 'score', value: 10, condition: 'concentration>6' },
+            { type: 'score', value: 10, condition: '集中>6' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -481,7 +481,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 2 },
-            { type: 'favorable', value: 5 },
+            { type: '好印象', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -493,7 +493,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: 'block', value: 3, condition: 'yaruki>=6' },
+            { type: 'block', value: 3, condition: 'やる気>=6' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -504,7 +504,7 @@ export const skillCardData = [
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
-            { type: 'favorable', value: 1 },
+            { type: '好印象', value: 1 },
             { type: 'ターン終了時好印象', value: 1},
         ],
         afterUse: { type: 'exhaust', value: 1 }
@@ -518,7 +518,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 2 },
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: 'yaruki', value: 2 },
+            { type: 'やる気', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -564,7 +564,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 5 },
-            { type: 'koucho', value: 3 },
+            { type: '好調', value: 3 },
         ],
         afterUse: null,
     },
@@ -576,7 +576,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 11 },
-            { type: 'concentration', value: 3 },
+            { type: '集中', value: 3 },
         ],
         afterUse: null,
     },
@@ -588,7 +588,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 13 },
-            { type: 'score', value: 15, condition: 'concentration>=6' },
+            { type: 'score', value: 15, condition: '集中>=6' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
