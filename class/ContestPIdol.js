@@ -36,7 +36,7 @@ export class ContestPIdol {
         for (const handCard of handCards) {
             const conditionQuery = handCard.condition;
 
-            let conditionFlag = conditionQuery == '' ? true : this.checkConditionQuery(conditionQuery);
+            let conditionFlag = this.checkConditionQuery(conditionQuery);
             let costFlag = this.checkEnoughCost(handCard.cost);
 
             handCard.setAvailable(conditionFlag && costFlag);

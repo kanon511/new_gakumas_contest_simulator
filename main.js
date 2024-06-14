@@ -53,15 +53,3 @@ while (true) {
     contest.finishTurn();
     if (contest.isFinish) break;
 }
-
-
-
-
-/**
- * ターン開始
- * PItem発動(ターン開始時)
- * ドロー
- * カード発動
- * PItem発動(カード発動時)
- * 
- */

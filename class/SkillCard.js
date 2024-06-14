@@ -13,11 +13,11 @@ export class SkillCard {
     }
     
     get score () {
-        return this.effects.reduce((p, v) => (v.type == 'score' ? v.actualValue : 0), 0)
+        return this.effects.reduce((p, v) => (v.type == 'score' ? p+v.actualValue : p), 0)
     }
 
     get block () {
-        return this.effects.reduce((p, v) => (v.type == 'block' ? v.actualValue : 0), 0)
+        return this.effects.reduce((p, v) => (v.type == 'block' ? p+v.actualValue : p), 0)
     }
 
     setAvailable (available) {
