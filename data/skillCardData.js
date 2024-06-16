@@ -784,7 +784,9 @@ export const skillCardData = [
         type: 'mental',
         cost: { type: 'normal', value: 4 },
         condition: '',
-        // レッスン開始時手札に入る
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
         effects: [
             { type: '集中', value: 3 },
             { type: '好調', value: 2 },
@@ -903,7 +905,9 @@ export const skillCardData = [
         type: 'mental',
         cost: { type: 'normal', value: 3 },
         condition: '',
-        // レッスン開始時手札に入る
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
         effects: [
             { type: '好印象', value: 4 },
             { type: 'やる気', value: 3 },
@@ -1279,7 +1283,9 @@ export const skillCardData = [
         type: 'mental',
         cost: { type: 'normal', value: 2 },
         condition: '',
-        // 開始時手札に入る
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
         effects: [
             { type: 'block', value: 6 },
             { type: '低下状態無効', value: 1 },
@@ -1453,7 +1459,9 @@ export const skillCardData = [
         type: 'active',
         cost: { type: 'normal', value: 8 },
         condition: '',
-        // ターン開始時手札に入る
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
         effects: [
             { type: '好印象', value: 8 }, 
         ],
@@ -1636,7 +1644,9 @@ export const skillCardData = [
         type: 'mental',
         cost: { type: 'normal', value: 5 },
         condition: '',
-        //レッスン開始時手札に入る
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
         effects: [
             { type: '消費体力減少', value: 2 }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
