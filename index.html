@@ -3,9 +3,211 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Character Selection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .section label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .section input[type="text"],
+        .section select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .section input[type="button"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .section input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .input-group input[type="text"] {
+            flex: 1 1 calc(25% - 10px);
+            margin-right: 10px;
+        }
+        .input-group input[type="text"]:last-child {
+            margin-right: 0;
+        }
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .items .item {
+            flex: 1 1 calc(50% - 10px);
+            display: flex;
+            align-items: center;
+        }
+        .items .item select {
+            flex: 1;
+            margin-left: 5px;
+        }
+        .run-button {
+            text-align: center;
+        }
+        .run-button input[type="button"] {
+            width: 100%;
+            padding: 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .run-button input[type="button"]:hover {
+            background-color: #218838;
+        }
+    </style>
+    <script type="module" src="./script.js"></script>
 </head>
 <body>
-    <div id="character"></div>
+    <div class="container">
+        <div class="section">
+            <label for="main-character">メインキャラクター選択</label>
+            <select id="main-character">
+                <option value="">select</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="section">
+            <label for="sub-character">サブキャラクター選択</label>
+            <select id="sub-character">
+                <option value="">select</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+        <div class="section">
+            <label>ステータス</label>
+            <div class="input-group">
+                <input type="text" id="status-vocal" pattern="[0-9]+" placeholder="Vocal%"  required="required">
+                <input type="text" id="status-dance" pattern="[0-9]+" placeholder="Dance%"  required="required">
+                <input type="text" id="status-visual" pattern="[0-9]+" placeholder="Visual%"  required="required">
+                <input type="text" id="status-hp" pattern="[0-9]+" placeholder="体力"  required="required">
+            </div>
+        </div>
+        <div class="section">
+            <label>カード選択（☑で+化）</label>
+            <div class="items">
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+                <div class="item">
+                    <input type="checkbox">
+                    <select>
+                        <option value="">select</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="run-button">
+            <input type="button" value="Run">
+        </div>
+    </div>
 </body>
 </html>
