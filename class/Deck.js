@@ -6,10 +6,12 @@ export class Deck {
     #index_handCards      = [];
     #index_discardPile    = [];
     #index_exhaustedCards = [];
+    #flag_first_draw = true;
+    #index_first_draw = [];
 
     constructor (skillCardIds) {
         this.skillCards = skillCardIds.map(id => new SkillCard(id));
-        this.init();
+        this.init(skillCardIds);
     }
 
     shuffle (list) {
@@ -27,8 +29,14 @@ export class Deck {
         return list;
     }
 
-    init () {
+    init (skillCardIds) {
         this.#index_drawPile = this.createRange(0, this.skillCards.length);
+        // レッスン開始時手札に入るカードのインデックスリスト
+        this.#index_first_draw = this.#index_drawPile
+            .filter(item=>this.skillCards[item].pre_effects
+                ?.map(effects=>effects.type)
+                    .includes('レッスン開始時手札に入る'));
+        
         this.shuffle(this.#index_drawPile);
         this.#index_handCards = [];
         this.#index_discardPile = [];
@@ -36,6 +44,12 @@ export class Deck {
     }
 
     draw (number) {
+        if (this.#flag_first_draw) {
+            this.#flag_first_draw = false;
+            this.#index_handCards.push(...this.#index_first_draw);
+            this.#index_first_draw.forEach(item=>this.#index_drawPile.splice(this.#index_drawPile.indexOf(item), 1));
+            number -= this.#index_handCards.length;
+        }
         for (let i = 0; i < number; i++) {
             if (this.#index_drawPile.length == 0) {
                 this.#index_drawPile = this.#index_discardPile;

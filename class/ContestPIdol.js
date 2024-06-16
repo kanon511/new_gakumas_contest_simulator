@@ -39,21 +39,6 @@ export class ContestPIdol {
         }
     }
 
-    checkEnoughCost (cost) { 
-        switch (cost.type) {
-            case 'normal':
-                return this.hp + this.block >= cost.value;
-            case 'direct':
-                return this.hp >= cost.value;
-            case '集中':
-            case '好調':
-            case '好印象':
-            case 'やる気':
-                return this.status.get(cost.type) > 0;
-        }
-        throw new Error(`コストのタイプ${cost.type}が不明です。`);
-    }
-
     checkConditionQuery (query) {
         if (!query) {
             return true;
@@ -98,8 +83,7 @@ export class ContestPIdol {
             // optionはstatic class作って計算させよう
             const optionCoef = {
                 '集中': 1,
-                '好印象': 0,
-                'block': 0,
+                'score': 0,
             }
 
             if (effect.options) {
@@ -109,10 +93,13 @@ export class ContestPIdol {
                             optionCoef['集中'] = effectOption.value;
                             break;
                         case '好印象': 
-                            optionCoef['好印象'] = (1 + effectOption.value/100) * this.status.好印象;
+                            optionCoef['score'] = (1 + effectOption.value/100) * this.status.get('好印象');
                             break;
                         case 'block':
-                            optionCoef['block'] = (1 + effectOption.value/100) * this.block;
+                            optionCoef['score'] = (1 + effectOption.value/100) * this.block;
+                            break;
+                        case 'やる気':
+                            optionCoef['score'] = (1 + effectOption.value/100) * this.status.get('やる気');
                             break;
                     }
                 }
@@ -124,8 +111,7 @@ export class ContestPIdol {
             const adjustScore = ( 
                 baseScore 
                 + concentrationCoef * optionCoef['集中'] 
-                + optionCoef['好印象']
-                + optionCoef['block']
+                + optionCoef['score']
             );
 
             const actualValue = Math.floor(
@@ -153,6 +139,21 @@ export class ContestPIdol {
         return actionResults;
     }
 
+    checkEnoughCost (cost) { 
+        switch (cost.type) {
+            case 'normal':
+                return this.hp + this.block >= cost.value;
+            case 'direct':
+                return this.hp >= cost.value;
+            case '集中':
+            case '好調':
+            case '好印象':
+            case 'やる気':
+                return this.status.get(cost.type) > 0;
+        }
+        throw new Error(`コストのタイプ${cost.type}が不明です。`);
+    }
+
     useCost (cost) {
         switch (cost.type) {
             case 'normal': 
@@ -165,6 +166,12 @@ export class ContestPIdol {
                 break;
             case 'direct':
                 this.hp -= cost.value;
+                break;
+            case '集中':
+            case '好調':
+            case '好印象':
+            case 'やる気':
+                this.status.reduce(cost.type, cost.value);
                 break;
         }
     }
