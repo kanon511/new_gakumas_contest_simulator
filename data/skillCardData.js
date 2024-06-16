@@ -12,6 +12,7 @@ export const skillCardData = [
         id: 1000010,
         name: 'アピールの基本',
         type: 'active',
+        plan: 'free',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
@@ -20,9 +21,22 @@ export const skillCardData = [
         afterUse: null,
     },
     {
+        id: 1000011,
+        name: 'アピールの基本+',
+        type: 'active',
+        plan: 'free', 
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 14 },
+        ],
+        afterUse: null,
+    },
+    {
         id: 1000020,
         name: 'ポーズの基本',
         type: 'active',
+        plan: 'free', 
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
@@ -32,9 +46,23 @@ export const skillCardData = [
         afterUse: null,
     },
     {
+        id: 1000021,
+        name: 'ポーズの基本+',
+        type: 'active',
+        plan: 'free', 
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 6 },
+            { type: 'block', value: 4 },
+        ],
+        afterUse: null,
+    },
+    {
         id: 1000030,
         name: '挑戦',
         type: 'active',
+        plan: 'sense', 
         cost: { type: 'normal', value: 7 },
         condition: '好調>0',
         effects: [
@@ -43,9 +71,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 1000031,
+        name: '挑戦+',
+        type: 'active',
+        plan: 'sense', 
+        cost: { type: 'normal', value: 7 },
+        condition: '好調>0',
+        effects: [
+            { type: 'score', value: 37 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 1000040,
         name: '試行錯誤',
         type: 'active',
+        plan: 'sense', 
         cost: { type: 'normal', value: 7 },
         condition: '',
         effects: [
@@ -55,9 +96,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 1000041,
+        name: '試行錯誤+',
+        type: 'active',
+        plan: 'sense', 
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 10 },
+            { type: 'score', value: 10 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 1000050,
         name: '可愛い仕草',
         type: 'active',
+        plan: 'logic', 
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
@@ -67,9 +122,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 1000051,
+        name: '可愛い仕草+',
+        type: 'active',
+        plan: 'logic', 
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 3 },
+            { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 1000060,
         name: '気分転換',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'direct', value: 5 },
         condition: '',
         effects: [
@@ -78,9 +147,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 1000061,
+        name: '気分転換+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'block', value: 110 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 1000070,
         name: '表現の基本',
         type: 'mental',
+        plan: 'free',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
@@ -89,9 +171,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 1000071,
+        name: '表現の基本+',
+        type: 'mental',
+        plan: 'free',
+        cost: { type: 'normal', value: 0 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 7 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 1000080,
         name: '振る舞いの基本',
         type: 'mental',
+        plan: 'sense',
         cost: { type: 'normal', value: 1 },
         condition: '',
         effects: [
@@ -101,9 +196,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 1000081,
+        name: '振る舞いの基本+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 1 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 1 },
+            { type: '好調', value: 3 },
+        ],
+        afterUse: null
+    },
+    {
         id: 1000090,
         name: '表情の基本',
         type: 'mental',
+        plan: 'sense',
         cost: { type: 'normal', value: 1 },
         condition: '',
         effects: [
@@ -113,9 +222,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 1000091,
+        name: '表情の基本+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 1 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 1 },
+            { type: '集中', value: 3 },
+        ],
+        afterUse: null
+    },
+    {
         id: 1000100,
         name: '目線の基本',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
@@ -125,10 +248,24 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 1000101,
+        name: '目線の基本+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: '好印象', value: 3 },
+        ],
+        afterUse: null
+    },
+    {
         id: 1000110,
         name: '意識の基本',
         type: 'mental',
-        cost: { type: 'normal', value: 1 },
+        plan: 'logic',
+        cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -137,9 +274,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 1000111,
+        name: '意識の基本+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: 'やる気', value: 3 },
+        ],
+        afterUse: null
+    },
+    {
         id: 1100120,
         name: '眠気',
         type: 'trouble',
+        plan: 'free',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
@@ -150,18 +301,33 @@ export const skillCardData = [
         id: 2000130,
         name: '軽い足取り',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
             { type: '好調', value: 2 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: null,
+    },
+    {
+        id: 2000131,
+        name: '軽い足取り+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 9 },
+            { type: '好調', value: 3 },
+        ],
+        afterUse: null,
     },
     {
         id: 2000140,
         name: '愛嬌',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
@@ -170,9 +336,22 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000141,
+        name: '愛嬌+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 21 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000150,
         name: '準備運動',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
@@ -182,9 +361,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000151,
+        name: '準備運動+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 9 },
+            { type: '集中', value: 3 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000160,
         name: 'ファンサ',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
@@ -193,9 +386,22 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000161,
+        name: 'ファンサ+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 16 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000170,
         name: '勢い任せ',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
@@ -205,9 +411,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000171,
+        name: '勢い任せ+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 9 },
+            { type: '集中', value: 4, condition: '好調>0' },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000180,
         name: 'ハイタッチ',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
@@ -216,9 +436,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2000181,
+        name: 'ハイタッチ+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 23, options: [{ type: '集中', value: 2 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2000190,
         name: 'トークタイム',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 6 },
         condition: '好調>0',
         effects: [
@@ -227,9 +460,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2000191,
+        name: 'トークタイム+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '好調>0',
+        effects: [
+            { type: 'score', value: 38 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2000190,
         name: '今日もおはよう',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
@@ -239,13 +485,41 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000191,
+        name: '今日もおはよう+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 9 },
+            { type: '好印象', value: 4 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000200,
         name: 'ゆるふわおしゃべり',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'direct', value: 4 },
         condition: '',
         effects: [
+            { type: 'やる気', value: 3 },
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
+        id: 2000201,
+        name: 'ゆるふわおしゃべり+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 4 },
+            { type: 'score', value: null, options: [{ type: 'block', value: 80 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -253,6 +527,7 @@ export const skillCardData = [
         id: 2000210,
         name: 'もう少しだけ',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
@@ -262,9 +537,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000211,
+        name: 'もう少しだけ+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 15 },
+            { type: 'やる気', value: 4 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000220,
         name: '手拍子',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
@@ -273,9 +562,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2000221,
+        name: '手拍子+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2000230,
         name: '元気な挨拶',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'direct', value: 4 },
         condition: '',
         effects: [
@@ -284,9 +586,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2000231,
+        name: '元気な挨拶+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'block', value: 120 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2000240,
         name: '気合十分',
         type: 'mental',
+        plan: 'free',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
@@ -296,21 +611,49 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000241,
+        name: '気合十分+',
+        type: 'mental',
+        plan: 'free',
+        cost: { type: 'normal', value: 0 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: '消費体力減少', value: 3 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000250,
         name: 'ファーストステップ',
         type: 'mental',
+        plan: 'free',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
             { type: '消費体力軽減', value: 1, condition: 'hpPer>=50' },
         ],
-        afterUse: null
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
+        id: 2000251,
+        name: 'ファーストステップ+',
+        type: 'mental',
+        plan: 'free',
+        cost: { type: 'normal', value: 0 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 3 },
+            { type: '消費体力軽減', value: 1, condition: 'hpPer>=50' },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
     },
     {
         id: 2000260,
         name: 'バランス感覚',
         type: 'mental',
+        plan: 'sense',
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
@@ -319,9 +662,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000261,
+        name: 'バランス感覚+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 1 },
+            { type: '集中', value: 4 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000270,
         name: '楽観的',
         type: 'mental',
+        plan: 'sense',
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
@@ -331,9 +688,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000271,
+        name: '楽観的+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: '好調', value: 4 },
+            { type: '集中', value: 1, condition: '好調>0' },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000280,
         name: '深呼吸',
         type: 'mental',
+        plan: 'sense',
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
@@ -343,10 +714,24 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000281,
+        name: '深呼吸+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: '集中', value: 3 },
+            { type: '好調', value: 3, condition: '集中>=3' },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000290,
         name: 'リスタート',
         type: 'mental',
-        cost: { type: 'normal', value: 3 },
+        plan: 'logic',
+        cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -355,9 +740,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000291,
+        name: 'リスタート+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: '好印象', value: 4 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000300,
         name: 'えいえいおー',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
@@ -367,10 +766,24 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000301,
+        name: 'えいえいおー+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: 'やる気', value: 4 },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000310,
         name: 'リズミカル',
         type: 'mental',
-        cost: { type: 'normal', value: 2 },
+        plan: 'logic',
+        cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 6 },
@@ -378,9 +791,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2000311,
+        name: 'リズミカル+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 0 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 8 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2000320,
         name: '思い出し笑い',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'normal', value: 2 },
         condition: '',
         effects: [
@@ -390,9 +816,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000321,
+        name: '思い出し笑い+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 4 },
+            { type: 'やる気', value: 3, condition: '好印象>=3' },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000330,
         name: 'パステル気分',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
@@ -402,10 +842,24 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000331,
+        name: 'パステル気分+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 7 },
+            { type: '好印象', value: 4, condition: 'やる気>=3' },
+        ],
+        afterUse: null
+    },
+    {
         id: 2000330,
         name: '励まし',
         type: 'mental',
-        cost: { type: 'normal', value: 2 },
+        plan: 'logic',
+        cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -414,9 +868,23 @@ export const skillCardData = [
         afterUse: null
     },
     {
+        id: 2000331,
+        name: '励まし+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 4 },
+            { type: '好印象', value: 5, condition: 'やる気>=6' },
+        ],
+        afterUse: null
+    },
+    {
         id: 2201010,
         name: '新進気鋭',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
@@ -425,9 +893,22 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2201011,
+        name: '新進気鋭+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 25 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2202010,
         name: '意地っ張り',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 6 },
         condition: '',
         effects: [
@@ -437,9 +918,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2202011,
+        name: '意地っ張り+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 7 },
+            { type: '集中', value: 5 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2203010,
         name: 'アルバイター',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 6 },
         condition: '',
         effects: [
@@ -449,9 +944,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2203011,
+        name: 'アルバイター+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 6 },
+            { type: '好印象', value: 6 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2204010,
         name: 'リトル・プリンス',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
@@ -461,9 +970,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2204011,
+        name: 'リトル・プリンス+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 13 },
+            { type: 'score', value: 5, condition: '好調>0' },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2205010,
         name: '内気系少女',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'normal', value: 3 },
         condition: '',
         effects: [
@@ -473,9 +996,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2205011,
+        name: '内気系少女+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 2 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 2 },
+            { type: 'ターン終了時好印象', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2206010,
         name: '元気いっぱい',
         type: 'active',
+        plan: 'logic',
         cost: { type: 'direct', value: 4 },
         condition: '',
         effects: [
@@ -486,9 +1023,24 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2206011,
+        name: '元気いっぱい+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
+            { type: 'やる気', value: 3 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2207010,
         name: 'フレンドリー',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 6 },
         condition: '',
         effects: [
@@ -498,9 +1050,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2207011,
+        name: 'フレンドリー+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 12 },
+            { type: 'score', value: 12 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2208010,
         name: '超高学歴アイドル',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
@@ -510,9 +1076,23 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2208011,
+        name: '超高学歴アイドル+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 0 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 4 },
+            { type: 'block', value: 5, condition: 'やる気>=6' },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2209010,
         name: '包容力',
         type: 'active',
+        plan: 'sense',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
@@ -523,13 +1103,40 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
+        id: 2209011,
+        name: '包容力+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 0 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 3 },
+            { type: 'block', value: 4 },
+            { type: '体力回復', value: 2 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
         id: 2210010,
         name: '未完の大器',
         type: 'mental',
+        plan: 'logic',
         cost: { type: 'direct', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 3 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
+        id: 2210011,
+        name: '未完の大器+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 4, options: [{ type: '使用したスキルカード数', value: 4 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
