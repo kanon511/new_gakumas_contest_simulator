@@ -393,6 +393,8 @@ export class ContestPIdol {
                 break;
             case '手札入れ替え':
                 break;
+            case '生成':
+                break;
             case '次のターン、パラメータ':
                 this.parameterEffects.push({ turn: this.turn+1, value: actualValue });
                 break;
