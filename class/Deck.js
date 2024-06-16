@@ -11,7 +11,7 @@ export class Deck {
 
     constructor (skillCardIds) {
         this.skillCards = skillCardIds.map(id => new SkillCard(id));
-        this.init(skillCardIds);
+        this.init();
     }
 
     shuffle (list) {
@@ -29,7 +29,7 @@ export class Deck {
         return list;
     }
 
-    init (skillCardIds) {
+    init () {
         this.#index_drawPile = this.createRange(0, this.skillCards.length);
         // レッスン開始時手札に入るカードのインデックスリスト
         this.#index_first_draw = this.#index_drawPile
@@ -45,6 +45,7 @@ export class Deck {
 
     draw (number) {
         if (this.#flag_first_draw) {
+            // 最初のドローでレッスン開始時手札に入るを手札に入れる
             this.#flag_first_draw = false;
             this.#index_handCards.push(...this.#index_first_draw);
             this.#index_first_draw.forEach(item=>this.#index_drawPile.splice(this.#index_drawPile.indexOf(item), 1));
@@ -52,11 +53,23 @@ export class Deck {
         }
         for (let i = 0; i < number; i++) {
             if (this.#index_drawPile.length == 0) {
+                if (this.#index_discardPile.length == 0) break; // 山札と捨て札が両方0ならドローできない
                 this.#index_drawPile = this.#index_discardPile;
                 this.#index_discardPile = [];
                 this.shuffle(this.#index_drawPile);
             }
             this.#index_handCards.push(this.#index_drawPile.shift());
+        }
+    }
+
+    upgrade (type) {
+        if (type == 'allhands') {
+            for (const index of this.#index_handCards) {
+                const targetCard = this.skillCards[index];
+                if (Number(targetCard.id) % 10 == 0) { // 強化前なら
+                    this.skillCards[index] = new SkillCard(Number(targetCard.id)+1);
+                }
+            }
         }
     }
 
@@ -70,6 +83,8 @@ export class Deck {
                     }
                     break;
             }
+        } else {
+            this.discard(number);
         }
     }
 

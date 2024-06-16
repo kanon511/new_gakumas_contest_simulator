@@ -468,7 +468,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好印象', value: 1 },
-            { type: 'ターン終了時好印象', value: 1},
+            { type: 'ターン終了時好印象', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -493,7 +493,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 10 },
-            { type: 'score', value: 10, condition: '集中>6' },
+            { type: 'score', value: 10, condition: '集中>=6' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -518,7 +518,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 2 },
             { type: 'block', value: 1 },
-            { type: 'heal', value: 2 },
+            { type: '体力回復', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -635,7 +635,7 @@ export const skillCardData = [
         id: 3000090,
         name: 'シュプレヒコール',
         type: 'active',
-        cost: { type: '好調', value: 3 },
+        cost: { type: '集中', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -645,7 +645,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000090,
+        id: 3000100,
         name: 'ラブリーウインク',
         type: 'active',
         cost: { type: 'normal', value: 5 },
@@ -657,7 +657,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000100,
+        id: 3000110,
         name: 'ありがとうの言葉',
         type: 'active',
         cost: { type: 'direct', value: 3 },
@@ -669,19 +669,19 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000110,
+        id: 3000120,
         name: 'ハートの合図',
         type: 'active',
         cost: { type: 'direct', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 130 }] },
-            { type: 'block', value: null, options: [{ type: '割合減少', value: 50 }] },
+            { type: 'ブロック割合減少', value: 50 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000120,
+        id: 3000130,
         name: 'キラメキ',
         type: 'active',
         cost: { type: 'normal', value: 3 },
@@ -694,7 +694,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000130,
+        id: 3000140,
         name: 'みんな大好き',
         type: 'active',
         cost: { type: 'やる気', value: 3 },
@@ -706,7 +706,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000140,
+        id: 3000150,
         name: 'アイドル宣言',
         type: 'mental',
         cost: { type: 'direct', value: 1 },
@@ -718,7 +718,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000150,
+        id: 3000160,
         name: 'ハイテンション',
         type: 'mental',
         cost: { type: 'normal', value: 0 },
@@ -731,7 +731,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000160,
+        id: 3000170,
         name: '眼力',
         type: 'mental',
         cost: { type: 'normal', value: 3 },
@@ -743,7 +743,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000170,
+        id: 3000180,
         name: '大声援',
         type: 'mental',
         cost: { type: 'normal', value: 3 },
@@ -755,7 +755,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000180,
+        id: 3000190,
         name: '演出計画',
         type: 'mental',
         cost: { type: 'normal', value: 4 },
@@ -767,7 +767,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000190,
+        id: 3000200,
         name: '願いの力',
         type: 'mental',
         cost: { type: 'normal', value: 4 },
@@ -779,7 +779,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000200,
+        id: 3000210,
         name: '静かな意志',
         type: 'mental',
         cost: { type: 'normal', value: 4 },
@@ -794,7 +794,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000210,
+        id: 3000220,
         name: '始まりの合図',
         type: 'mental',
         cost: { type: 'normal', value: 3 },
@@ -805,7 +805,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000220,
+        id: 3000230,
         name: '意地',
         type: 'mental',
         cost: { type: 'normal', value: 2 },
@@ -817,7 +817,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000230,
+        id: 3000240,
         name: '存在感',
         type: 'mental',
         cost: { type: '好調', value: 2 },
@@ -829,7 +829,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000240,
+        id: 3000250,
         name: '成功への道筋',
         type: 'mental',
         cost: { type: '好調', value: 2 },
@@ -841,7 +841,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000250,
+        id: 3000260,
         name: 'あふれる思い出',
         type: 'mental',
         cost: { type: 'normal', value: 3 },
@@ -853,7 +853,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000260,
+        id: 3000270,
         name: 'ふれあい',
         type: 'mental',
         cost: { type: 'normal', value: 5 },
@@ -865,7 +865,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000270,
+        id: 3000280,
         name: '幸せな時間',
         type: 'mental',
         cost: { type: 'normal', value: 5 },
@@ -876,7 +876,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000280,
+        id: 3000290,
         name: 'ファンシーチャーム',
         type: 'mental',
         cost: { type: 'normal', value: 4 },
@@ -888,7 +888,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000290,
+        id: 3000300,
         name: 'ワクワクが止まらない',
         type: 'mental',
         cost: { type: 'normal', value: 3 },
@@ -900,7 +900,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000300,
+        id: 3000310,
         name: '本番前夜',
         type: 'mental',
         cost: { type: 'normal', value: 3 },
@@ -915,44 +915,44 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000310,
+        id: 3000320,
         name: 'ひなたぼっこ',
         type: 'mental',
         cost: { type: 'normal', value: 0 },
         condition: '',
         effects: [
-            { type: '元気', value: 11 },
+            { type: 'block', value: 11 },
             { type: 'やる気', value: 5 },
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000320,
+        id: 3000330,
         name: 'イメトレ',
         type: 'mental',
         cost: { type: 'normal', value: 4 },
         condition: '',
         effects: [
-            { type: '元気', value: 7 },
+            { type: 'block', value: 7 },
             { type: 'やる気', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000330,
+        id: 3000340,
         name: 'やる気は満点',
         type: 'mental',
         cost: { type: 'normal', value: 1 },
         condition: '',
         effects: [
-            { type: '元気', value: 1 },
+            { type: 'block', value: 1 },
             { type: '好印象', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000340,
+        id: 3000350,
         name: 'ゆめみごこち',
         type: 'mental',
         cost: { type: '好印象', value: 2 },
@@ -1077,7 +1077,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: 'score', value: null, options: [{ type: '元気', value: 100 }] },
+            { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1086,11 +1086,12 @@ export const skillCardData = [
         name: 'お姉ちゃんだもの！',
         type: 'active',
         cost: { type: 'normal', value: 3 },
-        condition: 'レッスンCLEAR割合<=100',
+        // condition: 'レッスンCLEAR割合<=100',
+        condition: 'score<=1000', // コンテストではこうらしい
         effects: [
             { type: 'score', value: 6 },
             { type: 'block', value: 6 },
-            { type: '次ターンドロー', value: 1 },
+            { type: '1ターン後ドロー', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1103,7 +1104,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 },
             { type: '消費体力減少', value: 2 },
-            { type: '次ターンドロー', value: 1 },
+            { type: '1ターン後ドロー', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1112,11 +1113,11 @@ export const skillCardData = [
         name: 'ご指導ご鞭撻',
         type: 'active',
         cost: { type: 'normal', value: 5 },
-        condition: 'hp割合>=50',
+        condition: 'hpPer>=50',
         effects: [
             { type: 'score', value: 4 },
             { type: 'block', value: 5 },
-            { type: '次ターン手札強化', value: 1 },
+            { type: '1ターン後、手札強化', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1125,11 +1126,11 @@ export const skillCardData = [
         name: 'ストレッチ談義',
         type: 'active',
         cost: { type: 'normal', value: 3 },
-        condition: 'ターン>=3',
+        condition: 'turn>=3',
         effects: [
             { type: 'score', value: 3 },
             { type: '体力消費減少', value: 2 },
-            { type: '次ターン手札強化', value: 1 },
+            { type: '1ターン後、手札強化', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1141,7 +1142,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
-            { type: '次ターンドロー', value: 1 },
+            { type: '1ターン後ドロー', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1154,7 +1155,7 @@ export const skillCardData = [
         effects: [
             { type: '好調', value: 3 },
             { type: '集中', value: 2 },
-            { type: '次ターンドロー', value: 1, condition: 'hp割合>=50' },
+            { type: '1ターン後ドロー', value: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1201,7 +1202,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好調', value: 4 },
-            { type: 'nextTurnScore', value: 32 },
+            { type: '次のターン、パラメータ', value: 32 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1213,7 +1214,7 @@ export const skillCardData = [
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 2 },
-            { type: 'nextTurnScore', value: 38 },
+            { type: '次のターン、パラメータ', value: 38 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1249,7 +1250,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 160 }] },
-            { type: 'block', value: null, options: [{ type: '割合減少', value: 100 }] },
+            { type: 'ブロック割合減少', value: 100 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1353,7 +1354,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '集中', value: 1 },
-            { type: 'ターン終了時、集中が3以上の場合、集中+2', value: null },
+            { type: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1426,7 +1427,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好印象', value: 1 }, 
-            { type: 'ターン終了時、好印象が3以上の場合、好印象+3', value: null }, 
+            { type: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1511,7 +1512,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好印象', value: 3 }, 
-            { type: 'ターン終了時、好印象+1', value: null }, 
+            { type: 'ターン終了時、好印象+1', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1561,7 +1562,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '集中', value: 4 }, 
-            { type: '回復', value: 4 }, 
+            { type: '体力回復', value: 4 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1576,19 +1577,19 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
-    {
-        id: 4300010, 
-        name: '花萌ゆ季節',
-        type: 'mental',
-        cost: { type: 'normal', value: 4 },
-        condition: '',
-        effects: [
-            { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: '次のターンドロー', value: 1 }, 
-        ],
-        afterUse: { type: 'exhaust', value: 1 },
-    },
+    // {
+    //     id: 4300010, 
+    //     name: '花萌ゆ季節',
+    //     type: 'mental',
+    //     cost: { type: 'normal', value: 4 },
+    //     condition: '',
+    //     effects: [
+    //         { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
+    //         { type: 'スキルカード使用数追加', value: 1 }, 
+    //         { type: '次のターンドロー', value: 1 }, 
+    //     ],
+    //     afterUse: { type: 'exhaust', value: 1 },
+    // },
     {
         id: 4300020, 
         name: '陽だまりの生徒会室',
@@ -1609,7 +1610,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 3 }, 
-            { type: '次のターンドロー', value: 1 }, 
+            { type: '1ターン後ドロー', value: 1 }, 
             { type: '2ターン後ドロー', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
@@ -1703,17 +1704,5 @@ export const skillCardData = [
             { type: '1ターン後、手札強化', value: null }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
-    },
-    {
-        id: 2000120,
-        name: 'template',
-        type: 'active',
-        cost: { type: 'normal', value: 1 },
-        condition: '',
-        effects: [
-            { type: 'score', value: 2 },
-        ],
-        afterUse: null
-    },
-    
+    },    
 ];

@@ -21,10 +21,10 @@ async function scanf() {
 const vocal  = 1738;
 const dance  = 1502;
 const visual = 464;
-const hp     = 20;
+const hp     = 200;
 const pItemIds = [0, 1, 2];
 const skillCardIds = [
-    1000010, 1000010, 1000020, 1000030, 1000040, 1000070, 1000070, 1000080, 1000080, 1000090, 3000200, 3000200, 3000200, 3000200, 1000100, 1000100, 3000050
+    4300020, 4300020, 4300020, 4300020, 4300020, 
 ];
 
 const contestPIdol = new ContestPIdol({
@@ -47,6 +47,7 @@ const contest = new Contest({
 while (true) {
     contest.startTurn();
     for (let endFlag = false; !endFlag;) {
+        contest.printHands();
         const inputNumber = Number(await scanf());
         endFlag = contest.useCard(inputNumber);
     }

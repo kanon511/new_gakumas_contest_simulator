@@ -20,9 +20,14 @@ export class Contest {
         this.currentTurn++;
         this.turnType = 'vocal';
         console.log(`==========\n${this.currentTurn}ターン目\n==========`);
+        this.pIdol.startTurn();
         this.pIdol.draw(3);
+        this.pIdol.updateHand();
+    }
+
+    printHands () {
         this.handCards = this.pIdol.getDeck('handCards');
-        console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|-${item.cost.value})`));
+        console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`));
     }
 
     finishTurn () {
@@ -50,7 +55,7 @@ export class Contest {
         if (
             cardNumber < -1 || 
             cardNumber >= this.handCards.length || 
-            !this.handCards[cardNumber].available
+            !this.handCards[cardNumber]?.available
         ) {
             return false;
         }
@@ -58,7 +63,7 @@ export class Contest {
         this.processActionResults(
             this.pIdol.useCard(cardNumber)
         );
-        return true;
+        return !this.pIdol.checkAdditionalAction();
     }
 
     processActionResults (actionResults) {
