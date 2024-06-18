@@ -73,7 +73,7 @@ export class ContestPIdol {
             const conditionQuery = handCard.condition;
 
             let conditionFlag = this.checkConditionQuery(conditionQuery);
-            let costFlag = this.checkEnoughCost(handCard.cost);
+            let costFlag = this.checkCost(handCard.cost);
 
             handCard.setAvailable(conditionFlag && costFlag);
         }
@@ -268,7 +268,7 @@ export class ContestPIdol {
         return actionResults;
     }
 
-    checkEnoughCost (cost) { 
+    checkCost (cost) { 
         switch (cost.type) {
             case 'normal':
                 return this.hp + this.block >= cost.actualValue;
@@ -286,12 +286,15 @@ export class ContestPIdol {
     useCost (cost) {
         switch (cost.type) {
             case 'normal': 
+                const block = this.block;
+                const hp = this.hp;
                 if (this.block < cost.actualValue) {
-                    this.hp -= (cost.actualValue - this.block);
+                    this.hp -= (cost.actualValue - block);
                     this.block = 0;
                 } else {
                     this.block -= cost.actualValue;
                 }
+                console.log(` 体力消費: ${hp}->${this.hp}(元気: ${block}->${this.block})`);
                 break;
             case 'direct':
                 this.hp -= cost.actualValue;
@@ -300,7 +303,9 @@ export class ContestPIdol {
             case '好調':
             case '好印象':
             case 'やる気':
+                const statusValue = this.status.get(cost.type);
                 this.status.reduce(cost.type, cost.actualValue);
+                console.log(` ${cost.type}消費: ${statusValue}->${this.status.get(cost.type)}`);
                 break;
         }
     }
@@ -397,21 +402,6 @@ export class ContestPIdol {
                 break;
             case '次のターン、パラメータ':
                 this.parameterEffects.push({ turn: this.turn+1, value: actualValue });
-                break;
-            case '集中':
-            case '好調':
-            case '絶好調':
-            case '好印象':
-            case 'やる気':
-            case '消費体力減少':
-            case '消費体力軽減':
-            case '低下状態無効':
-            case 'ターン終了時、集中が3以上の場合、集中+2':
-            case 'ターン終了時、好印象+1':
-            case 'ターン終了時、好印象が3以上の場合、好印象+3':
-            case 'スキルカード使用数追加':
-                this.status.add(type, actualValue);
-                console.log(` ${type}: +${actualValue}`);
                 break;
             case '元気増加無効': 
             case '消費体力増加': // 本当はバフもデバフも同じ処理でいいようにしたい

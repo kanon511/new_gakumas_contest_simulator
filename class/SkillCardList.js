@@ -14,6 +14,9 @@ class SkillCardList {
         }
         return this.skillCardData[this.index[id]];
     }
+    getList () {
+        return this.skillCardData;
+    }
 }
 
 export const skillCardList = new SkillCardList();
