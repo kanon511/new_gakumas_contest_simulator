@@ -991,7 +991,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好印象', value: 1 },
-            { type: 'ターン終了時好印象', value: 1 },
+            { type: 'ターン終了時、好印象+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -1004,7 +1004,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
-            { type: 'ターン終了時好印象', value: 1 },
+            { type: 'ターン終了時、好印象+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -2580,7 +2580,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好調', value: 4 },
-            { type: '次のターン、パラメータ', value: 32 },
+            { type: 'Nターン後、パラメータ', value: 32, n: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2593,7 +2593,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好調', value: 7 },
-            { type: '次のターン、パラメータ', value: 40 },
+            { type: 'Nターン後、パラメータ', value: 40, n: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2606,7 +2606,7 @@ export const skillCardData = [
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 2 },
-            { type: '次のターン、パラメータ', value: 38 },
+            { type: 'Nターン後、パラメータ', value: 38, n: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2619,7 +2619,7 @@ export const skillCardData = [
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 3 },
-            { type: '次のターン、パラメータ', value: 47 },
+            { type: 'Nターン後、パラメータ', value: 47, n: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2782,7 +2782,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 6 },
             { type: '低下状態無効', value: 1 },
-            { type: '1ターン後、手札強化', value: 1 },
+            { type: 'Nターン後、手札強化', value: null, n: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3427,7 +3427,7 @@ export const skillCardData = [
         effects: [
             { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: '次のターンドロー', value: 1 }, 
+            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3441,7 +3441,7 @@ export const skillCardData = [
         effects: [
             { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: '次のターンドロー', value: 1 }, 
+            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3481,8 +3481,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 3 }, 
             { type: 'block', value: 3 }, 
-            { type: '1ターン後ドロー', value: 1 }, 
-            { type: '2ターン後ドロー', value: 1 }, 
+            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
+            { type: 'Nターン後ドロー', value: 1, n: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3496,8 +3496,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 6 }, 
             { type: 'block', value: 5 }, 
-            { type: '1ターン後ドロー', value: 1 }, 
-            { type: '2ターン後ドロー', value: 1 }, 
+            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
+            { type: 'Nターン後ドロー', value: 1, n: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3595,8 +3595,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: '1ターン後、手札強化', value: null }, 
-            { type: '2ターン後、手札強化', value: null }, 
+            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
+            { type: 'Nターン後、手札強化', value: null, n: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3609,8 +3609,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: '1ターン後、手札強化', value: null }, 
-            { type: '2ターン後、手札強化', value: null }, 
+            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
+            { type: 'Nターン後、手札強化', value: null, n: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3650,7 +3650,7 @@ export const skillCardData = [
         effects: [
             { type: '集中', value: 3 }, 
             { type: '好調', value: 2 }, 
-            { type: '1ターン後、手札強化', value: null }, 
+            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3664,7 +3664,7 @@ export const skillCardData = [
         effects: [
             { type: '集中', value: 4 }, 
             { type: '好調', value: 4 }, 
-            { type: '1ターン後、手札強化', value: null }, 
+            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3678,7 +3678,7 @@ export const skillCardData = [
         effects: [
             { type: '好印象', value: 4 }, 
             { type: 'やる気', value: 3 }, 
-            { type: '1ターン後、手札強化', value: null }, 
+            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     }, 
@@ -3692,7 +3692,7 @@ export const skillCardData = [
         effects: [
             { type: '好印象', value: 5 }, 
             { type: 'やる気', value: 4 }, 
-            { type: '1ターン後、手札強化', value: null }, 
+            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },    

@@ -63,7 +63,7 @@ export class Contest {
         
         console.log(this.turnTypes);
 
-        
+
 
     }
 
@@ -93,7 +93,7 @@ export class Contest {
         console.log(
             `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.score}`
         );
-        console.log(Object.keys(this.pIdol.status.getAll()).map(key=>`${key}: ${this.pIdol.status.get(key)}`).join(', '))
+        // console.log(Object.keys(this.pIdol.status.getAll()).map(key=>`${key}: ${this.pIdol.status.getValue(key)}`).join(', '))
         this.checkFinishContest();
     }
 
