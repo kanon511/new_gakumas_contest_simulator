@@ -31,6 +31,7 @@ export class Deck {
 
     init () {
         this.#index_drawPile = this.createRange(0, this.skillCards.length);
+
         // レッスン開始時手札に入るカードのインデックスリスト
         this.#index_first_draw = this.#index_drawPile
             .filter(item=>this.skillCards[item].pre_effects
@@ -47,7 +48,8 @@ export class Deck {
         if (this.#flag_first_draw) {
             // 最初のドローでレッスン開始時手札に入るを手札に入れる
             this.#flag_first_draw = false;
-            this.#index_handCards.push(...this.#index_first_draw);
+            this.#index_first_draw.forEach(index=>this.addHandCards(index));
+            // this.#index_handCards.push(...this.#index_first_draw);
             this.#index_first_draw.forEach(item=>this.#index_drawPile.splice(this.#index_drawPile.indexOf(item), 1));
             number -= this.#index_handCards.length;
         }
@@ -58,8 +60,25 @@ export class Deck {
                 this.#index_discardPile = [];
                 this.shuffle(this.#index_drawPile);
             }
-            this.#index_handCards.push(this.#index_drawPile.shift());
+            // this.#index_handCards.push(this.#index_drawPile.shift());
+            this.addHandCards(this.#index_drawPile.shift());
         }
+    }
+
+    addCardInDeck (cardId, position) {
+        const card = new SkillCard(cardId);
+        this.skillCards.push(card);
+        const cardIdx = this.skillCards.length-1;
+        switch (position) {
+            case 'drawPile'       : this.#index_drawPile.push(cardIdx); break;
+            case 'handCards'      : this.addHandCards(cardIdx); break;
+            case 'discardPile'    : this.#index_discardPile.push(cardIdx); break;
+            case 'exhaustedCards' : this.#index_exhaustedCards.push(cardIdx); break;
+        }
+    }
+
+    addHandCards (card_index) {
+        this.#index_handCards.push(card_index);
     }
 
     upgrade (type) {

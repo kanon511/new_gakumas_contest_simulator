@@ -306,7 +306,7 @@ export class PIdolStatus {
         this.#status[this.#index_name_to_idx['使用したスキルカード数']].value = 0;
     }
 
-    get (name) {
+    #get (name) {
         if (!(name in this.#index_name_to_idx)) {
             throw new Error(`${name}は存在しないステータスです。`);
         }
@@ -314,17 +314,17 @@ export class PIdolStatus {
     }
 
     getType (name) {
-        const status = this.get(name);
+        const status = this.#get(name);
         return status.type;
     }
 
     getValue (name) {
-        const status = this.get(name);
+        const status = this.#get(name);
         return status.value;
     }
 
     getDelayEffectStack (name) {
-        const status = this.get(name);
+        const status = this.#get(name);
         return status.delayEffectStack;
     }
 
@@ -334,7 +334,7 @@ export class PIdolStatus {
     }
 
     add (name, value) {
-        const status = this.get(name);
+        const status = this.#get(name);
         if (status.value == 0) {
             status.firstAdded = true;
         }
@@ -342,12 +342,12 @@ export class PIdolStatus {
     }
 
     addDelayEffectStack (name, value, turn) {
-        const status = this.get(name);
+        const status = this.#get(name);
         status.delayEffectStack.push({ 'turn': turn, 'value': value });
     }
 
     reduce (name, value) {
-        const status = this.get(name);
+        const status = this.#get(name);
         status.value -= value;
         if (status.value < 0) {
             status.value = 0;

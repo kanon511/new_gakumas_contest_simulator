@@ -17,6 +17,16 @@ class SkillCardList {
     getList () {
         return this.skillCardData;
     }
+    // static index = Object.fromEntries(skillCardData.map((item, i) => [item.id, i]));
+    // static getList () {
+    //     return skillCardData;
+    // }
+    // static getSkillCardById (id) {
+    //     if (!(id in this.index)) {
+    //         throw new Error('idと一致するskillCardがありません。');
+    //     }
+    //     return skillCardData[this.index[id]];
+    // }
 }
 
 export const skillCardList = new SkillCardList();
