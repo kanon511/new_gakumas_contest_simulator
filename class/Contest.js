@@ -9,10 +9,62 @@ export class Contest {
         } = parameters;
         this.pIdol = pIdol;
         this.maxTurn = maxTurn;
+        this.turnTypes;
+        this.typeRatio = {
+            vocal : 40,
+            dance : 33,
+            visual: 27,
+        };
+        this.initTurnTypes();
         this.vonus = vonus;
         this.currentTurn = 0;
         this.score = 0;
         this.isFinish = false;
+    }
+
+    initTurnTypes () {
+        this.turnTypes = Array(this.maxTurn).fill('');
+
+        function objToRank(obj) {
+            const entries = Object.entries(obj);
+            entries.sort((a, b) => b[1] - a[1]);
+            const objRank = {};
+            for (let i = 0; i < entries.length; i++) {
+                objRank[i] = entries[i][0];
+            }
+            return objRank;
+        }
+
+        const typeRank = objToRank(this.typeRatio);
+
+        let typeCount = {
+            vocal : 0,
+            dance : 0,
+            visual: 0,
+        };
+
+        switch (this.maxTurn) {
+            case 8:
+                typeCount[typeRank[0]] = 4;
+                typeCount[typeRank[1]] = 2;
+                typeCount[typeRank[2]] = 2;
+                break;
+            case 10:
+                typeCount[typeRank[0]] = 5;
+                typeCount[typeRank[1]] = 3;
+                typeCount[typeRank[2]] = 2;
+                break;
+            case 12:
+                typeCount[typeRank[0]] = 5;
+                typeCount[typeRank[1]] = 4;
+                typeCount[typeRank[2]] = 3;
+                break;
+        }
+        
+        console.log(this.turnTypes);
+
+        
+
     }
 
     startTurn () {
