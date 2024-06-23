@@ -140,7 +140,10 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'usecard',
-        activate_condition: null, //'cardType==active'
+        activate_condition: 'cardType==active',
+        activate_effects: [
+            { type: '固定元気', value: 2 }, 
+        ],
         is_reduce_turnend: false,
     },
     {
@@ -150,7 +153,10 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'usecard',
-        activate_condition: null, //'cardType==active'
+        activate_condition: 'cardType==active',
+        activate_effects: [
+            { type: '集中', value: 1 }, 
+        ],
         is_reduce_turnend: false,
     },
     {
@@ -160,7 +166,10 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'usecard',
-        activate_condition: null, //'cardType==mental'
+        activate_condition: 'cardType==mental',
+        activate_effects: [
+            { type: '好印象', value: 1 }, 
+        ],
         is_reduce_turnend: false,
     },
     {
@@ -170,7 +179,10 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'usecard',
-        activate_condition: null, //'cardType==mental'
+        activate_condition: 'cardType==mental',
+        activate_effects: [
+            { type: 'やる気', value: 1 }, 
+        ],
         is_reduce_turnend: false,
     },
 
@@ -221,6 +233,9 @@ const statusList = [
         type: 'buff',
         activate_timing: 'turnend',
         activate_condition: null,
+        activate_effects: [
+            { type: '好印象', value: 1 }, 
+        ],
         is_reduce_turnend: false,
     },
 
@@ -232,6 +247,9 @@ const statusList = [
         type: 'buff',
         activate_timing: 'turnend',
         activate_condition: '集中>=3',
+        activate_effects: [
+            { type: '集中', value: 2 }, 
+        ],
         is_reduce_turnend: false,
     },
     {
@@ -241,7 +259,10 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'turnend',
-        activate_condition: '集中>=3',
+        activate_condition: '好印象>=3',
+        activate_effects: [
+            { type: '好印象', value: 3 }, 
+        ],
         is_reduce_turnend: false,
     },
 
@@ -253,36 +274,10 @@ export class PIdolStatus {
     #status;
     #index_name_to_idx;
     #reduceInTurnendKeys;
-    #currentTurnFirstAdds;
-    #debuffKeys;
+
+    #names_activate_in_useCard;
 
     constructor () {
-        // 違法増築の繰り返しなので
-        // 多分ステータスの効果自体をDataで定義して使った方がいい
-        // this.#status = {
-        //     '集中': 0,
-        //     '好調': 0,
-        //     '絶好調': 0,
-        //     'やる気': 0,
-        //     '好印象': 0,
-        //     '消費体力減少': 0, 
-        //     '消費体力軽減': 0,
-        //     '消費体力増加': 0,
-        //     '元気増加無効': 0,
-        //     '低下状態無効': 0,
-        //     '使用したスキルカード数': 0,
-        //     'スキルカード使用数追加': 0,
-        //     'ターン終了時、好印象+1': 0,
-
-        //     'アクティブスキルカード使用時固定元気+2': 0,
-        //     'アクティブスキルカード使用時集中+1': 0,
-        //     'メンタルスキルカード使用時好印象+1': 0,
-        //     'メンタルスキルカード使用時やる気+1': 0,
-        //     'ターン終了時、集中が3以上の場合、集中+2': 0,
-        //     'ターン終了時、好印象が3以上の場合、好印象+3': 0, 
-        //     '次に使用するスキルカードの効果を発動': 0,
-        // };
-
         this.#status = deep_copy(statusList);
         
         this.#index_name_to_idx = {};
@@ -291,7 +286,7 @@ export class PIdolStatus {
         }
 
         this.#reduceInTurnendKeys = this.#status.filter(item=>item.is_reduce_turnend).map(item=>item.name);
-        //['好調', '絶好調', '好印象', '消費体力減少', '消費体力増加', '元気増加無効'];
+        this.#names_activate_in_useCard = this.#status.filter(item=>item.activate_timing=='usecard').map(item=>item.name);
     }
 
     reduceInTurnend ()  {
@@ -352,5 +347,16 @@ export class PIdolStatus {
         if (status.value < 0) {
             status.value = 0;
         }
+    }
+
+    get_byActivateTiming (activate_timing) {
+        // const result = [];
+        // for (const name of this.#names_activate_in_useCard) {
+        //     const status = this.#get(name);
+        //     if (status.value == 0) continue;
+        //     result.push(status);
+        // }
+        const result = this.#status.filter(item=>item.activate_timing==activate_timing);
+        return result;
     }
 }

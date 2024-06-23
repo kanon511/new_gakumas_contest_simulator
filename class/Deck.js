@@ -129,6 +129,10 @@ export class Deck {
         return this.handCards.map(idx => this.skillCards[idx]);
     }
 
+    getAllHandCardCount () {
+        return this.handCards.length;
+    }
+
     get drawPile () {
         return this.#index_drawPile.map(idx => this.skillCards[idx]);
     }

@@ -1468,7 +1468,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
-            { type: '体力消費増加', value: 2 },
+            { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -1482,7 +1482,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 250 }] },
-            { type: '体力消費増加', value: 2 },
+            { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },

@@ -25,7 +25,7 @@ const visual = 464;
 const hp     = 200;
 const pItemIds = [0, 1, 2];
 const skillCardIds = [
-    4300010, 4300010, 4300010, 4300010, 4300010, 4300010, 4300010, 4300010, 4300010
+    4000211, 4000211, 4000211, 4000151, 4000151, 4000151, 4300010, 4300010, 4300010
 ];
 // const skillCardIds = skillCardData.map(item=>item.id).filter(id=>id%10==1);
 
