@@ -349,6 +349,9 @@ export class ContestPIdol {
                 if (this.hp > this.maxHp) this.hp = this.maxHp;
                 console.log(` 体力+${actualValue}`);
                 break;
+            case '体力消費':
+                this.useCost({ type: 'direct', actualValue: 1 });
+                break;
             case 'score':
                 effectResults.push({ type: 'score', value: actualValue });
                 this.score += actualValue;
