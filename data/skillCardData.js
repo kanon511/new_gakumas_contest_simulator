@@ -1938,7 +1938,7 @@ export const skillCardData = [
         name: '本番前夜',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: 'normal', value: 5 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -1954,7 +1954,7 @@ export const skillCardData = [
         name: '本番前夜+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: 'normal', value: 5 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }

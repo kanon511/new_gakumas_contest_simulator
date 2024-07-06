@@ -23,9 +23,9 @@ const vocal  = 1738;
 const dance  = 1502;
 const visual = 464;
 const hp     = 200;
-const pItemIds = [0, 1, 2];
+const pItemIds = [2101010, 2102010, 2103010, 2306010, 2108010, 2210010];
 const skillCardIds = [
-    4000211, 4000211, 4000211, 4000151, 4000151, 4000151, 4300010, 4300010, 4300010
+    3000300, 3000300, 3000300, 4000211, 4000211, 4000211, 4000151, 4000151, 4000151, 4300010, 4300010, 4300010
 ];
 // const skillCardIds = skillCardData.map(item=>item.id).filter(id=>id%10==1);
 
@@ -37,13 +37,13 @@ const contestPIdol = new ContestPIdol({
         hp: hp,
     },
     pItemIds: pItemIds,
-    skillCardIds: skillCardIds
+    skillCardIds: skillCardIds,
 });
 
 
 const contest = new Contest({
     pIdol: contestPIdol,
-    maxTurn: 12,
+    maxTurn: 5,
 });
 
 while (true) {

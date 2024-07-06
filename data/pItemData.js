@@ -8,7 +8,7 @@
  * 強化　　　：強化前0, 強化後1
  */
 
-export const pItemData = [
+const pItemData = [
     /*
         Rアイドル固有
     */
@@ -95,7 +95,7 @@ export const pItemData = [
     {
         id: 2105010,
         name: '緑のお揃いブレス',
-        activate_timing: '好印象増加後',
+        activate_timing: 'increased_status:好印象',
         condition: '',
         effects: [
             { type: '好印象', value: 3 },
@@ -105,7 +105,7 @@ export const pItemData = [
     {
         id: 2105011,
         name: '緑のお揃いブレス+',
-        activate_timing: '好印象増加後',
+        activate_timing: 'increased_status:好印象',
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -115,7 +115,7 @@ export const pItemData = [
     {
         id: 2106010,
         name: '願いを叶えるお守り',
-        activate_timing: 'やる気が増加後',
+        activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
             { type: 'やる気', value: 2 },
@@ -125,7 +125,7 @@ export const pItemData = [
     {
         id: 2106011,
         name: '願いを叶えるお守り+',
-        activate_timing: 'やる気が増加後',
+        activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -146,7 +146,7 @@ export const pItemData = [
         id: 2108010,
         name: '超絶あんみんマスク',
         activate_timing: 'start_of_turn',
-        condition: '最終ターンなら',
+        condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
             { type: '体力消費', value: 1 },
@@ -157,7 +157,7 @@ export const pItemData = [
         id: 2108011,
         name: '超絶あんみんマスク+',
         activate_timing: 'start_of_turn',
-        condition: '最終ターンなら',
+        condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
             { type: '体力消費', value: 1 },
@@ -168,7 +168,7 @@ export const pItemData = [
         id: 2109010,
         name: 'いつものメイクポーチ',
         activate_timing: 'use_card',
-        condition: 'cardType==active&&hpper>=50', // &&の処理
+        condition: 'cardType==active&hpper>=50',
         effects: [
             { type: '集中', value: 2 },
         ],
@@ -178,7 +178,7 @@ export const pItemData = [
         id: 2109011,
         name: 'いつものメイクポーチ+',
         activate_timing: 'use_card',
-        condition: 'cardType==active&&hpper>=50', // &&の処理
+        condition: 'cardType==active&hpper>=50',
         effects: [
             { type: '集中', value: 3 },
         ],
@@ -272,7 +272,7 @@ export const pItemData = [
     {
         id: 2204010,
         name: 'Dearリトルプリンス',
-        activate_timing: '好調増加後',
+        activate_timing: 'increased_status:好調',
         condition: '',
         effects: [
             { type: '好調', value: 3 },
@@ -282,7 +282,7 @@ export const pItemData = [
     {
         id: 2204011,
         name: 'Dearリトルプリンス+',
-        activate_timing: '好調増加後',
+        activate_timing: 'increased_status:好調',
         condition: '',
         effects: [
             { type: '好調', value: 4 },
@@ -334,7 +334,7 @@ export const pItemData = [
     {
         id: 2207010,
         name: '放課後のらくがき',
-        activate_timing: '集中増加後',
+        activate_timing: 'increased_status:集中',
         condition: 'hpper>=50',
         effects: [
             { type: '集中', value: 2 },
@@ -344,7 +344,7 @@ export const pItemData = [
     {
         id: 2207011,
         name: '放課後のらくがき',
-        activate_timing: '集中増加後',
+        activate_timing: 'increased_status:集中',
         condition: '',
         effects: [
             { type: '集中', value: 2 },
@@ -394,8 +394,8 @@ export const pItemData = [
     {
         id: 2210010,
         name: '柴犬ポシェット',
-        activate_timing: '2ターン毎に',
-        condition: '',
+        activate_timing: 'start_of_turn',
+        condition: 'turnMultiple==2', // 2ターンごと
         effects: [
             { type: 'block', value: 5 },
         ],
@@ -404,8 +404,8 @@ export const pItemData = [
     {
         id: 2210011,
         name: '柴犬ポシェット+',
-        activate_timing: '2ターン毎に',
-        condition: '',
+        activate_timing: 'start_of_turn',
+        condition: 'turnMultiple==2', // 2ターンごと
         effects: [
             { type: 'block', value: 5 },
         ],
@@ -546,7 +546,7 @@ export const pItemData = [
     {
         id: 2301020,
         name: '勝ちへのこだわり',
-        activate_timing: '体力が減少したとき',
+        activate_timing: 'consume_hp',
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
@@ -556,7 +556,7 @@ export const pItemData = [
     {
         id: 2301021,
         name: '勝ちへのこだわり+',
-        activate_timing: '体力が減少したとき',
+        activate_timing: 'consume_hp',
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
@@ -698,7 +698,7 @@ export const pItemData = [
     {
         id: 2306010,
         name: 'ひみつ特訓カーデ',
-        activate_timing: 'やる気増加後',
+        activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -708,7 +708,7 @@ export const pItemData = [
     {
         id: 2306011,
         name: 'ひみつ特訓カーデ+',
-        activate_timing: 'やる気増加後',
+        activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -718,8 +718,8 @@ export const pItemData = [
     {
         id: 2307010,
         name: 'ゲーセンの戦利品',
-        activate_timing: 'レッスン開始時',
-        condition: '',
+        activate_timing: 'start_of_turn',
+        condition: 'turn==1',
         effects: [
             { type: '集中', value: 3 },
         ],
@@ -728,8 +728,8 @@ export const pItemData = [
     {
         id: 2307011,
         name: 'ゲーセンの戦利品+',
-        activate_timing: 'レッスン開始時',
-        condition: '',
+        activate_timing: 'start_of_turn',
+        condition: 'turn==1',
         effects: [
             { type: '集中', value: 4 },
         ],
@@ -781,7 +781,7 @@ export const pItemData = [
         id: 2310010,
         name: '転がり続ける元気の源',
         activate_timing: 'use_card',
-        condition: 'cardType==mental&&やる気>=5',
+        condition: 'cardType==mental&やる気>=5',
         effects: [
             { type: 'やる気', value: 3 },
             { type: 'スキルカード使用数追加', value: 1 },
@@ -792,7 +792,7 @@ export const pItemData = [
         id: 2310011,
         name: '転がり続ける元気の源+',
         activate_timing: 'use_card',
-        condition: 'cardType==mental&&やる気>=5',
+        condition: 'cardType==mental&やる気>=5',
         effects: [
             { type: 'やる気', value: 5 },
             { type: 'スキルカード使用数追加', value: 1 },
@@ -836,7 +836,7 @@ export const pItemData = [
         id: 3300040,
         name: '曇りをぬぐったタオル',
         activate_timing: 'use_card',
-        condition: 'turnType==vocal&&cardType==active',
+        condition: 'turnType==vocal&cardType==active',
         effects: [
             { type: '体力回復', value: 2 },
         ],
@@ -861,7 +861,7 @@ export const pItemData = [
         id: 3300070,
         name: '満開ペアヘアピン',
         activate_timing: 'use_card',
-        condition: 'turnType==vocal&&cardType==active',
+        condition: 'turnType==vocal&cardType==active',
         effects: [
             { type: '体力回復', value: 2 },
         ],
@@ -901,7 +901,7 @@ export const pItemData = [
         id: 3300110,
         name: '虹かけるクロス',
         activate_timing: 'use_card',
-        condition: 'turnType==dance&&cardType==active',
+        condition: 'turnType==dance&cardType==active',
         effects: [
             { type: '体力回復', value: 2 },
         ],
@@ -962,3 +962,70 @@ export const pItemData = [
     },
 
 ];
+
+export class PItem {
+
+    // property
+    #avalable = true;
+
+    // method
+    constructor (id) {
+        const pItem = PItemData.getById(id);
+        for (const propertyName in pItem) {
+            if (pItem.hasOwnProperty(propertyName)) {
+                this[propertyName] = pItem[propertyName];
+            }
+        }
+    }
+
+    /**
+     * Pアイテムが利用可能か返します
+     * @returns {Boolean}
+     */
+    isAvalable () {
+        return this.#avalable;
+    }
+
+    /**
+     * Pアイテムの使用後処理を行います
+     */
+    use () {
+        console.log(`Pアイテム[${this.name}]発動`);
+        if (this.limit == null) return;
+        this.limit--;
+        if (this.limit <= 0) {
+            this.#avalable = false;
+        } 
+    }
+
+}
+
+export class PItemData {
+    
+    // property
+    static #pItemData = pItemData;
+    static #index = Object.fromEntries(this.#pItemData.map((item, i) => [item.id, i]));
+
+    // method
+
+    /**
+     * IDと一致するPアイテムオブジェクトを返します
+     * @param {Number} id - PアイテムのID 
+     * @returns {Object} Pアイテムデータ
+     */
+    static getById (id) {
+        if (!(id in this.#index)) {
+            throw new Error('idと一致するPアイテムがありません。');
+        }
+        return this.#pItemData[this.#index[id]];
+    }
+
+    /**
+     * Pアイテムリストを返します※非推奨
+     * @returns {Array<Object>} Pアイテムリスト
+     */
+    static getAll () {
+        return this.#pItemData;
+    }
+
+}
