@@ -149,7 +149,7 @@ const pItemData = [
         condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: '体力消費', value: 1 },
+            { type: '体力直接消費', value: 1 },
         ],
         limit: null,
     },
@@ -160,7 +160,7 @@ const pItemData = [
         condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: '体力消費', value: 1 },
+            { type: '体力直接消費', value: 1 },
         ],
         limit: null,
     },
@@ -233,7 +233,7 @@ const pItemData = [
         activate_timing: 'start_of_turn',
         condition: 'block==0',
         effects: [
-            { type: '体力消費', value: 1 },
+            { type: '体力直接消費', value: 1 },
             { type: '集中', value: 3 },
         ],
         limit: 2,
@@ -244,7 +244,7 @@ const pItemData = [
         activate_timing: 'start_of_turn',
         condition: 'block==0',
         effects: [
-            { type: '体力消費', value: 1 },
+            { type: '体力直接消費', value: 1 },
             { type: '集中', value: 4 },
         ],
         limit: 2,
@@ -316,7 +316,7 @@ const pItemData = [
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
-            { type: '体力消費', value: 2 },
+            { type: '体力直接消費', value: 2 },
         ],
         limit: 2,
     },
@@ -327,7 +327,7 @@ const pItemData = [
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: '体力消費', value: 2 },
+            { type: '体力直接消費', value: 2 },
         ],
         limit: 2,
     },
@@ -742,7 +742,7 @@ const pItemData = [
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: '体力消費', value: 1 },
+            { type: '体力直接消費', value: 1 },
         ],
         limit: null,
     },
@@ -753,7 +753,7 @@ const pItemData = [
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 65 }] },
-            { type: '体力消費', value: 1 },
+            { type: '体力直接消費', value: 1 },
         ],
         limit: null,
     },
