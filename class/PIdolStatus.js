@@ -123,6 +123,17 @@ const statusList = [
     },
 
     {
+        id: 13,
+        name: 'パラメータ上昇量増加50%アップ',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: null,
+        activate_condition: null,
+        is_reduce_turnend: true,
+    },
+
+    {
         id: 100,
         name: '使用したスキルカード数',
         description: '',

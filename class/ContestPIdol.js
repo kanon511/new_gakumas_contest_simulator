@@ -17,6 +17,7 @@ export class ContestPIdol {
         this.score = 0;
         this.plan = 'logic';
         this.turn = 0;
+        this.extraTurn = 0;
         this.remain_turn = null;
         this.status = new PIdolStatus();
         this.pItemIds = pItemIds;
@@ -25,6 +26,7 @@ export class ContestPIdol {
         this.deck = new Deck(skillCardIds);
         this.lastUsedCard = null;
     }
+
 
     use_pItem (activateTiming) {
         const activatePItemList = this.pItemsManager.getPItemByActivateTiming(activateTiming);
@@ -152,7 +154,7 @@ export class ContestPIdol {
                 case 'turnType':
                     /**mi */
                     break;
-                case 'turnMultiple': // nターンごと無理やりなので修正してね
+                case 'turnMultiple': // nターンごと。無理やりなので修正してね
                     // turnMultiple==2
                     // turn % value == 0 => targetValue = value;
                     // turn % value != 0 => targetValue = -1;
@@ -164,6 +166,9 @@ export class ContestPIdol {
                     break;
                 case 'cardType':
                     targetValue = this.lastUsedCard?.type;
+                    break;
+                case 'cardId':
+                    targetValue = this.lastUsedCard?.id;
                     break;
                 case 'remain_turn':
                     targetValue = this.remain_turn;
@@ -241,9 +246,9 @@ export class ContestPIdol {
             const kouchoCoef = this.status.getValue('好調') > 0 ? 1.5 : 1;
             const zekkouchoCoef = 
                 this.status.getValue('絶好調') > 0 ? this.status.getValue('好調') * 0.1 : 0;
+            const status50perCoef = this.status.getValue('パラメータ上昇量増加50%アップ') > 0 ? 1.5 : 1;
             const parameterCoef = 1;
 
-            // optionはstatic class作って計算させよう
             const optionCoef = {
                 '集中': 1,
                 'score': 0,
@@ -278,7 +283,7 @@ export class ContestPIdol {
             );
 
             const actualValue = 
-                Math.ceil(Math.ceil(( adjustScore ) *( kouchoCoef + zekkouchoCoef))*parameterCoef);
+                Math.ceil(Math.ceil(( adjustScore ) *( kouchoCoef + zekkouchoCoef)) * status50perCoef * parameterCoef);
 
             effect.actualValue = actualValue;
 
@@ -381,90 +386,98 @@ export class ContestPIdol {
             if (!effect.isActive) continue;
             this.useEffect(effect);
         }
+        if (this.status.getValue('次に使用するスキルカードの効果を発動') > 0) {
+            for (const effect of usedCard.effects) {
+                if (!effect.isActive) continue;
+                this.useEffect(effect);
+            }
+            this.status.reduce('次に使用するスキルカードの効果を発動', 1);
+        }
     }
 
     useEffect (effect, options) {
         this.calcEffectActualValue(effect);
-        const {type, actualValue, n} = effect;
-        switch (type) {
-            case '体力回復':
-                this.hp += actualValue;
-                if (this.hp > this.maxHp) this.hp = this.maxHp;
-                console.log(` 体力+${actualValue}`);
-                break;
-            case '体力直接消費':
-                this.useCost({ type: 'direct', actualValue: actualValue });
-                break;
-            case 'score':
-                this.score += actualValue;
-                console.log(` スコア+${actualValue}`);
-                break;
-            case 'block':
-                this.block += actualValue;
-                console.log(` ブロック+${actualValue}`);
-                break;
-            case '固定元気':
-                this.block += actualValue;
-                console.log(` ブロック+${actualValue}`);
-                break;
-            case 'ブロック割合減少':
-                const reduceBlock = Math.ceil(this.block * (actualValue / 100));
-                this.block -= reduceBlock;
-                console.log(` ブロック: ${this.block}(-${reduceBlock})`);
-                break;
-            case 'ドロー':
-                this.draw(actualValue);
-                console.log(` ドロー+${actualValue}`);
-                break;
-            case '手札強化':
-                this.deck.upgrade('allhands');
-                break;
-            case 'ターン追加':
+        const { type, actualValue, n } = effect;
 
-                break;
-            case '手札入れ替え':
-                const count = this.deck.getAllHandCardCount();
-                this.deck.discardAll();
-                this.draw(count);
-                console.log('手札を入れ替えた');
-                break;
-            case '生成':
-                if (actualValue == 'ランダムな強化済みスキルカード') {
-                    const targetCards = skillCardList.getList().filter(item=>
-                        (item.plan=='free'||item.plan==this.plan) && // プラン指定
-                        item.id % 10 == 1 && // 強化カード
-                        item.id > 2000000 && // 基本カード削除
-                        String(item.id)[1] != '2' &&// キャラ固有削除)
-                        String(item.id)[1] != '3' // サポ固有削除)
-                    );
-                    const targetCard = targetCards[Math.floor(Math.random()*targetCards.length)];
-                    this.deck.addCardInDeck(targetCard.id, 'handCards');
-                    this.updateHand();
-                    console.log(` 生成: ${targetCard.name}を手札に加えた`);
-                }
-                break;
-            case 'Nターン後、手札強化':
-            case 'Nターン後ドロー':
-            case 'Nターン後、パラメータ':
-                this.status.addDelayEffectStack(type, actualValue, this.turn+n);
-                console.log(` ${type.replace('N', n)}: +${actualValue}`);
-                break;
-            // その他の通常バフ・デバフ
-            default: 
-                if (this.status.getValue('低下状態無効') > 0 && this.status.getType == 'debuff') {
-                    this.status.reduce('低下状態無効', 1);
-                    const mukou = this.status.getValue('低下状態無効');
-                    console.log(` ${type}: +${0}(低下状態無効: ${mukou+1}->${mukou})`);
-                } else {
-                    this.status.add(type, actualValue);
-                    if (!options?.pItemNoHook) {
-                        this.use_pItem(`increased_status:${type}`);
-                    }
-                    console.log(` ${type}: +${actualValue}`);
-                    break;
-                }
-                
+        if (type == '体力回復') {
+            this.hp += actualValue;
+            if (this.hp > this.maxHp) this.hp = this.maxHp;
+            console.log(` 体力+${actualValue}`);
+        } 
+        else if (type == '体力直接消費') {
+            this.useCost({ type: 'direct', actualValue: actualValue });
         }
+        else if (type == 'score') {
+            this.score += actualValue;
+            console.log(` スコア+${actualValue}`);
+        }
+        else if (type == 'block') {
+            this.block += actualValue;
+            console.log(` ブロック+${actualValue}`);
+        }
+        else if (type == '固定元気') {
+            this.block += actualValue;
+            console.log(` ブロック+${actualValue}`);
+        }
+        else if (type == 'ブロック割合減少') {
+            const reduceBlock = Math.ceil(this.block * (actualValue / 100));
+            this.block -= reduceBlock;
+            console.log(` ブロック: ${this.block}(-${reduceBlock})`);
+        }
+        else if (type == 'ドロー') {
+            this.draw(actualValue);
+            console.log(` ドロー+${actualValue}`);
+        }
+        else if (type == '手札強化') {
+            this.deck.upgrade('allhands');
+        }
+        else if (type == 'ターン追加') {
+            this.remain_turn++;
+            this.extraTurn++;
+        }
+        else if (type == '手札入れ替え') {
+            const count = this.deck.getAllHandCardCount();
+            this.deck.discardAll();
+            this.draw(count);
+            console.log('手札を入れ替えた');
+        }
+        else if (type == '生成') {
+            if (actualValue == 'ランダムな強化済みスキルカード') {
+                const targetCards = skillCardList.getList().filter(item=>
+                    (item.plan=='free'||item.plan==this.plan) && // プラン指定
+                    item.id % 10 == 1 && // 強化カード
+                    item.id > 2000000 && // 基本カード削除
+                    String(item.id)[1] != '2' &&// キャラ固有削除)
+                    String(item.id)[1] != '3' // サポ固有削除)
+                );
+                const targetCard = targetCards[Math.floor(Math.random()*targetCards.length)];
+                this.deck.addCardInDeck(targetCard.id, 'handCards');
+                this.updateHand();
+                console.log(` 生成: ${targetCard.name}を手札に加えた`);
+            }
+        }
+        else if (
+            type == 'Nターン後、手札強化' || 
+            type == 'Nターン後ドロー' || 
+            type == 'Nターン後、パラメータ' 
+        ) {
+            this.status.addDelayEffectStack(type, actualValue, this.turn+n);
+            console.log(` ${type.replace('N', n)}: +${actualValue}`);
+        }
+        else { // その他の通常バフ・デバフ
+            if (this.status.getValue('低下状態無効') > 0 && this.status.getType == 'debuff') {
+                this.status.reduce('低下状態無効', 1);
+                const mukou = this.status.getValue('低下状態無効');
+                console.log(` ${type}: +${0}(低下状態無効: ${mukou+1}->${mukou})`);
+            } else {
+                this.status.add(type, actualValue);
+                if (!options?.pItemNoHook) {
+                    this.use_pItem(`increased_status:${type}`);
+                }
+                console.log(` ${type}: +${actualValue}`);
+            }
+        }
+        
     }
 
     getDeck (type) {

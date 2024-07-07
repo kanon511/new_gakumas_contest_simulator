@@ -42,6 +42,7 @@ export class Contest {
             vocal : 0,
             dance : 0,
             visual: 0,
+
         };
 
         switch (this.maxTurn) {
@@ -64,8 +65,6 @@ export class Contest {
         
         console.log(this.turnTypes);
 
-
-
     }
 
     startTurn () {
@@ -73,9 +72,6 @@ export class Contest {
         this.currentTurn++;
         this.turnType = 'vocal';
         console.log(`==========\n${this.currentTurn}ターン目\n==========`);
-        // this.processActionResults(
-        //     this.pIdol.process_at('start_of_turn')
-        // );
         this.pIdol.process_at('start_of_turn');
         this.pIdol.draw(3);
         this.pIdol.updateHand();
@@ -88,9 +84,6 @@ export class Contest {
 
     finishTurn () {
         console.log(`ターンエンド`);
-        // this.processActionResults(
-        //     this.pIdol.process_at('end_of_turn')
-        // );
         this.pIdol.process_at('end_of_turn');
         console.log(`山札`, this.pIdol.getDeck('drawPile').map(item=>item.name));
         console.log(`捨札`, this.pIdol.getDeck('discardPile').map(item=>item.name));
@@ -116,27 +109,9 @@ export class Contest {
         ) {
             return false;
         }
-        // カードの使用
-        // this.processActionResults(
-        //     this.pIdol.useCard(cardNumber)
-        // );
         this.pIdol.useCard(cardNumber);
         return !this.pIdol.checkAdditionalAction();
     }
-
-    // processActionResults (actionResults) {
-    //     for (const actionResult of actionResults) {
-    //         this.processActionResult(actionResult);
-    //     }
-    // }
-
-    // processActionResult (actionResult) {
-    //     switch (actionResult.type) {
-    //         case 'score':
-    //             this.score += actionResult.value;
-    //             break;
-    //     }
-    // }
 
     checkFinishContest () {
         if (this.pIdol.checkFinished()) {
