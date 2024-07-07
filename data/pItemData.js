@@ -6,6 +6,8 @@
  * レアレティ：白1, 金2, 虹3
  * 固有番号　：4桁番号
  * 強化　　　：強化前0, 強化後1
+ * 
+ * 実装：夏清夏まで
  */
 
 const pItemData = [
@@ -633,7 +635,7 @@ const pItemData = [
         id: 2303020,
         name: '最高にハッピーの源',
         activate_timing: 'use_card',
-        condition: 'cardId==アドレナリン全開',
+        condition: 'cardId==4203020|cardId==4203021',
         effects: [
             { type: '好調', value: 3 },
             { type: '固定元気', value: 5 },
@@ -644,7 +646,7 @@ const pItemData = [
         id: 2303021,
         name: '最高にハッピーの源+',
         activate_timing: 'use_card',
-        condition: 'cardId==アドレナリン全開',
+        condition: 'cardId==4203020|cardId==4203021',
         effects: [
             { type: '好調', value: 3 },
             { type: '固定元気', value: 11 },
@@ -672,6 +674,26 @@ const pItemData = [
             { type: '元気', value: 1 },
         ],
         limit: 2,
+    },
+    {
+        id: 2304020,
+        name: '最後の夏の思い出',
+        activate_timing: 'start_of_turn',
+        condition: '集中>=3',
+        effects: [
+            { type: 'block', value: 10 },
+        ],
+        limit: 1,
+    },
+    {
+        id: 2304021,
+        name: '最後の夏の思い出+',
+        activate_timing: 'start_of_turn',
+        condition: '集中>=3',
+        effects: [
+            { type: 'block', value: 14 },
+        ],
+        limit: 1,
     },
     {
         id: 2305010,
@@ -734,6 +756,28 @@ const pItemData = [
             { type: '集中', value: 4 },
         ],
         limit: 1,
+    },
+    {
+        id: 2307020,
+        name: 'カエル印の扇風機',
+        activate_timing: 'use_card',
+        condition: 'cardType==active&やる気>=12',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 270 }] },
+            { type: '体力直接消費', value: 2 },
+        ],
+        limit: 4,
+    },
+    {
+        id: 2307021,
+        name: 'カエル印の扇風機+',
+        activate_timing: 'use_card',
+        condition: 'cardType==active&やる気>=12',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 340 }] },
+            { type: '体力直接消費', value: 2 },
+        ],
+        limit: 4,
     },
     {
         id: 2308010,
@@ -808,7 +852,7 @@ const pItemData = [
         activate_timing: 'start_of_turn',
         condition: 'turnType==visual',
         effects: [
-            { type: 'パラメータ上昇量増加50%', value: 1 },
+            { type: 'パラメータ上昇量増加50%アップ', value: 1 },
         ],
         limit: 3,
     },
@@ -828,7 +872,7 @@ const pItemData = [
         activate_timing: 'start_of_turn',
         condition: 'turnType==dance',
         effects: [
-            { type: 'パラメータ上昇量増加50%', value: 1 },
+            { type: 'パラメータ上昇量増加50%アップ', value: 1 },
         ],
         limit: 3,
     },
@@ -906,6 +950,16 @@ const pItemData = [
             { type: '体力回復', value: 2 },
         ],
         limit: 3,
+    },
+    {
+        id: 3300120,
+        name: '負けず嫌いの勲章',
+        activate_timing: 'start_of_turn',
+        condition: 'turnType==dance',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 50 }] },
+        ],
+        limit: null,
     },
 
 

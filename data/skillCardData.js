@@ -5,6 +5,8 @@
  * タイプ　　：一般スキル0, トラブル1, キャラ固有2, サポ固有3
  * 固有番号　：4桁番号
  * 強化　　　：強化前0, 強化後1
+ * 
+ * 実装：夏清夏まで
  */
 
 export const skillCardData = [
@@ -3126,6 +3128,30 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 4201020,
+        name: 'ＰＯＷ！',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct', value: 5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 250 }] }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4201021,
+        name: 'ＰＯＷ！+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 260 }] }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 4202010,
         name: 'それぞれの道',
         type: 'active',
@@ -3260,6 +3286,34 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 4204020,
+        name: 'ひんやり一休み',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 8 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 9 }, 
+            { type: 'score', value: 9 }, 
+            { type: 'score', value: 9 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4204021,
+        name: 'ひんやり一休み+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 8 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 14 }, 
+            { type: 'score', value: 14 }, 
+            { type: 'score', value: 14 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 4205010, 
         name: 'もう怖くないから',
         type: 'mental',
@@ -3338,6 +3392,32 @@ export const skillCardData = [
             { type: 'score', value: 9 }, 
             { type: 'score', value: 9 }, 
             { type: 'score', value: 9, condition: '集中>=6' }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4207020,
+        name: '昼下がりのそよ風',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 7 }, 
+            { type: 'やる気', value: 3, condition: 'やる気>=6' }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4207021,
+        name: '昼下がりのそよ風+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 8 }, 
+            { type: 'やる気', value: 5, condition: 'やる気>=3' }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
