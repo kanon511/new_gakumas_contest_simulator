@@ -474,7 +474,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000190,
+        id: 2000200,
         name: '今日もおはよう',
         type: 'active',
         plan: 'logic',
@@ -487,7 +487,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000191,
+        id: 2000201,
         name: '今日もおはよう+',
         type: 'active',
         plan: 'logic',
@@ -500,7 +500,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000200,
+        id: 2000210,
         name: 'ゆるふわおしゃべり',
         type: 'active',
         plan: 'logic',
@@ -513,7 +513,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000201,
+        id: 2000211,
         name: 'ゆるふわおしゃべり+',
         type: 'active',
         plan: 'logic',
@@ -526,7 +526,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000210,
+        id: 2000220,
         name: 'もう少しだけ',
         type: 'active',
         plan: 'logic',
@@ -539,7 +539,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000211,
+        id: 2000221,
         name: 'もう少しだけ+',
         type: 'active',
         plan: 'logic',
@@ -552,7 +552,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000220,
+        id: 2000230,
         name: '手拍子',
         type: 'active',
         plan: 'logic',
@@ -564,7 +564,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000221,
+        id: 2000231,
         name: '手拍子+',
         type: 'active',
         plan: 'logic',
@@ -576,7 +576,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000230,
+        id: 2000240,
         name: '元気な挨拶',
         type: 'active',
         plan: 'logic',
@@ -588,7 +588,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000231,
+        id: 2000241,
         name: '元気な挨拶+',
         type: 'active',
         plan: 'logic',
@@ -600,7 +600,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000240,
+        id: 2000250,
         name: '気合十分',
         type: 'mental',
         plan: 'free',
@@ -613,7 +613,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000241,
+        id: 2000251,
         name: '気合十分+',
         type: 'mental',
         plan: 'free',
@@ -626,7 +626,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000250,
+        id: 2000260,
         name: 'ファーストステップ',
         type: 'mental',
         plan: 'free',
@@ -639,7 +639,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000251,
+        id: 2000261,
         name: 'ファーストステップ+',
         type: 'mental',
         plan: 'free',
@@ -652,7 +652,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000260,
+        id: 2000270,
         name: 'バランス感覚',
         type: 'mental',
         plan: 'sense',
@@ -664,7 +664,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000261,
+        id: 2000271,
         name: 'バランス感覚+',
         type: 'mental',
         plan: 'sense',
@@ -677,7 +677,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000270,
+        id: 2000280,
         name: '楽観的',
         type: 'mental',
         plan: 'sense',
@@ -690,7 +690,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000271,
+        id: 2000281,
         name: '楽観的+',
         type: 'mental',
         plan: 'sense',
@@ -703,7 +703,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000280,
+        id: 2000290,
         name: '深呼吸',
         type: 'mental',
         plan: 'sense',
@@ -716,7 +716,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000281,
+        id: 2000291,
         name: '深呼吸+',
         type: 'mental',
         plan: 'sense',
@@ -729,7 +729,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000290,
+        id: 2000300,
         name: 'リスタート',
         type: 'mental',
         plan: 'logic',
@@ -742,7 +742,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000291,
+        id: 2000301,
         name: 'リスタート+',
         type: 'mental',
         plan: 'logic',
@@ -755,7 +755,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000300,
+        id: 2000310,
         name: 'えいえいおー',
         type: 'mental',
         plan: 'logic',
@@ -768,7 +768,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000301,
+        id: 2000311,
         name: 'えいえいおー+',
         type: 'mental',
         plan: 'logic',
@@ -781,7 +781,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000310,
+        id: 2000320,
         name: 'リズミカル',
         type: 'mental',
         plan: 'logic',
@@ -793,7 +793,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000311,
+        id: 2000321,
         name: 'リズミカル+',
         type: 'mental',
         plan: 'logic',
@@ -805,7 +805,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000320,
+        id: 2000330,
         name: '思い出し笑い',
         type: 'mental',
         plan: 'logic',
@@ -818,7 +818,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000321,
+        id: 2000331,
         name: '思い出し笑い+',
         type: 'mental',
         plan: 'logic',
@@ -831,7 +831,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000330,
+        id: 2000340,
         name: 'パステル気分',
         type: 'mental',
         plan: 'logic',
@@ -844,7 +844,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000331,
+        id: 2000341,
         name: 'パステル気分+',
         type: 'mental',
         plan: 'logic',
@@ -857,7 +857,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000330,
+        id: 2000350,
         name: '励まし',
         type: 'mental',
         plan: 'logic',
@@ -870,7 +870,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000331,
+        id: 2000351,
         name: '励まし+',
         type: 'mental',
         plan: 'logic',

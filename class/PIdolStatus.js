@@ -339,7 +339,7 @@ export class PIdolStatus {
         return Object.fromEntries(this.#status.map(item => [item.name, item.value]))
     }
 
-    add (name, value) {
+    add (name, value) { // firstAdded = trueはカードのときだけ
         const status = this.#get(name);
         if (status.value == 0) {
             status.firstAdded = true;

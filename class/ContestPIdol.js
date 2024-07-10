@@ -3,9 +3,38 @@ import { PIdolStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
 import { skillCardList } from "./SkillCardList.js";
 
+class PIdolLog {
+    
+    constructor () {
+        this.log = [];
+        this.currentTurnLog = null;
+        this.currentTurn = 0;
+        this.currentActionLog = null;
+    }
+
+    getLog () {
+        return this.log;
+    }
+
+    addTextLog (text) {
+        this.currentTurnLog.history.push(text);
+        console.log(text);
+    }
+
+    nextTurn () {
+        this.currentTurn++;
+        this.currentTurnLog = {
+            turn: this.currentTurn,
+            history: [],
+        };
+        this.log.push(this.currentTurnLog);
+    }
+
+}
+
 export class ContestPIdol {
 
-    constructor ({ parameter, pItemIds, skillCardIds }) {
+    constructor ({ parameter, plan, pItemIds, skillCardIds }) {
         this.parameter = {
             vocal : parameter.vocal,
             dance : parameter.dance,
@@ -13,9 +42,9 @@ export class ContestPIdol {
         };
         this.hp = parameter.hp;
         this.maxHp = this.hp;
-        this.block = 100;
+        this.block = 0;
         this.score = 0;
-        this.plan = 'logic';
+        this.plan = plan;
         this.turn = 0;
         this.extraTurn = 0;
         this.remain_turn = null;
@@ -24,39 +53,45 @@ export class ContestPIdol {
         this.skillCardIds = skillCardIds;
         this.pItemsManager = new PItemManager(pItemIds);
         this.deck = new Deck(skillCardIds);
+        this.turnType = null;
         this.lastUsedCard = null;
+        this.log = new PIdolLog();
     }
-
 
     use_pItem (activateTiming) {
         const activatePItemList = this.pItemsManager.getPItemByActivateTiming(activateTiming);
-        // console.log(activateTiming, activatePItemList.map(item=>item.name).join(', '));
         for (const pItem of activatePItemList) {
             if (!pItem.isAvalable()) continue;
             if (!this.checkCondition(pItem.condition)) continue;
+            this.log.addTextLog(`Pアイテム[${pItem.name}]発動`);
             pItem.use();
             for (const effect of pItem.effects) {
-                this.useEffect(effect, { pItemNoHook: true });
+                this.useEffect('pItem', effect, { pItemNoHook: true });
             }
         }
     }
 
     // 
-    process_at (timing) {
+    process_at (timing, turnType) {
         if (timing == 'start_of_turn') {
             this.turn++;
+            this.turnType = turnType;
+            this.log.nextTurn();
             // Pアイテムターン開始時発動
             this.use_pItem('start_of_turn');
             // Nターン後、パラメータの処理
             const score_delayEffectStack = this.status.getDelayEffectStack('Nターン後、パラメータ');
             for (let i = 0; i < score_delayEffectStack.length; i++) {
                 const parameterEffect = score_delayEffectStack[i];
+                this.log.addTextLog(`予約効果[ここに効果名を入力]発動`);
                 if (parameterEffect.turn == this.turn) {
-                    this.useEffect({ type: 'score', value: parameterEffect.value });
+                    this.useEffect('reservation', { type: 'score', value: parameterEffect.value });
                     score_delayEffectStack.splice(i, 1);
                     i--;
                 }
             }
+            this.draw(3);
+            this.updateHand();
         }
         else if (timing == 'end_of_turn') {
             this.deck.discardAll();
@@ -66,14 +101,16 @@ export class ContestPIdol {
             for (const status of this.status.get_byActivateTiming('turnend')) {
                 if (!this.checkCondition(status.activate_condition)) continue;
                 for (let i = 0; i < status.value; i++) {
+                    this.log.addTextLog(`ステータス効果[${status.name}]発動`);
                     for (const effect of status.activate_effects) {
-                        this.useEffect(effect);
+                        this.useEffect('status', effect);
                     }
                 }
             }
 
             if (this.status.getValue('好印象') > 0) {
-                this.useEffect({ type: 'score', value: this.status.getValue('好印象') });
+                this.log.addTextLog(`ステータス効果[好印象]発動`);
+                this.useEffect('status', { type: 'score', value: this.status.getValue('好印象') });
             }
             this.status.reduceInTurnend();
             this.remain_turn--;
@@ -90,12 +127,14 @@ export class ContestPIdol {
                 i--;
             }
         }
+        this.log.addTextLog(`${number}枚ドローした`);
         this.deck.draw(number);
         const upgrade_delayEffectStack = this.status.getDelayEffectStack('Nターン後、手札強化');
         for (let i = 0; i < upgrade_delayEffectStack.length; i++) {
             const upgradeEffect = upgrade_delayEffectStack[i];
+            this.log.addTextLog(`ステータス効果[ここに効果名を入力]発動`);
             if (upgradeEffect.turn == this.turn) {
-                this.useEffect({ type: '手札強化' });
+                this.useEffect('status', { type: '手札強化' });
                 upgrade_delayEffectStack.splice(i, 1);
                 i--;
             }
@@ -152,7 +191,7 @@ export class ContestPIdol {
                     targetValue = this.turn;
                     break;
                 case 'turnType':
-                    /**mi */
+                    targetValue = this.turnType;
                     break;
                 case 'turnMultiple': // nターンごと。無理やりなので修正してね
                     // turnMultiple==2
@@ -247,7 +286,7 @@ export class ContestPIdol {
             const zekkouchoCoef = 
                 this.status.getValue('絶好調') > 0 ? this.status.getValue('好調') * 0.1 : 0;
             const status50perCoef = this.status.getValue('パラメータ上昇量増加50%アップ') > 0 ? 1.5 : 1;
-            const parameterCoef = 1;
+            const parameterCoef = this.parameter[this.turnType] / 100;
 
             const optionCoef = {
                 '集中': 1,
@@ -328,32 +367,34 @@ export class ContestPIdol {
     useCost (cost) {
         switch (cost.type) {
             case 'normal': 
-                const block = this.block;
-                const hp = this.hp;
-                if (this.block < cost.actualValue) {
-                    this.hp -= (cost.actualValue - block);
-                    this.block = 0;
-                } else {
-                    this.block -= cost.actualValue;
-                    this.use_pItem('consume_hp');
-                }
-                console.log(` 体力消費: ${hp}->${this.hp}(元気: ${block}->${this.block})`);
+                // const block = this.block;
+                // const hp = this.hp;
+                // if (this.block < cost.actualValue) {
+                //     this.hp -= (cost.actualValue - block);
+                //     this.block = 0;
+                //     this.use_pItem('consume_hp');
+                // } else {
+                //     this.block -= cost.actualValue;
+                // }
+                // console.log(` 体力消費: ${hp}->${this.hp}(元気: ${block}->${this.block})`);
+                this.useEffect('cost', { type: '体力消費', value: cost.actualValue });
                 break;
             case 'direct':
-                this.hp -= cost.actualValue;
-                this.use_pItem('consume_hp');
-                console.log(` 体力消費: ${this.hp+cost.actualValue}->${this.hp}`);
+                // this.hp -= cost.actualValue;
+                // this.use_pItem('consume_hp');
+                // console.log(` 体力消費: ${this.hp+cost.actualValue}->${this.hp}`);
+                this.useEffect('cost', { type: '体力直接消費', value: cost.actualValue });
                 break;
             default: 
                 const statusValue = this.status.getValue(cost.type);
                 this.status.reduce(cost.type, cost.actualValue);
-                console.log(` ${cost.type}消費: ${statusValue}->${this.status.getValue(cost.type)}`);
+                this.log.addTextLog(`${cost.type}：${statusValue}->${statusValue-cost.actualValue} (-${cost.actualValue})`);
                 break;
         }
     }
 
     rest () {
-        this.useEffect({ type: '体力回復', value: 2 });
+        this.useEffect('rest', { type: '体力回復', value: 2 });
     }
 
     activate_at_useCard (usedCard) {
@@ -361,8 +402,9 @@ export class ContestPIdol {
         for (const status of status_list) {
             if (!this.checkCondition(status.activate_condition)) continue;
             for (let i = 0; i < status.value; i++) {
+                this.log.addTextLog(`ステータス効果[${status.name}]発動`);
                 for (const effect of status.activate_effects) {
-                    this.useEffect(effect);
+                    this.useEffect('status', effect);
                 }
             }
         }
@@ -371,12 +413,12 @@ export class ContestPIdol {
     useCard (cardNumber) {
         const usedCard = this.deck.getHandCardByNumber(cardNumber);
         this.lastUsedCard = usedCard;
-        console.log(`"${usedCard.name}"を使った`);
+        this.log.addTextLog(`カード[${usedCard.name}]を使った`);
+        this.useCost(usedCard.cost);
         this.status.add('使用したスキルカード数', 1);
         this.use_pItem('use_card');
-        this.deck.useCard(cardNumber);
-        this.useCost(usedCard.cost);
         this.activate_at_useCard(usedCard);
+        this.deck.useCard(cardNumber);
         // effect条件判定
         for (const effect of usedCard.effects) {
             effect.isActive = this.checkCondition(effect.condition);
@@ -384,62 +426,91 @@ export class ContestPIdol {
         // effect効果
         for (const effect of usedCard.effects) {
             if (!effect.isActive) continue;
-            this.useEffect(effect);
+            this.useEffect('card', effect);
         }
         if (this.status.getValue('次に使用するスキルカードの効果を発動') > 0) {
             for (const effect of usedCard.effects) {
                 if (!effect.isActive) continue;
-                this.useEffect(effect);
+                this.useEffect('card', effect);
             }
             this.status.reduce('次に使用するスキルカードの効果を発動', 1);
         }
     }
 
-    useEffect (effect, options) {
+    useEffect (name, effect, options) {
         this.calcEffectActualValue(effect);
         const { type, actualValue, n } = effect;
 
         if (type == '体力回復') {
+            const hp = this.hp;
             this.hp += actualValue;
             if (this.hp > this.maxHp) this.hp = this.maxHp;
-            console.log(` 体力+${actualValue}`);
+            this.log.addTextLog(`体力：${hp}->${this.hp} (+${actualValue})`);
         } 
+        else if (type == '体力消費') {
+            const block = this.block;
+            const hp = this.hp;
+            let reduceFlag = false;
+            if (this.block < actualValue) {
+                this.hp -= (actualValue - block);
+                this.block = 0;
+                reduceFlag = true;
+            } else {
+                this.block -= actualValue;
+            }
+            this.log.addTextLog(`体力：${hp}->${this.hp} (${this.hp-hp}) 元気：${block}->${this.block} (${this.block-block})`);
+            if (reduceFlag && name == 'card') {
+                this.use_pItem('consume_hp');
+            }
+        }
         else if (type == '体力直接消費') {
-            this.useCost({ type: 'direct', actualValue: actualValue });
+            const hp = this.hp;
+            this.hp -= actualValue;
+            this.log.addTextLog(`体力：${hp}->${this.hp} (${this.hp-hp})`);
+            if (actualValue > 0 && name == 'card') {
+                this.use_pItem('consume_hp');
+            }
         }
         else if (type == 'score') {
+            const score = this.score;
             this.score += actualValue;
-            console.log(` スコア+${actualValue}`);
+            this.log.addTextLog(`スコア：${score}->${this.score} (+${actualValue})`);
         }
         else if (type == 'block') {
+            const block = this.block;
             this.block += actualValue;
-            console.log(` ブロック+${actualValue}`);
+            this.log.addTextLog(`元気：${block}->${this.block} (+${actualValue})`);
         }
         else if (type == '固定元気') {
+            const block = this.block;
             this.block += actualValue;
-            console.log(` ブロック+${actualValue}`);
+            this.log.addTextLog(`元気(固定)：${block}->${this.block} (+${actualValue})`);
         }
         else if (type == 'ブロック割合減少') {
+            const block = this.block;
             const reduceBlock = Math.ceil(this.block * (actualValue / 100));
             this.block -= reduceBlock;
-            console.log(` ブロック: ${this.block}(-${reduceBlock})`);
+            this.log.addTextLog(`元気：${block}->${this.block} (-${reduceBlock})`);
         }
         else if (type == 'ドロー') {
             this.draw(actualValue);
-            console.log(` ドロー+${actualValue}`);
         }
         else if (type == '手札強化') {
             this.deck.upgrade('allhands');
+            this.log.addTextLog(`手札強化を強化した`);
         }
         else if (type == 'ターン追加') {
+            const extraTurn = this.extraTurn;
             this.remain_turn++;
             this.extraTurn++;
+            this.log.addTextLog(`追加ターン：${extraTurn}->${this.extraTurn} (+1)`);
         }
         else if (type == '手札入れ替え') {
+            this.log.addTextLog(`手札を入れ替え`);
             const count = this.deck.getAllHandCardCount();
             this.deck.discardAll();
+            this.log.addTextLog(`手札を全て捨てた`);
             this.draw(count);
-            console.log('手札を入れ替えた');
         }
         else if (type == '生成') {
             if (actualValue == 'ランダムな強化済みスキルカード') {
@@ -453,7 +524,7 @@ export class ContestPIdol {
                 const targetCard = targetCards[Math.floor(Math.random()*targetCards.length)];
                 this.deck.addCardInDeck(targetCard.id, 'handCards');
                 this.updateHand();
-                console.log(` 生成: ${targetCard.name}を手札に加えた`);
+                this.log.addTextLog(`生成：${targetCard.name}を手札に加えた`);
             }
         }
         else if (
@@ -462,19 +533,20 @@ export class ContestPIdol {
             type == 'Nターン後、パラメータ' 
         ) {
             this.status.addDelayEffectStack(type, actualValue, this.turn+n);
-            console.log(` ${type.replace('N', n)}: +${actualValue}`);
+            this.log.addTextLog(`予約設定：${type.replace('N', n)}: +${actualValue}`);
         }
         else { // その他の通常バフ・デバフ
             if (this.status.getValue('低下状態無効') > 0 && this.status.getType == 'debuff') {
                 this.status.reduce('低下状態無効', 1);
                 const mukou = this.status.getValue('低下状態無効');
-                console.log(` ${type}: +${0}(低下状態無効: ${mukou+1}->${mukou})`);
+                this.log.addTextLog(`${type}：+0 (低下状態無効：${mukou+1}->${mukou})`);
             } else {
+                const statusValue = this.status.getValue(type);
                 this.status.add(type, actualValue);
-                if (!options?.pItemNoHook) {
+                this.log.addTextLog(`${type}：${statusValue}->${statusValue+actualValue} (+${actualValue})`);
+                if (name == 'card') {
                     this.use_pItem(`increased_status:${type}`);
                 }
-                console.log(` ${type}: +${actualValue}`);
             }
         }
         
@@ -485,8 +557,10 @@ export class ContestPIdol {
     }
 
     checkAdditionalAction () {
-        if (this.status.getValue('スキルカード使用数追加') > 0) {
+        const addtionalAction = this.status.getValue('スキルカード使用数追加');
+        if (addtionalAction > 0) {
             this.status.reduce('スキルカード使用数追加', 1);
+            this.log.addTextLog(`スキルカード使用数追加：${addtionalAction}->${addtionalAction-1} (-1)`);
             this.updateHand();
             return true;
         }

@@ -1,85 +1,123 @@
 
+class TurnType {
+
+    constructor (turnNumber, critearia) {
+        this.types = Array(turnNumber).fill('');
+        const rank = this.objToRank(critearia);
+        const typeCount = this.setTurnCount(turnNumber, rank);
+
+        this.types[this.types.length-1] = rank[0];
+        this.types[this.types.length-2] = rank[1];
+        this.types[this.types.length-3] = rank[2];
+
+        this.types[0] = rank[0];
+
+        typeCount[rank[0]] -= 2;
+        typeCount[rank[1]] -= 1;
+        typeCount[rank[2]] -= 1;
+
+        const array = [typeCount['vocal'], typeCount['dance'], typeCount['visual']];
+
+        const typeIdx = { 0: 'vocal', 1: 'dance', 2: 'visual' };
+        for (let i = 1; i < turnNumber - 3; i++) {
+            const choose_idx = this.pick_random_from_array(array);
+            this.types[i] = typeIdx[choose_idx];
+            array[choose_idx]--;
+        }
+    }
+
+    array_to_prob (array) {
+        const total_number = array.reduce((p, c) => p+c, 0);
+        return array.map(v=>v/total_number);
+    }
+
+    pick_random_from_array (array) {
+        const array_prob = this.array_to_prob(array);
+        const random_value = Math.random();
+        let idx = array.length-1;
+        let current_prob = 0;
+        for (let i = 0; i < array.length; i++) {
+            current_prob += array_prob[i];
+            if (random_value < current_prob) {
+                idx = i;
+                break;
+            }
+        }
+        return idx;
+    }
+
+    objToRank (obj) {
+        const entries = Object.entries(obj);
+        entries.sort((a, b) => b[1] - a[1]);
+        const objRank = {};
+        for (let i = 0; i < entries.length; i++) {
+            objRank[i] = entries[i][0];
+        }
+        return objRank;
+    }
+
+    setTurnCount (turnNumber, rank) {
+        const typeCount = { vocal : 0, dance : 0, visual: 0 };
+        switch (turnNumber) {
+            case 8:
+                typeCount[rank[0]] = 4;
+                typeCount[rank[1]] = 2;
+                typeCount[rank[2]] = 2;
+                break;
+            case 10:
+                typeCount[rank[0]] = 5;
+                typeCount[rank[1]] = 3;
+                typeCount[rank[2]] = 2;
+                break;
+            case 12:
+                typeCount[rank[0]] = 5;
+                typeCount[rank[1]] = 4;
+                typeCount[rank[2]] = 3;
+                break;
+        }
+        return typeCount;
+    }
+
+    getType (turn) {
+        const idx = turn-1;
+        if (idx > this.types.length - 1) return this.types[this.types.length-1];
+        return this.types[idx];
+    }
+}
+
 export class Contest {
     
     constructor (parameters) {
         const {
             pIdol,
             maxTurn,
-            vonus,
+            criteria
         } = parameters;
         this.pIdol = pIdol;
         this.pIdol.remain_turn = maxTurn;
         this.maxTurn = maxTurn;
-        this.turnTypes;
-        this.typeRatio = {
-            vocal : 40,
-            dance : 33,
-            visual: 27,
-        };
-        this.initTurnTypes();
-        this.vonus = vonus;
+
+        this.turnType = new TurnType(maxTurn, criteria);
+
         this.currentTurn = 0;
-        this.score = 0;
         this.isFinish = false;
-    }
-
-    initTurnTypes () {
-        this.turnTypes = Array(this.maxTurn).fill('');
-
-        function objToRank(obj) {
-            const entries = Object.entries(obj);
-            entries.sort((a, b) => b[1] - a[1]);
-            const objRank = {};
-            for (let i = 0; i < entries.length; i++) {
-                objRank[i] = entries[i][0];
-            }
-            return objRank;
-        }
-
-        const typeRank = objToRank(this.typeRatio);
-
-        let typeCount = {
-            vocal : 0,
-            dance : 0,
-            visual: 0,
-
-        };
-
-        switch (this.maxTurn) {
-            case 8:
-                typeCount[typeRank[0]] = 4;
-                typeCount[typeRank[1]] = 2;
-                typeCount[typeRank[2]] = 2;
-                break;
-            case 10:
-                typeCount[typeRank[0]] = 5;
-                typeCount[typeRank[1]] = 3;
-                typeCount[typeRank[2]] = 2;
-                break;
-            case 12:
-                typeCount[typeRank[0]] = 5;
-                typeCount[typeRank[1]] = 4;
-                typeCount[typeRank[2]] = 3;
-                break;
-        }
-        
-        console.log(this.turnTypes);
-
     }
 
     startTurn () {
         // ターン開始
         this.currentTurn++;
-        this.turnType = 'vocal';
-        console.log(`==========\n${this.currentTurn}ターン目\n==========`);
-        this.pIdol.process_at('start_of_turn');
-        this.pIdol.draw(3);
-        this.pIdol.updateHand();
+        this.currentType = this.turnType.getType(this.currentTurn);
+        console.log(`==========\n${this.currentTurn}ターン目[${this.currentType}]\n==========`);
+        this.pIdol.process_at('start_of_turn', this.currentType);
     }
 
     printHands () {
         this.handCards = this.pIdol.getDeck('handCards');
         console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`));
+    }
+
+    getHands () {
+        return this.pIdol.getDeck('handCards');
     }
 
     finishTurn () {
@@ -89,7 +127,7 @@ export class Contest {
         console.log(`捨札`, this.pIdol.getDeck('discardPile').map(item=>item.name));
         console.log(`廃棄`, this.pIdol.getDeck('exhaustedCards').map(item=>item.name));
         console.log(
-            `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.score}`
+            `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.pIdol.score}`
         );
         // console.log(Object.keys(this.pIdol.status.getAll()).map(key=>`${key}: ${this.pIdol.status.getValue(key)}`).join(', '))
         this.checkFinishContest();

@@ -994,25 +994,25 @@ const pItemData = [
     },
     {
         id: 4240512,
-        name: '初星バッチ（赤）',
+        name: '初星オブジェ（紫）',
         activate_timing: 'start_of_turn',
         condition: '',
         effects: [
             { type: '好調', value: 3 },
-            { type: 'パラメータ上昇量増加50%', value: 4 },
+            { type: 'パラメータ上昇量増加50%アップ', value: 4 },
         ],
         limit: 1,
     },
     {
         id: 4240513,
-        name: '初星バッチ（赤）',
+        name: '初星ライト（オレンジ）',
         activate_timing: '好印象増加',
         condition: '好印象>=10',
         effects: [
             { type: '好印象', value: 4 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] },
         ],
-        limit: 1,
+        limit: null,
     },
 
 ];
@@ -1044,7 +1044,6 @@ export class PItem {
      * Pアイテムの使用後処理を行います
      */
     use () {
-        console.log(`Pアイテム[${this.name}]発動`);
         if (this.limit == null) return;
         this.limit--;
         if (this.limit <= 0) {
