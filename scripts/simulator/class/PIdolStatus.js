@@ -123,6 +123,17 @@ const statusList = [
     },
 
     {
+        id: 14,
+        name: '次に使用するアクティブスキルカードの効果を発動',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: null,
+        activate_condition: null,
+        is_reduce_turnend: true,
+    },
+
+    {
         id: 13,
         name: 'パラメータ上昇量増加',
         description: '',
@@ -233,6 +244,61 @@ const statusList = [
         activate_condition: '好印象>=3',
         activate_effects: [
             { type: '好印象', value: 3 }, 
+        ],
+        is_reduce_turnend: false,
+    },
+
+
+    {
+        id: 1103,
+        name: 'アクティブスキルカード使用時、パラメータ+4',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'usecard',
+        activate_condition: 'cardType==active',
+        activate_effects: [
+            { type: 'score', value: 4 }, 
+        ],
+        is_reduce_turnend: false,
+    },
+    {
+        id: 1104,
+        name: 'アクティブスキルカード使用時、パラメータ+5',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'usecard',
+        activate_condition: 'cardType==active',
+        activate_effects: [
+            { type: 'score', value: 5 }, 
+        ],
+        is_reduce_turnend: false,
+    },
+
+    {
+        id: 1105,
+        name: 'スキルカード使用時、好印象の30%分パラメータ',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'usecard',
+        activate_condition: '',
+        activate_effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] }, 
+        ],
+        is_reduce_turnend: false,
+    },
+    {
+        id: 1106,
+        name: 'スキルカード使用時、好印象の50%分パラメータ',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'usecard',
+        activate_condition: '',
+        activate_effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] }, 
         ],
         is_reduce_turnend: false,
     },

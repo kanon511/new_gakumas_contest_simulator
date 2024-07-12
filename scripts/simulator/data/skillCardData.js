@@ -2289,7 +2289,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 0,
+        id: 3022120,
         name: 'オトメゴコロ',
         type: 'mental',
         plan: 'logic',
@@ -2302,7 +2302,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 0,
+        id: 3022121,
         name: 'オトメゴコロ+',
         type: 'mental',
         plan: 'logic',
@@ -2903,7 +2903,7 @@ export const skillCardData = [
         cost: { type: '集中', value: 2 },
         condition: '',
         effects: [
-            { type: '字ターンドロー', value: 1 },
+            { type: 'ドロー', value: 1, delay: 1 },
             { type: 'アクティブスキルカード使用時、パラメータ+5', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
@@ -3026,7 +3026,7 @@ export const skillCardData = [
         cost: { type: 'やる気', value: 4 },
         condition: '',
         effects: [
-            { type: '使用数追加', value: 1 },
+            { type: 'スキルカード使用数追加', value: 1 },
             { type: 'スキルカード使用時、好印象の30%分パラメータ', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
@@ -3039,7 +3039,7 @@ export const skillCardData = [
         cost: { type: 'やる気', value: 4 },
         condition: '',
         effects: [
-            { type: '使用数追加', value: 1 },
+            { type: 'スキルカード使用数追加', value: 1 },
             { type: 'スキルカード使用時、好印象の50%分パラメータ', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
@@ -3852,7 +3852,7 @@ export const skillCardData = [
         cost: { type: 'normal', value: 6 },
         condition: '',
         effects: [
-            { type: '次に使用するアクティブスキルカードの効果をもう一回発動１回1ターン', value: 3 }, 
+            { type: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
             { type: '好調', value: 3 }, 
             { type: '消費体力減少', value: 2 }, 
         ],
@@ -3866,7 +3866,7 @@ export const skillCardData = [
         cost: { type: 'normal', value: 5 },
         condition: '',
         effects: [
-            { type: '次に使用するアクティブスキルカードの効果をもう一回発動１回1ターン', value: 3 }, 
+            { type: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
             { type: '好調', value: 5 }, 
             { type: '消費体力減少', value: 2 }, 
         ],

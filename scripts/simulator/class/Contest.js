@@ -107,13 +107,13 @@ export class Contest {
         // ターン開始
         this.currentTurn++;
         this.currentType = this.turnType.getType(this.currentTurn);
-        console.log(`==========\n${this.currentTurn}ターン目[${this.currentType}]\n==========`);
+        // console.log(`==========\n${this.currentTurn}ターン目[${this.currentType}]\n==========`);
         this.pIdol.process_at('start_of_turn', this.currentType);
         this.handCards = this.pIdol.getDeck('handCards');
     }
 
     printHands () {
-        console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`));
+        // console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`));
     }
 
     getHands () {
@@ -121,14 +121,14 @@ export class Contest {
     }
 
     finishTurn () {
-        console.log(`ターンエンド`);
+        // console.log(`ターンエンド`);
         this.pIdol.process_at('end_of_turn');
-        console.log(`山札`, this.pIdol.getDeck('drawPile').map(item=>item.name));
-        console.log(`捨札`, this.pIdol.getDeck('discardPile').map(item=>item.name));
-        console.log(`廃棄`, this.pIdol.getDeck('exhaustedCards').map(item=>item.name));
-        console.log(
-            `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.pIdol.score}`
-        );
+        // console.log(`山札`, this.pIdol.getDeck('drawPile').map(item=>item.name));
+        // console.log(`捨札`, this.pIdol.getDeck('discardPile').map(item=>item.name));
+        // console.log(`廃棄`, this.pIdol.getDeck('exhaustedCards').map(item=>item.name));
+        // console.log(
+        //     `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.pIdol.score}`
+        // );
         // console.log(Object.keys(this.pIdol.status.getAll()).map(key=>`${key}: ${this.pIdol.status.getValue(key)}`).join(', '))
         this.checkFinishContest();
     }
@@ -143,7 +143,7 @@ export class Contest {
         if (
             cardNumber < -1 || 
             cardNumber >= this.handCards.length || 
-            !this.handCards[cardNumber]?.isAvailable()
+            !this.getHands()[cardNumber]?.isAvailable()
         ) {
             return false;
         }

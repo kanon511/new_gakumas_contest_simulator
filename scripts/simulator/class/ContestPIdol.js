@@ -17,7 +17,7 @@ class PIdolLog {
 
     addTextLog (text) {
         this.currentTurnLog.history.push(text);
-        console.log(text);
+        // console.log(text);
     }
 
     nextTurn ({ score, hp, block, turnType }) {
@@ -188,6 +188,16 @@ export class ContestPIdol {
                 case 'cardId':
                     targetValue = this.lastUsedCard?.id;
                     break;
+                case 'cardEffectInclude':
+                    targetValue = 
+                        this.lastUsedCard.effects.some(effect=>effect.type==value) ? 
+                        value : -1;
+                    break;
+                case 'usedCardCountMultiple':
+                    targetValue = 
+                        this.status.getValue('使用したスキルカード数') % Number(value) == 0 ? 
+                        value : -1;
+                    break;
                 case 'remain_turn':
                     targetValue = this.remain_turn;
                     break;
@@ -328,7 +338,19 @@ export class ContestPIdol {
             }
 
         } else {
-            effect.actualValue = effect.value;
+            const baseValue = effect.value ?? 0;
+            let optionalValue = 0;
+            if (effect.options) {
+                for (const option of effect.options) {
+                    switch (option.type) {
+                        case 'multiple':
+                            optionalValue = this.status.getValue(effect.type) * (option.value-1);
+                            break;
+                    }
+                }
+                optionalValue = Math.floor(optionalValue);
+            }
+            effect.actualValue = baseValue + optionalValue;
         }
     }
 
@@ -346,22 +368,9 @@ export class ContestPIdol {
     useCost (cost) {
         switch (cost.type) {
             case 'normal': 
-                // const block = this.block;
-                // const hp = this.hp;
-                // if (this.block < cost.actualValue) {
-                //     this.hp -= (cost.actualValue - block);
-                //     this.block = 0;
-                //     this.use_pItem('consume_hp');
-                // } else {
-                //     this.block -= cost.actualValue;
-                // }
-                // console.log(` 体力消費: ${hp}->${this.hp}(元気: ${block}->${this.block})`);
                 this.useEffect('cost', { type: '体力消費', value: cost.actualValue });
                 break;
             case 'direct':
-                // this.hp -= cost.actualValue;
-                // this.use_pItem('consume_hp');
-                // console.log(` 体力消費: ${this.hp+cost.actualValue}->${this.hp}`);
                 this.useEffect('cost', { type: '体力直接消費', value: cost.actualValue });
                 break;
             default: 
@@ -409,6 +418,14 @@ export class ContestPIdol {
                 this.useEffect('card', effect);
             }
             this.status.reduce('次に使用するスキルカードの効果を発動', 1);
+        }
+        // effect効果
+        if (usedCard.type == 'active' && this.status.getValue('次に使用するアクティブスキルカードの効果を発動') > 0) {
+            for (const effect of usedCard.effects) {
+                if (!effect.isActive) continue;
+                this.useEffect('card', effect);
+            }
+            this.status.reduce('次に使用するアクティブスキルカードの効果を発動', 1);
         }
         for (const effect of usedCard.effects) {
             if (!effect.isActive) continue;

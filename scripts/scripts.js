@@ -187,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const element_contest_select = document.getElementById('contest-select');
     const element_contest_stage_select = document.getElementById('contest-stage-select');
     DOM_set_contest(element_contest_select);
+    element_contest_select.options[element_contest_select.options.length-1].selected = true;
 
     // コンテストの種類を入力したときのイベント
     element_contest_select.addEventListener('change', (e) => {
@@ -203,6 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         DOM_delete_allChildren(element_contest_stage_select);
         element_contest_stage_select.appendChild(fragment);
+        element_contest_stage_select.dispatchEvent(new Event('change'));
     });
 
     // コンテストのステージを入力したときのイベント
@@ -220,7 +222,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     element_contest_select.dispatchEvent(new Event('change'));
-    element_contest_stage_select.dispatchEvent(new Event('change'));
+    // element_contest_stage_select.dispatchEvent(new Event('change'));
+
+    const canvas = document.getElementById('chart');
+    const chart = new Chart(canvas, {
+        type: "bar",
+    });
 
     // 実行
     let run_flag = false;
@@ -292,9 +299,31 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCardIds: skillCardIds, 
             autoId: autoId,
         };
-        const result = run(run_data);
-        document.getElementById('contest-score').textContent = `スコア：${result.score}`;
-        document.getElementById('contest-log').innerHTML = result.text.replaceAll('\n', '<br>');
+        const { scoreList, minLog, maxLog } = run(run_data);
+        // document.getElementById('contest-score').textContent = `スコア：${result.score}`;
+        document.getElementById('contest-log').innerHTML = minLog.text.replaceAll('\n', '<br>');
+        const minscore = Math.floor(Math.min(...scoreList)/1000);
+        const maxscore = Math.floor(Math.max(...scoreList)/1000);
+        const count = Math.floor((maxscore - minscore))+1;
+        console.log(minscore, maxscore, count)
+        const data = new Array(count).fill(0);
+        for (let i = 0; i < scoreList.length; i++) {
+            const kaikyu = Math.floor(scoreList[i]/1000) - minscore;
+            console.log(kaikyu)
+            data[kaikyu]++;
+        }
+        console.log(data);
+        chart.data = {
+            labels:  new Array(count).fill(0).map((_,i)=>(i+minscore)*1000),
+            datasets: [
+                {
+                    label: "系列Ａ",
+                    data: data
+                }
+            ]
+        };
+        chart.update();
+        
         run_flag = false;
     }, false);
 

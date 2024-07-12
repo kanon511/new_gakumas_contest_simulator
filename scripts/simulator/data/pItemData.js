@@ -170,7 +170,7 @@ const pItemData = [
         id: 2109010,
         name: 'いつものメイクポーチ',
         activate_timing: 'use_card',
-        condition: 'cardType==active&hpper>=50',
+        condition: 'cardType==active&hpPer>=50',
         effects: [
             { type: '集中', value: 2 },
         ],
@@ -180,7 +180,7 @@ const pItemData = [
         id: 2109011,
         name: 'いつものメイクポーチ+',
         activate_timing: 'use_card',
-        condition: 'cardType==active&hpper>=50',
+        condition: 'cardType==active&hpPer>=50',
         effects: [
             { type: '集中', value: 3 },
         ],
@@ -295,7 +295,7 @@ const pItemData = [
         id: 2205010,
         name: '思い出ロボ',
         activate_timing: 'end_of_turn',
-        condition: 'hpper>=50',
+        condition: 'hpPer>=50',
         effects: [
             { type: '好印象', value: 3 },
         ],
@@ -305,7 +305,7 @@ const pItemData = [
         id: 2205011,
         name: '思い出ロボ+',
         activate_timing: 'end_of_turn',
-        condition: 'hpper>=50',
+        condition: 'hpPer>=50',
         effects: [
             { type: '好印象', value: 4 },
         ],
@@ -337,7 +337,7 @@ const pItemData = [
         id: 2207010,
         name: '放課後のらくがき',
         activate_timing: 'increased_status:集中',
-        condition: 'hpper>=50',
+        condition: 'hpPer>=50',
         effects: [
             { type: '集中', value: 2 },
         ],
@@ -701,7 +701,7 @@ const pItemData = [
         activate_timing: 'end_of_turn',
         condition: 'block>=7',
         effects: [
-            { type: '好印象倍率', value: 1.5 },
+            { type: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] },
         ],
         limit: 1,
@@ -712,7 +712,7 @@ const pItemData = [
         activate_timing: 'end_of_turn',
         condition: 'block>=7',
         effects: [
-            { type: '好印象倍率', value: 1.5 },
+            { type: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1,
@@ -818,6 +818,28 @@ const pItemData = [
         condition: 'remain_turn<=3',
         effects: [
             { type: 'score', value: 5 },
+        ],
+        limit: 3,
+    },
+    {
+        id: 2309020,
+        name: 'きみと分け合う夏',
+        activate_timing: 'start_of_turn',
+        condition: '消費体力減少>0',
+        effects: [
+            { type: '絶好調', value: 1 },
+            { type: 'ドロー', value: 1 },
+        ],
+        limit: 2,
+    },
+    {
+        id: 2309021,
+        name: 'きみと分け合う夏+',
+        activate_timing: 'start_of_turn',
+        condition: '消費体力減少>0',
+        effects: [
+            { type: '絶好調', value: 1 },
+            { type: 'ドロー', value: 1 },
         ],
         limit: 3,
     },
@@ -999,20 +1021,95 @@ const pItemData = [
         condition: '',
         effects: [
             { type: '好調', value: 3 },
-            { type: 'パラメータ上昇量増加50%アップ', value: 4 },
+            { type: 'パラメータ上昇量増加', value: 4, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 1,
     },
     {
         id: 4240513,
         name: '初星ライト（オレンジ）',
-        activate_timing: '好印象増加',
+        activate_timing: 'increased_status:好印象',
         condition: '好印象>=10',
         effects: [
             { type: '好印象', value: 4 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] },
         ],
         limit: null,
+    },
+
+    {
+        id: 4240612,
+        name: '初星オブジェ（紫）',
+        activate_timing: 'use_card',
+        condition: 'cardEffectInclude==絶好調&好調>=4',
+        effects: [
+            { type: 'スキルカード使用数追加', value: 1 },
+        ],
+        limit: null,
+    },
+    {
+        id: 4240613,
+        name: '初星ライト（紫）',
+        activate_timing: 'use_card',
+        condition: 'usedCardCountMultiple==2',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
+        ],
+        limit: null,
+    },
+
+    {
+        id: 4240621,
+        name: '初星オブジェ（銀）',
+        activate_timing: 'start_of_turn',
+        condition: 'turn==8',
+        effects: [
+            { type: '集中', value: null, options: [{ type: 'multiple', value: 2 }] },
+        ],
+        limit: 1,
+    },
+    {
+        id: 4240622,
+        name: '初星ライト（オレンジ）',
+        activate_timing: 'use_card',
+        condition: 'cardType==active',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 170 }] },
+        ],
+        limit: 3,
+    },
+    {
+        id: 4240623,
+        name: '初星ライト（紫）',
+        activate_timing: 'start_of_turn',
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 4 },
+        ],
+        limit: 2,
+    },
+
+    {
+        id: 4240711,
+        name: '初星オブジェ（銀）',
+        activate_timing: 'use_card',
+        condition: 'cardEffectInclude==消費体力減少',
+        effects: [
+            { type: '集中', value: 3 },
+            { type: '好調', value: 3 },
+            { type: '体力直接消費', value: 3 },
+        ],
+        limit: 3,
+    },
+    {
+        id: 4240713,
+        name: '初星ライト（紫）',
+        activate_timing: 'use_card',
+        condition: 'cardType==active',
+        effects: [
+            { type: 'やる気', value: 3 },
+        ],
+        limit: 4,
     },
 
 ];

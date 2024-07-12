@@ -362,6 +362,17 @@ const pIdolData = [
         unique_pIted_id: 2309010,
     },
     {
+        id: 30902,
+        rarity: 'SSR',
+        epidode_name: 'キミとセミブルー',
+        character_id: 109,
+        name: '姫崎莉波',
+        plan: 'sense',
+        trend: '集中',
+        unique_skillCard_id: 4209020,
+        unique_pIted_id: 2309020,
+    },
+    {
         id: 11001,
         rarity: 'R',
         epidode_name: '学園生活',

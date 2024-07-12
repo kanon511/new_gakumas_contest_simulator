@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Selection</title>
     <link rel="stylesheet" href="./styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <script type="module" src="./scripts/scripts.js"></script>
 </head>
 <body>
@@ -68,7 +69,10 @@
         </div>
     </div>
     <div class="container">
-        <div id="contest-score">スコア：0</div>
+        <!--<div id="contest-score">スコア：0</div>-->
+        <div>
+            <canvas id="chart"></canvas>
+        </div>
         <div>ログ</div>
         <div id="contest-log">
             テストテスト

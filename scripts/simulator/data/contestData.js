@@ -8,7 +8,7 @@
 const contestData = [
     {
         id: 240516,
-        name: '第１回（5月16日～）', 
+        name: '第１回（05月16日～）', 
         criteria: { 'vocal': 40, 'dance': 27, 'visual': 33 },
         stages: [
             {
@@ -34,87 +34,90 @@ const contestData = [
             },
         ],
     },
-    // {
-    //     id: 240602,
-    //     criteria: { 'vocal': 33, 'dance': 40, 'visual': 27 },
-    //     stages: [
-    //         {
-    //             name: 'ステージ1',
-    //             turn: 12,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //         {
-    //             name: 'ステージ2',
-    //             turn: 12,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //         {
-    //             name: 'ステージ3',
-    //             turn: 10,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //     ],
-    // },
-    // {
-    //     id: 240617,
-    //     criteria: { 'vocal': 27, 'dance': 33, 'visual': 40 },
-    //     stages: [
-    //         {
-    //             name: 'ステージ1',
-    //             turn: 10,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //         {
-    //             name: 'ステージ2',
-    //             turn: 8,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //         {
-    //             name: 'ステージ3',
-    //             turn: 8,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //     ],
-    // },
-    // {
-    //     id: 240703,
-    //     criteria: { 'vocal': 15, 'dance': 45, 'visual': 40 },
-    //     stages: [
-    //         {
-    //             name: 'ステージ1',
-    //             turn: 10,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //         {
-    //             name: 'ステージ2',
-    //             turn: 10,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //         {
-    //             name: 'ステージ3',
-    //             turn: 8,
-    //             stageEffects: [],
-    //             stagePItemIds: [],
-    //             plan: '',
-    //         },
-    //     ],
-    // },
+    {
+        id: 240602,
+        name: '第２回（06月02日～）', 
+        criteria: { 'vocal': 33, 'dance': 40, 'visual': 27 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240511],
+                plan: 'free',
+            },
+            {
+                name: 'ステージ2',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240612],
+                plan: 'sense',
+            },
+            {
+                name: 'ステージ3',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4240613],
+                plan: 'logic',
+            },
+        ],
+    },
+    {
+        id: 240617,
+        name: '第３回（06月17日～）', 
+        criteria: { 'vocal': 27, 'dance': 33, 'visual': 40 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4240621],
+                plan: 'sense',
+            },
+            {
+                name: 'ステージ2',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240622],
+                plan: 'logic',
+            },
+            {
+                name: 'ステージ3',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240623],
+                plan: 'logic',
+            },
+        ],
+    },
+    {
+        id: 240703,
+        name: '第４回（07月03日～）', 
+        criteria: { 'vocal': 15, 'dance': 45, 'visual': 40 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4240711],
+                plan: 'sense',
+            },
+            {
+                name: 'ステージ2',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4240612],
+                plan: 'sense',
+            },
+            {
+                name: 'ステージ3',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240713],
+                plan: 'logic',
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {
