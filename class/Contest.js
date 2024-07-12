@@ -109,10 +109,10 @@ export class Contest {
         this.currentType = this.turnType.getType(this.currentTurn);
         console.log(`==========\n${this.currentTurn}ターン目[${this.currentType}]\n==========`);
         this.pIdol.process_at('start_of_turn', this.currentType);
+        this.handCards = this.pIdol.getDeck('handCards');
     }
 
     printHands () {
-        this.handCards = this.pIdol.getDeck('handCards');
         console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`));
     }
 
@@ -143,7 +143,7 @@ export class Contest {
         if (
             cardNumber < -1 || 
             cardNumber >= this.handCards.length || 
-            !this.handCards[cardNumber]?.available
+            !this.handCards[cardNumber]?.isAvailable()
         ) {
             return false;
         }
@@ -151,9 +151,31 @@ export class Contest {
         return !this.pIdol.checkAdditionalAction();
     }
 
+    create_log () {
+        const log = this.pIdol.log.getLog();
+        let text = '';
+        for (const turnLog of log) {
+            const turn = turnLog.turn;
+            text += `==========\n`
+                  + `${turnLog.turn}ターン目[${turnLog.turnType}]\n`
+                  + `スコア：${turnLog.status.score}, 体力：${turnLog.status.hp}, 元気：${turnLog.status.block}\n`
+                  + `==========\n`;
+            text += turnLog.history.join('\n') + '\n';
+        }
+        text += `==========\n`
+              + `最終`
+              + `スコア：${this.pIdol.score}, 体力：${this.pIdol.hp}, 元気：${this.pIdol.block}\n`
+              + `==========`;
+        this.log = {
+            score: this.pIdol.score,
+            text: text,
+        };
+    }
+
     checkFinishContest () {
         if (this.pIdol.checkFinished()) {
             this.isFinish = true;
+            this.create_log();
         }
     }
 

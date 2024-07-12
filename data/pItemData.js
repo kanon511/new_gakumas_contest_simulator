@@ -1020,7 +1020,7 @@ const pItemData = [
 export class PItem {
 
     // property
-    #avalable = true;
+    #available = true;
 
     // method
     constructor (id) {
@@ -1036,8 +1036,8 @@ export class PItem {
      * Pアイテムが利用可能か返します
      * @returns {Boolean}
      */
-    isAvalable () {
-        return this.#avalable;
+    isAvailable () {
+        return this.#available;
     }
 
     /**
@@ -1047,7 +1047,7 @@ export class PItem {
         if (this.limit == null) return;
         this.limit--;
         if (this.limit <= 0) {
-            this.#avalable = false;
+            this.#available = false;
         } 
     }
 

@@ -1,7 +1,7 @@
 import { Deck } from './Deck.js';
 import { PIdolStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
-import { skillCardList } from "./SkillCardList.js";
+import { SkillCardData } from '../data/skillCardData.js';
 
 class PIdolLog {
     
@@ -9,7 +9,6 @@ class PIdolLog {
         this.log = [];
         this.currentTurnLog = null;
         this.currentTurn = 0;
-        this.currentActionLog = null;
     }
 
     getLog () {
@@ -21,11 +20,15 @@ class PIdolLog {
         console.log(text);
     }
 
-    nextTurn () {
+    nextTurn ({ score, hp, block, turnType }) {
         this.currentTurn++;
         this.currentTurnLog = {
             turn: this.currentTurn,
+            turnType: turnType,
             history: [],
+            status: {
+                score, hp, block, 
+            }
         };
         this.log.push(this.currentTurnLog);
     }
@@ -61,7 +64,7 @@ export class ContestPIdol {
     use_pItem (activateTiming) {
         const activatePItemList = this.pItemsManager.getPItemByActivateTiming(activateTiming);
         for (const pItem of activatePItemList) {
-            if (!pItem.isAvalable()) continue;
+            if (!pItem.isAvailable()) continue;
             if (!this.checkCondition(pItem.condition)) continue;
             this.log.addTextLog(`Pアイテム[${pItem.name}]発動`);
             pItem.use();
@@ -76,7 +79,7 @@ export class ContestPIdol {
         if (timing == 'start_of_turn') {
             this.turn++;
             this.turnType = turnType;
-            this.log.nextTurn();
+            this.log.nextTurn({ score: this.score, hp: this.hp, block: this.block, turnType: turnType });
             // Pアイテムターン開始時発動
             this.use_pItem('start_of_turn');
             // Nターン後、パラメータの処理
@@ -146,6 +149,7 @@ export class ContestPIdol {
         this.calcHandCardsEffectActualValue(handCards);
         this.calcHandCardsActualCost(handCards);
         this.checkHandCardsAvailable(handCards);
+        this.log.addTextLog('手札：'+handCards.map(item=>`${item.isAvailable()?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`).join(' | '));
     }
 
     checkHandCardsAvailable (handCards) {
@@ -424,16 +428,16 @@ export class ContestPIdol {
             effect.isActive = this.checkCondition(effect.condition);
         }
         // effect効果
-        for (const effect of usedCard.effects) {
-            if (!effect.isActive) continue;
-            this.useEffect('card', effect);
-        }
         if (this.status.getValue('次に使用するスキルカードの効果を発動') > 0) {
             for (const effect of usedCard.effects) {
                 if (!effect.isActive) continue;
                 this.useEffect('card', effect);
             }
             this.status.reduce('次に使用するスキルカードの効果を発動', 1);
+        }
+        for (const effect of usedCard.effects) {
+            if (!effect.isActive) continue;
+            this.useEffect('card', effect);
         }
     }
 
@@ -514,7 +518,7 @@ export class ContestPIdol {
         }
         else if (type == '生成') {
             if (actualValue == 'ランダムな強化済みスキルカード') {
-                const targetCards = skillCardList.getList().filter(item=>
+                const targetCards = SkillCardData.getAll().filter(item=>
                     (item.plan=='free'||item.plan==this.plan) && // プラン指定
                     item.id % 10 == 1 && // 強化カード
                     item.id > 2000000 && // 基本カード削除

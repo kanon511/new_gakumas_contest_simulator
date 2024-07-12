@@ -8,7 +8,7 @@
  * 実装：夏清夏まで
  */
 
-export const pIdolData = [
+const pIdolData = [
     {
         id: 10101,
         rarity: 'R',
@@ -16,6 +16,7 @@ export const pIdolData = [
         character_id: 101,
         name: '花海咲季',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 2201010,
         unique_pIted_id: 2101010,
     },
@@ -26,6 +27,7 @@ export const pIdolData = [
         character_id: 101,
         name: '花海咲季',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 3201010,
         unique_pIted_id: 2201010,
     },
@@ -36,6 +38,7 @@ export const pIdolData = [
         character_id: 101,
         name: '花海咲季',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 4201010,
         unique_pIted_id: 2301010,
     },
@@ -46,6 +49,7 @@ export const pIdolData = [
         character_id: 101,
         name: '花海咲季',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 4201020,
         unique_pIted_id: 2301020,
     },
@@ -56,6 +60,7 @@ export const pIdolData = [
         character_id: 102,
         name: '月村手毬',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 2202010,
         unique_pIted_id: 2102010,
     },
@@ -66,6 +71,7 @@ export const pIdolData = [
         character_id: 102,
         name: '月村手毬',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 3202010,
         unique_pIted_id: 2202010,
     },
@@ -76,6 +82,7 @@ export const pIdolData = [
         character_id: 102,
         name: '月村手毬',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 4202010,
         unique_pIted_id: 2302010,
     },
@@ -86,6 +93,7 @@ export const pIdolData = [
         character_id: 102,
         name: '月村手毬',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 4202020,
         unique_pIted_id: 2302020,
     },
@@ -96,6 +104,7 @@ export const pIdolData = [
         character_id: 103,
         name: '藤田ことね',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 2203010,
         unique_pIted_id: 2103010,
     },
@@ -106,6 +115,7 @@ export const pIdolData = [
         character_id: 103,
         name: '藤田ことね',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 3203010,
         unique_pIted_id: 2203010,
     },
@@ -116,6 +126,7 @@ export const pIdolData = [
         character_id: 103,
         name: '藤田ことね',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 4203010,
         unique_pIted_id: 2303010,
     },
@@ -126,6 +137,7 @@ export const pIdolData = [
         character_id: 103,
         name: '藤田ことね',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 4203020,
         unique_pIted_id: 2303020,
     },
@@ -136,6 +148,7 @@ export const pIdolData = [
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 2204010,
         unique_pIted_id: 2104010,
     },
@@ -146,6 +159,7 @@ export const pIdolData = [
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 3204010,
         unique_pIted_id: 2204010,
     },
@@ -156,6 +170,7 @@ export const pIdolData = [
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
+        trend: '好調',
         unique_skillCard_id: 4204010,
         unique_pIted_id: 2304010,
     },
@@ -166,6 +181,7 @@ export const pIdolData = [
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 4204020,
         unique_pIted_id: 2304020,
     },
@@ -176,6 +192,7 @@ export const pIdolData = [
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 2205010,
         unique_pIted_id: 2105010,
     },
@@ -186,6 +203,7 @@ export const pIdolData = [
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 3205010,
         unique_pIted_id: 2205010,
     },
@@ -196,6 +214,7 @@ export const pIdolData = [
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'logic',
+        trend: '好印象',
         unique_skillCard_id: 4205010,
         unique_pIted_id: 2305010,
     },
@@ -206,6 +225,7 @@ export const pIdolData = [
         character_id: 106,
         name: '倉本千奈',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 2206010,
         unique_pIted_id: 2106010,
     },
@@ -216,6 +236,7 @@ export const pIdolData = [
         character_id: 106,
         name: '倉本千奈',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 3206010,
         unique_pIted_id: 2206010,
     },
@@ -226,6 +247,7 @@ export const pIdolData = [
         character_id: 106,
         name: '倉本千奈',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 4206010,
         unique_pIted_id: 2306010,
     },
@@ -236,6 +258,7 @@ export const pIdolData = [
         character_id: 107,
         name: '紫雲清夏',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 2207010,
         unique_pIted_id: 2107010,
     },
@@ -246,6 +269,7 @@ export const pIdolData = [
         character_id: 107,
         name: '紫雲清夏',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 3207010,
         unique_pIted_id: 2207010,
     },
@@ -256,6 +280,7 @@ export const pIdolData = [
         character_id: 107,
         name: '紫雲清夏',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 4207010,
         unique_pIted_id: 2307010,
     },
@@ -266,6 +291,7 @@ export const pIdolData = [
         character_id: 107,
         name: '紫雲清夏',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 4207020,
         unique_pIted_id: 2307020,
     },
@@ -276,6 +302,7 @@ export const pIdolData = [
         character_id: 108,
         name: '篠澤広',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 2208010,
         unique_pIted_id: 2108010,
     },
@@ -286,6 +313,7 @@ export const pIdolData = [
         character_id: 108,
         name: '篠澤広',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 3208010,
         unique_pIted_id: 2208010,
     },
@@ -296,6 +324,7 @@ export const pIdolData = [
         character_id: 108,
         name: '篠澤広',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 4208010,
         unique_pIted_id: 2308010,
     },
@@ -306,6 +335,7 @@ export const pIdolData = [
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 2209010,
         unique_pIted_id: 2109010,
     },
@@ -316,6 +346,7 @@ export const pIdolData = [
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 3209010,
         unique_pIted_id: 2209010,
     },
@@ -326,6 +357,7 @@ export const pIdolData = [
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
+        trend: '集中',
         unique_skillCard_id: 4209010,
         unique_pIted_id: 2309010,
     },
@@ -336,6 +368,7 @@ export const pIdolData = [
         character_id: 110,
         name: '花海佑芽',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 2210010,
         unique_pIted_id: 2110010,
     },
@@ -346,6 +379,7 @@ export const pIdolData = [
         character_id: 110,
         name: '花海佑芽',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 3210010,
         unique_pIted_id: 2210010,
     },
@@ -356,7 +390,40 @@ export const pIdolData = [
         character_id: 110,
         name: '花海佑芽',
         plan: 'logic',
+        trend: 'やる気',
         unique_skillCard_id: 4210010,
         unique_pIted_id: 2310010,
     },
 ];
+
+export class PIdolData {
+    
+    // property
+    static #pIdolData = pIdolData;
+    static #index = Object.fromEntries(this.#pIdolData.map((item, i) => [item.id, i]));
+    static #index_character_id = (()=>{
+        const result = {};
+        for (let i = 0; i < pIdolData.length; i++) {
+            if (!(pIdolData[i].character_id in result)) {
+                result[pIdolData[i].character_id] = [];
+            }
+            result[pIdolData[i].character_id].push(pIdolData[i].id);
+        }
+        return result;
+    })();
+
+    // method
+
+    static getAll () {
+        return this.#pIdolData;
+    }
+
+    static getById (id) {
+        return this.#pIdolData[this.#index[id]];
+    }
+
+    static getByCharacterId (character_id) {
+        return this.#index_character_id[character_id].map(id=>this.getById(id));
+    }
+
+}

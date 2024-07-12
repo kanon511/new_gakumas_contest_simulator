@@ -57,7 +57,7 @@ const contest = new Contest({
 while (true) {
     contest.startTurn();
     for (let endFlag = false; !endFlag;) {
-        contest.printHands();
+        // contest.printHands();
         const inputNumber = Number(await scanf());
         endFlag = contest.useCard(inputNumber);
     }

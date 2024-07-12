@@ -1,4 +1,4 @@
-import { SkillCard } from "./SkillCard.js";
+import { SkillCard } from "../data/skillCardData.js";
 
 export class Deck {
 
