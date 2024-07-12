@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Selection</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <script type="module" src="./scripts/scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="section">
+            <label>コンテスト</label>
+            <div class="input-group">
+                <select id="contest-select">
+                    <option value="">コンテスト選択</option>
+                </select>
+                <select id="contest-stage-select">
+                    <option value="">ステージ選択</option>
+                </select>
+            </div>
+        </div>
+        <div class="section character-select-box">
+            <label for="main-character">メインキャラクター選択</label>
+            <select id="main-character">
+                <option value="">select</option>
+            </select>
+        </div>
+        <div class="section character-select-box">
+            <label for="sub-character">サブキャラクター選択</label>
+            <select id="sub-character">
+                <option value="">select</option>
+            </select>
+        </div>
+        <div class="section">
+            <label>ステータス</label>
+            <div class="input-group">
+                <input type="text" id="status-vocal" inputmode="numeric" pattern="\d*" placeholder="Vocal%"  required="required" value="1000">
+                <input type="text" id="status-dance" inputmode="numeric" pattern="\d*" placeholder="Dance%"  required="required" value="1000">
+                <input type="text" id="status-visual" inputmode="numeric" pattern="\d*" placeholder="Visual%"  required="required" value="1000">
+                <input type="text" id="status-hp" inputmode="numeric" pattern="\d*" placeholder="体力"  required="required" value="30">
+            </div>
+        </div>
+        <div class="section card-select-box">
+            <label>Pアイテム選択（☑で+化）</label>
+            <div id="pItem-box-container">
+                <div id="main-character-pItem-box" class="
+                character-cards-box"><!--ここにPアイテムセレクト--></div>
+            </div>
+        </div>
+        <div class="section card-select-box">
+            <label>カード選択（☑で+化）</label>
+            <div id="card-box-container">
+                <div id="main-character-cards-box" class="character-cards-box"><!--ここにカードセレクト--></div>
+                <div id="sub-character-card-box" class="character-cards-box"><!--ここにカードセレクト--></div>
+            </div>
+        </div>
+        <div class="section">
+            <label>オートの挙動</label>
+            <div class="input-group">
+                <select id="contest-auto">
+                    <option value="1">完全ランダム（デバッグ用）</option>
+                </select>
+            </div>
+        </div>
+        <div class="run-button">
+            <input id="run-button" type="button" value="実行">
+        </div>
+    </div>
+    <div class="container">
+        <div id="contest-score">スコア：0</div>
+        <div>ログ</div>
+        <div id="contest-log">
+            テストテスト
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    height: 100%;
+}
+
+@media screen and (min-width: 1000px) {
+    body {
+        display: flex;
+    }
+    .container {
+        width: calc(50% - 40px);
+    }
+}
+
+.section {
+    margin-bottom: 20px;
+}
+.section label {
+    display: block;
+    margin-bottom: 5px;
+}
+.section input[type="text"],
+.section.character-select-box select, 
+.section .input-group select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.section input[type="button"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.section input[type="button"]:hover {
+    background-color: #0056b3;
+}
+.input-group {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.input-group input[type="text"],
+.input-group select {
+    flex: 1 1 calc(20% - 10px);
+    margin-right: 10px;
+}
+.input-group input[type="text"]:last-child,
+.input-group select:last-child {
+    margin-right: 0;
+}
+
+
+#card-box-container {
+    display: flex;
+    gap: 10px;
+}
+
+.character-cards-box {
+    flex: 1 1 calc(50% - 10px);
+    align-items: center;
+}
+
+.character-cards-box > .character-cards {
+    margin-bottom: 10px;
+}
+
+.character-cards-box > .character-cards:last-child {
+    margin-bottom: 0px;
+}
+
+.card-container-item {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.card-container-item[data-rarity="3"] {
+    /* background-color: #ffc; */
+}
+.card-container-item[data-rarity="4"] {
+    /* background-color: #fcf; */
+    /* background : linear-gradient(118deg, 
+                               red,
+                               orange,
+                               yellow,
+                               green,
+                               aqua,
+                               blue,
+                               purple); */
+    
+    /* background: linear-gradient(to right, #ffffb2, #ffffb2, #ffffb2, #d8ffb2, #b2ffb2, #b2ffd8, #b2ffff, #b2d8ff, #b2b2ff, #d8b2ff, #ffb2ff, #ffb2d8); */
+}
+
+
+.section.card-select-box select {
+    background-color: transparent;
+    flex: 1;
+    height: 35px;
+    padding: 8px;
+    border: 0;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.checkbox {
+    display: none;
+}
+.card-container-item > .checkbox-label {
+    width: 35px;
+    height: 35px;
+    margin-bottom: 0px;
+    border-right: solid 1px #ccc;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 100ms ease-in;
+}
+
+
+
+.checkbox-label::before,
+.checkbox-label::after {
+    content: "";
+    background-color: #aaa;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 100ms ease-in;
+}
+
+.checkbox-label::before {
+    width: 4px;
+    height: 50%;
+}
+
+.checkbox-label::after {
+    width: 50%;
+    height: 4px;
+}
+
+.checkbox:checked + .checkbox-label {
+    background-color: #fd9;
+}
+
+.checkbox:checked + .checkbox-label::after,
+.checkbox:checked + .checkbox-label::before {
+    background-color: #f60;
+}
+
+/* 
+<div class="item">
+    <input type="checkbox" id="checkbox" class="checkbox">
+    <label for="checkbox" class="checkbox-label"></label>
+    <select class="select-box">
+        <option value="option1">Option 1</option>
+    </select>
+</div>
+ */
+
+
+
+
+
+
+
+
+
+
+
+/* .items .item select {
+    flex: 1;
+    margin-left: 5px;
+} */
+.run-button {
+    text-align: center;
+}
+.run-button input[type="button"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.run-button input[type="button"]:hover {
+    background-color: #218838;
+}
+
+#contest-log {
+    border: 1px solid #ccc;
+    background-color: white;
+    padding: 5px;
+    overflow-x: scroll;
+}
