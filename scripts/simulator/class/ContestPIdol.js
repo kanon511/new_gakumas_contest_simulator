@@ -264,7 +264,7 @@ export class ContestPIdol {
             const kouchoCoef = this.status.getValue('好調') > 0 ? 1.5 : 1;
             const zekkouchoCoef = 
                 this.status.getValue('絶好調') > 0 ? this.status.getValue('好調') * 0.1 : 0;
-            const status50perCoef = this.status.getValue('パラメータ上昇量増加50%アップ') > 0 ? 1.5 : 1;
+            const statusCoef = 1 + this.status.getValue('パラメータ上昇量増加') / 100;
             const parameterCoef = this.parameter[this.turnType] / 100;
 
             const optionCoef = {
@@ -301,7 +301,7 @@ export class ContestPIdol {
             );
 
             const actualValue = 
-                Math.ceil(Math.ceil(( adjustScore ) *( kouchoCoef + zekkouchoCoef)) * status50perCoef * parameterCoef);
+                Math.ceil(Math.ceil(( adjustScore ) *( kouchoCoef + zekkouchoCoef)) * statusCoef * parameterCoef);
 
             effect.actualValue = actualValue;
 
@@ -416,7 +416,7 @@ export class ContestPIdol {
         }
     }
 
-    useEffect (name, effect, options) {
+    useEffect (name, effect) {
         
         // 予約効果を登録
         if (effect.delay) {
@@ -430,7 +430,7 @@ export class ContestPIdol {
         }
 
         this.calcEffectActualValue(effect);
-        const { type, actualValue, n } = effect;
+        const { type, actualValue, options } = effect;
 
         if (type == '体力回復') {
             const hp = this.hp;
@@ -525,7 +525,8 @@ export class ContestPIdol {
                 this.log.addTextLog(`${type}：+0 (低下状態無効：${mukou+1}->${mukou})`);
             } else {
                 const statusValue = this.status.getValue(type);
-                this.status.add(type, actualValue);
+                const availableFirstAdded = name == 'card' || name == 'pDrink';
+                this.status.add(type, actualValue, availableFirstAdded, options);
                 this.log.addTextLog(`${type}：${statusValue}->${statusValue+actualValue} (+${actualValue})`);
                 if (name == 'card') {
                     this.use_pItem(`increased_status:${type}`);

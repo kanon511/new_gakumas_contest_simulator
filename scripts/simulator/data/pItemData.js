@@ -852,7 +852,7 @@ const pItemData = [
         activate_timing: 'start_of_turn',
         condition: 'turnType==visual',
         effects: [
-            { type: 'パラメータ上昇量増加50%アップ', value: 1 },
+            { type: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 3,
     },
@@ -872,7 +872,7 @@ const pItemData = [
         activate_timing: 'start_of_turn',
         condition: 'turnType==dance',
         effects: [
-            { type: 'パラメータ上昇量増加50%アップ', value: 1 },
+            { type: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 3,
     },

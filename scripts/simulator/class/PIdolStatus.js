@@ -124,9 +124,9 @@ const statusList = [
 
     {
         id: 13,
-        name: 'パラメータ上昇量増加50%アップ',
+        name: 'パラメータ上昇量増加',
         description: '',
-        value: 0,
+        valueStack: [],
         type: 'buff',
         activate_timing: null,
         activate_condition: null,
@@ -263,12 +263,29 @@ export class PIdolStatus {
 
     reduceInTurnend ()  {
         for (const key of this.#reduceInTurnendKeys) {
-            if (this.#status[this.#index_name_to_idx[key]].value <= 0) continue;
-            if (this.#status[this.#index_name_to_idx[key]].firstAdded) {
-                this.#status[this.#index_name_to_idx[key]].firstAdded = false;
-                continue;
+            const status = this.#get(key);
+            if (status.valueStack) {
+                for (let i = 0; i < status.valueStack.length; i++) {
+                    const item = status.valueStack[i];
+                    if (item.firstAdded) {
+                        item.firstAdded = false;
+                        continue;
+                    }
+                    item.turn--;
+                    if (item.turn <= 0) {
+                        status.valueStack.splice(i, 1);
+                        i--;
+                    }
+                }
             }
-            this.reduce(key, 1);
+            else {
+                if (status.value <= 0) continue;
+                if (status.firstAdded) {
+                    status.firstAdded = false;
+                    continue;
+                }
+                this.reduce(key, 1);
+            }
         }
         this.#status[this.#index_name_to_idx['使用したスキルカード数']].value = 0;
     }
@@ -287,7 +304,12 @@ export class PIdolStatus {
 
     getValue (name) {
         const status = this.#get(name);
-        return status.value;
+        if (status.valueStack) {
+            return status.valueStack.reduce((pre, crt) => pre+crt.value, 0);
+        }
+        else {
+            return status.value;
+        }
     }
 
 
@@ -296,12 +318,24 @@ export class PIdolStatus {
         return Object.fromEntries(this.#status.map(item => [item.name, item.value]))
     }
 
-    add (name, value) { // firstAdded = trueはカードのときだけ
+    add (name, value, availableFirstAdded, options) { 
         const status = this.#get(name);
-        if (status.value == 0) {
-            status.firstAdded = true;
+        if (status.valueStack) {
+            const item = {
+                value: options[0].value,
+                turn: value
+            };
+            if (availableFirstAdded) {
+                item.firstAdded = true;
+            }
+            status.valueStack.push(item);
         }
-        status.value += value;
+        else {
+            if (status.value == 0 && availableFirstAdded) {
+                status.firstAdded = true;
+            }
+            status.value += value;
+        }
     }
     
     addDelayEffect (name, turn, effect) {
@@ -326,6 +360,7 @@ export class PIdolStatus {
     }
 
     reduce (name, value) {
+        // valueStackはエラー発生するから注意！
         const status = this.#get(name);
         status.value -= value;
         if (status.value < 0) {
