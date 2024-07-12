@@ -196,46 +196,6 @@ const statusList = [
         ],
         is_reduce_turnend: false,
     },
-
-
-    {
-        id: 701,
-        name: 'Nターン後ドロー',
-        description: '',
-        value: null,
-        delayEffectStack: [],
-        type: 'buff',
-        activate_timing: null,
-        activate_condition: null,
-        is_reduce_turnend: false,
-    },
-
-    {
-        id: 703,
-        name: 'Nターン後、手札強化',
-        description: '',
-        value: null,
-        delayEffectStack: [],
-        type: 'buff',
-        activate_timing: null,
-        activate_condition: null,
-        is_reduce_turnend: false,
-    },
-
-    {
-        id: 801,
-        name: 'Nターン後、パラメータ',
-        description: '',
-        value: null,
-        delayEffectStack: [],
-        type: 'buff',
-        activate_timing: null,
-        activate_condition: null,
-        is_reduce_turnend: false,
-    },
-
-
-
     {
         id: 1001,
         name: 'ターン終了時、好印象+1',
@@ -287,6 +247,7 @@ export class PIdolStatus {
     #reduceInTurnendKeys;
 
     #names_activate_in_useCard;
+    #delayEffectList = [];
 
     constructor () {
         this.#status = deep_copy(statusList);
@@ -329,10 +290,6 @@ export class PIdolStatus {
         return status.value;
     }
 
-    getDelayEffectStack (name) {
-        const status = this.#get(name);
-        return status.delayEffectStack;
-    }
 
     getAll () {
         console.log(Object.fromEntries(this.#status.map(item => [item.name, item.value])));
@@ -346,10 +303,26 @@ export class PIdolStatus {
         }
         status.value += value;
     }
+    
+    addDelayEffect (name, turn, effect) {
+        this.#delayEffectList.push({
+            name: name,
+            turn: turn,
+            effect: effect,
+        });
+    }
 
-    addDelayEffectStack (name, value, turn) {
-        const status = this.#get(name);
-        status.delayEffectStack.push({ 'turn': turn, 'value': value });
+    getDelayEffectByTurn (turn) {
+        const result = [];
+        for (let i = 0; i < this.#delayEffectList.length; i++) {
+            const delayEffect = this.#delayEffectList[i];
+            if (delayEffect.turn == turn) {
+                result.push(delayEffect);
+                this.#delayEffectList.splice(i, 1);
+                i--;
+            }
+        }
+        return result;
     }
 
     reduce (name, value) {

@@ -1,17 +1,24 @@
+import { deep_copy } from "../util/utility.js";
 /**
  * IDの付け方
  * 0_0_0000_0
  * レアレティ：基本(トラブル含む)1, 白2, 金3, 虹4
  * タイプ　　：一般スキル0, トラブル1, キャラ固有2, サポ固有3
- * 固有番号　：4桁番号
+ * タイプ　　：アクティブ1, メンタル2
+ * プラン　　：フリー0, センス1, ロジック2
+ * 固有番号　：2桁番号
  * 強化　　　：強化前0, 強化後1
  * 
- * 実装：夏清夏まで
+ * 実装：7/12まで
  */
 
 export const skillCardData = [
+    /**
+     * ベーシックカード(アクティブ/フリー)
+     * 1010010 ~
+     */
     {
-        id: 1000010,
+        id: 1010010,
         name: 'アピールの基本',
         type: 'active',
         plan: 'free',
@@ -23,7 +30,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 1000011,
+        id: 1010011,
         name: 'アピールの基本+',
         type: 'active',
         plan: 'free', 
@@ -35,7 +42,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 1000020,
+        id: 1010020,
         name: 'ポーズの基本',
         type: 'active',
         plan: 'free', 
@@ -48,7 +55,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 1000021,
+        id: 1010021,
         name: 'ポーズの基本+',
         type: 'active',
         plan: 'free', 
@@ -60,8 +67,12 @@ export const skillCardData = [
         ],
         afterUse: null,
     },
+    /**
+     * ベーシックカード(アクティブ/センス)
+     * 1011010 ~
+     */
     {
-        id: 1000030,
+        id: 1011010,
         name: '挑戦',
         type: 'active',
         plan: 'sense', 
@@ -73,7 +84,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 1000031,
+        id: 1011011,
         name: '挑戦+',
         type: 'active',
         plan: 'sense', 
@@ -85,7 +96,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 1000040,
+        id: 1011020,
         name: '試行錯誤',
         type: 'active',
         plan: 'sense', 
@@ -98,7 +109,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 1000041,
+        id: 1011021,
         name: '試行錯誤+',
         type: 'active',
         plan: 'sense', 
@@ -110,8 +121,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * ベーシックカード(アクティブ/ロジック)
+     * 1012010 ~
+     */
     {
-        id: 1000050,
+        id: 1012010,
         name: '可愛い仕草',
         type: 'active',
         plan: 'logic', 
@@ -124,7 +139,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 1000051,
+        id: 1012011,
         name: '可愛い仕草+',
         type: 'active',
         plan: 'logic', 
@@ -137,7 +152,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 1000060,
+        id: 1012020,
         name: '気分転換',
         type: 'active',
         plan: 'logic',
@@ -149,7 +164,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 1000061,
+        id: 1012021,
         name: '気分転換+',
         type: 'active',
         plan: 'logic',
@@ -160,8 +175,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * ベーシックカード(メンタル/フリー)
+     * 1020010 ~
+     */
     {
-        id: 1000070,
+        id: 1020010,
         name: '表現の基本',
         type: 'mental',
         plan: 'free',
@@ -173,7 +192,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 1000071,
+        id: 1020011,
         name: '表現の基本+',
         type: 'mental',
         plan: 'free',
@@ -184,8 +203,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
+    /**
+     * ベーシックカード(メンタル/センス)
+     * 1021010 ~
+     */
     {
-        id: 1000080,
+        id: 1021010,
         name: '振る舞いの基本',
         type: 'mental',
         plan: 'sense',
@@ -198,7 +221,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 1000081,
+        id: 1021011,
         name: '振る舞いの基本+',
         type: 'mental',
         plan: 'sense',
@@ -211,7 +234,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 1000090,
+        id: 1021020,
         name: '表情の基本',
         type: 'mental',
         plan: 'sense',
@@ -224,7 +247,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 1000091,
+        id: 1021021,
         name: '表情の基本+',
         type: 'mental',
         plan: 'sense',
@@ -236,8 +259,12 @@ export const skillCardData = [
         ],
         afterUse: null
     },
+    /**
+     * ベーシックカード(メンタル/ロジック)
+     * 1022010 ~
+     */
     {
-        id: 1000100,
+        id: 1022010,
         name: '目線の基本',
         type: 'mental',
         plan: 'logic',
@@ -250,7 +277,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 1000101,
+        id: 1022011,
         name: '目線の基本+',
         type: 'mental',
         plan: 'logic',
@@ -263,7 +290,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 1000110,
+        id: 1022020,
         name: '意識の基本',
         type: 'mental',
         plan: 'logic',
@@ -276,7 +303,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 1000111,
+        id: 1022021,
         name: '意識の基本+',
         type: 'mental',
         plan: 'logic',
@@ -288,8 +315,12 @@ export const skillCardData = [
         ],
         afterUse: null
     },
+    /**
+     * トラブルカード(メンタル/トラブル)
+     * 1100010 ~
+     */
     {
-        id: 1100120,
+        id: 1100010,
         name: '眠気',
         type: 'trouble',
         plan: 'free',
@@ -299,8 +330,16 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
+    /**
+     * 白カード(アクティブ/フリー)
+     * 2010010 ~
+     */
+    /**
+     * 白カード(アクティブ/センス)
+     * 2011010 ~
+     */
     {
-        id: 2000130,
+        id: 2011010,
         name: '軽い足取り',
         type: 'active',
         plan: 'sense',
@@ -313,7 +352,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 2000131,
+        id: 2011011,
         name: '軽い足取り+',
         type: 'active',
         plan: 'sense',
@@ -326,7 +365,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 2000140,
+        id: 2011020,
         name: '愛嬌',
         type: 'active',
         plan: 'sense',
@@ -338,7 +377,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000141,
+        id: 2011021,
         name: '愛嬌+',
         type: 'active',
         plan: 'sense',
@@ -350,7 +389,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000150,
+        id: 2011030,
         name: '準備運動',
         type: 'active',
         plan: 'sense',
@@ -363,7 +402,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000151,
+        id: 2011031,
         name: '準備運動+',
         type: 'active',
         plan: 'sense',
@@ -376,7 +415,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000160,
+        id: 2011040,
         name: 'ファンサ',
         type: 'active',
         plan: 'sense',
@@ -388,7 +427,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000161,
+        id: 2011041,
         name: 'ファンサ+',
         type: 'active',
         plan: 'sense',
@@ -400,7 +439,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000170,
+        id: 2011050,
         name: '勢い任せ',
         type: 'active',
         plan: 'sense',
@@ -413,7 +452,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000171,
+        id: 2011051,
         name: '勢い任せ+',
         type: 'active',
         plan: 'sense',
@@ -426,7 +465,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000180,
+        id: 2011060,
         name: 'ハイタッチ',
         type: 'active',
         plan: 'sense',
@@ -438,7 +477,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000181,
+        id: 2011061,
         name: 'ハイタッチ+',
         type: 'active',
         plan: 'sense',
@@ -450,7 +489,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000190,
+        id: 2011070,
         name: 'トークタイム',
         type: 'active',
         plan: 'sense',
@@ -462,7 +501,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000191,
+        id: 2011071,
         name: 'トークタイム+',
         type: 'active',
         plan: 'sense',
@@ -473,8 +512,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
+    /**
+     * 白カード(アクティブ/ロジック)
+     * 2012010 ~
+     */
     {
-        id: 2000200,
+        id: 2012010,
         name: '今日もおはよう',
         type: 'active',
         plan: 'logic',
@@ -487,7 +530,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000201,
+        id: 2012011,
         name: '今日もおはよう+',
         type: 'active',
         plan: 'logic',
@@ -500,7 +543,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000210,
+        id: 2012020,
         name: 'ゆるふわおしゃべり',
         type: 'active',
         plan: 'logic',
@@ -513,7 +556,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000211,
+        id: 2012021,
         name: 'ゆるふわおしゃべり+',
         type: 'active',
         plan: 'logic',
@@ -526,7 +569,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000220,
+        id: 2012030,
         name: 'もう少しだけ',
         type: 'active',
         plan: 'logic',
@@ -539,7 +582,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000221,
+        id: 2012031,
         name: 'もう少しだけ+',
         type: 'active',
         plan: 'logic',
@@ -552,7 +595,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000230,
+        id: 2012040,
         name: '手拍子',
         type: 'active',
         plan: 'logic',
@@ -564,7 +607,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000231,
+        id: 2012041,
         name: '手拍子+',
         type: 'active',
         plan: 'logic',
@@ -576,7 +619,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000240,
+        id: 2012050,
         name: '元気な挨拶',
         type: 'active',
         plan: 'logic',
@@ -588,7 +631,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000241,
+        id: 2012051,
         name: '元気な挨拶+',
         type: 'active',
         plan: 'logic',
@@ -599,8 +642,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
+    /**
+     * 白カード(メンタル/フリー)
+     * 2020010 ~
+     */
     {
-        id: 2000250,
+        id: 2020010,
         name: '気合十分',
         type: 'mental',
         plan: 'free',
@@ -613,7 +660,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000251,
+        id: 2020011,
         name: '気合十分+',
         type: 'mental',
         plan: 'free',
@@ -626,7 +673,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000260,
+        id: 2020020,
         name: 'ファーストステップ',
         type: 'mental',
         plan: 'free',
@@ -639,7 +686,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000261,
+        id: 2020021,
         name: 'ファーストステップ+',
         type: 'mental',
         plan: 'free',
@@ -651,8 +698,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
+    /**
+     * 白カード(メンタル/センス)
+     * 2021010 ~
+     */
     {
-        id: 2000270,
+        id: 2021010,
         name: 'バランス感覚',
         type: 'mental',
         plan: 'sense',
@@ -664,7 +715,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000271,
+        id: 2021011,
         name: 'バランス感覚+',
         type: 'mental',
         plan: 'sense',
@@ -677,7 +728,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000280,
+        id: 2021020,
         name: '楽観的',
         type: 'mental',
         plan: 'sense',
@@ -690,7 +741,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000281,
+        id: 2021021,
         name: '楽観的+',
         type: 'mental',
         plan: 'sense',
@@ -703,7 +754,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000290,
+        id: 2021030,
         name: '深呼吸',
         type: 'mental',
         plan: 'sense',
@@ -716,7 +767,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000291,
+        id: 2021031,
         name: '深呼吸+',
         type: 'mental',
         plan: 'sense',
@@ -729,7 +780,37 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000300,
+        id: 2021040, // id
+        name: 'ひと呼吸',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 7 },
+        condition: '',
+        effects: [
+            { type: '好調', value: 3 },
+            { type: '集中', value: 4 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
+        id: 2021041,
+        name: 'ひと呼吸+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 7 },
+        condition: '',
+        effects: [
+            { type: '好調', value: 4 },
+            { type: '集中', value: 5 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    /**
+     * 白カード(メンタル/ロジック)
+     * 2022010 ~
+     */
+    {
+        id: 2022010,
         name: 'リスタート',
         type: 'mental',
         plan: 'logic',
@@ -742,7 +823,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000301,
+        id: 2022011,
         name: 'リスタート+',
         type: 'mental',
         plan: 'logic',
@@ -755,7 +836,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000310,
+        id: 2022020,
         name: 'えいえいおー',
         type: 'mental',
         plan: 'logic',
@@ -768,7 +849,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000311,
+        id: 2022021,
         name: 'えいえいおー+',
         type: 'mental',
         plan: 'logic',
@@ -781,7 +862,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000320,
+        id: 2022030,
         name: 'リズミカル',
         type: 'mental',
         plan: 'logic',
@@ -793,7 +874,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000321,
+        id: 2022031,
         name: 'リズミカル+',
         type: 'mental',
         plan: 'logic',
@@ -805,7 +886,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 }
     },
     {
-        id: 2000330,
+        id: 2022040,
         name: '思い出し笑い',
         type: 'mental',
         plan: 'logic',
@@ -818,7 +899,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000331,
+        id: 2022041,
         name: '思い出し笑い+',
         type: 'mental',
         plan: 'logic',
@@ -831,7 +912,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000340,
+        id: 2022050,
         name: 'パステル気分',
         type: 'mental',
         plan: 'logic',
@@ -844,7 +925,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000341,
+        id: 2022051,
         name: 'パステル気分+',
         type: 'mental',
         plan: 'logic',
@@ -857,7 +938,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000350,
+        id: 2022060,
         name: '励まし',
         type: 'mental',
         plan: 'logic',
@@ -870,7 +951,7 @@ export const skillCardData = [
         afterUse: null
     },
     {
-        id: 2000351,
+        id: 2022061,
         name: '励まし+',
         type: 'mental',
         plan: 'logic',
@@ -882,6 +963,34 @@ export const skillCardData = [
         ],
         afterUse: null
     },
+    {
+        id: 2022070,
+        name: '幸せのおまじない',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 8 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 7 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    {
+        id: 2022071,
+        name: '幸せのおまじない+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 8 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 9 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 }
+    },
+    /**
+     * 白カード(キャラ固有)
+     * 2201010 ~
+     */
     {
         id: 2201010,
         name: '新進気鋭',
@@ -1142,8 +1251,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
+    /**
+     * 金カード(アクティブ/フリー)
+     * 3010010 ~
+     */
     {
-        id: 3000010,
+        id: 3010010,
         name: '前途洋々',
         type: 'active',
         plan: 'free',
@@ -1156,7 +1269,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000011,
+        id: 3010011,
         name: '前途洋々+',
         type: 'active',
         plan: 'free',
@@ -1168,8 +1281,12 @@ export const skillCardData = [
         ],
         afterUse: null,
     },
+    /**
+     * 金カード(アクティブ/センス)
+     * 3011010 ~
+     */
     {
-        id: 3000020,
+        id: 3011010,
         name: '決めポーズ',
         type: 'active',
         plan: 'sense',
@@ -1181,7 +1298,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000021,
+        id: 3011011,
         name: '決めポーズ+',
         type: 'active',
         plan: 'sense',
@@ -1193,7 +1310,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000030,
+        id: 3011020,
         name: 'アドリブ',
         type: 'active',
         plan: 'sense',
@@ -1206,7 +1323,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000031,
+        id: 3011021,
         name: 'アドリブ+',
         type: 'active',
         plan: 'sense',
@@ -1219,7 +1336,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000040,
+        id: 3011030,
         name: '情熱ターン',
         type: 'active',
         plan: 'sense',
@@ -1232,7 +1349,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000041,
+        id: 3011031,
         name: '情熱ターン+',
         type: 'active',
         plan: 'sense',
@@ -1245,7 +1362,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000050,
+        id: 3011040,
         name: '飛躍',
         type: 'active',
         plan: 'sense',
@@ -1258,7 +1375,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000051,
+        id: 3011041,
         name: '飛躍+',
         type: 'active',
         plan: 'sense',
@@ -1271,7 +1388,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000060,
+        id: 3011050,
         name: '祝福',
         type: 'active',
         plan: 'sense',
@@ -1284,7 +1401,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000061,
+        id: 3011051,
         name: '祝福+',
         type: 'active',
         plan: 'sense',
@@ -1297,7 +1414,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000070,
+        id: 3011060,
         name: 'スタートダッシュ',
         type: 'active',
         plan: 'sense',
@@ -1311,7 +1428,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000071,
+        id: 3011061,
         name: 'スタートダッシュ+',
         type: 'active',
         plan: 'sense',
@@ -1325,7 +1442,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000080,
+        id: 3011070,
         name: 'スタンドプレー',
         type: 'active',
         plan: 'sense',
@@ -1340,7 +1457,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000081,
+        id: 3011071,
         name: 'スタンドプレー+',
         type: 'active',
         plan: 'sense',
@@ -1355,7 +1472,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000090,
+        id: 3011080,
         name: 'シュプレヒコール',
         type: 'active',
         plan: 'sense',
@@ -1369,7 +1486,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000091,
+        id: 3011081,
         name: 'シュプレヒコール+',
         type: 'active',
         plan: 'sense',
@@ -1383,7 +1500,39 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000100,
+        id: 3011090,
+        name: '立ち位置チェック',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '集中', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 25 },
+            { type: 'block', value: 15 },
+            { type: '元気増加無効', value: 2 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 3011091,
+        name: '立ち位置チェック+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '集中', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 40 },
+            { type: 'block', value: 15 },
+            { type: '元気増加無効', value: 2 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    /**
+     * 金カード(アクティブ/ロジック)
+     * 3012010 ~
+     */
+    {
+        id: 3012010,
         name: 'ラブリーウインク',
         type: 'active',
         plan: 'logic',
@@ -1396,7 +1545,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000101,
+        id: 3012011,
         name: 'ラブリーウインク+',
         type: 'active',
         plan: 'logic',
@@ -1409,7 +1558,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000110,
+        id: 3012020,
         name: 'ありがとうの言葉',
         type: 'active',
         plan: 'logic',
@@ -1422,7 +1571,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000111,
+        id: 3012021,
         name: 'ありがとうの言葉+',
         type: 'active',
         plan: 'logic',
@@ -1435,7 +1584,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000120,
+        id: 3012030,
         name: 'ハートの合図',
         type: 'active',
         plan: 'logic',
@@ -1448,7 +1597,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000121,
+        id: 3012031,
         name: 'ハートの合図+',
         type: 'active',
         plan: 'logic',
@@ -1461,7 +1610,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000130,
+        id: 3012040,
         name: 'キラメキ',
         type: 'active',
         plan: 'logic',
@@ -1475,7 +1624,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000131,
+        id: 3012041,
         name: 'キラメキ+',
         type: 'active',
         plan: 'logic',
@@ -1489,7 +1638,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000140,
+        id: 3012050,
         name: 'みんな大好き',
         type: 'active',
         plan: 'logic',
@@ -1502,7 +1651,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000141,
+        id: 3012051,
         name: 'みんな大好き+',
         type: 'active',
         plan: 'logic',
@@ -1514,8 +1663,12 @@ export const skillCardData = [
         ],
         afterUse: null,
     },
+    /**
+     * 金カード(メンタル/フリー)
+     * 3020010 ~
+     */
     {
-        id: 3000150,
+        id: 3020010,
         name: 'アイドル宣言',
         type: 'mental',
         plan: 'free',
@@ -1528,7 +1681,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000151,
+        id: 3020011,
         name: 'アイドル宣言+',
         type: 'mental',
         plan: 'free',
@@ -1542,7 +1695,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000160,
+        id: 3020020,
         name: 'ハイテンション',
         type: 'mental',
         plan: 'free',
@@ -1556,7 +1709,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000161,
+        id: 3020021,
         name: 'ハイテンション+',
         type: 'mental',
         plan: 'free',
@@ -1569,8 +1722,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 金カード(メンタル/センス)
+     * 3021010 ~
+     */
     {
-        id: 3000170,
+        id: 3021010,
         name: '眼力',
         type: 'mental',
         plan: 'sense',
@@ -1583,7 +1740,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000171,
+        id: 3021011,
         name: '眼力+',
         type: 'mental',
         plan: 'sense',
@@ -1596,7 +1753,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000180,
+        id: 3021020,
         name: '大声援',
         type: 'mental',
         plan: 'sense',
@@ -1609,7 +1766,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000181,
+        id: 3021021,
         name: '大声援+',
         type: 'mental',
         plan: 'sense',
@@ -1622,7 +1779,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000190,
+        id: 3021030,
         name: '演出計画',
         type: 'mental',
         plan: 'sense',
@@ -1635,7 +1792,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000191,
+        id: 3021031,
         name: '演出計画+',
         type: 'mental',
         plan: 'sense',
@@ -1648,7 +1805,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000200,
+        id: 3021040,
         name: '願いの力',
         type: 'mental',
         plan: 'sense',
@@ -1661,7 +1818,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000201,
+        id: 3021041,
         name: '願いの力+',
         type: 'mental',
         plan: 'sense',
@@ -1674,7 +1831,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000210,
+        id: 3021050,
         name: '静かな意志',
         type: 'mental',
         plan: 'sense',
@@ -1690,7 +1847,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000211,
+        id: 3021051,
         name: '静かな意志+',
         type: 'mental',
         plan: 'sense',
@@ -1706,7 +1863,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000220,
+        id: 3021060,
         name: '始まりの合図',
         type: 'mental',
         plan: 'sense',
@@ -1718,7 +1875,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000221,
+        id: 3021061,
         name: '始まりの合図+',
         type: 'mental',
         plan: 'sense',
@@ -1730,7 +1887,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000230,
+        id: 3021070,
         name: '意地',
         type: 'mental',
         plan: 'sense',
@@ -1743,7 +1900,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000231,
+        id: 3021071,
         name: '意地+',
         type: 'mental',
         plan: 'sense',
@@ -1756,7 +1913,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000240,
+        id: 3021080,
         name: '存在感',
         type: 'mental',
         plan: 'sense',
@@ -1769,7 +1926,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000241,
+        id: 3021081,
         name: '存在感+',
         type: 'mental',
         plan: 'sense',
@@ -1782,7 +1939,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000250,
+        id: 3021090,
         name: '成功への道筋',
         type: 'mental',
         plan: 'sense',
@@ -1795,7 +1952,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000251,
+        id: 3021091,
         name: '成功への道筋+',
         type: 'mental',
         plan: 'sense',
@@ -1808,7 +1965,37 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000260,
+        id: 3021100,
+        name: 'スポットライト',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 7 },
+            { type: '好調', value: 4 },
+        ],
+        afterUse: null,
+    },
+    {
+        id: 3021101,
+        name: 'スポットライト+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'direct', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 9 },
+            { type: '好調', value: 5 },
+        ],
+        afterUse: null,
+    },
+    /**
+     * 金カード(メンタル/ロジック)
+     * 3022010 ~
+     */
+    {
+        id: 3022010,
         name: 'あふれる思い出',
         type: 'mental',
         plan: 'logic',
@@ -1821,7 +2008,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000261,
+        id: 3022011,
         name: 'あふれる思い出+',
         type: 'mental',
         plan: 'logic',
@@ -1834,7 +2021,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000270,
+        id: 3022020,
         name: 'ふれあい',
         type: 'mental',
         plan: 'logic',
@@ -1847,7 +2034,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000271,
+        id: 3022021,
         name: 'ふれあい+',
         type: 'mental',
         plan: 'logic',
@@ -1860,7 +2047,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000280,
+        id: 3022030,
         name: '幸せな時間',
         type: 'mental',
         plan: 'logic',
@@ -1872,7 +2059,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000281,
+        id: 3022031,
         name: '幸せな時間+',
         type: 'mental',
         plan: 'logic',
@@ -1884,7 +2071,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000290,
+        id: 3022040,
         name: 'ファンシーチャーム',
         type: 'mental',
         plan: 'logic',
@@ -1897,7 +2084,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000291,
+        id: 3022041,
         name: 'ファンシーチャーム+',
         type: 'mental',
         plan: 'logic',
@@ -1910,7 +2097,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000300,
+        id: 3022050,
         name: 'ワクワクが止まらない',
         type: 'mental',
         plan: 'logic',
@@ -1923,7 +2110,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000301,
+        id: 3022051,
         name: 'ワクワクが止まらない+',
         type: 'mental',
         plan: 'logic',
@@ -1936,7 +2123,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000310,
+        id: 3022060,
         name: '本番前夜',
         type: 'mental',
         plan: 'logic',
@@ -1952,7 +2139,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000311,
+        id: 3022061,
         name: '本番前夜+',
         type: 'mental',
         plan: 'logic',
@@ -1968,7 +2155,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000320,
+        id: 3022070,
         name: 'ひなたぼっこ',
         type: 'mental',
         plan: 'logic',
@@ -1982,7 +2169,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000321,
+        id: 3022071,
         name: 'ひなたぼっこ+',
         type: 'mental',
         plan: 'logic',
@@ -1996,7 +2183,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000330,
+        id: 3022080,
         name: 'イメトレ',
         type: 'mental',
         plan: 'logic',
@@ -2009,7 +2196,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000331,
+        id: 3022081,
         name: 'イメトレ+',
         type: 'mental',
         plan: 'logic',
@@ -2022,7 +2209,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000340,
+        id: 3022090,
         name: 'やる気は満点',
         type: 'mental',
         plan: 'logic',
@@ -2035,7 +2222,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000341,
+        id: 3022091,
         name: 'やる気は満点+',
         type: 'mental',
         plan: 'logic',
@@ -2048,7 +2235,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 3000350,
+        id: 3022100,
         name: 'ゆめみごこち',
         type: 'mental',
         plan: 'logic',
@@ -2061,7 +2248,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 3000351,
+        id: 3022101,
         name: 'ゆめみごこち+',
         type: 'mental',
         plan: 'logic',
@@ -2073,6 +2260,65 @@ export const skillCardData = [
         ],
         afterUse: null,
     },
+    {
+        id: 3022110,
+        name: '止められない想い',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 3 },
+            { type: '好印象', value: 3 },
+            { type: 'スキルカード使用数追加', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 3022111,
+        name: '止められない想い+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'やる気', value: 4 },
+            { type: '好印象', value: 5 },
+            { type: 'スキルカード使用数追加', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 0,
+        name: 'オトメゴコロ',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'やる気', value: 3 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 4 },
+            { type: 'スキルカード使用数追加', value: 1 },
+        ],
+        afterUse: null,
+    },
+    {
+        id: 0,
+        name: 'オトメゴコロ+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'やる気', value: 3 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 5 },
+            { type: 'スキルカード使用数追加', value: 1 },
+            { type: '好印象', value: 2, condition: '好印象>=10' },
+        ],
+        afterUse: null,
+    },
+    /**
+     * 金カード(キャラ固有)
+     * 3201010 ~
+     */
     {
         id: 3201010,
         name: '一番は譲らない',
@@ -2329,6 +2575,10 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 金カード(サポ固有)
+     * 3300010 ~
+     */
     {
         id: 3300010,
         name: 'お姉ちゃんだもの！',
@@ -2523,8 +2773,16 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 虹カード(アクティブ/フリー)
+     * 4010010 ~
+     */
+    /**
+     * 虹カード(アクティブ/センス)
+     * 4011010 ~
+     */
     {
-        id: 4000010,
+        id: 4011010,
         name: 'コール＆レスポンス',
         type: 'active',
         plan: 'sense',
@@ -2537,7 +2795,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000011,
+        id: 4011011,
         name: 'コール＆レスポンス+',
         type: 'active',
         plan: 'sense',
@@ -2550,7 +2808,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000020,
+        id: 4011020,
         name: 'バズワード',
         type: 'active',
         plan: 'sense',
@@ -2562,7 +2820,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 4000021,
+        id: 4011021,
         name: 'バズワード+',
         type: 'active',
         plan: 'sense',
@@ -2574,7 +2832,7 @@ export const skillCardData = [
         afterUse: null,
     },
     {
-        id: 4000030,
+        id: 4011030,
         name: '成就',
         type: 'active',
         plan: 'sense',
@@ -2582,12 +2840,12 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好調', value: 4 },
-            { type: 'Nターン後、パラメータ', value: 32, n: 1 },
+            { type: 'score', value: 32, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000031,
+        id: 4011031,
         name: '成就+',
         type: 'active',
         plan: 'sense',
@@ -2595,12 +2853,12 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: '好調', value: 7 },
-            { type: 'Nターン後、パラメータ', value: 40, n: 1 },
+            { type: 'score', value: 40, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000040,
+        id: 4011040,
         name: '魅惑のパフォーマンス',
         type: 'active',
         plan: 'sense',
@@ -2608,12 +2866,12 @@ export const skillCardData = [
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 2 },
-            { type: 'Nターン後、パラメータ', value: 38, n: 1 },
+            { type: 'score', value: 38, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000041,
+        id: 4011041,
         name: '魅惑のパフォーマンス+',
         type: 'active',
         plan: 'sense',
@@ -2621,12 +2879,69 @@ export const skillCardData = [
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 3 },
-            { type: 'Nターン後、パラメータ', value: 47, n: 1 },
+            { type: 'score', value: 47, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000050,
+        id: 4011050,
+        name: '至高のエンタメ',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '集中', value: 3 },
+        condition: '',
+        effects: [
+            { type: 'アクティブスキルカード使用時、パラメータ+4', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4011051,
+        name: '至高のエンタメ+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '集中', value: 2 },
+        condition: '',
+        effects: [
+            { type: '字ターンドロー', value: 1 },
+            { type: 'アクティブスキルカード使用時、パラメータ+5', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4011060,
+        name: '覚醒',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '好調', value: 1 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 3 },
+            { type: 'score', value: 3 },
+            { type: '集中', value: 4 },
+        ],
+        afterUse: null,
+    },
+    {
+        id: 4011061,
+        name: '覚醒+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '好調', value: 1 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 4 },
+            { type: 'score', value: 4 },
+            { type: '集中', value: 6 },
+        ],
+        afterUse: null,
+    },
+    /**
+     * 虹カード(アクティブ/ロジック)
+     * 4012010 ~
+     */
+    {
+        id: 4012010,
         name: '２００％スマイル',
         type: 'active',
         plan: 'logic',
@@ -2639,7 +2954,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000051,
+        id: 4012011,
         name: '２００％スマイル+',
         type: 'active',
         plan: 'logic',
@@ -2652,7 +2967,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000060,
+        id: 4012020,
         name: '開花',
         type: 'active',
         plan: 'logic',
@@ -2665,7 +2980,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000061,
+        id: 4012021,
         name: '開花+',
         type: 'active',
         plan: 'logic',
@@ -2678,7 +2993,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000070,
+        id: 4012030,
         name: '届いて！',
         type: 'active',
         plan: 'logic',
@@ -2691,7 +3006,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000071,
+        id: 4012031,
         name: '届いて！+',
         type: 'active',
         plan: 'logic',
@@ -2704,7 +3019,65 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000080,
+        id: 4012040,
+        name: '輝くキミへ',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'やる気', value: 4 },
+        condition: '',
+        effects: [
+            { type: '使用数追加', value: 1 },
+            { type: 'スキルカード使用時、好印象の30%分パラメータ', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4012041,
+        name: '輝くキミへ+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'やる気', value: 4 },
+        condition: '',
+        effects: [
+            { type: '使用数追加', value: 1 },
+            { type: 'スキルカード使用時、好印象の50%分パラメータ', value: 1 },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4012050,
+        name: 'あのときの約束',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: '好印象', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 9 },
+            { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 150 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4012051,
+        name: 'あのときの約束+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: '好印象', value: 4 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 14 },
+            { type: 'score', value: null, options: [{ type: 'block', value: 130 }] },
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 200 }] },
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    /**
+     * 虹カード(メンタル/フリー)
+     * 4020010 ~
+     */
+    {
+        id: 4020010,
         name: 'テレビ出演',
         type: 'mental',
         plan: 'free',
@@ -2717,7 +3090,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000081,
+        id: 4020011,
         name: 'テレビ出演+',
         type: 'mental',
         plan: 'free',
@@ -2730,7 +3103,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000090,
+        id: 4020020,
         name: '叶えたい夢',
         type: 'mental',
         plan: 'free',
@@ -2743,7 +3116,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000091,
+        id: 4020021,
         name: '叶えたい夢+',
         type: 'mental',
         plan: 'free',
@@ -2756,7 +3129,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000100,
+        id: 4020030,
         name: 'アイドル魂',
         type: 'mental',
         plan: 'free',
@@ -2772,7 +3145,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000101,
+        id: 4020031,
         name: 'アイドル魂+',
         type: 'mental',
         plan: 'free',
@@ -2784,12 +3157,12 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 6 },
             { type: '低下状態無効', value: 1 },
-            { type: 'Nターン後、手札強化', value: null, n: 1 },
+            { type: '手札強化', value: null, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000110,
+        id: 4020040,
         name: '仕切り直し',
         type: 'mental',
         plan: 'free',
@@ -2803,7 +3176,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000111,
+        id: 4020041,
         name: '仕切り直し+',
         type: 'mental',
         plan: 'free',
@@ -2816,8 +3189,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 虹カード(メンタル/センス)
+     * 4021010 ~
+     */
     {
-        id: 4000120,
+        id: 4021010,
         name: '国民的アイドル',
         type: 'mental',
         plan: 'sense',
@@ -2830,7 +3207,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000121,
+        id: 4021011,
         name: '国民的アイドル+',
         type: 'mental',
         plan: 'sense',
@@ -2844,7 +3221,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000130,
+        id: 4021020,
         name: '魅惑の視線',
         type: 'mental',
         plan: 'sense',
@@ -2859,7 +3236,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000131,
+        id: 4021021,
         name: '魅惑の視線+',
         type: 'mental',
         plan: 'sense',
@@ -2874,7 +3251,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000140,
+        id: 4021030,
         name: '鳴り止まない拍手',
         type: 'mental',
         plan: 'sense',
@@ -2889,7 +3266,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000141,
+        id: 4021031,
         name: '鳴り止まない拍手+',
         type: 'mental',
         plan: 'sense',
@@ -2904,7 +3281,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000150,
+        id: 4021040,
         name: '天真爛漫',
         type: 'mental',
         plan: 'sense',
@@ -2917,7 +3294,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000151,
+        id: 4021041,
         name: '天真爛漫+',
         type: 'mental',
         plan: 'sense',
@@ -2929,8 +3306,12 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 虹カード(メンタル/ロジック)
+     * 4022010 ~
+     */
     {
-        id: 4000160,
+        id: 4022010,
         name: '私がスター',
         type: 'mental',
         plan: 'logic',
@@ -2943,7 +3324,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000161,
+        id: 4022011,
         name: '私がスター+',
         type: 'mental',
         plan: 'logic',
@@ -2957,7 +3338,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000170,
+        id: 4022020,
         name: '星屑センセーション',
         type: 'mental',
         plan: 'logic',
@@ -2970,7 +3351,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000171,
+        id: 4022021,
         name: '星屑センセーション+',
         type: 'mental',
         plan: 'logic',
@@ -2984,7 +3365,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000180,
+        id: 4022030,
         name: 'ノートの端の決意',
         type: 'mental',
         plan: 'logic',
@@ -2998,21 +3379,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000180,
-        name: 'ノートの端の決意',
-        type: 'mental',
-        plan: 'logic',
-        cost: { type: 'normal', value: 4 },
-        condition: '',
-        effects: [
-            { type: '好印象', value: 3 },
-            { type: 'やる気', value: 3 },
-            { type: '消費体力減少', value: 3 },
-        ],
-        afterUse: { type: 'exhaust', value: 1 },
-    },
-    {
-        id: 4000181,
+        id: 4022031,
         name: 'ノートの端の決意+',
         type: 'mental',
         plan: 'logic',
@@ -3026,7 +3393,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000190,
+        id: 4022040,
         name: '手書きのメッセージ',
         type: 'mental',
         plan: 'logic',
@@ -3039,7 +3406,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000191,
+        id: 4022041,
         name: '手書きのメッセージ+',
         type: 'mental',
         plan: 'logic',
@@ -3052,7 +3419,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000200,
+        id: 4022050,
         name: 'トキメキ',
         type: 'mental',
         plan: 'logic',
@@ -3065,7 +3432,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000201,
+        id: 4022051,
         name: 'トキメキ+',
         type: 'mental',
         plan: 'logic',
@@ -3078,7 +3445,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000210,
+        id: 4022060,
         name: '虹色ドリーマー',
         type: 'mental',
         plan: 'logic',
@@ -3091,7 +3458,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4000211,
+        id: 4022061,
         name: '虹色ドリーマー+',
         type: 'mental',
         plan: 'logic',
@@ -3103,6 +3470,10 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 虹カード(キャラ固有)
+     * 4201010 ~
+     */
     {
         id: 4201010,
         name: '絶対に負けない',
@@ -3474,6 +3845,34 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 4209020,
+        name: '入道雲と、きみ',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: '次に使用するアクティブスキルカードの効果をもう一回発動１回1ターン', value: 3 }, 
+            { type: '好調', value: 3 }, 
+            { type: '消費体力減少', value: 2 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4209021,
+        name: '入道雲と、きみ+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: 'normal', value: 5 },
+        condition: '',
+        effects: [
+            { type: '次に使用するアクティブスキルカードの効果をもう一回発動１回1ターン', value: 3 }, 
+            { type: '好調', value: 5 }, 
+            { type: '消費体力減少', value: 2 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 4210010, 
         name: 'おっきなおにぎり',
         type: 'mental',
@@ -3497,6 +3896,10 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    /**
+     * 虹カード(サポ固有)
+     * 4300010 ~ 実装順
+     */
     {
         id: 4300010, 
         name: '花萌ゆ季節',
@@ -3507,7 +3910,7 @@ export const skillCardData = [
         effects: [
             { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
+            { type: 'ドロー', value: 1, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3521,7 +3924,7 @@ export const skillCardData = [
         effects: [
             { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
+            { type: 'ドロー', value: 1, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3561,8 +3964,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 3 }, 
             { type: 'block', value: 3 }, 
-            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
-            { type: 'Nターン後ドロー', value: 1, n: 2 }, 
+            { type: 'ドロー', value: 1, delay: 1 }, 
+            { type: 'ドロー', value: 1, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3576,8 +3979,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 6 }, 
             { type: 'block', value: 5 }, 
-            { type: 'Nターン後ドロー', value: 1, n: 1 }, 
-            { type: 'Nターン後ドロー', value: 1, n: 2 }, 
+            { type: 'ドロー', value: 1, delay: 1 }, 
+            { type: 'ドロー', value: 1, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3668,6 +4071,62 @@ export const skillCardData = [
     },
     {
         id: 4300070, 
+        name: '喧嘩するほど仲がいい',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: '集中', value: 3 }, 
+            { type: '好調', value: 2 }, 
+            { type: '手札強化', value: null, delay: 1 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4300071, 
+        name: '喧嘩するほど仲がいい+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: '集中', value: 4 }, 
+            { type: '好調', value: 4 }, 
+            { type: '手札強化', value: null, delay: 1 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4300080, 
+        name: 'ダメダメクッキング',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 7 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 4 }, 
+            { type: 'やる気', value: 3 }, 
+            { type: '手札強化', value: null, delay: 1 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    }, 
+    {
+        id: 4300081, 
+        name: 'ダメダメクッキング+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'normal', value: 6 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 5 }, 
+            { type: 'やる気', value: 4 }, 
+            { type: '手札強化', value: null, delay: 1 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4300090, 
         name: '薄れゆく壁',
         type: 'mental',
         plan: 'free',
@@ -3675,13 +4134,13 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 2 }, 
+            { type: '手札強化', value: null, delay: 1 }, 
+            { type: '手札強化', value: null, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4300071, 
+        id: 4300091, 
         name: '薄れゆく壁+',
         type: 'mental',
         plan: 'free',
@@ -3689,13 +4148,13 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 2 }, 
+            { type: '手札強化', value: null, delay: 1 }, 
+            { type: '手札強化', value: null, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4300080, 
+        id: 4300100, 
         name: 'みずたまりスキップ',
         type: 'mental',
         plan: 'free',
@@ -3708,7 +4167,7 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4300081, 
+        id: 4300101, 
         name: 'みずたまりスキップ+',
         type: 'mental',
         plan: 'free',
@@ -3721,59 +4180,96 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4300090, 
-        name: '喧嘩するほど仲がいい',
-        type: 'mental',
+        id: 4300110, 
+        name: 'はじける水しぶき',
+        type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: 'direct', value: 6 },
         condition: '',
         effects: [
-            { type: '集中', value: 3 }, 
-            { type: '好調', value: 2 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
+            { type: 'score', value: 33 }, 
+            { type: '体力回復', value: 4, delay: 2, condition: '好調>=4' }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
-        id: 4300091, 
-        name: '喧嘩するほど仲がいい+',
-        type: 'mental',
+        id: 4300111, 
+        name: 'はじける水しぶき+',
+        type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: 'direct', value: 6 },
         condition: '',
         effects: [
-            { type: '集中', value: 4 }, 
-            { type: '好調', value: 4 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
+            { type: 'score', value: 45 }, 
+            { type: '体力回復', value: 6, delay: 2, condition: '好調>=4' }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
-    {
-        id: 4300100, 
-        name: 'ダメダメクッキング',
-        type: 'mental',
-        plan: 'logic',
-        cost: { type: 'normal', value: 7 },
-        condition: '',
-        effects: [
-            { type: '好印象', value: 4 }, 
-            { type: 'やる気', value: 3 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
-        ],
-        afterUse: { type: 'exhaust', value: 1 },
-    }, 
-    {
-        id: 4300101, 
-        name: 'ダメダメクッキング+',
-        type: 'mental',
-        plan: 'logic',
-        cost: { type: 'normal', value: 6 },
-        condition: '',
-        effects: [
-            { type: '好印象', value: 5 }, 
-            { type: 'やる気', value: 4 }, 
-            { type: 'Nターン後、手札強化', value: null, n: 1 }, 
-        ],
-        afterUse: { type: 'exhaust', value: 1 },
-    },    
 ];
+
+export class SkillCard {
+
+    // property
+    #available = false;
+
+    // method
+    constructor (id) {
+        const skillCard = SkillCardData.getById(id);
+        for (const propertyName in skillCard) {
+            if (skillCard.hasOwnProperty(propertyName)) {
+                this[propertyName] = skillCard[propertyName];
+            }
+        }
+    }
+
+    get score () {
+        return this.effects.reduce((p, v) => (v.type == 'score' ? p+v.actualValue : p), 0)
+    }
+
+    get block () {
+        return this.effects.reduce((p, v) => (v.type == 'block' ? p+v.actualValue : p), 0)
+    }
+
+    /**
+     * Pアイテムが利用可能か返します
+     * @returns {Boolean}
+     */
+    isAvailable () {
+        return this.#available;
+    }
+
+    setAvailable (available) {
+        this.#available = available;
+    }
+
+}
+
+export class SkillCardData {
+    
+    // property
+    static #skillCardData = skillCardData;
+    static #index = Object.fromEntries(this.#skillCardData.map((item, i) => [item.id, i]));
+
+    // method
+
+    /**
+     * IDと一致するスキルカードオブジェクトを返します
+     * @param {Number} id - スキルカードのID 
+     * @returns {Object} スキルカードデータ
+     */
+    static getById (id) {
+        if (!(id in this.#index)) {
+            throw new Error(`id(${id})と一致するスキルカードがありません。`);
+        }
+        return deep_copy(this.#skillCardData[this.#index[id]]);
+    }
+
+    /**
+     * スキルカードリストを返します※非推奨
+     * @returns {Array<Object>} スキルカードデータ
+     */
+    static getAll () {
+        return deep_copy(this.#skillCardData);
+    }
+
+}

@@ -82,18 +82,12 @@ export class ContestPIdol {
             this.log.nextTurn({ score: this.score, hp: this.hp, block: this.block, turnType: turnType });
             // Pアイテムターン開始時発動
             this.use_pItem('start_of_turn');
-            // Nターン後、パラメータの処理
-            const score_delayEffectStack = this.status.getDelayEffectStack('Nターン後、パラメータ');
-            for (let i = 0; i < score_delayEffectStack.length; i++) {
-                const parameterEffect = score_delayEffectStack[i];
-                this.log.addTextLog(`予約効果[ここに効果名を入力]発動`);
-                if (parameterEffect.turn == this.turn) {
-                    this.useEffect('reservation', { type: 'score', value: parameterEffect.value });
-                    score_delayEffectStack.splice(i, 1);
-                    i--;
-                }
-            }
             this.draw(3);
+             // 予約効果発動
+            for (const delayEffect of  this.status.getDelayEffectByTurn(this.turn)) {
+                this.log.addTextLog(`予約効果[${delayEffect.name}]発動`);
+                this.useEffect('reservation', delayEffect.effect);
+            }
             this.updateHand();
         }
         else if (timing == 'end_of_turn') {
@@ -121,27 +115,8 @@ export class ContestPIdol {
     }
 
     draw (number) {
-        const draw_delayEffectStack = this.status.getDelayEffectStack('Nターン後ドロー');
-        for (let i = 0; i < draw_delayEffectStack.length; i++) {
-            const drawEffect = draw_delayEffectStack[i];
-            if (drawEffect.turn == this.turn) {
-                number += drawEffect.value;
-                draw_delayEffectStack.splice(i, 1);
-                i--;
-            }
-        }
         this.log.addTextLog(`${number}枚ドローした`);
         this.deck.draw(number);
-        const upgrade_delayEffectStack = this.status.getDelayEffectStack('Nターン後、手札強化');
-        for (let i = 0; i < upgrade_delayEffectStack.length; i++) {
-            const upgradeEffect = upgrade_delayEffectStack[i];
-            this.log.addTextLog(`ステータス効果[ここに効果名を入力]発動`);
-            if (upgradeEffect.turn == this.turn) {
-                this.useEffect('status', { type: '手札強化' });
-                upgrade_delayEffectStack.splice(i, 1);
-                i--;
-            }
-        }
     }
 
     updateHand () {
@@ -442,6 +417,18 @@ export class ContestPIdol {
     }
 
     useEffect (name, effect, options) {
+        
+        // 予約効果を登録
+        if (effect.delay) {
+            this.log.addTextLog(`予約効果登録：${this.lastUsedCard.name} ${effect.delay}ターン後`);
+            this.status.addDelayEffect(this.lastUsedCard.name, this.turn+effect.delay, {
+                type: effect.type,
+                value: effect.value,
+                options: effect.options,
+            });
+            return;
+        }
+
         this.calcEffectActualValue(effect);
         const { type, actualValue, n } = effect;
 
@@ -530,14 +517,6 @@ export class ContestPIdol {
                 this.updateHand();
                 this.log.addTextLog(`生成：${targetCard.name}を手札に加えた`);
             }
-        }
-        else if (
-            type == 'Nターン後、手札強化' || 
-            type == 'Nターン後ドロー' || 
-            type == 'Nターン後、パラメータ' 
-        ) {
-            this.status.addDelayEffectStack(type, actualValue, this.turn+n);
-            this.log.addTextLog(`予約設定：${type.replace('N', n)}: +${actualValue}`);
         }
         else { // その他の通常バフ・デバフ
             if (this.status.getValue('低下状態無効') > 0 && this.status.getType == 'debuff') {
