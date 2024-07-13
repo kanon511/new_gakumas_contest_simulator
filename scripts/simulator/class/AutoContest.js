@@ -103,7 +103,7 @@ export class AutoContest {
             return effect.actualValue * 100;
         }
         if (effect.type == 'block') {
-            return effect.actualValue * 15 * this.contest.pIdol.remain_turn;
+            return effect.actualValue * 13 * this.contest.pIdol.remain_turn;
         }
         if (effect.type == '固定元気') {
             return effect.actualValue * 50;
