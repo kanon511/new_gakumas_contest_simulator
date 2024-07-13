@@ -332,7 +332,7 @@ export class ContestPIdol {
                 for (const effectOption of effect.options) {
                     switch (effectOption.type) {
                         case '使用したスキルカード数': 
-                            optionCoef['使用したスキルカード数'] = effectOption.value * this.status.get('使用したスキルカード数');
+                            optionCoef['使用したスキルカード数'] = effectOption.value * this.status.getValue('使用したスキルカード数');
                             break;
                     }
                 }
