@@ -142,7 +142,6 @@ export class Contest {
             this.pIdol.rest();
             return true;
         }
-        console.log(cardNumber, )
         // -1以外の不正な値　もしくは　カードが使用不可
         if (
             cardNumber < -1 || 
