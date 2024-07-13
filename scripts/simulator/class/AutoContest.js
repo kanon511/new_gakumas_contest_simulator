@@ -156,10 +156,10 @@ export class AutoContest {
             return 100 * effect.actualValue;
         }
         if (effect.type == '消費体力増加') {
-            return -100 * effect.actualValue;
+            return -50 * effect.actualValue;
         }
         if (effect.type == '元気増加無効') {
-            return -100 * effect.actualValue;
+            return -50 * effect.actualValue;
         }
         if (effect.type == '低下状態無効') {
             return 100 * effect.actualValue;
