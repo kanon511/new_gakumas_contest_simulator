@@ -276,7 +276,13 @@ export class ContestPIdol {
             const zekkouchoCoef = 
                 this.status.getValue('絶好調') > 0 ? this.status.getValue('好調') * 0.1 : 0;
             const statusCoef = 1 + this.status.getValue('パラメータ上昇量増加') / 100;
-            const parameterCoef = this.parameter[this.turnType] / 100;
+            const parameterCoef = (()=>{
+                if (!effect.delay) this.parameter[this.turnTypes[this.turn-1]] / 100;
+                if (this.remain_turn <= effect.delay) return 0;
+                const turnType = this.turn+effect.delay-1 < this.turnTypes.length ? 
+                    this.turnTypes[this.turn+effect.delay-1] : this.turnTypes[this.turnTypes.length-1];
+                return this.parameter[turnType] / 100;
+            })();
 
             const optionCoef = {
                 '集中': 1,
@@ -468,7 +474,7 @@ export class ContestPIdol {
                 this.block -= actualValue;
             }
             this.log.addTextLog(`体力：${hp}->${this.hp} (${this.hp-hp}) 元気：${block}->${this.block} (${this.block-block})`);
-            if (reduceFlag && name == 'card') {
+            if (reduceFlag && (name == 'card' || name == 'cost')) {
                 this.use_pItem('consume_hp');
             }
         }
@@ -476,7 +482,7 @@ export class ContestPIdol {
             const hp = this.hp;
             this.hp -= actualValue;
             this.log.addTextLog(`体力：${hp}->${this.hp} (${this.hp-hp})`);
-            if (actualValue > 0 && name == 'card') {
+            if (actualValue > 0 && (name == 'card' || name == 'cost')) {
                 this.use_pItem('consume_hp');
             }
         }

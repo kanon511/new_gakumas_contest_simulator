@@ -4180,6 +4180,31 @@ export const skillCardData = [
         afterUse: { type: 'exhaust', value: 1 },
     },
     {
+        id: 4300120, 
+        name: 'お泊り猛勉強',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 1 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 5 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
+        id: 4300121, 
+        name: 'お泊り猛勉強+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct', value: 1 },
+        condition: '',
+        effects: [
+            { type: '好印象', value: 6 }, 
+            { type: 'ドロー', value: 1, delay: 1 }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
+    {
         id: 4300110, 
         name: 'はじける水しぶき',
         type: 'active',
