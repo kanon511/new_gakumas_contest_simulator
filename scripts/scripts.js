@@ -221,8 +221,58 @@ document.addEventListener('DOMContentLoaded', () => {
         DOM_set_select_contest_pItem(e.target.value);
     });
 
+    function loadOptionsFromSearchParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const contestStage = urlParams.get("contest_stage");
+        const pIdol = urlParams.get("p_idol");
+        const status = urlParams.get("status");
+        const pItems = urlParams.get("p_items");
+        const cards = urlParams.get("cards");
+
+        if (contestStage) {
+            const contestId = contestStage.split(":")[0];
+            element_contest_select.value = contestId;
+            element_contest_select.dispatchEvent(new Event("change"));
+            element_contest_stage_select.value = contestStage;
+            element_contest_stage_select.dispatchEvent(new Event("change"));
+        }
+        if (pIdol) {
+            const [mainIdolId, subIdolId] = pIdol.split(":");
+            element_main_character_select.value = mainIdolId;
+            element_main_character_select.dispatchEvent(new Event("change"));
+            element_sub_character_select.value = subIdolId;
+            element_sub_character_select.dispatchEvent(new Event("change"));
+        }
+        if (status) {
+            const [vocal, dance, visual, hp] = status.split(":");
+            document.getElementById("status-vocal").value = vocal;
+            document.getElementById("status-dance").value = dance;
+            document.getElementById("status-visual").value = visual;
+            document.getElementById("status-hp").value = hp;
+        }
+        if (pItems) {
+            const itemIds = pItems.split(":");
+            element_pItems.slice(2).forEach((elem, idx) => (elem.value = itemIds[idx]));
+        }
+        if (cards) {
+            const cardIds = cards.split("_").map((cardGroup) => cardGroup.split(":"));
+            element_main_cards.forEach((elem, idx) => {
+            elem.value = 2 * Math.floor(cardIds[0][idx] / 2);
+            elem.parentNode.getElementsByClassName("checkbox")[0].checked =
+                cardIds[0][idx] % 2 > 0;
+            });
+            element_sub_cards.forEach((elem, idx) => {
+            elem.value = 2 * Math.floor(cardIds[1][idx] / 2);
+            elem.parentNode.getElementsByClassName("checkbox")[0].checked =
+                cardIds[1][idx] % 2 > 0;
+            });
+        }
+    }
+
     element_contest_select.dispatchEvent(new Event('change'));
     // element_contest_stage_select.dispatchEvent(new Event('change'));
+
+    loadOptionsFromSearchParams();
 
     const canvas = document.getElementById('chart');
     const chart = new Chart(canvas, {
