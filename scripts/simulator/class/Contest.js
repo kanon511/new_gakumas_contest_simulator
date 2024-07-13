@@ -83,6 +83,10 @@ class TurnType {
         if (idx > this.types.length - 1) return this.types[this.types.length-1];
         return this.types[idx];
     }
+
+    getAllTypes () {
+        return this.types;
+    }
 }
 
 export class Contest {
@@ -98,7 +102,7 @@ export class Contest {
         this.maxTurn = maxTurn;
 
         this.turnType = new TurnType(maxTurn, criteria);
-
+        this.pIdol.turnTypes = this.turnType.getAllTypes();
         this.currentTurn = 0;
         this.isFinish = false;
     }
@@ -109,7 +113,6 @@ export class Contest {
         this.currentType = this.turnType.getType(this.currentTurn);
         // console.log(`==========\n${this.currentTurn}ターン目[${this.currentType}]\n==========`);
         this.pIdol.process_at('start_of_turn', this.currentType);
-        this.handCards = this.pIdol.getDeck('handCards');
     }
 
     printHands () {
@@ -139,10 +142,11 @@ export class Contest {
             this.pIdol.rest();
             return true;
         }
+        console.log(cardNumber, )
         // -1以外の不正な値　もしくは　カードが使用不可
         if (
             cardNumber < -1 || 
-            cardNumber >= this.handCards.length || 
+            cardNumber >= this.getHands().length || 
             !this.getHands()[cardNumber]?.isAvailable()
         ) {
             return false;

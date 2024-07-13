@@ -9,7 +9,7 @@ export const run = (data) => {
     let scoreList = [];
     let minLog;
     let maxLog;
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 200; i++) {
         const pIdol = new ContestPIdol({ 
             parameter: data.parameter, 
             plan: data.plan,
@@ -23,19 +23,14 @@ export const run = (data) => {
             criteria: data.criteria,
         });
     
-    
+        const autoContest = new AutoContest(data.autoId, contest);
+
         for (let breakout = 0; breakout < 100; breakout++) {
             contest.startTurn();
             let loopout = 0;
             for (let endFlag = false; !endFlag;) {
-                // contest.printHands();
-                const hands = contest.getHands();
-                const availableIndex = hands.map((item,i)=>[item, i]).filter(item=>item[0].isAvailable()).map(item=>item[1]);
-                const inputNumber = 
-                    availableIndex.length == 0 ? -1 : availableIndex[Math.floor(Math.random()*availableIndex.length)];
-                endFlag = contest.useCard(inputNumber);
+                endFlag = contest.useCard(autoContest.select());
                 if (loopout > 100) {
-                    console.log(endFlag, hands, availableIndex, inputNumber, contest.pIdol);
                     alert('カード選択無限ループバグ');
                     throw 'test';
                 }

@@ -54,6 +54,7 @@ export class ContestPIdol {
         this.status = new PIdolStatus();
         this.pItemIds = pItemIds;
         this.skillCardIds = skillCardIds;
+        this.turnTypes = null;
         this.pItemsManager = new PItemManager(pItemIds);
         this.deck = new Deck(skillCardIds);
         this.turnType = null;

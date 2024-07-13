@@ -305,14 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const minscore = Math.floor(Math.min(...scoreList)/1000);
         const maxscore = Math.floor(Math.max(...scoreList)/1000);
         const count = Math.floor((maxscore - minscore))+1;
-        console.log(minscore, maxscore, count)
         const data = new Array(count).fill(0);
         for (let i = 0; i < scoreList.length; i++) {
             const kaikyu = Math.floor(scoreList[i]/1000) - minscore;
-            console.log(kaikyu)
             data[kaikyu]++;
         }
-        console.log(data);
         chart.data = {
             labels:  new Array(count).fill(0).map((_,i)=>(i+minscore)*1000),
             datasets: [
