@@ -145,6 +145,16 @@ const pItemData = [
         limit: 2,
     },
     {
+        id: 2107011,
+        name: 'ピンクのお揃いブレス+',
+        activate_timing: 'start_of_turn',
+        condition: '',
+        effects: [
+            { type: '集中', value: 1 },
+        ],
+        limit: 3,
+    },
+    {
         id: 2108010,
         name: '超絶あんみんマスク',
         activate_timing: 'start_of_turn',
@@ -211,7 +221,7 @@ const pItemData = [
     */
     {
         id: 2201010,
-        name: '咲季の完全色レシピ',
+        name: '咲季の完全食レシピ',
         activate_timing: 'start_of_turn',
         condition: '好調>0',
         effects: [
@@ -221,7 +231,7 @@ const pItemData = [
     },
     {
         id: 2201011,
-        name: '咲季の完全色レシピ+',
+        name: '咲季の完全食レシピ+',
         activate_timing: 'start_of_turn',
         condition: '好調>0',
         effects: [
@@ -345,7 +355,7 @@ const pItemData = [
     },
     {
         id: 2207011,
-        name: '放課後のらくがき',
+        name: '放課後のらくがき+',
         activate_timing: 'increased_status:集中',
         condition: '',
         effects: [
@@ -600,7 +610,7 @@ const pItemData = [
     },
     {
         id: 2302021,
-        name: 'これが、私',
+        name: 'これが、私+',
         activate_timing: 'end_of_turn',
         condition: '好印象>=10',
         effects: [
@@ -655,7 +665,7 @@ const pItemData = [
     },
     {
         id: 2304010,
-        name: '内なる光の首飾り',
+        name: '内なる光の耳飾り',
         activate_timing: 'start_of_turn',
         condition: '好調>0',
         effects: [
@@ -666,7 +676,7 @@ const pItemData = [
     },
     {
         id: 2304011,
-        name: '内なる光の首飾り+',
+        name: '内なる光の耳飾り+',
         activate_timing: 'start_of_turn',
         condition: '好調>0',
         effects: [
