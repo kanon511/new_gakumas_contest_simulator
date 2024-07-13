@@ -18,7 +18,7 @@ export class AutoContest {
         if (availableIndex.length == 0) return -1;
         const availableIndexValue = availableIndex.map(idx=>handCards[idx]).map(card=>this.calcSkillCardValue(card));
         const maxValue = Math.max(...availableIndexValue);
-        console.log(this.contest.pIdol.remain_turn, availableIndex.map((idx, i) => `${handCards[idx].name}: ${availableIndexValue[i]}`), availableIndexValue.indexOf(maxValue), handCards[availableIndex[availableIndexValue.indexOf(maxValue)]]);
+        // console.log(this.contest.pIdol.remain_turn, availableIndex.map((idx, i) => `${handCards[idx].name}: ${availableIndexValue[i]}`), availableIndexValue.indexOf(maxValue), handCards[availableIndex[availableIndexValue.indexOf(maxValue)]]);
         return availableIndex[availableIndexValue.indexOf(maxValue)];
     }
 
