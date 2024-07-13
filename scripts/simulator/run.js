@@ -9,7 +9,7 @@ export const run = (data) => {
     let scoreList = [];
     let minLog;
     let maxLog;
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 1000; i++) {
         const pIdol = new ContestPIdol({ 
             parameter: data.parameter, 
             plan: data.plan,
