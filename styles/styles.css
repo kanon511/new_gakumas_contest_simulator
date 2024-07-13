@@ -1,12 +1,13 @@
 body {
     font-family: Arial, sans-serif;
+    font-size: 14px;
     margin: 0;
     padding: 20px;
     box-sizing: border-box;
 }
 
 .container {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
     padding: 10px;
     border: 1px solid #ccc;
@@ -15,7 +16,7 @@ body {
     height: 100%;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 800px) {
     body {
         display: flex;
     }
@@ -25,25 +26,25 @@ body {
 }
 
 .section {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
 }
 .section label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0px;
 }
 .section input[type="text"],
 .section.character-select-box select, 
 .section .input-group select {
     width: 100%;
     padding: 8px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 .section input[type="button"] {
     display: block;
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     background-color: #007BFF;
     color: white;
     border: none;
