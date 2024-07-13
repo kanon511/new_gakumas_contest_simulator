@@ -299,7 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCardIds: skillCardIds, 
             autoId: autoId,
         };
-        const { scoreList, minLog, maxLog } = run(run_data);
+        let scoreList, minLog, maxLog;
+        try {
+            const result = run(run_data);
+            scoreList = result.scoreList;
+            minLog = result.scoreList;
+        } catch (error) {
+            alert('エラーが発生しました：'+error);
+        }
         // document.getElementById('contest-score').textContent = `スコア：${result.score}`;
         document.getElementById('contest-log').innerHTML = minLog.text.replaceAll('\n', '<br>');
 
