@@ -303,9 +303,11 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const result = run(run_data);
             scoreList = result.scoreList;
-            minLog = result.scoreList;
+            minLog = result.minLog;
         } catch (error) {
             alert('エラーが発生しました：'+error);
+            run_flag = false;
+            return;
         }
         // document.getElementById('contest-score').textContent = `スコア：${result.score}`;
         document.getElementById('contest-log').innerHTML = minLog.text.replaceAll('\n', '<br>');
