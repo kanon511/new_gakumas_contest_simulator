@@ -222,3 +222,21 @@ body {
     padding: 5px;
     overflow-x: scroll;
 }
+
+
+
+.result-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.result-table th {
+    padding: 3px;
+    background: #e9faf9;
+    border: solid 1px #778ca3;
+}
+.result-table td {
+    padding: 3px;
+    border: solid 1px #778ca3;
+}

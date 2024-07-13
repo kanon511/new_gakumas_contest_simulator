@@ -127,7 +127,7 @@ export class AutoContest {
             return 1000;
         }
         if (effect.type == '集中') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*0.9;
+            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*0.95;
         }
         if (effect.type == '好調') {
             let value = 300 * effect.actualValue * (Math.floor(this.contest.pIdol.remain_turn / 2) - this.contest.pIdol.status.getValue('好調'));

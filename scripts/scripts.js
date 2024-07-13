@@ -302,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const { scoreList, minLog, maxLog } = run(run_data);
         // document.getElementById('contest-score').textContent = `スコア：${result.score}`;
         document.getElementById('contest-log').innerHTML = minLog.text.replaceAll('\n', '<br>');
+
         const minscore = Math.floor(Math.min(...scoreList)/1000);
         const maxscore = Math.floor(Math.max(...scoreList)/1000);
         const count = Math.floor((maxscore - minscore))+1;
@@ -310,11 +311,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const kaikyu = Math.floor(scoreList[i]/1000) - minscore;
             data[kaikyu]++;
         }
+
+        document.getElementById('result-score-mean').textContent = Math.floor(scoreList.reduce((pre, crt)=>pre+crt, 0)/scoreList.length);
+        document.getElementById('result-score-median').textContent = scoreList.sort()[Math.floor(scoreList.length/2)];
+        document.getElementById('result-score-mode').textContent = (minscore + data.reduce((pre, crt, i)=>pre[0]<crt?[crt, i]:pre, [-1, 0])[1])*1000;
+
         chart.data = {
             labels:  new Array(count).fill(0).map((_,i)=>(i+minscore)*1000),
             datasets: [
                 {
-                    label: "系列Ａ",
+                    label: "スコア",
                     data: data
                 }
             ]
