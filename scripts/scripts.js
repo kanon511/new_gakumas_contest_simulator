@@ -222,12 +222,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     element_contest_select.dispatchEvent(new Event('change'));
-    // element_contest_stage_select.dispatchEvent(new Event('change'));
 
+    // グラフの準備
     const canvas = document.getElementById('chart');
     const chart = new Chart(canvas, {
         type: "bar",
     });
+
+    // ログボタン
+    const element_contest_result_buttons = document.querySelectorAll('.result-log-button>input[name="result-log-button"]');
+    const element_contest_result_logs = document.querySelectorAll('#contest-log>div');
+    console.log(element_contest_result_logs)
+    element_contest_result_buttons.forEach((radio, i) => {
+        radio.addEventListener('change', () => {
+            if (radio.checked) {
+                element_contest_result_logs.forEach((log, j) => {
+                    if (i == j) {
+                        log.classList.remove('hide');
+                    } else {
+                        log.classList.add('hide');
+                    }
+                });
+            }
+        });
+    });
+    element_contest_result_buttons[0].click();
 
     // 実行
     let run_flag = false;
@@ -299,11 +318,13 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCardIds: skillCardIds, 
             autoId: autoId,
         };
+
         let scoreList, minLog, maxLog;
         try {
             const result = run(run_data);
             scoreList = result.scoreList;
             minLog = result.minLog;
+            maxLog = result.maxLog;
         } catch (error) {
             alert('エラーが発生しました：'+error);
             run_flag = false;
@@ -311,7 +332,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         scoreList.sort((a, b) => a - b);
-        document.getElementById('contest-log').innerHTML = minLog.text.replaceAll('\n', '<br>');
+        document.getElementById('contest-log-min').innerHTML = minLog.text.replaceAll('\n', '<br>');
+        document.getElementById('contest-log-max').innerHTML = maxLog.text.replaceAll('\n', '<br>');
 
         const aryMax = function (a, b) {return Math.max(a, b);}
         const aryMin = function (a, b) {return Math.min(a, b);}

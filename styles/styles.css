@@ -217,6 +217,7 @@ body {
 }
 
 #contest-log {
+    width: calc(100% - 10px);
     border: 1px solid #ccc;
     background-color: white;
     padding: 5px;
@@ -239,4 +240,33 @@ body {
 .result-table td {
     padding: 3px;
     border: solid 1px #778ca3;
+}
+
+.result-log-button {
+    display: flex;
+    width: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    border: 2px solid #007bdd;
+}
+
+.result-log-button > input[type="radio"] {
+    display: none;
+}
+
+.result-log-button > .radio-box {
+    flex: 1;
+    padding: 5px 10px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.result-log-button > input[type="radio"]:checked + .radio-box {
+    background-color: #007bdd;
+    color: white;
+}
+
+.hide {
+    display: none;
 }
