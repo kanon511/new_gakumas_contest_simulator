@@ -168,10 +168,10 @@ export class AutoContest {
             return 10000;
         }
         if (effect.type == '次に使用するスキルカードの効果を発動') {
-            return 2000;
+            return 500;
         }
         if (effect.type == '次に使用するアクティブスキルカードの効果を発動') {
-            return 2000;
+            return 500;
         }
         if (effect.type == 'パラメータ上昇量増加') {
             return 0;

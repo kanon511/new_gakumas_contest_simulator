@@ -418,25 +418,32 @@ export class ContestPIdol {
         for (const effect of usedCard.effects) {
             effect.isActive = this.checkCondition(effect.condition);
         }
-        // effect効果
-        if (this.status.getValue('次に使用するスキルカードの効果を発動') > 0) {
-            for (const effect of usedCard.effects) {
-                if (!effect.isActive) continue;
-                this.useEffect('card', effect);
+        // effect2回発動判定
+        let isAdditionalAction = false;
+        const additionalActionItems = [
+            { key: '次に使用するアクティブスキルカードの効果を発動', condition: 'cardType==active' },
+            { key: '次に使用するスキルカードの効果を発動', condition: '' }
+        ];
+        for (const item of additionalActionItems) {
+            const value = this.status.getValue(item.key);
+            if (this.checkCondition(item.condition) && value > 0) {
+                this.status.reduce(item.key, 1);
+                this.log.addTextLog(`${item.key}：${value}->${value-1} (-1)`);
+                isAdditionalAction = true;
             }
-            this.status.reduce('次に使用するスキルカードの効果を発動', 1);
+            if (isAdditionalAction) break;
         }
         // effect効果
-        if (usedCard.type == 'active' && this.status.getValue('次に使用するアクティブスキルカードの効果を発動') > 0) {
-            for (const effect of usedCard.effects) {
-                if (!effect.isActive) continue;
-                this.useEffect('card', effect);
-            }
-            this.status.reduce('次に使用するアクティブスキルカードの効果を発動', 1);
+        this.useEffects('card', usedCard.effects);
+        if (isAdditionalAction) {
+            this.useEffects('card', usedCard.effects);
         }
-        for (const effect of usedCard.effects) {
+    }
+
+    useEffects (name, effects) {
+        for (const effect of effects) {
             if (!effect.isActive) continue;
-            this.useEffect('card', effect);
+            this.useEffect(name, effect);
         }
     }
 
@@ -454,7 +461,7 @@ export class ContestPIdol {
         }
 
         this.calcEffectActualValue(effect);
-        const { type, actualValue, options } = effect;
+        const { type, actualValue, options, value } = effect;
 
         if (type == '体力回復') {
             const hp = this.hp;
@@ -528,7 +535,7 @@ export class ContestPIdol {
             this.draw(count);
         }
         else if (type == '生成') {
-            if (actualValue == 'ランダムな強化済みスキルカード') {
+            if (value == 'ランダムな強化済みスキルカード') {
                 const targetCards = SkillCardData.getAll().filter(item=>
                     (item.plan=='free'||item.plan==this.plan) && // プラン指定
                     item.id % 10 == 1 && // 強化カード
