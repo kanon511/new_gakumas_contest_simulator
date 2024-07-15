@@ -648,7 +648,7 @@ export const skillCardData = [
      */
     {
         id: 2020010,
-        name: '気合十分',
+        name: '気合十分！',
         type: 'mental',
         plan: 'free',
         cost: { type: 'normal', value: 0 },
@@ -661,7 +661,7 @@ export const skillCardData = [
     },
     {
         id: 2020011,
-        name: '気合十分+',
+        name: '気合十分！+',
         type: 'mental',
         plan: 'free',
         cost: { type: 'normal', value: 0 },
