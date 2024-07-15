@@ -270,14 +270,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     element_contest_select.dispatchEvent(new Event('change'));
-    // element_contest_stage_select.dispatchEvent(new Event('change'));
+
 
     loadOptionsFromSearchParams();
 
+
+    // グラフの準備
     const canvas = document.getElementById('chart');
     const chart = new Chart(canvas, {
         type: "bar",
     });
+
+    // ログボタン
+    const element_contest_result_buttons = document.querySelectorAll('.result-log-button>input[name="result-log-button"]');
+    const element_contest_result_logs = document.querySelectorAll('#contest-log>div');
+    element_contest_result_buttons.forEach((radio, i) => {
+        radio.addEventListener('change', () => {
+            if (radio.checked) {
+                element_contest_result_logs.forEach((log, j) => {
+                    if (i == j) {
+                        log.classList.remove('hide');
+                    } else {
+                        log.classList.add('hide');
+                    }
+                });
+            }
+        });
+    });
+    element_contest_result_buttons[0].click();
 
     // 実行
     let run_flag = false;
@@ -349,21 +369,30 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCardIds: skillCardIds, 
             autoId: autoId,
         };
-        let scoreList, minLog, maxLog;
+
+        let scoreList, minLog, rndLog, maxLog;
         try {
             const result = run(run_data);
             scoreList = result.scoreList;
             minLog = result.minLog;
+            rndLog = result.rndLog;
+            maxLog = result.maxLog;
         } catch (error) {
             alert('エラーが発生しました：'+error);
             run_flag = false;
             return;
         }
-        // document.getElementById('contest-score').textContent = `スコア：${result.score}`;
-        document.getElementById('contest-log').innerHTML = minLog.text.replaceAll('\n', '<br>');
 
-        const minscore = Math.floor(Math.min(...scoreList)/1000);
-        const maxscore = Math.floor(Math.max(...scoreList)/1000);
+        scoreList.sort((a, b) => a - b);
+        document.getElementById('contest-log-min').innerHTML = minLog.text.replaceAll('\n', '<br>');
+        document.getElementById('contest-log-rnd').innerHTML = rndLog.text.replaceAll('\n', '<br>');
+        document.getElementById('contest-log-max').innerHTML = maxLog.text.replaceAll('\n', '<br>');
+
+        const aryMax = function (a, b) {return Math.max(a, b);}
+        const aryMin = function (a, b) {return Math.min(a, b);}
+        
+        const minscore = Math.floor(scoreList.reduce(aryMin)/1000);
+        const maxscore = Math.floor(scoreList.reduce(aryMax)/1000);
         const count = Math.floor((maxscore - minscore))+1;
         const data = new Array(count).fill(0);
         for (let i = 0; i < scoreList.length; i++) {
@@ -372,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         document.getElementById('result-score-mean').textContent = Math.floor(scoreList.reduce((pre, crt)=>pre+crt, 0)/scoreList.length);
-        document.getElementById('result-score-median').textContent = scoreList.sort()[Math.floor(scoreList.length/2)];
+        document.getElementById('result-score-median').textContent = scoreList[Math.floor(scoreList.length/2)];
         document.getElementById('result-score-mode').textContent = (minscore + data.reduce((pre, crt, i)=>pre[0]<crt?[crt, i]:pre, [-1, 0])[1])*1000;
 
         chart.data = {

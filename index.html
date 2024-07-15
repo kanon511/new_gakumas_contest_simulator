@@ -87,9 +87,21 @@
         <div>
             <canvas id="chart"></canvas>
         </div>
-        <div>ログ(最低値)</div>
-        <div id="contest-log">
-            テストテスト
+        <div>
+            ログ
+            <div class="result-log-button">
+                <input type="radio" id="result-log-button-min" name="result-log-button">
+                <label for="result-log-button-min" class="radio-box">最低値</label>
+                <input type="radio" id="result-log-button-rnd" name="result-log-button">
+                <label for="result-log-button-rnd" class="radio-box">ランダム</label>
+                <input type="radio" id="result-log-button-max" name="result-log-button">
+                <label for="result-log-button-max" class="radio-box">最高値</label>
+            </div>
+            <div id="contest-log">
+                <div id="contest-log-min">最低値のログが表示されます</div>
+                <div id="contest-log-rnd">ランダムな回のログが表示されます</div>
+                <div id="contest-log-max">最大値のログが表示されます</div>
+            </div>
         </div>
     </div>
 </body>

@@ -2590,7 +2590,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 6 },
             { type: 'block', value: 6 },
-            { type: '1ターン後ドロー', value: 1 },
+            { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2605,7 +2605,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 10 },
             { type: 'block', value: 9 },
-            { type: '1ターン後ドロー', value: 1 },
+            { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2619,7 +2619,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 },
             { type: '消費体力減少', value: 2 },
-            { type: '1ターン後ドロー', value: 1 },
+            { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2633,7 +2633,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 6 },
             { type: '消費体力減少', value: 3 },
-            { type: '1ターン後ドロー', value: 1 },
+            { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2647,7 +2647,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 4 },
             { type: 'block', value: 5 },
-            { type: '1ターン後、手札強化', value: 1 },
+            { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2661,7 +2661,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 4 },
             { type: 'block', value: 5 },
-            { type: '1ターン後、手札強化', value: 1 },
+            { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2675,7 +2675,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 3 },
             { type: '消費体力減少', value: 2 },
-            { type: '1ターン後、手札強化', value: 1 },
+            { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2689,7 +2689,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 3 },
             { type: '消費体力減少', value: 2 },
-            { type: '1ターン後、手札強化', value: 1 },
+            { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2702,7 +2702,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
-            { type: '1ターン後ドロー', value: 1 },
+            { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2715,7 +2715,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
-            { type: '1ターン後ドロー', value: 2 },
+            { type: 'ドロー', value: 2, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2729,7 +2729,7 @@ export const skillCardData = [
         effects: [
             { type: '好調', value: 3 },
             { type: '集中', value: 2 },
-            { type: '1ターン後ドロー', value: 1, condition: 'hpPer>=50' },
+            { type: 'ドロー', value: 1, delay: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -2743,7 +2743,7 @@ export const skillCardData = [
         effects: [
             { type: '好調', value: 4 },
             { type: '集中', value: 3 },
-            { type: '1ターン後ドロー', value: 1, condition: 'hpPer>=50' },
+            { type: 'ドロー', value: 1, delay: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
