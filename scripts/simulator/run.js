@@ -9,7 +9,10 @@ export const run = (data) => {
     let scoreList = [];
     let minLog;
     let maxLog;
-    for (let i = 0; i < 1000; i++) {
+    let rndLog;
+    const count = 1000;
+    const rndLogNumber = Math.floor(Math.random()*count);
+    for (let i = 0; i < count; i++) {
         const pIdol = new ContestPIdol({ 
             parameter: data.parameter, 
             plan: data.plan,
@@ -46,11 +49,15 @@ export const run = (data) => {
         if (!maxLog || maxLog.score < log.score) {
             maxLog = log;
         }
+        if (i == rndLogNumber) {
+            rndLog = log;
+        }
         scoreList.push(log.score);
     }
     return {
         scoreList: scoreList,
         minLog: minLog,
         maxLog: maxLog,
+        rndLog: rndLog,
     };
 };

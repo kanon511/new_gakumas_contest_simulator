@@ -232,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ログボタン
     const element_contest_result_buttons = document.querySelectorAll('.result-log-button>input[name="result-log-button"]');
     const element_contest_result_logs = document.querySelectorAll('#contest-log>div');
-    console.log(element_contest_result_logs)
     element_contest_result_buttons.forEach((radio, i) => {
         radio.addEventListener('change', () => {
             if (radio.checked) {
@@ -319,11 +318,12 @@ document.addEventListener('DOMContentLoaded', () => {
             autoId: autoId,
         };
 
-        let scoreList, minLog, maxLog;
+        let scoreList, minLog, rndLog, maxLog;
         try {
             const result = run(run_data);
             scoreList = result.scoreList;
             minLog = result.minLog;
+            rndLog = result.rndLog;
             maxLog = result.maxLog;
         } catch (error) {
             alert('エラーが発生しました：'+error);
@@ -333,6 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         scoreList.sort((a, b) => a - b);
         document.getElementById('contest-log-min').innerHTML = minLog.text.replaceAll('\n', '<br>');
+        document.getElementById('contest-log-rnd').innerHTML = rndLog.text.replaceAll('\n', '<br>');
         document.getElementById('contest-log-max').innerHTML = maxLog.text.replaceAll('\n', '<br>');
 
         const aryMax = function (a, b) {return Math.max(a, b);}
