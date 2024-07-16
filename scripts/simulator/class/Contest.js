@@ -1,4 +1,4 @@
-import { TurnType } from "./TurnType.js";
+// import { TurnType } from "./TurnType.js";
 
 export class Contest {
     
@@ -9,25 +9,12 @@ export class Contest {
             criteria
         } = parameters;
         this.pIdol = pIdol;
-        this.pIdol.remain_turn = maxTurn;
-        this.maxTurn = maxTurn;
-
-        this.turnType = new TurnType(maxTurn, criteria);
-        this.pIdol.turnTypes = this.turnType.getAllTypes();
-        this.currentTurn = 0;
+        this.pIdol.init(maxTurn, criteria);
         this.isFinish = false;
     }
 
     startTurn () {
-        // ターン開始
-        this.currentTurn++;
-        this.currentType = this.turnType.getType(this.currentTurn);
-        // console.log(`==========\n${this.currentTurn}ターン目[${this.currentType}]\n==========`);
-        this.pIdol.process_at('start_of_turn', this.currentType);
-    }
-
-    printHands () {
-        // console.log(this.handCards.map(item=>`${item.available?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`));
+        this.pIdol.process_at('start_of_turn');
     }
 
     getHands () {
@@ -35,15 +22,7 @@ export class Contest {
     }
 
     finishTurn () {
-        // console.log(`ターンエンド`);
         this.pIdol.process_at('end_of_turn');
-        // console.log(`山札`, this.pIdol.getDeck('drawPile').map(item=>item.name));
-        // console.log(`捨札`, this.pIdol.getDeck('discardPile').map(item=>item.name));
-        // console.log(`廃棄`, this.pIdol.getDeck('exhaustedCards').map(item=>item.name));
-        // console.log(
-        //     `HP: ${this.pIdol.hp}, ブロック: ${this.pIdol.block}, スコア: ${this.pIdol.score}`
-        // );
-        // console.log(Object.keys(this.pIdol.status.getAll()).map(key=>`${key}: ${this.pIdol.status.getValue(key)}`).join(', '))
         this.checkFinishContest();
     }
 

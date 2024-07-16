@@ -82,7 +82,7 @@ export class AutoContest {
             let result = 0;
             for (let i = 0; i < this.contest.pIdol.remain_turn; i++) {
                 const turn = i + this.contest.pIdol.turn;
-                result += this.contest.pIdol.parameter[this.contest.turnType.getType(turn)]/100*val;
+                result += this.contest.pIdol.parameter[this.contest.pIdol.turnType.getType(turn)]/100*val;
                 val--;
             }
             return result;
@@ -127,7 +127,7 @@ export class AutoContest {
             return 1000;
         }
         if (effect.type == '集中') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*0.95;
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*0.95;
         }
         if (effect.type == '好調') {
             let value = 300 * effect.actualValue * (Math.floor(this.contest.pIdol.remain_turn / 2) - this.contest.pIdol.status.getValue('好調'));
@@ -144,7 +144,7 @@ export class AutoContest {
             return value;
         }
         if (effect.type == 'やる気') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*this.contest.pIdol.remain_turn/10;
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*this.contest.pIdol.remain_turn/10;
         }
         if (effect.type == '好印象') {
             return (calckouinsyo(this.contest.pIdol.status.getValue('好印象')+effect.actualValue) - calckouinsyo(this.contest.pIdol.status.getValue('好印象')))*3.5
@@ -192,22 +192,22 @@ export class AutoContest {
             return calckouinsyo(this.contest.pIdol.status.getValue('好印象')+1*this.contest.pIdol.remain_turn);
         }
         if (effect.type == 'ターン終了時、集中が3以上の場合、集中+2') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map((type,i)=>this.contest.pIdol.parameter[type]*2*i).reduce((pre, crt)=>pre+crt, 0);
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map((type,i)=>this.contest.pIdol.parameter[type]*2*i).reduce((pre, crt)=>pre+crt, 0);
         }
         if (effect.type == 'ターン終了時、好印象が3以上の場合、好印象+3') {
             return calckouinsyo(this.contest.pIdol.status.getValue('好印象')+3*this.contest.pIdol.remain_turn);
         }
         if (effect.type == 'アクティブスキルカード使用時、パラメータ+4') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map((type)=>this.contest.pIdol.parameter[type]*4).reduce((pre, crt)=>pre+crt, 0);
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map((type)=>this.contest.pIdol.parameter[type]*4).reduce((pre, crt)=>pre+crt, 0);
         }
         if (effect.type == 'アクティブスキルカード使用時、パラメータ+5') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map((type)=>this.contest.pIdol.parameter[type]*5).reduce((pre, crt)=>pre+crt, 0);
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map((type)=>this.contest.pIdol.parameter[type]*5).reduce((pre, crt)=>pre+crt, 0);
         }   
         if (effect.type == 'スキルカード使用時、好印象の30%分パラメータ') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map((type,i)=>this.contest.pIdol.parameter[type]*this.contest.pIdol.status.getValue('好印象')*0.3).reduce((pre, crt)=>pre+crt, 0);
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map((type,i)=>this.contest.pIdol.parameter[type]*this.contest.pIdol.status.getValue('好印象')*0.3).reduce((pre, crt)=>pre+crt, 0);
         }
         if (effect.type == 'スキルカード使用時、好印象の50%分パラメータ') {
-            return this.contest.pIdol.turnTypes.slice(this.contest.pIdol.turn+1).map((type,i)=>this.contest.pIdol.parameter[type]*this.contest.pIdol.status.getValue('好印象')*0.5).reduce((pre, crt)=>pre+crt, 0);
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map((type,i)=>this.contest.pIdol.parameter[type]*this.contest.pIdol.status.getValue('好印象')*0.5).reduce((pre, crt)=>pre+crt, 0);
         }
         console.log(`${effect.type}の評価は定義されてないよ`);
         return 0;
@@ -246,7 +246,7 @@ export class AutoContest {
                     targetValue = this.contest.pIdol.turn;
                     break;
                 case 'turnType':
-                    targetValue = this.contest.pIdol.turnType;
+                    targetValue = this.contest.pIdol.currentTurnType;
                     break;
                 case 'turnMultiple':
                     if (this.contest.pIdol.turn % Number(value) == 0) {

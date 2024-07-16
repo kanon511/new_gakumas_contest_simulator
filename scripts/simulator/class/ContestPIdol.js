@@ -1,4 +1,5 @@
 import { Deck } from './Deck.js';
+import { TurnType } from './TurnType.js';
 import { PIdolStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
 import { SkillCardData } from '../data/skillCardData.js';
@@ -54,12 +55,18 @@ export class ContestPIdol {
         this.status = new PIdolStatus();
         this.pItemIds = pItemIds;
         this.skillCardIds = skillCardIds;
-        this.turnTypes = null;
+        // this.turnTypes = null;
         this.pItemsManager = new PItemManager(pItemIds);
         this.deck = new Deck(skillCardIds);
-        this.turnType = null;
+        // this.turnType = null;
+        this.currentTurnType = null;
         this.lastUsedCard = null;
         this.log = new PIdolLog();
+    }
+
+    init (turnCount, critearia) {
+        this.turnType = new TurnType(turnCount, critearia);
+        this.remain_turn = turnCount;
     }
 
     use_pItem (activateTiming) {
@@ -76,11 +83,11 @@ export class ContestPIdol {
     }
 
     // 
-    process_at (timing, turnType) {
+    process_at (timing) {
         if (timing == 'start_of_turn') {
             this.turn++;
-            this.turnType = turnType;
-            this.log.nextTurn({ score: this.score, hp: this.hp, block: this.block, turnType: turnType });
+            this.currentTurnType = this.turnType.getType(this.turn);
+            this.log.nextTurn({ score: this.score, hp: this.hp, block: this.block, turnType: this.currentTurnType });
             // Pアイテムターン開始時発動
             this.use_pItem('start_of_turn');
             this.draw(3);
@@ -171,7 +178,7 @@ export class ContestPIdol {
                     targetValue = this.turn;
                     break;
                 case 'turnType':
-                    targetValue = this.turnType;
+                    targetValue = this.currentTurnType;
                     break;
                 case 'turnMultiple': // nターンごと。無理やりなので修正してね
                     // turnMultiple==2
@@ -277,11 +284,9 @@ export class ContestPIdol {
                 this.status.getValue('絶好調') > 0 ? this.status.getValue('好調') * 0.1 : 0;
             const statusCoef = 1 + this.status.getValue('パラメータ上昇量増加') / 100;
             const parameterCoef = (()=>{
-                if (!effect.delay) this.parameter[this.turnTypes[this.turn-1]] / 100;
+                if (!effect.delay) return this.parameter[this.currentTurnType] / 100;
                 if (this.remain_turn <= effect.delay) return 0;
-                const turnType = this.turn+effect.delay-1 < this.turnTypes.length ? 
-                    this.turnTypes[this.turn+effect.delay-1] : this.turnTypes[this.turnTypes.length-1];
-                return this.parameter[turnType] / 100;
+                return this.parameter[this.turnType.getType(this.turn+effect.delay)] / 100;
             })();
 
             const optionCoef = {
