@@ -270,3 +270,13 @@ body {
 .hide {
     display: none;
 }
+
+.center {
+    text-align: center;
+}
+
+a {
+    font-weight: bold;
+    color: #007bdd;
+    text-decoration: none;
+}
