@@ -156,94 +156,84 @@ export class ContestPIdol {
         return result;
     }
 
+    compareCondition (key, value, sign) {
+        let targetValue = null;
+        switch (key) {
+            case 'hpPer':
+                targetValue = this.hp / this.maxHp * 100;
+                break;
+            case 'score': 
+                targetValue = this.score;
+                break;
+            case 'block':
+                targetValue = this.block;
+                break;
+            case 'turn':
+                targetValue = this.turn;
+                break;
+            case 'turnType':
+                targetValue = this.currentTurnType;
+                break;
+            case 'turnMultiple': // nターンごと。無理やりなので修正してね
+                // turnMultiple==2
+                // turn % value == 0 => targetValue = value;
+                // turn % value != 0 => targetValue = -1;
+                if (this.turn % Number(value) == 0) {
+                    targetValue = value;
+                } else {
+                    targetValue = -1;
+                }
+                break;
+            case 'cardType':
+                targetValue = this.lastUsedCard?.type;
+                break;
+            case 'cardId':
+                targetValue = this.lastUsedCard?.id;
+                break;
+            case 'cardEffectInclude':
+                targetValue = 
+                    this.lastUsedCard.effects.some(effect=>effect.type==value) ? 
+                    value : -1;
+                break;
+            case 'usedCardCountMultiple':
+                targetValue = 
+                    this.status.getValue('使用したスキルカード数') % Number(value) == 0 ? 
+                    value : -1;
+                break;
+            case 'remain_turn':
+                targetValue = this.remain_turn;
+                break;
+            default: 
+                targetValue = this.status.getValue(key);
+                break;
+        }
+        switch (sign) {
+            case '==': return targetValue == value;
+            case '!=': return targetValue != value;
+            case '>=': return targetValue >= value;
+            case '<=': return targetValue <= value;
+            case '>' : return targetValue >  value;
+            case '<' : return targetValue <  value;
+        }
+    }
+
     checkConditionUnit (query) {
         if (!query) {
             return true;
         }
-        const evaluate = (key, value, sign) => {
-            let targetValue = null;
-            switch (key) {
-                case 'hpPer':
-                    targetValue = this.hp / this.maxHp * 100;
-                    break;
-                case 'score': 
-                    targetValue = this.score;
-                    break;
-                case 'block':
-                    targetValue = this.block;
-                    break;
-                case 'turn':
-                    targetValue = this.turn;
-                    break;
-                case 'turnType':
-                    targetValue = this.currentTurnType;
-                    break;
-                case 'turnMultiple': // nターンごと。無理やりなので修正してね
-                    // turnMultiple==2
-                    // turn % value == 0 => targetValue = value;
-                    // turn % value != 0 => targetValue = -1;
-                    if (this.turn % Number(value) == 0) {
-                        targetValue = value;
-                    } else {
-                        targetValue = -1;
-                    }
-                    break;
-                case 'cardType':
-                    targetValue = this.lastUsedCard?.type;
-                    break;
-                case 'cardId':
-                    targetValue = this.lastUsedCard?.id;
-                    break;
-                case 'cardEffectInclude':
-                    targetValue = 
-                        this.lastUsedCard.effects.some(effect=>effect.type==value) ? 
-                        value : -1;
-                    break;
-                case 'usedCardCountMultiple':
-                    targetValue = 
-                        this.status.getValue('使用したスキルカード数') % Number(value) == 0 ? 
-                        value : -1;
-                    break;
-                case 'remain_turn':
-                    targetValue = this.remain_turn;
-                    break;
-                default: 
-                    targetValue = this.status.getValue(key);
-                    break;
-            }
-            switch (sign) {
-                case '==':
-                    return targetValue == value;
-                case '!=':
-                    return targetValue != value;
-                case '>=':
-                    return targetValue >= value;
-                case '<=':
-                    return targetValue <= value;
-                case '>':
-                    return targetValue > value;
-                case '<':
-                    return targetValue < value;
+        let sign = '';
+        const signList = ['==', '!=', '>=', '<=', '>', '<'];
+        for (const key of signList) {
+            if (~query.indexOf(key)) {
+                sign = key;
+                break;
             }
         }
-        let sign = '';
-        if (~query.indexOf('==')) {
-            sign = '==';
-        } else if (~query.indexOf('!=')) {
-            sign = '!=';
-        } else if (~query.indexOf('>=')) {
-            sign = '>=';
-        } else if (~query.indexOf('<=')) {
-            sign = '<=';
-        } else if (~query.indexOf('>')) {
-            sign = '>';
-        } else if (~query.indexOf('<')) {
-            sign = '<';
-        } else {
-            throw new Error(`予期しない記号が含まれます > ${query}`);
+        if (sign == '') {
+            throw new Error(`予期する記号が含まれません > ${query}`);
         }
         const [key, value] = query.split(sign);
-        return evaluate(key, value, sign);
+        return this.compareCondition(key, value, sign);
     }
 
     calcHandCardsActualCost (handCards) {
@@ -253,7 +243,7 @@ export class ContestPIdol {
     }
 
     calcHandCardActualCost (cost) {
-        if (cost.type == 'normal' || cost.type == 'direct') {
+        if (cost.type == '体力消費' || cost.type == '体力直接消費') {
             cost.actualValue  = 
                 Math.ceil(cost.value 
                     * (this.status.getValue('消費体力減少') > 0 ? 0.5 : 1) 
@@ -269,7 +259,7 @@ export class ContestPIdol {
     calcHandCardsEffectActualValue (handCards) {
         for (const handCard of handCards) {
             for (const effect of handCard.effects) {
-                this.calcEffectActualValue(effect)
+                this.calcEffectActualValue(effect);
             }
         }
     }
