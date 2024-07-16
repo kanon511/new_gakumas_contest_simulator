@@ -81,6 +81,10 @@ function DOM_set_select_options (select, item_list, isBlank) {
     select.appendChild(fragment);
 }
 
+window.addEventListener('error', (event) => {
+    alert(event.message);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // カードセレクトを挿入
@@ -371,17 +375,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         let scoreList, minLog, rndLog, maxLog;
-        try {
-            const result = run(run_data);
-            scoreList = result.scoreList;
-            minLog = result.minLog;
-            rndLog = result.rndLog;
-            maxLog = result.maxLog;
-        } catch (error) {
-            alert('エラーが発生しました：'+error);
-            run_flag = false;
-            return;
-        }
+        
+        const result = run(run_data);
+        scoreList = result.scoreList;
+        minLog = result.minLog;
+        rndLog = result.rndLog;
+        maxLog = result.maxLog;
 
         scoreList.sort((a, b) => a - b);
         document.getElementById('contest-log-min').innerHTML = minLog.text.replaceAll('\n', '<br>');

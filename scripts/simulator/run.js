@@ -34,8 +34,7 @@ export const run = (data) => {
             for (let endFlag = false; !endFlag;) {
                 endFlag = contest.useCard(autoContest.select());
                 if (loopout > 100) {
-                    alert('カード選択無限ループバグ');
-                    throw 'test';
+                    throw new Error('カード選択無限ループバグ');
                 }
                 loopout++;
             }
