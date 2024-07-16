@@ -55,10 +55,8 @@ export class ContestPIdol {
         this.status = new PIdolStatus();
         this.pItemIds = pItemIds;
         this.skillCardIds = skillCardIds;
-        // this.turnTypes = null;
         this.pItemsManager = new PItemManager(pItemIds);
         this.deck = new Deck(skillCardIds);
-        // this.turnType = null;
         this.currentTurnType = null;
         this.lastUsedCard = null;
         this.log = new PIdolLog();
@@ -368,9 +366,9 @@ export class ContestPIdol {
 
     checkCost (cost) { 
         switch (cost.type) {
-            case 'normal':
+            case '体力消費':
                 return this.hp + this.block >= cost.actualValue;
-            case 'direct':
+            case '体力直接消費':
                 return this.hp >= cost.actualValue;
             default: 
                 return this.status.getValue(cost.type) >= cost.actualValue;
@@ -379,11 +377,9 @@ export class ContestPIdol {
 
     useCost (cost) {
         switch (cost.type) {
-            case 'normal': 
-                this.useEffect('cost', { type: '体力消費', value: cost.actualValue });
-                break;
-            case 'direct':
-                this.useEffect('cost', { type: '体力直接消費', value: cost.actualValue });
+            case '体力消費': 
+            case '体力直接消費':
+                this.useEffect('cost', { type: cost.type, value: cost.actualValue });
                 break;
             default: 
                 const statusValue = this.status.getValue(cost.type);

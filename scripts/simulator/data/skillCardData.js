@@ -22,7 +22,7 @@ export const skillCardData = [
         name: 'アピールの基本',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 9 },
@@ -34,7 +34,7 @@ export const skillCardData = [
         name: 'アピールの基本+',
         type: 'active',
         plan: 'free', 
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 14 },
@@ -46,7 +46,7 @@ export const skillCardData = [
         name: 'ポーズの基本',
         type: 'active',
         plan: 'free', 
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 2 },
@@ -59,7 +59,7 @@ export const skillCardData = [
         name: 'ポーズの基本+',
         type: 'active',
         plan: 'free', 
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -76,7 +76,7 @@ export const skillCardData = [
         name: '挑戦',
         type: 'active',
         plan: 'sense', 
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '好調>0',
         effects: [
             { type: 'score', value: 25 },
@@ -88,7 +88,7 @@ export const skillCardData = [
         name: '挑戦+',
         type: 'active',
         plan: 'sense', 
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '好調>0',
         effects: [
             { type: 'score', value: 37 },
@@ -100,7 +100,7 @@ export const skillCardData = [
         name: '試行錯誤',
         type: 'active',
         plan: 'sense', 
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '',
         effects: [
             { type: 'score', value: 8 },
@@ -113,7 +113,7 @@ export const skillCardData = [
         name: '試行錯誤+',
         type: 'active',
         plan: 'sense', 
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 10 },
@@ -130,7 +130,7 @@ export const skillCardData = [
         name: '可愛い仕草',
         type: 'active',
         plan: 'logic', 
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
@@ -143,7 +143,7 @@ export const skillCardData = [
         name: '可愛い仕草+',
         type: 'active',
         plan: 'logic', 
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '好印象', value: 3 },
@@ -156,7 +156,7 @@ export const skillCardData = [
         name: '気分転換',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 5 },
+        cost: { type: '体力直接消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
@@ -168,7 +168,7 @@ export const skillCardData = [
         name: '気分転換+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 110 }] },
@@ -184,7 +184,7 @@ export const skillCardData = [
         name: '表現の基本',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 4 },
@@ -196,7 +196,7 @@ export const skillCardData = [
         name: '表現の基本+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 7 },
@@ -212,7 +212,7 @@ export const skillCardData = [
         name: '振る舞いの基本',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -225,7 +225,7 @@ export const skillCardData = [
         name: '振る舞いの基本+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -238,7 +238,7 @@ export const skillCardData = [
         name: '表情の基本',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -251,7 +251,7 @@ export const skillCardData = [
         name: '表情の基本+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -268,7 +268,7 @@ export const skillCardData = [
         name: '目線の基本',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -281,7 +281,7 @@ export const skillCardData = [
         name: '目線の基本+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -294,7 +294,7 @@ export const skillCardData = [
         name: '意識の基本',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -307,7 +307,7 @@ export const skillCardData = [
         name: '意識の基本+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -324,7 +324,7 @@ export const skillCardData = [
         name: '眠気',
         type: 'trouble',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
         ],
@@ -343,7 +343,7 @@ export const skillCardData = [
         name: '軽い足取り',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -356,7 +356,7 @@ export const skillCardData = [
         name: '軽い足取り+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 9 },
@@ -369,7 +369,7 @@ export const skillCardData = [
         name: '愛嬌',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 13 },
@@ -381,7 +381,7 @@ export const skillCardData = [
         name: '愛嬌+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 21 },
@@ -393,7 +393,7 @@ export const skillCardData = [
         name: '準備運動',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -406,7 +406,7 @@ export const skillCardData = [
         name: '準備運動+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 9 },
@@ -419,7 +419,7 @@ export const skillCardData = [
         name: 'ファンサ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'score', value: 10 },
@@ -431,7 +431,7 @@ export const skillCardData = [
         name: 'ファンサ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'score', value: 16 },
@@ -443,7 +443,7 @@ export const skillCardData = [
         name: '勢い任せ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -456,7 +456,7 @@ export const skillCardData = [
         name: '勢い任せ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 9 },
@@ -469,7 +469,7 @@ export const skillCardData = [
         name: 'ハイタッチ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 17, options: [{ type: '集中', value: 1.5 }] },
@@ -481,7 +481,7 @@ export const skillCardData = [
         name: 'ハイタッチ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 23, options: [{ type: '集中', value: 2 }] },
@@ -493,7 +493,7 @@ export const skillCardData = [
         name: 'トークタイム',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '好調>0',
         effects: [
             { type: 'score', value: 27 },
@@ -505,7 +505,7 @@ export const skillCardData = [
         name: 'トークタイム+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '好調>0',
         effects: [
             { type: 'score', value: 38 },
@@ -521,7 +521,7 @@ export const skillCardData = [
         name: '今日もおはよう',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 7 },
@@ -534,7 +534,7 @@ export const skillCardData = [
         name: '今日もおはよう+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 9 },
@@ -547,7 +547,7 @@ export const skillCardData = [
         name: 'ゆるふわおしゃべり',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -560,7 +560,7 @@ export const skillCardData = [
         name: 'ゆるふわおしゃべり+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 4 },
@@ -573,7 +573,7 @@ export const skillCardData = [
         name: 'もう少しだけ',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 10 },
@@ -586,7 +586,7 @@ export const skillCardData = [
         name: 'もう少しだけ+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 15 },
@@ -599,7 +599,7 @@ export const skillCardData = [
         name: '手拍子',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 150 }] },
@@ -611,7 +611,7 @@ export const skillCardData = [
         name: '手拍子+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
@@ -623,7 +623,7 @@ export const skillCardData = [
         name: '元気な挨拶',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 110 }] },
@@ -635,7 +635,7 @@ export const skillCardData = [
         name: '元気な挨拶+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 120 }] },
@@ -651,7 +651,7 @@ export const skillCardData = [
         name: '気合十分！',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -664,7 +664,7 @@ export const skillCardData = [
         name: '気合十分！+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -677,7 +677,7 @@ export const skillCardData = [
         name: 'ファーストステップ',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -690,7 +690,7 @@ export const skillCardData = [
         name: 'ファーストステップ+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -707,7 +707,7 @@ export const skillCardData = [
         name: 'バランス感覚',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '集中', value: 3 },
@@ -719,7 +719,7 @@ export const skillCardData = [
         name: 'バランス感覚+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -732,7 +732,7 @@ export const skillCardData = [
         name: '楽観的',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '好調', value: 3 },
@@ -745,7 +745,7 @@ export const skillCardData = [
         name: '楽観的+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '好調', value: 4 },
@@ -758,7 +758,7 @@ export const skillCardData = [
         name: '深呼吸',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '集中', value: 2 },
@@ -771,7 +771,7 @@ export const skillCardData = [
         name: '深呼吸+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '集中', value: 3 },
@@ -784,7 +784,7 @@ export const skillCardData = [
         name: 'ひと呼吸',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '',
         effects: [
             { type: '好調', value: 3 },
@@ -797,7 +797,7 @@ export const skillCardData = [
         name: 'ひと呼吸+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '',
         effects: [
             { type: '好調', value: 4 },
@@ -814,7 +814,7 @@ export const skillCardData = [
         name: 'リスタート',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -827,7 +827,7 @@ export const skillCardData = [
         name: 'リスタート+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -840,7 +840,7 @@ export const skillCardData = [
         name: 'えいえいおー',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -853,7 +853,7 @@ export const skillCardData = [
         name: 'えいえいおー+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -866,7 +866,7 @@ export const skillCardData = [
         name: 'リズミカル',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 6 },
@@ -878,7 +878,7 @@ export const skillCardData = [
         name: 'リズミカル+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 8 },
@@ -890,7 +890,7 @@ export const skillCardData = [
         name: '思い出し笑い',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '好印象', value: 3 },
@@ -903,7 +903,7 @@ export const skillCardData = [
         name: '思い出し笑い+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '好印象', value: 4 },
@@ -916,7 +916,7 @@ export const skillCardData = [
         name: 'パステル気分',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 5 },
@@ -929,7 +929,7 @@ export const skillCardData = [
         name: 'パステル気分+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 7 },
@@ -942,7 +942,7 @@ export const skillCardData = [
         name: '励まし',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -955,7 +955,7 @@ export const skillCardData = [
         name: '励まし+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 4 },
@@ -968,7 +968,7 @@ export const skillCardData = [
         name: '幸せのおまじない',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '',
         effects: [
             { type: '好印象', value: 7 },
@@ -980,7 +980,7 @@ export const skillCardData = [
         name: '幸せのおまじない+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '',
         effects: [
             { type: '好印象', value: 9 },
@@ -996,7 +996,7 @@ export const skillCardData = [
         name: '新進気鋭',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 17 },
@@ -1008,7 +1008,7 @@ export const skillCardData = [
         name: '新進気鋭+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 25 },
@@ -1020,7 +1020,7 @@ export const skillCardData = [
         name: '意地っ張り',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 7 },
@@ -1033,7 +1033,7 @@ export const skillCardData = [
         name: '意地っ張り+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 7 },
@@ -1046,7 +1046,7 @@ export const skillCardData = [
         name: 'アルバイター',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 2 },
@@ -1059,7 +1059,7 @@ export const skillCardData = [
         name: 'アルバイター+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -1072,7 +1072,7 @@ export const skillCardData = [
         name: 'リトル・プリンス',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 8 },
@@ -1085,7 +1085,7 @@ export const skillCardData = [
         name: 'リトル・プリンス+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 13 },
@@ -1098,7 +1098,7 @@ export const skillCardData = [
         name: '内気系少女',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '好印象', value: 1 },
@@ -1111,7 +1111,7 @@ export const skillCardData = [
         name: '内気系少女+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
@@ -1124,7 +1124,7 @@ export const skillCardData = [
         name: '元気いっぱい',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -1138,7 +1138,7 @@ export const skillCardData = [
         name: '元気いっぱい+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -1152,7 +1152,7 @@ export const skillCardData = [
         name: 'フレンドリー',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 10 },
@@ -1165,7 +1165,7 @@ export const skillCardData = [
         name: 'フレンドリー+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 12 },
@@ -1178,7 +1178,7 @@ export const skillCardData = [
         name: '超高学歴アイドル',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -1191,7 +1191,7 @@ export const skillCardData = [
         name: '超高学歴アイドル+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 4 },
@@ -1204,7 +1204,7 @@ export const skillCardData = [
         name: '包容力',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'score', value: 2 },
@@ -1218,7 +1218,7 @@ export const skillCardData = [
         name: '包容力+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'score', value: 3 },
@@ -1232,7 +1232,7 @@ export const skillCardData = [
         name: '未完の大器',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 3 }] },
@@ -1244,7 +1244,7 @@ export const skillCardData = [
         name: '未完の大器+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 4, options: [{ type: '使用したスキルカード数', value: 4 }] },
@@ -1260,7 +1260,7 @@ export const skillCardData = [
         name: '前途洋々',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 8 },
@@ -1273,7 +1273,7 @@ export const skillCardData = [
         name: '前途洋々+',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 12 },
@@ -1290,7 +1290,7 @@ export const skillCardData = [
         name: '決めポーズ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 18 },
@@ -1302,7 +1302,7 @@ export const skillCardData = [
         name: '決めポーズ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 27 },
@@ -1314,7 +1314,7 @@ export const skillCardData = [
         name: 'アドリブ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 5 },
@@ -1327,7 +1327,7 @@ export const skillCardData = [
         name: 'アドリブ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 9 },
@@ -1340,7 +1340,7 @@ export const skillCardData = [
         name: '情熱ターン',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 11 },
@@ -1353,7 +1353,7 @@ export const skillCardData = [
         name: '情熱ターン+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 18 },
@@ -1366,7 +1366,7 @@ export const skillCardData = [
         name: '飛躍',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 13 },
@@ -1379,7 +1379,7 @@ export const skillCardData = [
         name: '飛躍+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'score', value: 13 },
@@ -1392,7 +1392,7 @@ export const skillCardData = [
         name: '祝福',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 26 },
@@ -1405,7 +1405,7 @@ export const skillCardData = [
         name: '祝福+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 40 },
@@ -1418,7 +1418,7 @@ export const skillCardData = [
         name: 'スタートダッシュ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 30 },
@@ -1432,7 +1432,7 @@ export const skillCardData = [
         name: 'スタートダッシュ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 40 },
@@ -1446,7 +1446,7 @@ export const skillCardData = [
         name: 'スタンドプレー',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 12 },
@@ -1461,7 +1461,7 @@ export const skillCardData = [
         name: 'スタンドプレー+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 12 },
@@ -1536,7 +1536,7 @@ export const skillCardData = [
         name: 'ラブリーウインク',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '好印象', value: 4 },
@@ -1549,7 +1549,7 @@ export const skillCardData = [
         name: 'ラブリーウインク+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -1562,7 +1562,7 @@ export const skillCardData = [
         name: 'ありがとうの言葉',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 9 },
@@ -1575,7 +1575,7 @@ export const skillCardData = [
         name: 'ありがとうの言葉+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 11 },
@@ -1588,7 +1588,7 @@ export const skillCardData = [
         name: 'ハートの合図',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 130 }] },
@@ -1601,7 +1601,7 @@ export const skillCardData = [
         name: 'ハートの合図+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 180 }] },
@@ -1614,7 +1614,7 @@ export const skillCardData = [
         name: 'キラメキ',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 5 },
@@ -1628,7 +1628,7 @@ export const skillCardData = [
         name: 'キラメキ+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 5 },
@@ -1672,7 +1672,7 @@ export const skillCardData = [
         name: 'アイドル宣言',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
@@ -1685,7 +1685,7 @@ export const skillCardData = [
         name: 'アイドル宣言+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
@@ -1699,7 +1699,7 @@ export const skillCardData = [
         name: 'ハイテンション',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 11 },
@@ -1713,7 +1713,7 @@ export const skillCardData = [
         name: 'ハイテンション+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 13 },
@@ -1731,7 +1731,7 @@ export const skillCardData = [
         name: '眼力',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 6 },
@@ -1744,7 +1744,7 @@ export const skillCardData = [
         name: '眼力+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 8 },
@@ -1757,7 +1757,7 @@ export const skillCardData = [
         name: '大声援',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 6 },
@@ -1770,7 +1770,7 @@ export const skillCardData = [
         name: '大声援+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 8 },
@@ -1783,7 +1783,7 @@ export const skillCardData = [
         name: '演出計画',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '絶好調', value: 3 },
@@ -1796,7 +1796,7 @@ export const skillCardData = [
         name: '演出計画+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '絶好調', value: 4 },
@@ -1809,7 +1809,7 @@ export const skillCardData = [
         name: '願いの力',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '集中', value: 2 },
@@ -1822,7 +1822,7 @@ export const skillCardData = [
         name: '願いの力+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '集中', value: 3 },
@@ -1835,7 +1835,7 @@ export const skillCardData = [
         name: '静かな意志',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -1851,7 +1851,7 @@ export const skillCardData = [
         name: '静かな意志+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -1867,7 +1867,7 @@ export const skillCardData = [
         name: '始まりの合図',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '好調', value: 5 },
@@ -1879,7 +1879,7 @@ export const skillCardData = [
         name: '始まりの合図+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '好調', value: 7 },
@@ -1891,7 +1891,7 @@ export const skillCardData = [
         name: '意地',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -1904,7 +1904,7 @@ export const skillCardData = [
         name: '意地+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 5 },
@@ -1969,7 +1969,7 @@ export const skillCardData = [
         name: 'スポットライト',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 7 },
@@ -1982,7 +1982,7 @@ export const skillCardData = [
         name: 'スポットライト+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 9 },
@@ -1999,7 +1999,7 @@ export const skillCardData = [
         name: 'あふれる思い出',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -2012,7 +2012,7 @@ export const skillCardData = [
         name: 'あふれる思い出+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 4 },
@@ -2025,7 +2025,7 @@ export const skillCardData = [
         name: 'ふれあい',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -2038,7 +2038,7 @@ export const skillCardData = [
         name: 'ふれあい+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'block', value: 6 },
@@ -2051,7 +2051,7 @@ export const skillCardData = [
         name: '幸せな時間',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '好印象', value: 6 },
@@ -2063,7 +2063,7 @@ export const skillCardData = [
         name: '幸せな時間+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '好印象', value: 8 },
@@ -2075,7 +2075,7 @@ export const skillCardData = [
         name: 'ファンシーチャーム',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好印象', value: 3 },
@@ -2088,7 +2088,7 @@ export const skillCardData = [
         name: 'ファンシーチャーム+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -2101,7 +2101,7 @@ export const skillCardData = [
         name: 'ワクワクが止まらない',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -2114,7 +2114,7 @@ export const skillCardData = [
         name: 'ワクワクが止まらない+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'やる気', value: 5 },
@@ -2127,7 +2127,7 @@ export const skillCardData = [
         name: '本番前夜',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -2143,7 +2143,7 @@ export const skillCardData = [
         name: '本番前夜+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -2159,7 +2159,7 @@ export const skillCardData = [
         name: 'ひなたぼっこ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 11 },
@@ -2173,7 +2173,7 @@ export const skillCardData = [
         name: 'ひなたぼっこ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 11 },
@@ -2187,7 +2187,7 @@ export const skillCardData = [
         name: 'イメトレ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 7 },
@@ -2200,7 +2200,7 @@ export const skillCardData = [
         name: 'イメトレ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 11 },
@@ -2213,7 +2213,7 @@ export const skillCardData = [
         name: 'やる気は満点',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -2226,7 +2226,7 @@ export const skillCardData = [
         name: 'やる気は満点+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -2265,7 +2265,7 @@ export const skillCardData = [
         name: '止められない想い',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 3 },
@@ -2279,7 +2279,7 @@ export const skillCardData = [
         name: '止められない想い+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'やる気', value: 4 },
@@ -2324,7 +2324,7 @@ export const skillCardData = [
         name: '一番は譲らない',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 18 },
@@ -2337,7 +2337,7 @@ export const skillCardData = [
         name: '一番は譲らない+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 26 },
@@ -2350,7 +2350,7 @@ export const skillCardData = [
         name: 'ローン・ウルフ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 12 },
@@ -2363,7 +2363,7 @@ export const skillCardData = [
         name: 'ローン・ウルフ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'score', value: 12 },
@@ -2376,7 +2376,7 @@ export const skillCardData = [
         name: 'Colorful Cute!',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好印象', value: 6 },
@@ -2388,7 +2388,7 @@ export const skillCardData = [
         name: 'Colorful Cute!+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好印象', value: 8 },
@@ -2400,7 +2400,7 @@ export const skillCardData = [
         name: 'らしさ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'score', value: 4 },
@@ -2413,7 +2413,7 @@ export const skillCardData = [
         name: 'らしさ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -2426,7 +2426,7 @@ export const skillCardData = [
         name: '純白の妖精',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
@@ -2439,7 +2439,7 @@ export const skillCardData = [
         name: '純白の妖精+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '好印象', value: 2 },
@@ -2452,7 +2452,7 @@ export const skillCardData = [
         name: 'いっしょけんめい',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 1 },
@@ -2465,7 +2465,7 @@ export const skillCardData = [
         name: 'いっしょけんめい+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 4 },
@@ -2478,7 +2478,7 @@ export const skillCardData = [
         name: '勇気の一歩',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 17, options: [{ type: '集中', value: 2 }] },
@@ -2490,7 +2490,7 @@ export const skillCardData = [
         name: '勇気の一歩+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 24, options: [{ type: '集中', value: 2.5 }] },
@@ -2502,7 +2502,7 @@ export const skillCardData = [
         name: '苦しいのが好き',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 6 },
@@ -2515,7 +2515,7 @@ export const skillCardData = [
         name: '苦しいのが好き+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 7 },
@@ -2528,7 +2528,7 @@ export const skillCardData = [
         name: '寄り添う気持ち',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'block', value: 10 },
@@ -2541,7 +2541,7 @@ export const skillCardData = [
         name: '寄り添う気持ち+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'block', value: 12 }, 
@@ -2554,7 +2554,7 @@ export const skillCardData = [
         name: '打倒お姉ちゃん',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -2567,7 +2567,7 @@ export const skillCardData = [
         name: '打倒お姉ちゃん+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -2584,7 +2584,7 @@ export const skillCardData = [
         name: 'お姉ちゃんだもの！',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         // condition: 'レッスンCLEAR割合<=100',
         condition: 'score<=1000', // コンテストではこうらしい
         effects: [
@@ -2599,7 +2599,7 @@ export const skillCardData = [
         name: 'お姉ちゃんだもの！+',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         // condition: 'レッスンCLEAR割合<=100',
         condition: 'score<=1000', // コンテストではこうらしい
         effects: [
@@ -2614,7 +2614,7 @@ export const skillCardData = [
         name: 'おアツイ視線',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: 'block==0',
         effects: [
             { type: 'block', value: 5 },
@@ -2628,7 +2628,7 @@ export const skillCardData = [
         name: 'おアツイ視線+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: 'block==0',
         effects: [
             { type: 'block', value: 6 },
@@ -2642,7 +2642,7 @@ export const skillCardData = [
         name: 'ご指導ご鞭撻',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: 'hpPer>=50',
         effects: [
             { type: 'score', value: 4 },
@@ -2656,7 +2656,7 @@ export const skillCardData = [
         name: 'ご指導ご鞭撻+',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: 'hpPer>=50',
         effects: [
             { type: 'score', value: 4 },
@@ -2670,7 +2670,7 @@ export const skillCardData = [
         name: 'ストレッチ談義',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: 'turn>=3',
         effects: [
             { type: 'score', value: 3 },
@@ -2684,7 +2684,7 @@ export const skillCardData = [
         name: 'ストレッチ談義+',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: 'turn>=3',
         effects: [
             { type: 'score', value: 3 },
@@ -2698,7 +2698,7 @@ export const skillCardData = [
         name: '全力サポート',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
@@ -2711,7 +2711,7 @@ export const skillCardData = [
         name: '全力サポート+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
@@ -2724,7 +2724,7 @@ export const skillCardData = [
         name: 'キメ顔で自撮り',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好調', value: 3 },
@@ -2738,7 +2738,7 @@ export const skillCardData = [
         name: 'キメ顔で自撮り+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好調', value: 4 },
@@ -2752,7 +2752,7 @@ export const skillCardData = [
         name: 'なに聴いてるの？',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -2765,7 +2765,7 @@ export const skillCardData = [
         name: 'なに聴いてるの？+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -2786,7 +2786,7 @@ export const skillCardData = [
         name: 'コール＆レスポンス',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 15 },
@@ -2799,7 +2799,7 @@ export const skillCardData = [
         name: 'コール＆レスポンス+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 15 },
@@ -2812,7 +2812,7 @@ export const skillCardData = [
         name: 'バズワード',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '好調>0',
         effects: [
             { type: 'score', value: 38 },
@@ -2824,7 +2824,7 @@ export const skillCardData = [
         name: 'バズワード+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '好調>0',
         effects: [
             { type: 'score', value: 54 },
@@ -2836,7 +2836,7 @@ export const skillCardData = [
         name: '成就',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 10 },
+        cost: { type: '体力消費', value: 10 },
         condition: '',
         effects: [
             { type: '好調', value: 4 },
@@ -2849,7 +2849,7 @@ export const skillCardData = [
         name: '成就+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 10 },
+        cost: { type: '体力消費', value: 10 },
         condition: '',
         effects: [
             { type: '好調', value: 7 },
@@ -2862,7 +2862,7 @@ export const skillCardData = [
         name: '魅惑のパフォーマンス',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 2 },
@@ -2875,7 +2875,7 @@ export const skillCardData = [
         name: '魅惑のパフォーマンス+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '好調>0',
         effects: [
             { type: '絶好調', value: 3 },
@@ -2945,7 +2945,7 @@ export const skillCardData = [
         name: '２００％スマイル',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -2958,7 +2958,7 @@ export const skillCardData = [
         name: '２００％スマイル+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '好印象', value: 6 },
@@ -2971,7 +2971,7 @@ export const skillCardData = [
         name: '開花',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'やる気', value: 6 },
@@ -2984,7 +2984,7 @@ export const skillCardData = [
         name: '開花+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'やる気', value: 8 },
@@ -2997,7 +2997,7 @@ export const skillCardData = [
         name: '届いて！',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 2 },
+        cost: { type: '体力直接消費', value: 2 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 160 }] },
@@ -3010,7 +3010,7 @@ export const skillCardData = [
         name: '届いて！+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 2 },
+        cost: { type: '体力直接消費', value: 2 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 220 }] },
@@ -3081,7 +3081,7 @@ export const skillCardData = [
         name: 'テレビ出演',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 3 },
@@ -3094,7 +3094,7 @@ export const skillCardData = [
         name: 'テレビ出演+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 5 },
@@ -3107,7 +3107,7 @@ export const skillCardData = [
         name: '叶えたい夢',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 8 },
@@ -3120,7 +3120,7 @@ export const skillCardData = [
         name: '叶えたい夢+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 9 },
@@ -3133,7 +3133,7 @@ export const skillCardData = [
         name: 'アイドル魂',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -3149,7 +3149,7 @@ export const skillCardData = [
         name: 'アイドル魂+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -3166,7 +3166,7 @@ export const skillCardData = [
         name: '仕切り直し',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '手札入れ替え', value: null },
@@ -3180,7 +3180,7 @@ export const skillCardData = [
         name: '仕切り直し+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '手札入れ替え', value: null },
@@ -3255,7 +3255,7 @@ export const skillCardData = [
         name: '鳴り止まない拍手',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '集中', value: 4 },
@@ -3270,7 +3270,7 @@ export const skillCardData = [
         name: '鳴り止まない拍手+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '集中', value: 5 },
@@ -3285,7 +3285,7 @@ export const skillCardData = [
         name: '天真爛漫',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '集中', value: 1 },
@@ -3298,7 +3298,7 @@ export const skillCardData = [
         name: '天真爛漫+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '集中', value: 1 },
@@ -3369,7 +3369,7 @@ export const skillCardData = [
         name: 'ノートの端の決意',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好印象', value: 3 },
@@ -3383,7 +3383,7 @@ export const skillCardData = [
         name: 'ノートの端の決意+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -3423,7 +3423,7 @@ export const skillCardData = [
         name: 'トキメキ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 10 },
+        cost: { type: '体力消費', value: 10 },
         condition: '',
         effects: [
             { type: '好印象', value: 8 }, 
@@ -3436,7 +3436,7 @@ export const skillCardData = [
         name: 'トキメキ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 9 },
+        cost: { type: '体力消費', value: 9 },
         condition: '',
         effects: [
             { type: '好印象', value: 10 }, 
@@ -3449,7 +3449,7 @@ export const skillCardData = [
         name: '虹色ドリーマー',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 9 },
+        cost: { type: '体力消費', value: 9 },
         condition: '',
         effects: [
             { type: '好印象', value: 1 }, 
@@ -3462,7 +3462,7 @@ export const skillCardData = [
         name: '虹色ドリーマー+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 9 },
+        cost: { type: '体力消費', value: 9 },
         condition: '',
         effects: [
             { type: '好印象', value: 4 }, 
@@ -3479,7 +3479,7 @@ export const skillCardData = [
         name: '絶対に負けない',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 34 }, 
@@ -3491,7 +3491,7 @@ export const skillCardData = [
         name: '絶対に負けない+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 48 }, 
@@ -3503,7 +3503,7 @@ export const skillCardData = [
         name: 'ＰＯＷ！',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 5 },
+        cost: { type: '体力直接消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 250 }] }, 
@@ -3515,7 +3515,7 @@ export const skillCardData = [
         name: 'ＰＯＷ！+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 260 }] }, 
@@ -3527,7 +3527,7 @@ export const skillCardData = [
         name: 'それぞれの道',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '',
         effects: [
             { type: 'score', value: 14 }, 
@@ -3540,7 +3540,7 @@ export const skillCardData = [
         name: 'それぞれの道+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 15 }, 
@@ -3553,7 +3553,7 @@ export const skillCardData = [
         name: '絡まる想い',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -3568,7 +3568,7 @@ export const skillCardData = [
         name: '絡まる想い+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -3583,7 +3583,7 @@ export const skillCardData = [
         name: 'よそ見はダメ♪',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'block', value: 2 }, 
@@ -3596,7 +3596,7 @@ export const skillCardData = [
         name: 'よそ見はダメ♪+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: 'block', value: 4 }, 
@@ -3609,7 +3609,7 @@ export const skillCardData = [
         name: 'アドレナリン全開',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好調', value: 3 }, 
@@ -3622,7 +3622,7 @@ export const skillCardData = [
         name: 'アドレナリン全開+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '好調', value: 4 }, 
@@ -3635,7 +3635,7 @@ export const skillCardData = [
         name: '盛装の華形',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 12 }, 
@@ -3648,7 +3648,7 @@ export const skillCardData = [
         name: '盛装の華形+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'score', value: 18 }, 
@@ -3661,7 +3661,7 @@ export const skillCardData = [
         name: 'ひんやり一休み',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '',
         effects: [
             { type: 'score', value: 9 }, 
@@ -3675,7 +3675,7 @@ export const skillCardData = [
         name: 'ひんやり一休み+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 8 },
+        cost: { type: '体力消費', value: 8 },
         condition: '',
         effects: [
             { type: 'score', value: 14 }, 
@@ -3689,7 +3689,7 @@ export const skillCardData = [
         name: 'もう怖くないから',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '好印象', value: 3 }, 
@@ -3702,7 +3702,7 @@ export const skillCardData = [
         name: 'もう怖くないから+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '好印象', value: 4 }, 
@@ -3715,7 +3715,7 @@ export const skillCardData = [
         name: 'お嬢様の晴れ舞台',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 2 }, 
@@ -3729,7 +3729,7 @@ export const skillCardData = [
         name: 'お嬢様の晴れ舞台+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 4 },
+        cost: { type: '体力直接消費', value: 4 },
         condition: '',
         effects: [
             { type: 'block', value: 5 }, 
@@ -3743,7 +3743,7 @@ export const skillCardData = [
         name: 'ワンモアステップ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: 'score', value: 7 }, 
@@ -3757,7 +3757,7 @@ export const skillCardData = [
         name: 'ワンモアステップ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'score', value: 9 }, 
@@ -3771,7 +3771,7 @@ export const skillCardData = [
         name: '昼下がりのそよ風',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'やる気', value: 7 }, 
@@ -3784,7 +3784,7 @@ export const skillCardData = [
         name: '昼下がりのそよ風+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'やる気', value: 8 }, 
@@ -3797,7 +3797,7 @@ export const skillCardData = [
         name: '本気の趣味',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 5 }, 
@@ -3810,7 +3810,7 @@ export const skillCardData = [
         name: '本気の趣味+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'block', value: 7 }, 
@@ -3823,7 +3823,7 @@ export const skillCardData = [
         name: '距離感',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '集中', value: 4 }, 
@@ -3836,7 +3836,7 @@ export const skillCardData = [
         name: '距離感+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '集中', value: 5 }, 
@@ -3849,7 +3849,7 @@ export const skillCardData = [
         name: '入道雲と、きみ',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
@@ -3863,7 +3863,7 @@ export const skillCardData = [
         name: '入道雲と、きみ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
@@ -3877,7 +3877,7 @@ export const skillCardData = [
         name: 'おっきなおにぎり',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 5 }] }, 
@@ -3889,7 +3889,7 @@ export const skillCardData = [
         name: 'おっきなおにぎり+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 3 },
+        cost: { type: '体力直接消費', value: 3 },
         condition: '',
         effects: [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 8 }] }, 
@@ -3905,7 +3905,7 @@ export const skillCardData = [
         name: '花萌ゆ季節',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         effects: [
             { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
@@ -3919,7 +3919,7 @@ export const skillCardData = [
         name: '花萌ゆ季節+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
@@ -3933,7 +3933,7 @@ export const skillCardData = [
         name: '陽だまりの生徒会室',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '体力回復', value: 3 }, 
@@ -3946,7 +3946,7 @@ export const skillCardData = [
         name: '陽だまりの生徒会室+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: '体力回復', value: 5 }, 
@@ -3959,7 +3959,7 @@ export const skillCardData = [
         name: '心のアルバム',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'score', value: 3 }, 
@@ -3974,7 +3974,7 @@ export const skillCardData = [
         name: '心のアルバム+',
         type: 'active',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: 'score', value: 6 }, 
@@ -3989,7 +3989,7 @@ export const skillCardData = [
         name: 'ティーパーティ',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 }, 
@@ -4002,7 +4002,7 @@ export const skillCardData = [
         name: 'ティーパーティ+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 1 },
+        cost: { type: '体力消費', value: 1 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 }, 
@@ -4016,7 +4016,7 @@ export const skillCardData = [
         name: '光のステージ',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 3 },
+        cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
             { type: '消費体力軽減', value: 1 }, 
@@ -4029,7 +4029,7 @@ export const skillCardData = [
         name: '光のステージ+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 0 },
+        cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
             { type: '消費体力軽減', value: 1 }, 
@@ -4042,7 +4042,7 @@ export const skillCardData = [
         name: '新生徒会爆誕！',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -4058,7 +4058,7 @@ export const skillCardData = [
         name: '新生徒会爆誕！+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 4 },
+        cost: { type: '体力消費', value: 4 },
         condition: '',
         pre_effects: [
             { type: 'レッスン開始時手札に入る', value: null }
@@ -4074,7 +4074,7 @@ export const skillCardData = [
         name: '喧嘩するほど仲がいい',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '集中', value: 3 }, 
@@ -4088,7 +4088,7 @@ export const skillCardData = [
         name: '喧嘩するほど仲がいい+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '集中', value: 4 }, 
@@ -4102,7 +4102,7 @@ export const skillCardData = [
         name: 'ダメダメクッキング',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 7 },
+        cost: { type: '体力消費', value: 7 },
         condition: '',
         effects: [
             { type: '好印象', value: 4 }, 
@@ -4116,7 +4116,7 @@ export const skillCardData = [
         name: 'ダメダメクッキング+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'normal', value: 6 },
+        cost: { type: '体力消費', value: 6 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 }, 
@@ -4130,7 +4130,7 @@ export const skillCardData = [
         name: '薄れゆく壁',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 5 },
+        cost: { type: '体力消費', value: 5 },
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
@@ -4144,7 +4144,7 @@ export const skillCardData = [
         name: '薄れゆく壁+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'normal', value: 2 },
+        cost: { type: '体力消費', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
@@ -4158,7 +4158,7 @@ export const skillCardData = [
         name: 'みずたまりスキップ',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
@@ -4171,7 +4171,7 @@ export const skillCardData = [
         name: 'みずたまりスキップ+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 8 }, 
@@ -4184,7 +4184,7 @@ export const skillCardData = [
         name: 'お泊り猛勉強',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 }, 
@@ -4196,7 +4196,7 @@ export const skillCardData = [
         name: 'お泊り猛勉強+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct', value: 1 },
+        cost: { type: '体力直接消費', value: 1 },
         condition: '',
         effects: [
             { type: '好印象', value: 6 }, 
@@ -4209,7 +4209,7 @@ export const skillCardData = [
         name: 'はじける水しぶき',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'direct', value: 6 },
+        cost: { type: '体力直接消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 33 }, 
@@ -4222,7 +4222,7 @@ export const skillCardData = [
         name: 'はじける水しぶき+',
         type: 'active',
         plan: 'sense',
-        cost: { type: 'direct', value: 6 },
+        cost: { type: '体力直接消費', value: 6 },
         condition: '',
         effects: [
             { type: 'score', value: 45 }, 
