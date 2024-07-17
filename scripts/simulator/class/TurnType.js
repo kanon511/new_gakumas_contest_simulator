@@ -53,7 +53,6 @@ export class TurnType {
             this.#turnTypes[i] = typeIdx[chooseIdx];
             array[chooseIdx]--;
         }
-        console.log(this.#turnTypes);
     }
 
     /**
