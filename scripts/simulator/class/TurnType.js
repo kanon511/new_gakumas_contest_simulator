@@ -27,11 +27,13 @@ export class TurnType {
         this.#turnTypes[this.#turnTypes.length-1] = criteariaRank[0];
         // 最初のターンを流行1位に固定する
         let turnCountStart = 0;
-        if (typeCount[criteariaRank[0]] / turnTypes.reduce((p,c)=>p+c, 0) > 0.4) {
+        const totalTurnCount = turnTypes.reduce((p,c)=>p+c, 0);
+        if (totalTurnCount < 12) {
             this.#turnTypes[0] = criteariaRank[0];
+            typeCount[criteariaRank[0]] -= 1;
             turnCountStart++;
         } else {
-            if (Math.random() < typeCount[criteariaRank[0]] / (typeCount[criteariaRank[0]]+typeCount[criteariaRank[1]])) {
+            if (Math.random() < 0.8) {
                 this.#turnTypes[0] = criteariaRank[0];
                 typeCount[criteariaRank[0]] -= 1;
                 turnCountStart++;
