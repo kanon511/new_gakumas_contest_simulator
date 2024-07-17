@@ -273,6 +273,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function saveOptiostoSearchParams() {
+        
+    }
+
     element_contest_select.dispatchEvent(new Event('change'));
 
 
@@ -357,10 +361,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const contestStage  = contestDetail.stages[stageId];
 
         const autoId = document.getElementById('contest-auto').value;
-
         const run_data = {
             turn: contestStage.turn,
             criteria: contestDetail.criteria,
+            turnTypes: contestStage.turnTypes,
             parameter: {
                 vocal : vocal,
                 dance : dance,

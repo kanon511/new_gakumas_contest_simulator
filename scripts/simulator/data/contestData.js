@@ -17,6 +17,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240511],
                 plan: 'free',
+                turnTypes: [5, 3, 4],
             },
             {
                 name: 'ステージ2',
@@ -24,6 +25,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240512],
                 plan: 'sense',
+                turnTypes: [4, 2, 2],
             },
             {
                 name: 'ステージ3',
@@ -31,6 +33,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240513],
                 plan: 'logic',
+                turnTypes: [4, 2, 2],
             },
         ],
     },
@@ -45,6 +48,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240511],
                 plan: 'free',
+                turnTypes: [4, 5, 3],
             },
             {
                 name: 'ステージ2',
@@ -52,6 +56,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240612],
                 plan: 'sense',
+                turnTypes: [4, 5, 3],
             },
             {
                 name: 'ステージ3',
@@ -59,6 +64,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240613],
                 plan: 'logic',
+                turnTypes: [3, 5, 2],
             },
         ],
     },
@@ -73,6 +79,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240621],
                 plan: 'sense',
+                turnTypes: [2, 3, 5],
             },
             {
                 name: 'ステージ2',
@@ -80,6 +87,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240622],
                 plan: 'logic',
+                turnTypes: [2, 2, 4],
             },
             {
                 name: 'ステージ3',
@@ -87,6 +95,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240623],
                 plan: 'logic',
+                turnTypes: [2, 2, 4],
             },
         ],
     },
@@ -101,6 +110,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240711],
                 plan: 'sense',
+                turnTypes: [2, 5, 3],
             },
             {
                 name: 'ステージ2',
@@ -108,6 +118,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240612],
                 plan: 'sense',
+                turnTypes: [2, 5, 3],
             },
             {
                 name: 'ステージ3',
@@ -115,6 +126,38 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240713],
                 plan: 'logic',
+                turnTypes: [2, 4, 2],
+            },
+        ],
+    },
+    {
+        id: 240719,
+        name: '第５回（07月19日～）', 
+        criteria: { 'vocal': 35, 'dance': 30, 'visual': 35 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4240711],
+                plan: 'sense',
+                turnTypes: [4, 3, 3],
+            },
+            {
+                name: 'ステージ2',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240722],
+                plan: 'sense',
+                turnTypes: [5, 3, 4],
+            },
+            {
+                name: 'ステージ3',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240723],
+                plan: 'logic',
+                turnTypes: [5, 3, 4],
             },
         ],
     },

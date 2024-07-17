@@ -1122,6 +1122,29 @@ const pItemData = [
         limit: 4,
     },
 
+    {
+        id: 4240722,
+        name: '初星オブジェ（紫）',
+        activate_timing: 'start_of_turn',
+        condition: '',
+        effects: [
+            { type: '集中', value: 5 },
+            { type: '消費体力増加', value: 1 },
+        ],
+        limit: 2,
+    },
+    {
+        id: 4240723,
+        name: '初星ライト（オレンジ）',
+        activate_timing: 'start_of_turn',
+        condition: '',
+        effects: [
+            { type: '好印象', value: 4 },
+            { type: '元気増加無効', value: 1 },
+        ],
+        limit: 6,
+    },
+
 ];
 
 export class PItem {

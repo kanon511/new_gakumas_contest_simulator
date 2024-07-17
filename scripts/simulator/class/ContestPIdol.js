@@ -2,7 +2,7 @@ import { Deck } from './Deck.js';
 import { TurnType } from './TurnType.js';
 import { PIdolStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
-import { SkillCardData } from '../data/skillCardData.js';
+import { SkillCard, SkillCardData } from '../data/skillCardData.js';
 
 class PIdolLog {
     
@@ -62,8 +62,8 @@ export class ContestPIdol {
         this.log = new PIdolLog();
     }
 
-    init (turnCount, critearia) {
-        this.turnType = new TurnType(turnCount, critearia);
+    init (turnCount, critearia, turnTypes) {
+        this.turnType = new TurnType(turnCount, critearia, turnTypes);
         this.remain_turn = turnCount;
     }
 
@@ -130,6 +130,10 @@ export class ContestPIdol {
         this.calcHandCardsEffectActualValue(handCards);
         this.calcHandCardsActualCost(handCards);
         this.checkHandCardsAvailable(handCards);
+        // handCards.forEach(element => {
+        //     const actions = this.calcSkillCardAssessment(element);
+        //     console.log(element.name, actions)
+        // });
         this.log.addTextLog('手札：'+handCards.map(item=>`${item.isAvailable()?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`).join(' | '));
     }
 
@@ -301,8 +305,6 @@ export class ContestPIdol {
                 }
             }
 
-            // console.log(`( ${effect.value} + ${concentrationCoef} ) * ( ${kouchoCoef} + ${zekkouchoCoef} )`);
-
             const baseScore = isNaN(effect.value) ? 0 : effect.value;
             const adjustScore = ( 
                 baseScore 
@@ -353,6 +355,122 @@ export class ContestPIdol {
             effect.actualValue = baseValue + optionalValue;
         }
     }
+
+    // /** ここから評価用の仮設計 */
+
+    // /**
+    //  * 現在の条件に合うPItemを発動させたときのactionを取得する
+    //  * @param {String} activate_timing 
+    //  */
+    // getActionsByPItem (activate_timing) {
+    //     const actions = [];
+    //     const activatePItemList = this.pItemsManager.getPItemByActivateTiming(activate_timing);
+    //     for (const pItem of activatePItemList) {
+    //         if (!pItem.isAvailable()) continue;
+    //         if (!this.checkCondition(pItem.condition)) continue;
+    //         const effects = pItem.effects;
+    //         actions.push({
+    //             type: 'pItem',
+    //             name: pItem.name,
+    //             effects: effects,
+    //         });
+    //     }
+    //     return actions;
+    // }
+
+    // /**
+    //  * 現在の条件に合うpStatusを発動させたときのactionを取得する
+    //  * @param {String} activate_timing 
+    //  */
+    // getActionsByPStatus (activate_timing) {
+    //     const actions = [];
+    //     const activatePStatusList = this.status.get_byActivateTiming(activate_timing);
+    //     for (const pStatus of activatePStatusList) {
+    //         if (!this.checkCondition(pStatus.condition)) continue;
+    //         const effects = pStatus.effects;
+    //         for (let i = 0; i < pStatus.value; i++) {
+    //             actions.push({
+    //                 type: 'pStatus',
+    //                 name: pStatus.name,
+    //                 effects: effects,
+    //             });
+    //         }
+    //     }
+    //     return actions;
+    // }
+
+    // /**
+    //  * スキルカードを発動させたときのactionを取得する
+    //  * @param {*} card 
+    //  * @returns 
+    //  */
+    // getActionsBySkillCard (skillCard) {
+    //     const actions = [];
+    //     // SkillCardのeffect条件判定
+    //     for (const effect of skillCard.effects) {
+    //         effect.isActive = this.checkCondition(effect.condition);
+    //     }
+    //     // SkillCardのeffect2回発動判定
+    //     const cardActionKeys = [''];
+    //     const additionalActionItems = [
+    //         { key: '次に使用するアクティブスキルカードの効果を発動', condition: 'cardType==active' },
+    //         { key: '次に使用するスキルカードの効果を発動', condition: '' }
+    //     ];
+    //     for (const item of additionalActionItems) {
+    //         const value = this.status.getValue(item.key);
+    //         if (this.checkCondition(item.condition) && value > 0) {
+    //             cardActionKeys.push(item.key);
+    //             break;
+    //         }
+    //     }
+    //     const cardEffects = skillCard.effects.filter(effect=>effect.isActive);
+    //     // effect効果
+    //     for (const cardActionKey of cardActionKeys) {
+    //         if (cardActionKey != '') {
+    //             actions.push({
+    //                 type: 'pStatus',
+    //                 name: cardActionKey,
+    //                 effects: [{ type: cardActionKey, value: -1 }],
+    //             });
+    //         }
+    //         actions.push({
+    //             type: 'skillCard',
+    //             name: skillCard.name,
+    //             effects: cardEffects,
+    //         });
+    //     }
+    //     return actions;
+    // }
+
+    // /**
+    //  * スキルカードの評価を計算する
+    //  * @param {SkillCard} skillCard スキルカード
+    //  */
+    // calcSkillCardAssessment (skillCard) {
+    //     if (!skillCard.isAvailable) return [];
+    //     const lastUsedCard = this.lastUsedCard;
+    //     this.lastUsedCard = skillCard; // 一時的に変更
+    //     const actions = [];
+
+    //     // PItemによるアクション
+    //     actions.push(...this.getActionsByPItem('use_card'));
+    //     // PStatusによるアクション
+    //     actions.push(...this.getActionsByPStatus('use_card'));
+    //     // skillCardによるアクション
+    //     const skillAction = this.getActionsBySkillCard(skillCard);
+    //     actions.push(...skillAction);
+
+    //     // スキルカードのeffectsのtype
+    //     const skillCardEffectTypeSet = new Set(skillAction[0].effects.map(effect=>effect.type));
+    //     for (const key of skillCardEffectTypeSet.keys()) {
+    //         actions.push(...this.getActionsByPItem(`increased_status:${key}`));
+    //     }
+    //     this.lastUsedCard = lastUsedCard;
+    //     return actions;
+    //     // return effects.reduce((pre, crt)=>pre+this.calcEffectValue(crt), 0);
+    // }
+
+    // /** ここまで */
 
     checkCost (cost) { 
         switch (cost.type) {
@@ -421,8 +539,8 @@ export class ContestPIdol {
                 this.status.reduce(item.key, 1);
                 this.log.addTextLog(`${item.key}：${value}->${value-1} (-1)`);
                 isAdditionalAction = true;
+                break;
             }
-            if (isAdditionalAction) break;
         }
         // effect効果
         this.useEffects('card', usedCard.effects);
@@ -436,6 +554,42 @@ export class ContestPIdol {
             if (!effect.isActive) continue;
             this.useEffect(name, effect);
         }
+    }
+
+    getScheduledAction (card) {
+        const actions = [];
+        for (const effect of [card.cost, ...card.effects]) {
+            actions.push(...this.getActionByEffect('card', effect));
+        }
+        return actions;
+    }
+
+    getActionByEffect (name, effect) {
+        const actions = [];
+        const { type, actualValue, options, value } = effect;
+        if (type == '体力回復') {
+            const hp = this.hp;
+            const afterHp = Math.min(this.maxHp, hp+actualValue);
+            actions.push({ type: type, args: [hp, afterHp] });
+        }
+        else if (type == '体力消費') {
+            const block = this.block;
+            let afterBlock;
+            const hp = this.hp;
+            let afterHp;
+            if (this.block < actualValue) {
+                this.hp -= (actualValue - block);
+                this.block = 0;
+                reduceFlag = true;
+            } else {
+                this.block -= actualValue;
+            }
+            
+        }
+    }
+
+    getEvaluation (actons) {
+
     }
 
     useEffect (name, effect) {

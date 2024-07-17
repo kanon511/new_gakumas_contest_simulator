@@ -6,10 +6,11 @@ export class Contest {
         const {
             pIdol,
             maxTurn,
-            criteria
+            criteria,
+            turnTypes,
         } = parameters;
         this.pIdol = pIdol;
-        this.pIdol.init(maxTurn, criteria);
+        this.pIdol.init(maxTurn, criteria, turnTypes);
         this.isFinish = false;
     }
 

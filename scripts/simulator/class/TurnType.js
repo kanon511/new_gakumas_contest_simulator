@@ -16,29 +16,44 @@ export class TurnType {
      * @param {Number} turnCount ターン数
      * @param {Object<String, Number>} critearia 評価基準オブジェクト
      */
-    constructor (turnCount, critearia) {
+    constructor (turnCount, critearia, turnTypes) {
         this.#turnTypes = new Array(turnCount).fill('');
         const criteariaRank = this.#setCriteariaRank(critearia);
-        const typeCount = this.#setTurnCount(turnCount, criteariaRank);
+        const typeCount = this.#setTurnCount(turnCount, criteariaRank, turnTypes);
 
         // ラスト3ターンを流行3位->流行2位->流行1位の順にする
         this.#turnTypes[this.#turnTypes.length-3] = criteariaRank[2];
         this.#turnTypes[this.#turnTypes.length-2] = criteariaRank[1];
         this.#turnTypes[this.#turnTypes.length-1] = criteariaRank[0];
         // 最初のターンを流行1位に固定する
-        this.#turnTypes[0] = criteariaRank[0];
+        let turnCountStart = 0;
+        if (typeCount[criteariaRank[0]] / turnTypes.reduce((p,c)=>p+c, 0) > 0.4) {
+            this.#turnTypes[0] = criteariaRank[0];
+            turnCountStart++;
+        } else {
+            if (Math.random() < typeCount[criteariaRank[0]] / (typeCount[criteariaRank[0]]+typeCount[criteariaRank[1]])) {
+                this.#turnTypes[0] = criteariaRank[0];
+                typeCount[criteariaRank[0]] -= 1;
+                turnCountStart++;
+            } else {
+                this.#turnTypes[0] = criteariaRank[1];
+                typeCount[criteariaRank[1]] -= 1;
+                turnCountStart++;
+            }
+        }
         // その分カウントを減らす
-        typeCount[criteariaRank[0]] -= 2;
+        typeCount[criteariaRank[0]] -= 1;
         typeCount[criteariaRank[1]] -= 1;
         typeCount[criteariaRank[2]] -= 1;
 
         const array = [typeCount['vocal'], typeCount['dance'], typeCount['visual']];
         const typeIdx = ['vocal', 'dance', 'visual'];
-        for (let i = 1; i < turnCount - 3; i++) {
+        for (let i = turnCountStart; i < turnCount - 3; i++) {
             const chooseIdx = this.#getRandomIndex(array);
             this.#turnTypes[i] = typeIdx[chooseIdx];
             array[chooseIdx]--;
         }
+        console.log(this.#turnTypes);
     }
 
     /**
@@ -74,13 +89,14 @@ export class TurnType {
      * @param {Array<String>} criteariaRank 流行順位配列
      * @returns {Object<String, Number>}
      */
-    #setTurnCount (turnCount, criteariaRank) {
-        switch (turnCount) {
-            case 8 : return { [criteariaRank[0]] : 4, [criteariaRank[1]] : 2, [criteariaRank[2]] : 2 };
-            case 10: return { [criteariaRank[0]] : 5, [criteariaRank[1]] : 3, [criteariaRank[2]] : 2 };
-            case 12: return { [criteariaRank[0]] : 5, [criteariaRank[1]] : 4, [criteariaRank[2]] : 3 };
-        }
-        throw new Error(`${turnCount}は想定されていないターン数です`);
+    #setTurnCount (turnCount, criteariaRank, turnTypes) {
+        // switch (turnCount) {
+        //     case 8 : return { [criteariaRank[0]] : 4, [criteariaRank[1]] : 2, [criteariaRank[2]] : 2 };
+        //     case 10: return { [criteariaRank[0]] : 5, [criteariaRank[1]] : 3, [criteariaRank[2]] : 2 };
+        //     case 12: return { [criteariaRank[0]] : 5, [criteariaRank[1]] : 4, [criteariaRank[2]] : 3 };
+        // }
+        return { 'vocal': turnTypes[0], 'dance': turnTypes[1], 'visual': turnTypes[2] }
+        // throw new Error(`${turnCount}は想定されていないターン数です`);
     }
 
     /**

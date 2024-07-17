@@ -1,8 +1,8 @@
-import { Contest } from './class/Contest.js';
-import { ContestPIdol } from './class/ContestPIdol.js';
-import { AutoContest } from './class/AutoContest.js';
+import { Contest } from './scripts/simulator/class/Contest.js';
+import { ContestPIdol } from './scripts/simulator/class/ContestPIdol.js';
+import { AutoContest } from './scripts/simulator/class/AutoContest.js';
 import { BufReader } from "https://deno.land/std/io/mod.ts";
-import { skillCardData } from './data/skillCardData.js';
+import { skillCardData } from './scripts/simulator/data/skillCardData.js';
 
 const encoder = new TextEncoder();
 
@@ -26,7 +26,7 @@ const hp     = 200;
 const plan   = 'logic';
 const pItemIds = [2101010, 2102010, 2103010, 2306010, 2108010, 2210010];
 const skillCardIds = [
-    3000300, 3000300, 3000300, 4000211, 4000211, 4000211, 4000151, 4000151, 4000151, 4300010, 4300010, 4300010
+    1021010, 1021020, 1022010, 1022020, 2011010, 2011020, 2011030, 2011040, 2011050, 2011060, 2011070, 4202020
 ];
 
 // const skillCardIds = skillCardData.map(item=>item.id).filter(id=>id%10==1);

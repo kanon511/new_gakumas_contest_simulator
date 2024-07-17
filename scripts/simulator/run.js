@@ -24,6 +24,7 @@ export const run = (data) => {
             pIdol: pIdol,
             maxTurn: data.turn,
             criteria: data.criteria,
+            turnTypes: data.turnTypes,
         });
     
         const autoContest = new AutoContest(data.autoId, contest);
