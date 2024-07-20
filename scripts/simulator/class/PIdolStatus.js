@@ -161,7 +161,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: 'cardType==active',
         activate_effects: [
             { type: '固定元気', value: 2 }, 
@@ -174,7 +174,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: 'cardType==active',
         activate_effects: [
             { type: '集中', value: 1 }, 
@@ -187,7 +187,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: 'cardType==mental',
         activate_effects: [
             { type: '好印象', value: 1 }, 
@@ -200,7 +200,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: 'cardType==mental',
         activate_effects: [
             { type: 'やる気', value: 1 }, 
@@ -255,7 +255,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: 'cardType==active',
         activate_effects: [
             { type: 'score', value: 4 }, 
@@ -268,7 +268,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: 'cardType==active',
         activate_effects: [
             { type: 'score', value: 5 }, 
@@ -280,9 +280,9 @@ const statusList = [
         id: 1105,
         name: 'スキルカード使用時、好印象の30%分パラメータ',
         description: '',
-        value: 0,
+        value: 1,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: '',
         activate_effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] }, 
@@ -295,7 +295,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
+        activate_timing: 'use_card',
         activate_condition: '',
         activate_effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] }, 
@@ -305,6 +305,75 @@ const statusList = [
 
 
 ];
+
+export class _PStatus {
+
+    #status;
+    #index_name_to_idx;
+
+    constructor (status) {
+        this.#status = status;
+        this.#index_name_to_idx = {};
+        for (let i = 0; i < this.#status.length; i++) {
+            this.#index_name_to_idx[this.#status[i].name] = i;
+        }
+    }
+
+    #get (name) {
+        if (!(name in this.#index_name_to_idx)) {
+            throw new Error(`${name}は存在しないステータスです。`);
+        }
+        return this.#status[this.#index_name_to_idx[name]];
+    }
+
+    getType (name) {
+        const status = this.#get(name);
+        return status.type;
+    }
+
+    getValue (name) {
+        const status = this.#get(name);
+        if (status.valueStack) {
+            return status.valueStack.reduce((pre, crt) => pre+crt.value, 0);
+        }
+        else {
+            return status.value;
+        }
+    }
+
+    has (name) {
+        return this.getValue(name) > 0;
+    }
+
+    add (name, value, availableFirstAdded, options) { 
+        const status = this.#get(name);
+        if (status.valueStack) {
+            const item = {
+                value: options[0].value,
+                turn: value
+            };
+            if (availableFirstAdded) {
+                item.firstAdded = true;
+            }
+            status.valueStack.push(item);
+        }
+        else {
+            if (status.value == 0 && availableFirstAdded) {
+                status.firstAdded = true;
+            }
+            status.value += value;
+        }
+    }
+
+    reduce (name, value) {
+        // valueStackはエラー発生するから注意！
+        const status = this.#get(name);
+        status.value -= value;
+        if (status.value < 0) {
+            status.value = 0;
+        }
+    }
+}
 
 export class PIdolStatus {
 
@@ -376,6 +445,14 @@ export class PIdolStatus {
         else {
             return status.value;
         }
+    }
+
+    has (name) {
+        return this.getValue(name) > 0;
+    }
+
+    _deepcopy () {
+        return deep_copy(this.#status);
     }
 
 

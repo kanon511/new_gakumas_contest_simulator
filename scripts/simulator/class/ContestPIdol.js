@@ -1,6 +1,6 @@
 import { Deck } from './Deck.js';
 import { TurnType } from './TurnType.js';
-import { PIdolStatus } from './PIdolStatus.js';
+import { PIdolStatus, _PStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
 import { SkillCard, SkillCardData } from '../data/skillCardData.js';
 
@@ -179,9 +179,6 @@ export class ContestPIdol {
                 targetValue = this.currentTurnType;
                 break;
             case 'turnMultiple': // nターンごと。無理やりなので修正してね
-                // turnMultiple==2
-                // turn % value == 0 => targetValue = value;
-                // turn % value != 0 => targetValue = -1;
                 if (this.turn % Number(value) == 0) {
                     targetValue = value;
                 } else {
@@ -356,122 +353,6 @@ export class ContestPIdol {
         }
     }
 
-    // /** ここから評価用の仮設計 */
-
-    // /**
-    //  * 現在の条件に合うPItemを発動させたときのactionを取得する
-    //  * @param {String} activate_timing 
-    //  */
-    // getActionsByPItem (activate_timing) {
-    //     const actions = [];
-    //     const activatePItemList = this.pItemsManager.getPItemByActivateTiming(activate_timing);
-    //     for (const pItem of activatePItemList) {
-    //         if (!pItem.isAvailable()) continue;
-    //         if (!this.checkCondition(pItem.condition)) continue;
-    //         const effects = pItem.effects;
-    //         actions.push({
-    //             type: 'pItem',
-    //             name: pItem.name,
-    //             effects: effects,
-    //         });
-    //     }
-    //     return actions;
-    // }
-
-    // /**
-    //  * 現在の条件に合うpStatusを発動させたときのactionを取得する
-    //  * @param {String} activate_timing 
-    //  */
-    // getActionsByPStatus (activate_timing) {
-    //     const actions = [];
-    //     const activatePStatusList = this.status.get_byActivateTiming(activate_timing);
-    //     for (const pStatus of activatePStatusList) {
-    //         if (!this.checkCondition(pStatus.condition)) continue;
-    //         const effects = pStatus.effects;
-    //         for (let i = 0; i < pStatus.value; i++) {
-    //             actions.push({
-    //                 type: 'pStatus',
-    //                 name: pStatus.name,
-    //                 effects: effects,
-    //             });
-    //         }
-    //     }
-    //     return actions;
-    // }
-
-    // /**
-    //  * スキルカードを発動させたときのactionを取得する
-    //  * @param {*} card 
-    //  * @returns 
-    //  */
-    // getActionsBySkillCard (skillCard) {
-    //     const actions = [];
-    //     // SkillCardのeffect条件判定
-    //     for (const effect of skillCard.effects) {
-    //         effect.isActive = this.checkCondition(effect.condition);
-    //     }
-    //     // SkillCardのeffect2回発動判定
-    //     const cardActionKeys = [''];
-    //     const additionalActionItems = [
-    //         { key: '次に使用するアクティブスキルカードの効果を発動', condition: 'cardType==active' },
-    //         { key: '次に使用するスキルカードの効果を発動', condition: '' }
-    //     ];
-    //     for (const item of additionalActionItems) {
-    //         const value = this.status.getValue(item.key);
-    //         if (this.checkCondition(item.condition) && value > 0) {
-    //             cardActionKeys.push(item.key);
-    //             break;
-    //         }
-    //     }
-    //     const cardEffects = skillCard.effects.filter(effect=>effect.isActive);
-    //     // effect効果
-    //     for (const cardActionKey of cardActionKeys) {
-    //         if (cardActionKey != '') {
-    //             actions.push({
-    //                 type: 'pStatus',
-    //                 name: cardActionKey,
-    //                 effects: [{ type: cardActionKey, value: -1 }],
-    //             });
-    //         }
-    //         actions.push({
-    //             type: 'skillCard',
-    //             name: skillCard.name,
-    //             effects: cardEffects,
-    //         });
-    //     }
-    //     return actions;
-    // }
-
-    // /**
-    //  * スキルカードの評価を計算する
-    //  * @param {SkillCard} skillCard スキルカード
-    //  */
-    // calcSkillCardAssessment (skillCard) {
-    //     if (!skillCard.isAvailable) return [];
-    //     const lastUsedCard = this.lastUsedCard;
-    //     this.lastUsedCard = skillCard; // 一時的に変更
-    //     const actions = [];
-
-    //     // PItemによるアクション
-    //     actions.push(...this.getActionsByPItem('use_card'));
-    //     // PStatusによるアクション
-    //     actions.push(...this.getActionsByPStatus('use_card'));
-    //     // skillCardによるアクション
-    //     const skillAction = this.getActionsBySkillCard(skillCard);
-    //     actions.push(...skillAction);
-
-    //     // スキルカードのeffectsのtype
-    //     const skillCardEffectTypeSet = new Set(skillAction[0].effects.map(effect=>effect.type));
-    //     for (const key of skillCardEffectTypeSet.keys()) {
-    //         actions.push(...this.getActionsByPItem(`increased_status:${key}`));
-    //     }
-    //     this.lastUsedCard = lastUsedCard;
-    //     return actions;
-    //     // return effects.reduce((pre, crt)=>pre+this.calcEffectValue(crt), 0);
-    // }
-
-    // /** ここまで */
-
     checkCost (cost) { 
         switch (cost.type) {
             case '体力消費':
@@ -564,29 +445,97 @@ export class ContestPIdol {
         return actions;
     }
 
+    getPItemScheduledAction (activateTiming) {
+        const actions = [];
+        const activatePItemList = this.pItemsManager.getPItemByActivateTiming(activateTiming);
+        for (const pItem of activatePItemList) {
+            if (!pItem.isAvailable()) continue;
+            if (!this.checkCondition(pItem.condition)) continue;
+            actions.push({ type: 'use', name: 'pItem', args: [pItem] });
+            for (const effect of pItem.effects) {
+                actions.push(...this.getActionByEffect('pItem', effect));
+            }
+            actions.push({ type: 'end' });
+        }
+        return actions;
+    }
+
     getActionByEffect (name, effect) {
         const actions = [];
         const { type, actualValue, options, value } = effect;
         if (type == '体力回復') {
             const hp = this.hp;
             const afterHp = Math.min(this.maxHp, hp+actualValue);
-            actions.push({ type: type, args: [hp, afterHp] });
+            actions.push({ type: 'effect', name: type, args: [hp, afterHp] });
         }
         else if (type == '体力消費') {
             const block = this.block;
-            let afterBlock;
             const hp = this.hp;
+            let afterBlock;
             let afterHp;
-            if (this.block < actualValue) {
-                this.hp -= (actualValue - block);
-                this.block = 0;
-                reduceFlag = true;
+            if (block < actualValue) {
+                afterHp = hp - (actualValue - block);
+                afterBlock = 0;
             } else {
-                this.block -= actualValue;
+                afterHp = hp;
+                afterBlock = block - actualValue;
             }
-            
+            actions.push({ type: 'effect', name: type, args: [hp, afterHp, block, afterBlock] });
+            if (name == 'card' && hp > afterHp) {
+                actions.push(...this.getPItemScheduledAction('consume_hp'));
+            }
+        }
+        else if (type == '体力直接消費') {
+            const hp = this.hp;
+            const afterHp = hp - actualValue;
+            if (name == 'card' && hp > afterHp) {
+                actions.push(...this.getPItemScheduledAction('consume_hp'));
+            }
+        }
+        else if (type == 'score') {
+            const score = this.score;
+            const afterScore = score + actualValue;
+            actions.push({ type: 'effect', name: type, args: [score, afterScore] });
+        }
+        else if (type == 'block') {
+            const block = this.block;
+            const afterBlock = block + actualValue;
+            actions.push({ type: 'effect', name: type, args: [block, afterBlock] });
+        }
+        else if (type == '固定元気') {
+            const block = this.block;
+            const afterBlock = block + actualValue;
+            actions.push({ type: 'effect', name: type, args: [block, afterBlock] });
+        }
+        else if (type == 'ブロック割合減少') {
+            const block = this.block;
+            const reduceBlock = Math.ceil(this.block * (actualValue / 100));
+            const afterBlock = block - reduceBlock;
+            actions.push({ type: 'effect', name: type, args: [block, afterBlock] });
+        }
+        else if (type == 'ドロー') {
+            const number = actualValue;
+            actions.push({ type: 'effect', name: type, args: [number] });
+        }
+        else if (type == '手札強化') {
+            actions.push({ type: 'effect', name: type, args: ['allhands'] });
+        }
+        else if (type == 'ターン追加') {
+            const extraTurn = this.extraTurn;
+            const afterExtraTurn = this.extraTurn + 1;
+            actions.push({ type: 'effect', name: type, args: [extraTurn, afterExtraTurn] });
+        }
+        else if (type == '手札入れ替え') {
+            actions.push({ type: 'effect', name: type, args: [] });
+        }
+        else if (type == '生成') {
+            actions.push({ type: 'effect', name: type, args: [value] });
+        }
+        else {
+
         }
     }
+
 
     getEvaluation (actons) {
 
@@ -695,7 +644,7 @@ export class ContestPIdol {
             }
         }
         else { // その他の通常バフ・デバフ
-            if (this.status.getValue('低下状態無効') > 0 && this.status.getType == 'debuff') {
+            if (this.status.getValue('低下状態無効') > 0 && this.status.getType(type) == 'debuff') {
                 this.status.reduce('低下状態無効', 1);
                 const mukou = this.status.getValue('低下状態無効');
                 this.log.addTextLog(`${type}：+0 (低下状態無効：${mukou+1}->${mukou})`);
@@ -731,5 +680,356 @@ export class ContestPIdol {
         if (this.remain_turn == 0) return true;
         return false;
     }
+
+
+
+    _start () {
+        const pItemAction = this._getPItemAction('start_turn');
+        const pStatusAction = this._getPStatusAction('start_turn');
+        const actualTransaction = this._getSimulatedTransaction([...pItemAction, ...pStatusAction]);
+        this._executeTransactions(actualTransaction);
+        this._drawSkillCard(3);
+        this._updateHandSkillCards();
+    }
+
+    _effectToAction (name, effect) {
+        return [effect];
+    }
+
+    _getPItemAction (activateTiming) {
+        const actions = [];
+        const targetPItemList = this.pItemsManager.getPItemByActivateTiming(activateTiming);
+        const activePItemList = targetPItemList.filter(
+            pItem=>pItem.isAvailable() && this._checkCondition(pItem.condition));
+        for (const pItem of activePItemList) {
+            actions.push({ type: 'use', name: 'pItem', args: [pItem] });
+            for (const effect of pItem.effects) {
+                actions.push(...this._effectToAction('pItem', effect));
+            }
+            actions.push({ type: 'end' });
+        }
+        return actions;
+    }
+
+    _getPStatusAction (activateTiming) {
+        const actions = [];
+        const targetPStatusList = this.status.get_byActivateTiming(activateTiming);
+        const activePStatusList = targetPStatusList.filter(pStatus=>this._checkCondition(pStatus.activate_condition));
+        for (const pStatus of activePStatusList) {
+            for (let i = 0; i < pStatus.value; i++) {
+                actions.push({ type: 'use', name: 'pStatus', args: [pStatus] });
+                for (const effect of pStatus.activate_effects) {
+                    actions.push(...this._effectToAction('pStatus', effect));
+                }
+                actions.push({ type: 'end' });
+            }
+        }
+        return actions;
+    }
+
+    _drawSkillCard (number) {
+        this.deck.draw(number);
+    }
+
+    _updateHandSkillCards () {
+        const handCards = this.getDeck('handCards');
+        for (const handCard of handCards) {
+            this._setSkillCardActualCost(handCard.cost);
+            this._setSkillCardAvailale(handCard);
+            if (handCard.isAvailable()) {
+                this._setSkillCardTransaction(handCard);
+            }
+            console.log(handCard);
+        }
+    }
+
+    _setSkillCardActualCost (cost) {
+        if (cost.type == '体力消費' || cost.type == '体力直接消費') {
+            const value = cost.value;
+            const increaseHpConsumption = this.status.getValue('消費体力増加') > 0 ? 2.0 : 1.0;
+            const decreaseHpConsumption = this.status.getValue('消費体力減少') > 0 ? 0.5 : 1.0;
+            const reductionHpComsumption = this.status.getValue('消費体力軽減');
+            const actualValue = Math.ceil(value * increaseHpConsumption * decreaseHpConsumption) - reductionHpComsumption;
+            cost.actualValue = Math.max(0, actualValue);
+        } else {
+            cost.actualValue = cost.value;
+        }
+    }
+
+    _setSkillCardAvailale (skillCard) {
+        const condition = skillCard.condition;
+        const flag_condition = this._checkCondition(condition);
+        const flag_cost = this._checkSkillCardCost(skillCard.cost);
+        skillCard.setAvailable(flag_condition && flag_cost);
+    }
+
+    _checkSkillCardCost (cost) {
+        if (cost.type == '体力消費') return this.hp + this.block >= cost.actualValue;
+        if (cost.type == '体力直接消費') return this.hp >= cost.actualValue;
+        return this.status.getValue(cost.type) >= cost.actualValue;
+    }
+
+    _setSkillCardTransaction (skillCard) {
+        this.lastUsedCard = skillCard;
+        const transaction = [];
+        transaction.push(...this._getPItemAction('use_card'));
+        transaction.push(...this._getPStatusAction('use_card'));
+        for (const effect of [skillCard.cost, ...skillCard.effects]) {
+            transaction.push(...this._effectToAction('skillCard', effect));
+        }
+        transaction.push(...this._getPItemAction('end_turn'));
+        transaction.push(...this._getPStatusAction('end_turn'));
+        const actualTransaction = this._getSimulatedTransaction(transaction);
+        skillCard.transaction = actualTransaction;
+    }
+
+    _getStatus () {
+        const pStatus = new _PStatus(this.status._deepcopy());
+        const status = {
+            hp: this.hp,
+            maxHp: this.maxHp,
+            score: this.score,
+            block: this.block,
+            turn: this.turn,
+            turnType: this.turnType,
+            card: this.lastUsedCard,
+            status: pStatus,
+        };
+        return status;
+    }
+
+    _checkCondition (query, _status) {
+        if (typeof query !== 'string') throw new Error(`条件が設定されていません`);
+        if (query == '') return true;
+
+        const status = _status ?? this._getStatus();
+        console.log(status);
+        const result = query.split('|').map((orQuery) => {
+            return orQuery.split('&').map((andQuery) => {
+                return this._evaluateSplitCondition(andQuery, status);
+            }).every(value => value)
+        }).some(value => value);
+        return result;
+    }
+
+    _evaluateSplitCondition (query, status) {
+        let sign = '';
+        const signList = ['==', '!=', '>=', '<=', '>', '<'];
+        for (const key of signList) {
+            if (~query.indexOf(key)) {
+                sign = key;
+                break;
+            }
+        }
+        if (sign == '') {
+            throw new Error(`予期する記号が含まれません > ${query}`);
+        }
+        const [key, value] = query.split(sign);
+        return this._compareSplitCondition(key, value, sign, status);
+    }
+
+    _compareSplitCondition (key, value, sign, status) {
+        let targetValue = null;
+        if (key == 'hpPer') {
+            targetValue = status.hp / status.maxHp * 100;
+        } else
+        if (key == 'score') {
+            targetValue = status.score;
+        } else
+        if (key == 'block') {
+            targetValue = status.block;
+        } else 
+        if (key == 'turn') {
+            targetValue = status.turn;
+        } else 
+        if (key == 'turnType') {
+            targetValue = status.turnType;
+        } else 
+        if (key == 'turnMultiple') {
+            targetValue = status.turn % Number(value) == 0 ? value : -1;
+        } else 
+        if (key == 'cardType') {
+            targetValue = status.card?.type;
+        } else 
+        if (key == 'cardId') {
+            targetValue = status.card?.id;
+        } else 
+        if (key == 'cardEffectInclude') {
+            targetValue = status.card?.effects.some(effect=>effect.type==value) ? value : -1;
+        } else 
+        if (key == 'usedCardCountMultiple') {
+            targetValue = status.status.getValue('使用したスキルカード数') % Number(value) == 0 ? value : -1;
+        } else 
+        if (key == 'remain_turn') {
+            targetValue = status.remain_turn;
+        } else {
+            targetValue = status.status.getValue(key);
+        }
+        switch (sign) {
+            case '==': return targetValue == value;
+            case '!=': return targetValue != value;
+            case '>=': return targetValue >= value;
+            case '<=': return targetValue <= value;
+            case '>' : return targetValue >  value;
+            case '<' : return targetValue <  value;
+        }
+    }
+
+    _calcActualValue (action, status) {
+
+    }
+
+    _simulateAction (action, status) {
+        if (action.type == 'use' || action.type == 'end') {
+            return action;
+        }
+
+        const { type, value, options, delay } = action;
+
+        const actualValue = this._calcActualValue(action, status);
+
+        if (delay) {
+            return { type, value, options, delay, actualValue };
+        }
+
+        if (type == '体力回復') {
+            const hp = this.hp;
+            const afterHp = Math.min(this.maxHp, hp+actualValue);
+            actions.push({ type: 'effect', name: type, args: [hp, afterHp] });
+        }
+        else if (type == '体力消費') {
+            const block = this.block;
+            const hp = this.hp;
+            let afterBlock;
+            let afterHp;
+            if (block < actualValue) {
+                afterHp = hp - (actualValue - block);
+                afterBlock = 0;
+            } else {
+                afterHp = hp;
+                afterBlock = block - actualValue;
+            }
+            actions.push({ type: 'effect', name: type, args: [hp, afterHp, block, afterBlock] });
+            if (name == 'card' && hp > afterHp) {
+                actions.push(...this.getPItemScheduledAction('consume_hp'));
+            }
+        }
+        else if (type == '体力直接消費') {
+            const hp = this.hp;
+            const afterHp = hp - actualValue;
+            if (name == 'card' && hp > afterHp) {
+                actions.push(...this.getPItemScheduledAction('consume_hp'));
+            }
+        }
+        else if (type == 'score') {
+            const score = this.score;
+            const afterScore = score + actualValue;
+            actions.push({ type: 'effect', name: type, args: [score, afterScore] });
+        }
+        else if (type == 'block') {
+            const block = this.block;
+            const afterBlock = block + actualValue;
+            actions.push({ type: 'effect', name: type, args: [block, afterBlock] });
+        }
+        else if (type == '固定元気') {
+            const block = this.block;
+            const afterBlock = block + actualValue;
+            actions.push({ type: 'effect', name: type, args: [block, afterBlock] });
+        }
+        else if (type == 'ブロック割合減少') {
+            const block = this.block;
+            const reduceBlock = Math.ceil(this.block * (actualValue / 100));
+            const afterBlock = block - reduceBlock;
+            actions.push({ type: 'effect', name: type, args: [block, afterBlock] });
+        }
+        else if (type == 'ドロー') {
+            const number = actualValue;
+            actions.push({ type: 'effect', name: type, args: [number] });
+        }
+        else if (type == '手札強化') {
+            actions.push({ type: 'effect', name: type, args: ['allhands'] });
+        }
+        else if (type == 'ターン追加') {
+            const extraTurn = this.extraTurn;
+            const afterExtraTurn = this.extraTurn + 1;
+            actions.push({ type: 'effect', name: type, args: [extraTurn, afterExtraTurn] });
+        }
+        else if (type == '手札入れ替え') {
+            actions.push({ type: 'effect', name: type, args: [] });
+        }
+        else if (type == '生成') {
+            actions.push({ type: 'effect', name: type, args: [value] });
+        }
+        else {
+
+        }
+    }
+    }
+
+    _getSimulatedTransaction (transaction) {
+        const actualTransaction = [];
+        const status = this._getStatus();
+        for (const action of transaction) {
+            actualTransaction.push(...this._simulateAction(action, status));
+        }
+        return transaction;
+    }
+
+    _executeTransactions (transaction) {
+        console.log('実行', transaction);
+    }
+ 
+    _use (number) {
+        const usedCard = this.deck.getHandCardByNumber(number);
+        _executeTransactions(usedCard.transaction);
+    }
+
+    _end () {
+        // _reducePStatus();
+        // _reduceRemainTurn();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
