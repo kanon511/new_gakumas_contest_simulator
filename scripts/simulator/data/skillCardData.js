@@ -1476,7 +1476,7 @@ export const skillCardData = [
         name: 'シュプレヒコール',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: 3 },
+        cost: { type: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -1490,7 +1490,7 @@ export const skillCardData = [
         name: 'シュプレヒコール+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: 2 },
+        cost: { type: '集中', value: -2 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
@@ -1504,7 +1504,7 @@ export const skillCardData = [
         name: '立ち位置チェック',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: 3 },
+        cost: { type: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: 25 },
@@ -1518,7 +1518,7 @@ export const skillCardData = [
         name: '立ち位置チェック+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: 3 },
+        cost: { type: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: 40 },
@@ -1642,7 +1642,7 @@ export const skillCardData = [
         name: 'みんな大好き',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: 3 },
+        cost: { type: 'やる気', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 90 }] },
@@ -1655,7 +1655,7 @@ export const skillCardData = [
         name: 'みんな大好き+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: 2 },
+        cost: { type: 'やる気', value: -2 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
@@ -1917,7 +1917,7 @@ export const skillCardData = [
         name: '存在感',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: 2 },
+        cost: { type: '好調', value: -2 },
         condition: '',
         effects: [
             { type: '集中', value: 4 },
@@ -1930,7 +1930,7 @@ export const skillCardData = [
         name: '存在感+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: 1 },
+        cost: { type: '好調', value: -1 },
         condition: '',
         effects: [
             { type: '集中', value: 5 },
@@ -1943,7 +1943,7 @@ export const skillCardData = [
         name: '成功への道筋',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: 2 },
+        cost: { type: '好調', value: -2 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
@@ -1956,7 +1956,7 @@ export const skillCardData = [
         name: '成功への道筋+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: 2 },
+        cost: { type: '好調', value: -2 },
         condition: '',
         effects: [
             { type: 'block', value: 4 },
@@ -2239,7 +2239,7 @@ export const skillCardData = [
         name: 'ゆめみごこち',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 2 },
+        cost: { type: '好印象', value: -2 },
         condition: '',
         effects: [
             { type: 'やる気', value: 4 },
@@ -2252,7 +2252,7 @@ export const skillCardData = [
         name: 'ゆめみごこち+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 1 },
+        cost: { type: '好印象', value: -1 },
         condition: '',
         effects: [
             { type: 'やる気', value: 5 },
@@ -2293,7 +2293,7 @@ export const skillCardData = [
         name: 'オトメゴコロ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: 3 },
+        cost: { type: 'やる気', value: -3 },
         condition: '',
         effects: [
             { type: '好印象', value: 4 },
@@ -2306,7 +2306,7 @@ export const skillCardData = [
         name: 'オトメゴコロ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: 3 },
+        cost: { type: 'やる気', value: -3 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -2888,7 +2888,7 @@ export const skillCardData = [
         name: '至高のエンタメ',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: 3 },
+        cost: { type: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'アクティブスキルカード使用時、パラメータ+4', value: 1 },
@@ -2900,7 +2900,7 @@ export const skillCardData = [
         name: '至高のエンタメ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: 2 },
+        cost: { type: '集中', value: -2 },
         condition: '',
         effects: [
             { type: 'ドロー', value: 1, delay: 1 },
@@ -2913,7 +2913,7 @@ export const skillCardData = [
         name: '覚醒',
         type: 'active',
         plan: 'sense',
-        cost: { type: '好調', value: 1 },
+        cost: { type: '好調', value: -1 },
         condition: '',
         effects: [
             { type: 'score', value: 3 },
@@ -2927,7 +2927,7 @@ export const skillCardData = [
         name: '覚醒+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '好調', value: 1 },
+        cost: { type: '好調', value: -1 },
         condition: '',
         effects: [
             { type: 'score', value: 4 },
@@ -3023,7 +3023,7 @@ export const skillCardData = [
         name: '輝くキミへ',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: 4 },
+        cost: { type: 'やる気', value: -4 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
@@ -3036,7 +3036,7 @@ export const skillCardData = [
         name: '輝くキミへ+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: 4 },
+        cost: { type: 'やる気', value: -4 },
         condition: '',
         effects: [
             { type: 'スキルカード使用数追加', value: 1 },
@@ -3049,7 +3049,7 @@ export const skillCardData = [
         name: 'あのときの約束',
         type: 'active',
         plan: 'logic',
-        cost: { type: '好印象', value: 4 },
+        cost: { type: '好印象', value: -4 },
         condition: '',
         effects: [
             { type: 'block', value: 9 },
@@ -3063,7 +3063,7 @@ export const skillCardData = [
         name: 'あのときの約束+',
         type: 'active',
         plan: 'logic',
-        cost: { type: '好印象', value: 4 },
+        cost: { type: '好印象', value: -4 },
         condition: '',
         effects: [
             { type: 'block', value: 14 },
@@ -3198,7 +3198,7 @@ export const skillCardData = [
         name: '国民的アイドル',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: 1 },
+        cost: { type: '好調', value: -1 },
         condition: '',
         effects: [
             { type: '次に使用するスキルカードの効果を発動', value: 1 },
@@ -3211,7 +3211,7 @@ export const skillCardData = [
         name: '国民的アイドル+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: 1 },
+        cost: { type: '好調', value: -1 },
         condition: '',
         effects: [
             { type: 'block', value: 8 },
@@ -3225,7 +3225,7 @@ export const skillCardData = [
         name: '魅惑の視線',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '集中', value: 3 },
+        cost: { type: '集中', value: -3 },
         condition: '',
         effects: [
             { type: '絶好調', value: 4 },
@@ -3240,7 +3240,7 @@ export const skillCardData = [
         name: '魅惑の視線+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '集中', value: 3 },
+        cost: { type: '集中', value: -3 },
         condition: '',
         effects: [
             { type: '絶好調', value: 5 },
@@ -3315,7 +3315,7 @@ export const skillCardData = [
         name: '私がスター',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 2 },
+        cost: { type: '好印象', value: -2 },
         condition: '',
         effects: [
             { type: 'ターン追加', value: 1 },
@@ -3328,7 +3328,7 @@ export const skillCardData = [
         name: '私がスター+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 1 },
+        cost: { type: '好印象', value: -1 },
         condition: '',
         effects: [
             { type: 'ターン追加', value: 1 },
@@ -3342,7 +3342,7 @@ export const skillCardData = [
         name: '星屑センセーション',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: 3 },
+        cost: { type: 'やる気', value: -3 },
         condition: '',
         effects: [
             { type: '好印象', value: 5 },
@@ -3355,7 +3355,7 @@ export const skillCardData = [
         name: '星屑センセーション+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: 3 },
+        cost: { type: 'やる気', value: -3 },
         condition: '',
         effects: [
             { type: '好印象', value: 7 },
@@ -3397,7 +3397,7 @@ export const skillCardData = [
         name: '手書きのメッセージ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 2 },
+        cost: { type: '好印象', value: -2 },
         condition: '',
         effects: [
             { type: 'block', value: 9 }, 
@@ -3410,7 +3410,7 @@ export const skillCardData = [
         name: '手書きのメッセージ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 1 },
+        cost: { type: '好印象', value: -1 },
         condition: '',
         effects: [
             { type: 'block', value: 10 }, 
@@ -3552,7 +3552,7 @@ export const skillCardData = [
         id: 4202020,
         name: '絡まる想い',
         type: 'active',
-        plan: 'sense',
+        plan: 'logic',
         cost: { type: '体力消費', value: 8 },
         condition: '',
         pre_effects: [
@@ -3567,7 +3567,7 @@ export const skillCardData = [
         id: 4202021,
         name: '絡まる想い+',
         type: 'active',
-        plan: 'sense',
+        plan: 'logic',
         cost: { type: '体力消費', value: 8 },
         condition: '',
         pre_effects: [

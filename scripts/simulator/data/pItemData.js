@@ -631,7 +631,7 @@ const pItemData = [
         limit: 1,
     },
     {
-        id: 2303010,
+        id: 2303011,
         name: 'ピッグドリーム貯金箱+',
         activate_timing: 'use_card',
         condition: '好印象>=6',
@@ -681,7 +681,7 @@ const pItemData = [
         condition: '好調>0',
         effects: [
             { type: '集中', value: 3 },
-            { type: '元気', value: 1 },
+            { type: 'block', value: 1 },
         ],
         limit: 2,
     },

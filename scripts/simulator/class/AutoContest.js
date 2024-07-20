@@ -18,7 +18,9 @@ export class AutoContest {
         if (availableIndex.length == 0) return -1;
         const availableIndexValue = availableIndex.map(idx=>handCards[idx]).map(card=>this.calcSkillCardValue(card));
         const maxValue = Math.max(...availableIndexValue);
-        // console.log(this.contest.pIdol.remain_turn, availableIndex.map((idx, i) => `${handCards[idx].name}: ${availableIndexValue[i]}`), availableIndexValue.indexOf(maxValue), handCards[availableIndex[availableIndexValue.indexOf(maxValue)]]);
+        // if (handCards.some(card=>card.name=='成就+')){
+        //     console.log(this.contest.pIdol.remain_turn, availableIndex.map((idx, i) => `${handCards[idx].name}: ${availableIndexValue[i]}`), availableIndexValue.indexOf(maxValue), handCards[availableIndex[availableIndexValue.indexOf(maxValue)]]);
+        // }
         return availableIndex[availableIndexValue.indexOf(maxValue)];
     }
 
@@ -49,6 +51,7 @@ export class AutoContest {
                     }
                 }
             }
+            effects.push(card.cost);
             // effect条件判定
             for (const effect of card.effects) {
                 effect.isActive = this.checkCondition(effect.condition);
@@ -127,11 +130,12 @@ export class AutoContest {
             return 1000;
         }
         if (effect.type == '集中') {
-            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*0.95;
+            return this.contest.pIdol.turnType.getAllTypes().slice(this.contest.pIdol.turn+1).map(type=>this.contest.pIdol.parameter[type]/100*effect.actualValue).reduce((pre, crt)=>pre+crt, 0)*this.contest.pIdol.remain_turn*0.83;
         }
         if (effect.type == '好調') {
             let value = 300 * effect.actualValue * (Math.floor(this.contest.pIdol.remain_turn / 2) - this.contest.pIdol.status.getValue('好調'));
             if (value < 0) value = 0;
+            value += 50 * effect.actualValue
             return value;
         }
         if (effect.type == '絶好調') {
@@ -165,7 +169,7 @@ export class AutoContest {
             return 100 * effect.actualValue;
         }
         if (effect.type == 'スキルカード使用数追加') {
-            return 10000;
+            return 15000;
         }
         if (effect.type == '次に使用するスキルカードの効果を発動') {
             return 500;

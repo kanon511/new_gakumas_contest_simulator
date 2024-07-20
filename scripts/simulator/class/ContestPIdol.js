@@ -134,7 +134,7 @@ export class ContestPIdol {
         //     const actions = this.calcSkillCardAssessment(element);
         //     console.log(element.name, actions)
         // });
-        this.log.addTextLog('手札：'+handCards.map(item=>`${item.isAvailable()?'○':'×'}${item.name}(${item.score}|${item.block}|${-item.cost.actualValue})`).join(' | '));
+        this.log.addTextLog('手札：'+handCards.map(item=>`${item.isAvailable()?'○':'×'}${item.name}(${item.score}|${item.block}|${(item.cost.actualValue>0?-1:1)*item.cost.actualValue})`).join(' | '));
     }
 
     checkHandCardsAvailable (handCards) {
@@ -247,17 +247,7 @@ export class ContestPIdol {
     }
 
     calcHandCardActualCost (cost) {
-        if (cost.type == '体力消費' || cost.type == '体力直接消費') {
-            cost.actualValue  = 
-                Math.ceil(cost.value 
-                    * (this.status.getValue('消費体力減少') > 0 ? 0.5 : 1) 
-                    * (this.status.getValue('消費体力増加') > 0 ? 2 : 1)
-                ) 
-                - this.status.getValue('消費体力軽減');
-            if (cost.actualValue < 0) cost.actualValue = 0;
-        } else {
-            cost.actualValue = cost.value;
-        }
+        this.calcEffectActualValue(cost);
     }
 
     calcHandCardsEffectActualValue (handCards) {
@@ -317,7 +307,8 @@ export class ContestPIdol {
 
             effect.actualValue = actualValue;
 
-        } else if (effect.type == 'block') {
+        } 
+        else if (effect.type == 'block') {
 
             const optionCoef = {
                 '使用したスキルカード数': 0
@@ -339,7 +330,16 @@ export class ContestPIdol {
                 effect.actualValue = 0;
             }
 
-        } else {
+        } 
+        else if (effect.type == '体力直接消費' || effect.type == '体力消費') {
+            const value = effect.value;
+            const increaseHpConsumption = this.status.getValue('消費体力増加') > 0 ? 2.0 : 1.0;
+            const decreaseHpConsumption = this.status.getValue('消費体力減少') > 0 ? 0.5 : 1.0;
+            const reductionHpComsumption = this.status.getValue('消費体力軽減');
+            const actualValue = Math.ceil(value * increaseHpConsumption * decreaseHpConsumption) - reductionHpComsumption;
+            effect.actualValue = actualValue;
+        }
+        else {
             const baseValue = effect.value ?? 0;
             let optionalValue = 0;
             if (effect.options) {
@@ -479,7 +479,7 @@ export class ContestPIdol {
             case '体力直接消費':
                 return this.hp >= cost.actualValue;
             default: 
-                return this.status.getValue(cost.type) >= cost.actualValue;
+                return this.status.getValue(cost.type) >= (-cost.actualValue);
         }
     }
 
@@ -487,12 +487,12 @@ export class ContestPIdol {
         switch (cost.type) {
             case '体力消費': 
             case '体力直接消費':
-                this.useEffect('cost', { type: cost.type, value: cost.actualValue });
+                this.useEffect('cost', cost);
                 break;
             default: 
                 const statusValue = this.status.getValue(cost.type);
-                this.status.reduce(cost.type, cost.actualValue);
-                this.log.addTextLog(`${cost.type}：${statusValue}->${statusValue-cost.actualValue} (-${cost.actualValue})`);
+                this.status.reduce(cost.type, (-cost.actualValue));
+                this.log.addTextLog(`${cost.type}：${statusValue}->${statusValue+cost.actualValue} (${cost.actualValue})`);
                 break;
         }
     }
