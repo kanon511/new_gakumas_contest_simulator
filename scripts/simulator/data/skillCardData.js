@@ -3551,8 +3551,8 @@ export const skillCardData = [
     {
         id: 4202020,
         name: '絡まる想い',
-        type: 'active',
-        plan: 'sense',
+        type: 'mental',
+        plan: 'logic',
         cost: { type: '体力消費', value: 8 },
         condition: '',
         pre_effects: [
@@ -3566,8 +3566,8 @@ export const skillCardData = [
     {
         id: 4202021,
         name: '絡まる想い+',
-        type: 'active',
-        plan: 'sense',
+        type: 'mental',
+        plan: 'logic',
         cost: { type: '体力消費', value: 8 },
         condition: '',
         pre_effects: [

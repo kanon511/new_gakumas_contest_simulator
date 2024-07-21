@@ -16,7 +16,8 @@ export class Contest {
 
     startTurn () {
         // this.pIdol.process_at('start_of_turn');
-        this.pIdol._start();
+        this.pIdol.start();
+        
     }
 
     getHands () {

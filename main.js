@@ -1,5 +1,5 @@
 import { Contest } from './scripts/simulator/class/Contest.js';
-import { ContestPIdol } from './scripts/simulator/class/ContestPIdol.js';
+import { PIdol } from './scripts/simulator/class/PIdol.js';
 import { AutoContest } from './scripts/simulator/class/AutoContest.js';
 import { BufReader } from "https://deno.land/std/io/mod.ts";
 import { skillCardData } from './scripts/simulator/data/skillCardData.js';
@@ -37,7 +37,7 @@ const skillCardIds = [
 
 // const skillCardIds = skillCardData.map(item=>item.id).filter(id=>id%10==1);
 
-const contestPIdol = new ContestPIdol({
+const contestPIdol = new PIdol({
     parameter: {
         vocal: vocal,
         dance: dance,
