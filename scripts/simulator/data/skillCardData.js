@@ -9,7 +9,7 @@ import { deep_copy } from "../../util/utility.js";
  * 固有番号　：2桁番号
  * 強化　　　：強化前0, 強化後1
  * 
- * 実装：7/12まで
+ * 実装：7/21まで
  */
 
 export const skillCardData = [
@@ -681,7 +681,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力軽減', value: 1, condition: 'hpPer>=50' },
+            { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -694,7 +694,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力軽減', value: 1, condition: 'hpPer>=50' },
+            { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -3111,7 +3111,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: '消費体力軽減', value: 1 },
+            { type: '消費体力削減', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3124,7 +3124,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 9 },
-            { type: '消費体力軽減', value: 2 },
+            { type: '消費体力削減', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3818,6 +3818,32 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
+    // {
+    //     id: 4208020, 
+    //     name: 'バスに揺られて',
+    //     type: 'active',
+    //     plan: 'sense',
+    //     cost: { type: '体力消費', value: 2 },
+    //     condition: '',
+    //     effects: [
+    //         { type: 'score', value: 8, options: [{ type: '集中', value: 2.6 }] }, 
+    //         { type: 'block', value: 12, condition: 'hpPer<=50' }, 
+    //     ],
+    //     afterUse: { type: 'exhaust', value: 1 },
+    // },
+    {
+        id: 4208021, 
+        name: 'バスに揺られて+',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '体力消費', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 8, options: [{ type: '集中', value: 2.6 }] }, 
+            { type: 'block', value: 12, condition: 'hpPer<=50' }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
     {
         id: 4209010,
         name: '距離感',
@@ -4019,7 +4045,7 @@ export const skillCardData = [
         cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
-            { type: '消費体力軽減', value: 1 }, 
+            { type: '消費体力削減', value: 1 }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
@@ -4032,7 +4058,7 @@ export const skillCardData = [
         cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
-            { type: '消費体力軽減', value: 1 }, 
+            { type: '消費体力削減', value: 1 }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },

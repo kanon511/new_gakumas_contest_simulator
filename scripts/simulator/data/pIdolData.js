@@ -5,7 +5,7 @@
  * キャラ　　：咲季01, 手毬02, ことね03, 麻央04, リーリヤ05, 千奈06, 清夏07, 広08, 莉波09, 佑芽10
  * 固有番号　：2桁番号
  * 
- * 実装：夏清夏まで
+ * 実装：7/21まで
  */
 
 const pIdolData = [
@@ -327,6 +327,17 @@ const pIdolData = [
         trend: 'やる気',
         unique_skillCard_id: 4208010,
         unique_pIted_id: 2308010,
+    },
+    {
+        id: 30802,
+        rarity: 'SSR',
+        epidode_name: 'コントラスト',
+        character_id: 108,
+        name: '篠澤広',
+        plan: 'sense',
+        trend: '集中',
+        unique_skillCard_id: 4208021, //0
+        unique_pIted_id: 2308021, //0
     },
     {
         id: 10901,

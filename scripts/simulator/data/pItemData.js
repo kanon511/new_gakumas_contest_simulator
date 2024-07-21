@@ -7,7 +7,7 @@
  * 固有番号　：4桁番号
  * 強化　　　：強化前0, 強化後1
  * 
- * 実装：夏清夏まで
+ * 実装：7/21まで
  */
 
 const pItemData = [
@@ -811,6 +811,30 @@ const pItemData = [
         ],
         limit: null,
     },
+    // { 
+    //     id: 2308020,
+    //     name: 'まだ見ぬ世界へ',
+    //     activate_timing: 'start_of_turn',
+    //     condition: 'hpPer<=50%',
+    //     effects: [
+    //         { type: '集中', value: 7 },
+    //         { type: '消費体力削減', value: 3 },
+    //         { type: '手札強化', value: null },
+    //     ],
+    //     limit: 1,
+    // },
+    {
+        id: 2308021,
+        name: 'まだ見ぬ世界へ+',
+        activate_timing: 'start_of_turn',
+        condition: 'hpPer<=50',
+        effects: [
+            { type: '集中', value: 7 },
+            { type: '消費体力削減', value: 3 },
+            { type: '手札強化', value: null },
+        ],
+        limit: 1,
+    },
     {
         id: 2309010,
         name: '等身大のレディリップ',
@@ -992,6 +1016,17 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 50 }] },
         ],
         limit: null,
+    },
+    {
+        id: 3300130,
+        name: 'オーバーパワーボール',
+        activate_timing: 'start_of_turn',
+        condition: 'turnType==vocal',
+        effects: [
+            { type: '集中', value: 4 },
+            { type: '体力消費', value: 2 },
+        ],
+        limit: 1,
     },
 
 

@@ -86,9 +86,9 @@ export class ContestPIdol {
             this.turn++;
             this.currentTurnType = this.turnType.getType(this.turn);
             this.log.nextTurn({ score: this.score, hp: this.hp, block: this.block, turnType: this.currentTurnType });
+            this.draw(3);
             // Pアイテムターン開始時発動
             this.use_pItem('start_of_turn');
-            this.draw(3);
              // 予約効果発動
             for (const delayEffect of  this.status.getDelayEffectByTurn(this.turn)) {
                 this.log.addTextLog(`予約効果[${delayEffect.name}]発動`);
@@ -335,7 +335,7 @@ export class ContestPIdol {
             const value = effect.value;
             const increaseHpConsumption = this.status.getValue('消費体力増加') > 0 ? 2.0 : 1.0;
             const decreaseHpConsumption = this.status.getValue('消費体力減少') > 0 ? 0.5 : 1.0;
-            const reductionHpComsumption = this.status.getValue('消費体力軽減');
+            const reductionHpComsumption = this.status.getValue('消費体力削減');
             const actualValue = Math.ceil(value * increaseHpConsumption * decreaseHpConsumption) - reductionHpComsumption;
             effect.actualValue = actualValue;
         }

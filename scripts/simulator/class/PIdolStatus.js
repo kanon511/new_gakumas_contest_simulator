@@ -53,7 +53,7 @@ const statusList = [
     },
     {
         id: 6,
-        name: '消費体力軽減',
+        name: '消費体力削減',
         description: '',
         value: 0,
         type: 'buff',

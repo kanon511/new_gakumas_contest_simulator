@@ -322,14 +322,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const hp     = Number(document.getElementById('status-hp').value);
         // Pアイテム
         const pItemIds_tmp = element_pItems.map(element=>Number(element.value)).filter(id=>id!=-1);
-        if (element_pItems[1].parentNode.getElementsByClassName('checkbox')[0].checked) {
+        if (
+            element_pItems[1].parentNode.getElementsByClassName('checkbox')[0].checked && 
+            pItemIds_tmp[1] % 10 == 0
+        ) {
             pItemIds_tmp[1]+=1;
         }
         const pItemIds = Array.from(new Set(pItemIds_tmp));
 
         // カード
-        const main_cards_id = element_main_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked ? 1 : 0));
-        const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked ? 1 : 0));
+        const main_cards_id = element_main_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
+        const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
         const skillCardIds = main_cards_id.concat(sub_cards_id).filter(id=>id&&id!='-1');
         // 重複を削除する機構がないため、仮削除
         if (element_main_cards[0].value == element_sub_cards[0].value) {
