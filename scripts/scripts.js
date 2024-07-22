@@ -363,6 +363,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const contestDetail = ContestData.getById(contestId);
         const contestStage  = contestDetail.stages[stageId];
 
+        const simulateCount = 2000;
+
         const autoId = document.getElementById('contest-auto').value;
         const run_data = {
             turn: contestStage.turn,
@@ -379,6 +381,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             skillCardIds: skillCardIds, 
             autoId: autoId,
+
+            count: simulateCount,
         };
 
         let scoreList, minLog, rndLog, maxLog;
@@ -414,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
             labels:  new Array(count).fill(0).map((_,i)=>(i+minscore)*1000),
             datasets: [
                 {
-                    label: "スコア",
+                    label: `スコア（N=${simulateCount}）`,
                     data: data
                 }
             ]
