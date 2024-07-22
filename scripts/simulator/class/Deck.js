@@ -112,6 +112,9 @@ export class Deck {
     }
 
     discard (number) {
+        const card = this.getHandCardByNumber(number);
+        card.transaction = null;
+        card.predictTransaction = null;
         this.#index_discardPile.push(...this.#index_handCards.splice(number, 1));
     }
 

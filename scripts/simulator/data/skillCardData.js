@@ -681,7 +681,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力軽減', value: 1, condition: 'hpPer>=50' },
+            { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -694,7 +694,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力軽減', value: 1, condition: 'hpPer>=50' },
+            { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 }
     },
@@ -3111,7 +3111,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: '消費体力軽減', value: 1 },
+            { type: '消費体力削減', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -3124,7 +3124,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 9 },
-            { type: '消費体力軽減', value: 2 },
+            { type: '消費体力削減', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
@@ -4019,7 +4019,7 @@ export const skillCardData = [
         cost: { type: '体力消費', value: 3 },
         condition: '',
         effects: [
-            { type: '消費体力軽減', value: 1 }, 
+            { type: '消費体力削減', value: 1 }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
@@ -4032,7 +4032,7 @@ export const skillCardData = [
         cost: { type: '体力消費', value: 0 },
         condition: '',
         effects: [
-            { type: '消費体力軽減', value: 1 }, 
+            { type: '消費体力削減', value: 1 }, 
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },

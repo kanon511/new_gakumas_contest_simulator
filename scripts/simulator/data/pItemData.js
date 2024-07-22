@@ -57,7 +57,7 @@ const pItemData = [
     {
         id: 2103010,
         name: 'ちびども手作りメダル',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: '好印象>=6',
         effects: [
             { type: '好印象', value: 2 },
@@ -67,7 +67,7 @@ const pItemData = [
     {
         id: 2103011,
         name: 'ちびども手作りメダル+',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: '好印象>=6',
         effects: [
             { type: '好印象', value: 2 },
@@ -264,7 +264,7 @@ const pItemData = [
     {
         id: 2203010,
         name: 'お気にのスニーカー',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
             { type: '好印象', value: 4 },
@@ -274,7 +274,7 @@ const pItemData = [
     {
         id: 2203011,
         name: 'お気にのスニーカー+',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
             { type: '好印象', value: 5 },
@@ -304,7 +304,7 @@ const pItemData = [
     {
         id: 2205010,
         name: '思い出ロボ',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: 'hpPer>=50',
         effects: [
             { type: '好印象', value: 3 },
@@ -314,7 +314,7 @@ const pItemData = [
     {
         id: 2205011,
         name: '思い出ロボ+',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: 'hpPer>=50',
         effects: [
             { type: '好印象', value: 4 },
@@ -600,7 +600,7 @@ const pItemData = [
     {
         id: 2302020,
         name: 'これが、私',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: '好印象>=10',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
@@ -611,7 +611,7 @@ const pItemData = [
     {
         id: 2302021,
         name: 'これが、私+',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: '好印象>=10',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
@@ -708,7 +708,7 @@ const pItemData = [
     {
         id: 2305010,
         name: '夢へのライフログ',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
             { type: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
@@ -719,7 +719,7 @@ const pItemData = [
     {
         id: 2305011,
         name: '夢へのライフログ+',
-        activate_timing: 'end_of_turn',
+        activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
             { type: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },

@@ -15,9 +15,7 @@ export class Contest {
     }
 
     startTurn () {
-        // this.pIdol.process_at('start_of_turn');
         this.pIdol.start();
-        
     }
 
     getHands () {
@@ -25,7 +23,7 @@ export class Contest {
     }
 
     finishTurn () {
-        this.pIdol.process_at('end_of_turn');
+        this.pIdol.end();
         this.checkFinishContest();
     }
 
@@ -71,7 +69,7 @@ export class Contest {
     checkFinishContest () {
         if (this.pIdol.checkFinished()) {
             this.isFinish = true;
-            this.create_log();
+            // this.create_log();
         }
     }
 

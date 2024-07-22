@@ -53,7 +53,7 @@ const statusList = [
     },
     {
         id: 6,
-        name: '消費体力軽減',
+        name: '消費体力削減',
         description: '',
         value: 0,
         type: 'buff',
@@ -213,7 +213,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'turnend',
+        activate_timing: 'end_turn',
         activate_condition: null,
         activate_effects: [
             { type: '好印象', value: 1 }, 
@@ -227,7 +227,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'turnend',
+        activate_timing: 'end_turn',
         activate_condition: '集中>=3',
         activate_effects: [
             { type: '集中', value: 2 }, 
@@ -240,7 +240,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'turnend',
+        activate_timing: 'end_turn',
         activate_condition: '好印象>=3',
         activate_effects: [
             { type: '好印象', value: 3 }, 
@@ -299,6 +299,20 @@ const statusList = [
         activate_condition: '',
         activate_effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] }, 
+        ],
+        is_reduce_turnend: false,
+    },
+
+    {
+        id: 9999,
+        name: '好印象効果',
+        description: '',
+        value: 1,
+        type: 'buff',
+        activate_timing: 'end_turn',
+        activate_condition: '',
+        activate_effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
         ],
         is_reduce_turnend: false,
     },
