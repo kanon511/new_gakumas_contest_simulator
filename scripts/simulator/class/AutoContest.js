@@ -153,7 +153,7 @@ export class AutoContest {
         if (effect.type == '好印象') {
             return (calckouinsyo(this.contest.pIdol.status.getValue('好印象')+effect.actualValue) - calckouinsyo(this.contest.pIdol.status.getValue('好印象')))*3.5
         }
-        if (effect.type == '消費体力軽減') {
+        if (effect.type == '消費体力削減') {
             return 100 * effect.actualValue;
         }
         if (effect.type == '消費体力減少') {

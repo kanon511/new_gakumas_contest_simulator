@@ -7,7 +7,7 @@
  * 固有番号　：4桁番号
  * 強化　　　：強化前0, 強化後1
  * 
- * 実装：7/21まで
+ * 実装：7/22まで
  */
 
 const pItemData = [
@@ -474,6 +474,14 @@ const pItemData = [
         id: 3200120,
         name: '咲季オススメマット',
     },
+    {
+        id: 3200130,
+        name: '可愛い隠しバスタオル',
+    },
+    {
+        id: 3200140,
+        name: 'ウチュウジンデアル',
+    },
     /**
      * シナリオ
      */
@@ -811,18 +819,18 @@ const pItemData = [
         ],
         limit: null,
     },
-    // { 
-    //     id: 2308020,
-    //     name: 'まだ見ぬ世界へ',
-    //     activate_timing: 'start_of_turn',
-    //     condition: 'hpPer<=50%',
-    //     effects: [
-    //         { type: '集中', value: 7 },
-    //         { type: '消費体力削減', value: 3 },
-    //         { type: '手札強化', value: null },
-    //     ],
-    //     limit: 1,
-    // },
+    { 
+        id: 2308020,
+        name: 'まだ見ぬ世界へ',
+        activate_timing: 'start_of_turn',
+        condition: 'hpPer<=50',
+        effects: [
+            { type: '集中', value: 5 },
+            { type: '消費体力削減', value: 2 },
+            { type: '手札強化', value: null },
+        ],
+        limit: 1,
+    },
     {
         id: 2308021,
         name: 'まだ見ぬ世界へ+',

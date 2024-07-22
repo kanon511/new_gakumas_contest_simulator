@@ -9,7 +9,7 @@ import { deep_copy } from "../../util/utility.js";
  * 固有番号　：2桁番号
  * 強化　　　：強化前0, 強化後1
  * 
- * 実装：7/21まで
+ * 実装：7/22まで
  */
 
 export const skillCardData = [
@@ -3818,19 +3818,19 @@ export const skillCardData = [
         ],
         afterUse: { type: 'exhaust', value: 1 },
     },
-    // {
-    //     id: 4208020, 
-    //     name: 'バスに揺られて',
-    //     type: 'active',
-    //     plan: 'sense',
-    //     cost: { type: '体力消費', value: 2 },
-    //     condition: '',
-    //     effects: [
-    //         { type: 'score', value: 8, options: [{ type: '集中', value: 2.6 }] }, 
-    //         { type: 'block', value: 12, condition: 'hpPer<=50' }, 
-    //     ],
-    //     afterUse: { type: 'exhaust', value: 1 },
-    // },
+    {
+        id: 4208020, 
+        name: 'バスに揺られて',
+        type: 'active',
+        plan: 'sense',
+        cost: { type: '体力消費', value: 2 },
+        condition: '',
+        effects: [
+            { type: 'score', value: 5, options: [{ type: '集中', value: 2.3 }] }, 
+            { type: 'block', value: 6, condition: 'hpPer<=50' }, 
+        ],
+        afterUse: { type: 'exhaust', value: 1 },
+    },
     {
         id: 4208021, 
         name: 'バスに揺られて+',
