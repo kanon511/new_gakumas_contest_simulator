@@ -3,25 +3,40 @@ body {
     font-size: 14px;
     margin: 0;
     padding: 20px;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+}
+
+#wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 10px;
     background-color: #f9f9f9;
-    height: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-@media screen and (min-width: 800px) {
-    body {
-        display: flex;
+@media screen and (min-width: 750px) {
+    #wrapper {
+        flex-direction: row;
+        align-items: flex-start;
     }
+
     .container {
-        width: calc(50% - 40px);
+        margin-bottom: 0;
+        margin-right: 10px;
+        width: calc(50% - 5px);
+    }
+
+    .container:last-child {
+        margin-right: 0;
     }
 }
 
@@ -176,30 +191,6 @@ body {
     background-color: #f60;
 }
 
-/* 
-<div class="item">
-    <input type="checkbox" id="checkbox" class="checkbox">
-    <label for="checkbox" class="checkbox-label"></label>
-    <select class="select-box">
-        <option value="option1">Option 1</option>
-    </select>
-</div>
- */
-
-
-
-
-
-
-
-
-
-
-
-/* .items .item select {
-    flex: 1;
-    margin-left: 5px;
-} */
 .run-button {
     text-align: center;
 }
