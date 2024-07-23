@@ -495,12 +495,33 @@ export class PIdolStatus {
         }
     }
     
+    // addDelayEffect (name, turn, effect) {
+    //     this.#delayEffectList.push({
+    //         name: name,
+    //         turn: turn,
+    //         effect: effect,
+    //     });
+    // }
+
     addDelayEffect (name, turn, effect) {
         this.#delayEffectList.push({
             name: name,
             turn: turn,
             effect: effect,
         });
+        // {
+        //     id: 9999,
+        //     name: '好印象効果',
+        //     description: '',
+        //     value: 1,
+        //     type: 'buff',
+        //     activate_timing: 'end_turn',
+        //     activate_condition: '',
+        //     activate_effects: [
+        //         { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
+        //     ],
+        //     is_reduce_turnend: false,
+        // },
     }
 
     getDelayEffectByTurn (turn) {
@@ -533,6 +554,19 @@ export class PIdolStatus {
         //     result.push(status);
         // }
         const result = this.#status.filter(item=>item.activate_timing==activate_timing);
+        return result;
+    }
+
+    getDelayEffects(turn) {
+        const result = [];
+        for (let i = 0; i < this.#delayEffectList.length; i++) {
+            const delayEffect = this.#delayEffectList[i];
+            if (delayEffect.turn == turn) {
+                result.push(delayEffect);
+                this.#delayEffectList.splice(i, 1);
+                i--;
+            }
+        }
         return result;
     }
 }

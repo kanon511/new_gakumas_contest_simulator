@@ -10,9 +10,13 @@ export class PIdolLog {
         return this.log;
     }
 
-    addTextLog (text) {
-        this.currentTurnLog.history.push(text);
-        // console.log(text);
+    // addTextLog (text) {
+    //     this.currentTurnLog.history.push(text);
+    //     // console.log(text);
+    // }
+
+    addExecutionLog (executionLog) {
+        this.currentTurnLog.executionLog.push(executionLog);
     }
 
     nextTurn ({ score, hp, block, turnType }) {
@@ -20,7 +24,7 @@ export class PIdolLog {
         this.currentTurnLog = {
             turn: this.currentTurn,
             turnType: turnType,
-            history: [],
+            executionLog: [],
             status: {
                 score, hp, block, 
             }

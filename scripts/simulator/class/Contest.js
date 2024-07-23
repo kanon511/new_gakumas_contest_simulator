@@ -45,31 +45,34 @@ export class Contest {
         return !this.pIdol.checkAdditionalAction();
     }
 
-    create_log () {
-        const log = this.pIdol.log.getLog();
-        let text = '';
-        for (const turnLog of log) {
-            const turn = turnLog.turn;
-            text += `==========\n`
-                  + `${turnLog.turn}ターン目[${turnLog.turnType}]\n`
-                  + `スコア：${turnLog.status.score}, 体力：${turnLog.status.hp}, 元気：${turnLog.status.block}\n`
-                  + `==========\n`;
-            text += turnLog.history.join('\n') + '\n';
-        }
-        text += `==========\n`
-              + `最終`
-              + `スコア：${this.pIdol.score}, 体力：${this.pIdol.hp}, 元気：${this.pIdol.block}\n`
-              + `==========`;
-        this.log = {
-            score: this.pIdol.score,
-            text: text,
-        };
+    // create_log () {
+    //     const log = this.pIdol.log.getLog();
+    //     let text = '';
+    //     for (const turnLog of log) {
+    //         const turn = turnLog.turn;
+    //         text += `==========\n`
+    //               + `${turnLog.turn}ターン目[${turnLog.turnType}]\n`
+    //               + `スコア：${turnLog.status.score}, 体力：${turnLog.status.hp}, 元気：${turnLog.status.block}\n`
+    //               + `==========\n`;
+    //         text += turnLog.history.join('\n') + '\n';
+    //     }
+    //     text += `==========\n`
+    //           + `最終`
+    //           + `スコア：${this.pIdol.score}, 体力：${this.pIdol.hp}, 元気：${this.pIdol.block}\n`
+    //           + `==========`;
+    //     this.log = {
+    //         score: this.pIdol.score,
+    //         text: text,
+    //     };
+    // }
+
+    getLog () {
+        return this.pIdol.getLog();
     }
 
     checkFinishContest () {
         if (this.pIdol.checkFinished()) {
             this.isFinish = true;
-            // this.create_log();
         }
     }
 
