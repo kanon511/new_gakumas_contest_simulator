@@ -1,7 +1,6 @@
 import { Contest } from './class/Contest.js';
-import { ContestPIdol } from './class/ContestPIdol.js';
+import { PIdol } from './class/PIdol.js';
 import { AutoContest } from './class/AutoContest.js';
-import { skillCardData } from './data/skillCardData.js';
 
 export const run = (data) => {
     console.log('run');
@@ -13,7 +12,7 @@ export const run = (data) => {
     const count = 1000;
     const rndLogNumber = Math.floor(Math.random()*count);
     for (let i = 0; i < count; i++) {
-        const pIdol = new ContestPIdol({ 
+        const pIdol = new PIdol({ 
             parameter: data.parameter, 
             plan: data.plan,
             pItemIds: data.pItemIds,
@@ -27,7 +26,7 @@ export const run = (data) => {
             turnTypes: data.turnTypes,
         });
     
-        const autoContest = new AutoContest(data.autoId, contest);
+        const autoContest = new AutoContest(contest);
 
         for (let breakout = 0; breakout < 100; breakout++) {
             contest.startTurn();
@@ -40,19 +39,22 @@ export const run = (data) => {
                 loopout++;
             }
             contest.finishTurn();
-            if (contest.isFinish) break;
+            if (contest.checkkFinishContest()) break;
         }
-        log = contest.log;
-        if (!minLog || minLog.score > log.score) {
-            minLog = log;
+
+        const simulationLog = contest.getResult();
+
+        scoreList.push(simulationLog.finalStatus.score);
+ 
+        if (!minLog || minLog.finalStatus.score > simulationLog.finalStatus.score) {
+            minLog = simulationLog;
         }
-        if (!maxLog || maxLog.score < log.score) {
-            maxLog = log;
+        if (!maxLog || maxLog.finalStatus.score < simulationLog.finalStatus.score) {
+            maxLog = simulationLog;
         }
         if (i == rndLogNumber) {
-            rndLog = log;
+            rndLog = simulationLog;
         }
-        scoreList.push(log.score);
     }
     return {
         scoreList: scoreList,

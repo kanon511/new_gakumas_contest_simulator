@@ -280,7 +280,7 @@ const statusList = [
         id: 1105,
         name: 'スキルカード使用時、好印象の30%分パラメータ',
         description: '',
-        value: 1,
+        value: 0,
         type: 'buff',
         activate_timing: 'use_card',
         activate_condition: '',
@@ -310,7 +310,7 @@ const statusList = [
         value: 1,
         type: 'buff',
         activate_timing: 'end_turn',
-        activate_condition: '',
+        activate_condition: '好印象>0',
         activate_effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
         ],

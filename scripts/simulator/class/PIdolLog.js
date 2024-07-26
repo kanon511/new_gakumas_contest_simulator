@@ -16,7 +16,7 @@ export class PIdolLog {
     // }
 
     addExecutionLog (executionLog) {
-        this.currentTurnLog.executionLog.push(executionLog);
+        this.currentTurnLog.executionLog.push(...executionLog);
     }
 
     nextTurn ({ score, hp, block, turnType }) {

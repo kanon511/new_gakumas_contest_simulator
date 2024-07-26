@@ -2,20 +2,22 @@ import { Deck } from './Deck.js';
 import { TurnType } from './TurnType.js';
 import { PIdolStatus, _PStatus } from './PIdolStatus.js';
 import { PItemManager } from './PItemManager.js';
-import { SkillCard, SkillCardData } from '../data/skillCardData.js';
+import { SkillCard, SkillCardData } from '../data/_skillCardData.js';
 import { PIdolLog } from './PIdolLog.js';
+import { ConditionChecker } from './ConditionChecker.js';
+import { Calculator } from './Calculator.js';
 
-class Action {
-    constructor (parameter) {
-        this.type = parameter.type;
-        this.sourceType = parameter.sourceType ?? '';
-        this.source = parameter.source;
-        this.target = parameter.target ?? null;
-    }
-    toString () {
-        return `type: ${this.type}, source: ${this.sourceType}, target: ${this.target}`;
-    }
-}
+// class Action {
+//     constructor (parameter) {
+//         this.type = parameter.type;
+//         this.sourceType = parameter.sourceType ?? '';
+//         this.source = parameter.source;
+//         this.target = parameter.target ?? null;
+//     }
+//     toString () {
+//         return `type: ${this.type}, source: ${this.sourceType}, target: ${this.target}`;
+//     }
+// }
 
 export class PIdol {
 
@@ -45,7 +47,7 @@ export class PIdol {
             visual: parameter.visual,
         };
         this.#hp = this.#maxHp = parameter.hp;
-        this.#block = 1;
+        this.#block = 0;
         this.#score = 0;
         this.#plan = plan;
         this.#turn = 0;
@@ -62,27 +64,10 @@ export class PIdol {
         this.#remainTurn = turnCount;
     }
 
-    printActions(actions) {
-        const printList = [];
-        for (const action of actions) {
-            if (action.type == 'use') {
-                printList.push(`use[${action.sourceType}]: ${action.source.name}`);
-            }
-            else if (action.type == 'end') {
-                printList.push(`end`);
-            }
-            else {
-                const args = action.args.map(arg=>(typeof arg === 'object' && arg)?arg.toString():arg);
-                printList.push(`${action.type}: command=${action.command}, args=[${action.args.join(', ')}], delay=${action.delay}`);
-            }
-        }
-        console.log(printList);
-    }
-
     getLog () {
         return {
             log: this.#log.getLog(),
-            status: { score: this.#score, hp: this.#hp, block: this.#block },
+            finalStatus: { score: this.#score, hp: this.#hp, block: this.#block },
         };
     }
 
@@ -93,9 +78,9 @@ export class PIdol {
         this.#turn++;
         this.#currentTurnType = this.#turnType.getType(this.#turn);
         this.#log.nextTurn({ score: this.#score, hp: this.#hp, block: this.#block, turnType: this.#currentTurnType });
-        console.log(`---${this.#turn}ターン(${this.#currentTurnType})---`);
+        // console.log(`---${this.#turn}ターン(${this.#currentTurnType})---`);
         const pIdolActions = [
-            new Action({ type: 'effect', sourceType: 'pIdol', target: { type: 'ドロー', value: 3 } }),
+            { type: 'effect', sourceType: 'pIdol', target: { type: 'ドロー', value: 3 } },
         ];
         const pItemActions = this.#getPItemAction('start_turn');
         const pStatusActions = this.#getPStatusAction('start_turn');
@@ -114,23 +99,22 @@ export class PIdol {
         const log = this.#executeTransaction(transaction);
         if (this.#status.has('スキルカード使用数追加')) {
             this.#executeTransaction(this.#simulatedTransaction([
-                new Action({ type: 'effect', sourceType: 'pIdol', target: { type: 'スキルカード使用数追加', value: -1 } }),
-                new Action({ type: 'effect', sourceType: 'pIdol', target: { type: '追加行動', value: 1 } }),
+                { type: 'effect', sourceType: 'pIdol', target: { type: 'スキルカード使用数追加', value: -1 } },
+                { type: 'effect', sourceType: 'pIdol', target: { type: '追加行動', value: 1 } },
             ]));
             return true;
         } else {
             this.#endTransaction = predictTransaction;
             return false;
         }
-        
     }
 
     rest () {
         const source = { name: '休憩' };
         const actualTransaction = this.#simulatedTransaction([
-            new Action({ type: 'use', sourceType: 'rest', source: source }),
-            new Action({ type: 'effect', sourceType: 'rest', source: source, target: { type: '体力回復', value: 2 } }),
-            new Action({ type: 'end' }),
+            { type: 'use', sourceType: 'rest', source: source },
+            { type: 'effect', sourceType: 'rest', source: source, target: { type: '体力回復', value: 2 } },
+            { type: 'end' },
         ]);
         const log = this.#executeTransaction(actualTransaction);
     }
@@ -143,8 +127,8 @@ export class PIdol {
             this.#endTransaction = null;
         }
         this.#remainTurn--;
-        console.log('---');
-        console.log(this.#log.currentTurnLog.executionLog);
+        // console.log('---');
+        // console.log(this.#log.currentTurnLog.executionLog);
     }
 
     checkAdditionalAction () {
@@ -170,21 +154,21 @@ export class PIdol {
                 // this.printActions(handCard.transaction);
                 // this.printActions(handCard.predictTransaction);
             }
-            console.log(`${handCard.isAvailable()?'○':'×'} ${handCard.name} (${handCard.evaluation ?? 0})`);
+            // console.log(`${handCard.isAvailable()?'○':'×'} ${handCard.name} (${handCard.evaluation ?? 0})`);
         }
     }
 
     #setSkillCardTransaction (skillCard) {
         this.#lastUsedCard = skillCard;
         const transaction = [];
-        transaction.push(new Action({ type: 'use', sourceType: 'skillCard', source: skillCard }));
-        transaction.push(new Action({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: skillCard.cost }));
+        transaction.push({ type: 'use', sourceType: 'skillCard', source: skillCard });
+        transaction.push({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: skillCard.cost });
         transaction.push(...this.#getPItemAction('use_card'));
         transaction.push(...this.#getPStatusAction('use_card'));
         for (const effect of skillCard.effects) {
-            transaction.push(new Action({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: effect }));
+            transaction.push({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: effect });
         }
-        transaction.push(new Action({ type: 'end' }));
+        transaction.push({ type: 'end' });
 
         const status = this.#getStatus();
         const actualTransaction = this.#simulatedTransaction(transaction, status);
@@ -212,6 +196,7 @@ export class PIdol {
             currentTurnType: this.#currentTurnType,
             card: this.#lastUsedCard,
             status: pStatus,
+            handCount: this.getDeck('handCards').length,
         };
         return status;
     }
@@ -226,92 +211,16 @@ export class PIdol {
 
     #setSkillCardAvailale (skillCard) {
         const condition = skillCard.condition;
-        const flag_condition = this.#checkCondition(condition);
+        const flag_condition = ConditionChecker.check(condition, this.#getStatus());
         const flag_cost = this.#checkSkillCardCost(skillCard.cost);
         skillCard.setAvailable(flag_condition && flag_cost);
     }
 
     #checkSkillCardCost (cost) {
         const actualValue = this.#calcActualValue(cost, this.#getStatus());
-        if (cost.type == '体力消費') return this.#hp + this.#block >= actualValue;
-        if (cost.type == '体力直接消費') return this.#hp >= actualValue;
+        if (cost.type == 'hp') return this.#hp + this.#block >= -actualValue;
+        if (cost.type == 'direct_hp') return this.#hp >= -actualValue;
         return this.#status.getValue(cost.type) >= -actualValue;
-    }
-
-    #checkCondition (query, _status) {
-        // if (typeof query !== 'string') throw new Error(`条件が設定されていません > ${query}`);
-        // if (query == '') return true;
-        if (!query) return true;
-        const status = _status ?? this.#getStatus();
-        const result = query.split('|').map((orQuery) => {
-            return orQuery.split('&').map((andQuery) => {
-                return this.#evaluateSplitCondition(andQuery, status);
-            }).every(value => value)
-        }).some(value => value);
-        return result;
-    }
-
-    #evaluateSplitCondition (query, status) {
-        let sign = '';
-        const signList = ['==', '!=', '>=', '<=', '>', '<'];
-        for (const key of signList) {
-            if (~query.indexOf(key)) {
-                sign = key;
-                break;
-            }
-        }
-        if (sign == '') {
-            throw new Error(`予期する記号が含まれません > ${query}`);
-        }
-        const [key, value] = query.split(sign);
-        return this.#compareSplitCondition(key, value, sign, status);
-    }
-
-    #compareSplitCondition (key, value, sign, status) {
-        let targetValue = null;
-        if (key == 'hpPer') {
-            targetValue = status.hp / status.maxHp * 100;
-        } else
-        if (key == 'score') {
-            targetValue = status.score;
-        } else
-        if (key == 'block') {
-            targetValue = status.block;
-        } else 
-        if (key == 'turn') {
-            targetValue = status.turn;
-        } else 
-        if (key == 'turnType') {
-            targetValue = status.currentTurnType;
-        } else 
-        if (key == 'turnMultiple') {
-            targetValue = status.turn % Number(value) == 0 ? value : -1;
-        } else 
-        if (key == 'cardType') {
-            targetValue = status.card?.type;
-        } else 
-        if (key == 'cardId') {
-            targetValue = status.card?.id;
-        } else 
-        if (key == 'cardEffectInclude') {
-            targetValue = status.card?.effects.some(effect=>effect.type==value) ? value : -1;
-        } else 
-        if (key == 'usedCardCountMultiple') {
-            targetValue = status.status.getValue('使用したスキルカード数') % Number(value) == 0 ? value : -1;
-        } else 
-        if (key == 'remain_turn') {
-            targetValue = status.remain_turn;
-        } else {
-            targetValue = status.status.getValue(key);
-        }
-        switch (sign) {
-            case '==': return targetValue == value;
-            case '!=': return targetValue != value;
-            case '>=': return targetValue >= value;
-            case '<=': return targetValue <= value;
-            case '>' : return targetValue >  value;
-            case '<' : return targetValue <  value;
-        }
     }
 
     #calcActualValue (effect, status) {
@@ -346,23 +255,35 @@ export class PIdol {
             return actualValue;
         }
         if (effect.type == 'block') {
-            const optionCoef = { '使用したスキルカード数': 0 };
+            const optionCoef = { '使用したスキルカード数': 0, '割合減少': 0 };
             for (const effectOption of effect.options ?? []) {
                 switch (effectOption.type) {
                     case '使用したスキルカード数': optionCoef['使用したスキルカード数'] = effectOption.value * status.status.getValue('使用したスキルカード数'); break;
+                    case '割合減少': optionCoef['割合減少'] = -Math.ceil(status.block * effectOption.value / 100);
                 }
             }
-            const invalidCoef = status.status.has('元気増加無効') ? 0 : 1
-            const actualValue = (effect.value + status.status.getValue('やる気') + optionCoef['使用したスキルカード数']) * invalidCoef;
+            let actualValue = (effect.value ?? 0 + status.status.getValue('やる気') + optionCoef['使用したスキルカード数'] + optionCoef['割合減少']);
+            if (status.status.has('元気増加無効') && actualValue > 0) actualValue = 0;
             return actualValue;
         }
-        if (effect.type == '体力消費' || effect.type == '体力直接消費') {
+        if (effect.type == 'hp' || effect.type == 'direct_hp') {
             const value = effect.value;
-            const increaseHpConsumption = status.status.has('消費体力増加') ? 2.0 : 1.0;
-            const decreaseHpConsumption = status.status.has('消費体力減少') ? 0.5 : 1.0;
-            const reductionHpComsumption = status.status.getValue('消費体力削減');
-            const actualValue = Math.ceil(value * increaseHpConsumption * decreaseHpConsumption) - reductionHpComsumption;
-            return Math.max(0, actualValue);
+            if (value < 0) {
+                const increaseHpConsumption = status.status.has('消費体力増加') ? 2.0 : 1.0;
+                const decreaseHpConsumption = status.status.has('消費体力減少') ? 0.5 : 1.0;
+                const reductionHpComsumption = status.status.getValue('消費体力削減');
+                const actualValue = Math.ceil(value * increaseHpConsumption * decreaseHpConsumption) - reductionHpComsumption;
+                return Math.max(0, actualValue);
+            }
+            return value;
+        }
+        if (effect.type == 'ドロー') {
+            let actualValue = effect.value;
+            for (const effectOption of effect.options ?? []) {
+                switch (effectOption.type) {
+                    case '手札枚数': actualValue = status.handCount-1;
+                }
+            }
         }
         const baseValue = effect.value ?? 0;
         let optionalValue = 0;
@@ -401,13 +322,13 @@ export class PIdol {
         const { type, value, options, delay, condition } = action.target;
         const actualValue = this.#calcActualValue(action.target, status);
         const executes = [];
-        if (!this.#checkCondition(condition)) return executes;
+        if (!ConditionChecker.check(condition, this.#getStatus())) return executes;
 
         if (delay) {
             executes.push({ delay: delay, type: type, args: [value, actualValue, options, action.source] });
             return executes;
         }
-        if (type == '体力回復') {
+        if (type == 'hp') {
             const hp = status.hp;
             status.hp = Math.min(status.maxHp, hp+actualValue);
             executes.push({ type: 'hp', command: 'add', args: [status.hp-hp] });
@@ -624,135 +545,9 @@ export class PIdol {
     #evaluateTransaction (transaction) {
         let totalEvaluation = 0;
         for (const action of transaction) {
-            totalEvaluation += this.#evaluateAction(action);
+            totalEvaluation += Calculator.calcActionEvaluation(action);
         }
         return totalEvaluation;
-    }
-
-    #evaluateAction (action) {
-        if (action.type == 'use') {
-            return 0;
-        }
-        if (action.type == 'end') {
-            return 0;
-        }
-        if (action.delay) {
-            return 0;
-        }
-        else if (action.type == 'hp') {
-            return 0;
-        }
-        else if (action.type == 'block') {
-            return 0;
-        }
-        else if (action.type == 'score') {
-            return 0;
-        }
-        else if (action.type == 'add_action') {
-            return 0;
-        }
-        else if (action.type == 'extra_turn') {
-            return 0;
-        }
-        else if (action.type == 'draw') {
-            return 0;
-        }
-        else if (action.type == 'upgrade') {
-            return 0;
-        }
-        else if (action.type == 'discard') {
-            return 0;
-        }
-        else if (action.type == 'generate') {
-            return 0;
-        }
-        else if (action.type.indexOf('status:') == 0) {
-            const statusType = action.type.split(':')[1];
-            if (statusType == '集中') {
-                return 0;
-            }
-            else if (statusType == '好調') {
-                return 0;
-            }
-            else if (statusType == '絶好調') {
-                return 0;
-            }
-            else if (statusType == 'やる気') {
-                return 0;
-            }
-            else if (statusType == '好印象') {
-                return 0;
-            }
-            else if (statusType == '消費体力削減') {
-                return 0;
-            }
-            else if (statusType == '消費体力減少') {
-                return 0;
-            }
-            else if (statusType == '消費体力増加') {
-                return 0;
-            }
-            else if (statusType == '元気増加無効') {
-                return 0;
-            }
-            else if (statusType == '低下状態無効') {
-                return 0;
-            }
-            else if (statusType == 'スキルカード使用数追加') {
-                return 0;
-            }
-            else if (statusType == '次に使用するスキルカードの効果を発動') {
-                return 0;
-            }
-            else if (statusType == '次に使用するアクティブスキルカードの効果を発動') {
-                return 0;
-            }
-            else if (statusType == 'パラメータ上昇量増加') {
-                return 0;
-            }
-            else if (statusType == '使用したスキルカード数') {
-                return 0;
-            }
-            else if (statusType == 'アクティブスキルカード使用時固定元気+2') {
-                return 0;
-            }
-            else if (statusType == 'アクティブスキルカード使用時集中+1') {
-                return 0;
-            }
-            else if (statusType == 'メンタルスキルカード使用時好印象+1') {
-                return 0;
-            }
-            else if (statusType == 'メンタルスキルカード使用時やる気+1') {
-                return 0;
-            }
-            else if (statusType == 'ターン終了時、好印象+1') {
-                return 0;
-            }
-            else if (statusType == 'ターン終了時、集中が3以上の場合、集中+2') {
-                return 0;
-            }
-            else if (statusType == 'ターン終了時、好印象が3以上の場合、好印象+3') {
-                return 0;
-            }
-            else if (statusType == 'アクティブスキルカード使用時、パラメータ+4') {
-                return 0;
-            }
-            else if (statusType == 'アクティブスキルカード使用時、パラメータ+5') {
-                return 0;
-            }
-            else if (statusType == 'スキルカード使用時、好印象の30%分パラメータ') {
-                return 0;
-            }
-            else if (statusType == 'スキルカード使用時、好印象の50%分パラメータ') {
-                return 0;
-            }
-            else {
-                throw new Error(`次のステータスは定義されていません -> ${statusType}`);
-            }
-        }
-        else {
-            throw new Error(`次のアクションタイプは定義されていません -> ${action.type}`);
-        }
     }
 
     /**
@@ -764,13 +559,13 @@ export class PIdol {
         const actions = [];
         const targetPItemList = this.#pItemsManager.getPItemByActivateTiming(activateTiming);
         const activePItemList = targetPItemList.filter(
-            pItem=>pItem.isAvailable() && this.#checkCondition(pItem.condition));
+            pItem=>pItem.isAvailable() && ConditionChecker.check(pItem.condition, this.#getStatus()));
         for (const pItem of activePItemList) {
-            actions.push(new Action({ type: 'use', sourceType: 'pItem', source: pItem }));
+            actions.push({ type: 'use', sourceType: 'pItem', source: pItem });
             for (const effect of pItem.effects) {
-                actions.push(new Action({ type: 'effect', sourceType: 'pItem', source: pItem, target: effect }));
+                actions.push({ type: 'effect', sourceType: 'pItem', source: pItem, target: effect });
             }
-            actions.push(new Action({ type: 'end' }));
+            actions.push({ type: 'end' });
         }
         return actions;
     }
@@ -783,14 +578,14 @@ export class PIdol {
     #getPStatusAction (activateTiming) {
         const actions = [];
         const targetPStatusList = this.#status.get_byActivateTiming(activateTiming);
-        const activePStatusList = targetPStatusList.filter(pStatus=>this.#checkCondition(pStatus.activate_condition));
+        const activePStatusList = targetPStatusList.filter(pStatus=>ConditionChecker.check(pStatus.activate_condition, this.#getStatus()));
         for (const pStatus of activePStatusList) {
             for (let i = 0; i < pStatus.value; i++) {
-                actions.push(new Action({ type: 'use', sourceType: 'pStatus', source: pStatus }));
+                actions.push({ type: 'use', sourceType: 'pStatus', source: pStatus });
                 for (const effect of pStatus.activate_effects) {
-                    actions.push(new Action({ type: 'effect', sourceType: 'pStatus', source: pStatus, target: effect }));
+                    actions.push({ type: 'effect', sourceType: 'pStatus', source: pStatus, target: effect });
                 }
-                actions.push(new Action({ type: 'end' }));
+                actions.push({ type: 'end' });
             }
         }
         return actions;
@@ -800,11 +595,11 @@ export class PIdol {
         const actions = [];
         const delayEffectList = this.#status.getDelayEffects(this.#turn);
         for (const delayEffect of delayEffectList) {
-            actions.push(new Action({ type: 'use', sourceType: 'pDelayEffect', source: delayEffect }));
+            actions.push({ type: 'use', sourceType: 'pDelayEffect', source: delayEffect });
             // for (const effect of delayEffect.activate_effects) {
-            actions.push(new Action({ type: 'effect', sourceType: 'pDelayEffect', source: delayEffect, target: delayEffect.effect }));
+            actions.push({ type: 'effect', sourceType: 'pDelayEffect', source: delayEffect, target: delayEffect.effect });
             // }
-            actions.push(new Action({ type: 'end' }));
+            actions.push({ type: 'end' });
         }
         return actions;
     }

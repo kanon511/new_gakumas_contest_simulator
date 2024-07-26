@@ -1,6 +1,25 @@
-import { SkillCard } from "../data/skillCardData.js";
+import { SkillCard } from "../data/_skillCardData.js";
 
+/**
+ * param1からparam2までの連番配列を返します。
+ * @param {*} startNumber 開始番号
+ * @param {*} endNumber 終了番号
+ * @returns {Array[Number]} 連番配列
+ */
+function createRange (startNumber, endNumber) {
+    const list = [];
+    for (let i = startNumber; i < endNumber; i++) {
+        list.push(i);
+    }
+    return list;
+}
+
+/**
+ * スキルカードのデッキ
+ */
 export class Deck {
+
+    // property
 
     #index_drawPile       = [];
     #index_handCards      = [];
@@ -9,28 +28,33 @@ export class Deck {
     #flag_first_draw = true;
     #index_first_draw = [];
 
+    // method
+
+    /**
+     * コンストラクタ
+     * @param {Array[Number]} skillCardIds デッキに入れるスキルカードのID配列
+     */
     constructor (skillCardIds) {
         this.skillCards = skillCardIds.map(id => new SkillCard(id));
         this.init();
     }
 
+    /**
+     * 配列の中身をランダムに入れ替えます。
+     * @param {Array} list 
+     */
     shuffle (list) {
         for (let i = list.length; 1 < i; i--) {
-            const n = Math.floor(Math.random() * i);
-            [list[n], list[i - 1]] = [list[i - 1], list[n]];
+            const rnd = Math.floor(Math.random()*i);
+            [list[rnd], list[i - 1]] = [list[i - 1], list[rnd]];
         }
     }
 
-    createRange (startNumber, endNumber) {
-        const list = [];
-        for (let i = startNumber; i < endNumber; i++) {
-            list.push(i);
-        }
-        return list;
-    }
-
+    /**
+     * 初期化
+     */
     init () {
-        this.#index_drawPile = this.createRange(0, this.skillCards.length);
+        this.#index_drawPile = createRange(0, this.skillCards.length);
 
         // レッスン開始時手札に入るカードのインデックスリスト
         this.#index_first_draw = this.#index_drawPile
@@ -49,7 +73,6 @@ export class Deck {
             // 最初のドローでレッスン開始時手札に入るを手札に入れる
             this.#flag_first_draw = false;
             this.#index_first_draw.forEach(index=>this.addHandCards(index));
-            // this.#index_handCards.push(...this.#index_first_draw);
             this.#index_first_draw.forEach(item=>this.#index_drawPile.splice(this.#index_drawPile.indexOf(item), 1));
             number -= this.#index_handCards.length;
         }
@@ -60,7 +83,6 @@ export class Deck {
                 this.#index_discardPile = [];
                 this.shuffle(this.#index_drawPile);
             }
-            // this.#index_handCards.push(this.#index_drawPile.shift());
             this.addHandCards(this.#index_drawPile.shift());
         }
     }

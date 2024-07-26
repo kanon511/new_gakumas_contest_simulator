@@ -1,0 +1,15 @@
+
+.log-turn {
+    border-top: solid 4px;
+    border-bottom: solid 4px;
+}
+
+.log-turn[data-turnType="vocal"] {
+    border-color: deeppink;
+}
+.log-turn[data-turnType="dance"] {
+    border-color: darkcyan;
+}
+.log-turn[data-turnType="visual"] {
+    border-color: darkorange;
+}

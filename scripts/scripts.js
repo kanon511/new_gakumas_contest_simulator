@@ -81,6 +81,41 @@ function DOM_set_select_options (select, item_list, isBlank) {
     select.appendChild(fragment);
 }
 
+function parseSimulationLog (simulationLog) {
+    const container = document.createElement('div');
+    for (const log of simulationLog.log) {
+        const textElement = `
+        <div>
+            <div class="log-turn" data-turnType="${log.turnType}">${log.turn}ターン目　${log.turnType}</div>
+            スコア${log.status.score}, HP${log.status.hp}, 元気${log.status.block}
+        </div>`;
+        container.appendChild(DOM_text_to_elememt(textElement));
+        container.appendChild(parseExecutionLog(log.executionLog));
+    }
+    return container;
+}
+
+function parseExecutionLog (executionLog) {
+    const container = document.createElement('div');
+    executionLog.forEach(entry => {
+        const element = document.createElement('div');
+        if (entry.type === 'effect') {
+            element.textContent = entry.message;
+        } else if (entry.type === 'use') {
+            const nameElement = document.createElement('div');
+            nameElement.textContent = `${entry.name}を使った`;
+            element.appendChild(nameElement);
+            const listContainer = document.createElement('div');
+            listContainer.className = 'list';
+            listContainer.appendChild(parseExecutionLog(entry.list));
+            element.appendChild(listContainer);
+        }
+        container.appendChild(element);
+    });
+    return container;
+}
+
+
 window.addEventListener('error', (event) => {
     alert(event.message);
 });
@@ -377,19 +412,25 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCardIds: skillCardIds, 
             autoId: autoId,
         };
-
-        let scoreList, minLog, rndLog, maxLog;
         
+        console.time('run');
         const result = run(run_data);
-        scoreList = result.scoreList;
-        minLog = result.minLog;
-        rndLog = result.rndLog;
-        maxLog = result.maxLog;
+        console.timeEnd('run');
 
+        const logs = {
+            min: result.minLog,
+            rnd: result.rndLog,
+            max: result.maxLog,
+        };
+        const logKeys = ['min', 'rnd', 'max'];
+        for (const key of logKeys) {
+            const container =  document.getElementById(`contest-log-${key}`);
+            DOM_delete_allChildren(container);
+            container.appendChild(parseSimulationLog(logs[key]));
+        }
+
+        const scoreList = result.scoreList;
         scoreList.sort((a, b) => a - b);
-        document.getElementById('contest-log-min').innerHTML = minLog.text.replaceAll('\n', '<br>');
-        document.getElementById('contest-log-rnd').innerHTML = rndLog.text.replaceAll('\n', '<br>');
-        document.getElementById('contest-log-max').innerHTML = maxLog.text.replaceAll('\n', '<br>');
 
         const aryMax = function (a, b) {return Math.max(a, b);}
         const aryMin = function (a, b) {return Math.min(a, b);}
