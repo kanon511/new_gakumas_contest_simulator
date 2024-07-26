@@ -8,7 +8,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
@@ -18,7 +18,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -28,7 +28,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -38,7 +38,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
@@ -48,7 +48,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -58,7 +58,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
@@ -68,7 +68,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -78,7 +78,7 @@ const statusList = [
         value: 0,
         type: 'debuff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -88,7 +88,7 @@ const statusList = [
         value: 0,
         type: 'debuff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -98,7 +98,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
@@ -108,7 +108,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,//all
     },
     {
@@ -118,7 +118,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
 
@@ -129,7 +129,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
 
@@ -140,7 +140,7 @@ const statusList = [
         valueStack: [],
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
 
@@ -151,7 +151,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
 
@@ -162,8 +162,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        condition: 'cardType==active',
+        effects: [
             { type: '固定元気', value: 2 }, 
         ],
         is_reduce_turnend: false,
@@ -175,8 +175,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        condition: 'cardType==active',
+        effects: [
             { type: '集中', value: 1 }, 
         ],
         is_reduce_turnend: false,
@@ -188,8 +188,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: 'cardType==mental',
-        activate_effects: [
+        condition: 'cardType==mental',
+        effects: [
             { type: '好印象', value: 1 }, 
         ],
         is_reduce_turnend: false,
@@ -201,8 +201,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: 'cardType==mental',
-        activate_effects: [
+        condition: 'cardType==mental',
+        effects: [
             { type: 'やる気', value: 1 }, 
         ],
         is_reduce_turnend: false,
@@ -214,8 +214,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'end_turn',
-        activate_condition: null,
-        activate_effects: [
+        condition: null,
+        effects: [
             { type: '好印象', value: 1 }, 
         ],
         is_reduce_turnend: false,
@@ -228,8 +228,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'end_turn',
-        activate_condition: '集中>=3',
-        activate_effects: [
+        condition: '集中>=3',
+        effects: [
             { type: '集中', value: 2 }, 
         ],
         is_reduce_turnend: false,
@@ -241,8 +241,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'end_turn',
-        activate_condition: '好印象>=3',
-        activate_effects: [
+        condition: '好印象>=3',
+        effects: [
             { type: '好印象', value: 3 }, 
         ],
         is_reduce_turnend: false,
@@ -256,8 +256,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        condition: 'cardType==active',
+        effects: [
             { type: 'score', value: 4 }, 
         ],
         is_reduce_turnend: false,
@@ -269,8 +269,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        condition: 'cardType==active',
+        effects: [
             { type: 'score', value: 5 }, 
         ],
         is_reduce_turnend: false,
@@ -283,8 +283,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: '',
-        activate_effects: [
+        condition: '',
+        effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] }, 
         ],
         is_reduce_turnend: false,
@@ -296,8 +296,8 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'use_card',
-        activate_condition: '',
-        activate_effects: [
+        condition: '',
+        effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] }, 
         ],
         is_reduce_turnend: false,
@@ -310,8 +310,8 @@ const statusList = [
         value: 1,
         type: 'buff',
         activate_timing: 'end_turn',
-        activate_condition: '好印象>0',
-        activate_effects: [
+        condition: '好印象>0',
+        effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
         ],
         is_reduce_turnend: false,
@@ -436,7 +436,7 @@ export class PIdolStatus {
                 this.reduce(key, 1);
             }
         }
-        this.#status[this.#index_name_to_idx['使用したスキルカード数']].value = 0;
+        // this.#status[this.#index_name_to_idx['使用したスキルカード数']].value = 0;
     }
 
     #get (name) {
@@ -516,8 +516,8 @@ export class PIdolStatus {
         //     value: 1,
         //     type: 'buff',
         //     activate_timing: 'end_turn',
-        //     activate_condition: '',
-        //     activate_effects: [
+        //     condition: '',
+        //     effects: [
         //         { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
         //     ],
         //     is_reduce_turnend: false,

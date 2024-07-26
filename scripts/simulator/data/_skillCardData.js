@@ -12,6 +12,23 @@ import { deep_copy } from "../../util/utility.js";
  * 実装：7/12まで
  */
 
+// (function test () {
+//     console.time('test');
+//     for (let i = 0; i < 100000; i++) {
+//         const ary1 = [1, 2, 3];
+//         const ary2 = [4, 5, 6];
+//         const ary3 = [...ary1, ...ary2];
+//     } // 15s
+//     console.timeEnd('test');
+//     console.time('test');
+//     for (let i = 0; i < 100000; i++) {
+//         const ary1 = [1, 2, 3];
+//         const ary2 = [4, 5, 6];
+//         const ary3 = ary1.concat(ary2);
+//     } // 10s
+//     console.timeEnd('test');
+// })();
+
 export const skillCardData = [
     /**
      * ベーシックカード(アクティブ/フリー)

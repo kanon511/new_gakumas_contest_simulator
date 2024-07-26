@@ -11,14 +11,8 @@ export class ConditionChecker {
     }
 
     static #evaluateSplitCondition (query, status) {
-        let sign = '';
         const signList = ['==', '!=', '>=', '<=', '>', '<'];
-        for (const key of signList) {
-            if (~query.indexOf(key)) {
-                sign = key;
-                break;
-            }
-        }
+        const sign = signList.find(sign=>~query.indexOf(sign));
         if (sign == '') {
             throw new Error(`予期する記号が含まれません > ${query}`);
         }

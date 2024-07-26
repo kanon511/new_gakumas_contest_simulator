@@ -133,7 +133,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1
@@ -146,7 +146,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '好印象', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
         ],
         limit: 1
@@ -216,7 +216,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '好調', value: 2 },
+            { type: 'status', target: '好調', value: 2 },
         ],
         limit: -1,
     },
@@ -229,7 +229,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: -1,
     },
@@ -242,7 +242,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: -1,
     },
@@ -255,7 +255,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: -1,
     },
@@ -272,7 +272,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
         ],
         limit: -1,
     },
@@ -285,7 +285,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '好印象', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
         ],
         limit: -1,
     },
@@ -298,7 +298,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'やる気', value: 2 },
+            { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: -1,
     },
@@ -311,7 +311,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: -1,
     },
@@ -347,7 +347,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '好調', value: 2 },
+            { type: 'status', target: '好調', value: 2 },
         ],
         limit: -1
     },
@@ -360,7 +360,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 9 },
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: -1
     },
@@ -397,7 +397,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: -1,
     },
@@ -410,7 +410,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 9 },
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: -1,
     },
@@ -447,7 +447,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '集中', value: 3, condition: '好調>0' },
+            { type: 'status', target: '集中', value: 3, condition: '好調>0' },
         ],
         limit: -1,
     },
@@ -460,7 +460,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 9 },
-            { type: '集中', value: 4, condition: '好調>0' },
+            { type: 'status', target: '集中', value: 4, condition: '好調>0' },
         ],
         limit: -1,
     },
@@ -525,7 +525,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 7 },
-            { type: '好印象', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
         ],
         limit: -1,
     },
@@ -538,7 +538,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 9 },
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
         ],
         limit: -1,
     },
@@ -550,7 +550,7 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
         ],
         limit: 1,
@@ -563,7 +563,7 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: 'やる気', value: 4 },
             { type: 'score', value: null, options: [{ type: 'block', value: 80 }] },
         ],
         limit: 1,
@@ -577,7 +577,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 10 },
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: -1,
     },
@@ -590,7 +590,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 15 },
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: -1,
     },
@@ -655,7 +655,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '消費体力減少', value: 2 },
+            { type: 'status', target: '消費体力減少', value: 2 },
         ],
         limit: -1,
     },
@@ -668,7 +668,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '消費体力減少', value: 3 },
+            { type: 'status', target: '消費体力減少', value: 3 },
         ],
         limit: -1,
     },
@@ -681,7 +681,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
+            { type: 'status', target: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
         limit: 1,
     },
@@ -694,7 +694,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
+            { type: 'status', target: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
         limit: 1,
     },
@@ -710,7 +710,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: -1,
     },
@@ -723,7 +723,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: -1,
     },
@@ -735,8 +735,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '好調', value: 3 },
-            { type: '集中', value: 1, condition: '好調>0' },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: '集中', value: 1, condition: '好調>0' },
         ],
         limit: -1,
     },
@@ -748,8 +748,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '好調', value: 4 },
-            { type: '集中', value: 1, condition: '好調>0' },
+            { type: 'status', target: '好調', value: 4 },
+            { type: 'status', target: '集中', value: 1, condition: '好調>0' },
         ],
         limit: -1,
     },
@@ -761,8 +761,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '集中', value: 2 },
-            { type: '好調', value: 3, condition: '集中>=3' },
+            { type: 'status', target: '集中', value: 2 },
+            { type: 'status', target: '好調', value: 3, condition: '集中>=3' },
         ],
         limit: -1,
     },
@@ -774,8 +774,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '集中', value: 3 },
-            { type: '好調', value: 3, condition: '集中>=3' },
+            { type: 'status', target: '集中', value: 3 },
+            { type: 'status', target: '好調', value: 3, condition: '集中>=3' },
         ],
         limit: -1,
     },
@@ -787,8 +787,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -7 },
         condition: '',
         effects: [
-            { type: '好調', value: 3 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1,
     },
@@ -800,8 +800,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -7 },
         condition: '',
         effects: [
-            { type: '好調', value: 4 },
-            { type: '集中', value: 5 },
+            { type: 'status', target: '好調', value: 4 },
+            { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1,
     },
@@ -818,7 +818,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '好印象', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
         ],
         limit: -1,
     },
@@ -831,7 +831,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
         ],
         limit: -1,
     },
@@ -844,7 +844,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: -1,
     },
@@ -857,7 +857,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: -1,
     },
@@ -893,8 +893,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '好印象', value: 3 },
-            { type: 'やる気', value: 2, condition: '好印象>=3' },
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'やる気', value: 2, condition: '好印象>=3' },
         ],
         limit: -1,
     },
@@ -906,8 +906,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '好印象', value: 4 },
-            { type: 'やる気', value: 3, condition: '好印象>=3' },
+            { type: 'status', target: '好印象', value: 4 },
+            { type: 'status', target: 'やる気', value: 3, condition: '好印象>=3' },
         ],
         limit: -1,
     },
@@ -920,7 +920,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 5 },
-            { type: '好印象', value: 3, condition: 'やる気>=3' },
+            { type: 'status', target: '好印象', value: 3, condition: 'やる気>=3' },
         ],
         limit: -1,
     },
@@ -933,7 +933,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 7 },
-            { type: '好印象', value: 4, condition: 'やる気>=3' },
+            { type: 'status', target: '好印象', value: 4, condition: 'やる気>=3' },
         ],
         limit: -1,
     },
@@ -945,8 +945,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
-            { type: '好印象', value: 4, condition: 'やる気>=6' },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: '好印象', value: 4, condition: 'やる気>=6' },
         ],
         limit: -1,
     },
@@ -958,8 +958,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 4 },
-            { type: '好印象', value: 5, condition: 'やる気>=6' },
+            { type: 'status', target: 'やる気', value: 4 },
+            { type: 'status', target: '好印象', value: 5, condition: 'やる気>=6' },
         ],
         limit: -1,
     },
@@ -971,7 +971,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -8 },
         condition: '',
         effects: [
-            { type: '好印象', value: 7 },
+            { type: 'status', target: '好印象', value: 7 },
         ],
         limit: 1,
     },
@@ -983,7 +983,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -8 },
         condition: '',
         effects: [
-            { type: '好印象', value: 9 },
+            { type: 'status', target: '好印象', value: 9 },
         ],
         limit: 1,
     },
@@ -1024,7 +1024,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 7 },
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
     },
@@ -1037,7 +1037,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 7 },
-            { type: '集中', value: 5 },
+            { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1,
     },
@@ -1050,7 +1050,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 2 },
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
     },
@@ -1063,7 +1063,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '好印象', value: 6 },
+            { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1,
     },
@@ -1101,8 +1101,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 1 },
-            { type: 'ターン終了時、好印象+1', value: 1 },
+            { type: 'status', target: '好印象', value: 1 },
+            { type: 'status', target: 'ターン終了時、好印象+1', value: 1 },
         ],
         limit: 1,
     },
@@ -1114,8 +1114,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '好印象', value: 2 },
-            { type: 'ターン終了時、好印象+1', value: 1 },
+            { type: 'status', target: '好印象', value: 2 },
+            { type: 'status', target: 'ターン終了時、好印象+1', value: 1 },
         ],
         limit: 1,
     },
@@ -1129,7 +1129,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 2 },
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: 'やる気', value: 2 },
+            { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
     },
@@ -1143,7 +1143,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 2 },
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
     },
@@ -1318,7 +1318,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 5 },
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: -1
     },
@@ -1331,7 +1331,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 9 },
-            { type: '好調', value: 4 },
+            { type: 'status', target: '好調', value: 4 },
         ],
         limit: -1
     },
@@ -1344,7 +1344,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 11 },
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: -1
     },
@@ -1357,7 +1357,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 18 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: -1
     },
@@ -1396,7 +1396,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 26 },
-            { type: '好調', value: 1 },
+            { type: 'status', target: '好調', value: 1 },
         ],
         limit: 1
     },
@@ -1409,7 +1409,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 40 },
-            { type: '好調', value: 1 },
+            { type: 'status', target: '好調', value: 1 },
         ],
         limit: 1
     },
@@ -1423,7 +1423,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 30 },
             { type: 'block', value: 10 },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: -1
     },
@@ -1437,7 +1437,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 40 },
             { type: 'block', value: 10 },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: -1
     },
@@ -1451,8 +1451,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 12 },
             { type: 'block', value: 7 },
-            { type: '集中', value: 5 },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: '集中', value: 5 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: -1
     },
@@ -1466,8 +1466,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 12 },
             { type: 'block', value: 7 },
-            { type: '集中', value: 7 },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: '集中', value: 7 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: -1
     },
@@ -1476,12 +1476,12 @@ export const skillCardData = [
         name: 'シュプレヒコール',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: -3 },
+        cost: { type: 'status', target: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '好調', value: 2 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好調', value: 2 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -1490,12 +1490,12 @@ export const skillCardData = [
         name: 'シュプレヒコール+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: -2 },
+        cost: { type: 'status', target: '集中', value: -2 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '好調', value: 3 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -1504,12 +1504,12 @@ export const skillCardData = [
         name: '立ち位置チェック',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: -3 },
+        cost: { type: 'status', target: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: 25 },
             { type: 'block', value: 15 },
-            { type: '元気増加無効', value: 2 },
+            { type: 'status', target: '元気増加無効', value: 2 },
         ],
         limit: 1
     },
@@ -1518,12 +1518,12 @@ export const skillCardData = [
         name: '立ち位置チェック+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: -3 },
+        cost: { type: 'status', target: '集中', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: 40 },
             { type: 'block', value: 15 },
-            { type: '元気増加無効', value: 2 },
+            { type: 'status', target: '元気増加無効', value: 2 },
         ],
         limit: 1
     },
@@ -1539,7 +1539,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 60 }] },
         ],
         limit: -1
@@ -1552,7 +1552,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 80 }] },
         ],
         limit: -1
@@ -1619,7 +1619,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: 1
     },
@@ -1633,7 +1633,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 250 }] },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: 1
     },
@@ -1642,11 +1642,11 @@ export const skillCardData = [
         name: 'みんな大好き',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: -3 },
+        cost: { type: 'status', target: 'やる気', value: -3 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 90 }] },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -1655,11 +1655,11 @@ export const skillCardData = [
         name: 'みんな大好き+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: -2 },
+        cost: { type: 'status', target: 'やる気', value: -2 },
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -1675,8 +1675,8 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -1 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'ドロー', value: 2 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: 2 },
         ],
         limit: 1
     },
@@ -1688,9 +1688,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: 0 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'ドロー', value: 2 },
-            { type: '消費体力減少', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: 2 },
+            { type: 'status', target: '消費体力減少', value: 1 },
         ],
         limit: 1
     },
@@ -1703,8 +1703,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 11 },
-            { type: '元気増加無効', value: 2 },
-            { type: '消費体力減少', value: 3 },
+            { type: 'status', target: '元気増加無効', value: 2 },
+            { type: 'status', target: '消費体力減少', value: 3 },
         ],
         limit: 1
     },
@@ -1717,8 +1717,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 13 },
-            { type: '元気増加無効', value: 2 },
-            { type: '消費体力減少', value: 4 },
+            { type: 'status', target: '元気増加無効', value: 2 },
+            { type: 'status', target: '消費体力減少', value: 4 },
         ],
         limit: 1
     },
@@ -1735,7 +1735,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 6 },
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1
     },
@@ -1748,7 +1748,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1
     },
@@ -1761,7 +1761,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 6 },
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: 1
     },
@@ -1774,7 +1774,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: '好調', value: 4 },
+            { type: 'status', target: '好調', value: 4 },
         ],
         limit: 1
     },
@@ -1786,8 +1786,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '絶好調', value: 3 },
-            { type: 'アクティブスキルカード使用時固定元気+2', value: 1 },
+            { type: 'status', target: '絶好調', value: 3 },
+            { type: 'status', target: 'アクティブスキルカード使用時固定元気+2', value: 1 },
         ],
         limit: 1
     },
@@ -1799,8 +1799,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '絶好調', value: 4 },
-            { type: 'アクティブスキルカード使用時固定元気+2', value: 1 },
+            { type: 'status', target: '絶好調', value: 4 },
+            { type: 'status', target: 'アクティブスキルカード使用時固定元気+2', value: 1 },
         ],
         limit: 1
     },
@@ -1812,8 +1812,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '集中', value: 2 },
-            { type: 'アクティブスキルカード使用時集中+1', value: 1 },
+            { type: 'status', target: '集中', value: 2 },
+            { type: 'status', target: 'アクティブスキルカード使用時集中+1', value: 1 },
         ],
         limit: 1
     },
@@ -1825,8 +1825,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '集中', value: 3 },
-            { type: 'アクティブスキルカード使用時集中+1', value: 1 },
+            { type: 'status', target: '集中', value: 3 },
+            { type: 'status', target: 'アクティブスキルカード使用時集中+1', value: 1 },
         ],
         limit: 1
     },
@@ -1841,8 +1841,8 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '集中', value: 3 },
-            { type: '好調', value: 2 },
+            { type: 'status', target: '集中', value: 3 },
+            { type: 'status', target: '好調', value: 2 },
         ],
         limit: 1
     },
@@ -1857,8 +1857,8 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '集中', value: 4 },
-            { type: '好調', value: 3 },
+            { type: 'status', target: '集中', value: 4 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: 1
     },
@@ -1870,7 +1870,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '好調', value: 5 },
+            { type: 'status', target: '好調', value: 5 },
         ],
         limit: 1
     },
@@ -1882,7 +1882,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '好調', value: 7 },
+            { type: 'status', target: '好調', value: 7 },
         ],
         limit: 1
     },
@@ -1895,7 +1895,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1
     },
@@ -1908,7 +1908,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 5 },
-            { type: '集中', value: 5 },
+            { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1
     },
@@ -1917,11 +1917,11 @@ export const skillCardData = [
         name: '存在感',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: -2 },
+        cost: { type: 'status', target: '好調', value: -2 },
         condition: '',
         effects: [
-            { type: '集中', value: 4 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '集中', value: 4 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -1930,11 +1930,11 @@ export const skillCardData = [
         name: '存在感+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: -1 },
+        cost: { type: 'status', target: '好調', value: -1 },
         condition: '',
         effects: [
-            { type: '集中', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '集中', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -1943,11 +1943,11 @@ export const skillCardData = [
         name: '成功への道筋',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: -2 },
+        cost: { type: 'status', target: '好調', value: -2 },
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '集中', value: 7 },
+            { type: 'status', target: '集中', value: 7 },
         ],
         limit: 1
     },
@@ -1956,11 +1956,11 @@ export const skillCardData = [
         name: '成功への道筋+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: -2 },
+        cost: { type: 'status', target: '好調', value: -2 },
         condition: '',
         effects: [
             { type: 'block', value: 4 },
-            { type: '集中', value: 9 },
+            { type: 'status', target: '集中', value: 9 },
         ],
         limit: 1
     },
@@ -1973,7 +1973,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 7 },
-            { type: '好調', value: 4 },
+            { type: 'status', target: '好調', value: 4 },
         ],
         limit: -1
     },
@@ -1986,7 +1986,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 9 },
-            { type: '好調', value: 5 },
+            { type: 'status', target: '好調', value: 5 },
         ],
         limit: -1
     },
@@ -2003,7 +2003,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: -1
     },
@@ -2016,7 +2016,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 4 },
-            { type: 'やる気', value: 5 },
+            { type: 'status', target: 'やる気', value: 5 },
         ],
         limit: -1
     },
@@ -2029,7 +2029,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
         ],
         limit: -1
     },
@@ -2042,7 +2042,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 6 },
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
         ],
         limit: -1
     },
@@ -2054,7 +2054,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '好印象', value: 6 },
+            { type: 'status', target: '好印象', value: 6 },
         ],
         limit: -1
     },
@@ -2066,7 +2066,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '好印象', value: 8 },
+            { type: 'status', target: '好印象', value: 8 },
         ],
         limit: -1
     },
@@ -2091,8 +2091,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
-            { type: 'メンタルスキルカード使用時好印象+1', value: 1 },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'メンタルスキルカード使用時好印象+1', value: 1 },
         ],
         limit: 1
     },
@@ -2104,8 +2104,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
-            { type: 'メンタルスキルカード使用時やる気+1', value: 1 },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: 'メンタルスキルカード使用時やる気+1', value: 1 },
         ],
         limit: 1
     },
@@ -2117,8 +2117,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 5 },
-            { type: 'メンタルスキルカード使用時やる気+1', value: 1 },
+            { type: 'status', target: 'やる気', value: 5 },
+            { type: 'status', target: 'メンタルスキルカード使用時やる気+1', value: 1 },
         ],
         limit: 1
     },
@@ -2133,8 +2133,8 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '好印象', value: 4 },
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: '好印象', value: 4 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1
     },
@@ -2149,8 +2149,8 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '好印象', value: 5 },
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: 1
     },
@@ -2163,8 +2163,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 11 },
-            { type: 'やる気', value: 5 },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: 'やる気', value: 5 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: 1
     },
@@ -2177,8 +2177,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 11 },
-            { type: 'やる気', value: 7 },
-            { type: '消費体力増加', value: 2 },
+            { type: 'status', target: 'やる気', value: 7 },
+            { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: 1
     },
@@ -2191,7 +2191,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 7 },
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: 1
     },
@@ -2204,7 +2204,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 11 },
-            { type: 'やる気', value: 5 },
+            { type: 'status', target: 'やる気', value: 5 },
         ],
         limit: 1
     },
@@ -2217,7 +2217,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
         ],
         limit: 1
     },
@@ -2230,7 +2230,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 },
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1
     },
@@ -2239,11 +2239,11 @@ export const skillCardData = [
         name: 'ゆめみごこち',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: -2 },
+        cost: { type: 'status', target: '好印象', value: -2 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 4 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 4 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -2252,11 +2252,11 @@ export const skillCardData = [
         name: 'ゆめみごこち+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: -1 },
+        cost: { type: 'status', target: '好印象', value: -1 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -2268,9 +2268,9 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
-            { type: '好印象', value: 3 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -2282,9 +2282,9 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 4 },
-            { type: '好印象', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 4 },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -2293,11 +2293,11 @@ export const skillCardData = [
         name: 'オトメゴコロ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: -3 },
+        cost: { type: 'status', target: 'やる気', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 4 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好印象', value: 4 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: -1
     },
@@ -2306,12 +2306,12 @@ export const skillCardData = [
         name: 'オトメゴコロ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: -3 },
+        cost: { type: 'status', target: 'やる気', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: '好印象', value: 2, condition: '好印象>=10' },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好印象', value: 2, condition: '好印象>=10' },
         ],
         limit: -1
     },
@@ -2328,7 +2328,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 18 },
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: 1
     },
@@ -2341,7 +2341,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 26 },
-            { type: '好調', value: 4 },
+            { type: 'status', target: '好調', value: 4 },
         ],
         limit: 1
     },
@@ -2379,7 +2379,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好印象', value: 6 },
+            { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1
     },
@@ -2391,7 +2391,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好印象', value: 8 },
+            { type: 'status', target: '好印象', value: 8 },
         ],
         limit: 1
     },
@@ -2404,7 +2404,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 4 },
-            { type: '集中', value: 3, condition: '好調>0' },
+            { type: 'status', target: '集中', value: 3, condition: '好調>0' },
         ],
         limit: 1
     },
@@ -2417,7 +2417,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 6 },
-            { type: '集中', value: 4, condition: '好調>0' },
+            { type: 'status', target: '集中', value: 4, condition: '好調>0' },
         ],
         limit: 1
     },
@@ -2429,7 +2429,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
         ],
         limit: 1
@@ -2442,7 +2442,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 160 }] },
         ],
         limit: 1
@@ -2456,7 +2456,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 1 },
-            { type: 'やる気', value: 5 },
+            { type: 'status', target: 'やる気', value: 5 },
         ],
         limit: 1
     },
@@ -2469,7 +2469,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 4 },
-            { type: 'やる気', value: 6 },
+            { type: 'status', target: 'やる気', value: 6 },
         ],
         limit: 1
     },
@@ -2532,7 +2532,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 10 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1
     },
@@ -2545,7 +2545,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 12 }, 
-            { type: '集中', value: 5 },
+            { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1
     },
@@ -2590,7 +2590,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 6 },
             { type: 'block', value: 6 },
-            { type: 'ドロー', value: 1, delay: 1 },
+            { type: 'draw', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2605,7 +2605,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 10 },
             { type: 'block', value: 9 },
-            { type: 'ドロー', value: 1, delay: 1 },
+            { type: 'draw', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2618,8 +2618,8 @@ export const skillCardData = [
         condition: 'block==0',
         effects: [
             { type: 'block', value: 5 },
-            { type: '消費体力減少', value: 2 },
-            { type: 'ドロー', value: 1, delay: 1 },
+            { type: 'status', target: '消費体力減少', value: 2 },
+            { type: 'draw', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2632,8 +2632,8 @@ export const skillCardData = [
         condition: 'block==0',
         effects: [
             { type: 'block', value: 6 },
-            { type: '消費体力減少', value: 3 },
-            { type: 'ドロー', value: 1, delay: 1 },
+            { type: 'status', target: '消費体力減少', value: 3 },
+            { type: 'draw', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2647,7 +2647,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 4 },
             { type: 'block', value: 5 },
-            { type: '手札強化', value: 1, delay: 1 },
+            { type: 'upgrade', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2661,7 +2661,7 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 4 },
             { type: 'block', value: 5 },
-            { type: '手札強化', value: 1, delay: 1 },
+            { type: 'upgrade', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2674,8 +2674,8 @@ export const skillCardData = [
         condition: 'turn>=3',
         effects: [
             { type: 'score', value: 3 },
-            { type: '消費体力減少', value: 2 },
-            { type: '手札強化', value: 1, delay: 1 },
+            { type: 'status', target: '消費体力減少', value: 2 },
+            { type: 'upgrade', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2688,8 +2688,8 @@ export const skillCardData = [
         condition: 'turn>=3',
         effects: [
             { type: 'score', value: 3 },
-            { type: '消費体力減少', value: 2 },
-            { type: '手札強化', value: 1, delay: 1 },
+            { type: 'status', target: '消費体力減少', value: 2 },
+            { type: 'upgrade', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2701,8 +2701,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'ドロー', value: 1, delay: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: 1, delay: 1 },
         ],
         limit: 1
     },
@@ -2714,8 +2714,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -0 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'ドロー', value: 2, delay: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: 2, delay: 1 },
         ],
         limit: 1
     },
@@ -2727,9 +2727,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好調', value: 3 },
-            { type: '集中', value: 2 },
-            { type: 'ドロー', value: 1, delay: 1, condition: 'hpPer>=50' },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: '集中', value: 2 },
+            { type: 'draw', value: 1, delay: 1, condition: 'hpPer>=50' },
         ],
         limit: 1
     },
@@ -2741,9 +2741,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好調', value: 4 },
-            { type: '集中', value: 3 },
-            { type: 'ドロー', value: 1, delay: 1, condition: 'hpPer>=50' },
+            { type: 'status', target: '好調', value: 4 },
+            { type: 'status', target: '集中', value: 3 },
+            { type: 'draw', value: 1, delay: 1, condition: 'hpPer>=50' },
         ],
         limit: 1
     },
@@ -2839,7 +2839,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -10 },
         condition: '',
         effects: [
-            { type: '好調', value: 4 },
+            { type: 'status', target: '好調', value: 4 },
             { type: 'score', value: 32, delay: 1 },
         ],
         limit: 1
@@ -2852,7 +2852,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -10 },
         condition: '',
         effects: [
-            { type: '好調', value: 7 },
+            { type: 'status', target: '好調', value: 7 },
             { type: 'score', value: 40, delay: 1 },
         ],
         limit: 1
@@ -2865,7 +2865,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -8 },
         condition: '好調>0',
         effects: [
-            { type: '絶好調', value: 2 },
+            { type: 'status', target: '絶好調', value: 2 },
             { type: 'score', value: 38, delay: 1 },
         ],
         limit: 1
@@ -2878,7 +2878,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -7 },
         condition: '好調>0',
         effects: [
-            { type: '絶好調', value: 3 },
+            { type: 'status', target: '絶好調', value: 3 },
             { type: 'score', value: 47, delay: 1 },
         ],
         limit: 1
@@ -2888,10 +2888,10 @@ export const skillCardData = [
         name: '至高のエンタメ',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: -3 },
+        cost: { type: 'status', target: '集中', value: -3 },
         condition: '',
         effects: [
-            { type: 'アクティブスキルカード使用時、パラメータ+4', value: 1 },
+            { type: 'status', target: 'アクティブスキルカード使用時、パラメータ+4', value: 1 },
         ],
         limit: 1
     },
@@ -2900,11 +2900,11 @@ export const skillCardData = [
         name: '至高のエンタメ+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '集中', value: -2 },
+        cost: { type: 'status', target: '集中', value: -2 },
         condition: '',
         effects: [
-            { type: 'ドロー', value: 1, delay: 1 },
-            { type: 'アクティブスキルカード使用時、パラメータ+5', value: 1 },
+            { type: 'draw', value: 1, delay: 1 },
+            { type: 'status', target: 'アクティブスキルカード使用時、パラメータ+5', value: 1 },
         ],
         limit: 1
     },
@@ -2913,12 +2913,12 @@ export const skillCardData = [
         name: '覚醒',
         type: 'active',
         plan: 'sense',
-        cost: { type: '好調', value: -1 },
+        cost: { type: 'status', target: '好調', value: -1 },
         condition: '',
         effects: [
             { type: 'score', value: 3 },
             { type: 'score', value: 3 },
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: -1
     },
@@ -2927,12 +2927,12 @@ export const skillCardData = [
         name: '覚醒+',
         type: 'active',
         plan: 'sense',
-        cost: { type: '好調', value: -1 },
+        cost: { type: 'status', target: '好調', value: -1 },
         condition: '',
         effects: [
             { type: 'score', value: 4 },
             { type: 'score', value: 4 },
-            { type: '集中', value: 6 },
+            { type: 'status', target: '集中', value: 6 },
         ],
         limit: -1
     },
@@ -2948,7 +2948,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1
@@ -2961,7 +2961,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '好印象', value: 6 },
+            { type: 'status', target: '好印象', value: 6 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 170 }] },
         ],
         limit: 1
@@ -2974,7 +2974,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 6 },
+            { type: 'status', target: 'やる気', value: 6 },
             { type: 'score', value: null, options: [{ type: 'やる気', value: 200 }] },
         ],
         limit: 1
@@ -2987,7 +2987,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 8 },
+            { type: 'status', target: 'やる気', value: 8 },
             { type: 'score', value: null, options: [{ type: 'やる気', value: 300 }] },
         ],
         limit: 1
@@ -3023,11 +3023,11 @@ export const skillCardData = [
         name: '輝くキミへ',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: -4 },
+        cost: { type: 'status', target: 'やる気', value: -4 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'スキルカード使用時、好印象の30%分パラメータ', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用時、好印象の30%分パラメータ', value: 1 },
         ],
         limit: 1
     },
@@ -3036,11 +3036,11 @@ export const skillCardData = [
         name: '輝くキミへ+',
         type: 'active',
         plan: 'logic',
-        cost: { type: 'やる気', value: -4 },
+        cost: { type: 'status', target: 'やる気', value: -4 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'スキルカード使用時、好印象の50%分パラメータ', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用時、好印象の50%分パラメータ', value: 1 },
         ],
         limit: 1
     },
@@ -3049,7 +3049,7 @@ export const skillCardData = [
         name: 'あのときの約束',
         type: 'active',
         plan: 'logic',
-        cost: { type: '好印象', value: -4 },
+        cost: { type: 'status', target: '好印象', value: -4 },
         condition: '',
         effects: [
             { type: 'block', value: 9 },
@@ -3063,7 +3063,7 @@ export const skillCardData = [
         name: 'あのときの約束+',
         type: 'active',
         plan: 'logic',
-        cost: { type: '好印象', value: -4 },
+        cost: { type: 'status', target: '好印象', value: -4 },
         condition: '',
         effects: [
             { type: 'block', value: 14 },
@@ -3085,7 +3085,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 },
-            { type: '消費体力減少', value: 4 },
+            { type: 'status', target: '消費体力減少', value: 4 },
         ],
         limit: 1
     },
@@ -3098,7 +3098,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 5 },
-            { type: '消費体力減少', value: 5 },
+            { type: 'status', target: '消費体力減少', value: 5 },
         ],
         limit: 1
     },
@@ -3111,7 +3111,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: '消費体力削減', value: 1 },
+            { type: 'status', target: '消費体力削減', value: 1 },
         ],
         limit: 1
     },
@@ -3124,7 +3124,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 9 },
-            { type: '消費体力削減', value: 2 },
+            { type: 'status', target: '消費体力削減', value: 2 },
         ],
         limit: 1
     },
@@ -3140,7 +3140,7 @@ export const skillCardData = [
         ],
         effects: [
             { type: 'block', value: 6 },
-            { type: '低下状態無効', value: 1 },
+            { type: 'status', target: '低下状態無効', value: 1 },
         ],
         limit: 1
     },
@@ -3156,8 +3156,8 @@ export const skillCardData = [
         ],
         effects: [
             { type: 'block', value: 6 },
-            { type: '低下状態無効', value: 1 },
-            { type: '手札強化', value: null, delay: 1 },
+            { type: 'status', target: '低下状態無効', value: 1 },
+            { type: 'upgrade', value: null, delay: 1 },
         ],
         limit: 1
     },
@@ -3170,9 +3170,9 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'discard', value: null },
-            { type: 'ドロー', value: null, options: [{ type: '手札枚数', value: null }] },
-            { type: '消費体力減少', value: 4 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: null, options: [{ type: '手札枚数', value: null }] },
+            { type: 'status', target: '消費体力減少', value: 4 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -3185,9 +3185,9 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'discard', value: null },
-            { type: 'ドロー', value: null, options: [{ type: '手札枚数', value: null }] },
-            { type: '消費体力減少', value: 4 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: null, options: [{ type: '手札枚数', value: null }] },
+            { type: 'status', target: '消費体力減少', value: 4 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -3200,11 +3200,11 @@ export const skillCardData = [
         name: '国民的アイドル',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: -1 },
+        cost: { type: 'status', target: '好調', value: -1 },
         condition: '',
         effects: [
-            { type: '次に使用するスキルカードの効果を発動', value: 1 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '次に使用するスキルカードの効果を発動', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -3213,12 +3213,12 @@ export const skillCardData = [
         name: '国民的アイドル+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '好調', value: -1 },
+        cost: { type: 'status', target: '好調', value: -1 },
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: '次に使用するスキルカードの効果を発動', value: 1 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '次に使用するスキルカードの効果を発動', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -3227,12 +3227,12 @@ export const skillCardData = [
         name: '魅惑の視線',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '集中', value: -3 },
+        cost: { type: 'status', target: '集中', value: -3 },
         condition: '',
         effects: [
-            { type: '絶好調', value: 4 },
-            { type: '消費体力減少', value: 2 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '絶好調', value: 4 },
+            { type: 'status', target: '消費体力減少', value: 2 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
 
         ],
         limit: 1
@@ -3242,12 +3242,12 @@ export const skillCardData = [
         name: '魅惑の視線+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: '集中', value: -3 },
+        cost: { type: 'status', target: '集中', value: -3 },
         condition: '',
         effects: [
-            { type: '絶好調', value: 5 },
-            { type: '消費体力減少', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '絶好調', value: 5 },
+            { type: 'status', target: '消費体力減少', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
 
         ],
         limit: 1
@@ -3260,9 +3260,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '集中', value: 4 },
-            { type: '好調', value: 2 },
-            { type: '消費体力減少', value: 2 },
+            { type: 'status', target: '集中', value: 4 },
+            { type: 'status', target: '好調', value: 2 },
+            { type: 'status', target: '消費体力減少', value: 2 },
 
         ],
         limit: 1
@@ -3275,9 +3275,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '集中', value: 5 },
-            { type: '好調', value: 3 },
-            { type: '消費体力減少', value: 3 },
+            { type: 'status', target: '集中', value: 5 },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: '消費体力減少', value: 3 },
 
         ],
         limit: 1
@@ -3290,8 +3290,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '集中', value: 1 },
-            { type: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
+            { type: 'status', target: '集中', value: 1 },
+            { type: 'status', target: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
         ],
         limit: 1
     },
@@ -3303,8 +3303,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '集中', value: 1 },
-            { type: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
+            { type: 'status', target: '集中', value: 1 },
+            { type: 'status', target: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
         ],
         limit: 1
     },
@@ -3317,11 +3317,11 @@ export const skillCardData = [
         name: '私がスター',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: -2 },
+        cost: { type: 'status', target: '好印象', value: -2 },
         condition: '',
         effects: [
-            { type: 'ターン追加', value: 1 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'extra_turn', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -3330,12 +3330,12 @@ export const skillCardData = [
         name: '私がスター+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: -1 },
+        cost: { type: 'status', target: '好印象', value: -1 },
         condition: '',
         effects: [
-            { type: 'ターン追加', value: 1 },
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'ドロー', value: 1 },
+            { type: 'extra_turn', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: 1 },
         ],
         limit: 1
     },
@@ -3344,11 +3344,11 @@ export const skillCardData = [
         name: '星屑センセーション',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: -3 },
+        cost: { type: 'status', target: 'やる気', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
     },
@@ -3357,12 +3357,12 @@ export const skillCardData = [
         name: '星屑センセーション+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'やる気', value: -3 },
+        cost: { type: 'status', target: 'やる気', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 7 },
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'ドロー', value: 1 },
+            { type: 'status', target: '好印象', value: 7 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'draw', value: 1 },
         ],
         limit: 1
     },
@@ -3374,9 +3374,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好印象', value: 3 },
-            { type: 'やる気', value: 3 },
-            { type: '消費体力減少', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: '消費体力減少', value: 3 },
         ],
         limit: 1
     },
@@ -3388,9 +3388,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
-            { type: 'やる気', value: 3 },
-            { type: '消費体力減少', value: 3 },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: '消費体力減少', value: 3 },
         ],
         limit: 1
     },
@@ -3399,7 +3399,7 @@ export const skillCardData = [
         name: '手書きのメッセージ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 2 },
+        cost: { type: 'status', target: '好印象', value: 2 },
         condition: '',
         effects: [
             { type: 'block', value: 9 }, 
@@ -3412,7 +3412,7 @@ export const skillCardData = [
         name: '手書きのメッセージ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: '好印象', value: 1 },
+        cost: { type: 'status', target: '好印象', value: 1 },
         condition: '',
         effects: [
             { type: 'block', value: 10 }, 
@@ -3428,8 +3428,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -10 },
         condition: '',
         effects: [
-            { type: '好印象', value: 8 }, 
-            { type: 'やる気', value: 5 }, 
+            { type: 'status', target: '好印象', value: 8 }, 
+            { type: 'status', target: 'やる気', value: 5 }, 
         ],
         limit: 1
     },
@@ -3441,8 +3441,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -9 },
         condition: '',
         effects: [
-            { type: '好印象', value: 10 }, 
-            { type: 'やる気', value: 6 }, 
+            { type: 'status', target: '好印象', value: 10 }, 
+            { type: 'status', target: 'やる気', value: 6 }, 
         ],
         limit: 1
     },
@@ -3454,8 +3454,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -9 },
         condition: '',
         effects: [
-            { type: '好印象', value: 1 }, 
-            { type: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
+            { type: 'status', target: '好印象', value: 1 }, 
+            { type: 'status', target: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
         ],
         limit: 1
     },
@@ -3467,8 +3467,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -9 },
         condition: '',
         effects: [
-            { type: '好印象', value: 4 }, 
-            { type: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
+            { type: 'status', target: '好印象', value: 4 }, 
+            { type: 'status', target: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
         ],
         limit: 1
     },
@@ -3533,7 +3533,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 14 }, 
-            { type: '集中', value: 5 }, 
+            { type: 'status', target: '集中', value: 5 }, 
         ],
         limit: 1
     },
@@ -3546,7 +3546,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'score', value: 15 }, 
-            { type: '集中', value: 5 }, 
+            { type: 'status', target: '集中', value: 5 }, 
         ],
         limit: 1
     },
@@ -3561,7 +3561,7 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '好印象', value: 8 }, 
+            { type: 'status', target: '好印象', value: 8 }, 
         ],
         limit: 1
     },
@@ -3576,7 +3576,7 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '好印象', value: 10 }, 
+            { type: 'status', target: '好印象', value: 10 }, 
         ],
         limit: 1
     },
@@ -3589,7 +3589,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 2 }, 
-            { type: '好印象', value: 7 }, 
+            { type: 'status', target: '好印象', value: 7 }, 
         ],
         limit: 1
     },
@@ -3602,7 +3602,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 4 }, 
-            { type: '好印象', value: 9 }, 
+            { type: 'status', target: '好印象', value: 9 }, 
         ],
         limit: 1
     },
@@ -3614,8 +3614,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好調', value: 3 }, 
-            { type: '絶好調', value: 4 }, 
+            { type: 'status', target: '好調', value: 3 }, 
+            { type: 'status', target: '絶好調', value: 4 }, 
         ],
         limit: 1
     },
@@ -3627,8 +3627,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好調', value: 4 }, 
-            { type: '絶好調', value: 5 }, 
+            { type: 'status', target: '好調', value: 4 }, 
+            { type: 'status', target: '絶好調', value: 5 }, 
         ],
         limit: 1
     },
@@ -3694,8 +3694,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '好印象', value: 3 }, 
-            { type: 'ターン終了時、好印象+1', value: 1 }, 
+            { type: 'status', target: '好印象', value: 3 }, 
+            { type: 'status', target: 'ターン終了時、好印象+1', value: 1 }, 
         ],
         limit: 1
     },
@@ -3707,8 +3707,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -2 },
         condition: '',
         effects: [
-            { type: '好印象', value: 4 }, 
-            { type: 'ターン終了時、好印象+1', value: 1 }, 
+            { type: 'status', target: '好印象', value: 4 }, 
+            { type: 'status', target: 'ターン終了時、好印象+1', value: 1 }, 
         ],
         limit: 1
     },
@@ -3722,7 +3722,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 2 }, 
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] }, 
-            { type: 'やる気', value: 2 }, 
+            { type: 'status', target: 'やる気', value: 2 }, 
         ],
         limit: 1
     },
@@ -3736,7 +3736,7 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 5 }, 
             { type: 'score', value: null, options: [{ type: 'block', value: 120 }] }, 
-            { type: 'やる気', value: 3 }, 
+            { type: 'status', target: 'やる気', value: 3 }, 
         ],
         limit: 1
     },
@@ -3776,8 +3776,8 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -3 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 7 }, 
-            { type: 'やる気', value: 3, condition: 'やる気>=6' }, 
+            { type: 'status', target: 'やる気', value: 7 }, 
+            { type: 'status', target: 'やる気', value: 3, condition: 'やる気>=6' }, 
         ],
         limit: 1
     },
@@ -3789,8 +3789,8 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -3 },
         condition: '',
         effects: [
-            { type: 'やる気', value: 8 }, 
-            { type: 'やる気', value: 5, condition: 'やる気>=3' }, 
+            { type: 'status', target: 'やる気', value: 8 }, 
+            { type: 'status', target: 'やる気', value: 5, condition: 'やる気>=3' }, 
         ],
         limit: 1
     },
@@ -3828,7 +3828,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '集中', value: 4 }, 
+            { type: 'status', target: '集中', value: 4 }, 
             { type: 'hp', value: 4 }, 
         ],
         limit: 1
@@ -3841,7 +3841,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '集中', value: 5 }, 
+            { type: 'status', target: '集中', value: 5 }, 
             { type: 'hp', value: 5 }, 
         ],
         limit: 1
@@ -3854,9 +3854,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
-            { type: '好調', value: 3 }, 
-            { type: '消費体力減少', value: 2 }, 
+            { type: 'status', target: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
+            { type: 'status', target: '好調', value: 3 }, 
+            { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
         limit: 1
     },
@@ -3868,9 +3868,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
-            { type: '好調', value: 5 }, 
-            { type: '消費体力減少', value: 2 }, 
+            { type: 'status', target: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
+            { type: 'status', target: '好調', value: 5 }, 
+            { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
         limit: 1
     },
@@ -3910,9 +3910,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: 'ドロー', value: 1, delay: 1 }, 
+            { type: 'generate', value: 'ランダムな強化済みスキルカード' }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'draw', value: 1, delay: 1 }, 
         ],
         limit: 1
     },
@@ -3924,9 +3924,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -1 },
         condition: '',
         effects: [
-            { type: '生成', value: 'ランダムな強化済みスキルカード' }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: 'ドロー', value: 1, delay: 1 }, 
+            { type: 'generate', value: 'ランダムな強化済みスキルカード' }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'draw', value: 1, delay: 1 }, 
         ],
         limit: 1
     },
@@ -3939,7 +3939,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'hp', value: 3 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -3952,7 +3952,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'hp', value: 5 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -3966,8 +3966,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 3 }, 
             { type: 'block', value: 3 }, 
-            { type: 'ドロー', value: 1, delay: 1 }, 
-            { type: 'ドロー', value: 1, delay: 2 }, 
+            { type: 'draw', value: 1, delay: 1 }, 
+            { type: 'draw', value: 1, delay: 2 }, 
         ],
         limit: 1
     },
@@ -3981,8 +3981,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 6 }, 
             { type: 'block', value: 5 }, 
-            { type: 'ドロー', value: 1, delay: 1 }, 
-            { type: 'ドロー', value: 1, delay: 2 }, 
+            { type: 'draw', value: 1, delay: 1 }, 
+            { type: 'draw', value: 1, delay: 2 }, 
         ],
         limit: 1
     },
@@ -3994,8 +3994,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: '手札強化', value: null }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'upgrade', value: null }, 
         ],
         limit: 1
     },
@@ -4007,9 +4007,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -1 },
         condition: '',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 }, 
-            { type: 'ドロー', value: 1 }, 
-            { type: '手札強化', value: null }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'draw', value: 1 }, 
+            { type: 'upgrade', value: null }, 
         ],
         limit: 1
     },
@@ -4021,8 +4021,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -3 },
         condition: '',
         effects: [
-            { type: '消費体力削減', value: 1 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: '消費体力削減', value: 1 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -4031,11 +4031,11 @@ export const skillCardData = [
         name: '光のステージ+',
         type: 'mental',
         plan: 'free',
-        cost: { type: 'hp', value: -0 },
+        cost: { type: 'hp', value: 0 },
         condition: '',
         effects: [
-            { type: '消費体力削減', value: 1 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: '消費体力削減', value: 1 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -4050,8 +4050,8 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '消費体力減少', value: 2 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: '消費体力減少', value: 2 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -4066,8 +4066,8 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: '消費体力減少', value: 4 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: '消費体力減少', value: 4 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -4079,9 +4079,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '集中', value: 3 }, 
-            { type: '好調', value: 2 }, 
-            { type: '手札強化', value: null, delay: 1 }, 
+            { type: 'status', target: '集中', value: 3 }, 
+            { type: 'status', target: '好調', value: 2 }, 
+            { type: 'upgrade', value: null, delay: 1 }, 
         ],
         limit: 1
     },
@@ -4093,9 +4093,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '集中', value: 4 }, 
-            { type: '好調', value: 4 }, 
-            { type: '手札強化', value: null, delay: 1 }, 
+            { type: 'status', target: '集中', value: 4 }, 
+            { type: 'status', target: '好調', value: 4 }, 
+            { type: 'upgrade', value: null, delay: 1 }, 
         ],
         limit: 1
     },
@@ -4107,9 +4107,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -7 },
         condition: '',
         effects: [
-            { type: '好印象', value: 4 }, 
-            { type: 'やる気', value: 3 }, 
-            { type: '手札強化', value: null, delay: 1 }, 
+            { type: 'status', target: '好印象', value: 4 }, 
+            { type: 'status', target: 'やる気', value: 3 }, 
+            { type: 'upgrade', value: null, delay: 1 }, 
         ],
         limit: 1
     }, 
@@ -4121,9 +4121,9 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 }, 
-            { type: 'やる気', value: 4 }, 
-            { type: '手札強化', value: null, delay: 1 }, 
+            { type: 'status', target: '好印象', value: 5 }, 
+            { type: 'status', target: 'やる気', value: 4 }, 
+            { type: 'upgrade', value: null, delay: 1 }, 
         ],
         limit: 1
     },
@@ -4136,8 +4136,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: '手札強化', value: null, delay: 1 }, 
-            { type: '手札強化', value: null, delay: 2 }, 
+            { type: 'upgrade', value: null, delay: 1 }, 
+            { type: 'upgrade', value: null, delay: 2 }, 
         ],
         limit: 1
     },
@@ -4150,8 +4150,8 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: '手札強化', value: null, delay: 1 }, 
-            { type: '手札強化', value: null, delay: 2 }, 
+            { type: 'upgrade', value: null, delay: 1 }, 
+            { type: 'upgrade', value: null, delay: 2 }, 
         ],
         limit: 1
     },
@@ -4164,7 +4164,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 3 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -4177,7 +4177,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 }, 
-            { type: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1
     },
@@ -4189,7 +4189,7 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -1 },
         condition: '',
         effects: [
-            { type: '好印象', value: 5 }, 
+            { type: 'status', target: '好印象', value: 5 }, 
         ],
         limit: 1
     },
@@ -4201,8 +4201,8 @@ export const skillCardData = [
         cost: { type: 'direct_hp', value: -1 },
         condition: '',
         effects: [
-            { type: '好印象', value: 6 }, 
-            { type: 'ドロー', value: 1, delay: 1 }, 
+            { type: 'status', target: '好印象', value: 6 }, 
+            { type: 'draw', value: 1, delay: 1 }, 
         ],
         limit: 1
     },

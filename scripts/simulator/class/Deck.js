@@ -1,4 +1,4 @@
-import { SkillCard } from "../data/_skillCardData.js";
+import { SkillCard } from "../data/skillCardData.js";
 
 /**
  * param1からparam2までの連番配列を返します。
@@ -116,13 +116,9 @@ export class Deck {
 
     useCard (number) {
         const usedCard = this.getHandCardByNumber(number);
-        if (usedCard.afterUse) {
-            switch (usedCard.afterUse.type) {
-                case 'exhaust': 
-                    if (--usedCard.afterUse.value <= 0) {
-                        this.exhaust(number);
-                    }
-                    break;
+        if (usedCard.limit > 0) {
+            if (--usedCard.limit == 0) {
+                this.exhaust(number);
             }
         } else {
             this.discard(number);

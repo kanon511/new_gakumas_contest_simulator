@@ -40,7 +40,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '集中>=3',
         effects: [
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1,
     },
@@ -50,7 +50,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '集中>=3',
         effects: [
-            { type: '集中', value: 6 },
+            { type: 'status', target: '集中', value: 6 },
         ],
         limit: 1,
     },
@@ -60,7 +60,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: '好印象>=6',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 2,
     },
@@ -70,7 +70,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: '好印象>=6',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 3,
     },
@@ -80,7 +80,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '好調>0',
         effects: [
-            { type: '集中', value: 1 },
+            { type: 'status', target: '集中', value: 1 },
         ],
         limit: 2,
     },
@@ -90,7 +90,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '好調>0',
         effects: [
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: 2,
     },
@@ -100,7 +100,7 @@ const pItemData = [
         activate_timing: 'increased_status:好印象',
         condition: '',
         effects: [
-            { type: '好印象', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
         ],
         limit: 1,
     },
@@ -110,7 +110,7 @@ const pItemData = [
         activate_timing: 'increased_status:好印象',
         condition: '',
         effects: [
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
     },
@@ -120,7 +120,7 @@ const pItemData = [
         activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
-            { type: 'やる気', value: 2 },
+            { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
     },
@@ -130,7 +130,7 @@ const pItemData = [
         activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
     },
@@ -140,7 +140,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '',
         effects: [
-            { type: '集中', value: 1 },
+            { type: 'status', target: '集中', value: 1 },
         ],
         limit: 2,
     },
@@ -150,7 +150,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '',
         effects: [
-            { type: '集中', value: 1 },
+            { type: 'status', target: '集中', value: 1 },
         ],
         limit: 3,
     },
@@ -161,7 +161,7 @@ const pItemData = [
         condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: '体力直接消費', value: 1 },
+            { type: 'direct_hp', value: -1 },
         ],
         limit: null,
     },
@@ -172,7 +172,7 @@ const pItemData = [
         condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: '体力直接消費', value: 1 },
+            { type: 'direct_hp', value: -1 },
         ],
         limit: null,
     },
@@ -182,7 +182,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==active&hpPer>=50',
         effects: [
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: 1,
     },
@@ -192,7 +192,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==active&hpPer>=50',
         effects: [
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
     },
@@ -202,7 +202,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'やる気>=3',
         effects: [
-            { type: 'やる気', value: 2 },
+            { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
     },
@@ -212,7 +212,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'やる気>=3',
         effects: [
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
     },
@@ -245,8 +245,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'block==0',
         effects: [
-            { type: '体力直接消費', value: 1 },
-            { type: '集中', value: 3 },
+            { type: 'direct_hp', value: 1 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: 2,
     },
@@ -256,8 +256,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'block==0',
         effects: [
-            { type: '体力直接消費', value: 1 },
-            { type: '集中', value: 4 },
+            { type: 'direct_hp', value: 1 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 2,
     },
@@ -267,7 +267,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
         ],
         limit: 1,
     },
@@ -277,7 +277,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
-            { type: '好印象', value: 5 },
+            { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
     },
@@ -287,7 +287,7 @@ const pItemData = [
         activate_timing: 'increased_status:好調',
         condition: '',
         effects: [
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
         ],
         limit: 1,
     },
@@ -297,7 +297,7 @@ const pItemData = [
         activate_timing: 'increased_status:好調',
         condition: '',
         effects: [
-            { type: '好調', value: 4 },
+            { type: 'status', target: '好調', value: 4 },
         ],
         limit: 1,
     },
@@ -307,7 +307,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: 'hpPer>=50',
         effects: [
-            { type: '好印象', value: 3 },
+            { type: 'status', target: '好印象', value: 3 },
         ],
         limit: 1,
     },
@@ -317,7 +317,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: 'hpPer>=50',
         effects: [
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
         ],
         limit: 1,
     },
@@ -328,7 +328,7 @@ const pItemData = [
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
-            { type: '体力直接消費', value: 2 },
+            { type: 'direct_hp', value: 2 },
         ],
         limit: 2,
     },
@@ -339,7 +339,7 @@ const pItemData = [
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: '体力直接消費', value: 2 },
+            { type: 'direct_hp', value: 2 },
         ],
         limit: 2,
     },
@@ -349,7 +349,7 @@ const pItemData = [
         activate_timing: 'increased_status:集中',
         condition: 'hpPer>=50',
         effects: [
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: 2,
     },
@@ -359,7 +359,7 @@ const pItemData = [
         activate_timing: 'increased_status:集中',
         condition: '',
         effects: [
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: 2,
     },
@@ -369,7 +369,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'block>=7',
         effects: [
-            { type: 'やる気', value: 5 },
+            { type: 'status', target: 'やる気', value: 5 },
         ],
         limit: 1,
     },
@@ -379,7 +379,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'block>=7',
         effects: [
-            { type: 'やる気', value: 6 },
+            { type: 'status', target: 'やる気', value: 6 },
         ],
         limit: 1,
     },
@@ -389,7 +389,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '集中>=5',
         effects: [
-            { type: '体力回復', value: 2 },
+            { type: 'hp', value: 2 },
         ],
         limit: 3,
     },
@@ -399,7 +399,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '集中>=5',
         effects: [
-            { type: '体力回復', value: 2 },
+            { type: 'hp', value: 2 },
         ],
         limit: 4,
     },
@@ -491,8 +491,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '集中>=5',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: '集中', value: 2 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '集中', value: 2 },
         ],
         limit: 1,
     },
@@ -502,8 +502,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '好調>0',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: '好調', value: 2 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好調', value: 2 },
         ],
         limit: 1,
     },
@@ -513,8 +513,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '好印象>=3',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: '好印象', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好印象', value: 3 },
         ],
         limit: 1,
     },
@@ -524,8 +524,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'やる気>=5',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
     },
@@ -538,8 +538,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==active',
         effects: [
-            { type: '好調', value: 1 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好調', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -549,8 +549,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==active',
         effects: [
-            { type: '好調', value: 1 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好調', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
             { type: 'block', value: 5 },
         ],
         limit: 1,
@@ -561,7 +561,7 @@ const pItemData = [
         activate_timing: 'consume_hp',
         condition: '',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 4,
     },
@@ -571,7 +571,7 @@ const pItemData = [
         activate_timing: 'consume_hp',
         condition: '',
         effects: [
-            { type: '好印象', value: 2 },
+            { type: 'status', target: '好印象', value: 2 },
         ],
         limit: null,
     },
@@ -581,7 +581,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: '集中>=5',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
             { type: '集中', value: 1 },
         ],
         limit: 1,
@@ -592,8 +592,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: '集中>=5',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
-            { type: '集中', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
     },
@@ -625,8 +625,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: '好印象>=6',
         effects: [
-            { type: '好印象', value: 3 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -636,8 +636,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: '好印象>=6',
         effects: [
-            { type: '好印象', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: '好印象', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -647,7 +647,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardId==4203020|cardId==4203021',
         effects: [
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
             { type: '固定元気', value: 5 },
         ],
         limit: 1,
@@ -658,7 +658,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardId==4203020|cardId==4203021',
         effects: [
-            { type: '好調', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
             { type: '固定元気', value: 11 },
         ],
         limit: 1,
@@ -669,7 +669,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '好調>0',
         effects: [
-            { type: '集中', value: 2 },
+            { type: 'status', target: '集中', value: 2 },
             { type: 'block', value: 1 },
         ],
         limit: 2,
@@ -680,7 +680,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '好調>0',
         effects: [
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
             { type: '元気', value: 1 },
         ],
         limit: 2,
@@ -711,7 +711,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
-            { type: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
+            { type: 'status', target: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] },
         ],
         limit: 1,
@@ -722,7 +722,7 @@ const pItemData = [
         activate_timing: 'end_turn',
         condition: 'block>=7',
         effects: [
-            { type: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
+            { type: 'status', target: '好印象', value: null, options: [{ type: 'multiple', value: 1.5 }] },
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1,
@@ -733,7 +733,7 @@ const pItemData = [
         activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 2,
     },
@@ -743,7 +743,7 @@ const pItemData = [
         activate_timing: 'increased_status:やる気',
         condition: '',
         effects: [
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 3,
     },
@@ -753,7 +753,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turn==1',
         effects: [
-            { type: '集中', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
     },
@@ -763,7 +763,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turn==1',
         effects: [
-            { type: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1,
     },
@@ -774,7 +774,7 @@ const pItemData = [
         condition: 'cardType==active&やる気>=12',
         effects: [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 270 }] },
-            { type: '体力直接消費', value: 2 },
+            { type: 'direct_hp', value: 2 },
         ],
         limit: 4,
     },
@@ -785,7 +785,7 @@ const pItemData = [
         condition: 'cardType==active&やる気>=12',
         effects: [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 340 }] },
-            { type: '体力直接消費', value: 2 },
+            { type: 'direct_hp', value: 2 },
         ],
         limit: 4,
     },
@@ -796,7 +796,7 @@ const pItemData = [
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: '体力直接消費', value: 1 },
+            { type: 'direct_hp', value: 1 },
         ],
         limit: null,
     },
@@ -807,7 +807,7 @@ const pItemData = [
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 65 }] },
-            { type: '体力直接消費', value: 1 },
+            { type: 'direct_hp', value: 1 },
         ],
         limit: null,
     },
@@ -837,8 +837,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '消費体力減少>0',
         effects: [
-            { type: '絶好調', value: 1 },
-            { type: 'ドロー', value: 1 },
+            { type: 'status', target: '絶好調', value: 1 },
+            { type: 'draw', value: 1 },
         ],
         limit: 2,
     },
@@ -848,8 +848,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '消費体力減少>0',
         effects: [
-            { type: '絶好調', value: 1 },
-            { type: 'ドロー', value: 1 },
+            { type: 'status', target: '絶好調', value: 1 },
+            { type: 'draw', value: 1 },
         ],
         limit: 3,
     },
@@ -859,8 +859,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==mental&やる気>=5',
         effects: [
-            { type: 'やる気', value: 3 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -870,8 +870,8 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==mental&やる気>=5',
         effects: [
-            { type: 'やる気', value: 5 },
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'やる気', value: 5 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -884,7 +884,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnType==visual',
         effects: [
-            { type: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 3,
     },
@@ -904,7 +904,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnType==dance',
         effects: [
-            { type: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 3,
     },
@@ -914,7 +914,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'turnType==vocal&cardType==active',
         effects: [
-            { type: '体力回復', value: 2 },
+            { type: 'hp', value: 2 },
         ],
         limit: 3,
     },
@@ -924,7 +924,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnType==vocal',
         effects: [
-            { type: 'ドロー', value: 1 },
+            { type: 'draw', value: 1 },
             { type: '固定元気', value: 2 },
         ],
         limit: 3,
@@ -939,7 +939,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'turnType==vocal&cardType==active',
         effects: [
-            { type: '体力回復', value: 2 },
+            { type: 'hp', value: 2 },
         ],
         limit: 3,
     },
@@ -949,7 +949,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnType==visual',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -959,7 +959,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnType==dance',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -969,7 +969,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnType==vocal',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
     },
@@ -979,7 +979,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'turnType==dance&cardType==active',
         effects: [
-            { type: '体力回復', value: 2 },
+            { type: 'hp', value: 2 },
         ],
         limit: 3,
     },
@@ -1030,8 +1030,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '',
         effects: [
-            { type: '好調', value: 3 },
-            { type: 'パラメータ上昇量増加', value: 4, options: [{ type: '上昇量', value: 50 }] },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 4, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 1,
     },
@@ -1041,7 +1041,7 @@ const pItemData = [
         activate_timing: 'increased_status:好印象',
         condition: '好印象>=10',
         effects: [
-            { type: '好印象', value: 4 },
+            { type: 'status', target: '好印象', value: 4 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] },
         ],
         limit: null,
@@ -1053,7 +1053,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardEffectInclude==絶好調&好調>=4',
         effects: [
-            { type: 'スキルカード使用数追加', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: null,
     },
@@ -1074,7 +1074,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turn==8',
         effects: [
-            { type: '集中', value: null, options: [{ type: 'multiple', value: 2 }] },
+            { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 2 }] },
         ],
         limit: 1,
     },
@@ -1094,7 +1094,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '',
         effects: [
-            { type: 'やる気', value: 4 },
+            { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: 2,
     },
@@ -1105,9 +1105,9 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardEffectInclude==消費体力減少',
         effects: [
-            { type: '集中', value: 3 },
-            { type: '好調', value: 3 },
-            { type: '体力直接消費', value: 3 },
+            { type: 'status', target: '集中', value: 3 },
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'hp', value: -3 },
         ],
         limit: 3,
     },
@@ -1117,7 +1117,7 @@ const pItemData = [
         activate_timing: 'use_card',
         condition: 'cardType==active',
         effects: [
-            { type: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 4,
     },
@@ -1128,8 +1128,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '',
         effects: [
-            { type: '集中', value: 5 },
-            { type: '消費体力増加', value: 1 },
+            { type: 'status', target: '集中', value: 5 },
+            { type: 'status', target: '消費体力増加', value: 1 },
         ],
         limit: 2,
     },
@@ -1139,8 +1139,8 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '',
         effects: [
-            { type: '好印象', value: 4 },
-            { type: '元気増加無効', value: 1 },
+            { type: 'status', target: '好印象', value: 4 },
+            { type: 'status', target: '元気増加無効', value: 1 },
         ],
         limit: 6,
     },
