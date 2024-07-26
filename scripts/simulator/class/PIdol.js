@@ -6,6 +6,7 @@ import { SkillCard, SkillCardData } from '../data/skillCardData.js';
 import { PIdolLog } from './PIdolLog.js';
 import { ConditionChecker } from './ConditionChecker.js';
 import { Calculator } from './Calculator.js';
+import { deep_copy } from '../../util/utility.js';
 
 // class Action {
 //     constructor (parameter) {
@@ -22,20 +23,10 @@ import { Calculator } from './Calculator.js';
 export class PIdol {
 
     #parameter;
-    #hp;
-    #maxHp;
-    #block;
-    #score;
-    #plan;
-    #turn;
-    #extraTurn;
-    #remainTurn;
     #status;
     #pItemsManager;
     #deck;
     #addtionalAction;
-    #currentTurnType;
-    #lastUsedCard;
     #endTransaction;
     #log;
     #turnType;
@@ -53,22 +44,15 @@ export class PIdol {
             score: 0,
             plan: plan,
             turn: 0,
-            turnType: null,
             currentTurnType: null,
             card: null,
             extraTurn: 0,
             remainTurn: null,
+            lastUsedCard: null,
             pStatus: new PIdolStatus(),
             handCount: null,
         };
-        this.#hp = this.#maxHp = parameter.hp;
-        this.#block = 0;
-        this.#score = 0;
-        this.#plan = plan;
-        this.#turn = 0;
-        this.#extraTurn = 0;
-        this.#remainTurn = null;
-        this.#pStatus = new PIdolStatus();
+
         this.#pItemsManager = new PItemManager(pItemIds);
         this.#deck = new Deck(skillCardIds);
         this.#log = new PIdolLog();
@@ -76,13 +60,13 @@ export class PIdol {
 
     init (turnCount, critearia, turnTypes) {
         this.#turnType = new TurnType(turnCount, critearia, turnTypes);
-        this.#remainTurn = turnCount;
+        this.#status.remainTurn = turnCount;
     }
 
     getLog () {
         return {
             log: this.#log.getLog(),
-            finalStatus: { score: this.#score, hp: this.#hp, block: this.#block },
+            finalStatus: { score: this.#status.score, hp: this.#status.hp, block: this.#status.block },
         };
     }
 
@@ -90,9 +74,9 @@ export class PIdol {
      * ターン開始時の行動
      */
     start () {
-        this.#turn++;
-        this.#currentTurnType = this.#turnType.getType(this.#turn);
-        this.#log.nextTurn({ score: this.#score, hp: this.#hp, block: this.#block, turnType: this.#currentTurnType });
+        this.#status.turn++;
+        this.#status.currentTurnType = this.#turnType.getType(this.#status.turn);
+        this.#log.nextTurn({ score: this.#status.score, hp: this.#status.hp, block: this.#status.block, turnType: this.#status.currentTurnType });
         // console.log(`---${this.#turn}ターン(${this.#currentTurnType})---`);
         const pIdolActions = [
             { type: 'effect', sourceType: 'pIdol', target: { type: 'draw', value: 3 } },
@@ -108,7 +92,7 @@ export class PIdol {
 
     useCard (cardNumber) {
         const usedCard = this.#deck.getHandCardByNumber(cardNumber);
-        this.#lastUsedCard = usedCard;
+        this.#status.lastUsedCard = usedCard;
         const transaction = usedCard.transaction;
         const predictTransaction = usedCard.predictTransaction;
         this.#deck.useCard(cardNumber);
@@ -142,7 +126,7 @@ export class PIdol {
             const log = this.#executeTransaction(this.#endTransaction);
             this.#endTransaction = null;
         }
-        this.#remainTurn--;
+        this.#status.remainTurn--;
         // console.log('---');
         // console.log(this.#log.currentTurnLog.executionLog);
     }
@@ -157,7 +141,7 @@ export class PIdol {
     }
 
     checkFinished () {
-        if (this.#remainTurn == 0) return true;
+        if (this.#status.remainTurn == 0) return true;
         return false;
     }
 
@@ -172,7 +156,7 @@ export class PIdol {
     }
 
     #setSkillCardTransaction (skillCard) {
-        this.#lastUsedCard = skillCard;
+        this.#status.lastUsedCard = skillCard;
         let transaction = [];
         transaction.push({ type: 'use', sourceType: 'skillCard', source: skillCard });
         transaction.push({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: skillCard.cost });
@@ -201,16 +185,15 @@ export class PIdol {
     }
 
     #getStatus () {
-        const pStatus = new _PStatus(this.#status._deepcopy());
+        const pStatus = new _PStatus(this.#status.pStatus._deepcopy());
         const status = {
-            hp: this.#hp,
-            maxHp: this.#maxHp,
-            score: this.#score,
-            block: this.#block,
-            turn: this.#turn,
-            turnType: this.#turnType,
-            currentTurnType: this.#currentTurnType,
-            card: this.#lastUsedCard,
+            hp: this.#status.hp,
+            maxHp: this.#status.maxHp,
+            score: this.#status.score,
+            block: this.#status.block,
+            turn: this.#status.turn,
+            currentTurnType: this.#status.currentTurnType,
+            card: this.#status.lastUsedCard,
             status: pStatus,
             handCount: this.getDeck('handCards').length,
         };
@@ -227,15 +210,15 @@ export class PIdol {
 
     #setSkillCardAvailale (skillCard) {
         const condition = skillCard.condition;
-        const flag_condition = ConditionChecker.check(condition, this.#getStatus());
+        const flag_condition = ConditionChecker.check(condition, this.#status);
         const flag_cost = this.#checkSkillCardCost(skillCard.cost);
         skillCard.setAvailable(flag_condition && flag_cost);
     }
 
     #checkSkillCardCost (cost) {
-        const actualValue = this.#calcActualValue(cost, this.#getStatus());
-        if (cost.type == 'hp') return this.#hp + this.#block >= -actualValue;
-        if (cost.type == 'direct_hp') return this.#hp >= -actualValue;
+        const actualValue = this.#calcActualValue(cost, this.#status);
+        if (cost.type == 'hp') return this.#status.hp + this.#status.block >= -actualValue;
+        if (cost.type == 'direct_hp') return this.#status.hp >= -actualValue;
         return this.#status.getValue(cost.type) >= -actualValue;
     }
 
@@ -351,7 +334,7 @@ export class PIdol {
         const { type, target, value, options, delay, condition } = action.target;
         const actualValue = this.#calcActualValue(action.target, status);
         let executes = [];
-        if (!ConditionChecker.check(condition, this.#getStatus())) return executes;
+        if (!ConditionChecker.check(condition, this.#status)) return executes;
 
         if (delay) {
             executes.push({ delay: delay, type: type, args: [value, actualValue, options, action.source] });
@@ -492,35 +475,35 @@ export class PIdol {
             return '';
         }
         if (action.delay) {
-            this.#status.addDelayEffect(action.args[3].name, this.#turn + action.delay, 
+            this.#status.addDelayEffect(action.args[3].name, this.#status.turn + action.delay, 
                 { type: action.type, value: action.args[0], options: action.args[2] }
             );
             return `予約効果登録：${action.args[3].name}(${action.delay}ターン後)`;
         }
         else if (action.type == 'hp') {
-            const hp = this.#hp;
-            this.#hp += action.args[0];
-            return `HP：${hp}→${this.#hp}(${this.#hp-hp})`;
+            const hp = this.#status.hp;
+            this.#status.hp += action.args[0];
+            return `HP：${hp}→${this.#status.hp}(${this.#status.hp-hp})`;
         }
         else if (action.type == 'block') {
-            const block = this.#block;
-            this.#block += action.args[0];
-            return `元気：${block}→${this.#block}(${this.#block-block})`;
+            const block = this.#status.block;
+            this.#status.block += action.args[0];
+            return `元気：${block}→${this.#status.block}(${this.#status.block-block})`;
         }
         else if (action.type == 'score') {
-            const score = this.#score;
-            this.#score += action.args[0];
-            return `スコア：${score}→${this.#score}(${this.#score-score})`;
+            const score = this.#status.score;
+            this.#status.score += action.args[0];
+            return `スコア：${score}→${this.#status.score}(${this.#status.score-score})`;
         }
         else if (action.type == 'add_action') {
             this.#addtionalAction = true;
             return `追加行動`;
         }
         else if (action.type == 'extra_turn') {
-            const extraTurn = this.#extraTurn;
-            this.#extraTurn += action.args[0];
-            this.#remainTurn += action.args[0];
-            return `追加ターン：${extraTurn}→${this.#extraTurn}(${this.#extraTurn-extraTurn})`;
+            const extraTurn = this.#status.extraTurn;
+            this.#status.extraTurn += action.args[0];
+            this.#status.remainTurn += action.args[0];
+            return `追加ターン：${extraTurn}→${this.#status.extraTurn}(${this.#status.extraTurn-extraTurn})`;
         }
         else if (action.type == 'draw') {
             this.#drawSkillCard(action.args[0]);
@@ -538,7 +521,7 @@ export class PIdol {
             let name;
             if (action.args[0] == 'ランダムな強化済みスキルカード') {
                 const targetCards = SkillCardData.getAll().filter(item=>
-                    (item.plan=='free'||item.plan==this.#plan) && // プラン指定
+                    (item.plan=='free'||item.plan==this.#status.plan) && // プラン指定
                     item.id % 10 == 1 && // 強化カード
                     item.id > 2000000 && // 基本カード削除
                     String(item.id)[1] != '2' &&// キャラ固有削除)
@@ -599,7 +582,7 @@ export class PIdol {
      */
     #getPStatusAction (activateTiming) {
         const actions = [];
-        const targetPStatusList = this.#status.get_byActivateTiming(activateTiming);
+        const targetPStatusList = this.#status.pStatus.get_byActivateTiming(activateTiming);
         const activePStatusList = targetPStatusList.filter(pStatus=>ConditionChecker.check(pStatus.condition, this.#getStatus()));
         activePStatusList.forEach(pStatus=>{
             for (let i = 0, n = pStatus.value; i < n; i++) {
@@ -615,7 +598,7 @@ export class PIdol {
 
     #getPDelayAction () {
         const actions = [];
-        const delayEffectList = this.#status.getDelayEffects(this.#turn);
+        const delayEffectList = this.#status.pStatus.getDelayEffects(this.#status.turn);
         for (const delayEffect of delayEffectList) {
             actions.push({ type: 'use', sourceType: 'pDelayEffect', source: delayEffect });
             // for (const effect of delayEffect.activate_effects) {
