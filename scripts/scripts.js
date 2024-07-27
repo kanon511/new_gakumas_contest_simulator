@@ -417,17 +417,18 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = run(run_data);
         console.timeEnd('run');
 
-        const logs = {
-            min: result.minLog,
-            rnd: result.rndLog,
-            max: result.maxLog,
-        };
-        const logKeys = ['min', 'rnd', 'max'];
-        for (const key of logKeys) {
-            const container =  document.getElementById(`contest-log-${key}`);
-            DOM_delete_allChildren(container);
-            container.appendChild(parseSimulationLog(logs[key]));
-        }
+        // const logs = {
+        //     min: result.minLog,
+        //     rnd: result.rndLog,
+        //     max: result.maxLog,
+        // };
+        // const logKeys = ['min', 'rnd', 'max'];
+        // for (const key of logKeys) {
+        //     const container =  document.getElementById(`contest-log-${key}`);
+        //     DOM_delete_allChildren(container);
+        //     container.appendChild(parseSimulationLog(logs[key]));
+        // }
+        console.log(result.rndLog);
 
         const scoreList = result.scoreList;
         scoreList.sort((a, b) => a - b);

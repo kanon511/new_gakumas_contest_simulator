@@ -9,9 +9,10 @@ export const run = (data) => {
     let minLog;
     let maxLog;
     let rndLog;
-    const count = 100;
+    const count = 500;
     const rndLogNumber = Math.floor(Math.random()*count);
     for (let i = 0; i < count; i++) {
+        
         const pIdol = new PIdol({ 
             parameter: data.parameter, 
             plan: data.plan,

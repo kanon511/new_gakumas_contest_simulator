@@ -1,18 +1,9 @@
 import { deep_copy } from "../../util/utility.js";
 
 const statusList = [
+    // センス
     {
-        id: 1,
-        name: '集中',
-        description: '',
-        value: 0,
-        type: 'buff',
-        activate_timing: null,
-        condition: null,
-        is_reduce_turnend: false,
-    },
-    {
-        id: 2,
+        id: 10001,
         name: '好調',
         description: '',
         value: 0,
@@ -22,18 +13,8 @@ const statusList = [
         is_reduce_turnend: true,
     },
     {
-        id: 3,
-        name: '絶好調',
-        description: '',
-        value: 0,
-        type: 'buff',
-        activate_timing: null,
-        condition: null,
-        is_reduce_turnend: true,
-    },
-    {
-        id: 4,
-        name: 'やる気',
+        id: 10002,
+        name: '集中',
         description: '',
         value: 0,
         type: 'buff',
@@ -42,7 +23,7 @@ const statusList = [
         is_reduce_turnend: false,
     },
     {
-        id: 5,
+        id: 10003,
         name: '好印象',
         description: '',
         value: 0,
@@ -52,7 +33,27 @@ const statusList = [
         is_reduce_turnend: true,
     },
     {
-        id: 6,
+        id: 10004,
+        name: 'やる気',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: null,
+        condition: null,
+        is_reduce_turnend: false,
+    },
+    {
+        id: 10005,
+        name: '消費体力減少',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: null,
+        condition: null,
+        is_reduce_turnend: true,
+    },
+    {
+        id: 10006,
         name: '消費体力削減',
         description: '',
         value: 0,
@@ -62,8 +63,8 @@ const statusList = [
         is_reduce_turnend: false,
     },
     {
-        id: 7,
-        name: '消費体力減少',
+        id: 100011,
+        name: '絶好調',
         description: '',
         value: 0,
         type: 'buff',
@@ -177,7 +178,7 @@ const statusList = [
         activate_timing: 'use_card',
         condition: 'cardType==active',
         effects: [
-            { type: '集中', value: 1 }, 
+            { type: 'status', target: '集中', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -190,7 +191,7 @@ const statusList = [
         activate_timing: 'use_card',
         condition: 'cardType==mental',
         effects: [
-            { type: '好印象', value: 1 }, 
+            { type: 'status', target: '好印象', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -203,7 +204,7 @@ const statusList = [
         activate_timing: 'use_card',
         condition: 'cardType==mental',
         effects: [
-            { type: 'やる気', value: 1 }, 
+            { type: 'status', target: 'やる気', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -216,7 +217,7 @@ const statusList = [
         activate_timing: 'end_turn',
         condition: null,
         effects: [
-            { type: '好印象', value: 1 }, 
+            { type: 'status', target: '好印象', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -230,7 +231,7 @@ const statusList = [
         activate_timing: 'end_turn',
         condition: '集中>=3',
         effects: [
-            { type: '集中', value: 2 }, 
+            { type: 'status', target: '集中', value: 2 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -243,7 +244,7 @@ const statusList = [
         activate_timing: 'end_turn',
         condition: '好印象>=3',
         effects: [
-            { type: '好印象', value: 3 }, 
+            { type: 'status', target: '好印象', value: 3 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -546,14 +547,14 @@ export class PIdolStatus {
         }
     }
 
-    get_byActivateTiming (activate_timing) {
+    getByTiming (timing) {
         // const result = [];
         // for (const name of this.#names_activate_in_useCard) {
         //     const status = this.#get(name);
         //     if (status.value == 0) continue;
         //     result.push(status);
         // }
-        const result = this.#status.filter(item=>item.activate_timing==activate_timing);
+        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
         return result;
     }
 

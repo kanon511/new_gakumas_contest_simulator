@@ -27,8 +27,10 @@ export class PItemManager {
      * @param {String}
      * @returns {Array<PItem>}
      */
-    getPItemByActivateTiming (activateTiming) {
-        return this.#pItemList.filter(item => item.activate_timing == activateTiming);
+    getByTiming (timing) {
+        return this.#pItemList.filter(
+            item => item.isAvailable() && 
+            item.activate_timing == timing);
     }
 
 }

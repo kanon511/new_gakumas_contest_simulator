@@ -32,11 +32,13 @@ export class PIdol {
     #turnType;
 
     constructor ({ parameter, plan, pItemIds, skillCardIds }) {
+
         this.#parameter = {
             vocal : parameter.vocal,
             dance : parameter.dance,
             visual: parameter.visual,
         };
+
         this.#status = {
             hp: parameter.hp,
             maxHp: parameter.hp,
@@ -45,7 +47,6 @@ export class PIdol {
             plan: plan,
             turn: 0,
             currentTurnType: null,
-            card: null,
             extraTurn: 0,
             remainTurn: null,
             lastUsedCard: null,
@@ -63,7 +64,7 @@ export class PIdol {
         this.#status.remainTurn = turnCount;
     }
 
-    getLog () {
+    getResult () {
         return {
             log: this.#log.getLog(),
             finalStatus: { score: this.#status.score, hp: this.#status.hp, block: this.#status.block },
@@ -77,53 +78,65 @@ export class PIdol {
         this.#status.turn++;
         this.#status.currentTurnType = this.#turnType.getType(this.#status.turn);
         this.#log.nextTurn({ score: this.#status.score, hp: this.#status.hp, block: this.#status.block, turnType: this.#status.currentTurnType });
-        // console.log(`---${this.#turn}ターン(${this.#currentTurnType})---`);
-        const pIdolActions = [
-            { type: 'effect', sourceType: 'pIdol', target: { type: 'draw', value: 3 } },
+        // console.time('start_turn_effect');
+        const defaultActions = [
+            { type: 'effect', sourceType: 'default', target: { type: 'draw', value: 3 } },
         ];
-        const pItemActions = this.#getPItemAction('start_turn');
-        const pStatusActions = this.#getPStatusAction('start_turn');
-        const pDelayActions = this.#getPDelayAction();
-        // const actualTransaction = this.#simulatedTransaction([...pIdolActions, ...pItemActions, ...pStatusActions, ...pDelayActions]);
-        const actualTransaction =  this.#simulatedTransaction(pIdolActions.concat(pItemActions, pStatusActions, pDelayActions));
-        const log = this.#executeTransaction(actualTransaction);
+        const pItemActions = this.#getPItemAction('start_turn', this.#status);
+        const pStatusActions = this.#getPStatusAction('start_turn', this.#status);
+        const pDelayActions = this.#getPDelayAction(this.#status);
+        //
+        const actions = [];
+        defaultActions.forEach(action=>actions.push(action));
+        pItemActions.forEach(action=>actions.push(action));
+        pStatusActions.forEach(action=>actions.push(action));
+        pDelayActions.forEach(action=>actions.push(action));
+        //
+        const executions = this.#simulateActions(actions);
+        // console.log(executions);
+        this.#executeActions(executions);
+        // console.log(executeLog);
+        // console.timeEnd('start_turn_effect');
+        //
         this.#updateHandSkillCards();
     }
+
+    
 
     useCard (cardNumber) {
         const usedCard = this.#deck.getHandCardByNumber(cardNumber);
         this.#status.lastUsedCard = usedCard;
-        const transaction = usedCard.transaction;
-        const predictTransaction = usedCard.predictTransaction;
+        const executions = usedCard.executions;
+        const predictExecutions = usedCard.predictExecutions;
         this.#deck.useCard(cardNumber);
-        const log = this.#executeTransaction(transaction);
-        if (this.#status.has('スキルカード使用数追加')) {
-            this.#executeTransaction(this.#simulatedTransaction([
+        this.#executeActions(executions);
+        if (this.#status.pStatus.has('スキルカード使用数追加')) {
+            this.#executeActions(this.#simulateActions([
                 { type: 'effect', sourceType: 'pIdol', target: { type: 'status', target: 'スキルカード使用数追加', value: -1 } },
                 { type: 'effect', sourceType: 'pIdol', target: { type: 'extra_action', value: 1 } },
             ]));
             return true;
         } else {
-            this.#endTransaction = predictTransaction;
+            this.#endTransaction = usedCard.predictTransaction;
             return false;
         }
     }
 
     rest () {
         const source = { name: '休憩' };
-        const actualTransaction = this.#simulatedTransaction([
+        const actualTransaction = this.#simulateActions([
             { type: 'use', sourceType: 'rest', source: source },
-            { type: 'effect', sourceType: 'rest', source: source, target: { type: 'hp', value: 2 } },
+            { type: 'effect', sourceType: 'rest', target: { type: 'hp', value: 2 } },
             { type: 'end' },
         ]);
-        const log = this.#executeTransaction(actualTransaction);
+        this.#executeActions(actualTransaction);
     }
 
     end () {
         this.#deck.discardAll();
-        this.#status.reduceInTurnend();
+        this.#status.pStatus.reduceInTurnend();
         if (this.#endTransaction) {
-            const log = this.#executeTransaction(this.#endTransaction);
+            this.#executeActions(this.#endTransaction);
             this.#endTransaction = null;
         }
         this.#status.remainTurn--;
@@ -157,31 +170,37 @@ export class PIdol {
 
     #setSkillCardTransaction (skillCard) {
         this.#status.lastUsedCard = skillCard;
-        let transaction = [];
+        const transaction = [];
         transaction.push({ type: 'use', sourceType: 'skillCard', source: skillCard });
-        transaction.push({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: skillCard.cost });
-        // transaction.push(...this.#getPItemAction('use_card'));
-        // transaction.push(...this.#getPStatusAction('use_card'));
-        transaction = transaction.concat(this.#getPItemAction('use_card'), this.#getPStatusAction('use_card'));
-        transaction = transaction.concat(skillCard.effects.map(effect => { return { type: 'effect', sourceType: 'skillCard', source: skillCard, target: effect } }));
-        // for (const effect of skillCard.effects) {
-        //     transaction.push({ type: 'effect', sourceType: 'skillCard', source: skillCard, target: effect });
-        // }
+        transaction.push({ type: 'effect', sourceType: 'skillCard', target: skillCard.cost });
+        this.#getPItemAction('use_card', this.#status).forEach(action=>transaction.push(action));
+        this.#getPStatusAction('use_card', this.#status).forEach(action=>transaction.push(action));
+        skillCard.effects.forEach(effect => { 
+            if (ConditionChecker.check(effect.condition, this.#status)) {
+                transaction.push({ type: 'effect', sourceType: 'skillCard', target: effect });
+            }
+        });
         transaction.push({ type: 'end' });
 
         const status = this.#getStatus();
-        const actualTransaction = this.#simulatedTransaction(transaction, status);
-        const evaluation = this.#evaluateTransaction(actualTransaction);
-        skillCard.transaction = actualTransaction;
+        const executions = this.#simulateActions(transaction, status);
+        const evaluation = this.#evaluateExecutions(executions);
+
+        skillCard.executions = executions;
         skillCard.evaluation = evaluation;
 
-        // ターンエンド時の処理
+        // // ターンエンド時の処理
         const predictTransaction = [];
-        // predictTransaction.push(...this.#getPItemAction('end_turn'));
-        // predictTransaction.push(...this.#getPStatusAction('end_turn'));
-        predictTransaction.concat(this.#getPItemAction('end_turn'), this.#getPStatusAction('end_turn'));
-        const actualPredictTransaction = this.#simulatedTransaction(predictTransaction, status);
-        skillCard.predictTransaction = actualPredictTransaction;
+        this.#getPItemAction('end_turn', status).forEach(action=>predictTransaction.push(action));
+        this.#getPStatusAction('end_turn', status).forEach(action=>predictTransaction.push(action));
+        const predictExecutions = this.#simulateActions(predictTransaction, status);
+        const predictEvaluation = this.#evaluateExecutions(predictExecutions);
+        skillCard.predictExecutions = predictExecutions;
+        skillCard.predictEvaluation = predictEvaluation;
+    }
+
+    #evaluateExecutions (executions) {
+        return executions.reduce((acc, crt) => acc + Calculator.calcActionEvaluation(crt), 0);
     }
 
     #getStatus () {
@@ -189,12 +208,15 @@ export class PIdol {
         const status = {
             hp: this.#status.hp,
             maxHp: this.#status.maxHp,
-            score: this.#status.score,
             block: this.#status.block,
+            score: this.#status.score,
+            plan: this.#status.plan,
             turn: this.#status.turn,
             currentTurnType: this.#status.currentTurnType,
-            card: this.#status.lastUsedCard,
-            status: pStatus,
+            extraTurn: this.#status.extraTurn,
+            remainTurn: this.#status.remainTurn,
+            lastUsedCard: this.#status.lastUsedCard,
+            pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
             handCount: this.getDeck('handCards').length,
         };
         return status;
@@ -202,6 +224,8 @@ export class PIdol {
 
     #drawSkillCard (number) {
         this.#deck.draw(number);
+        this.#status.handCount = this.getDeck('handCards').length;
+        // console.log(this.getDeck('handCards'))
     }
 
     getDeck (type) {
@@ -209,143 +233,51 @@ export class PIdol {
     }
 
     #setSkillCardAvailale (skillCard) {
-        const condition = skillCard.condition;
-        const flag_condition = ConditionChecker.check(condition, this.#status);
-        const flag_cost = this.#checkSkillCardCost(skillCard.cost);
-        skillCard.setAvailable(flag_condition && flag_cost);
+        skillCard.setAvailable(
+            ConditionChecker.check(skillCard.condition, this.#status) && 
+            this.#checkSkillCardCost(skillCard.cost)
+        );
     }
 
     #checkSkillCardCost (cost) {
-        const actualValue = this.#calcActualValue(cost, this.#status);
+        const actualValue = Calculator.calcActualValue(cost, this.#status, this.#parameter);
         if (cost.type == 'hp') return this.#status.hp + this.#status.block >= -actualValue;
         if (cost.type == 'direct_hp') return this.#status.hp >= -actualValue;
-        return this.#status.getValue(cost.type) >= -actualValue;
+        return this.#status.pStatus.getValue(cost.target) >= -actualValue;
     }
 
-    #calcActualValue (effect, status) {
-        if (effect.type == 'score') {
-            const concentrationCoef = status.status.getValue('集中');
-            const goodConditionCoef = status.status.has('好調') ? 1.5 : 1;
-            const greatConditionCoef = status.status.has('絶好調') ? status.status.getValue('好調') * 0.1 : 0;
-            const parameterRateIncreasedCoef = 1 + status.status.getValue('パラメータ上昇量増加');
-            const parameterRateCoef = (()=>{
-                if (!effect.delay) return this.#parameter[status.currentTurnType] / 100;
-                if (status.remainTurn <= effect.delay) return 0;
-                return this.#parameter[this.#turnType.getType(status.turn+effect.delay)] / 100;
-            })();
-            const optionCoef = { '集中': 1, 'score': 0 }
-            if (effect.options) {
-                effect.options.forEach(effectOption => {
-                    switch (effectOption.type) {
-                        case '集中'  : optionCoef['集中'] = effectOption.value; break;
-                        case '好印象': optionCoef['score'] = (effectOption.value/100) * status.status.getValue('好印象'); break;
-                        case 'block': optionCoef['score'] = (effectOption.value/100) * status.block; break;
-                        case 'やる気': optionCoef['score'] = (effectOption.value/100) * status.status.getValue('やる気'); break;
-                    }
-                });
-            }
-            const baseScore = effect.value ?? 0;
-            const adjustScore = baseScore + concentrationCoef * optionCoef['集中'] + optionCoef['score'];
-            const actualValue = 
-                Math.ceil(
-                    Math.ceil(
-                        adjustScore * (goodConditionCoef + greatConditionCoef)
-                    ) * parameterRateCoef * parameterRateIncreasedCoef
-                );
-            // console.log(`base=${baseScore}, 集中=${concentrationCoef * optionCoef['集中']}, addition=${optionCoef['score']}, 好調=${goodConditionCoef}, 絶好調=${greatConditionCoef}, 上昇量=${parameterRateIncreasedCoef}, 倍率=${parameterRateCoef} => ${actualValue}`)
-            return actualValue;
-        }
-        if (effect.type == 'block') {
-            const optionCoef = { '使用したスキルカード数': 0, '割合減少': 0 };
-            if (effect.options) {
-                effect.options.forEach(effectOption => {
-                    switch (effectOption.type) {
-                        case '使用したスキルカード数': optionCoef['使用したスキルカード数'] = effectOption.value * status.status.getValue('使用したスキルカード数'); break;
-                        case '割合減少': optionCoef['割合減少'] = -Math.ceil(status.block * effectOption.value / 100);
-                    }
-                });
-            }
-            let actualValue = (effect.value ?? 0 + status.status.getValue('やる気') + optionCoef['使用したスキルカード数'] + optionCoef['割合減少']);
-            if (status.status.has('元気増加無効') && actualValue > 0) actualValue = 0;
-            return actualValue;
-        }
-        if (effect.type == 'hp' || effect.type == 'direct_hp') {
-            const value = effect.value;
-            if (value < 0) {
-                const increaseHpConsumption = status.status.has('消費体力増加') ? 2.0 : 1.0;
-                const decreaseHpConsumption = status.status.has('消費体力減少') ? 0.5 : 1.0;
-                const reductionHpComsumption = status.status.getValue('消費体力削減');
-                const actualValue = Math.floor(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption;
-                return Math.min(0, actualValue);
-            }
-            return value;
-        }
-        if (effect.type == 'draw') {
-            let actualValue = effect.value;
-            if (effect.options) {
-                effect.options.forEach(effectOption => {
-                    switch (effectOption.type) {
-                        case '手札枚数': actualValue = status.handCount-1;
-                    }
-                });
-            }
-            return actualValue;
-        }
-        if (effect.type == 'status') {
-            const baseValue = effect.value ?? 0;
-            let optionalValue = 0;
-            if (effect.options) {
-                effect.options.forEach(effectOption => {
-                    switch (effectOption.type) {
-                        case 'multiple': optionalValue = status.status.getValue(effect.type) * (option.value-1); break;
-                    }
-                    optionalValue = Math.floor(optionalValue);
-                });
-            }
-            const actualValue = baseValue + optionalValue;
-            return actualValue;
-        }
-        return effect.value;
-    }
-
-    /**
-     * アクションの一連の流れをシミュレートして結果のトランザクションを返します
-     * @param {Array<Action>} transaction 
-     * @returns {Array<Action>} シミュレート結果
-     */
-    #simulatedTransaction (transaction, _status) {
-        let actualTransaction = [];
+    #simulateActions (actions, _status) {
         const status = _status ?? this.#getStatus();
-        transaction.forEach(action => {
-            actualTransaction = actualTransaction.concat(this.#simulateAction(action, status));
+        const executions = [];
+        // console.log(actions);
+        actions.forEach(action => {
+            this.#simulateAction(action, status)
+                .forEach(execution=>executions.push(execution));
         });
-            // actualTransaction.push(...this.#simulateAction(action, status));
-        return actualTransaction;
+        return executions;
     }
 
-    /**
-     * アクションをシミュレートして結果のアクションを返します。statusを変更します。
-     * @param {Action} action 
-     * @param {PIdolStatus|_PStatus} status 
-     * @returns {Array<Action>} シミュレート結果
-     */
     #simulateAction (action, status) {
         if (action.type == 'use' || action.type == 'end') return [action];
         const { type, target, value, options, delay, condition } = action.target;
-        const actualValue = this.#calcActualValue(action.target, status);
-        let executes = [];
-        if (!ConditionChecker.check(condition, this.#status)) return executes;
-
-        if (delay) {
-            executes.push({ delay: delay, type: type, args: [value, actualValue, options, action.source] });
+        const actualValue = Calculator.calcActualValue(action.target, status, this.#parameter);
+        if (!ConditionChecker.check(condition, this.#status)) return [];
+        //
+        const executes = [];
+        if (type == 'score') {
+            const score = status.score;
+            status.score = score + actualValue;
+            executes.push({ type: 'score', args: [actualValue] });
             return executes;
         }
         if (type == 'hp' || type == 'direct_hp') {
-            if (actualValue > 0) {
+            if (actualValue > 0) { 
+                // 回復
                 const hp = status.hp;
                 status.hp = Math.min(status.maxHp, hp+actualValue);
-                executes.push({ type: 'hp', command: 'add', args: [status.hp-hp] });
-            } else {
+                executes.push({ type: 'hp', args: [status.hp-hp] });
+            } else { 
+                // 消費
                 const block = status.block, hp = status.hp;
                 if (type == 'direct_hp') {
                     status.hp = hp + actualValue;
@@ -359,167 +291,126 @@ export class PIdol {
                     status.block = block + actualValue;
                 }
                 if (status.block < block) {
-                    executes.push({ type: 'block', command: 'reduce', args: [status.block-block] });
+                    executes.push({ type: 'block', args: [status.block-block] });
                 }
-                // if (hp < status.hp) {
-                executes.push({ type: 'hp', command: 'reduce', args: [status.hp-hp] });
-                // }
+                executes.push({ type: 'hp', args: [status.hp-hp] });
                 if (action.sourceType == 'skillCard' && hp > status.hp) {
-                    this.#getPItemAction('consume_hp').forEach(action => {
-                        executes = executes.concat(this.#simulateAction(action, status));
-                    });
+                    this.#simulateActions(this.#getPItemAction('consume_hp', status))
+                        .forEach(execution=>executes.push(execution));
                 }
             }
+            return executes;
         }
-        else if (type == 'score') {
-            const score = status.score;
-            status.score = score + actualValue;
-            executes.push({ type: 'score', command: 'add', args: [actualValue] });
-        } 
-        else if (type == 'block' || type == '固定元気') {
+        if (type == 'block' || type == '固定元気') {
             const block = status.block;
             status.block = block + actualValue;
-            executes.push({ type: 'block', command: 'add', args: [actualValue] });
+            executes.push({ type: 'block', args: [actualValue] });
+            return executes;
         }
-        else if (type == 'draw') {
-            executes.push({ type: 'draw', command: '', args: [value] });
+        if (type == 'draw') {
+            executes.push({ type: 'draw', args: [actualValue] });
+            return executes;
         }
-        else if (type == 'upgrade') {
-            executes.push({ type: 'upgrage', command: '', args: [value] });
+        if (type == 'upgrade') {
+            executes.push({ type: 'upgrage', args: [value] });
+            return executes;
         }
-        else if (type == 'extra_action') {
-            executes.push({ type: 'add_action', command: 'add', args: [actualValue] });
+        if (type == 'extra_action') {
+            executes.push({ type: 'add_action', args: [actualValue] });
+            return executes;
         }
-        else if (type == 'extra_turn') {
-            executes.push({ type: 'extra_turn', command: 'add', args: [actualValue] });
+        if (type == 'extra_turn') {
+            executes.push({ type: 'extra_turn', args: [actualValue] });
+            return executes;
         }
-        else if (type == 'discard') {
-            executes.push({ type: 'discard', command: '', args: [value] });
+        if (type == 'discard') {
+            executes.push({ type: 'discard', args: [value] });
+            return executes;
         }
-        else if (type == 'generate') {
-            executes.push({ type: 'generate', command: '', args: [value] });
+        if (type == 'generate') {
+            executes.push({ type: 'generate', args: [value] });
+            return executes;
         }
-        else if (type == 'status'){ // ステータス系
+        if (type == 'status'){ // ステータス系
             if (actualValue > 0) { // 増加
-                if (status.status.has('低下状態無効') && status.status.getType(target) == 'debuff') {
-                    status.status.reduce('低下状態無効', 1);
-                    executes.push({ type: 'status:低下状態無効', command: 'reduce', args: [1] });
+                if (status.pStatus.has('低下状態無効') && status.pStatus.getType(target) == 'debuff') {
+                    status.pStatus.reduce('低下状態無効', 1);
+                    executes.push({ type: 'status', args: ['低下状態無効', -1] });
                 } else {
-                    const statusValue = status.status.getValue(target);
                     const availableFirstAdded = action.sourceType == 'skillCard';
-                    status.status.add(target, actualValue, availableFirstAdded, options);
-                    executes.push({ type: `status:${target}`, command: 'add', args: [actualValue, availableFirstAdded, options] });
+                    status.pStatus.add(target, actualValue, availableFirstAdded, options);
+                    executes.push({ type: 'status', args: [target, actualValue, availableFirstAdded, options] });
                     if (action.sourceType == 'skillCard') {
-                        this.#getPItemAction(`increased_status:${target}`).forEach(action=>{
-                            // executes.push(...this.#simulateAction(action, status));
-                            executes = executes.concat(this.#simulateAction(action, status));
-                        });
+                        this.#simulateActions(this.#getPItemAction(`increased_status:${target}`, status))
+                            .forEach(execution=>executes.push(execution));
                     }
                 }
             } 
             else { // 消費
-                status.status.reduce(target, -actualValue);
-                executes.push({ type: `status:${target}`, command: 'reduce', args: [-actualValue] });
-            } 
+                status.pStatus.reduce(target, -actualValue);
+                executes.push({ type: 'status', args: [target, actualValue] });
+            }
+            return executes;
         }
-        else {
-            throw new Error(`${type}は存在しません`);
-        }
-        return executes;
+        throw new Error(`${type}は存在しません -> ${JSON.stringify(action)}`);
     }
 
-    /**
-     * トランザクションを実行します
-     * @param {Array<Action>} transaction アクションの一連の流れ
-     */
-    #executeTransaction (transaction) {
-        const executionLog = [];
-        let currentPointer = executionLog;
-        const pointerStack = [];
-        transaction.forEach(action=>{
-            const message = this.#executeAction(action);
-            if (action.type == 'use') {
-                const obj = { 
-                    type: 'use', 
-                    sourceType: action.sourceType, 
-                    name: action.source.name,
-                    list: [], 
-                }; 
-                currentPointer.push(obj);
-                pointerStack.push(currentPointer);
-                currentPointer = obj.list;
-            } 
-            else if (action.type == 'end') {
-                const pop = pointerStack.pop();
-                currentPointer = pop;
-            } 
-            else {
-                currentPointer.push({
-                    type: 'effect',
-                    message: message,
-                });
+    #executeActions (actions) {
+        const executeLog = [];
+        actions.forEach(action=>{
+            if (action.type == 'use' || action.type == 'end') {
+                executeLog.push(action);
+                if (action.sourceType == 'pItem') {
+                    action.source.use();
+                }
+            } else {
+                executeLog.push({ type: 'effect', message: this.#executeAction(action) });
             }
         });
-        this.#log.addExecutionLog(executionLog);
-        return executionLog;
+        this.#log.addExecutionLog(executeLog);
     }
 
-    #executeAction (action) {
-        if (action.type == 'use') {
-            if (action.sourceType == 'pItem') {
-                action.source.use();
-            }
-            return '';
-        }
-        if (action.type == 'end') {
-            return '';
-        }
-        if (action.delay) {
-            this.#status.addDelayEffect(action.args[3].name, this.#status.turn + action.delay, 
-                { type: action.type, value: action.args[0], options: action.args[2] }
-            );
-            return `予約効果登録：${action.args[3].name}(${action.delay}ターン後)`;
-        }
-        else if (action.type == 'hp') {
+    #executeAction ({ type, args }) {
+        if (type == 'hp') {
             const hp = this.#status.hp;
-            this.#status.hp += action.args[0];
+            this.#status.hp += args[0];
             return `HP：${hp}→${this.#status.hp}(${this.#status.hp-hp})`;
         }
-        else if (action.type == 'block') {
+        if (type == 'block') {
             const block = this.#status.block;
-            this.#status.block += action.args[0];
+            this.#status.block += args[0];
             return `元気：${block}→${this.#status.block}(${this.#status.block-block})`;
         }
-        else if (action.type == 'score') {
+        if (type == 'score') {
             const score = this.#status.score;
-            this.#status.score += action.args[0];
+            this.#status.score += args[0];
             return `スコア：${score}→${this.#status.score}(${this.#status.score-score})`;
         }
-        else if (action.type == 'add_action') {
+        if (type == 'add_action') {
             this.#addtionalAction = true;
             return `追加行動`;
         }
-        else if (action.type == 'extra_turn') {
+        if (type == 'extra_turn') {
             const extraTurn = this.#status.extraTurn;
-            this.#status.extraTurn += action.args[0];
-            this.#status.remainTurn += action.args[0];
+            this.#status.extraTurn += args[0];
+            this.#status.remainTurn += args[0];
             return `追加ターン：${extraTurn}→${this.#status.extraTurn}(${this.#status.extraTurn-extraTurn})`;
         }
-        else if (action.type == 'draw') {
-            this.#drawSkillCard(action.args[0]);
-            return `${action.args[0]}枚カードを引いた`;
+        if (type == 'draw') {
+            this.#drawSkillCard(args[0]);
+            return `${args[0]}枚カードを引いた`;
         }
-        else if (action.type == 'upgrade') {
+        if (type == 'upgrade') {
             this.#deck.upgrade('allhands');
             return `手札を強化した`;
         }
-        else if (action.type == 'discard') {
+        if (type == 'discard') {
             this.#deck.discardAll();
             return `手札を捨てた`;
         }
-        else if (action.type == 'generate') {
+        if (type == 'generate') {
             let name;
-            if (action.args[0] == 'ランダムな強化済みスキルカード') {
+            if (args[0] == 'ランダムな強化済みスキルカード') {
                 const targetCards = SkillCardData.getAll().filter(item=>
                     (item.plan=='free'||item.plan==this.#status.plan) && // プラン指定
                     item.id % 10 == 1 && // 強化カード
@@ -533,79 +424,72 @@ export class PIdol {
             }
             return `${name}を手札に加えた`;
         }
-        else if (action.type.indexOf('status:') == 0) {
-            const statusType = action.type.split(':')[1];
-            const statusValue = this.#status.getValue(statusType);
-            if (action.command == 'add') {
-                this.#status.add(statusType, action.args[0], action.args[1], action.args[2]);
+        if (type == 'status') {
+            const statusType = args[0];
+            const statusValue = this.#status.pStatus.getValue(statusType);
+            if (args[1] > 0) {
+                this.#status.pStatus.add(statusType, args[1], args[2], args[3]);
             } else {
-                this.#status.reduce(statusType, action.args[0]);
+                this.#status.pStatus.reduce(statusType, -args[1]);
             }
-            const afterStatusValue = this.#status.getValue(statusType);
+            const afterStatusValue = this.#status.pStatus.getValue(statusType);
             // console.log(`${statusType} -> ${this.#status.getValue(statusType)}`);
             return `${statusType}：${statusValue}→${afterStatusValue}(${afterStatusValue-statusValue})`;
         }
-        else {
-            throw new Error(`次のアクションタイプは定義されていません -> ${action.type}`);
-        }
-    }
-
-    #evaluateTransaction (transaction) {
-        let totalEvaluation = transaction.reduce((acc, crt) => acc += Calculator.calcActionEvaluation(crt), 0);
-        return totalEvaluation;
+        throw new Error(`次のアクションタイプは定義されていません -> ${type}`);
     }
 
     /**
-     * 特定のアクティブタイミングを持った使用可能なPItemのactionを取得します。
-     * @param {String} activateTiming タイミング 
-     * @returns {Array<Action>} アクションリスト
+     * 特定のタイミングで発火するPアイテムのActionを取得する
+     * @param {*} activateTiming 
+     * @param {*} status 
+     * @returns {Array<Object>}
      */
-    #getPItemAction (activateTiming) {
+    #getPItemAction (activateTiming, status) {
+        const pItemList = this.#pItemsManager.getByTiming(activateTiming)
+            .filter(pItem=>ConditionChecker.check(pItem.condition, status));
         const actions = [];
-        const targetPItemList = this.#pItemsManager.getPItemByActivateTiming(activateTiming);
-        const activePItemList = targetPItemList.filter(
-            pItem=>pItem.isAvailable() && ConditionChecker.check(pItem.condition, this.#getStatus()));
-        activePItemList.forEach(pItem=>{
+        pItemList.forEach(pItem=>{
             actions.push({ type: 'use', sourceType: 'pItem', source: pItem });
-            pItem.effects.forEach(effect=>{
-                actions.push({ type: 'effect', sourceType: 'pItem', source: pItem, target: effect });
-            });
+            pItem.effects.forEach(effect=>
+                actions.push({ type: 'effect', sourceType: 'pItem', target: effect }));
             actions.push({ type: 'end' });
         });
         return actions;
     }
 
     /**
-     * 特定のアクティブタイミングを持った使用可能なPStatusのactionを取得します。
-     * @param {String} activateTiming タイミング 
-     * @returns {Array<Action>} アクションリスト
+     * 特定のタイミングで発火するPステータスのActionを取得する
+     * @param {*} activateTiming 
+     * @param {*} status 
+     * @returns {Array<Object>}
      */
-    #getPStatusAction (activateTiming) {
+    #getPStatusAction (activateTiming, status) {
+        const pStatusList = this.#status.pStatus.getByTiming(activateTiming)
+            .filter(pStatus=>ConditionChecker.check(pStatus.condition, status));
         const actions = [];
-        const targetPStatusList = this.#status.pStatus.get_byActivateTiming(activateTiming);
-        const activePStatusList = targetPStatusList.filter(pStatus=>ConditionChecker.check(pStatus.condition, this.#getStatus()));
-        activePStatusList.forEach(pStatus=>{
-            for (let i = 0, n = pStatus.value; i < n; i++) {
-                actions.push({ type: 'use', sourceType: 'pStatus', source: pStatus });
-                pStatus.effects.forEach(effect => {
-                    actions.push({ type: 'effect', sourceType: 'pStatus', source: pStatus, target: effect });
-                });
-                actions.push({ type: 'end' });
-            }
+        pStatusList.forEach(pStatus=>{
+            actions.push({ type: 'use', sourceType: 'pStatus', source: pStatus });
+            pStatus.effects.forEach(effect=>
+                actions.push({ type: 'effect', sourceType: 'pStatus', target: effect }));
+            actions.push({ type: 'end' });
         });
         return actions;
     }
 
-    #getPDelayAction () {
+    /**
+     * 予約効果のActionを取得する
+     * @param {*} status 
+     * @returns {Array<Object>}
+     */
+    #getPDelayAction (status) {
+        const delayEffectList = this.#status.pStatus.getDelayEffects(status.turn);
         const actions = [];
-        const delayEffectList = this.#status.pStatus.getDelayEffects(this.#status.turn);
-        for (const delayEffect of delayEffectList) {
-            actions.push({ type: 'use', sourceType: 'pDelayEffect', source: delayEffect });
-            // for (const effect of delayEffect.activate_effects) {
-            actions.push({ type: 'effect', sourceType: 'pDelayEffect', source: delayEffect, target: delayEffect.effect });
-            // }
+        delayEffectList.forEach(delayEffect=>{
+            actions.push({ type: 'use', sourceType: 'pDelay', source: delayEffect });
+            actions.push({ type: 'effect', sourceType: 'pDelay', target: delayEffect.effect});
             actions.push({ type: 'end' });
-        }
+        });
         return actions;
     }
 }

@@ -85,7 +85,7 @@ export class Contest {
      * @returns {Object}
      */
     getResult () {
-        return this.#pIdol.getLog();
+        return this.#pIdol.getResult();
     }
 
 }
