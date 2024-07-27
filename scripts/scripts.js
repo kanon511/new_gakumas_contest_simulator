@@ -99,18 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    const element_card_selects = Array.from(document.querySelectorAll('.character-cards select'));
-    const element_card_select_checkboxs = Array.from(document.querySelectorAll('.character-cards .checkbox'));
+    const element_card_selects = Array.from(document.querySelectorAll('#card-box-container .character-cards select'));
+    const element_card_select_checkboxs = Array.from(document.querySelectorAll('#card-box-container .character-cards .checkbox'));
 
     element_card_selects.forEach(element=>{
         element.addEventListener('change', (e)=>{
+            console.log(e)
             const id = String(e.target.value);
             const rarity = Number(id[0]);
             e.target.parentNode.dataset.rarity = rarity;
         });
     });
+
     [].concat(element_card_selects, element_card_select_checkboxs).forEach(element=>{
         element.addEventListener('change', (e)=>{
+            console.log(e)
             const elems = Array.from(e.target.parentNode.parentNode.parentNode.children);
             const totalCost = elems.reduce((acc, crt) => {
                 const cardId = Number(crt.getElementsByClassName('select-box')[0].value)+(crt.getElementsByClassName('checkbox')[0].checked ? 1 : 0);
