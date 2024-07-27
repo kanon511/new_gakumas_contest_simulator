@@ -583,6 +583,26 @@ const pItemData = [
         ],
         limit: null,
     },
+    // {
+    //     id: 2301030,
+    //     name: '敗れ知らずのポイ',
+    //     activate_timing: 'start_of_turn',
+    //     condition: '好印象>=6',
+    //     effects: [
+    //         { type: '体力回復', value: 5 },
+    //     ],
+    //     limit: 2,
+    // },
+    {
+        id: 2301031,
+        name: '敗れ知らずのポイ+',
+        activate_timing: 'start_of_turn',
+        condition: '好印象>=6',
+        effects: [
+            { type: '体力回復', value: 5 },
+        ],
+        limit: 2,
+    },
     {
         id: 2302010,
         name: '自分を守るイヤホン',
@@ -734,6 +754,26 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1,
+    },
+    // {
+    //     id: 2305020,
+    //     name: '瓶の中のきらめき',
+    //     activate_timing: 'end_of_turn',
+    //     condition: '好調>=3',
+    //     effects: [
+    //         { type: '好調', value: 2 },
+    //     ],
+    //     limit: 4,
+    // },
+    {
+        id: 2305021,
+        name: '瓶の中のきらめき+',
+        activate_timing: 'end_of_turn',
+        condition: '好調>=3',
+        effects: [
+            { type: '好調', value: 2 },
+        ],
+        limit: 4,
     },
     {
         id: 2306010,

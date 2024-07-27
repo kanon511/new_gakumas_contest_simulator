@@ -282,6 +282,9 @@ export class ContestPIdol {
                         case '集中': 
                             optionCoef['集中'] = effectOption.value;
                             break;
+                        case '好調': 
+                            optionCoef['score'] = (effectOption.value/100) * this.status.getValue('好調');
+                            break;
                         case '好印象': 
                             optionCoef['score'] = (effectOption.value/100) * this.status.getValue('好印象');
                             break;
