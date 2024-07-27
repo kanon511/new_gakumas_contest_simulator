@@ -71,7 +71,7 @@ function DOM_set_select_options (select, item_list, isBlank) {
         option.value = '-1';
         fragment.appendChild(option);
     }
-    item_list.forEach(item=>{
+    item_list.forEach((item, i)=>{
         const option = document.createElement('option');
         option.innerHTML = item.name;
         option.value = item.id;
@@ -97,15 +97,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const element_pItem_box  = document.getElementById('main-character-pItem-box');
     const element_pItems = DOM_set_characterCards(element_pItem_box, 4, 'pItem');
 
-    function DOM_change_color_by_card_rarity (e) {
-        const id = String(e.target.value);
-        const rarity = Number(id[0]);
-        e.target.parentNode.dataset.rarity = rarity;
-    }
 
-    Array.from(document.querySelectorAll('.character-cards select')).forEach(element=>{
-        element.addEventListener('change', DOM_change_color_by_card_rarity);
+
+    const element_card_selects = Array.from(document.querySelectorAll('.character-cards select'));
+    const element_card_select_checkboxs = Array.from(document.querySelectorAll('.character-cards .checkbox'));
+
+    element_card_selects.forEach(element=>{
+        element.addEventListener('change', (e)=>{
+            const id = String(e.target.value);
+            const rarity = Number(id[0]);
+            e.target.parentNode.dataset.rarity = rarity;
+        });
     });
+    [].concat(element_card_selects, element_card_select_checkboxs).forEach(element=>{
+        element.addEventListener('change', (e)=>{
+            const elems = Array.from(e.target.parentNode.parentNode.parentNode.children);
+            const totalCost = elems.reduce((acc, crt) => {
+                const cardId = Number(crt.getElementsByClassName('select-box')[0].value)+(crt.getElementsByClassName('checkbox')[0].checked ? 1 : 0);
+                const cost = (cardId < 1 ? 0 : (SkillCardData.getById(cardId).card_cost ?? 0));
+                return acc + cost;
+            }, 0);
+            e.target.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('cost-display')[0].textContent = totalCost;
+        })
+    });
+
+
 
     function DOM_set_select_contest_pItem (id) {
         const element_select = element_pItems[0];
@@ -137,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const element_select = (type == 'main') ? element_main_cards[0] : element_sub_cards[0];
         const uniqueSkill = SkillCardData.getById(id);
         DOM_set_select_options(element_select, [uniqueSkill], false);
+        element_select.dispatchEvent(new Event('change'));
     }
 
     function DOM_set_otherSkillCards (plan) {
@@ -147,7 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
             item.id>2000000 && // 基本カード削除
             String(item.id)[1] != '2' // キャラ固有削除
         );
-        elements.forEach(element=>DOM_set_select_options(element, skillCards, true));
+        elements.forEach(element=>{
+            DOM_set_select_options(element, skillCards, true);
+            element.dispatchEvent(new Event('change'));
+        });
     }
 
     let current_stage_plan = "";
@@ -264,11 +284,13 @@ document.addEventListener('DOMContentLoaded', () => {
             elem.value = 2 * Math.floor(cardIds[0][idx] / 2);
             elem.parentNode.getElementsByClassName("checkbox")[0].checked =
                 cardIds[0][idx] % 2 > 0;
+            elem.dispatchEvent(new Event("change"));
             });
             element_sub_cards.forEach((elem, idx) => {
             elem.value = 2 * Math.floor(cardIds[1][idx] / 2);
             elem.parentNode.getElementsByClassName("checkbox")[0].checked =
                 cardIds[1][idx] % 2 > 0;
+            elem.dispatchEvent(new Event("change"));
             });
         }
     }

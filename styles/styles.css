@@ -90,9 +90,14 @@ body {
     gap: 10px;
 }
 
-.character-cards-box {
+.container-character-cards-box {
     flex: 1 1 calc(50% - 10px);
     align-items: center;
+}
+
+.character-cards-box {
+    /* flex: 1 1 calc(50% - 10px);
+    align-items: center; */
 }
 
 .character-cards-box > .character-cards {
@@ -114,7 +119,7 @@ body {
 }
 
 .card-container-item[data-rarity="3"] {
-    /* background-color: #ffc; */
+    background-color: #ffc;
 }
 .card-container-item[data-rarity="4"] {
     /* background-color: #fcf; */
@@ -128,6 +133,8 @@ body {
                                purple); */
     
     /* background: linear-gradient(to right, #ffffb2, #ffffb2, #ffffb2, #d8ffb2, #b2ffb2, #b2ffd8, #b2ffff, #b2d8ff, #b2b2ff, #d8b2ff, #ffb2ff, #ffb2d8); */
+    background: linear-gradient(to right, #FFFFE0, #FFFFE0, #FFFFE0, #EFFFE0, #E0FFE0, #E0FFEF, #E0FFFF, #E0EFFF, #E0E0FF, #EFE0FF, #FFE0FF, #FFE0EF);
+
 }
 
 

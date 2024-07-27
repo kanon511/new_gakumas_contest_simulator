@@ -350,6 +350,7 @@ export const skillCardData = [
             { type: '好調', value: 2 },
         ],
         afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2011011,
@@ -363,6 +364,7 @@ export const skillCardData = [
             { type: '好調', value: 3 },
         ],
         afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2011020,
@@ -374,7 +376,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 13 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2011021,
@@ -386,7 +389,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 21 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2011030,
@@ -399,7 +403,8 @@ export const skillCardData = [
             { type: 'score', value: 6 },
             { type: '集中', value: 2 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2011031,
@@ -412,7 +417,8 @@ export const skillCardData = [
             { type: 'score', value: 9 },
             { type: '集中', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2011040,
@@ -424,7 +430,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 10 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2011041,
@@ -436,7 +443,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 16 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2011050,
@@ -449,7 +457,8 @@ export const skillCardData = [
             { type: 'score', value: 6 },
             { type: '集中', value: 3, condition: '好調>0' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2011051,
@@ -462,7 +471,8 @@ export const skillCardData = [
             { type: 'score', value: 9 },
             { type: '集中', value: 4, condition: '好調>0' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2011060,
@@ -474,7 +484,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 17, options: [{ type: '集中', value: 1.5 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2011061,
@@ -486,7 +497,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 23, options: [{ type: '集中', value: 2 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     {
         id: 2011070,
@@ -498,7 +510,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 27 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2011071,
@@ -510,7 +523,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 38 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     /**
      * 白カード(アクティブ/ロジック)
@@ -527,7 +541,8 @@ export const skillCardData = [
             { type: 'score', value: 7 },
             { type: '好印象', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2012011,
@@ -540,7 +555,8 @@ export const skillCardData = [
             { type: 'score', value: 9 },
             { type: '好印象', value: 4 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2012020,
@@ -553,7 +569,8 @@ export const skillCardData = [
             { type: 'やる気', value: 3 },
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 30,
     },
     {
         id: 2012021,
@@ -566,7 +583,8 @@ export const skillCardData = [
             { type: 'やる気', value: 4 },
             { type: 'score', value: null, options: [{ type: 'block', value: 80 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 39,
     },
     {
         id: 2012030,
@@ -579,7 +597,8 @@ export const skillCardData = [
             { type: 'score', value: 10 },
             { type: 'やる気', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2012031,
@@ -592,7 +611,8 @@ export const skillCardData = [
             { type: 'score', value: 15 },
             { type: 'やる気', value: 4 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2012040,
@@ -604,7 +624,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 150 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2012041,
@@ -616,7 +637,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     {
         id: 2012050,
@@ -628,7 +650,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 110 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2012051,
@@ -640,7 +663,8 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 120 }] },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     /**
      * 白カード(メンタル/フリー)
@@ -657,7 +681,8 @@ export const skillCardData = [
             { type: 'block', value: 2 },
             { type: '消費体力減少', value: 2 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2020011,
@@ -670,7 +695,8 @@ export const skillCardData = [
             { type: 'block', value: 2 },
             { type: '消費体力減少', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2020020,
@@ -683,7 +709,8 @@ export const skillCardData = [
             { type: 'block', value: 3 },
             { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2020021,
@@ -696,7 +723,8 @@ export const skillCardData = [
             { type: 'block', value: 3 },
             { type: '消費体力削減', value: 1, condition: 'hpPer>=50' },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     /**
      * 白カード(メンタル/センス)
@@ -712,7 +740,8 @@ export const skillCardData = [
         effects: [
             { type: '集中', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2021011,
@@ -725,7 +754,8 @@ export const skillCardData = [
             { type: 'block', value: 1 },
             { type: '集中', value: 4 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2021020,
@@ -738,7 +768,8 @@ export const skillCardData = [
             { type: '好調', value: 3 },
             { type: '集中', value: 1, condition: '好調>0' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2021021,
@@ -751,7 +782,8 @@ export const skillCardData = [
             { type: '好調', value: 4 },
             { type: '集中', value: 1, condition: '好調>0' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2021030,
@@ -764,7 +796,8 @@ export const skillCardData = [
             { type: '集中', value: 2 },
             { type: '好調', value: 3, condition: '集中>=3' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2021031,
@@ -777,7 +810,8 @@ export const skillCardData = [
             { type: '集中', value: 3 },
             { type: '好調', value: 3, condition: '集中>=3' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2021040, // id
@@ -790,7 +824,8 @@ export const skillCardData = [
             { type: '好調', value: 3 },
             { type: '集中', value: 4 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2021041,
@@ -803,7 +838,8 @@ export const skillCardData = [
             { type: '好調', value: 4 },
             { type: '集中', value: 5 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     /**
      * 白カード(メンタル/ロジック)
@@ -820,7 +856,8 @@ export const skillCardData = [
             { type: 'block', value: 2 },
             { type: '好印象', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2022011,
@@ -833,7 +870,8 @@ export const skillCardData = [
             { type: 'block', value: 2 },
             { type: '好印象', value: 4 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2022020,
@@ -846,7 +884,8 @@ export const skillCardData = [
             { type: 'block', value: 1 },
             { type: 'やる気', value: 3 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 30,
     },
     {
         id: 2022021,
@@ -859,7 +898,8 @@ export const skillCardData = [
             { type: 'block', value: 2 },
             { type: 'やる気', value: 4 },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 39,
     },
     {
         id: 2022030,
@@ -871,7 +911,8 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 6 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 30,
     },
     {
         id: 2022031,
@@ -883,7 +924,8 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 8 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 39,
     },
     {
         id: 2022040,
@@ -896,7 +938,8 @@ export const skillCardData = [
             { type: '好印象', value: 3 },
             { type: 'やる気', value: 2, condition: '好印象>=3' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2022041,
@@ -909,7 +952,8 @@ export const skillCardData = [
             { type: '好印象', value: 4 },
             { type: 'やる気', value: 3, condition: '好印象>=3' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2022050,
@@ -922,7 +966,8 @@ export const skillCardData = [
             { type: 'block', value: 5 },
             { type: '好印象', value: 3, condition: 'やる気>=3' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2022051,
@@ -935,7 +980,8 @@ export const skillCardData = [
             { type: 'block', value: 7 },
             { type: '好印象', value: 4, condition: 'やる気>=3' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2022060,
@@ -948,7 +994,8 @@ export const skillCardData = [
             { type: 'やる気', value: 3 },
             { type: '好印象', value: 4, condition: 'やる気>=6' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 45,
     },
     {
         id: 2022061,
@@ -961,7 +1008,8 @@ export const skillCardData = [
             { type: 'やる気', value: 4 },
             { type: '好印象', value: 5, condition: 'やる気>=6' },
         ],
-        afterUse: null
+        afterUse: null,
+        card_cost: 60,
     },
     {
         id: 2022070,
@@ -973,7 +1021,8 @@ export const skillCardData = [
         effects: [
             { type: '好印象', value: 7 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 45,
     },
     {
         id: 2022071,
@@ -985,7 +1034,8 @@ export const skillCardData = [
         effects: [
             { type: '好印象', value: 9 },
         ],
-        afterUse: { type: 'exhaust', value: 1 }
+        afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 60,
     },
     /**
      * 白カード(キャラ固有)
@@ -1267,6 +1317,7 @@ export const skillCardData = [
             { type: 'block', value: 7 },
         ],
         afterUse: null,
+        card_cost: 75,
     },
     {
         id: 3010011,
@@ -1280,6 +1331,7 @@ export const skillCardData = [
             { type: 'block', value: 10 },
         ],
         afterUse: null,
+        card_cost: 102,
     },
     /**
      * 金カード(アクティブ/センス)
@@ -1296,6 +1348,7 @@ export const skillCardData = [
             { type: 'score', value: 18 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 75,
     },
     {
         id: 3011011,
@@ -1308,6 +1361,7 @@ export const skillCardData = [
             { type: 'score', value: 27 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 102,
     },
     {
         id: 3011020,
@@ -1321,6 +1375,7 @@ export const skillCardData = [
             { type: '好調', value: 3 },
         ],
         afterUse: null,
+        card_cost: 75,
     },
     {
         id: 3011021,
@@ -1334,6 +1389,7 @@ export const skillCardData = [
             { type: '好調', value: 4 },
         ],
         afterUse: null,
+        card_cost: 102,
     },
     {
         id: 3011030,
@@ -1347,6 +1403,7 @@ export const skillCardData = [
             { type: '集中', value: 3 },
         ],
         afterUse: null,
+        card_cost: 75,
     },
     {
         id: 3011031,
@@ -1360,6 +1417,7 @@ export const skillCardData = [
             { type: '集中', value: 4 },
         ],
         afterUse: null,
+        card_cost: 102,
     },
     {
         id: 3011040,
@@ -1373,6 +1431,7 @@ export const skillCardData = [
             { type: 'score', value: 15, condition: '集中>=6' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3011041,
@@ -1386,6 +1445,7 @@ export const skillCardData = [
             { type: 'score', value: 15, condition: '集中>=6' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3011050,
@@ -1399,6 +1459,7 @@ export const skillCardData = [
             { type: '好調', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3011051,
@@ -1412,6 +1473,7 @@ export const skillCardData = [
             { type: '好調', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3011060,
@@ -1426,6 +1488,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3011061,
@@ -1440,6 +1503,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: null,
+        card_cost: 150,
     },
     {
         id: 3011070,
@@ -1455,6 +1519,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3011071,
@@ -1470,6 +1535,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     {
         id: 3011080,
@@ -1484,6 +1550,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3011081,
@@ -1498,6 +1565,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     {
         id: 3011090,
@@ -1512,6 +1580,7 @@ export const skillCardData = [
             { type: '元気増加無効', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3011091,
@@ -1526,6 +1595,7 @@ export const skillCardData = [
             { type: '元気増加無効', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     /**
      * 金カード(アクティブ/ロジック)
@@ -1543,6 +1613,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 60 }] },
         ],
         afterUse: null,
+        card_cost: 75,
     },
     {
         id: 3012011,
@@ -1556,6 +1627,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 80 }] },
         ],
         afterUse: null,
+        card_cost: 102,
     },
     {
         id: 3012020,
@@ -1569,6 +1641,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 40 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 75,
     },
     {
         id: 3012021,
@@ -1582,6 +1655,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 102,
     },
     {
         id: 3012030,
@@ -1595,6 +1669,7 @@ export const skillCardData = [
             { type: 'ブロック割合減少', value: 50 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3012031,
@@ -1608,6 +1683,7 @@ export const skillCardData = [
             { type: 'ブロック割合減少', value: 50 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3012040,
@@ -1622,6 +1698,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3012041,
@@ -1636,6 +1713,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3012050,
@@ -1649,6 +1727,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3012051,
@@ -1662,6 +1741,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     /**
      * 金カード(メンタル/フリー)
@@ -1679,6 +1759,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3020011,
@@ -1693,6 +1774,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3020020,
@@ -1707,6 +1789,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3020021,
@@ -1721,6 +1804,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     /**
      * 金カード(メンタル/センス)
@@ -1738,6 +1822,7 @@ export const skillCardData = [
             { type: '集中', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 75,
     },
     {
         id: 3021011,
@@ -1751,6 +1836,7 @@ export const skillCardData = [
             { type: '集中', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 102,
     },
     {
         id: 3021020,
@@ -1764,6 +1850,7 @@ export const skillCardData = [
             { type: '好調', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 75,
     },
     {
         id: 3021021,
@@ -1777,6 +1864,7 @@ export const skillCardData = [
             { type: '好調', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 102,
     },
     {
         id: 3021030,
@@ -1790,6 +1878,7 @@ export const skillCardData = [
             { type: 'アクティブスキルカード使用時固定元気+2', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3021031,
@@ -1803,6 +1892,7 @@ export const skillCardData = [
             { type: 'アクティブスキルカード使用時固定元気+2', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3021040,
@@ -1816,6 +1906,7 @@ export const skillCardData = [
             { type: 'アクティブスキルカード使用時集中+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3021041,
@@ -1829,6 +1920,7 @@ export const skillCardData = [
             { type: 'アクティブスキルカード使用時集中+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3021050,
@@ -1845,6 +1937,7 @@ export const skillCardData = [
             { type: '好調', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3021051,
@@ -1861,6 +1954,7 @@ export const skillCardData = [
             { type: '好調', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3021060,
@@ -1873,6 +1967,7 @@ export const skillCardData = [
             { type: '好調', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3021061,
@@ -1885,6 +1980,7 @@ export const skillCardData = [
             { type: '好調', value: 7 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3021070,
@@ -1898,6 +1994,7 @@ export const skillCardData = [
             { type: '集中', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3021071,
@@ -1911,6 +2008,7 @@ export const skillCardData = [
             { type: '集中', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3021080,
@@ -1924,6 +2022,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3021081,
@@ -1937,6 +2036,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     {
         id: 3021090,
@@ -1950,6 +2050,7 @@ export const skillCardData = [
             { type: '集中', value: 7 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3021091,
@@ -1963,6 +2064,7 @@ export const skillCardData = [
             { type: '集中', value: 9 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3021100,
@@ -1976,6 +2078,7 @@ export const skillCardData = [
             { type: '好調', value: 4 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3021101,
@@ -1989,6 +2092,7 @@ export const skillCardData = [
             { type: '好調', value: 5 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     /**
      * 金カード(メンタル/ロジック)
@@ -2006,6 +2110,7 @@ export const skillCardData = [
             { type: 'やる気', value: 4 },
         ],
         afterUse: null,
+        card_cost: 75,
     },
     {
         id: 3022011,
@@ -2019,6 +2124,7 @@ export const skillCardData = [
             { type: 'やる気', value: 5 },
         ],
         afterUse: null,
+        card_cost: 102,
     },
     {
         id: 3022020,
@@ -2032,6 +2138,7 @@ export const skillCardData = [
             { type: '好印象', value: 4 },
         ],
         afterUse: null,
+        card_cost: 75,
     },
     {
         id: 3022021,
@@ -2045,6 +2152,7 @@ export const skillCardData = [
             { type: '好印象', value: 5 },
         ],
         afterUse: null,
+        card_cost: 102,
     },
     {
         id: 3022030,
@@ -2057,6 +2165,7 @@ export const skillCardData = [
             { type: '好印象', value: 6 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3022031,
@@ -2069,6 +2178,7 @@ export const skillCardData = [
             { type: '好印象', value: 8 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     {
         id: 3022040,
@@ -2082,6 +2192,7 @@ export const skillCardData = [
             { type: 'メンタルスキルカード使用時好印象+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022041,
@@ -2095,6 +2206,7 @@ export const skillCardData = [
             { type: 'メンタルスキルカード使用時好印象+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022050,
@@ -2108,6 +2220,7 @@ export const skillCardData = [
             { type: 'メンタルスキルカード使用時やる気+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022051,
@@ -2121,6 +2234,7 @@ export const skillCardData = [
             { type: 'メンタルスキルカード使用時やる気+1', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022060,
@@ -2137,6 +2251,7 @@ export const skillCardData = [
             { type: 'やる気', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022061,
@@ -2153,6 +2268,7 @@ export const skillCardData = [
             { type: 'やる気', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022070,
@@ -2167,6 +2283,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022071,
@@ -2181,6 +2298,7 @@ export const skillCardData = [
             { type: '消費体力増加', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022080,
@@ -2194,6 +2312,7 @@ export const skillCardData = [
             { type: 'やる気', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022081,
@@ -2207,6 +2326,7 @@ export const skillCardData = [
             { type: 'やる気', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022090,
@@ -2220,6 +2340,7 @@ export const skillCardData = [
             { type: '好印象', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022091,
@@ -2233,6 +2354,7 @@ export const skillCardData = [
             { type: '好印象', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022100,
@@ -2246,6 +2368,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3022101,
@@ -2259,6 +2382,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     {
         id: 3022110,
@@ -2273,6 +2397,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 105,
     },
     {
         id: 3022111,
@@ -2287,6 +2412,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 141,
     },
     {
         id: 3022120,
@@ -2300,6 +2426,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: null,
+        card_cost: 105,
     },
     {
         id: 3022121,
@@ -2314,6 +2441,7 @@ export const skillCardData = [
             { type: '好印象', value: 2, condition: '好印象>=10' },
         ],
         afterUse: null,
+        card_cost: 141,
     },
     /**
      * 金カード(キャラ固有)
@@ -2593,6 +2721,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300011,
@@ -2608,6 +2737,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 3300020,
@@ -2622,6 +2752,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300021,
@@ -2636,6 +2767,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 3300030,
@@ -2650,6 +2782,7 @@ export const skillCardData = [
             { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300031,
@@ -2664,6 +2797,7 @@ export const skillCardData = [
             { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 3300040,
@@ -2678,6 +2812,7 @@ export const skillCardData = [
             { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300041,
@@ -2692,6 +2827,7 @@ export const skillCardData = [
             { type: '手札強化', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 3300050,
@@ -2705,6 +2841,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300051,
@@ -2718,6 +2855,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 2, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 3300060,
@@ -2732,6 +2870,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300061,
@@ -2746,6 +2885,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1, condition: 'hpPer>=50' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 3300070,
@@ -2759,6 +2899,7 @@ export const skillCardData = [
             { type: '体力回復', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 3300071,
@@ -2772,6 +2913,7 @@ export const skillCardData = [
             { type: '体力回復', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     /**
      * 虹カード(アクティブ/フリー)
@@ -2793,6 +2935,7 @@ export const skillCardData = [
             { type: 'score', value: 15, condition: '集中>=3' },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4011011,
@@ -2806,6 +2949,7 @@ export const skillCardData = [
             { type: 'score', value: 34, condition: '集中>=3', options: [{ type: '集中', value: '1.5' }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4011020,
@@ -2818,6 +2962,7 @@ export const skillCardData = [
             { type: 'score', value: 38 },
         ],
         afterUse: null,
+        card_cost: 150,
     },
     {
         id: 4011021,
@@ -2830,6 +2975,7 @@ export const skillCardData = [
             { type: 'score', value: 54 },
         ],
         afterUse: null,
+        card_cost: 204,
     },
     {
         id: 4011030,
@@ -2843,6 +2989,7 @@ export const skillCardData = [
             { type: 'score', value: 32, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4011031,
@@ -2856,6 +3003,7 @@ export const skillCardData = [
             { type: 'score', value: 40, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4011040,
@@ -2869,6 +3017,7 @@ export const skillCardData = [
             { type: 'score', value: 38, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4011041,
@@ -2882,6 +3031,7 @@ export const skillCardData = [
             { type: 'score', value: 47, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4011050,
@@ -2894,6 +3044,7 @@ export const skillCardData = [
             { type: 'アクティブスキルカード使用時、パラメータ+4', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4011051,
@@ -2907,6 +3058,7 @@ export const skillCardData = [
             { type: 'アクティブスキルカード使用時、パラメータ+5', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4011060,
@@ -2921,6 +3073,7 @@ export const skillCardData = [
             { type: '集中', value: 4 },
         ],
         afterUse: null,
+        card_cost: 150,
     },
     {
         id: 4011061,
@@ -2935,6 +3088,7 @@ export const skillCardData = [
             { type: '集中', value: 6 },
         ],
         afterUse: null,
+        card_cost: 204,
     },
     /**
      * 虹カード(アクティブ/ロジック)
@@ -2952,6 +3106,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4012011,
@@ -2965,6 +3120,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 170 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4012020,
@@ -2978,6 +3134,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 200 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4012021,
@@ -2991,6 +3148,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 300 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4012030,
@@ -3004,6 +3162,7 @@ export const skillCardData = [
             { type: 'ブロック割合減少', value: 100 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4012031,
@@ -3017,6 +3176,7 @@ export const skillCardData = [
             { type: 'ブロック割合減少', value: 100 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4012040,
@@ -3030,6 +3190,7 @@ export const skillCardData = [
             { type: 'スキルカード使用時、好印象の30%分パラメータ', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4012041,
@@ -3043,6 +3204,7 @@ export const skillCardData = [
             { type: 'スキルカード使用時、好印象の50%分パラメータ', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4012050,
@@ -3057,6 +3219,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 150 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4012051,
@@ -3071,6 +3234,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 200 }] },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     /**
      * 虹カード(メンタル/フリー)
@@ -3088,6 +3252,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 4 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4020011,
@@ -3101,6 +3266,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 5 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4020020,
@@ -3114,6 +3280,7 @@ export const skillCardData = [
             { type: '消費体力削減', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4020021,
@@ -3127,6 +3294,7 @@ export const skillCardData = [
             { type: '消費体力削減', value: 2 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4020030,
@@ -3143,6 +3311,7 @@ export const skillCardData = [
             { type: '低下状態無効', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4020031,
@@ -3160,6 +3329,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4020040,
@@ -3174,6 +3344,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4020041,
@@ -3188,6 +3359,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     /**
      * 虹カード(メンタル/センス)
@@ -3205,6 +3377,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4021011,
@@ -3219,6 +3392,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4021020,
@@ -3234,6 +3408,7 @@ export const skillCardData = [
 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4021021,
@@ -3249,6 +3424,7 @@ export const skillCardData = [
 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4021030,
@@ -3264,6 +3440,7 @@ export const skillCardData = [
 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4021031,
@@ -3279,6 +3456,7 @@ export const skillCardData = [
 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4021040,
@@ -3292,6 +3470,7 @@ export const skillCardData = [
             { type: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4021041,
@@ -3305,6 +3484,7 @@ export const skillCardData = [
             { type: 'ターン終了時、集中が3以上の場合、集中+2', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     /**
      * 虹カード(メンタル/ロジック)
@@ -3322,6 +3502,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4022011,
@@ -3336,6 +3517,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4022020,
@@ -3349,6 +3531,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4022021,
@@ -3363,6 +3546,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4022030,
@@ -3377,6 +3561,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4022031,
@@ -3391,6 +3576,7 @@ export const skillCardData = [
             { type: '消費体力減少', value: 3 },
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4022040,
@@ -3404,6 +3590,7 @@ export const skillCardData = [
             { type: 'block', value: 9 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4022041,
@@ -3417,6 +3604,7 @@ export const skillCardData = [
             { type: 'block', value: 10 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4022050,
@@ -3430,6 +3618,7 @@ export const skillCardData = [
             { type: 'やる気', value: 5 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4022051,
@@ -3443,6 +3632,7 @@ export const skillCardData = [
             { type: 'やる気', value: 6 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     {
         id: 4022060,
@@ -3456,6 +3646,7 @@ export const skillCardData = [
             { type: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 150,
     },
     {
         id: 4022061,
@@ -3469,6 +3660,7 @@ export const skillCardData = [
             { type: 'ターン終了時、好印象が3以上の場合、好印象+3', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 204,
     },
     /**
      * 虹カード(キャラ固有)
@@ -3993,6 +4185,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300011, 
@@ -4007,6 +4200,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300020, 
@@ -4020,6 +4214,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300021, 
@@ -4033,6 +4228,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300030, 
@@ -4048,6 +4244,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300031, 
@@ -4063,6 +4260,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300040, 
@@ -4076,6 +4274,7 @@ export const skillCardData = [
             { type: '手札強化', value: null }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300041, 
@@ -4090,6 +4289,7 @@ export const skillCardData = [
             { type: '手札強化', value: null }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300050, 
@@ -4103,6 +4303,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300051, 
@@ -4116,6 +4317,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300060, 
@@ -4132,6 +4334,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300061, 
@@ -4148,6 +4351,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300070, 
@@ -4162,6 +4366,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300071, 
@@ -4176,6 +4381,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300080, 
@@ -4190,6 +4396,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     }, 
     {
         id: 4300081, 
@@ -4204,6 +4411,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300090, 
@@ -4218,6 +4426,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300091, 
@@ -4232,6 +4441,7 @@ export const skillCardData = [
             { type: '手札強化', value: null, delay: 2 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300100, 
@@ -4245,6 +4455,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300101, 
@@ -4258,6 +4469,7 @@ export const skillCardData = [
             { type: 'スキルカード使用数追加', value: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300120, 
@@ -4270,6 +4482,7 @@ export const skillCardData = [
             { type: '好印象', value: 5 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300121, 
@@ -4283,6 +4496,7 @@ export const skillCardData = [
             { type: 'ドロー', value: 1, delay: 1 }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
     {
         id: 4300110, 
@@ -4296,6 +4510,7 @@ export const skillCardData = [
             { type: '体力回復', value: 4, delay: 2, condition: '好調>=4' }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 96,
     },
     {
         id: 4300111, 
@@ -4309,6 +4524,7 @@ export const skillCardData = [
             { type: '体力回復', value: 6, delay: 2, condition: '好調>=4' }, 
         ],
         afterUse: { type: 'exhaust', value: 1 },
+        card_cost: 126,
     },
 ];
 
