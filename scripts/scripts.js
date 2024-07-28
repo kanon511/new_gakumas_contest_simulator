@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const elems = Array.from(e.target.parentNode.parentNode.parentNode.children);
             const totalCost = elems.reduce((acc, crt) => {
                 const cardId = Number(crt.getElementsByClassName('select-box')[0].value)+(crt.getElementsByClassName('checkbox')[0].checked ? 1 : 0);
-                const cost = (cardId < 1 ? 0 : (SkillCardData.getById(cardId).card_cost ?? 0));
+                const cost = ((cardId < 1 || String(cardId)[1] == '2') ? 0 : (SkillCardData.getById(cardId).card_cost ?? 0));
                 return acc + cost;
             }, 0);
             e.target.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('cost-display')[0].textContent = totalCost;
