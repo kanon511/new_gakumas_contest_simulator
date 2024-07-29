@@ -1317,7 +1317,7 @@ export const skillCardData = [
             { type: 'block', value: 7 },
         ],
         afterUse: null,
-        card_cost: 75,
+        card_cost: 105,
     },
     {
         id: 3010011,
@@ -1331,7 +1331,7 @@ export const skillCardData = [
             { type: 'block', value: 10 },
         ],
         afterUse: null,
-        card_cost: 102,
+        card_cost: 141,
     },
     /**
      * 金カード(アクティブ/センス)

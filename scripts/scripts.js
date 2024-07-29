@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const visual = Number(document.getElementById('status-visual').value);
         const hp     = Number(document.getElementById('status-hp').value);
         // Pアイテム
-        const pItemIds_tmp = element_pItems.map(element=>Number(element.value)).filter(id=>id!=-1);
+        const pItemIds_tmp = element_pItems.map(element=>Number(element.value)).filter(id=>id&&id!=-1);
         if (
             element_pItems[1].parentNode.getElementsByClassName('checkbox')[0].checked && 
             pItemIds_tmp[1] % 10 == 0
