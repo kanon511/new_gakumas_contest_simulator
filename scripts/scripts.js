@@ -2,7 +2,6 @@ import { PIdolData } from './simulator/data/pIdolData.js';
 import { SkillCardData } from './simulator/data/skillCardData.js';
 import { ContestData } from './simulator/data/contestData.js';
 import { PItemData } from './simulator/data/pItemData.js';
-import { run } from './simulator/run.js';
 
 function DOM_text_to_elememt (text) {
     const temporaryDiv = document.createElement('div');
@@ -345,7 +344,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 実行
     let run_flag = false;
     const element_run_button = document.getElementById('run-button');
-    element_run_button.addEventListener('click', () => {
+    element_run_button.addEventListener('click', async() => {
         if (run_flag) {
             alert('実行中です。');
             return;
@@ -396,6 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contestStage  = contestDetail.stages[stageId];
 
         const autoId = document.getElementById('contest-auto').value;
+
         const run_data = {
             turn: contestStage.turn,
             criteria: contestDetail.criteria,
@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         
         console.time('run');
-        const result = run(run_data);
+        const  result = await runWebWorker(run_data);
         console.timeEnd('run');
 
         // const logs = {
@@ -464,3 +464,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
 
 }, false);
+
+async function runWebWorker(data) {
+    return new Promise((resolve)=>{
+        const numWorkers = 4;//Math.min(navigator.hardwareConcurrency, 4);
+        const totalRuns = 2000;
+        const runsPerWorker = Math.ceil(totalRuns / numWorkers);
+        const rndLogNumber = Math.floor(Math.random()*numWorkers);
+
+        // let completedRuns = 0;
+        let completedWorkers = 0;
+        let results = {
+            scoreList: [],
+            minLog: null,
+            maxLog: null,
+            rndLog: null,
+        };
+
+        for (let i = 0; i < numWorkers; i++) {
+            const worker = new Worker('./scripts/worker.js', { type: 'module' });
+            worker.postMessage({ runs: runsPerWorker, data: data });
+            
+            worker.onmessage = (e) => {
+                completedWorkers;
+                const result = e.data;
+
+                results.scoreList = results.scoreList.concat(result.scoreList);
+                if (!results.minLog || results.minLog.finalStatus.score > result.minLog.finalStatus.score) {
+                    results.minLog = result.minLog;
+                }
+                if (!results.maxLog || results.maxLog.finalStatus.score < result.maxLog.finalStatus.score) {
+                    results.maxLog = result.maxLog;
+                }
+                if (completedWorkers == rndLogNumber) {
+                    results.rndLog = result.rndLog;
+                }
+                if (++completedWorkers == numWorkers) {
+                    resolve(results);
+                }
+                
+                worker.terminate();
+            };
+
+            worker.onerror = (error) => {
+                console.log(`Worker error: ${error.message} in ${error.filename} at line ${error.lineno}`);
+                worker.terminate();
+            };
+        }
+    });
+}
