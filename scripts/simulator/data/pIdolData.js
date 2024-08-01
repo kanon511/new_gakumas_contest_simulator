@@ -61,8 +61,8 @@ const pIdolData = [
         name: '花海咲季',
         plan: 'logic',
         trend: '好印象',
-        unique_skillCard_id: 4201031,
-        unique_pIted_id: 2301031,
+        unique_skillCard_id: 4201030,
+        unique_pIted_id: 2301030,
     },
     {
         id: 10201,
@@ -237,8 +237,8 @@ const pIdolData = [
         name: '葛城リーリヤ',
         plan: 'sense',
         trend: '好調',
-        unique_skillCard_id: 4205021,
-        unique_pIted_id: 2305021,
+        unique_skillCard_id: 4205020,
+        unique_pIted_id: 2305020,
     },
     {
         id: 10601,
