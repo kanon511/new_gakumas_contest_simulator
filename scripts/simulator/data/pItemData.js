@@ -179,7 +179,7 @@ const pItemData = [
     {
         id: 2109010,
         name: 'いつものメイクポーチ',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active&hpPer>=50',
         effects: [
             { type: 'status', target: '集中', value: 2 },
@@ -189,7 +189,7 @@ const pItemData = [
     {
         id: 2109011,
         name: 'いつものメイクポーチ+',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active&hpPer>=50',
         effects: [
             { type: 'status', target: '集中', value: 3 },
@@ -199,7 +199,7 @@ const pItemData = [
     {
         id: 2110010,
         name: 'テクノドッグ',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'やる気>=3',
         effects: [
             { type: 'status', target: 'やる気', value: 2 },
@@ -209,7 +209,7 @@ const pItemData = [
     {
         id: 2110011,
         name: 'テクノドッグ+',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'やる気>=3',
         effects: [
             { type: 'status', target: 'やる気', value: 3 },
@@ -324,7 +324,7 @@ const pItemData = [
     {
         id: 2206010,
         name: 'しょげないハンカチ',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
@@ -335,7 +335,7 @@ const pItemData = [
     {
         id: 2206011,
         name: 'しょげないハンカチ+',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
@@ -535,7 +535,7 @@ const pItemData = [
     {
         id: 2301010,
         name: '共に戦うタオル',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'status', target: '好調', value: 1 },
@@ -546,7 +546,7 @@ const pItemData = [
     {
         id: 2301011,
         name: '共に戦うタオル+',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'status', target: '好調', value: 1 },
@@ -578,7 +578,7 @@ const pItemData = [
     {
         id: 2302010,
         name: '自分を守るイヤホン',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: '集中>=5',
         effects: [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
@@ -589,7 +589,7 @@ const pItemData = [
     {
         id: 2302011,
         name: '自分を守るイヤホン+',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: '集中>=5',
         effects: [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
@@ -622,7 +622,7 @@ const pItemData = [
     {
         id: 2303010,
         name: 'ピッグドリーム貯金箱',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: '好印象>=6',
         effects: [
             { type: 'status', target: '好印象', value: 3 },
@@ -633,7 +633,7 @@ const pItemData = [
     {
         id: 2303010,
         name: 'ピッグドリーム貯金箱+',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: '好印象>=6',
         effects: [
             { type: 'status', target: '好印象', value: 5 },
@@ -644,7 +644,7 @@ const pItemData = [
     {
         id: 2303020,
         name: '最高にハッピーの源',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardId==4203020|cardId==4203021',
         effects: [
             { type: 'status', target: '好調', value: 3 },
@@ -655,7 +655,7 @@ const pItemData = [
     {
         id: 2303021,
         name: '最高にハッピーの源+',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardId==4203020|cardId==4203021',
         effects: [
             { type: 'status', target: '好調', value: 3 },
@@ -770,7 +770,7 @@ const pItemData = [
     {
         id: 2307020,
         name: 'カエル印の扇風機',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==active&やる気>=12',
         effects: [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 270 }] },
@@ -781,7 +781,7 @@ const pItemData = [
     {
         id: 2307021,
         name: 'カエル印の扇風機+',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==active&やる気>=12',
         effects: [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 340 }] },
@@ -856,7 +856,7 @@ const pItemData = [
     {
         id: 2310010,
         name: '転がり続ける元気の源',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==mental&やる気>=5',
         effects: [
             { type: 'status', target: 'やる気', value: 3 },
@@ -867,7 +867,7 @@ const pItemData = [
     {
         id: 2310011,
         name: '転がり続ける元気の源+',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardType==mental&やる気>=5',
         effects: [
             { type: 'status', target: 'やる気', value: 5 },
@@ -911,7 +911,7 @@ const pItemData = [
     {
         id: 3300040,
         name: '曇りをぬぐったタオル',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'turnType==vocal&cardType==active',
         effects: [
             { type: 'hp', value: 2 },
@@ -936,7 +936,7 @@ const pItemData = [
     {
         id: 3300070,
         name: '満開ペアヘアピン',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'turnType==vocal&cardType==active',
         effects: [
             { type: 'hp', value: 2 },
@@ -976,7 +976,7 @@ const pItemData = [
     {
         id: 3300110,
         name: '虹かけるクロス',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'turnType==dance&cardType==active',
         effects: [
             { type: 'hp', value: 2 },
@@ -1050,7 +1050,7 @@ const pItemData = [
     {
         id: 4240612,
         name: '初星オブジェ（紫）',
-        activate_timing: 'use_card',
+        activate_timing: 'after_use_card',
         condition: 'cardEffectInclude==絶好調&好調>=4',
         effects: [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
@@ -1060,7 +1060,7 @@ const pItemData = [
     {
         id: 4240613,
         name: '初星ライト（紫）',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
@@ -1081,7 +1081,7 @@ const pItemData = [
     {
         id: 4240622,
         name: '初星ライト（オレンジ）',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 170 }] },
@@ -1102,7 +1102,7 @@ const pItemData = [
     {
         id: 4240711,
         name: '初星オブジェ（銀）',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardEffectInclude==消費体力減少',
         effects: [
             { type: 'status', target: '集中', value: 3 },
@@ -1114,7 +1114,7 @@ const pItemData = [
     {
         id: 4240713,
         name: '初星ライト（紫）',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'status', target: 'やる気', value: 3 },

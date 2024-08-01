@@ -428,7 +428,17 @@ document.addEventListener('DOMContentLoaded', () => {
         //     DOM_delete_allChildren(container);
         //     container.appendChild(parseSimulationLog(logs[key]));
         // }
-        console.log(result.rndLog);
+        result.rndLog.log.forEach(log=>log.executionLog.forEach(log=>{
+            if (log.type == 'use') {
+                console.log(`${log.source.name}を使った`);
+            }
+            else if (log.type == 'end') {
+                console.log('</>');
+            }
+            else {
+                console.log(log.message)
+            }
+        }));
 
         const scoreList = result.scoreList;
         scoreList.sort((a, b) => a - b);
@@ -467,8 +477,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function runWebWorker(data) {
     return new Promise((resolve)=>{
-        const numWorkers = 4;//Math.min(navigator.hardwareConcurrency, 4);
-        const totalRuns = 2000;
+        const numWorkers = 1;//Math.min(navigator.hardwareConcurrency, 4);
+        const totalRuns = 1;
         const runsPerWorker = Math.ceil(totalRuns / numWorkers);
         const rndLogNumber = Math.floor(Math.random()*numWorkers);
 

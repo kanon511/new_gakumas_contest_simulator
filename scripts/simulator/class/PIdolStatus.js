@@ -116,7 +116,7 @@ const statusList = [
         id: 12,
         name: '次に使用するスキルカードの効果を発動',
         description: '',
-        value: 0,
+        valueStack: [],
         type: 'buff',
         activate_timing: null,
         condition: null,
@@ -127,7 +127,7 @@ const statusList = [
         id: 14,
         name: '次に使用するアクティブスキルカードの効果を発動',
         description: '',
-        value: 0,
+        valueStack: [],
         type: 'buff',
         activate_timing: null,
         condition: null,
@@ -162,7 +162,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
             { type: '固定元気', value: 2 }, 
@@ -175,7 +175,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'status', target: '集中', value: 1 }, 
@@ -188,7 +188,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==mental',
         effects: [
             { type: 'status', target: '好印象', value: 1 }, 
@@ -201,7 +201,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==mental',
         effects: [
             { type: 'status', target: 'やる気', value: 1 }, 
@@ -256,7 +256,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: 4 }, 
@@ -269,7 +269,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: 5 }, 
@@ -283,7 +283,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] }, 
@@ -296,7 +296,7 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'use_card',
+        activate_timing: 'before_use_card',
         condition: '',
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] }, 
@@ -447,6 +447,10 @@ export class PIdolStatus {
         return this.#status[this.#index_name_to_idx[name]];
     }
 
+    get (name) {
+        return deep_copy(this.#get(name));
+    }
+
     getType (name) {
         const status = this.#get(name);
         return status.type;
@@ -539,11 +543,22 @@ export class PIdolStatus {
     }
 
     reduce (name, value) {
-        // valueStackはエラー発生するから注意！
+        // valueStackは回数を減らします
         const status = this.#get(name);
-        status.value -= value;
-        if (status.value < 0) {
-            status.value = 0;
+        if (status.valueStack) {
+            //for (let i = 0; i < status.valueStack.length; i++) {
+                const item = status.valueStack[0];
+                item.value--;
+                if (item.value <= 0) {
+                    status.valueStack.splice(0, 1);
+                    // i--;
+                }
+            //}
+        } else {
+            status.value -= value;
+            if (status.value < 0) {
+                status.value = 0;
+            }
         }
     }
 

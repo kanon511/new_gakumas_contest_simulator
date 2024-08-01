@@ -3203,7 +3203,7 @@ export const skillCardData = [
         cost: { type: 'status', target: '好調', value: -1 },
         condition: '',
         effects: [
-            { type: 'status', target: '次に使用するスキルカードの効果を発動', value: 1 },
+            { type: 'status', target: '次に使用するスキルカードの効果を発動', value: 1, options: [{ type: '回数', value: 1 }]},
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
@@ -3217,7 +3217,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'block', value: 8 },
-            { type: 'status', target: '次に使用するスキルカードの効果を発動', value: 1 },
+            { type: 'status', target: '次に使用するスキルカードの効果を発動', value: 1, options: [{ type: '回数', value: 1 }]},
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1
@@ -3854,7 +3854,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: 'status', target: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
+            { type: 'status', target: '次に使用するアクティブスキルカードの効果を発動', value: 1, options: [{ type: '回数', value: 1 }] }, 
             { type: 'status', target: '好調', value: 3 }, 
             { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
@@ -3868,7 +3868,7 @@ export const skillCardData = [
         cost: { type: 'hp', value: -5 },
         condition: '',
         effects: [
-            { type: 'status', target: '次に使用するアクティブスキルカードの効果を発動', value: 1 }, 
+            { type: 'status', target: '次に使用するアクティブスキルカードの効果を発動', value: 1, options: [{ type: '回数', value: 1 }] }, 
             { type: 'status', target: '好調', value: 5 }, 
             { type: 'status', target: '消費体力減少', value: 2 }, 
         ],

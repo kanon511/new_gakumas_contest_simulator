@@ -150,22 +150,45 @@ export class PIdol {
         });
     }
 
+    #getSkillCardActions (skillCard) {
+        const skillCardActions = [];
+        skillCard.effects.forEach(effect => { 
+            if (ConditionChecker.check(effect.condition, this.#status)) {
+                skillCardActions.push({ type: 'effect', sourceType: 'skillCard', name: skillCard.name, target: effect });
+            }
+        });
+        const twiceActivateKeys = [
+            { name: '次に使用するアクティブスキルカードの効果を発動', condition: 'cardType==active' },
+            { name: '次に使用するスキルカードの効果を発動', condition: '' },
+        ];
+        for (let i = 0; i < twiceActivateKeys.length; i++) {
+            const item = twiceActivateKeys[i];
+            if (
+                this.#status.pStatus.has(item.name) && 
+                ConditionChecker.check(item.condition, this.#status)
+            ) {
+                const twiceActions = [];
+                twiceActions.push({ type: 'effect', sourceType: 'pIdol', target: { type: 'status', target: item.name, value: -1 } });
+                twiceActions.push({ type: 'use', sourceType: 'pStatus', source: this.#status.pStatus.get(item.name) });
+                skillCardActions.forEach(action=>twiceActions.push(action));
+                twiceActions.push({ type: 'end' });
+                twiceActions.forEach(action=>skillCardActions.push(action));
+                break;
+            }
+        };
+        return skillCardActions;
+    }
+
     #setSkillCardActions (skillCard) {
         this.#status.lastUsedCard = skillCard;
         const actions = [];
         actions.push({ type: 'use', sourceType: 'skillCard', source: skillCard });
         actions.push({ type: 'effect', sourceType: 'skillCard', name: skillCard.name, target: skillCard.cost });
-        this.#getPItemAction('use_card', this.#status).forEach(action=>actions.push(action));
-        this.#getPStatusAction('use_card', this.#status).forEach(action=>actions.push(action));
-        // this.#getPItemAction('before_use_card', this.#status).forEach(action=>actions.push(action));
-        // this.#getPStatusAction('before_use_card', this.#status).forEach(action=>actions.push(action));
-        skillCard.effects.forEach(effect => { 
-            if (ConditionChecker.check(effect.condition, this.#status)) {
-                actions.push({ type: 'effect', sourceType: 'skillCard', name: skillCard.name, target: effect });
-            }
-        });
-        // this.#getPItemAction('after_use_card', this.#status).forEach(action=>actions.push(action));
-        // this.#getPStatusAction('after_use_card', this.#status).forEach(action=>actions.push(action));
+        this.#getPItemAction('before_use_card', this.#status).forEach(action=>actions.push(action));
+        this.#getPStatusAction('before_use_card', this.#status).forEach(action=>actions.push(action));
+        this.#getSkillCardActions(skillCard).forEach(action=>actions.push(action));
+        this.#getPItemAction('after_use_card', this.#status).forEach(action=>actions.push(action));
+        this.#getPStatusAction('after_use_card', this.#status).forEach(action=>actions.push(action));
         
         actions.push({ type: 'end' });
 

@@ -76,10 +76,10 @@ export class Calculator {
                 return 0;
             }
             if (statusType == '次に使用するスキルカードの効果を発動') {
-                return 0;
+                return 15000;
             }
             if (statusType == '次に使用するアクティブスキルカードの効果を発動') {
-                return 0;
+                return 16000;
             }
             if (statusType == 'パラメータ上昇量増加') {
                 return 0;
