@@ -1,7 +1,20 @@
-// import { TurnType } from "./TurnType.js";
+import { SkillCard } from "../data/skillCardData.js";
 
+/**
+ * コンテスト会場クラス
+ */
 export class Contest {
     
+    // property
+
+    #pIdol;
+
+    // method
+
+    /**
+     * コンストラクタ
+     * @param {Object} parameters pIdol, maxTurn, criteria, turnTypeを設定します。
+     */
     constructor (parameters) {
         const {
             pIdol,
@@ -9,68 +22,70 @@ export class Contest {
             criteria,
             turnTypes,
         } = parameters;
-        this.pIdol = pIdol;
-        this.pIdol.init(maxTurn, criteria, turnTypes);
-        this.isFinish = false;
+        this.#pIdol = pIdol;
+        this.#pIdol.init(maxTurn, criteria, turnTypes);
     }
 
+    /**
+     * ターンを開始します
+     */
     startTurn () {
-        this.pIdol.process_at('start_of_turn');
+        this.#pIdol.start();
     }
 
-    getHands () {
-        return this.pIdol.getDeck('handCards');
-    }
-
-    finishTurn () {
-        this.pIdol.process_at('end_of_turn');
-        this.checkFinishContest();
-    }
-
+    /**
+     * 指定された手札のスキルカードを使用するか休憩します。
+     * @param {Number} cardNumber 使うカード番号または-1
+     * @returns {Boolean} 行動終了するかどうか（または不正な行動でないか）
+     */
     useCard (cardNumber) {
         // -1は休憩
         if (cardNumber == -1) {
-            this.pIdol.rest();
+            this.#pIdol.rest();
             return true;
         }
         // -1以外の不正な値　もしくは　カードが使用不可
+        const hands = this.getHands();
         if (
-            cardNumber < -1 || 
-            cardNumber >= this.getHands().length || 
-            !this.getHands()[cardNumber]?.isAvailable()
+            cardNumber < 0 || 
+            cardNumber >= hands.length || 
+            !hands[cardNumber]?.isAvailable()
         ) {
             return false;
         }
-        this.pIdol.useCard(cardNumber);
-        return !this.pIdol.checkAdditionalAction();
+        this.#pIdol.useCard(cardNumber);
+        return !this.#pIdol.checkAdditionalAction();
     }
 
-    create_log () {
-        const log = this.pIdol.log.getLog();
-        let text = '';
-        for (const turnLog of log) {
-            const turn = turnLog.turn;
-            text += `==========\n`
-                  + `${turnLog.turn}ターン目[${turnLog.turnType}]\n`
-                  + `スコア：${turnLog.status.score}, 体力：${turnLog.status.hp}, 元気：${turnLog.status.block}\n`
-                  + `==========\n`;
-            text += turnLog.history.join('\n') + '\n';
-        }
-        text += `==========\n`
-              + `最終`
-              + `スコア：${this.pIdol.score}, 体力：${this.pIdol.hp}, 元気：${this.pIdol.block}\n`
-              + `==========`;
-        this.log = {
-            score: this.pIdol.score,
-            text: text,
-        };
+    /**
+     * ターンを終了します
+     */
+    finishTurn () {
+        this.#pIdol.end();
     }
 
-    checkFinishContest () {
-        if (this.pIdol.checkFinished()) {
-            this.isFinish = true;
-            this.create_log();
-        }
+    /**
+     * 手札にあるスキルカードの配列を返します。
+     * @returns {Array[SkillCard]} 手札のスキルカード
+     */
+    getHands () {
+        return this.#pIdol.getDeck('handCards');
+    }
+
+    /**
+     * ターンが残っているかを返します。
+     * @returns {Boolean} 
+     */
+    checkkFinishContest () {
+        return this.#pIdol.checkFinished();
+    }
+
+    /**
+     * 結果を取得します。
+     * @returns {Object}
+     */
+    getResult () {
+        return this.#pIdol.getResult();
     }
 
 }

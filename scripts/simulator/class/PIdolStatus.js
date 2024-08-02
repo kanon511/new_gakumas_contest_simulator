@@ -1,74 +1,75 @@
 import { deep_copy } from "../../util/utility.js";
 
 const statusList = [
+    // センス
     {
-        id: 1,
-        name: '集中',
-        description: '',
-        value: 0,
-        type: 'buff',
-        activate_timing: null,
-        activate_condition: null,
-        is_reduce_turnend: false,
-    },
-    {
-        id: 2,
+        id: 10001,
         name: '好調',
         description: '',
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
-        id: 3,
-        name: '絶好調',
+        id: 10002,
+        name: '集中',
         description: '',
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
-        is_reduce_turnend: true,
-    },
-    {
-        id: 4,
-        name: 'やる気',
-        description: '',
-        value: 0,
-        type: 'buff',
-        activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
-        id: 5,
+        id: 10003,
         name: '好印象',
         description: '',
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
-        id: 6,
-        name: '消費体力削減',
+        id: 10004,
+        name: 'やる気',
         description: '',
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
-        id: 7,
+        id: 10005,
         name: '消費体力減少',
         description: '',
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
+        is_reduce_turnend: true,
+    },
+    {
+        id: 10006,
+        name: '消費体力削減',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: null,
+        condition: null,
+        is_reduce_turnend: false,
+    },
+    {
+        id: 100011,
+        name: '絶好調',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -78,7 +79,7 @@ const statusList = [
         value: 0,
         type: 'debuff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -88,7 +89,7 @@ const statusList = [
         value: 0,
         type: 'debuff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
     {
@@ -98,7 +99,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
     {
@@ -108,17 +109,17 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,//all
     },
     {
         id: 12,
         name: '次に使用するスキルカードの効果を発動',
         description: '',
-        value: 0,
+        valueStack: [],
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: false,
     },
 
@@ -126,10 +127,10 @@ const statusList = [
         id: 14,
         name: '次に使用するアクティブスキルカードの効果を発動',
         description: '',
-        value: 0,
+        valueStack: [],
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
 
@@ -140,20 +141,20 @@ const statusList = [
         valueStack: [],
         type: 'buff',
         activate_timing: null,
-        activate_condition: null,
+        condition: null,
         is_reduce_turnend: true,
     },
 
-    {
-        id: 100,
-        name: '使用したスキルカード数',
-        description: '',
-        value: 0,
-        type: 'buff',
-        activate_timing: null,
-        activate_condition: null,
-        is_reduce_turnend: false,
-    },
+    // {
+    //     id: 100,
+    //     name: '使用したスキルカード数',
+    //     description: '',
+    //     value: 0,
+    //     type: 'buff',
+    //     activate_timing: null,
+    //     condition: null,
+    //     is_reduce_turnend: false,
+    // },
 
     {
         id: 501,
@@ -161,9 +162,9 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
             { type: '固定元気', value: 2 }, 
         ],
         is_reduce_turnend: false,
@@ -174,10 +175,10 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: 'cardType==active',
-        activate_effects: [
-            { type: '集中', value: 1 }, 
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
+            { type: 'status', target: '集中', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -187,10 +188,10 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: 'cardType==mental',
-        activate_effects: [
-            { type: '好印象', value: 1 }, 
+        activate_timing: 'before_use_card',
+        condition: 'cardType==mental',
+        effects: [
+            { type: 'status', target: '好印象', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -200,10 +201,10 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: 'cardType==mental',
-        activate_effects: [
-            { type: 'やる気', value: 1 }, 
+        activate_timing: 'before_use_card',
+        condition: 'cardType==mental',
+        effects: [
+            { type: 'status', target: 'やる気', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -213,10 +214,10 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'turnend',
-        activate_condition: null,
-        activate_effects: [
-            { type: '好印象', value: 1 }, 
+        activate_timing: 'end_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好印象', value: 1 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -227,10 +228,10 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'turnend',
-        activate_condition: '集中>=3',
-        activate_effects: [
-            { type: '集中', value: 2 }, 
+        activate_timing: 'end_turn',
+        condition: '集中>=3',
+        effects: [
+            { type: 'status', target: '集中', value: 2 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -240,10 +241,10 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'turnend',
-        activate_condition: '好印象>=3',
-        activate_effects: [
-            { type: '好印象', value: 3 }, 
+        activate_timing: 'end_turn',
+        condition: '好印象>=3',
+        effects: [
+            { type: 'status', target: '好印象', value: 3 }, 
         ],
         is_reduce_turnend: false,
     },
@@ -255,9 +256,9 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
             { type: 'score', value: 4 }, 
         ],
         is_reduce_turnend: false,
@@ -268,9 +269,9 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: 'cardType==active',
-        activate_effects: [
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
             { type: 'score', value: 5 }, 
         ],
         is_reduce_turnend: false,
@@ -282,9 +283,9 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: '',
-        activate_effects: [
+        activate_timing: 'before_use_card',
+        condition: '',
+        effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] }, 
         ],
         is_reduce_turnend: false,
@@ -295,16 +296,104 @@ const statusList = [
         description: '',
         value: 0,
         type: 'buff',
-        activate_timing: 'usecard',
-        activate_condition: '',
-        activate_effects: [
+        activate_timing: 'before_use_card',
+        condition: '',
+        effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] }, 
+        ],
+        is_reduce_turnend: false,
+    },
+
+    {
+        id: 9999,
+        name: '好印象効果',
+        description: '',
+        value: 1,
+        type: 'buff',
+        activate_timing: 'end_turn',
+        condition: '好印象>0',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
         ],
         is_reduce_turnend: false,
     },
 
 
 ];
+
+export class _PStatus {
+
+    #status;
+    #index_name_to_idx;
+
+    constructor (status) {
+        this.#status = status;
+        this.#index_name_to_idx = {};
+        for (let i = 0; i < this.#status.length; i++) {
+            this.#index_name_to_idx[this.#status[i].name] = i;
+        }
+    }
+
+    #get (name) {
+        if (!(name in this.#index_name_to_idx)) {
+            throw new Error(`${name}は存在しないステータスです。`);
+        }
+        return this.#status[this.#index_name_to_idx[name]];
+    }
+
+    getType (name) {
+        const status = this.#get(name);
+        return status.type;
+    }
+
+    getValue (name) {
+        const status = this.#get(name);
+        if (status.valueStack) {
+            return status.valueStack.reduce((pre, crt) => pre+crt.value, 0);
+        }
+        else {
+            return status.value;
+        }
+    }
+
+    has (name) {
+        return this.getValue(name) > 0;
+    }
+
+    add (name, value, availableFirstAdded, options) { 
+        const status = this.#get(name);
+        if (status.valueStack) {
+            const item = {
+                value: options[0].value,
+                turn: value
+            };
+            if (availableFirstAdded) {
+                item.firstAdded = true;
+            }
+            status.valueStack.push(item);
+        }
+        else {
+            if (status.value == 0 && availableFirstAdded) {
+                status.firstAdded = true;
+            }
+            status.value += value;
+        }
+    }
+
+    reduce (name, value) {
+        // valueStackはエラー発生するから注意！
+        const status = this.#get(name);
+        status.value -= value;
+        if (status.value < 0) {
+            status.value = 0;
+        }
+    }
+
+    getByTiming (timing) {
+        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        return result;
+    }
+}
 
 export class PIdolStatus {
 
@@ -353,7 +442,7 @@ export class PIdolStatus {
                 this.reduce(key, 1);
             }
         }
-        this.#status[this.#index_name_to_idx['使用したスキルカード数']].value = 0;
+        // this.#status[this.#index_name_to_idx['使用したスキルカード数']].value = 0;
     }
 
     #get (name) {
@@ -361,6 +450,10 @@ export class PIdolStatus {
             throw new Error(`${name}は存在しないステータスです。`);
         }
         return this.#status[this.#index_name_to_idx[name]];
+    }
+
+    get (name) {
+        return deep_copy(this.#get(name));
     }
 
     getType (name) {
@@ -376,6 +469,14 @@ export class PIdolStatus {
         else {
             return status.value;
         }
+    }
+
+    has (name) {
+        return this.getValue(name) > 0;
+    }
+
+    _deepcopy () {
+        return deep_copy(this.#status);
     }
 
 
@@ -404,12 +505,33 @@ export class PIdolStatus {
         }
     }
     
+    // addDelayEffect (name, turn, effect) {
+    //     this.#delayEffectList.push({
+    //         name: name,
+    //         turn: turn,
+    //         effect: effect,
+    //     });
+    // }
+
     addDelayEffect (name, turn, effect) {
         this.#delayEffectList.push({
             name: name,
             turn: turn,
             effect: effect,
         });
+        // {
+        //     id: 9999,
+        //     name: '好印象効果',
+        //     description: '',
+        //     value: 1,
+        //     type: 'buff',
+        //     activate_timing: 'end_turn',
+        //     condition: '',
+        //     effects: [
+        //         { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] }, 
+        //     ],
+        //     is_reduce_turnend: false,
+        // },
     }
 
     getDelayEffectByTurn (turn) {
@@ -426,22 +548,46 @@ export class PIdolStatus {
     }
 
     reduce (name, value) {
-        // valueStackはエラー発生するから注意！
+        // valueStackは回数を減らします
         const status = this.#get(name);
-        status.value -= value;
-        if (status.value < 0) {
-            status.value = 0;
+        if (status.valueStack) {
+            //for (let i = 0; i < status.valueStack.length; i++) {
+                const item = status.valueStack[0];
+                item.value--;
+                if (item.value <= 0) {
+                    status.valueStack.splice(0, 1);
+                    // i--;
+                }
+            //}
+        } else {
+            status.value -= value;
+            if (status.value < 0) {
+                status.value = 0;
+            }
         }
     }
 
-    get_byActivateTiming (activate_timing) {
+    getByTiming (timing) {
         // const result = [];
         // for (const name of this.#names_activate_in_useCard) {
         //     const status = this.#get(name);
         //     if (status.value == 0) continue;
         //     result.push(status);
         // }
-        const result = this.#status.filter(item=>item.activate_timing==activate_timing);
+        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        return result;
+    }
+
+    getDelayEffects(turn) {
+        const result = [];
+        for (let i = 0; i < this.#delayEffectList.length; i++) {
+            const delayEffect = this.#delayEffectList[i];
+            if (delayEffect.turn == turn) {
+                result.push(delayEffect);
+                this.#delayEffectList.splice(i, 1);
+                i--;
+            }
+        }
         return result;
     }
 }

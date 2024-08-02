@@ -1,0 +1,62 @@
+
+#contest-log {
+    font-size: 12px;
+}
+
+#contest-log i {
+    vertical-align: 0px;
+    margin-right: 5px;
+}
+
+.log-turn {
+    /* border-top: solid 4px;
+    border-bottom: solid 4px; */
+    padding: 5px 5px;
+    font-size: 1.1em;
+    color: white;
+    font-weight: bold;
+    display: flex;
+}
+
+.log-turn[data-turnType="vocal"] {
+    background: linear-gradient(to right, #F13584, #F461A1);
+}
+.log-turn[data-turnType="dance"] {
+    background: linear-gradient(to right, #1D84ED, #4B9EF0);
+}
+.log-turn[data-turnType="visual"] {
+    background: linear-gradient(to right, #F7B12F, #F8C25D);
+}
+.log-turn > :first-child {
+    margin-right: auto;
+}
+
+.log-block {
+    margin-bottom: 5px;
+    /* padding: 3px; */
+    border: solid 1px #ccc;
+    border-radius: 5px;
+}
+.log-block-title {
+    font-size: 1.1em;
+    padding: 2px 5px;
+    background-color: #eee;
+}
+.log-block-content {
+    padding: 4px 8px;
+}
+.log-block .fa-book-open {
+    color: #28A745;
+}
+.log-block .fa-chess-rook {
+    color: #FF4136;
+}
+.log-block .fa-clone {
+    color: #28A745;
+}
+.log-block .fa-forward {
+    color: #007BFF;
+}
+.log-block .fa-link {
+    color: #007BFF;
+}

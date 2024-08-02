@@ -2,7 +2,6 @@ import { PIdolData } from './simulator/data/pIdolData.js';
 import { SkillCardData } from './simulator/data/skillCardData.js';
 import { ContestData } from './simulator/data/contestData.js';
 import { PItemData } from './simulator/data/pItemData.js';
-import { run } from './simulator/run.js';
 
 function DOM_text_to_elememt (text) {
     const temporaryDiv = document.createElement('div');
@@ -80,6 +79,46 @@ function DOM_set_select_options (select, item_list, isBlank) {
     DOM_delete_allChildren(select);
     select.appendChild(fragment);
 }
+
+function parseSimulationLog (simulationLog) {
+    const container = document.createElement('div');
+    for (const log of simulationLog.log) {
+        const textElement = `
+        <div>
+            <div class="log-turn" data-turnType="${log.turnType}">
+                ${log.turn}ターン目　
+                ${log.turnType}
+                <i class="fa-solid fa-star"></i>${log.status.score}
+                <i class="fa-solid fa-heart"></i>${log.status.hp}
+                <i class="fa-solid fa-shield-halved"></i>${log.status.block}
+            </div>
+        </div>`;
+        container.appendChild(DOM_text_to_elememt(textElement));
+        container.appendChild(parseExecutionLog(log.executionLog));
+    }
+    return container;
+}
+
+function parseExecutionLog (executionLog) {
+    const container = document.createElement('div');
+    executionLog.forEach(entry => {
+        const element = document.createElement('div');
+        if (entry.type === 'effect') {
+            element.textContent = entry.message;
+        } else if (entry.type === 'use') {
+            const nameElement = document.createElement('div');
+            nameElement.textContent = `${entry.name}を使った`;
+            element.appendChild(nameElement);
+            const listContainer = document.createElement('div');
+            listContainer.className = 'list';
+            listContainer.appendChild(parseExecutionLog(entry.list));
+            element.appendChild(listContainer);
+        }
+        container.appendChild(element);
+    });
+    return container;
+}
+
 
 window.addEventListener('error', (event) => {
     alert(event.message);
@@ -333,7 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 実行
     let run_flag = false;
     const element_run_button = document.getElementById('run-button');
-    element_run_button.addEventListener('click', () => {
+    element_run_button.addEventListener('click', async() => {
         if (run_flag) {
             alert('実行中です。');
             return;
@@ -389,6 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const simulateCount = 2000;
 
         const autoId = document.getElementById('contest-auto').value;
+
         const run_data = {
             turn: contestStage.turn,
             criteria: contestDetail.criteria,
@@ -400,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hp: hp,
             },
             plan: current_main_plan,
+            trend: pIdol.trend,
             pItemIds: pItemIds,
 
             skillCardIds: skillCardIds, 
@@ -407,19 +448,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
             count: simulateCount,
         };
-
-        let scoreList, minLog, rndLog, maxLog;
         
-        const result = run(run_data);
-        scoreList = result.scoreList;
-        minLog = result.minLog;
-        rndLog = result.rndLog;
-        maxLog = result.maxLog;
+        console.time('run');
+        const  result = await runWebWorker(run_data);
+        console.timeEnd('run');
 
+        // const logs = {
+        //     min: result.minLog,
+        //     rnd: result.rndLog,
+        //     max: result.maxLog,
+        // };
+        // const logKeys = ['min', 'rnd', 'max'];
+        // for (const key of logKeys) {
+        //     const container =  document.getElementById(`contest-log-${key}`);
+        //     DOM_delete_allChildren(container);
+        //     container.appendChild(parseSimulationLog(logs[key]));
+        // }
+
+        const logs = {
+            min: result.minLog,
+            rnd: result.rndLog,
+            max: result.maxLog,
+        };
+        const logKeys = ['min', 'rnd', 'max'];
+
+        function parseExecutionLog(executeLog) {
+            let htmlString = '<div>';
+            for (const log of executeLog) {
+                if (log.type == 'use') {
+                    if (log.sourceType == 'skillCard') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pItem') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pDrink') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-wine-bottle"></i>Pドリンク「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pStatus') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-forward"></i>ステータス効果「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pDelay') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-link"></i>予約効果「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    // else if (log.sourceType == 'pIdol') {
+                    //     htmlString += `<div><div><i class="fa-solid fa-person-rays"></i>${log.source.name}を使った</div>`;
+                    // }
+                    else if (log.sourceType == 'pRest') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-bed"></i>${log.source.name}</div><div class="log-block-content">`;
+                    }
+                }
+                else if (log.type == 'end') {
+                    htmlString += '</div></div>';
+                }
+                else if (log.type == 'show') {
+                    htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-book-open"></i>${log.message}</div><div class="log-block-content">`;
+                }
+                else {
+                    htmlString += `<div>${log.message}</div>`;
+                }
+            }
+            htmlString += '</div>';
+            return DOM_text_to_elememt(htmlString);
+        }
+
+        function parseSimulationLog(simulationLog) {
+            const container = document.createElement('div');
+            for (const log of simulationLog.log) {
+                const textElement = `
+                <div>
+                    <div class="log-turn" data-turnType="${log.turnType}">
+                        <div>${log.turn}ターン目　</div>
+                        <div class="log-turn-status">
+                        　
+                            <i class="fa-solid fa-star"></i>${log.status.score}
+                            <i class="fa-solid fa-heart"></i>${log.status.hp}
+                            <i class="fa-solid fa-shield-halved"></i>${log.status.block}
+                        </div>
+                    </div>
+                </div>`;
+                container.appendChild(DOM_text_to_elememt(textElement));
+                container.appendChild(parseExecutionLog(log.executionLog));
+            }
+            return container;
+        }
+
+        for (const key of logKeys) {
+            const container =  document.getElementById(`contest-log-${key}`);
+            DOM_delete_allChildren(container);
+            container.appendChild(parseSimulationLog(logs[key]));
+        }
+
+        // result.rndLog.log.forEach(log=>log.executionLog.forEach(log=>{
+        //     if (log.type == 'use') {
+        //         console.log(`${log.source.name}を使った`);
+        //     }
+        //     else if (log.type == 'end') {
+        //         console.log('</>');
+        //     }
+        //     else {
+        //         console.log(log.message)
+        //     }
+        // }));
+
+
+
+        const scoreList = result.scoreList;
         scoreList.sort((a, b) => a - b);
-        document.getElementById('contest-log-min').innerHTML = minLog.text.replaceAll('\n', '<br>');
-        document.getElementById('contest-log-rnd').innerHTML = rndLog.text.replaceAll('\n', '<br>');
-        document.getElementById('contest-log-max').innerHTML = maxLog.text.replaceAll('\n', '<br>');
 
         const aryMax = function (a, b) {return Math.max(a, b);}
         const aryMin = function (a, b) {return Math.min(a, b);}
@@ -452,3 +587,52 @@ document.addEventListener('DOMContentLoaded', () => {
     }, false);
 
 }, false);
+
+async function runWebWorker(data) {
+    return new Promise((resolve)=>{
+        const numWorkers = Math.min(navigator.hardwareConcurrency, 1);
+        const totalRuns = 1;
+        const runsPerWorker = Math.ceil(totalRuns / numWorkers);
+        const rndLogNumber = Math.floor(Math.random()*numWorkers);
+
+        // let completedRuns = 0;
+        let completedWorkers = 0;
+        let results = {
+            scoreList: [],
+            minLog: null,
+            maxLog: null,
+            rndLog: null,
+        };
+
+        for (let i = 0; i < numWorkers; i++) {
+            const worker = new Worker('./scripts/worker.js', { type: 'module' });
+            worker.postMessage({ runs: runsPerWorker, data: data });
+            
+            worker.onmessage = (e) => {
+                completedWorkers;
+                const result = e.data;
+
+                results.scoreList = results.scoreList.concat(result.scoreList);
+                if (!results.minLog || results.minLog.finalStatus.score > result.minLog.finalStatus.score) {
+                    results.minLog = result.minLog;
+                }
+                if (!results.maxLog || results.maxLog.finalStatus.score < result.maxLog.finalStatus.score) {
+                    results.maxLog = result.maxLog;
+                }
+                if (completedWorkers == rndLogNumber) {
+                    results.rndLog = result.rndLog;
+                }
+                if (++completedWorkers == numWorkers) {
+                    resolve(results);
+                }
+                
+                worker.terminate();
+            };
+
+            worker.onerror = (error) => {
+                console.log(`Worker error: ${error.message} in ${error.filename} at line ${error.lineno}`);
+                worker.terminate();
+            };
+        }
+    });
+}

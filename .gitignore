@@ -5,4 +5,7 @@ main.js
 html_test/
 trash/
 test/
+
+deno.lock
 contest_memory_select/
+

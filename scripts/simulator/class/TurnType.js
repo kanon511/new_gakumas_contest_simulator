@@ -9,6 +9,7 @@ export class TurnType {
      * @type {Array<Stirng>} ターンごとのタイプ
      */
     #turnTypes;
+    #turnCount;
 
     /**
      * ターンタイプクラスのインスタンスを作成する
@@ -96,6 +97,7 @@ export class TurnType {
         //     case 10: return { [criteariaRank[0]] : 5, [criteariaRank[1]] : 3, [criteariaRank[2]] : 2 };
         //     case 12: return { [criteariaRank[0]] : 5, [criteariaRank[1]] : 4, [criteariaRank[2]] : 3 };
         // }
+        this.#turnCount = { 'vocal': turnTypes[0], 'dance': turnTypes[1], 'visual': turnTypes[2] };
         return { 'vocal': turnTypes[0], 'dance': turnTypes[1], 'visual': turnTypes[2] }
         // throw new Error(`${turnCount}は想定されていないターン数です`);
     }
@@ -112,6 +114,10 @@ export class TurnType {
             return this.#turnTypes[this.#turnTypes.length-1];
         }
         return this.#turnTypes[idx];
+    }
+
+    getCount (type) {
+        return this.#turnCount[type];
     }
 
     /**
