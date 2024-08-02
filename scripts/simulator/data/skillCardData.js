@@ -4115,7 +4115,7 @@ export const skillCardData = [
             { type: 'score', value: 8, options: [{ type: '集中', value: 2.6 }] }, 
             { type: 'block', value: 12, condition: 'hpPer<=50' }, 
         ],
-        limit:
+        limit: 1,
     },
     {
         id: 4209010,

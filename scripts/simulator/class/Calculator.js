@@ -27,7 +27,6 @@ export class Calculator {
         }
         if (type == 'hp' || type == 'block') {
             if (args[0] < 0) {
-                console.log(args[0] / ((status.hp + status.block)) * 100);
                 return args[0] / (status.hp + status.block) * 100;
             }
             return args[0] * 13 * status.remainTurn;

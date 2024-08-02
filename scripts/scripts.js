@@ -590,8 +590,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function runWebWorker(data) {
     return new Promise((resolve)=>{
-        const numWorkers = Math.min(navigator.hardwareConcurrency, 1);
-        const totalRuns = 1;
+        let numWorkers = 1;
+        if (navigator.hardwareConcurrency) {
+            numWorkers = Math.min(navigator.hardwareConcurrency, 8);
+        }
+        const totalRuns = 2000;
         const runsPerWorker = Math.ceil(totalRuns / numWorkers);
         const rndLogNumber = Math.floor(Math.random()*numWorkers);
 
