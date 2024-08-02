@@ -47,13 +47,13 @@ export class ConditionChecker {
             targetValue = status.lastUsedCard?.id;
         } else 
         if (key == 'cardEffectInclude') {
-            targetValue = status.lastUsedCard?.effects.some(effect=>effect.type==value) ? value : -1;
+            targetValue = status.lastUsedCard?.effects.some(effect=>effect.target==value) ? value : -1;
         } else 
         if (key == 'usedCardCountMultiple') {
-            targetValue = status.pStatus.getValue('使用したスキルカード数') % Number(value) == 0 ? value : -1;
+            targetValue = status.usedCardCount % Number(value) == 0 ? value : -1;
         } else 
         if (key == 'remain_turn') {
-            targetValue = status.remain_turn;
+            targetValue = status.remainTurn;
         } else {
             targetValue = status.pStatus.getValue(key);
         }

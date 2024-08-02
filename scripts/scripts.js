@@ -85,8 +85,13 @@ function parseSimulationLog (simulationLog) {
     for (const log of simulationLog.log) {
         const textElement = `
         <div>
-            <div class="log-turn" data-turnType="${log.turnType}">${log.turn}ターン目　${log.turnType}</div>
-            スコア${log.status.score}, HP${log.status.hp}, 元気${log.status.block}
+            <div class="log-turn" data-turnType="${log.turnType}">
+                ${log.turn}ターン目　
+                ${log.turnType}
+                <i class="fa-solid fa-star"></i>${log.status.score}
+                <i class="fa-solid fa-heart"></i>${log.status.hp}
+                <i class="fa-solid fa-shield-halved"></i>${log.status.block}
+            </div>
         </div>`;
         container.appendChild(DOM_text_to_elememt(textElement));
         container.appendChild(parseExecutionLog(log.executionLog));
@@ -407,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hp: hp,
             },
             plan: current_main_plan,
+            trend: pIdol.trend,
             pItemIds: pItemIds,
 
             skillCardIds: skillCardIds, 
@@ -428,17 +434,94 @@ document.addEventListener('DOMContentLoaded', () => {
         //     DOM_delete_allChildren(container);
         //     container.appendChild(parseSimulationLog(logs[key]));
         // }
-        result.rndLog.log.forEach(log=>log.executionLog.forEach(log=>{
-            if (log.type == 'use') {
-                console.log(`${log.source.name}を使った`);
+
+        const logs = {
+            min: result.minLog,
+            rnd: result.rndLog,
+            max: result.maxLog,
+        };
+        const logKeys = ['min', 'rnd', 'max'];
+
+        function parseExecutionLog(executeLog) {
+            let htmlString = '<div>';
+            for (const log of executeLog) {
+                if (log.type == 'use') {
+                    if (log.sourceType == 'skillCard') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pItem') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pDrink') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-wine-bottle"></i>Pドリンク「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pStatus') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-forward"></i>ステータス効果「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    else if (log.sourceType == 'pDelay') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-link"></i>予約効果「${log.source.name}」</div><div class="log-block-content">`;
+                    }
+                    // else if (log.sourceType == 'pIdol') {
+                    //     htmlString += `<div><div><i class="fa-solid fa-person-rays"></i>${log.source.name}を使った</div>`;
+                    // }
+                    else if (log.sourceType == 'pRest') {
+                        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-bed"></i>${log.source.name}</div><div class="log-block-content">`;
+                    }
+                }
+                else if (log.type == 'end') {
+                    htmlString += '</div></div>';
+                }
+                else if (log.type == 'show') {
+                    htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-book-open"></i>${log.message}</div><div class="log-block-content">`;
+                }
+                else {
+                    htmlString += `<div>${log.message}</div>`;
+                }
             }
-            else if (log.type == 'end') {
-                console.log('</>');
+            htmlString += '</div>';
+            return DOM_text_to_elememt(htmlString);
+        }
+
+        function parseSimulationLog(simulationLog) {
+            const container = document.createElement('div');
+            for (const log of simulationLog.log) {
+                const textElement = `
+                <div>
+                    <div class="log-turn" data-turnType="${log.turnType}">
+                        <div>${log.turn}ターン目　</div>
+                        <div class="log-turn-status">
+                        　
+                            <i class="fa-solid fa-star"></i>${log.status.score}
+                            <i class="fa-solid fa-heart"></i>${log.status.hp}
+                            <i class="fa-solid fa-shield-halved"></i>${log.status.block}
+                        </div>
+                    </div>
+                </div>`;
+                container.appendChild(DOM_text_to_elememt(textElement));
+                container.appendChild(parseExecutionLog(log.executionLog));
             }
-            else {
-                console.log(log.message)
-            }
-        }));
+            return container;
+        }
+
+        for (const key of logKeys) {
+            const container =  document.getElementById(`contest-log-${key}`);
+            DOM_delete_allChildren(container);
+            container.appendChild(parseSimulationLog(logs[key]));
+        }
+
+        // result.rndLog.log.forEach(log=>log.executionLog.forEach(log=>{
+        //     if (log.type == 'use') {
+        //         console.log(`${log.source.name}を使った`);
+        //     }
+        //     else if (log.type == 'end') {
+        //         console.log('</>');
+        //     }
+        //     else {
+        //         console.log(log.message)
+        //     }
+        // }));
+
+
 
         const scoreList = result.scoreList;
         scoreList.sort((a, b) => a - b);
@@ -477,7 +560,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function runWebWorker(data) {
     return new Promise((resolve)=>{
-        const numWorkers = 1;//Math.min(navigator.hardwareConcurrency, 4);
+        const numWorkers = Math.min(navigator.hardwareConcurrency, 1);
         const totalRuns = 1;
         const runsPerWorker = Math.ceil(totalRuns / numWorkers);
         const rndLogNumber = Math.floor(Math.random()*numWorkers);

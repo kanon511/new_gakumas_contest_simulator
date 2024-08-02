@@ -63,6 +63,7 @@ export class Deck {
                     .includes('レッスン開始時手札に入る'));
         
         this.shuffle(this.#index_drawPile);
+        // this.#index_drawPile = [7, 3, 10, 5, 9, 18, 12, 10, 2, 16, 4, 13, 11, 15, 0, 17, 14, 6, 8, 19];
         this.#index_handCards = [];
         this.#index_discardPile = [];
         this.#index_exhaustedCards = [];
@@ -126,13 +127,22 @@ export class Deck {
     }
 
     exhaust (number) {
-        this.#index_exhaustedCards.push(...this.#index_handCards.splice(number, 1));
+        this.resetCard(this.getHandCardByNumber(number));
+        this.#index_handCards.splice(number, 1).forEach(card=>this.#index_exhaustedCards.push(card));
+    }
+
+    resetCard (card) {
+        card.executions = null;
+        card.evaluation = 0;
+        card.scheduledExecutions = null;
     }
 
     discard (number) {
-        const card = this.getHandCardByNumber(number);
-        card.transaction = null;
-        card.predictTransaction = null;
+        this.resetCard(this.getHandCardByNumber(number));
+        // const card = this.getHandCardByNumber(number);
+        // card.executions = null;
+        // card.evaluation = 0;
+        // card.scheduledExecutions = null;
         this.#index_discardPile.push(...this.#index_handCards.splice(number, 1));
     }
 

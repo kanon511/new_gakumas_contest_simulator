@@ -145,16 +145,16 @@ const statusList = [
         is_reduce_turnend: true,
     },
 
-    {
-        id: 100,
-        name: '使用したスキルカード数',
-        description: '',
-        value: 0,
-        type: 'buff',
-        activate_timing: null,
-        condition: null,
-        is_reduce_turnend: false,
-    },
+    // {
+    //     id: 100,
+    //     name: '使用したスキルカード数',
+    //     description: '',
+    //     value: 0,
+    //     type: 'buff',
+    //     activate_timing: null,
+    //     condition: null,
+    //     is_reduce_turnend: false,
+    // },
 
     {
         id: 501,
@@ -215,7 +215,7 @@ const statusList = [
         value: 0,
         type: 'buff',
         activate_timing: 'end_turn',
-        condition: null,
+        condition: '',
         effects: [
             { type: 'status', target: '好印象', value: 1 }, 
         ],
@@ -387,6 +387,11 @@ export class _PStatus {
         if (status.value < 0) {
             status.value = 0;
         }
+    }
+
+    getByTiming (timing) {
+        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        return result;
     }
 }
 

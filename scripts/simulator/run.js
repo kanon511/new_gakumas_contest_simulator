@@ -7,6 +7,7 @@ export const run = (data) => {
     const pIdol = new PIdol({ 
         parameter: data.parameter, 
         plan: data.plan,
+        trend: data.trend,
         pItemIds: data.pItemIds,
         skillCardIds: data.skillCardIds,
     });
@@ -26,7 +27,7 @@ export const run = (data) => {
         for (let endFlag = false; !endFlag;) {
             endFlag = contest.useCard(autoContest.select());
             if (loopout > 100) {
-                throw new Error('カード選択無限ループバグ');
+                throw new Error('カード選択無限ループバグ | '+`${contest.getHands().map(item=>item.name+':'+item.evaluation).join(', ')} + ${autoContest.select()}`);
             }
             loopout++;
         }

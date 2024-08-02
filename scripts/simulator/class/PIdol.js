@@ -18,13 +18,16 @@ export class PIdol {
     #endExecutions;
     #log;
     #turnType;
+    #trendEvaluationVonusCoef;
 
-    constructor ({ parameter, plan, pItemIds, skillCardIds }) {
+    constructor ({ parameter, plan, trend, pItemIds, skillCardIds }) {
 
         this.#parameter = {
             vocal : parameter.vocal,
             dance : parameter.dance,
             visual: parameter.visual,
+            max   : Math.max(parameter.vocal, parameter.dance, parameter.visual),
+            avg   : 0,
         };
 
         this.#status = {
@@ -38,6 +41,7 @@ export class PIdol {
             extraTurn: 0,
             remainTurn: null,
             lastUsedCard: null,
+            usedCardCount: 0,
             pStatus: new PIdolStatus(),
             handCount: null,
             turnType: null,
@@ -46,12 +50,19 @@ export class PIdol {
         this.#pItemsManager = new PItemManager(pItemIds);
         this.#deck = new Deck(skillCardIds);
         this.#log = new PIdolLog();
+
+        this.#trendEvaluationVonusCoef = {}
+        this.#trendEvaluationVonusCoef[trend] = 1.5;
     }
 
     init (turnCount, critearia, turnTypes) {
         this.#turnType = new TurnType(turnCount, critearia, turnTypes);
         this.#status.turnType = this.#turnType;
         this.#status.remainTurn = turnCount;
+        this.#parameter.avg = 
+            Math.floor(['vocal', 'dance', 'visual'].reduce((acc, curr)=>{
+                return acc + this.#turnType.getCount(curr) * this.#parameter[curr];
+            }, 0) / turnCount);
     }
 
     getResult () {
@@ -80,6 +91,7 @@ export class PIdol {
         pItemActions.forEach(action=>actions.push(action));
         pStatusActions.forEach(action=>actions.push(action));
         pDelayActions.forEach(action=>actions.push(action));
+        // const actions = defaultActions.concat(pItemActions, pStatusActions, pDelayActions);
         //
         const executions = this.#simulateActions(actions);
         this.#executeActions(executions);
@@ -92,8 +104,10 @@ export class PIdol {
         const usedCard = this.#deck.getHandCardByNumber(cardNumber);
         this.#status.lastUsedCard = usedCard;
         const executions = usedCard.executions;
-        this.#deck.useCard(cardNumber);
+        this.#endExecutions = usedCard.scheduledExecutions;
         this.#executeActions(executions);
+        this.#status.usedCardCount++;
+        this.#deck.useCard(cardNumber);
         if (this.#status.pStatus.has('スキルカード使用数追加')) {
             this.#executeActions(this.#simulateActions([
                 { type: 'effect', sourceType: 'pIdol', target: { type: 'status', target: 'スキルカード使用数追加', value: -1 } },
@@ -101,7 +115,6 @@ export class PIdol {
             ]));
             return true;
         } else {
-            this.#endExecutions = usedCard.scheduledExecutions;
             return false;
         }
     }
@@ -109,20 +122,20 @@ export class PIdol {
     rest () {
         const source = { name: '休憩' };
         const executions = this.#simulateActions([
-            { type: 'use', sourceType: 'pIdol', source: source },
-            { type: 'effect', sourceType: 'pIdol', target: { type: 'hp', value: 2 } },
+            { type: 'use', sourceType: 'pRest', source: source },
+            { type: 'effect', sourceType: 'pRest', target: { type: 'hp', value: 2 } },
             { type: 'end' },
         ]);
         this.#executeActions(executions);
     }
 
     end () {
-        this.#deck.discardAll();
-        this.#status.pStatus.reduceInTurnend();
         if (this.#endExecutions) {
             this.#executeActions(this.#endExecutions);
             this.#endExecutions = null;
         }
+        this.#status.pStatus.reduceInTurnend();
+        this.#deck.discardAll();
         this.#status.remainTurn--;
     }
 
@@ -142,12 +155,15 @@ export class PIdol {
 
     #updateHandSkillCards ()  {
         const handCards = this.getDeck('handCards');
+        this.#log.addExecutionLog([{ type: 'show', sourceType: 'handCard', message: '手札' }]);
         handCards.forEach((handCard) => {
             this.#setSkillCardAvailale(handCard);
             if (handCard.isAvailable()) {
                 this.#setSkillCardActions(handCard);
             }
+            this.#log.addExecutionLog([{ type: 'card', message: `${handCard.isAvailable()?'○':'×'}${handCard.name}(${handCard.evaluation??0})` }]);
         });
+        this.#log.addExecutionLog([{ type: 'end' }]);
     }
 
     #getSkillCardActions (skillCard) {
@@ -187,16 +203,25 @@ export class PIdol {
         this.#getPItemAction('before_use_card', this.#status).forEach(action=>actions.push(action));
         this.#getPStatusAction('before_use_card', this.#status).forEach(action=>actions.push(action));
         this.#getSkillCardActions(skillCard).forEach(action=>actions.push(action));
-        this.#getPItemAction('after_use_card', this.#status).forEach(action=>actions.push(action));
-        this.#getPStatusAction('after_use_card', this.#status).forEach(action=>actions.push(action));
-        
-        actions.push({ type: 'end' });
 
         const status = this.#getStatus();
         const executions = this.#simulateActions(actions, status);
-        const evaluation = this.#evaluateExecutions(executions);
 
-        skillCard.executions = executions;
+        const afterActions = [];
+        this.#getPItemAction('after_use_card', status).forEach(action=>afterActions.push(action));
+        this.#getPStatusAction('after_use_card', status).forEach(action=>afterActions.push(action));
+        afterActions.push({ type: 'end' });
+        const afterExecution = this.#simulateActions(afterActions, status);
+
+        const totalExecution = executions.concat(afterExecution);
+
+        const evaluation = this.#evaluateExecutions(totalExecution);
+
+        if (isNaN(evaluation)) {
+            throw new Error(`evaluation is NaN: ${skillCard.name}`);
+        }
+
+        skillCard.executions = totalExecution;
         skillCard.evaluation = evaluation;
 
         // // ターンエンド時の処理
@@ -206,11 +231,15 @@ export class PIdol {
         const scheduledExecutions = this.#simulateActions(scheduledActions, status);
         const scheduledEvaluation = this.#evaluateExecutions(scheduledExecutions);
         skillCard.scheduledExecutions = scheduledExecutions;
-        skillCard.scheduledEvaluation = scheduledEvaluation;
+
+        skillCard.evaluation = evaluation + scheduledEvaluation;
     }
 
     #evaluateExecutions (executions) {
-        return executions.reduce((acc, crt) => acc + Calculator.calcActionEvaluation(crt), 0);
+        return Math.floor(executions.reduce((acc, curr) => {
+            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef);
+            return acc + evaluation;
+        }, 0));
     }
 
     #getStatus () {
@@ -225,6 +254,7 @@ export class PIdol {
             extraTurn: this.#status.extraTurn,
             remainTurn: this.#status.remainTurn,
             lastUsedCard: this.#status.lastUsedCard,
+            usedCardCount: this.#status.usedCardCount,
             pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
             handCount: this.getDeck('handCards').length,
             turnType: this.#status.turnType,
@@ -273,7 +303,7 @@ export class PIdol {
         //
         const executes = [];
         if (delay) {
-            executes.push({ type: 'delay', args: [action.name, status.turn+delay, {
+            executes.push({ type: 'delay', args: [actualValue, action.name, status.turn+delay, {
                 type: type, target: target, value: value, options: options,
             }] });
             return executes;
@@ -290,7 +320,8 @@ export class PIdol {
                 const hp = status.hp;
                 status.hp = Math.min(status.maxHp, hp+actualValue);
                 executes.push({ type: 'hp', args: [status.hp-hp] });
-            } else { 
+            } 
+            else if (actualValue < 0) { 
                 // 消費
                 const block = status.block, hp = status.hp;
                 if (type == 'direct_hp') {
@@ -307,11 +338,15 @@ export class PIdol {
                 if (status.block < block) {
                     executes.push({ type: 'block', args: [status.block-block] });
                 }
-                executes.push({ type: 'hp', args: [status.hp-hp] });
-                if (action.sourceType == 'skillCard' && hp > status.hp) {
-                    this.#simulateActions(this.#getPItemAction('consume_hp', status), status)
-                        .forEach(execution=>executes.push(execution));
+                if (status.hp < hp) {
+                    executes.push({ type: 'hp', args: [status.hp-hp] });
+                    if (action.sourceType == 'skillCard') {
+                        this.#simulateActions(this.#getPItemAction('consume_hp', status), status)
+                            .forEach(execution=>executes.push(execution));
+                    }
                 }
+            } else {
+                executes.push({ type: 'hp', args: [0] });
             }
             return executes;
         }
@@ -349,11 +384,11 @@ export class PIdol {
             if (actualValue > 0) { // 増加
                 if (status.pStatus.has('低下状態無効') && status.pStatus.getType(target) == 'debuff') {
                     status.pStatus.reduce('低下状態無効', 1);
-                    executes.push({ type: 'status', args: ['低下状態無効', -1] });
+                    executes.push({ type: 'status', args: [-1, '低下状態無効'] });
                 } else {
                     const availableFirstAdded = action.sourceType == 'skillCard';
                     status.pStatus.add(target, actualValue, availableFirstAdded, options);
-                    executes.push({ type: 'status', args: [target, actualValue, availableFirstAdded, options] });
+                    executes.push({ type: 'status', args: [actualValue, target, availableFirstAdded, options] });
                     if (action.sourceType == 'skillCard') {
                         this.#simulateActions(this.#getPItemAction(`increased_status:${target}`, status), status)
                             .forEach(execution=>executes.push(execution));
@@ -362,7 +397,7 @@ export class PIdol {
             } 
             else { // 消費
                 status.pStatus.reduce(target, -actualValue);
-                executes.push({ type: 'status', args: [target, actualValue] });
+                executes.push({ type: 'status', args: [actualValue, target] });
             }
             return executes;
         }
@@ -386,12 +421,12 @@ export class PIdol {
 
     #executeAction ({ type, args }) {
         if (type == 'status') {
-            const statusType = args[0];
+            const statusType = args[1];
             const statusValue = this.#status.pStatus.getValue(statusType);
-            if (args[1] > 0) {
-                this.#status.pStatus.add(statusType, args[1], args[2], args[3]);
+            if (args[0] > 0) {
+                this.#status.pStatus.add(statusType, args[0], args[2], args[3]);
             } else {
-                this.#status.pStatus.reduce(statusType, -args[1]);
+                this.#status.pStatus.reduce(statusType, -args[0]);
             }
             const afterStatusValue = this.#status.pStatus.getValue(statusType);
             return `${statusType}：${statusValue}→${afterStatusValue}(${afterStatusValue-statusValue})`;
@@ -420,8 +455,8 @@ export class PIdol {
             return `${args[0]}枚カードを引いた`;
         }
         if (type == 'delay') {
-            this.#status.pStatus.addDelayEffect(args[0], args[1], args[2]);
-            return `予約効果登録：${args[0]}(${args[1]}ターン)`;
+            this.#status.pStatus.addDelayEffect(args[1], args[2], args[3]);
+            return `予約効果登録：${args[1]}(${args[2]}ターン目)`;
         }
         if (type == 'upgrade') {
             this.#deck.upgrade('allhands');
@@ -482,7 +517,8 @@ export class PIdol {
      * @returns {Array<Object>}
      */
     #getPStatusAction (activateTiming, status) {
-        const pStatusList = this.#status.pStatus.getByTiming(activateTiming)
+        // const pStatusList = this.#status.pStatus.getByTiming(activateTiming)
+        const pStatusList = status.pStatus.getByTiming(activateTiming)
             .filter(pStatus=>ConditionChecker.check(pStatus.condition, status));
         const actions = [];
         pStatusList.forEach(pStatus=>{
