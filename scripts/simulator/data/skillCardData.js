@@ -2188,8 +2188,8 @@ export const skillCardData = [
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: '好印象', value: 3 },
-            { type: 'メンタルスキルカード使用時好印象+1', value: 1 },
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'メンタルスキルカード使用時好印象+1', value: 1 },
         ],
         limit: 1,
         card_cost: 105,
