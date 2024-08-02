@@ -105,9 +105,9 @@ export class PIdol {
         this.#status.lastUsedCard = usedCard;
         const executions = usedCard.executions;
         this.#endExecutions = usedCard.scheduledExecutions;
+        this.#deck.useCard(cardNumber);
         this.#executeActions(executions);
         this.#status.usedCardCount++;
-        this.#deck.useCard(cardNumber);
         if (this.#status.pStatus.has('スキルカード使用数追加')) {
             this.#executeActions(this.#simulateActions([
                 { type: 'effect', sourceType: 'pIdol', target: { type: 'status', target: 'スキルカード使用数追加', value: -1 } },
