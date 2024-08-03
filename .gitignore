@@ -9,3 +9,4 @@ test/
 deno.lock
 contest_memory_select/
 
+node_modules
