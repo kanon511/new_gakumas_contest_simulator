@@ -162,7 +162,7 @@ const contestData = [
         ],
     },
     {
-        id: 240719,
+        id: 240804,
         name: '第６回（08月04日～）', 
         criteria: { 'vocal': 10, 'dance': 45, 'visual': 45 },
         stages: [
