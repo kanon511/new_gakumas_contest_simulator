@@ -3610,7 +3610,7 @@ export const skillCardData = [
         name: '手書きのメッセージ',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'status', target: '好印象', value: 2 },
+        cost: { type: 'status', target: '好印象', value: -2 },
         condition: '',
         effects: [
             { type: 'block', value: 9 }, 
@@ -3624,7 +3624,7 @@ export const skillCardData = [
         name: '手書きのメッセージ+',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'status', target: '好印象', value: 1 },
+        cost: { type: 'status', target: '好印象', value: -1 },
         condition: '',
         effects: [
             { type: 'block', value: 10 }, 
