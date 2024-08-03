@@ -610,7 +610,7 @@ const pItemData = [
         condition: '集中>=5',
         effects: [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
-            { type: '集中', value: 1 },
+            { type: 'status', target: '集中', value: 1 },
         ],
         limit: 1,
     },
