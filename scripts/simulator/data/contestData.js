@@ -161,6 +161,37 @@ const contestData = [
             },
         ],
     },
+    {
+        id: 240719,
+        name: '第６回（08月04日～）', 
+        criteria: { 'vocal': 10, 'dance': 45, 'visual': 45 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240811],
+                plan: 'free',
+                turnTypes: [1, 4, 3],
+            },
+            {
+                name: 'ステージ2',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4240812],
+                plan: 'sense',
+                turnTypes: [2, 5, 3],
+            },
+            {
+                name: 'ステージ3',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240813],
+                plan: 'logic',
+                turnTypes: [2, 6, 4],
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {
