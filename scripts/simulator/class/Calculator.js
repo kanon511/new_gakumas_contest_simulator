@@ -26,11 +26,17 @@ export class Calculator {
         if (type == 'end') {
             return 0;
         }
-        if (type == 'hp' || type == 'block') {
+        if (type == 'hp') {
             if (args[0] < 0) {
-                return args[0] / (status.hp + status.block) * 100;
+                return unitValue * args[0] / (status.hp + status.block) * status.remainTurn * 9;
             }
-            return args[0] * 13 * status.remainTurn;
+            return unitValue * args[0] * Math.sqrt(status.remainTurn+5) * 0.75;
+        }
+        if (type == 'block') {
+            if (args[0] < 0) {
+                return unitValue * args[0] / (status.hp + status.block) * status.remainTurn * 9;
+            }
+            return unitValue * args[0] * Math.sqrt(status.remainTurn+5) * 0.75;
         }
         if (type == 'score') {
             return args[0];
@@ -90,10 +96,10 @@ export class Calculator {
             }
             if (statusType == 'やる気') {
                 return coef*status.turnType.getAllTypes()
-                    .slice(status.turn*2)
-                    .map(type=>parameter[type]/100)
+                    .slice(Math.floor(status.turn*1.5))
+                    .map(type=>parameter[type]/100*args[0])
                     .reduce((acc, curr)=>acc+curr, 0)
-                    *args[0];
+                    *status.remainTurn*0.4;
             }
             if (statusType == '好印象') {
                 const goodImp = status.pStatus.getValue('好印象');
