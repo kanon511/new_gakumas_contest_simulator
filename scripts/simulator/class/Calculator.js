@@ -60,7 +60,7 @@ export class Calculator {
                     .slice(status.turn+1)
                     .map(type=>parameter[type]/100*args[0])
                     .reduce((acc, crt)=>acc+crt, 0)
-                    *status.remainTurn*0.83;
+                    *status.remainTurn*0.75;
                 const scale = 1 + status.pStatus.getValue('アクティブスキルカード使用時、パラメータ+4')+status.pStatus.getValue('アクティブスキルカード使用時、パラメータ+5');
                 return coef*value*scale;
             }
@@ -69,7 +69,7 @@ export class Calculator {
                 const goodCondition = status.pStatus.getValue('好調');
                 if (args[0] > 0) {
                     if (goodCondition == 0) {
-                        total += 2000;
+                        total += 1500;
                     }
                     const remainNotGoodConditionTurn = status.remainTurn - goodCondition;
                     if (remainNotGoodConditionTurn > 0) {
@@ -105,7 +105,7 @@ export class Calculator {
                 return 100 * args[0];
             }
             if (statusType == '消費体力減少') {
-                return 100 * args[0];
+                return 450 * args[0] * status.remainTurn / status.turn;
             }
             if (statusType == '消費体力増加') {
                 return -100 * args[0];
@@ -117,7 +117,7 @@ export class Calculator {
                 return 100 * args[0];
             }
             if (statusType == 'スキルカード使用数追加') {
-                return 2000;
+                return 7000;
             }
             if (statusType == '次に使用するスキルカードの効果を発動') {
                 return 2000;

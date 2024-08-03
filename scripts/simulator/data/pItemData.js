@@ -1234,7 +1234,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: '消費体力減少>0',
         effects: [
-            { type: 'status', target: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 15 }] },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 100, options: [{ type: '上昇量', value: 15 }] },
         ],
         limit: null,
     },
