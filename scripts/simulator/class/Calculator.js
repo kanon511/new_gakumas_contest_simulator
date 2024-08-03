@@ -12,7 +12,7 @@ export class Calculator {
     }
     static calcActionEvaluation (action, status, parameter, trendVonusCoef) {
         let { type, args } = action;
-        const unitValue = parameter[status.currentTurnType] / 100;
+        const unitValue = parameter['avg'] / 100;
         if (type == 'delay') {
             if (args[2]>status.remainTurn+status.turn) {
                 return 0;
@@ -74,10 +74,10 @@ export class Calculator {
                     }
                     const remainNotGoodConditionTurn = status.remainTurn - goodCondition;
                     if (remainNotGoodConditionTurn > 0) {
-                        total += 320 * args[0];
+                        total += unitValue * 20 * args[0];
                     }
                 } else {
-                    total += 320 * args[0];
+                    total += unitValue * 20 * args[0];
                 }
                 return coef*total;
             }
@@ -107,7 +107,7 @@ export class Calculator {
             }
             if (statusType == '消費体力減少') {
                 const turn = Math.min(status.remainTurn, args[0]);
-                return unitValue * 50 * turn * ((status.remainTurn / status.turnCount) ** 2);
+                return unitValue * 50 * turn * ((status.remainTurn / status.turnCount) ** 3);
             }
             if (statusType == '消費体力増加') {
                 return -100 * args[0];
