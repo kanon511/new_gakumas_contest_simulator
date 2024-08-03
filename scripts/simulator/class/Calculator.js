@@ -12,6 +12,7 @@ export class Calculator {
     }
     static calcActionEvaluation (action, status, parameter, trendVonusCoef) {
         let { type, args } = action;
+        const unitValue = parameter[status.currentTurnType] / 100;
         if (type == 'delay') {
             if (args[2]>status.remainTurn+status.turn) {
                 return 0;
@@ -69,14 +70,14 @@ export class Calculator {
                 const goodCondition = status.pStatus.getValue('好調');
                 if (args[0] > 0) {
                     if (goodCondition == 0) {
-                        total += 1500;
+                        total += unitValue * 100;
                     }
                     const remainNotGoodConditionTurn = status.remainTurn - goodCondition;
                     if (remainNotGoodConditionTurn > 0) {
-                        total += 300 * args[0] * remainNotGoodConditionTurn;
+                        total += 320 * args[0];
                     }
                 } else {
-                    total += 300 * args[0];
+                    total += 320 * args[0];
                 }
                 return coef*total;
             }
@@ -105,7 +106,8 @@ export class Calculator {
                 return 100 * args[0];
             }
             if (statusType == '消費体力減少') {
-                return 450 * args[0] * status.remainTurn / status.turn;
+                const turn = Math.min(status.remainTurn, args[0]);
+                return unitValue * 50 * turn * ((status.remainTurn / status.turnCount) ** 2);
             }
             if (statusType == '消費体力増加') {
                 return -100 * args[0];
@@ -117,7 +119,7 @@ export class Calculator {
                 return 100 * args[0];
             }
             if (statusType == 'スキルカード使用数追加') {
-                return 7000;
+                return unitValue * 250;
             }
             if (statusType == '次に使用するスキルカードの効果を発動') {
                 return 2000;
@@ -146,7 +148,6 @@ export class Calculator {
             if (statusType == 'ターン終了時、好印象+1') {
                 const goodImp = status.pStatus.getValue('好印象');
                 return this.calcActionEvaluation({ type: 'status', args: [status.remainTurn*1, '好印象'] }, status, parameter, trendVonusCoef)
-                // (this.calcGoodImpScore(goodImp+status.remainTurn*1, status.remainTurn)-this.calcGoodImpScore(goodImp, status.remainTurn))*parameter.max/100;
             }
             if (statusType == 'ターン終了時、集中が3以上の場合、集中+2') {
                 return (status.turnType.getAllTypes()
@@ -158,7 +159,6 @@ export class Calculator {
             if (statusType == 'ターン終了時、好印象が3以上の場合、好印象+3') {
                 const goodImp = status.pStatus.getValue('好印象');
                 return this.calcActionEvaluation({ type: 'status', args: [status.remainTurn*3, '好印象'] }, status, parameter, trendVonusCoef)
-                // return (this.calcGoodImpScore(goodImp+status.remainTurn*3, status.remainTurn)-this.calcGoodImpScore(goodImp, status.remainTurn))*parameter.max/100;
             }
             if (statusType == 'アクティブスキルカード使用時、パラメータ+4') {
                 return (status.turnType.getAllTypes()

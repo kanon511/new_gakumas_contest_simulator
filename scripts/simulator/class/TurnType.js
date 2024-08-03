@@ -29,7 +29,7 @@ export class TurnType {
         // 最初のターンを流行1位に固定する
         let turnCountStart = 0;
         const totalTurnCount = turnTypes.reduce((p,c)=>p+c, 0);
-        if (totalTurnCount < 12) {
+        if (totalTurnCount < 12 || (typeCount[criteariaRank[0]] >= typeCount[criteariaRank[1]] + typeCount[criteariaRank[2]])) {
             this.#turnTypes[0] = criteariaRank[0];
             typeCount[criteariaRank[0]] -= 1;
             turnCountStart++;

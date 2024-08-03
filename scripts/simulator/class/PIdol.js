@@ -40,6 +40,7 @@ export class PIdol {
             currentTurnType: null,
             extraTurn: 0,
             remainTurn: null,
+            turnCount: 0,
             lastUsedCard: null,
             usedCardCount: 0,
             pStatus: new PIdolStatus(),
@@ -59,6 +60,7 @@ export class PIdol {
         this.#turnType = new TurnType(turnCount, critearia, turnTypes);
         this.#status.turnType = this.#turnType;
         this.#status.remainTurn = turnCount;
+        this.#status.turnCount = turnCount;
         this.#parameter.avg = 
             Math.floor(['vocal', 'dance', 'visual'].reduce((acc, curr)=>{
                 return acc + this.#turnType.getCount(curr) * this.#parameter[curr];
@@ -253,6 +255,7 @@ export class PIdol {
             currentTurnType: this.#status.currentTurnType,
             extraTurn: this.#status.extraTurn,
             remainTurn: this.#status.remainTurn,
+            turnCount: this.#status.turnCount,
             lastUsedCard: this.#status.lastUsedCard,
             usedCardCount: this.#status.usedCardCount,
             pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
