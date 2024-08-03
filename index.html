@@ -1,127 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Cache-Control" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>コンテストシミュレーター</title>
-    <meta name="title" content="コンテストシミュレーター">
-    <meta name="description" content="学マスのコンテストデッキ作成をサポートするツールです。">
-    <meta name="keywords" content="学園アイドルマスター,学マス,コンテスト,シミュレーター">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="Japanese">
-    <link rel="stylesheet" href="./styles/styles.css">
-    <link rel="stylesheet" href="./styles/simulationLog.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
-    <script type="module" src="./scripts/scripts.js"></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vuetify 3 Vite Preview</title>
 </head>
+
 <body>
-    <div id="wrapper">
-        <div class="container">
-            <div class="section">
-                <label>コンテスト</label>
-                <div class="input-group">
-                    <select id="contest-select">
-                        <option value="">コンテスト選択</option>
-                    </select>
-                    <select id="contest-stage-select">
-                        <option value="">ステージ選択</option>
-                    </select>
-                </div>
-            </div>
-            <div class="section character-select-box">
-                <label for="main-character">メインキャラクター選択</label>
-                <select id="main-character">
-                    <option value="">select</option>
-                </select>
-            </div>
-            <div class="section character-select-box">
-                <label for="sub-character">サブキャラクター選択</label>
-                <select id="sub-character">
-                    <option value="">select</option>
-                </select>
-            </div>
-            <div class="section">
-                <label>ステータス（倍率%）</label>
-                <div class="input-group">
-                    <input type="text" id="status-vocal" inputmode="numeric" pattern="\d*" placeholder="Vocal%"  required="required" value="1000">
-                    <input type="text" id="status-dance" inputmode="numeric" pattern="\d*" placeholder="Dance%"  required="required" value="1000">
-                    <input type="text" id="status-visual" inputmode="numeric" pattern="\d*" placeholder="Visual%"  required="required" value="1000">
-                    <input type="text" id="status-hp" inputmode="numeric" pattern="\d*" placeholder="体力"  required="required" value="30">
-                </div>
-            </div>
-            <div class="section card-select-box">
-                <label>Pアイテム選択（☑で+化）</label>
-                <div id="pItem-box-container">
-                    <div id="main-character-pItem-box" class="character-cards-box"><!--ここにPアイテムセレクト--></div>
-                </div>
-            </div>
-            <div class="section card-select-box">
-                <label>カード選択（☑で+化）</label>
-                <div id="card-box-container">
-                    <div class="container-character-cards-box">
-                        <div id="main-character-cards-box" class="character-cards-box"><!--ここにカードセレクト--></div>
-                        <div class="cost-display">0</div>
-                    </div>
-                    <div class="container-character-cards-box">
-                        <div id="sub-character-card-box" class="character-cards-box"><!--ここにカードセレクト--></div>
-                        <div class="cost-display">0</div>
-                    </div>
-                </div>
-            </div>
-            <div id="card-box-information">
-                <div>固有以外の重複不可カードも重複します<br>重複させない場合は片方で「-」を選択してください</div>
-                <div><a href="https://gkcontest.ris.moe/" target="_blank">デッキ作成シミュレータ(@risりす)</a></div>
-            </div>
-            <div class="section">
-                <label>オートの挙動</label>
-                <div class="input-group">
-                    <select id="contest-auto">
-                        <option value="0">評価値</option>
-                        <option value="1">完全ランダム（デバッグ用）</option>
-                    </select>
-                </div>
-            </div>
-            <div class="run-button">
-                <input id="run-button" type="button" value="実行">
-            </div>
-        </div>
-        <div class="container">
-            <!--<div id="contest-score">スコア：0</div>-->
-            <table class="result-table">
-                <tbody>
-                    <tr>
-                        <th>平均値</th><th>中央値</th><th>最頻値</th>
-                    </tr>
-                    <tr>
-                        <td id="result-score-mean">-</td><td id="result-score-median">-</td><td id="result-score-mode">-</td>
-                    </tr>
-                </tbody>
-            </table>
-            <div>
-                <canvas id="chart"></canvas>
-            </div>
-            <div>
-                ログ
-                <div class="result-log-button">
-                    <input type="radio" id="result-log-button-min" name="result-log-button">
-                    <label for="result-log-button-min" class="radio-box">最低値</label>
-                    <input type="radio" id="result-log-button-rnd" name="result-log-button">
-                    <label for="result-log-button-rnd" class="radio-box">ランダム</label>
-                    <input type="radio" id="result-log-button-max" name="result-log-button">
-                    <label for="result-log-button-max" class="radio-box">最高値</label>
-                </div>
-                <div id="contest-log">
-                    <div id="contest-log-min">最低値のログが表示されます</div>
-                    <div id="contest-log-rnd">ランダムな回のログが表示されます</div>
-                    <div id="contest-log-max">最大値のログが表示されます</div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
 </body>
+
 </html>
