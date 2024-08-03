@@ -401,7 +401,7 @@ const pIdolData = [
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
-        trend: '集中',
+        trend: '好調',
         unique_skillCard_id: 4209020,
         unique_pIted_id: 2309020,
     },
