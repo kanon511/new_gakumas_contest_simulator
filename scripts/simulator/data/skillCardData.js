@@ -4499,7 +4499,7 @@ export const skillCardData = [
         card_cost: 126,
     },
     {
-        id: 4300120, 
+        id: 4300110, 
         name: 'お泊り猛勉強',
         type: 'mental',
         plan: 'logic',
@@ -4512,7 +4512,7 @@ export const skillCardData = [
         card_cost: 96,
     },
     {
-        id: 4300121, 
+        id: 4300111, 
         name: 'お泊り猛勉強+',
         type: 'mental',
         plan: 'logic',
@@ -4526,7 +4526,7 @@ export const skillCardData = [
         card_cost: 126,
     },
     {
-        id: 4300110, 
+        id: 4300120, 
         name: 'はじける水しぶき',
         type: 'active',
         plan: 'sense',
@@ -4540,7 +4540,7 @@ export const skillCardData = [
         card_cost: 96,
     },
     {
-        id: 4300111, 
+        id: 4300121, 
         name: 'はじける水しぶき+',
         type: 'active',
         plan: 'sense',
@@ -4554,7 +4554,7 @@ export const skillCardData = [
         card_cost: 126,
     },
     {
-        id: 4300120, 
+        id: 4300130, 
         name: '交わる感情',
         type: 'active',
         plan: 'sense',
@@ -4568,7 +4568,7 @@ export const skillCardData = [
         card_cost: 96,
     },
     {
-        id: 4300121, 
+        id: 4300131, 
         name: '交わる感情+',
         type: 'active',
         plan: 'sense',
