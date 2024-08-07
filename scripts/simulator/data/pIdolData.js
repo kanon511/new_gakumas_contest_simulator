@@ -12,7 +12,7 @@ const pIdolData = [
     {
         id: 10101,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 101,
         name: '花海咲季',
         plan: 'sense',
@@ -23,7 +23,7 @@ const pIdolData = [
     {
         id: 20101,
         rarity: 'SR',
-        epidode_name: 'わたしが一番！',
+        episode_name: 'わたしが一番！',
         character_id: 101,
         name: '花海咲季',
         plan: 'sense',
@@ -34,7 +34,7 @@ const pIdolData = [
     {
         id: 30101,
         rarity: 'SSR',
-        epidode_name: 'Fighting My Way',
+        episode_name: 'Fighting My Way',
         character_id: 101,
         name: '花海咲季',
         plan: 'sense',
@@ -45,7 +45,7 @@ const pIdolData = [
     {
         id: 30102,
         rarity: 'SSR',
-        epidode_name: 'Boom Boom Pow',
+        episode_name: 'Boom Boom Pow',
         character_id: 101,
         name: '花海咲季',
         plan: 'logic',
@@ -56,7 +56,7 @@ const pIdolData = [
     {
         id: 30103,
         rarity: 'SSR',
-        epidode_name: '冠菊',
+        episode_name: '冠菊',
         character_id: 101,
         name: '花海咲季',
         plan: 'logic',
@@ -67,7 +67,7 @@ const pIdolData = [
     {
         id: 10201,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 102,
         name: '月村手毬',
         plan: 'sense',
@@ -78,7 +78,7 @@ const pIdolData = [
     {
         id: 20201,
         rarity: 'SR',
-        epidode_name: '一匹狼',
+        episode_name: '一匹狼',
         character_id: 102,
         name: '月村手毬',
         plan: 'sense',
@@ -89,7 +89,7 @@ const pIdolData = [
     {
         id: 30201,
         rarity: 'SSR',
-        epidode_name: 'Luna say maybe',
+        episode_name: 'Luna say maybe',
         character_id: 102,
         name: '月村手毬',
         plan: 'sense',
@@ -100,7 +100,7 @@ const pIdolData = [
     {
         id: 30202,
         rarity: 'SSR',
-        epidode_name: 'アイヴイ',
+        episode_name: 'アイヴイ',
         character_id: 102,
         name: '月村手毬',
         plan: 'logic',
@@ -111,7 +111,7 @@ const pIdolData = [
     {
         id: 10301,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 103,
         name: '藤田ことね',
         plan: 'logic',
@@ -122,7 +122,7 @@ const pIdolData = [
     {
         id: 20301,
         rarity: 'SR',
-        epidode_name: 'カワイイ♡はじめました',
+        episode_name: 'カワイイ♡はじめました',
         character_id: 103,
         name: '藤田ことね',
         plan: 'logic',
@@ -133,7 +133,7 @@ const pIdolData = [
     {
         id: 30301,
         rarity: 'SSR',
-        epidode_name: '世界一可愛い私',
+        episode_name: '世界一可愛い私',
         character_id: 103,
         name: '藤田ことね',
         plan: 'logic',
@@ -144,7 +144,7 @@ const pIdolData = [
     {
         id: 30302,
         rarity: 'SSR',
-        epidode_name: 'Yellow Big Bang!',
+        episode_name: 'Yellow Big Bang!',
         character_id: 103,
         name: '藤田ことね',
         plan: 'sense',
@@ -155,7 +155,7 @@ const pIdolData = [
     {
         id: 10401,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
@@ -166,7 +166,7 @@ const pIdolData = [
     {
         id: 20401,
         rarity: 'SR',
-        epidode_name: 'はじまりはカッコよく',
+        episode_name: 'はじまりはカッコよく',
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
@@ -177,7 +177,7 @@ const pIdolData = [
     {
         id: 30401,
         rarity: 'SSR',
-        epidode_name: 'Fluorite',
+        episode_name: 'Fluorite',
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
@@ -188,7 +188,7 @@ const pIdolData = [
     {
         id: 30402,
         rarity: 'SSR',
-        epidode_name: 'キミとセミブルー',
+        episode_name: 'キミとセミブルー',
         character_id: 104,
         name: '有村麻央',
         plan: 'sense',
@@ -199,7 +199,7 @@ const pIdolData = [
     {
         id: 10501,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'logic',
@@ -210,7 +210,7 @@ const pIdolData = [
     {
         id: 20501,
         rarity: 'SR',
-        epidode_name: '一つ踏み出した先に',
+        episode_name: '一つ踏み出した先に',
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'logic',
@@ -221,7 +221,7 @@ const pIdolData = [
     {
         id: 30501,
         rarity: 'SSR',
-        epidode_name: '白線',
+        episode_name: '白線',
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'logic',
@@ -232,7 +232,7 @@ const pIdolData = [
     {
         id: 30502,
         rarity: 'SSR',
-        epidode_name: '冠菊',
+        episode_name: '冠菊',
         character_id: 105,
         name: '葛城リーリヤ',
         plan: 'sense',
@@ -243,7 +243,7 @@ const pIdolData = [
     {
         id: 10601,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 106,
         name: '倉本千奈',
         plan: 'logic',
@@ -254,7 +254,7 @@ const pIdolData = [
     {
         id: 20601,
         rarity: 'SR',
-        epidode_name: '胸を張って一歩ずつ',
+        episode_name: '胸を張って一歩ずつ',
         character_id: 106,
         name: '倉本千奈',
         plan: 'logic',
@@ -265,7 +265,7 @@ const pIdolData = [
     {
         id: 30601,
         rarity: 'SSR',
-        epidode_name: 'Wonder Scale',
+        episode_name: 'Wonder Scale',
         character_id: 106,
         name: '倉本千奈',
         plan: 'logic',
@@ -276,7 +276,7 @@ const pIdolData = [
     {
         id: 10701,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 107,
         name: '紫雲清夏',
         plan: 'sense',
@@ -287,7 +287,7 @@ const pIdolData = [
     {
         id: 20701,
         rarity: 'SR',
-        epidode_name: '夢へのリスタート',
+        episode_name: '夢へのリスタート',
         character_id: 107,
         name: '紫雲清夏',
         plan: 'sense',
@@ -298,7 +298,7 @@ const pIdolData = [
     {
         id: 30701,
         rarity: 'SSR',
-        epidode_name: 'Tame-Lie-One-Step',
+        episode_name: 'Tame-Lie-One-Step',
         character_id: 107,
         name: '紫雲清夏',
         plan: 'sense',
@@ -309,7 +309,7 @@ const pIdolData = [
     {
         id: 30702,
         rarity: 'SSR',
-        epidode_name: 'キミとセミブルー',
+        episode_name: 'キミとセミブルー',
         character_id: 107,
         name: '紫雲清夏',
         plan: 'logic',
@@ -320,7 +320,7 @@ const pIdolData = [
     {
         id: 10801,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 108,
         name: '篠澤広',
         plan: 'logic',
@@ -331,7 +331,7 @@ const pIdolData = [
     {
         id: 20801,
         rarity: 'SR',
-        epidode_name: '一番向いてないこと',
+        episode_name: '一番向いてないこと',
         character_id: 108,
         name: '篠澤広',
         plan: 'logic',
@@ -342,7 +342,7 @@ const pIdolData = [
     {
         id: 30801,
         rarity: 'SSR',
-        epidode_name: '光景',
+        episode_name: '光景',
         character_id: 108,
         name: '篠澤広',
         plan: 'logic',
@@ -353,7 +353,7 @@ const pIdolData = [
     {
         id: 30802,
         rarity: 'SSR',
-        epidode_name: 'コントラスト',
+        episode_name: 'コントラスト',
         character_id: 108,
         name: '篠澤広',
         plan: 'sense',
@@ -364,7 +364,7 @@ const pIdolData = [
     {
         id: 10901,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
@@ -375,7 +375,7 @@ const pIdolData = [
     {
         id: 20901,
         rarity: 'SR',
-        epidode_name: '『私らしさ』のはじまり',
+        episode_name: '『私らしさ』のはじまり',
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
@@ -386,7 +386,7 @@ const pIdolData = [
     {
         id: 30901,
         rarity: 'SSR',
-        epidode_name: 'clumsy trick',
+        episode_name: 'clumsy trick',
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
@@ -397,7 +397,7 @@ const pIdolData = [
     {
         id: 30902,
         rarity: 'SSR',
-        epidode_name: 'キミとセミブルー',
+        episode_name: 'キミとセミブルー',
         character_id: 109,
         name: '姫崎莉波',
         plan: 'sense',
@@ -408,7 +408,7 @@ const pIdolData = [
     {
         id: 11001,
         rarity: 'R',
-        epidode_name: '学園生活',
+        episode_name: '学園生活',
         character_id: 110,
         name: '花海佑芽',
         plan: 'logic',
@@ -419,7 +419,7 @@ const pIdolData = [
     {
         id: 21001,
         rarity: 'SR',
-        epidode_name: 'アイドル、はじめっ！',
+        episode_name: 'アイドル、はじめっ！',
         character_id: 110,
         name: '花海佑芽',
         plan: 'logic',
@@ -430,7 +430,7 @@ const pIdolData = [
     {
         id: 31001,
         rarity: 'SSR',
-        epidode_name: 'The Rolling Riceball',
+        episode_name: 'The Rolling Riceball',
         character_id: 110,
         name: '花海佑芽',
         plan: 'logic',

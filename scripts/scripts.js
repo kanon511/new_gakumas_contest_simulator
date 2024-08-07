@@ -1,7 +1,7 @@
-import { PIdolData } from './simulator/data/pIdolData.js';
-import { SkillCardData } from './simulator/data/skillCardData.js';
-import { ContestData } from './simulator/data/contestData.js';
-import { PItemData } from './simulator/data/pItemData.js';
+import { PIdolData } from '../src/simulator/data/pIdolData.js';
+import { SkillCardData } from '../src/simulator/data/skillCardData.js';
+import { ContestData } from '../src/simulator/data/contestData.js';
+import { PItemData } from '../src/simulator/data/pItemData.js';
 
 function DOM_text_to_elememt (text) {
     const temporaryDiv = document.createElement('div');

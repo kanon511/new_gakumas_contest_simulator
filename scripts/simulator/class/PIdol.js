@@ -6,7 +6,7 @@ import { SkillCard, SkillCardData } from '../data/skillCardData.js';
 import { PIdolLog } from './PIdolLog.js';
 import { ConditionChecker } from './ConditionChecker.js';
 import { Calculator } from './Calculator.js';
-import { deep_copy } from '../../util/utility.js';
+import { deep_copy } from '../../../scripts/util/utility.js';
 
 export class PIdol {
 

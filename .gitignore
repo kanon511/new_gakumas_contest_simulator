@@ -29,5 +29,7 @@ html_test/
 trash/
 test/
 
+public/
+src/
 deno.lock
 contest_memory_select/

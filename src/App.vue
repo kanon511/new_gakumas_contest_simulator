@@ -2,12 +2,12 @@
   <v-app>
     <v-main>
       <v-container>
-        <Simulation />
+        <DataInput />
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-import Simulation from './components/Simulation.vue'
+import DataInput from './components/modules/input/DataInput.vue'
 </script>

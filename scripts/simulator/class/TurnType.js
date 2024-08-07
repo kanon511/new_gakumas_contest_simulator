@@ -1,4 +1,4 @@
-import { deep_copy } from "../../util/utility.js";
+import { deep_copy } from "../../../scripts/util/utility.js";
 
 /**
  * ターンごとのタイプ(vocal, dance, visual)を設定するクラス
