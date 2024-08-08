@@ -525,10 +525,12 @@ export class PIdol {
             .filter(pStatus=>ConditionChecker.check(pStatus.condition, status));
         const actions = [];
         pStatusList.forEach(pStatus=>{
-            actions.push({ type: 'use', sourceType: 'pStatus', source: pStatus });
-            pStatus.effects.forEach(effect=>
-                actions.push({ type: 'effect', sourceType: 'pStatus', target: effect }));
-            actions.push({ type: 'end' });
+            for (let i = 0; i < pStatus.value; i++) {
+                actions.push({ type: 'use', sourceType: 'pStatus', source: pStatus });
+                pStatus.effects.forEach(effect=>
+                    actions.push({ type: 'effect', sourceType: 'pStatus', target: effect }));
+                actions.push({ type: 'end' });
+            }
         });
         return actions;
     }
