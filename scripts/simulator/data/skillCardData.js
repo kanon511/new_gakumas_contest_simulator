@@ -1503,7 +1503,7 @@ export const skillCardData = [
             { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: -1,
-        card_cost: 150,
+        card_cost: 141,
     },
     {
         id: 3011070,
