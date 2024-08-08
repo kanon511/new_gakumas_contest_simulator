@@ -2,12 +2,12 @@
   <v-app>
     <v-main>
       <v-container>
-        <DataInput />
+        <ContestSimulator />
       </v-container>
     </v-main>
   </v-app>
 </template>
 
 <script setup>
-import DataInput from './components/modules/input/DataInput.vue'
+import ContestSimulator from "./components/pages/ContestSimulator.vue";
 </script>
