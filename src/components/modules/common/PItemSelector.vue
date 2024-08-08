@@ -1,13 +1,13 @@
 <template>
   <div>
     <v-card
-      :class="['pItem-box', { selected: selectedpItem }]"
+      :class="['pItem-box', { selected: selectedPItem }]"
       variant="text"
       @click="dialog = true"
     >
       <v-img
-        v-if="selectedpItem"
-        :src="`${selectedpItem.image}`"
+        v-if="selectedPItem"
+        :src="`public/images/pItems/pItem_${selectedPItem.id}.webp`"
         class="pItem-image"
         contain
       ></v-img>
@@ -21,13 +21,13 @@
         <v-card-text>
           <div class="pItem-grid">
             <div
-              v-for="pItem in pItems"
+              v-for="pItem in pItemList"
               :key="pItem.id"
               class="pItem-container"
               @click="selectpItem(pItem)"
             >
               <v-img
-                :src="`${pItem.image}`"
+                :src="`public/images/pItems/pItem_${pItem.id}.webp`"
                 class="pItem-option"
                 contain
               ></v-img>
@@ -45,47 +45,22 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineModel, defineProps, watch } from "vue";
 
-// レリックのデータ（例として）
-const pItems = [
-  {
-    id: 1,
-    name: "ばくおんライオン",
-    image: "public/images/pItems/pItem_2101010.png",
-  },
-  {
-    id: 2,
-    name: "ばくおんライオン+",
-    image: "public/images/pItems/pItem_2101011.png",
-  },
-  {
-    id: 3,
-    name: "必携ステンレスボトル",
-    image: "public/images/pItems/pItem_2102010.png",
-  },
-  {
-    id: 4,
-    name: "必携ステンレスボトル+",
-    image: "public/images/pItems/pItem_2102011.png",
-  },
-  {
-    id: 5,
-    name: "ちびども手作りメダル",
-    image: "public/images/pItems/pItem_2103010.png",
-  },
-  {
-    id: 6,
-    name: "ちびども手作りメダル+",
-    image: "public/images/pItems/pItem_2103011.png",
-  },
-];
+const pItemList = defineModel("pItemList");
+const props = defineProps(["autoSelect"]);
+const selectedPItem = defineModel("selectedPItem");
 
 const dialog = ref(false);
-const selectedpItem = ref(null);
+
+watch(pItemList, () => {
+  if (props.autoSelect == "true") {
+    selectedPItem.value = pItemList.value[0];
+  }
+});
 
 const selectpItem = (pItem) => {
-  selectedpItem.value = pItem;
+  selectedPItem.value = pItem;
   dialog.value = false;
 };
 </script>

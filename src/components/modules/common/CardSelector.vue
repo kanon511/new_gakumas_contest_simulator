@@ -41,15 +41,10 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineModel } from "vue";
 import { defineProps } from "vue";
 
-const props = defineProps({
-  cardList: {
-    type: Array,
-    required: true,
-  },
-});
+const cardList = defineModel("cardList");
 
 const dialog = ref(false);
 const selectedCard = ref(null);
@@ -62,8 +57,8 @@ const selectCard = (card) => {
 
 <style scoped>
 .card-box {
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  aspect-ratio: 1;
   border: solid 2px #999;
   border-radius: 6px;
   background-color: #fafafa;

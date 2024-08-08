@@ -1,32 +1,52 @@
 <template>
-  <div class="character-selection">
-    <CharacterSelector v-model:plan="contestPlan" />
+  <div class="pIdol-selection">
+    <PIdolSelector
+      v-model:contestPlan="contestPlan"
+      v-model:selectedPIdol="selectedPIdol"
+    />
   </div>
-  <div class="relic-selectors">
-    <RelicSelector /><!--contestPItem-->
-    <RelicSelector /><!--uniquePItem-->
-    <RelicSelector v-for="(relic, index) in relics.slice(2)" :key="index" />
+  <div class="pItem-selectors">
+    <PItemSet
+      v-model:pIdol="selectedPIdol"
+      v-model:contestPItemIds="contestPItemIds"
+    />
   </div>
   <div class="deck-container">
-    <CardDeck />
-    <CardDeck />
+    <CardDeckSet v-model:pIdol="selectedPIdol" />
   </div>
 </template>
 
 <script setup>
-import { ref } from "vue";
-import CardDeck from "../common/CardDeck.vue";
-import RelicSelector from "../common/PItemSelector.vue";
-import CharacterSelector from "../common/CharacterSelector.vue";
+import { ref, computed, defineModel } from "vue";
 
-const relics = ref([null, null, null, null]);
+import PIdolSelector from "../common/PIdolSelector.vue";
+import PItemSet from "../common/PItemSet.vue";
+import CardDeckSet from "../common/CardDeckSet.vue";
+
+import { ContestData } from "@/simulator/data/contestData";
+const contestId = defineModel("contestId");
+const stageId = defineModel("stageId");
+const contestPlan = defineModel("contestPlan");
+
+const contestPItemIds = computed(() => {
+  return contestId.value && stageId.value != null
+    ? ContestData.getById(contestId.value).stages[stageId.value].stagePItemIds
+    : [];
+});
+
+const selectedPIdol = ref(null);
 </script>
 
 <style scoped>
-.relic-selectors {
+.pIdol-selection {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pItem-selectors {
   display: flex;
   gap: 8px;
-  padding: 0px 12px;
   justify-content: left;
 }
 
@@ -34,19 +54,6 @@ const relics = ref([null, null, null, null]);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 0px 12px;
   margin-top: 8px;
-}
-
-.deck {
-  display: flex;
-  justify-content: space-between;
-  gap: 2px;
-}
-
-.character-selection {
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 </style>

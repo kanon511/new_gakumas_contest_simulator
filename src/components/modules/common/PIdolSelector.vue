@@ -1,25 +1,25 @@
 <template>
-  <div class="character-selector">
+  <div class="pIdol-selector">
     <v-card
-      :class="['character-box', { selected: selectedCharacter }]"
+      :class="['pIdol-box', { selected: selectedPIdol }]"
       variant="text"
       @click="dialog = true"
     >
       <v-img
-        v-if="selectedCharacter"
-        :src="`public/images/episodes/episode_${selectedCharacter.id}.webp`"
-        class="character-image"
+        v-if="selectedPIdol"
+        :src="`public/images/episodes/episode_${selectedPIdol.id}.webp`"
+        class="pIdol-image"
         contain
       ></v-img>
       <v-icon v-else class="placeholder-icon">mdi-plus</v-icon>
     </v-card>
 
-    <div class="character-details">
+    <div class="pIdol-details">
       <div class="episode-name">
-        {{ selectedCharacter?.episode_name ?? "" }}
+        {{ selectedPIdol?.episode_name ?? "" }}
       </div>
-      <div class="character-name">
-        {{ selectedCharacter?.name ?? "" }}
+      <div class="pIdol-name">
+        {{ selectedPIdol?.name ?? "" }}
       </div>
     </div>
 
@@ -28,23 +28,23 @@
         <v-card-title>キャラクターを選択</v-card-title>
         <v-divider></v-divider>
         <v-card-text>
-          <div class="character-list-grid">
+          <div class="pIdol-list-grid">
             <div
-              v-for="character in availablePIdolList"
-              :key="character.id"
-              class="character-list-container"
-              @click="selectCharacter(character)"
+              v-for="pIdol in availablePIdolList"
+              :key="pIdol.id"
+              class="pIdol-list-container"
+              @click="selectpIdol(pIdol)"
             >
               <v-img
-                :src="`public/images/episodes/episode_${character.id}.webp`"
-                class="character-list-image"
+                :src="`public/images/episodes/episode_${pIdol.id}.webp`"
+                class="pIdol-list-image"
                 contain
               ></v-img>
-              <div class="character-list-details">
-                <div class="character-list-episode-name">
-                  {{ character.episode_name }}
+              <div class="pIdol-list-details">
+                <div class="pIdol-list-episode-name">
+                  {{ pIdol.episode_name }}
                 </div>
-                <!-- <div class="character-list-name">{{ character.name }}</div> -->
+                <!-- <div class="pIdol-list-name">{{ pIdol.name }}</div> -->
               </div>
             </div>
           </div>
@@ -59,41 +59,48 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref, watch, defineModel } from "vue";
 import { PIdolData } from "@/simulator/data/pIdolData";
 
-const plan = defineModel('plan');
-
+const contestPlan = defineModel("contestPlan");
+const selectedPIdol = defineModel("selectedPIdol");
 const pIdolList = PIdolData.getAll();
-
 const availablePIdolList = ref([]);
 
-watch(plan, () => {
-  console.log('planが変わりました', plan.value);
-  if (plan.value == 'free') {
+watch(contestPlan, () => {
+  // コンテストプランとアイドルプランが一致しないなら選択を外す
+  if (
+    contestPlan.value != "free" &&
+    contestPlan.value != selectedPIdol.value?.plan
+  ) {
+    selectedPIdol.value = null;
+  }
+  // コンテストプランによって選択できるキャラクターを制限する
+  if (contestPlan.value == "free") {
     availablePIdolList.value = pIdolList;
   } else {
-    availablePIdolList.value = pIdolList.filter(v => v.plan == plan.value);
+    availablePIdolList.value = pIdolList.filter(
+      (v) => v.plan == contestPlan.value
+    );
   }
 });
 
 const dialog = ref(false);
-const selectedCharacter = ref(null);
 
-const selectCharacter = (character) => {
-  selectedCharacter.value = character;
+const selectpIdol = (pIdol) => {
+  selectedPIdol.value = pIdol;
   dialog.value = false;
 };
 </script>
 
 <style scoped>
-.character-selector {
+.pIdol-selector {
   display: flex;
   align-items: center;
   width: 100%;
 }
 
-.character-box {
+.pIdol-box {
   width: 80px;
   height: 80px;
   border: solid 2px #999;
@@ -104,11 +111,11 @@ const selectCharacter = (character) => {
   cursor: pointer;
 }
 
-.character-box.selected {
+.pIdol-box.selected {
   border: none;
 }
 
-.character-image {
+.pIdol-image {
   width: 100%;
   height: 100%;
 }
@@ -117,7 +124,7 @@ const selectCharacter = (character) => {
   font-size: 32px;
 }
 
-.character-details {
+.pIdol-details {
   padding-left: 16px;
   width: calc(100% - 80px);
   text-align: left;
@@ -129,18 +136,18 @@ const selectCharacter = (character) => {
   text-align: left;
 }
 
-.character-name {
+.pIdol-name {
   font-size: 1.1rem;
   text-align: left;
 }
 
-.character-list-grid {
+.pIdol-list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 8px;
 }
 
-.character-list-container {
+.pIdol-list-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -149,17 +156,17 @@ const selectCharacter = (character) => {
   /* height: 120px; */
 }
 
-.character-list-image {
+.pIdol-list-image {
   width: 100px;
   height: 100px;
 }
 
-.character-list-details {
+.pIdol-list-details {
   width: 100%;
   overflow: hidden;
 }
 
-.character-list-episode-name {
+.pIdol-list-episode-name {
   font-size: 0.75rem;
   text-align: center;
   white-space: nowrap;
@@ -167,7 +174,7 @@ const selectCharacter = (character) => {
   text-overflow: ellipsis;
 }
 
-.character-list-name {
+.pIdol-list-name {
   font-size: 1.1rem;
   white-space: nowrap;
   overflow: hidden;

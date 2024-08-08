@@ -2,7 +2,11 @@
   <v-container class="data-input-container">
     <v-row>
       <v-col cols="8">
-        <ContestSelector :contestData="contest" />
+        <ContestSelector
+          v-model:contestId="contestId"
+          v-model:stageId="stageId"
+          v-model:contestPlan="contestPlan"
+        />
       </v-col>
       <v-col cols="4">
         <StatusInputor v-model:parameter="parameter" />
@@ -10,7 +14,11 @@
     </v-row>
     <v-row>
       <v-col cols="12">
-        <FormationBuilder />
+        <FormationBuilder
+          v-model:contestId="contestId"
+          v-model:stageId="stageId"
+          v-model:contestPlan="contestPlan"
+        />
       </v-col>
     </v-row>
     <v-row>
@@ -35,7 +43,7 @@
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import ContestSelector from "./ContestSelector.vue";
 import StatusInputor from "./StatusInputor.vue";
 import FormationBuilder from "./FormationBuilder.vue";
@@ -69,13 +77,9 @@ const parameter = ref({
   hp: 45,
 });
 
+const contestId = ref(null);
+const stageId = ref(null);
 const contestPlan = ref(null);
-
-const contest = ref({
-  contestId: null,
-  stageId: null,
-  plan: contestPlan,
-});
 
 // // planが変わったとき
 // watch(contestPlan, () => {
@@ -84,10 +88,13 @@ const contest = ref({
 
 const waitingFinishedRun = ref(false);
 
+contestId.value = 240804;
+stageId.value = 0;
+
 const runSimulation = () => {
   console.log("Run simulation");
   console.log("parameter", parameter.value);
-  console.log("contest", contest.value, contest.value.plan);
+  console.log("contest", contestId.value, stageId.value, contestPlan.value);
   waitingFinishedRun.value = true;
   setTimeout(() => (waitingFinishedRun.value = false), 3000);
 };
@@ -99,7 +106,8 @@ const clickCog = () => {
 
 <style scoped>
 .data-input-container {
-  width: 500px;
+  width: 100%;
+  min-width: 400px;
   margin: auto;
 }
 </style>
