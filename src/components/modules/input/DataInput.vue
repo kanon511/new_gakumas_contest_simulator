@@ -18,6 +18,7 @@
           v-model:contestId="contestId"
           v-model:stageId="stageId"
           v-model:contestPlan="contestPlan"
+          v-model:pIdol="pIdol"
         />
       </v-col>
     </v-row>
@@ -43,33 +44,11 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref, watchEffect } from "vue";
 import ContestSelector from "./ContestSelector.vue";
 import StatusInputor from "./StatusInputor.vue";
 import FormationBuilder from "./FormationBuilder.vue";
-// import SkillCardList from "../"
 
-// const run_data = {
-//             turn: contestStage.turn,
-//             criteria: contestDetail.criteria,
-//             turnTypes: contestStage.turnTypes,
-//             parameter: {
-//                 vocal : vocal,
-//                 dance : dance,
-//                 visual: visual,
-//                 hp: hp,
-//             },
-//             plan: current_main_plan,
-//             trend: pIdol.trend,
-//             pItemIds: pItemIds,
-
-//             skillCardIds: skillCardIds,
-//             autoId: autoId,
-
-//             count: simulateCount,
-//         };
-
-// vocal dance visual hp
 const parameter = ref({
   vocal: 1000,
   dance: 1000,
@@ -81,20 +60,44 @@ const contestId = ref(null);
 const stageId = ref(null);
 const contestPlan = ref(null);
 
-// // planが変わったとき
-// watch(contestPlan, () => {
-//   console.log(contestPlan.value);
-// });
+const pIdol = ref(null);
+const pItemIds = ref([null, null, null, null]);
+const cardIds = ref([]);
+
+watchEffect(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set("contest_stage", `${contestId.value}:${stageId.value}`);
+  urlParams.set("p_idol", `${pIdol.value?.id}`);
+  urlParams.set(
+    "status",
+    `${parameter.value.vocal}:${parameter.value.dance}:${parameter.value.visual}:${parameter.value.hp}`
+  );
+  urlParams.set("p_items", `${pItemIds.value.join(":")}`);
+  urlParams.set("cards", `${cardIds.value.join(":")}`);
+  console.log(urlParams.toString());
+  window.history.replaceState(null, null, "?" + urlParams.toString());
+});
 
 const waitingFinishedRun = ref(false);
 
-contestId.value = 240804;
-stageId.value = 0;
+onMounted(() => {
+  contestId.value = 240804;
+  stageId.value = 0;
+});
 
 const runSimulation = () => {
+  const runData = {
+    contestId: contestId.value,
+    stageId: stageId.value,
+    pIdolId: pIdolId.value,
+    parameter: parameter.value,
+    pItemIds: pItemIds.value,
+    cardIds: cardIds.value,
+    simulateCount: 2000,
+  };
   console.log("Run simulation");
-  console.log("parameter", parameter.value);
-  console.log("contest", contestId.value, stageId.value, contestPlan.value);
+  console.log(runData);
+
   waitingFinishedRun.value = true;
   setTimeout(() => (waitingFinishedRun.value = false), 3000);
 };

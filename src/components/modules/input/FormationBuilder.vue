@@ -17,24 +17,33 @@
 </template>
 
 <script setup>
-import { ref, computed, defineModel } from "vue";
-
+import { ref, computed, defineModel, watch } from "vue";
 import PIdolSelector from "../common/PIdolSelector.vue";
 import PItemSet from "../common/PItemSet.vue";
 import CardDeckSet from "../common/CardDeckSet.vue";
-
 import { ContestData } from "@/simulator/data/contestData";
+
 const contestId = defineModel("contestId");
 const stageId = defineModel("stageId");
 const contestPlan = defineModel("contestPlan");
+
+const selectedPIdol = defineModel("pIdol");
+
+watch(contestId, (newVal, oldVal) => {
+  console.log(`contestId: ${oldVal} -> ${newVal}`);
+});
+watch(stageId, (newVal, oldVal) => {
+  console.log(`stageId: ${oldVal} -> ${newVal}`);
+});
+watch(contestPlan, (newVal, oldVal) => {
+  console.log(`contestPlan: ${oldVal} -> ${newVal}`);
+});
 
 const contestPItemIds = computed(() => {
   return contestId.value && stageId.value != null
     ? ContestData.getById(contestId.value).stages[stageId.value].stagePItemIds
     : [];
 });
-
-const selectedPIdol = ref(null);
 </script>
 
 <style scoped>

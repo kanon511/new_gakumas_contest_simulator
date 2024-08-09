@@ -62,13 +62,33 @@ import { ref, watch, defineModel } from "vue";
 import { ContestData } from "@/simulator/data/contestData";
 
 const contestList = ContestData.getAll().slice().reverse();
+const stageList = ref([]);
 
 const contestId = defineModel("contestId");
 const stageId = defineModel("stageId");
-// if (!stageId.value) {
-//   stageId.value = 0;
-// }
 const contestPlan = defineModel("contestPlan");
+
+const rate = ref({ vocal: 0, dance: 0, visual: 0 });
+
+const translatorPlan = {
+  free: "フリー",
+  sense: "センス",
+  logic: "ロジック",
+};
+
+const contestItemProps = (item) => {
+  return {
+    title: item.name,
+    subtitle: item.period,
+  };
+};
+
+const stageItemProps = (item) => {
+  return {
+    title: item.name,
+    subtitle: `${translatorPlan[item.plan]}/${item.turn}ターン`,
+  };
+};
 
 const updateRate = (criteria) => {
   if (criteria) {
@@ -96,34 +116,6 @@ watch(stageId, () => {
   const contest = ContestData.getById(contestId.value);
   contestPlan.value = contest.stages[stageId.value].plan;
 });
-
-const contestItemProps = (item) => {
-  return {
-    title: item.name,
-    subtitle: item.period,
-  };
-};
-
-const stageList = ref([]);
-
-const translatorPlan = {
-  free: "フリー",
-  sense: "センス",
-  logic: "ロジック",
-};
-
-const stageItemProps = (item) => {
-  return {
-    title: item.name,
-    subtitle: `${translatorPlan[item.plan]}/${item.turn}ターン`,
-  };
-};
-
-const rate = ref({ vocal: 0, dance: 0, visual: 0 });
-
-// if (!contestId.value) {
-//   contestId.value = contestList[0].id;
-// }
 </script>
 
 <style scoped>

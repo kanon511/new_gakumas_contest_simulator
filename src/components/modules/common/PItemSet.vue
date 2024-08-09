@@ -9,11 +9,15 @@
     autoSelect="true"
     v-model:selectedPItem="selectedPItems[1]"
   /><!--uniquePItem-->
-  <PItemSelector v-for="(pItem, index) in pItems.slice(2)" :key="index" />
+  <PItemSelector
+    :pItemList="normalPItemList"
+    v-for="(pItem, index) in pItems.slice(2)"
+    :key="index"
+  />
 </template>
 
 <script setup>
-import { ref, defineModel, watch, computed } from "vue";
+import { ref, defineModel, /*watch,*/ computed } from "vue";
 import PItemSelector from "./PItemSelector.vue";
 import { PItemData } from "@/simulator/data/pItemData";
 
@@ -34,15 +38,29 @@ const contestPItemList = computed(() =>
 //   }
 // });
 
-const uniquePItemList = ref([]);
-watch(pIdol, () => {
-  if (pIdol.value) {
-    uniquePItemList.value = [
-      PItemData.getById(pIdol.value.unique_pIted_id),
-      PItemData.getById(pIdol.value.unique_pIted_id + 1),
-    ];
-  }
-});
+// const uniquePItemList = ref([]);
+const uniquePItemList = computed(() =>
+  pIdol.value
+    ? [
+        PItemData.getById(pIdol.value.unique_pIted_id),
+        PItemData.getById(pIdol.value.unique_pIted_id + 1),
+      ]
+    : []
+);
+// watch(pIdol, () => {
+//   if (pIdol.value) {
+//     uniquePItemList.value = [
+//       PItemData.getById(pIdol.value.unique_pIted_id),
+//       PItemData.getById(pIdol.value.unique_pIted_id + 1),
+//     ];
+//   }
+// });
+
+const normalPItemList = PItemData.getAll().filter(
+  (item) =>
+    String(item.id)[0] == "3" && // サポートのPアイテム
+    item.effects
+);
 const pItems = ref([null, null, null, null]);
 </script>
 
