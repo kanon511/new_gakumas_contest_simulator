@@ -1,34 +1,100 @@
 <template>
-  <CardDeck v-model:normalCardList="normalCardList" />
-  <CardDeck v-model:normalCardList="normalCardList" />
+  <CardDeck
+    v-model:selectedCards="selectedCardsList[0]"
+    :uniqueCards="pIdolCards"
+    :normalCards="normalCards"
+  />
+  <CardDeck
+    v-model:selectedCards="selectedCardsList[1]"
+    :uniqueCards="samePIdolCards"
+    :normalCards="normalCards"
+  />
 </template>
 
 <script setup>
-import { ref, watch, defineModel } from "vue";
+import { onMounted, ref, defineProps, computed, watch, watchEffect } from "vue";
 import CardDeck from "./CardDeck.vue";
 import { SkillCardData } from "@/simulator/data/skillCardData";
-import { PIdolData } from "@/simulator/data/pIdolData";
 
-const pIdol = defineModel("pIdol");
-const subPIdols = ref(null);
+const selectedCardsList = ref([
+  [null, null, null, null, null, null],
+  [null, null, null, null, null, null],
+]);
 
-const normalCardList = ref([]);
+const cardMap = SkillCardData.getAll().reduce((map, item) => {
+  map.set(item.id, item);
+  return map;
+}, new Map());
 
-watch(pIdol, () => {
-  if (pIdol.value) {
-    subPIdols.value = PIdolData.getByCharacterId(
-      pIdol.value.character_id
-    ).filter((v) => v.plan == pIdol.value.plan);
-    normalCardList.value = SkillCardData.getAll().filter(
+const props = defineProps({
+  pIdolPlan: {
+    type: String,
+    require: true,
+  },
+  pIdolCardIds: {
+    type: Array,
+    require: true,
+  },
+  samePIdolCardIds: {
+    type: Array,
+    require: true,
+  },
+});
+
+const pIdolCards = computed(
+  () => props.pIdolCardIds?.map((id) => SkillCardData.getById(id)) ?? []
+);
+
+const samePIdolCards = computed(
+  () => props.samePIdolCardIds?.map((id) => SkillCardData.getById(id)) ?? []
+);
+
+const normalCards = ref([]);
+watch(
+  () => props.pIdolPlan,
+  (plan) => {
+    normalCards.value = SkillCardData.getAll().filter(
       (item) =>
-        (item.plan == "free" || item.plan == pIdol.value.plan) && // プラン指定
+        (item.plan == "free" || item.plan == plan) && // プラン指定
         item.id > 2000000 && // 基本カード削除
         String(item.id)[1] != "2" // キャラ固有削除
     );
-  } else {
-    normalCardList.value = [];
   }
+);
+
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const cardIdsStr = urlParams.get("cards");
+  if (cardIdsStr) {
+    const decks = cardIdsStr.split("_");
+    for (let i = 0; i < decks.length; i++) {
+      const cardIds = decks[i].split(":").map(Number);
+      for (let j = 0; j < selectedCardsList.value[i].length; j++) {
+        if (cardMap.has(cardIds[j])) {
+          selectedCardsList.value[i][j] = cardMap.get(cardIds[j]);
+        }
+      }
+    }
+  }
+  watchEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set(
+      "cards",
+      selectedCardsList.value
+        .map((deck) => deck.map((v) => v?.id).join(":"))
+        .join("_")
+    );
+    window.history.replaceState(null, null, "?" + urlParams.toString());
+  });
 });
+// const normalCards = computed(() => {
+//   return SkillCardData.getAll().filter(
+//     (item) =>
+//       (item.plan == "free" || item.plan == props.pIdolPlan.plan) && // プラン指定
+//       item.id > 2000000 && // 基本カード削除
+//       String(item.id)[1] != "2" // キャラ固有削除
+//   );
+// });
 
 /*
 入力が必要なもの

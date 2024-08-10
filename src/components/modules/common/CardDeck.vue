@@ -1,29 +1,35 @@
 <template>
   <div class="deck">
-    <CardSelector />
     <CardSelector
-      :cardList="normalCardList"
-      v-for="(card, index) in cards.slice(1)"
-      :key="index"
+      v-model:selectedCard="selectedCards[0]"
+      :cardList="props.uniqueCards"
+      autoSelect="true"
+    />
+    <CardSelector
+      :cardList="props.normalCards"
+      v-for="(_, index) in selectedCards.slice(1)"
+      v-model:selectedCard="selectedCards[index + 1]"
+      :key="index + 1"
     />
   </div>
 </template>
 
 <script setup>
-import { ref, defineModel } from "vue";
+import { defineModel, defineProps } from "vue";
 import CardSelector from "./CardSelector.vue";
 
-/*
-入力が必要なもの
-plan<String>: カード選択に必要
-uniqueCardIds<Array<Number>>: ユニークカードリスト
+const props = defineProps({
+  uniqueCards: {
+    type: Array,
+    require: true,
+  },
+  normalCards: {
+    type: Array,
+    require: true,
+  },
+});
 
-出力が必要なもの
-selectedCardIds<Array<Number>>: 選択されているカードリスト
-*/
-
-const normalCardList = defineModel("normalCardList");
-const cards = ref(Array(6).fill(null));
+const selectedCards = defineModel("selectedCards");
 </script>
 
 <style scoped>
@@ -33,6 +39,6 @@ const cards = ref(Array(6).fill(null));
 }
 
 .deck > * {
-  width: calc((95% - 16px) / 6);
+  width: calc((95% - 10px) / 6);
 }
 </style>

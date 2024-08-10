@@ -21,7 +21,16 @@
         <v-card-text>
           <div class="pItem-grid">
             <div
-              v-for="pItem in pItemList"
+              v-if="autoSelect != 'true'"
+              class="pItem-container"
+              @click="selectpItem(null)"
+            >
+              <v-icon class="pItem-option placeholder-icon unselected-container"
+                >mdi-plus</v-icon
+              >
+            </div>
+            <div
+              v-for="pItem in props.pItemList"
               :key="pItem.id"
               class="pItem-container"
               @click="selectpItem(pItem)"
@@ -47,17 +56,33 @@
 <script setup>
 import { ref, defineModel, defineProps, watch } from "vue";
 
-const pItemList = defineModel("pItemList");
-const props = defineProps(["autoSelect"]);
+const props = defineProps({
+  autoSelect: {
+    type: String,
+  },
+  pItemList: {
+    type: Array,
+    require: true,
+  },
+});
 const selectedPItem = defineModel("selectedPItem");
 
 const dialog = ref(false);
 
-watch(pItemList, () => {
-  if (props.autoSelect == "true") {
-    selectedPItem.value = pItemList.value[0];
+watch(
+  () => props.pItemList,
+  (pItemList) => {
+    if (
+      selectedPItem.value &&
+      !pItemList.some((item) => selectedPItem.value.id == item.id)
+    ) {
+      selectedPItem.value = null;
+    }
+    if (props.autoSelect == "true" && pItemList && pItemList.length > 0) {
+      selectedPItem.value = pItemList[0];
+    }
   }
-});
+);
 
 const selectpItem = (pItem) => {
   selectedPItem.value = pItem;
@@ -88,6 +113,11 @@ const selectpItem = (pItem) => {
 
 .placeholder-icon {
   font-size: 32px;
+}
+
+.unselected-container {
+  border: solid 2px #999;
+  border-radius: 5px;
 }
 
 .pItem-grid {

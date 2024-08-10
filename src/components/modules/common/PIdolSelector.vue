@@ -27,8 +27,8 @@
       <v-card>
         <v-card-title>キャラクターを選択</v-card-title>
         <v-divider></v-divider>
-        <v-card-text>
-          <div class="pIdol-list-grid">
+        <v-card-text class="pa-1">
+          <!-- <div class="pIdol-list-grid">
             <div
               v-for="pIdol in availablePIdolList"
               :key="pIdol.id"
@@ -44,7 +44,21 @@
                 <div class="pIdol-list-episode-name">
                   {{ pIdol.episode_name }}
                 </div>
-                <!-- <div class="pIdol-list-name">{{ pIdol.name }}</div> -->
+              </div>
+            </div>
+          </div> -->
+          <div class="item-grid">
+            <div
+              v-for="item in availablePIdolList"
+              :key="item.id"
+              class="item-container"
+              @click="selectpIdol(item)"
+            >
+              <div class="item-image-wrapper">
+                <v-img
+                  :src="`public/images/episodes/episode_${item.id}.webp`"
+                  cover
+                ></v-img>
               </div>
             </div>
           </div>
@@ -59,31 +73,59 @@
 </template>
 
 <script setup>
-import { ref, watch, defineModel } from "vue";
+import { ref, watch, defineModel, defineProps, onMounted } from "vue";
 import { PIdolData } from "@/simulator/data/pIdolData";
 
-const contestPlan = defineModel("contestPlan");
+const props = defineProps({
+  contestPlan: {
+    type: String,
+    require: true,
+  },
+});
 const selectedPIdol = defineModel("selectedPIdol");
+const sameSelectedPIdols = defineModel("sameSelectedPIdols");
 const pIdolList = PIdolData.getAll();
+const pIdolMap = pIdolList.reduce((map, item) => {
+  map.set(item.id, item);
+  return map;
+}, new Map());
 const availablePIdolList = ref([]);
 
-watch(contestPlan, () => {
-  // コンテストプランとアイドルプランが一致しないなら選択を外す
-  if (
-    contestPlan.value != "free" &&
-    contestPlan.value != selectedPIdol.value?.plan
-  ) {
-    selectedPIdol.value = null;
-  }
-  // コンテストプランによって選択できるキャラクターを制限する
-  if (contestPlan.value == "free") {
-    availablePIdolList.value = pIdolList;
-  } else {
-    availablePIdolList.value = pIdolList.filter(
-      (v) => v.plan == contestPlan.value
+watch(selectedPIdol, () => {
+  if (selectedPIdol.value) {
+    sameSelectedPIdols.value = PIdolData.getByCharacterId(
+      selectedPIdol.value.character_id
     );
+    const urlParams = new URLSearchParams(window.location.search);
+    urlParams.set("p_idol", `${selectedPIdol.value.id}`);
+    window.history.replaceState(null, null, "?" + urlParams.toString());
   }
 });
+
+//これだとCompositionBuilder.vueのsamePIdolCardIdsのcomputedが働かない
+// sameSelectedPIdols.value = computed(() => {
+//   console.log("samesame");
+//   if (selectedPIdol.value) {
+//     return PIdolData.getByCharacterId(selectedPIdol.value.character_id);
+//   }
+//   return [];
+// });
+
+watch(
+  () => props.contestPlan,
+  (contestPlan) => {
+    // コンテストプランとアイドルプランが一致しないなら選択を外す
+    if (contestPlan != "free" && contestPlan != selectedPIdol.value?.plan) {
+      selectedPIdol.value = null;
+    }
+    // コンテストプランによって選択できるキャラクターを制限する
+    if (contestPlan == "free") {
+      availablePIdolList.value = pIdolList;
+    } else {
+      availablePIdolList.value = pIdolList.filter((v) => v.plan == contestPlan);
+    }
+  }
+);
 
 const dialog = ref(false);
 
@@ -91,6 +133,16 @@ const selectpIdol = (pIdol) => {
   selectedPIdol.value = pIdol;
   dialog.value = false;
 };
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const pIdolIds = urlParams.get("p_idol");
+  if (pIdolIds) {
+    const [pIdolId] = pIdolIds.split(":").map(Number);
+    if (pIdolMap.has(pIdolId)) {
+      selectedPIdol.value = pIdolMap.get(pIdolId);
+    }
+  }
+});
 </script>
 
 <style scoped>
@@ -141,7 +193,7 @@ const selectpIdol = (pIdol) => {
   text-align: left;
 }
 
-.pIdol-list-grid {
+/* .pIdol-list-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 8px;
@@ -153,7 +205,6 @@ const selectpIdol = (pIdol) => {
   align-items: center;
   cursor: pointer;
   width: 100px;
-  /* height: 120px; */
 }
 
 .pIdol-list-image {
@@ -180,6 +231,58 @@ const selectpIdol = (pIdol) => {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: left;
-  /* max-width: 100px; */
+} */
+.item-grid {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); */
+  gap: 16px;
+  /* padding: 16px; */
+}
+
+@media (max-width: 600px) {
+  .item-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: 601px) and (max-width: 960px) {
+  .item-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+@media (min-width: 961px) {
+  .item-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+.item-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.item-container:hover {
+  transform: scale(1.05);
+}
+
+.item-image-wrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid #ccc; */
+  overflow: hidden;
+}
+
+.item-image-wrapper :deep(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
