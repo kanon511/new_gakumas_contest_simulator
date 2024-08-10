@@ -758,15 +758,15 @@ const pItemData = [
     },
     {
         id: 2303030,
-        name: 'ぱちぱち線香花火+',
+        name: 'ぱちぱち線香花火',
         activate_timing: 'start_turn',
         condition: '好印象>=6&turnMultiple==3',
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
-            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'status', target: 'やる気', value: 2 },
             { type: 'direct_hp', value: -1 },
         ],
-        limit: null,
+        limit: 4,
     },
     {
         id: 2303031,

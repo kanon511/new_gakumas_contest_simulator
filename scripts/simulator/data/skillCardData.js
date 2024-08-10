@@ -3953,7 +3953,7 @@ export const skillCardData = [
     },
     {
         id: 4203030,
-        name: '夏の宵の先行花火+',
+        name: '夏の宵の線香花火',
         type: 'mental',
         plan: 'logic',
         cost: { type: 'direct_hp', value: -4 },
@@ -3962,15 +3962,15 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: 'status', target: '好印象', value: 4 }, 
-            { type: 'status', target: 'やる気', value: 3 }, 
+            { type: 'status', target: '好印象', value: 3 }, 
+            { type: 'status', target: 'やる気', value: 2 }, 
             { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
         ],
         limit: 1
     },
     {
         id: 4203031,
-        name: '夏の宵の先行花火+',
+        name: '夏の宵の線香花火+',
         type: 'mental',
         plan: 'logic',
         cost: { type: 'direct_hp', value: -4 },
