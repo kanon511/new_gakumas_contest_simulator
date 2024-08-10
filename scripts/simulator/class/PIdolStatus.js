@@ -303,6 +303,19 @@ const statusList = [
         ],
         is_reduce_turnend: false,
     },
+    {
+        id: 1107,
+        name: '元気効果のスキルカード使用後、好印象+1',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'after_use_card',
+        condition: 'cardEffectInclude==block',
+        effects: [
+            { type: 'status', target: '好印象', value: 1 }, 
+        ],
+        is_reduce_turnend: false,
+    },
 
     {
         id: 9999,

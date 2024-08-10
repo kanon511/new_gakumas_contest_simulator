@@ -119,9 +119,13 @@ function parseExecutionLog (executionLog) {
     return container;
 }
 
-
+let iserror = false;
 window.addEventListener('error', (event) => {
-    alert(event.message);
+    if (!iserror) {
+        iserror = true;
+        alert(event.message);
+        setTimeout(() => iserror=false, 500);
+    }
 });
 
 document.addEventListener('DOMContentLoaded', () => {

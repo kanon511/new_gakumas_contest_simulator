@@ -47,7 +47,7 @@ export class ConditionChecker {
             targetValue = status.lastUsedCard?.id;
         } else 
         if (key == 'cardEffectInclude') {
-            targetValue = status.lastUsedCard?.effects.some(effect=>effect.target==value) ? value : -1;
+            targetValue = status.lastUsedCard?.effects.some(effect=>effect.target==value || effect.type == value) ? value : -1;
         } else 
         if (key == 'usedCardCountMultiple') {
             targetValue = status.usedCardCount % Number(value) == 0 ? value : -1;
