@@ -984,7 +984,7 @@ const pItemData = [
     },
     {
         id: 2309011,
-        name: '等身大のレディリップ',
+        name: '等身大のレディリップ+',
         activate_timing: 'start_turn',
         condition: 'remain_turn<=3',
         effects: [
