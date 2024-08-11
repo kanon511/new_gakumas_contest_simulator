@@ -2,7 +2,6 @@
 node_modules
 /dist
 /old
-/docs
 
 # local env files
 .env.local
