@@ -1,4 +1,4 @@
-import { deep_copy } from "../../../scripts/util/utility.js";
+import { deep_copy } from "../../util/utility.js";
 /**
  * IDの付け方
  * 0_0_0000_0
@@ -1066,6 +1066,30 @@ export const skillCardData = [
         limit: 1,
     },
     {
+        id: 2201020,
+        name: '初めての未来',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct_hp', value: -5 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 190 }] },
+        ],
+        limit: 1,
+    },
+    {
+        id: 2201021,
+        name: '初めての未来+',
+        type: 'active',
+        plan: 'logic',
+        cost: { type: 'direct_hp', value: -3 },
+        condition: '',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
+        ],
+        limit: 1,
+    },
+    {
         id: 2202010,
         name: '意地っ張り',
         type: 'active',
@@ -1092,10 +1116,34 @@ export const skillCardData = [
         limit: 1,
     },
     {
+        id: 2202020,
+        name: '初めての場所',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'hp', value: -6 },
+        condition: '',
+        effects: [
+            { type: 'status', target: '好印象', value: 6 },
+        ],
+        limit: 1,
+    },
+    {
+        id: 2202021,
+        name: '初めての場所+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'hp', value: -6 },
+        condition: '',
+        effects: [
+            { type: 'status', target: '好印象', value: 8 },
+        ],
+        limit: 1,
+    },
+    {
         id: 2203010,
         name: 'アルバイター',
         type: 'active',
-        plan: 'sense',
+        plan: 'logic',
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
@@ -1108,12 +1156,38 @@ export const skillCardData = [
         id: 2203011,
         name: 'アルバイター+',
         type: 'active',
-        plan: 'sense',
+        plan: 'logic',
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
             { type: 'score', value: 6 },
             { type: 'status', target: '好印象', value: 6 },
+        ],
+        limit: 1,
+    },
+    {
+        id: 2203020,
+        name: '初めてのご褒美',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -4 },
+        condition: '',
+        effects: [
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: '絶好調', value: 2 },
+        ],
+        limit: 1,
+    },
+    {
+        id: 2203021,
+        name: '初めてのご褒美+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -4 },
+        condition: '',
+        effects: [
+            { type: 'status', target: '好調', value: 4 },
+            { type: 'status', target: '絶好調', value: 3 },
         ],
         limit: 1,
     },
@@ -1503,7 +1577,7 @@ export const skillCardData = [
             { type: 'status', target: '消費体力増加', value: 2 },
         ],
         limit: -1,
-        card_cost: 150,
+        card_cost: 141,
     },
     {
         id: 3011070,
@@ -3878,6 +3952,40 @@ export const skillCardData = [
         limit: 1
     },
     {
+        id: 4203030,
+        name: '夏の宵の線香花火',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct_hp', value: -4 },
+        condition: '',
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
+        effects: [
+            { type: 'status', target: '好印象', value: 3 }, 
+            { type: 'status', target: 'やる気', value: 2 }, 
+            { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
+        ],
+        limit: 1
+    },
+    {
+        id: 4203031,
+        name: '夏の宵の線香花火+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct_hp', value: -4 },
+        condition: '',
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
+        effects: [
+            { type: 'status', target: '好印象', value: 4 }, 
+            { type: 'status', target: 'やる気', value: 3 }, 
+            { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
+        ],
+        limit: 1
+    },
+    {
         id: 4204010,
         name: '盛装の華形',
         type: 'active',
@@ -4499,7 +4607,7 @@ export const skillCardData = [
         card_cost: 126,
     },
     {
-        id: 4300120, 
+        id: 4300110, 
         name: 'お泊り猛勉強',
         type: 'mental',
         plan: 'logic',
@@ -4512,7 +4620,7 @@ export const skillCardData = [
         card_cost: 96,
     },
     {
-        id: 4300121, 
+        id: 4300111, 
         name: 'お泊り猛勉強+',
         type: 'mental',
         plan: 'logic',
@@ -4526,7 +4634,7 @@ export const skillCardData = [
         card_cost: 126,
     },
     {
-        id: 4300110, 
+        id: 4300120, 
         name: 'はじける水しぶき',
         type: 'active',
         plan: 'sense',
@@ -4540,7 +4648,7 @@ export const skillCardData = [
         card_cost: 96,
     },
     {
-        id: 4300111, 
+        id: 4300121, 
         name: 'はじける水しぶき+',
         type: 'active',
         plan: 'sense',
@@ -4554,7 +4662,7 @@ export const skillCardData = [
         card_cost: 126,
     },
     {
-        id: 4300120, 
+        id: 4300130, 
         name: '交わる感情',
         type: 'active',
         plan: 'sense',
@@ -4568,7 +4676,7 @@ export const skillCardData = [
         card_cost: 96,
     },
     {
-        id: 4300121, 
+        id: 4300131, 
         name: '交わる感情+',
         type: 'active',
         plan: 'sense',

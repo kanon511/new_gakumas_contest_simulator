@@ -190,6 +190,10 @@ export class Calculator {
                     .map((type)=>parameter[type]*status.pStatus.getValue('好印象')*0.5)
                     .reduce((pre, crt)=>pre+crt, 0));
             }
+            if (statusType == '元気効果のスキルカード使用後、好印象+1') {
+                const goodImp = status.pStatus.getValue('好印象');
+                return this.calcActionEvaluation({ type: 'status', args: [status.remainTurn, '好印象'] }, status, parameter, trendVonusCoef);
+            }
             throw new Error(`次のステータスは定義されていません -> ${statusType}`);
         }
         throw new Error(`次のアクションタイプは定義されていません -> ${Object.entries(action).map(item=>`${item[0]}->${item[1]}`).join(', ')}`);
@@ -214,6 +218,7 @@ export class Calculator {
                         case '好印象': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
                         case 'block': optionCoef['score'] = (effectOption.value/100) * status.block; break;
                         case 'やる気': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('やる気'); break;
+                        case '好調' : optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('好調'); break;
                     }
                 });
             }
@@ -230,23 +235,24 @@ export class Calculator {
         }
         if (effect.type == 'block') {
             let baseValue = effect.value ?? 0;
-            const optionCoef = { '使用したスキルカード数': 0, '割合減少': 0 };
+            const optionCoef = { 'block': 0, '割合減少': 0 };
             if (effect.options) {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
-                        case '使用したスキルカード数': optionCoef['使用したスキルカード数'] = effectOption.value * status.usedCardCount; break;
+                        case '使用したスキルカード数': optionCoef['block'] = effectOption.value * status.usedCardCount; break;
+                        case '好印象': optionCoef['block'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
                         case '割合減少': baseValue = -Math.ceil(status.block * effectOption.value / 100);
                     }
                 });
             }
             let actualValue;
             if (baseValue >= 0) {
-                actualValue = baseValue + status.pStatus.getValue('やる気') + optionCoef['使用したスキルカード数'];
+                actualValue = baseValue + status.pStatus.getValue('やる気') + optionCoef['block'];
                 if (status.pStatus.has('元気増加無効')) {
                     actualValue = 0;
                 }
             } else {
-                actualValue = baseValue + optionCoef['割合減少'];
+                actualValue = baseValue + optionCoef['割合減少'];// <- これいらなくね
             }
             return actualValue;
         }

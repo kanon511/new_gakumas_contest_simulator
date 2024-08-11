@@ -1,7 +1,7 @@
-import { PIdolData } from '../src/simulator/data/pIdolData.js';
-import { SkillCardData } from '../src/simulator/data/skillCardData.js';
-import { ContestData } from '../src/simulator/data/contestData.js';
-import { PItemData } from '../src/simulator/data/pItemData.js';
+import { PIdolData } from './simulator/data/pIdolData.js';
+import { SkillCardData } from './simulator/data/skillCardData.js';
+import { ContestData } from './simulator/data/contestData.js';
+import { PItemData } from './simulator/data/pItemData.js';
 
 function DOM_text_to_elememt (text) {
     const temporaryDiv = document.createElement('div');
@@ -54,7 +54,7 @@ function DOM_set_character (parent, pIdolList) {
     const fragment = document.createDocumentFragment();
     pIdolList.forEach(item=>{
         const option = document.createElement('option');
-        option.innerHTML = `${item.rarity} [${item.epidode_name}] ${item.name}`
+        option.innerHTML = `${item.rarity} [${item.episode_name}] ${item.name}`
         option.value = item.id;
         fragment.appendChild(option);
     });
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function DOM_set_select_unique_pItem (id) {
         const element_select = element_pItems[1];
-        const pItemId = PIdolData.getById(id).unique_pIted_id;
+        const pItemId = PIdolData.getById(id).unique_pItem_id;
         const item = PItemData.getById(pItemId);
         DOM_set_select_options(element_select, [item], false);
     }
@@ -608,7 +608,7 @@ async function runWebWorker(data) {
         };
 
         for (let i = 0; i < numWorkers; i++) {
-            const worker = new Worker('./scripts/worker.js', { type: 'module' });
+            const worker = new Worker('../scripts/worker.js', { type: 'module' });
             worker.postMessage({ runs: runsPerWorker, data: data });
             
             worker.onmessage = (e) => {

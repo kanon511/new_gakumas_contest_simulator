@@ -35,6 +35,26 @@ const pItemData = [
         limit: 1,
     },
     {
+        id: 2101020,
+        name: '初声の証・咲季',
+        activate_timing: 'consume_hp',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好印象', value: 2 },
+        ],
+        limit: 2,
+    },
+    {
+        id: 2101021,
+        name: '初声の証・咲季+',
+        activate_timing: 'consume_hp',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好印象', value: 2 },
+        ],
+        limit: 3,
+    },
+    {
         id: 2102010,
         name: '必携ステンレスボトル',
         activate_timing: 'start_turn',
@@ -55,6 +75,26 @@ const pItemData = [
         limit: 1,
     },
     {
+        id: 2102020,
+        name: '初声の証・手毬',
+        activate_timing: 'end_turn',
+        condition: '好印象>=6',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
+        ],
+        limit: 2,
+    },
+    {
+        id: 2102021,
+        name: '初声の証・手毬+',
+        activate_timing: 'end_turn',
+        condition: '好印象>=6',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
+        ],
+        limit: 3,
+    },
+    {
         id: 2103010,
         name: 'ちびども手作りメダル',
         activate_timing: 'end_turn',
@@ -73,6 +113,27 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 3,
+    },
+    {
+        id: 2103020,
+        name: '初声の証・ことね',
+        activate_timing: 'before_use_card',
+        condition: 'cardId==2203020|cardId==2203021',
+        effects: [
+            { type: 'status', target: '好調', value: 2 },
+        ],
+        limit: 2,
+    },
+    {
+        id: 2103021,
+        name: '初声の証・ことね+',
+        activate_timing: 'before_use_card',
+        condition: 'cardId==2203020|cardId==2203021',
+        effects: [
+            { type: 'status', target: '好調', value: 2 },
+            { type: '固定元気', value: 5 },
+        ],
+        limit: 2,
     },
     {
         id: 2104010,
@@ -482,6 +543,10 @@ const pItemData = [
         id: 3200140,
         name: 'ウチュウジンデアル',
     },
+    {
+        id: 3200150,
+        name: 'ハンターの戦利品',
+    },
     /**
      * シナリオ
      */
@@ -692,6 +757,30 @@ const pItemData = [
         limit: 1,
     },
     {
+        id: 2303030,
+        name: 'ぱちぱち線香花火',
+        activate_timing: 'start_turn',
+        condition: '好印象>=6&turnMultiple==3',
+        effects: [
+            { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
+            { type: 'status', target: 'やる気', value: 2 },
+            { type: 'direct_hp', value: -1 },
+        ],
+        limit: 4,
+    },
+    {
+        id: 2303031,
+        name: 'ぱちぱち線香花火+',
+        activate_timing: 'start_turn',
+        condition: '好印象>=6&turnMultiple==3',
+        effects: [
+            { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
+            { type: 'status', target: 'やる気', value: 3 },
+            { type: 'direct_hp', value: -1 },
+        ],
+        limit: null,
+    },
+    {
         id: 2304010,
         name: '内なる光の耳飾り',
         activate_timing: 'start_turn',
@@ -895,7 +984,7 @@ const pItemData = [
     },
     {
         id: 2309011,
-        name: '等身大のレディリップ',
+        name: '等身大のレディリップ+',
         activate_timing: 'start_turn',
         condition: 'remain_turn<=3',
         effects: [
@@ -1075,6 +1164,17 @@ const pItemData = [
             { type: 'direct_hp', value: 2 },
         ],
         limit: 1,
+    },
+    {
+        id: 3300140,
+        name: '873シューター',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance',
+        effects: [
+            { type: 'status', target: '好印象', value: 2 },
+            { type: 'hp', value: 1 },
+        ],
+        limit: 2,
     },
 
 

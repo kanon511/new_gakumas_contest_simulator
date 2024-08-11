@@ -18,7 +18,18 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 2201010,
-        unique_pIted_id: 2101010,
+        unique_pItem_id: 2101010,
+    },
+    {
+        id: 10102,
+        rarity: 'R',
+        episode_name: '初声',
+        character_id: 101,
+        name: '花海咲季',
+        plan: 'logic',
+        trend: '好印象',
+        unique_skillCard_id: 2201020,
+        unique_pItem_id: 2101020,
     },
     {
         id: 20101,
@@ -29,7 +40,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 3201010,
-        unique_pIted_id: 2201010,
+        unique_pItem_id: 2201010,
     },
     {
         id: 30101,
@@ -40,7 +51,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 4201010,
-        unique_pIted_id: 2301010,
+        unique_pItem_id: 2301010,
     },
     {
         id: 30102,
@@ -51,7 +62,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 4201020,
-        unique_pIted_id: 2301020,
+        unique_pItem_id: 2301020,
     },
     {
         id: 30103,
@@ -62,7 +73,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 4201030,
-        unique_pIted_id: 2301030,
+        unique_pItem_id: 2301030,
     },
     {
         id: 10201,
@@ -73,7 +84,18 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 2202010,
-        unique_pIted_id: 2102010,
+        unique_pItem_id: 2102010,
+    },
+    {
+        id: 10202,
+        rarity: 'R',
+        episode_name: '初声',
+        character_id: 102,
+        name: '月村手毬',
+        plan: 'logic',
+        trend: '好印象',
+        unique_skillCard_id: 2202020,
+        unique_pItem_id: 2102020,
     },
     {
         id: 20201,
@@ -84,7 +106,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 3202010,
-        unique_pIted_id: 2202010,
+        unique_pItem_id: 2202010,
     },
     {
         id: 30201,
@@ -95,7 +117,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 4202010,
-        unique_pIted_id: 2302010,
+        unique_pItem_id: 2302010,
     },
     {
         id: 30202,
@@ -106,7 +128,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 4202020,
-        unique_pIted_id: 2302020,
+        unique_pItem_id: 2302020,
     },
     {
         id: 10301,
@@ -117,7 +139,18 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 2203010,
-        unique_pIted_id: 2103010,
+        unique_pItem_id: 2103010,
+    },
+    {
+        id: 10302,
+        rarity: 'R',
+        episode_name: '初声',
+        character_id: 103,
+        name: '藤田ことね',
+        plan: 'sense',
+        trend: '好調',
+        unique_skillCard_id: 2203020,
+        unique_pItem_id: 2103020,
     },
     {
         id: 20301,
@@ -128,7 +161,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 3203010,
-        unique_pIted_id: 2203010,
+        unique_pItem_id: 2203010,
     },
     {
         id: 30301,
@@ -139,7 +172,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 4203010,
-        unique_pIted_id: 2303010,
+        unique_pItem_id: 2303010,
     },
     {
         id: 30302,
@@ -150,7 +183,18 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 4203020,
-        unique_pIted_id: 2303020,
+        unique_pItem_id: 2303020,
+    },
+    {
+        id: 30303,
+        rarity: 'SSR',
+        episode_name: '冠菊',
+        character_id: 103,
+        name: '藤田ことね',
+        plan: 'logic',
+        trend: 'やる気',
+        unique_skillCard_id: 4203030,
+        unique_pItem_id: 2303030,
     },
     {
         id: 10401,
@@ -161,7 +205,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 2204010,
-        unique_pIted_id: 2104010,
+        unique_pItem_id: 2104010,
     },
     {
         id: 20401,
@@ -172,7 +216,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 3204010,
-        unique_pIted_id: 2204010,
+        unique_pItem_id: 2204010,
     },
     {
         id: 30401,
@@ -183,7 +227,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 4204010,
-        unique_pIted_id: 2304010,
+        unique_pItem_id: 2304010,
     },
     {
         id: 30402,
@@ -194,7 +238,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 4204020,
-        unique_pIted_id: 2304020,
+        unique_pItem_id: 2304020,
     },
     {
         id: 10501,
@@ -205,7 +249,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 2205010,
-        unique_pIted_id: 2105010,
+        unique_pItem_id: 2105010,
     },
     {
         id: 20501,
@@ -216,7 +260,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 3205010,
-        unique_pIted_id: 2205010,
+        unique_pItem_id: 2205010,
     },
     {
         id: 30501,
@@ -227,7 +271,7 @@ const pIdolData = [
         plan: 'logic',
         trend: '好印象',
         unique_skillCard_id: 4205010,
-        unique_pIted_id: 2305010,
+        unique_pItem_id: 2305010,
     },
     {
         id: 30502,
@@ -238,7 +282,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 4205020,
-        unique_pIted_id: 2305020,
+        unique_pItem_id: 2305020,
     },
     {
         id: 10601,
@@ -249,7 +293,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 2206010,
-        unique_pIted_id: 2106010,
+        unique_pItem_id: 2106010,
     },
     {
         id: 20601,
@@ -260,7 +304,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 3206010,
-        unique_pIted_id: 2206010,
+        unique_pItem_id: 2206010,
     },
     {
         id: 30601,
@@ -271,7 +315,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 4206010,
-        unique_pIted_id: 2306010,
+        unique_pItem_id: 2306010,
     },
     {
         id: 10701,
@@ -282,7 +326,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 2207010,
-        unique_pIted_id: 2107010,
+        unique_pItem_id: 2107010,
     },
     {
         id: 20701,
@@ -293,7 +337,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 3207010,
-        unique_pIted_id: 2207010,
+        unique_pItem_id: 2207010,
     },
     {
         id: 30701,
@@ -304,7 +348,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 4207010,
-        unique_pIted_id: 2307010,
+        unique_pItem_id: 2307010,
     },
     {
         id: 30702,
@@ -315,7 +359,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 4207020,
-        unique_pIted_id: 2307020,
+        unique_pItem_id: 2307020,
     },
     {
         id: 10801,
@@ -326,7 +370,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 2208010,
-        unique_pIted_id: 2108010,
+        unique_pItem_id: 2108010,
     },
     {
         id: 20801,
@@ -337,7 +381,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 3208010,
-        unique_pIted_id: 2208010,
+        unique_pItem_id: 2208010,
     },
     {
         id: 30801,
@@ -348,7 +392,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 4208010,
-        unique_pIted_id: 2308010,
+        unique_pItem_id: 2308010,
     },
     {
         id: 30802,
@@ -359,7 +403,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 4208020, 
-        unique_pIted_id: 2308020, 
+        unique_pItem_id: 2308020, 
     },
     {
         id: 10901,
@@ -370,7 +414,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 2209010,
-        unique_pIted_id: 2109010,
+        unique_pItem_id: 2109010,
     },
     {
         id: 20901,
@@ -381,7 +425,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 3209010,
-        unique_pIted_id: 2209010,
+        unique_pItem_id: 2209010,
     },
     {
         id: 30901,
@@ -392,7 +436,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '集中',
         unique_skillCard_id: 4209010,
-        unique_pIted_id: 2309010,
+        unique_pItem_id: 2309010,
     },
     {
         id: 30902,
@@ -403,7 +447,7 @@ const pIdolData = [
         plan: 'sense',
         trend: '好調',
         unique_skillCard_id: 4209020,
-        unique_pIted_id: 2309020,
+        unique_pItem_id: 2309020,
     },
     {
         id: 11001,
@@ -414,7 +458,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 2210010,
-        unique_pIted_id: 2110010,
+        unique_pItem_id: 2110010,
     },
     {
         id: 21001,
@@ -425,7 +469,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 3210010,
-        unique_pIted_id: 2210010,
+        unique_pItem_id: 2210010,
     },
     {
         id: 31001,
@@ -436,7 +480,7 @@ const pIdolData = [
         plan: 'logic',
         trend: 'やる気',
         unique_skillCard_id: 4210010,
-        unique_pIted_id: 2310010,
+        unique_pItem_id: 2310010,
     },
 ];
 

@@ -7,7 +7,7 @@
     >
       <v-img
         v-if="selectedPIdol"
-        :src="`/images/episodes/episode_${selectedPIdol.id}.webp`"
+        :src="`images/episodes/episode_${selectedPIdol.id}.webp`"
         class="pIdol-image"
         contain
       ></v-img>
@@ -56,7 +56,7 @@
             >
               <div class="item-image-wrapper">
                 <v-img
-                  :src="`/images/episodes/episode_${item.id}.webp`"
+                  :src="`images/episodes/episode_${item.id}.webp`"
                   cover
                 ></v-img>
               </div>

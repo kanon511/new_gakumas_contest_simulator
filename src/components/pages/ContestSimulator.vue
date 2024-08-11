@@ -1,14 +1,13 @@
 <template>
   <v-container class="sp-pa-0">
     <v-row>
-      <v-col cols="12" lg="5" xl="5">
-        <div style="text-align: center;"><a href="https://katabami83.github.io/old/gakumas_contest_simulator/">動かない場合はこちら</a></div>
+      <v-col cols="12" sm="6" md="5" lg="5" xl="5" xxl="5">
         <SimulatorInput
           @run-simulation="runSimulation"
           :waitingFinishedRun="waitingFinishedRun"
         />
       </v-col>
-      <v-col cols="12" lg="7" xl="7">
+      <v-col cols="12" sm="6" md="7" lg="7" xl="7" xxl="7">
         <SimulatorOutput :resultData="simulationResult" />
       </v-col>
     </v-row>
@@ -120,7 +119,7 @@ const simulate = async () => {
     count: simulateCount,
   };
 
-  console.log(run_data);
+  // console.log(run_data);
 
   console.time("run");
   const result = await runWebWorker(run_data);
@@ -146,9 +145,10 @@ async function runWebWorker(data) {
       maxLog: null,
       rndLog: null,
     };
-
     for (let i = 0; i < numWorkers; i++) {
-      const worker = new Worker("/scripts/worker.js", { type: "module" });
+      const worker = new Worker(new URL('/src/worker.js', import.meta.url), {
+        type: 'module',
+      });
       worker.postMessage({ runs: runsPerWorker, data: data });
 
       worker.onmessage = (e) => {
@@ -190,10 +190,9 @@ async function runWebWorker(data) {
 </script>
 
 <style scoped>
-@media (max-width: 960px) {
-  /* スマホ画面でのスタイル */
+@media (max-width: 1280px) {
   .sp-pa-0 {
-    padding: 0; /* スマホではpaddingを0に */
+    padding: 0;
   }
 }
 </style>

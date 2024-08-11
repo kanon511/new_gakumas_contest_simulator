@@ -1,7 +1,8 @@
 .DS_Store
 node_modules
 /dist
-
+/old
+/docs
 
 # local env files
 .env.local
@@ -31,4 +32,3 @@ test/
 
 public/
 deno.lock
-contest_memory_select/

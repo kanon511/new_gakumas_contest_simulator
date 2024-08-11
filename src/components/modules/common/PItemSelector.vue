@@ -7,7 +7,7 @@
     >
       <v-img
         v-if="selectedPItem"
-        :src="`/images/pItems/pItem_${selectedPItem.id}.webp`"
+        :src="`images/pItems/pItem_${selectedPItem.id}.webp`"
         class="pItem-image"
         contain
       ></v-img>
@@ -36,7 +36,7 @@
               @click="selectpItem(pItem)"
             >
               <v-img
-                :src="`/images/pItems/pItem_${pItem.id}.webp`"
+                :src="`images/pItems/pItem_${pItem.id}.webp`"
                 class="pItem-option"
                 contain
               ></v-img>
