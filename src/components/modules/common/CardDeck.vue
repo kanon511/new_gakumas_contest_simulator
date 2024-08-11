@@ -12,11 +12,14 @@
       :key="index + 1"
     />
   </div>
+  <div>デッキコスト：{{ cost }}</div>
 </template>
 
 <script setup>
-import { defineModel, defineProps } from "vue";
+import { defineModel, defineProps, ref, watch } from "vue";
 import CardSelector from "./CardSelector.vue";
+
+const cost = ref(0);
 
 const props = defineProps({
   uniqueCards: {
@@ -30,6 +33,20 @@ const props = defineProps({
 });
 
 const selectedCards = defineModel("selectedCards");
+
+watch(
+  () => selectedCards,
+  () => {
+    let total = 0;
+    for (let i = 0; i < selectedCards.value.length; i++) {
+      if (selectedCards.value[i]) {
+        total += selectedCards.value[i].card_cost ?? 0;
+      }
+    }
+    cost.value = total;
+  },
+  { deep: true }
+);
 </script>
 
 <style scoped>

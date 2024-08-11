@@ -7,7 +7,7 @@
     >
       <v-img
         v-if="selectedPIdol"
-        :src="`public/images/episodes/episode_${selectedPIdol.id}.webp`"
+        :src="`/images/episodes/episode_${selectedPIdol.id}.webp`"
         class="pIdol-image"
         contain
       ></v-img>
@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <v-dialog v-model="dialog">
+    <v-dialog v-model="dialog" scrollable max-width="800px">
       <v-card>
         <v-card-title>キャラクターを選択</v-card-title>
         <v-divider></v-divider>
@@ -36,7 +36,7 @@
               @click="selectpIdol(pIdol)"
             >
               <v-img
-                :src="`public/images/episodes/episode_${pIdol.id}.webp`"
+                :src="`/images/episodes/episode_${pIdol.id}.webp`"
                 class="pIdol-list-image"
                 contain
               ></v-img>
@@ -56,7 +56,7 @@
             >
               <div class="item-image-wrapper">
                 <v-img
-                  :src="`public/images/episodes/episode_${item.id}.webp`"
+                  :src="`/images/episodes/episode_${item.id}.webp`"
                   cover
                 ></v-img>
               </div>
@@ -74,7 +74,7 @@
 
 <script setup>
 import { ref, watch, defineModel, defineProps, onMounted } from "vue";
-import { PIdolData } from "@/simulator/data/pIdolData";
+import { PIdolData } from "/scripts/simulator/data/pIdolData";
 
 const props = defineProps({
   contestPlan: {
@@ -96,10 +96,10 @@ watch(selectedPIdol, () => {
     sameSelectedPIdols.value = PIdolData.getByCharacterId(
       selectedPIdol.value.character_id
     );
-    const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set("p_idol", `${selectedPIdol.value.id}`);
-    window.history.replaceState(null, null, "?" + urlParams.toString());
   }
+  const urlParams = new URLSearchParams(window.location.search);
+  urlParams.set("p_idol", `${selectedPIdol.value?.id ?? ""}`);
+  window.history.replaceState(null, null, "?" + urlParams.toString());
 });
 
 //これだとCompositionBuilder.vueのsamePIdolCardIdsのcomputedが働かない

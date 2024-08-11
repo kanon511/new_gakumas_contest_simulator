@@ -7,14 +7,14 @@
     >
       <v-img
         v-if="selectedCard"
-        :src="`public/images/cards/card_${selectedCard.id}.webp`"
+        :src="`/images/cards/card_${selectedCard.id}.webp`"
         class="card-image"
         contain
       ></v-img>
       <v-icon v-else class="placeholder-icon">mdi-plus</v-icon>
     </v-card>
 
-    <v-dialog v-model="dialog" max-width="800px">
+    <v-dialog v-model="dialog" scrollable max-width="800px">
       <v-card>
         <v-card-title>カードを選択</v-card-title>
         <v-divider></v-divider>
@@ -83,7 +83,7 @@
                     style="width: 100%; aspect-ratio: 1"
                   >
                     <v-img
-                      :src="`public/images/cards/card_${item.id}.webp`"
+                      :src="`/images/cards/card_${item.id}.webp`"
                       cover
                       width="100%"
                       height="100%"
@@ -127,12 +127,15 @@ const dialog = ref(false);
 watch(
   () => props.cardList,
   (cardList) => {
-    if (
-      selectedCard.value &&
-      !cardList.some((item) => selectedCard.value.id == item.id)
-    ) {
-      selectedCard.value = null;
+    // console.log("cardList", cardList, "selected", selectedCard.value);
+    if (selectedCard.value) {
+      if (!cardList.some((item) => selectedCard.value.id == item.id)) {
+        selectedCard.value = null;
+      } else {
+        return;
+      }
     }
+
     if (props.autoSelect == "true" && cardList && cardList.length > 0) {
       selectedCard.value = cardList[0];
     }

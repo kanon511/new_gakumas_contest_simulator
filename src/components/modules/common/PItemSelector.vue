@@ -7,14 +7,14 @@
     >
       <v-img
         v-if="selectedPItem"
-        :src="`public/images/pItems/pItem_${selectedPItem.id}.webp`"
+        :src="`/images/pItems/pItem_${selectedPItem.id}.webp`"
         class="pItem-image"
         contain
       ></v-img>
       <v-icon v-else class="placeholder-icon">mdi-plus</v-icon>
     </v-card>
 
-    <v-dialog v-model="dialog" max-width="600px">
+    <v-dialog v-model="dialog" scrollable max-width="600px">
       <v-card>
         <v-card-title>Pアイテムを選択</v-card-title>
         <v-divider></v-divider>
@@ -36,7 +36,7 @@
               @click="selectpItem(pItem)"
             >
               <v-img
-                :src="`public/images/pItems/pItem_${pItem.id}.webp`"
+                :src="`/images/pItems/pItem_${pItem.id}.webp`"
                 class="pItem-option"
                 contain
               ></v-img>

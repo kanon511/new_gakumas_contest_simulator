@@ -1,5 +1,5 @@
 <template>
-  <v-container class="data-input-container">
+  <v-container class="sp-pa-0">
     <v-row>
       <v-col cols="8">
         <ContestSelector
@@ -22,15 +22,27 @@
     <v-row>
       <v-col cols="12">
         <v-btn
-          :loading="waitingFinishedRun"
+          :loading="props.waitingFinishedRun"
           color="green-darken-2"
           height="48"
           block
           variant="elevated"
-          @click="$emit('run-simulation')"
+          @click="sendEvent"
         >
           実行
         </v-btn>
+      </v-col>
+    </v-row>
+    <v-row class="sp-hide">
+      <v-col>
+        <v-text-field
+          v-model="copyText"
+          label="編成URL"
+          readonly
+          variant="solo"
+          prepend-inner-icon="mdi-content-copy"
+          @click:prependInner="copyToClipboard"
+        ></v-text-field>
       </v-col>
     </v-row>
   </v-container>
@@ -42,14 +54,31 @@ import ContestSelector from "./ContestSelector.vue";
 import StatusInputor from "./StatusInputor.vue";
 import CompositionBuilder from "./CompositionBuilder.vue";
 
-defineEmits(["run-simulation"]);
-defineProps(["waitingFinishedRun"]);
+const emits = defineEmits(["runSimulation"]);
+const sendEvent = () => {
+  copyText.value = location.href;
+  emits("runSimulation");
+};
+const props = defineProps(["waitingFinishedRun"]);
 
 /**
  * 双方向データ
  */
 const contestPlan = ref("");
 const contestPItemIds = ref([]);
+const copyText = ref("編成URLが表示されます");
+
+const copyToClipboard = () => {
+  if (copyText.value.indexOf("http") == -1) return;
+  navigator.clipboard
+    .writeText(copyText.value)
+    .then(() => {
+      //
+    })
+    .catch(() => {
+      //
+    });
+};
 
 // watchEffect(() => {
 //   const urlParams = new URLSearchParams(window.location.search);
@@ -62,4 +91,10 @@ const contestPItemIds = ref([]);
 // });
 </script>
 
-<style scoped></style>
+<style scoped>
+@media (max-width: 1280px) {
+  .sp-hide {
+    display: none;
+  }
+}
+</style>

@@ -1,14 +1,15 @@
 <template>
-  <v-container class="data-input-container">
+  <v-container class="sp-pa-0">
     <v-row>
       <v-col cols="12" lg="5" xl="5">
+        <div style="text-align: center;"><a href="https://katabami83.github.io/old/gakumas_contest_simulator/">動かない場合はこちら</a></div>
         <SimulatorInput
           @run-simulation="runSimulation"
           :waitingFinishedRun="waitingFinishedRun"
         />
       </v-col>
       <v-col cols="12" lg="7" xl="7">
-        <SimulatorOutput />
+        <SimulatorOutput :resultData="simulationResult" />
       </v-col>
     </v-row>
   </v-container>
@@ -18,27 +19,45 @@
 import SimulatorInput from "../modules/input/SimulatorInput.vue";
 import SimulatorOutput from "../modules/output/SimulatorOutput.vue";
 import { ref } from "vue";
-import { PIdolData } from "@/simulator/data/pIdolData";
-import { ContestData } from "@/simulator/data/contestData";
+import { PIdolData } from "/scripts/simulator/data/pIdolData";
+import { ContestData } from "/scripts/simulator/data/contestData";
 const simulationResult = ref(null);
 const waitingFinishedRun = ref(false);
 
 const runSimulation = async () => {
-  const result = await simulate();
-  simulationResult.value = result;
-  console.log(result);
-};
-
-const simulate = async () => {
   if (waitingFinishedRun.value) {
     return;
   }
   waitingFinishedRun.value = true;
+  const result = await simulate();
+  waitingFinishedRun.value = false;
+  if (result) {
+    simulationResult.value = result;
+  }
+};
+
+const simulate = async () => {
   const urlParams = new URLSearchParams(window.location.search);
-  const [vocal, dance, visual, hp] = urlParams.get("status").split(":");
-  const pIdolId = Number(urlParams.get("p_idol").split(":")[0]);
+  const [vocal, dance, visual, hp] = urlParams
+    .get("status")
+    .split(":")
+    .map(Number);
+  const pIdolId_raw = urlParams.get("p_idol");
+  if (!pIdolId_raw) {
+    alert(`Pアイドルを選択してください`);
+    return;
+  }
+  const pIdolId = Number(pIdolId_raw.split(":")[0]);
+  if (Number.isNaN(pIdolId) || pIdolId <= 0) {
+    alert(`Pアイドルを選択してください`);
+    return;
+  }
   const pIdol = PIdolData.getById(pIdolId);
-  const pItemIds_raw = urlParams.get("p_item_ids").split(":");
+  const pItemIds_raw = urlParams
+    .get("p_item_ids")
+    .split(":")
+    .filter((v) => v)
+    .map(Number);
   const pItemIds = Array.from(new Set(pItemIds_raw));
 
   const cardIds_raw = urlParams
@@ -101,10 +120,11 @@ const simulate = async () => {
     count: simulateCount,
   };
 
+  console.log(run_data);
+
   console.time("run");
   const result = await runWebWorker(run_data);
   console.timeEnd("run");
-  waitingFinishedRun.value = false;
   return result;
 };
 
@@ -128,7 +148,7 @@ async function runWebWorker(data) {
     };
 
     for (let i = 0; i < numWorkers; i++) {
-      const worker = new Worker("src/worker.js", { type: "module" });
+      const worker = new Worker("/scripts/worker.js", { type: "module" });
       worker.postMessage({ runs: runsPerWorker, data: data });
 
       worker.onmessage = (e) => {
@@ -172,7 +192,7 @@ async function runWebWorker(data) {
 <style scoped>
 @media (max-width: 960px) {
   /* スマホ画面でのスタイル */
-  .data-input-container {
+  .sp-pa-0 {
     padding: 0; /* スマホではpaddingを0に */
   }
 }

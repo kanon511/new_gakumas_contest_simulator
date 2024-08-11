@@ -9,12 +9,16 @@
     :uniqueCards="samePIdolCards"
     :normalCards="normalCards"
   />
+  <div style="text-align: center;">
+    <div>固有以外の重複不可カードは重複します<br>重複させない場合は片方で「-」を選択してください</div>
+    <div><a href="https://gkcontest.ris.moe/" target="_blank">デッキ作成シミュレータ(@risりす)</a></div>
+  </div>
 </template>
 
 <script setup>
 import { onMounted, ref, defineProps, computed, watch, watchEffect } from "vue";
 import CardDeck from "./CardDeck.vue";
-import { SkillCardData } from "@/simulator/data/skillCardData";
+import { SkillCardData } from "/scripts/simulator/data/skillCardData";
 
 const selectedCardsList = ref([
   [null, null, null, null, null, null],

@@ -1,11 +1,11 @@
 <template>
   <PItemSelector
-    :pItemList="pIdolPItems"
+    :pItemList="contestPItems"
     autoSelect="true"
     v-model:selectedPItem="selectedPItems[0]"
   /><!--contestPItem-->
   <PItemSelector
-    :pItemList="contestPItems"
+    :pItemList="pIdolPItems"
     autoSelect="true"
     v-model:selectedPItem="selectedPItems[1]"
   /><!--uniquePItem-->
@@ -20,7 +20,7 @@
 <script setup>
 import { onMounted, ref, watchEffect, computed, defineProps } from "vue";
 import PItemSelector from "./PItemSelector.vue";
-import { PItemData } from "@/simulator/data/pItemData";
+import { PItemData } from "/scripts/simulator/data/pItemData";
 
 // const selectedPItems = defineModel("selectedPItems");
 const selectedPItems = ref([null, null, null, null]);
@@ -53,10 +53,10 @@ onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search);
   const pItemsStr = urlParams.get("p_items");
   if (pItemsStr) {
-    const pItemIds = pItemIdsStr.split(":").map(Number);
+    const pItemIds = pItemsStr.split(":").map(Number);
     for (let i = 2; i < selectedPItems.value.length; i++) {
-      if (pItemMap.has(pItemIds[i])) {
-        selectedPItems.value[i] = pItemMap.get(pItemIds[i]);
+      if (pItemMap.has(pItemIds[i-2])) {
+        selectedPItems.value[i] = pItemMap.get(pItemIds[i-2]);
       }
     }
     urlParams.delete("p_items");

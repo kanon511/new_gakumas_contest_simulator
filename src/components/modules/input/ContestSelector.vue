@@ -141,7 +141,7 @@
 
 <script setup>
 import { onMounted, ref, watch, defineModel } from "vue";
-import { ContestData } from "@/simulator/data/contestData";
+import { ContestData } from "/scripts/simulator/data/contestData";
 import CriteriaLine from "../common/CriteriaLine.vue";
 
 const contestPlan = defineModel("contestPlan");

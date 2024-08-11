@@ -43,8 +43,8 @@ const props = defineProps({
 const pIdolPItemIds = computed(() => {
   if (selectedPIdol.value) {
     return [
-      selectedPIdol.value.unique_pIted_id,
-      selectedPIdol.value.unique_pIted_id + 1,
+      selectedPIdol.value.unique_pItem_id,
+      selectedPIdol.value.unique_pItem_id + 1,
     ];
   }
   return [];
