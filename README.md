@@ -1,6 +1,6 @@
 
 ## 構成
-
+<pre>
 ├── score_dataset # コンテスト編成とそのスコアのデータセット
 │   ├── convert.py
 │   └── data
@@ -33,7 +33,7 @@
 │   └── worker.js # 
 │
 └── src # GithubPages用
-
+</pre>
 ---
 
 ## メモ（備忘録）
