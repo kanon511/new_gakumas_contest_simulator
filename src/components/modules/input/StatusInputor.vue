@@ -8,9 +8,9 @@
   >
     <template v-slot:prepend>
       <v-img
-        src="images/icons/icon_vocal.png"
-        max-width="24"
-        max-height="24"
+        src="https://katabami83.github.io/gakumas_file/images/icons/icon_vocal.png"
+        width="24"
+        height="24"
       ></v-img>
     </template>
   </v-text-field>
@@ -24,9 +24,9 @@
   >
     <template v-slot:prepend>
       <v-img
-        src="images/icons/icon_dance.png"
-        max-width="24"
-        max-height="24"
+        src="https://katabami83.github.io/gakumas_file/images/icons/icon_dance.png"
+        width="24"
+        height="24"
       ></v-img>
     </template>
   </v-text-field>
@@ -40,9 +40,9 @@
   >
     <template v-slot:prepend>
       <v-img
-        src="images/icons/icon_visual.png"
-        max-width="24"
-        max-height="24"
+        src="https://katabami83.github.io/gakumas_file/images/icons/icon_visual.png"
+        width="24"
+        height="24"
       ></v-img>
     </template>
   </v-text-field>
@@ -56,9 +56,9 @@
   >
     <template v-slot:prepend>
       <v-img
-        src="images/icons/icon_hp.png"
-        max-width="24"
-        max-height="24"
+        src="https://katabami83.github.io/gakumas_file/images/icons/icon_hp.png"
+        width="24"
+        height="24"
       ></v-img>
     </template>
   </v-text-field>

@@ -39,9 +39,9 @@
   >
     <template v-slot:selection="{ item }">
       <v-img
-        :src="`images/icons/icon_${item.raw.plan ?? 'free'}.png`"
-        max-width="24"
-        max-height="24"
+        :src="`https://katabami83.github.io/gakumas_file/images/icons/icon_${item.raw.plan ?? 'free'}.png`"
+        width="24"
+        height="24"
       ></v-img>
       <span>{{ item.raw.selectedTitle }}</span>
     </template>
@@ -81,9 +81,9 @@
       <v-list-item v-else v-bind="props" :disabled="item.raw.disabled">
         <template v-slot:prepend>
           <v-img
-            :src="`images/icons/icon_${item.raw.plan ?? 'free'}.png`"
-            max-width="30"
-            max-height="30"
+            :src="`https://katabami83.github.io/gakumas_file/images/icons/icon_${item.raw.plan ?? 'free'}.png`"
+            width="30"
+            height="30"
           ></v-img>
         </template>
       </v-list-item>

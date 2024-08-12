@@ -7,7 +7,7 @@
     >
       <v-img
         v-if="selectedCard"
-        :src="`images/cards/card_${selectedCard.id}.webp`"
+        :src="`https://katabami83.github.io/gakumas_file/images/cards/card_${selectedCard.id}.webp`"
         class="card-image"
         contain
       ></v-img>
@@ -83,7 +83,7 @@
                     style="width: 100%; aspect-ratio: 1"
                   >
                     <v-img
-                      :src="`images/cards/card_${item.id}.webp`"
+                      :src="`https://katabami83.github.io/gakumas_file/images/cards/card_${item.id}.webp`"
                       cover
                       width="100%"
                       height="100%"
