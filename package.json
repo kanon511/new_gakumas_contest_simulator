@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vite preview",
+    "GA_build": "vite build --base=/gakumas_contest_simulator/",
     "build": "vite build",
     "lint": "vue-cli-service lint",
     "dev": "vite"
