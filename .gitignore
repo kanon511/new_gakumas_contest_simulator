@@ -29,6 +29,6 @@ trash/
 test/
 
 
-public/
+public/images/
 deno.lock
 node_modules
