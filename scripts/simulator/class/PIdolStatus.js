@@ -1,4 +1,4 @@
-import { deep_copy } from "../../util/utility.js";
+import { deep_copy } from "../../../scripts/util/utility.js";
 
 const statusList = [
     // センス

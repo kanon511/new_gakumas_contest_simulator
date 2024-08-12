@@ -1,3 +1,26 @@
+.DS_Store
+node_modules
+/dist
+/old
+
+# local env files
+.env.local
+.env.*.local
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
 todo.md
 test.js
 main.js
@@ -5,9 +28,8 @@ main.js
 html_test/
 trash/
 test/
-public/
-src/
-deno.lock
-contest_memory_select/
 
+
+public/
+deno.lock
 node_modules
