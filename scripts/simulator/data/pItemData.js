@@ -1368,7 +1368,7 @@ const pItemData = [
         condition: 'remain_turn<=4',
         effects: [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
-            { type: 'status', target: '消費体力増加', value: 1 },
+            { type: 'status', target: '消費体力削減', value: -1 },
         ],
         limit: 4,
     },
