@@ -22,7 +22,7 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'docs',  // ビルド出力ディレクトリを`docs`に変更
+    outDir: 'dist',  // ビルド出力ディレクトリを`docs`に変更
   },
   base: './',
   /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
