@@ -192,6 +192,39 @@ const contestData = [
             },
         ],
     },
+
+    {
+        id: 240821,
+        name: '第7期コンテスト', 
+        period: '2024/08/21 - 8/10',
+        criteria: { 'vocal': 15, 'dance': 50, 'visual': 35 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240821],
+                plan: 'free',
+                turnTypes: [2, 6, 4],
+            },
+            {
+                name: 'ステージ2',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240822],
+                plan: 'sense',
+                turnTypes: [2, 6, 4],
+            },
+            {
+                name: 'ステージ3',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240813],
+                plan: 'logic',
+                turnTypes: [2, 6, 4],
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {
