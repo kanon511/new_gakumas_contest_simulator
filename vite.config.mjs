@@ -3,8 +3,6 @@ import vue from "@vitejs/plugin-vue";
 import vuetify from "vite-plugin-vuetify";
 import { resolve } from "path";
 
-const path = require("path");
-
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -17,16 +15,15 @@ export default defineConfig({
   define: { "process.env": {} },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
-      // '#': path.resolve(__dirname, 'scripts') // scripts ディレクトリへのエイリアスを設定
+      "@": resolve(__dirname, "src"),
     },
   },
   build: {
-    outDir: 'dist',  // ビルド出力ディレクトリを`docs`に変更
+    outDir: "dist",
     //assetsDir: './',
   },
   // publicPath: './',
-  base: './',
+  base: "./",
   /* remove the need to specify .vue files https://vitejs.dev/config/#resolve-extensions
   resolve: {
     extensions: [

@@ -1,7 +1,5 @@
 .DS_Store
 node_modules
-/dist
-/old
 
 # local env files
 .env.local
@@ -21,14 +19,10 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
-todo.md
-test.js
+.eslintrc.*
+
 .vscode
-html_test/
+dist/
 trash/
 test/
-
-
 public/images/
-deno.lock
-node_modules

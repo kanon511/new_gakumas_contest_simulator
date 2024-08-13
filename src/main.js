@@ -18,12 +18,12 @@ const app = createApp(App);
 
 let isAlertError = true;
 window.addEventListener("error", (event) => {
-    if (isAlertError) {
-        isAlertError = false;
-        alert(event.message);
-        console.log(event.error);
-        setTimeout(() => isAlertError = true, 2000);
-    }
+  if (isAlertError) {
+    isAlertError = false;
+    alert(event.message);
+    console.log(event.error);
+    setTimeout(() => (isAlertError = true), 2000);
+  }
 });
 
 app.use(vuetify).mount("#app");
