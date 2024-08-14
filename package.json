@@ -2,6 +2,7 @@
   "name": "gakumas_contest_simulator",
   "version": "",
   "private": true,
+  "type": "module",
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",
