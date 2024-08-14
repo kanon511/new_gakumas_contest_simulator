@@ -34,7 +34,10 @@ export class Calculator {
         }
         if (type == 'block') {
             if (args[0] < 0) {
-                return unitValue * args[0] / (status.hp + status.block) * status.remainTurn * 9;
+                if (status.remainTurn<2){
+                    return 15 * args[0]; //重写
+                }
+                return 15 * args[0] * status.remainTurn *status.remainTurn / 4; //重写
             }
             return unitValue * args[0] * Math.sqrt(status.remainTurn+5) * 0.75;
         }
