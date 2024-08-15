@@ -10,6 +10,7 @@ export const run = (data) => {
         trend: data.trend,
         pItemIds: data.pItemIds,
         skillCardIds: data.skillCardIds,
+        autoId: data.autoId
     });
 
     const contest = new Contest({

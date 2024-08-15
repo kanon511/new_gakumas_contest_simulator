@@ -19,8 +19,9 @@ export class PIdol {
     #log;
     #turnType;
     #trendEvaluationVonusCoef;
+    #autoId;
 
-    constructor ({ parameter, plan, trend, pItemIds, skillCardIds }) {
+    constructor ({ parameter, plan, trend, pItemIds, skillCardIds, autoId}) {
 
         this.#parameter = {
             vocal : parameter.vocal,
@@ -36,6 +37,7 @@ export class PIdol {
             block: 0,
             score: 0,
             plan: plan,
+            trend: trend,
             turn: 0,
             currentTurnType: null,
             extraTurn: 0,
@@ -54,6 +56,8 @@ export class PIdol {
 
         this.#trendEvaluationVonusCoef = {}
         this.#trendEvaluationVonusCoef[trend] = 1.5;
+
+        this.#autoId = autoId;
     }
 
     init (turnCount, critearia, turnTypes) {
@@ -239,7 +243,7 @@ export class PIdol {
 
     #evaluateExecutions (executions) {
         return Math.floor(executions.reduce((acc, curr) => {
-            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef);
+            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef,this.#autoId);
             return acc + evaluation;
         }, 0));
     }
