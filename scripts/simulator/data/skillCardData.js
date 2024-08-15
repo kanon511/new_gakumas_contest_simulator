@@ -28,6 +28,7 @@ export const skillCardData = [
             { type: 'score', value: 9 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -41,6 +42,7 @@ export const skillCardData = [
             { type: 'score', value: 14 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -55,6 +57,7 @@ export const skillCardData = [
             { type: 'block', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -69,6 +72,7 @@ export const skillCardData = [
             { type: 'block', value: 4 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -86,6 +90,7 @@ export const skillCardData = [
             { type: 'score', value: 25 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -99,6 +104,7 @@ export const skillCardData = [
             { type: 'score', value: 37 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -113,6 +119,7 @@ export const skillCardData = [
             { type: 'score', value: 8 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -127,6 +134,7 @@ export const skillCardData = [
             { type: 'score', value: 10 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -145,6 +153,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -159,6 +168,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -172,6 +182,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -185,6 +196,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 110 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -202,6 +214,7 @@ export const skillCardData = [
             { type: 'block', value: 4 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -215,6 +228,7 @@ export const skillCardData = [
             { type: 'block', value: 7 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -233,6 +247,7 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -247,6 +262,7 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -261,6 +277,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -275,6 +292,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -293,6 +311,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -307,6 +326,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -321,6 +341,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     {
@@ -335,6 +356,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -351,6 +373,7 @@ export const skillCardData = [
         effects: [
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: true,
     },
     /**
@@ -1124,6 +1147,7 @@ export const skillCardData = [
             { type: 'score', value: 17 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1137,6 +1161,7 @@ export const skillCardData = [
             { type: 'score', value: 25 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1150,6 +1175,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 190 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1163,6 +1189,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1177,6 +1204,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1191,6 +1219,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1204,6 +1233,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1217,6 +1247,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 8 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1231,6 +1262,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1245,6 +1277,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1259,6 +1292,7 @@ export const skillCardData = [
             { type: 'status', target: '絶好調', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1273,6 +1307,7 @@ export const skillCardData = [
             { type: 'status', target: '絶好調', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1287,6 +1322,7 @@ export const skillCardData = [
             { type: 'score', value: 3, condition: '好調>0' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1301,6 +1337,7 @@ export const skillCardData = [
             { type: 'score', value: 5, condition: '好調>0' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1315,6 +1352,7 @@ export const skillCardData = [
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1329,6 +1367,7 @@ export const skillCardData = [
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1344,6 +1383,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1359,6 +1399,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1373,6 +1414,7 @@ export const skillCardData = [
             { type: 'score', value: 10, condition: '集中>=6' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1387,6 +1429,7 @@ export const skillCardData = [
             { type: 'score', value: 12 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1401,6 +1444,7 @@ export const skillCardData = [
             { type: 'block', value: 3, condition: 'やる気>=6' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1415,6 +1459,7 @@ export const skillCardData = [
             { type: 'block', value: 5, condition: 'やる気>=6' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1430,6 +1475,7 @@ export const skillCardData = [
             { type: 'hp', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1445,6 +1491,7 @@ export const skillCardData = [
             { type: 'hp', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1458,6 +1505,7 @@ export const skillCardData = [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 3 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -1471,6 +1519,7 @@ export const skillCardData = [
             { type: 'block', value: 4, options: [{ type: '使用したスキルカード数', value: 4 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     /**
@@ -2709,6 +2758,7 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2723,6 +2773,7 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 4 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2737,6 +2788,7 @@ export const skillCardData = [
             { type: 'score', value: 12, condition: '集中>=3' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2751,6 +2803,7 @@ export const skillCardData = [
             { type: 'score', value: 12, condition: '集中>=3' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2764,6 +2817,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2777,6 +2831,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 8 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2791,6 +2846,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 3, condition: '好調>0' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2805,6 +2861,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 4, condition: '好調>0' },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2819,6 +2876,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2833,6 +2891,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 160 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2847,6 +2906,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 5 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2861,6 +2921,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 6 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2874,6 +2935,7 @@ export const skillCardData = [
             { type: 'score', value: 17, options: [{ type: '集中', value: 2 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2887,6 +2949,7 @@ export const skillCardData = [
             { type: 'score', value: 24, options: [{ type: '集中', value: 2.5 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2901,6 +2964,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 250 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2915,6 +2979,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 350 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2929,6 +2994,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2943,6 +3009,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2957,6 +3024,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -2971,6 +3039,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 140 }] },
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     /**
@@ -4040,6 +4109,7 @@ export const skillCardData = [
             { type: 'score', value: 34 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4053,6 +4123,7 @@ export const skillCardData = [
             { type: 'score', value: 48 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4066,6 +4137,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 250 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4079,6 +4151,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 260 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4094,6 +4167,7 @@ export const skillCardData = [
             { type: 'draw', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4109,6 +4183,7 @@ export const skillCardData = [
             { type: 'draw', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4123,6 +4198,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 5 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4137,6 +4213,7 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 5 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4153,6 +4230,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 8 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4169,6 +4247,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 10 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4183,6 +4262,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 7 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4197,6 +4277,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 9 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4211,6 +4292,7 @@ export const skillCardData = [
             { type: 'status', target: '絶好調', value: 4 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4225,6 +4307,7 @@ export const skillCardData = [
             { type: 'status', target: '絶好調', value: 5 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4243,6 +4326,7 @@ export const skillCardData = [
             { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4261,6 +4345,7 @@ export const skillCardData = [
             { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4275,6 +4360,7 @@ export const skillCardData = [
             { type: 'score', value: 14, condition: '好調>0' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4289,6 +4375,7 @@ export const skillCardData = [
             { type: 'score', value: 20, condition: '好調>0' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4304,6 +4391,7 @@ export const skillCardData = [
             { type: 'score', value: 9 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4319,6 +4407,7 @@ export const skillCardData = [
             { type: 'score', value: 14 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4333,6 +4422,7 @@ export const skillCardData = [
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4347,6 +4437,7 @@ export const skillCardData = [
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4361,6 +4452,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好調', value: 200 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4375,6 +4467,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好調', value: 300 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4390,6 +4483,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 2 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4405,6 +4499,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4420,6 +4515,7 @@ export const skillCardData = [
             { type: 'score', value: 7, condition: '集中>=6' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4435,6 +4531,7 @@ export const skillCardData = [
             { type: 'score', value: 9, condition: '集中>=6' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4449,6 +4546,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3, condition: 'やる気>=6' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4463,6 +4561,7 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 5, condition: 'やる気>=3' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4477,6 +4576,7 @@ export const skillCardData = [
             { type: 'block', value: 4, condition: 'やる気>=3' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4491,6 +4591,7 @@ export const skillCardData = [
             { type: 'block', value: 7, condition: 'やる気>=3' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4505,6 +4606,7 @@ export const skillCardData = [
             { type: 'block', value: 6, condition: 'hpPer<=50' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4519,6 +4621,7 @@ export const skillCardData = [
             { type: 'block', value: 12, condition: 'hpPer<=50' }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4533,6 +4636,7 @@ export const skillCardData = [
             { type: 'hp', value: 4 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4547,6 +4651,7 @@ export const skillCardData = [
             { type: 'hp', value: 5 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4562,6 +4667,7 @@ export const skillCardData = [
             { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4577,6 +4683,7 @@ export const skillCardData = [
             { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4590,6 +4697,7 @@ export const skillCardData = [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 5 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     {
@@ -4603,6 +4711,7 @@ export const skillCardData = [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 8 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
         allow_duplicate: false,
     },
     /**
