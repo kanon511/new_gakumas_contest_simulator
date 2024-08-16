@@ -49,11 +49,14 @@ export class TurnType {
         typeCount[criteariaRank[1]] -= 1;
         typeCount[criteariaRank[2]] -= 1;
 
-        const array = [typeCount['vocal'], typeCount['dance'], typeCount['visual']];
-        const typeIdx = ['vocal', 'dance', 'visual'];
+        //const array = [typeCount['vocal'], typeCount['dance'], typeCount['visual']];
+        const array = [typeCount[criteariaRank[0]], typeCount[ criteariaRank[1]], typeCount[criteariaRank[2]]];
+
+        //const typeIdx = ['vocal', 'dance', 'visual'];
         for (let i = turnCountStart; i < turnCount - 3; i++) {
             const chooseIdx = this.#getRandomIndex(array);
-            this.#turnTypes[i] = typeIdx[chooseIdx];
+            //this.#turnTypes[i] = typeIdx[chooseIdx];
+            this.#turnTypes[i] = criteariaRank[chooseIdx];
             array[chooseIdx]--;
         }
     }
@@ -63,15 +66,26 @@ export class TurnType {
      * @param {Array<Number>} array 数値配列
      * @returns {Number} 入力配列のindex
      */
+    // #getRandomIndex (array) {
+    //     const totalCount = array.reduce((pre, crt) => pre+crt, 0);
+    //     const randomNumber = Math.floor(Math.random()*totalCount);
+    //     for (let i = 0, currentNumber = 0; i < array.length; i++) {
+    //         currentNumber += array[i];
+    //         if (randomNumber < currentNumber) {
+    //             return i;
+    //         }
+    //     }
+    // }
     #getRandomIndex (array) {
-        const totalCount = array.reduce((pre, crt) => pre+crt, 0);
-        const randomNumber = Math.floor(Math.random()*totalCount);
-        for (let i = 0, currentNumber = 0; i < array.length; i++) {
-            currentNumber += array[i];
-            if (randomNumber < currentNumber) {
-                return i;
-            }
-        }
+        if(Math.random()<0.7&&array[0]>0)
+            return 0
+        if(Math.random()<0.7&&array[1]>0)
+            return 1
+        if(array[2]>0)
+            return 2
+        if(array[1]>0)
+            return 1
+        return 0
     }
 
     /**

@@ -20,9 +20,9 @@ export class Calculator {
             if (type == 'status') {
                 const statusType = args[1];
                 const coef = trendVonusCoef[statusType] ?? 1;
-                return AutoEvaluationData.get(status.trend,statusType,status.remainTurn,args[0],unitValue)
+                return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],unitValue)
             }
-            return AutoEvaluationData.get(status.trend,type,status.remainTurn,args[0],unitValue)
+            return AutoEvaluationData.get(status.trend,type,status.remainTurn-status.extraTurn,args[0],unitValue)
         }else{
             let { type, args } = action;
             const unitValue = parameter['avg'] / 100;

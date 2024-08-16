@@ -2219,7 +2219,9 @@ export class AutoEvaluationData {
         'スキルカード使用数追加':"ProduceExamAutoEvaluationType_ExamExtraTurn",
         '絶好調':"ProduceExamAutoEvaluationType_ParameterBuffMultiplePerTurn",
         //"ProduceExamAutoEvaluationType_ParameterBuffOverTurn"?未知
-        'extra_turn':"ProduceExamAutoEvaluationType_ExamExtraTurn"
+        'extra_turn':"ProduceExamAutoEvaluationType_ExamExtraTurn",
+
+        '、パラメータ':"ProduceExamAutoEvaluationType_ExamExtraTurn"//至高优先级提升至最高，临时解决方案
     };
     static b={
         '好調':"ProduceExamEffectType_ExamParameterBuff",
@@ -2229,12 +2231,40 @@ export class AutoEvaluationData {
     };
 
     static get(IdolType,type,remainTurn,n,unitValue){
-        if(!this.a[type]){
-            return 0;
+        if(remainTurn<1){
+            remainTurn=1
         }
 
         if(type=='score'){
             unitValue=1
+        }
+        //else if(type=='パラメータ'||type=='、パラメータ'){
+        else if(type=='パラメータ'){
+            type='score'
+        }
+        else if (type.slice(0,14) == 'アクティブスキルカード使用時') {
+            let [ ltype,n ] = type.slice(14).split('+')
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.9)
+        }
+        else if (type.slice(0,13) == 'メンタルスキルカード使用時') {
+            let [ ltype,n ] = type.slice(13).split('+')
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.9)
+        }
+        else if (type.slice(0,17) == 'ターン終了時、集中が3以上の場合、') {
+            let [ ltype,n ] = type.slice(17).split('+')
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.8)
+        }
+        else if (type.slice(0,18) == 'ターン終了時、好印象が3以上の場合、') {
+            let [ ltype,n ] = type.slice(18).split('+')
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.8)
+        }
+        else if (type.slice(0,7) == 'ターン終了時、') {
+            let [ ltype,n ] = type.slice(7).split('+')
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.0)
+        }
+
+        if(!this.a[type]){
+            return 0;
         }
 
         let eva = this.data[this.b[IdolType]]["evaluations"];

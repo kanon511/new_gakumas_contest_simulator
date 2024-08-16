@@ -1161,7 +1161,7 @@ const pItemData = [
         condition: 'turnType==vocal',
         effects: [
             { type: 'status', target: '集中', value: 4 },
-            { type: 'direct_hp', value: 2 },
+            { type: 'direct_hp', value: -2 },
         ],
         limit: 1,
     },
@@ -1172,7 +1172,7 @@ const pItemData = [
         condition: 'turnType==dance',
         effects: [
             { type: 'status', target: '好印象', value: 2 },
-            { type: 'hp', value: 1 },
+            { type: 'hp', value: -1 },
         ],
         limit: 2,
     },
