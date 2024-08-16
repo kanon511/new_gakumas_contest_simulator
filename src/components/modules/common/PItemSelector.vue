@@ -72,11 +72,12 @@ const dialog = ref(false);
 watch(
   () => props.pItemList,
   (pItemList) => {
-    if (
-      selectedPItem.value &&
-      !pItemList.some((item) => selectedPItem.value.id == item.id)
-    ) {
-      selectedPItem.value = null;
+    if (selectedPItem.value) {
+      if (!pItemList.some((item) => selectedPItem.value.id == item.id)) {
+        selectedPItem.value = null;
+      } else {
+        return;
+      }
     }
     if (props.autoSelect == "true" && pItemList && pItemList.length > 0) {
       selectedPItem.value = pItemList[0];
