@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card
-      :class="['card-box', { selected: selectedCard }]"
+      :class="['card-box', { selected: selectedCard }, { disable: !availableSelectedCard }]"
       variant="text"
       @click="dialog = true"
     >
@@ -111,6 +111,9 @@ import { ref, defineModel, watch } from "vue";
 import { defineProps } from "vue";
 
 const props = defineProps({
+  availableSelectedCard: {
+    type: Boolean,
+  },
   autoSelect: {
     type: String,
   },
@@ -170,6 +173,13 @@ const selectCard = (card) => {
 .card-image {
   width: 100%;
   height: 100%;
+}
+
+.disable {
+  background-color: black;
+}
+.disable .v-img {
+  opacity: 0.5;
 }
 /*
 

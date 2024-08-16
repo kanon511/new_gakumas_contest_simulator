@@ -20,6 +20,7 @@ import SimulatorOutput from "../modules/output/SimulatorOutput.vue";
 import { ref } from "vue";
 import { PIdolData } from "/scripts/simulator/data/pIdolData";
 import { ContestData } from "/scripts/simulator/data/contestData";
+import { SkillCardData } from "/scripts/simulator/data/skillCardData";
 const simulationResult = ref(null);
 const waitingFinishedRun = ref(false);
 
@@ -69,16 +70,52 @@ const simulate = async () => {
     }, [])
     .map(Number);
 
-  if (
-    cardIds_raw[0] == cardIds_raw[6] ||
-    cardIds_raw[0] + 1 == cardIds_raw[6] ||
-    cardIds_raw[0] == cardIds_raw[6] + 1 ||
-    cardIds_raw[0] + 1 == cardIds_raw[6] + 1
-  ) {
-    cardIds_raw[0] = Math.max(cardIds_raw[0], cardIds_raw[6]);
-    cardIds_raw[6] = 0;
+  const getAvailableCardIds = (cardIds) => {
+    const cardMap = SkillCardData.getAll().reduce((map, item) => {
+      map.set(item.id, item);
+      return map;
+    }, new Map());
+    const result = [];
+    const seen = new Map();
+    cardIds.forEach((id, index) => {
+      const baseId = Math.floor(id/10);
+      // 該当するカードがない（空欄）
+      if (!cardMap.has(id)) {
+        return;
+      }
+      // 重複が許可されている
+      if (cardMap.get(id)['allow_duplicate']) { 
+        result.push(id);
+        return;
+      }
+      // 重複が許可されていない
+      const rank = id % 10;
+      if (!seen.has(baseId)) { // 初めての種類のカードなら登録してtrue
+        result.push(id);
+        seen.set(baseId, { index: result.length-1, rank });
+      } else { // 記録済みの種類のカードならrank(強化)を比べて大きい方(>)をtrue、(<=)をfalse
+        const seenItem = seen.get(baseId);
+        if (rank > seenItem.rank) {
+          result[seenItem.index] = id;
+          seen.set(baseId, { index: seenItem.index, rank });
+        }
+      }
+    });
+    return result;
   }
-  const cardIds = cardIds_raw.filter((val) => val > 0);
+  const cardIds = getAvailableCardIds(cardIds_raw);
+  console.log(cardIds.map(id=>SkillCardData.getById(id).name));
+
+  // if (
+  //   cardIds_raw[0] == cardIds_raw[6] ||
+  //   cardIds_raw[0] + 1 == cardIds_raw[6] ||
+  //   cardIds_raw[0] == cardIds_raw[6] + 1 ||
+  //   cardIds_raw[0] + 1 == cardIds_raw[6] + 1
+  // ) {
+  //   cardIds_raw[0] = Math.max(cardIds_raw[0], cardIds_raw[6]);
+  //   cardIds_raw[6] = 0;
+  // }
+  // const cardIds = cardIds_raw.filter((val) => val > 0);
 
   let default_skillCardIds = [];
   switch (pIdol.plan) {

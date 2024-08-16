@@ -1,16 +1,17 @@
 <template>
   <CardDeck
     v-model:selectedCards="selectedCardsList[0]"
+    :availableSelectedCards="availableSelectedCardsList[0]"
     :uniqueCards="pIdolCards"
     :normalCards="normalCards"
   />
   <CardDeck
     v-model:selectedCards="selectedCardsList[1]"
+    :availableSelectedCards="availableSelectedCardsList[1]"
     :uniqueCards="samePIdolCards"
     :normalCards="normalCards"
   />
   <div style="text-align: center;">
-    <div>固有以外の重複不可カードは重複します<br>重複させない場合は片方で「-」を選択してください</div>
     <div><a href="https://gkcontest.ris.moe/" target="_blank">デッキ作成シミュレータ(@risりす)</a></div>
   </div>
 </template>
@@ -25,10 +26,78 @@ const selectedCardsList = ref([
   [null, null, null, null, null, null],
 ]);
 
+const availableSelectedCardsList = ref([
+  [true, true, true, true, true, true],
+  [true, true, true, true, true, true],
+]);
+
 const cardMap = SkillCardData.getAll().reduce((map, item) => {
   map.set(item.id, item);
   return map;
 }, new Map());
+
+watch(selectedCardsList, () => {
+  const selectedCardIds = selectedCardsList.value[0].concat(selectedCardsList.value[1]).map(item => item?.id ?? 0);
+  const baseIds = selectedCardIds.map(id => Math.floor(Number(id)/10));
+  const seen = new Map();
+  const result = baseIds.map(_=>false);
+  result.forEach((_, index) => {
+    const baseId = baseIds[index];
+    // 該当するカードがない（空欄）
+    if (!cardMap.has(selectedCardIds[index])) {
+      result[index] = true; 
+      return;
+    }
+    // 重複が許可されている
+    if (cardMap.get(selectedCardIds[index])['allow_duplicate']) { 
+      result[index] = true; 
+      return;
+    }
+    // 重複が許可されていない
+    const rank = selectedCardIds[index] % 10;
+    if (!seen.has(baseId)) { // 初めての種類のカードなら登録してtrue
+      result[index] = true;
+      seen.set(baseId, { index, rank });
+    } else { // 記録済みの種類のカードならrank(強化)を比べて大きい方(>)をtrue、(<=)をfalse
+      const seenItem = seen.get(baseId);
+      if (rank > seenItem.rank) {
+        result[seenItem.index] = false;
+        result[index] = true;
+        seen.set(baseId, { index, rank });
+      }
+    }
+  });
+  result.forEach((bool, index) => availableSelectedCardsList.value[Math.floor(index/6)][index%6] = bool);
+}, { deep: true })
+
+// computed(() => {
+//   const selectedCardIds = selectedCardsList.value.map(item => item?.id ?? 0);
+//   const baseIds = selectedCardIds.map(id => Math.floor(Number(id)/10));
+//   const seen = new Map();
+
+//   const result = baseIds.map(_=>false);
+//   result.forEach((_, index) => {
+//     const baseId = baseIds[index];
+//     if (baseId == 0) { 
+//       result[index] = true; 
+//       return;
+//     }
+//     const rank = selectedCardIds[index] % 10;
+//     if (!seen.has(baseId)) {
+//       result[index] = true;
+//       seen.set(baseId, { index, rank });
+//     } else {
+//       const seenItem = seen.get(baseId);
+//       if (rank > seenItem.rank) {
+//         result[seenItem.index] = false;
+//         result[index] = true;
+//         seen.set(baseId, { index, rank });
+//       }
+//     }
+//   });
+//   console.log(result);
+//   return result;
+// });
 
 const props = defineProps({
   pIdolPlan: {

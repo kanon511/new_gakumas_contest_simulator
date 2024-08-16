@@ -2,12 +2,14 @@
   <div class="deck">
     <CardSelector
       v-model:selectedCard="selectedCards[0]"
+      :availableSelectedCard="availableSelectedCards[0]"
       :cardList="props.uniqueCards"
       autoSelect="true"
     />
     <CardSelector
       :cardList="props.normalCards"
       v-for="(_, index) in selectedCards.slice(1)"
+      :availableSelectedCard="availableSelectedCards[index + 1]"
       v-model:selectedCard="selectedCards[index + 1]"
       :key="index + 1"
     />
@@ -22,6 +24,9 @@ import CardSelector from "./CardSelector.vue";
 const cost = ref(0);
 
 const props = defineProps({
+  availableSelectedCards: {
+    type: Array,
+  },
   uniqueCards: {
     type: Array,
     require: true,
