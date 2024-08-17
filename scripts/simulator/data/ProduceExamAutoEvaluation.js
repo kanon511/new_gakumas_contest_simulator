@@ -2230,13 +2230,13 @@ export class AutoEvaluationData {
         'やる気':"ProduceExamEffectType_ExamCardPlayAggressive"
     };
 
-    static get(IdolType,type,remainTurn,n,unitValue){
+    static get(IdolType,type,remainTurn,n,unitValue,autoId){
         if(remainTurn<1){
             remainTurn=1
         }
 
         if(type=='score'){
-            unitValue=1
+            n/=unitValue
         }
         //else if(type=='パラメータ'||type=='、パラメータ'){
         else if(type=='パラメータ'){
@@ -2267,6 +2267,10 @@ export class AutoEvaluationData {
             return 0;
         }
 
+        if(autoId==2&&type=='score'){
+            unitValue*=unitValue/10
+        }
+
         let eva = this.data[this.b[IdolType]]["evaluations"];
         let info;
         if(!eva[remainTurn]){
@@ -2275,7 +2279,8 @@ export class AutoEvaluationData {
             info=eva[remainTurn];
         }
         info=info[this.a[type]];
-        //console.log(info,n,unitValue)
+        if(Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000)>3000000)
+            console.log(info,n,unitValue,Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000))
         return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000);
     }
 }

@@ -56,7 +56,7 @@ export class TurnType {
 
         for (let i = turnCountStart; i < turnCount - 3; i++) {
             let chooseIdx;
-            if(autoId==0){
+            if(autoId==0||autoId==2){
                 chooseIdx = this.#getNewRandomIndex(array);
             }
             else{

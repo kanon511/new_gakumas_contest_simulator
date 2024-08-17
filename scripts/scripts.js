@@ -452,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             count: simulateCount,
         };
-        if(autoId==0){
+        if(!autoId==1){
             alert("当前使用的是新版AI，AI优先级来自游戏解包文件\n如果发现AI与实际模拟不符，请联系QQ：2750368249\n若想使用原AI请在运行按钮上方选项更改")
         }
         
