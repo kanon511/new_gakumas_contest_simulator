@@ -320,27 +320,91 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (pItems) {
             const itemIds = pItems.split(":");
-            element_pItems.slice(2).forEach((elem, idx) => (elem.value = itemIds[idx]));
+            element_pItems.slice(1).forEach((elem, idx) => {
+                elem.value = 2 * Math.floor(itemIds[idx] / 2);
+                elem.parentNode.getElementsByClassName("checkbox")[0].checked =
+                    itemIds[idx] % 2 > 0;
+                elem.dispatchEvent(new Event("change"));
+            });
         }
         if (cards) {
             const cardIds = cards.split("_").map((cardGroup) => cardGroup.split(":"));
             element_main_cards.forEach((elem, idx) => {
-            elem.value = 2 * Math.floor(cardIds[0][idx] / 2);
-            elem.parentNode.getElementsByClassName("checkbox")[0].checked =
-                cardIds[0][idx] % 2 > 0;
-            elem.dispatchEvent(new Event("change"));
+                elem.value = 2 * Math.floor(cardIds[0][idx] / 2);
+                elem.parentNode.getElementsByClassName("checkbox")[0].checked =
+                    cardIds[0][idx] % 2 > 0;
+                elem.dispatchEvent(new Event("change"));
             });
             element_sub_cards.forEach((elem, idx) => {
-            elem.value = 2 * Math.floor(cardIds[1][idx] / 2);
-            elem.parentNode.getElementsByClassName("checkbox")[0].checked =
-                cardIds[1][idx] % 2 > 0;
-            elem.dispatchEvent(new Event("change"));
+                elem.value = 2 * Math.floor(cardIds[1][idx] / 2);
+                elem.parentNode.getElementsByClassName("checkbox")[0].checked =
+                    cardIds[1][idx] % 2 > 0;
+                elem.dispatchEvent(new Event("change"));
             });
         }
     }
 
     function saveOptiostoSearchParams() {
-        
+        let str='https://kanon511.github.io/new_gakumas_contest_simulator?'
+        +`contest_stage=${element_contest_stage_select.value}&`
+        +`p_idol=${element_main_character_select.value}:${element_sub_character_select.value}&`
+        +`status=${document.getElementById("status-vocal").value}:${document.getElementById("status-dance").value}:${document.getElementById("status-visual").value}:${document.getElementById("status-hp").value}&`
+        +`p_items=${(()=>{
+            let j=''
+            element_pItems.slice(1).forEach((elem, idx) => {
+                let i=Number(elem.value)
+                if(elem.parentNode.getElementsByClassName("checkbox")[0].checked){
+                    i+=1
+                }
+                if(elem==-1){
+                    i=-1
+                }
+                j+=i
+                if(idx!=element_main_cards.length-1){
+                    j+=':'
+                }
+            })
+            return j
+        })()}&`
+        +`cards=${(()=>{
+            let j=''
+            element_main_cards.forEach((elem, idx) => {
+                let i=Number(elem.value)
+                if(elem.parentNode.getElementsByClassName("checkbox")[0].checked){
+                    i+=1
+                }
+                if(elem==-1){
+                    i=-1
+                }
+                j+=i
+                if(idx!=element_main_cards.length-1){
+                    j+=':'
+                }
+            })
+            return j
+        })()}_${(()=>{
+            let j=''
+            element_sub_cards.forEach((elem, idx) => {
+                let i=Number(elem.value)
+                if(elem.parentNode.getElementsByClassName("checkbox")[0].checked){
+                    i+=1
+                }
+                if(elem==-1){
+                    i=-1
+                }
+                j+=i
+                if(idx!=element_sub_cards.length-1){
+                    j+=':'
+                }
+            })
+            return j
+        })()}`
+        if(navigator.clipboard){
+            navigator.clipboard.writeText(str);
+            alert("已复制链接至剪切板中")
+        }else{
+            alert("复制链接失败")
+        }
     }
 
     element_contest_select.dispatchEvent(new Event('change'));
@@ -593,6 +657,8 @@ document.addEventListener('DOMContentLoaded', () => {
         run_flag = false;
     }, false);
 
+    const element_save_button = document.getElementById('save-button');
+    element_save_button.addEventListener('click', saveOptiostoSearchParams)
 }, false);
 
 async function runWebWorker(data) {
