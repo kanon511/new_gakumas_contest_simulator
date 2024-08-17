@@ -140,7 +140,7 @@ watch(
     }
 
     if (props.autoSelect == "true" && cardList && cardList.length > 0) {
-      selectedCard.value = cardList[cardList.length-1];
+      selectedCard.value = cardList[cardList.length > 1 ? 1 : 0];
     }
   }
 );
