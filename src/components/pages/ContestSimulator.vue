@@ -6,6 +6,14 @@
           @run-simulation="runSimulation"
           :waitingFinishedRun="waitingFinishedRun"
         />
+        <div class="link-container mt-2">
+          <v-btn target="_blank" href="https://wikiwiki.jp/gakumas/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%E6%9B%B4%E6%96%B0%E5%B1%A5%E6%AD%B4">
+            更新履歴
+          </v-btn>
+          <v-btn target="_blank" href="https://gkcontest.ris.moe/">
+            @risりす
+          </v-btn>
+        </div>
       </v-col>
       <v-col cols="12" sm="6" md="7" lg="7" xl="7" xxl="7">
         <SimulatorOutput :resultData="simulationResult" />
@@ -104,18 +112,7 @@ const simulate = async () => {
     return result;
   }
   const cardIds = getAvailableCardIds(cardIds_raw);
-  console.log(cardIds.map(id=>SkillCardData.getById(id).name));
-
-  // if (
-  //   cardIds_raw[0] == cardIds_raw[6] ||
-  //   cardIds_raw[0] + 1 == cardIds_raw[6] ||
-  //   cardIds_raw[0] == cardIds_raw[6] + 1 ||
-  //   cardIds_raw[0] + 1 == cardIds_raw[6] + 1
-  // ) {
-  //   cardIds_raw[0] = Math.max(cardIds_raw[0], cardIds_raw[6]);
-  //   cardIds_raw[6] = 0;
-  // }
-  // const cardIds = cardIds_raw.filter((val) => val > 0);
+  // console.log(cardIds.map(id=>SkillCardData.getById(id).name));
 
   let default_skillCardIds = [];
   switch (pIdol.plan) {
@@ -232,4 +229,9 @@ async function runWebWorker(data) {
     padding: 0;
   }
 }
+
+.link-container > *:not(:first-child) {
+  margin-left: 5px;
+}
+
 </style>

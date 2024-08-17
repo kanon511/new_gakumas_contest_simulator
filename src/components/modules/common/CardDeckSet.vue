@@ -11,9 +11,6 @@
     :uniqueCards="samePIdolCards"
     :normalCards="normalCards"
   />
-  <div style="text-align: center;">
-    <div><a href="https://gkcontest.ris.moe/" target="_blank">デッキ作成シミュレータ(@risりす)</a></div>
-  </div>
 </template>
 
 <script setup>
