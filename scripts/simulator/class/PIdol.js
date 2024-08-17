@@ -61,7 +61,7 @@ export class PIdol {
     }
 
     init (turnCount, critearia, turnTypes) {
-        this.#turnType = new TurnType(turnCount, critearia, turnTypes);
+        this.#turnType = new TurnType(turnCount, critearia, turnTypes, this.#autoId);
         this.#status.turnType = this.#turnType;
         this.#status.remainTurn = turnCount;
         this.#status.turnCount = turnCount;
