@@ -12,7 +12,10 @@ export default defineConfig({
       autoImport: true,
     }),
   ],
-  define: { "process.env": {} },
+  define: { 
+    "process.env": {},
+    "__BASE_IMAGE_URL__": JSON.stringify('https://katabami83.github.io/gakumas_file/images')
+  },
   resolve: {
     alias: {
       "@": resolve(__dirname, "src"),

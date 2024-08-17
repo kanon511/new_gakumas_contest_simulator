@@ -1,65 +1,14 @@
 <template>
   <v-text-field
-    v-model.number="vocal"
-    label="Vocal%"
+    v-for="item in elementList"
+    v-model.number="item.value"
+    :label="item.label"
     type="number"
     variant="underlined"
     hide-details
   >
     <template v-slot:prepend>
-      <v-img
-        src="https://katabami83.github.io/gakumas_file/images/icons/icon_vocal.png"
-        width="24"
-        height="24"
-      ></v-img>
-    </template>
-  </v-text-field>
-
-  <v-text-field
-    v-model.number="dance"
-    label="Dance%"
-    type="number"
-    variant="underlined"
-    hide-details
-  >
-    <template v-slot:prepend>
-      <v-img
-        src="https://katabami83.github.io/gakumas_file/images/icons/icon_dance.png"
-        width="24"
-        height="24"
-      ></v-img>
-    </template>
-  </v-text-field>
-
-  <v-text-field
-    v-model.number="visual"
-    label="Visual%"
-    type="number"
-    variant="underlined"
-    hide-details
-  >
-    <template v-slot:prepend>
-      <v-img
-        src="https://katabami83.github.io/gakumas_file/images/icons/icon_visual.png"
-        width="24"
-        height="24"
-      ></v-img>
-    </template>
-  </v-text-field>
-
-  <v-text-field
-    v-model.number="hp"
-    label="HP"
-    type="number"
-    variant="underlined"
-    hide-details
-  >
-    <template v-slot:prepend>
-      <v-img
-        src="https://katabami83.github.io/gakumas_file/images/icons/icon_hp.png"
-        width="24"
-        height="24"
-      ></v-img>
+      <v-img :src="item.src" width="24" height="24" />
     </template>
   </v-text-field>
 </template>
@@ -67,28 +16,48 @@
 <script setup>
 import { onMounted, ref, watchEffect } from "vue";
 
-const vocal = ref(1000);
-const dance = ref(1000);
-const visual = ref(1000);
-const hp = ref(40);
+const elementList = ref([
+  {
+    type: 'vocal',
+    label: 'vocal%',
+    src: `${__BASE_IMAGE_URL__}/icons/icon_vocal.png`,
+    value: 1000,
+  },
+  {
+    type: 'dance',
+    label: 'dance%',
+    src: `${__BASE_IMAGE_URL__}/icons/icon_dance.png`,
+    value: 1000,
+  },
+  {
+    type: 'visual',
+    label: 'visual%',
+    src: `${__BASE_IMAGE_URL__}/icons/icon_visual.png`,
+    value: 1000,
+  },
+  {
+    type: 'hp',
+    label: 'HP',
+    src: `${__BASE_IMAGE_URL__}/icons/icon_hp.png`,
+    value: 40,
+  },
+]);
 
 onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search);
   const status = urlParams.get("status");
   if (status) {
-    const [_vocal, _dance, _visual, _hp] = status.split(":");
-    vocal.value = _vocal ?? 1000;
-    dance.value = _dance ?? 1000;
-    visual.value = _visual ?? 1000;
-    hp.value = _hp ?? 40;
+    const queryStatus = status.split(':');
+    for (let i = 0; i < elementList.value.length; i++) {
+      const value = Number(queryStatus[i]);
+      if (Number.isFinite(value)) {
+        elementList.value[i].value = value;
+      }
+    }
   }
-
   watchEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
-    urlParams.set(
-      "status",
-      `${vocal.value}:${dance.value}:${visual.value}:${hp.value}`
-    );
+    urlParams.set("status", elementList.value.map(item => item.value).join(':'));
     window.history.replaceState(null, null, "?" + urlParams.toString());
   });
 });
