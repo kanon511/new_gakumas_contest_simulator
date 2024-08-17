@@ -10,6 +10,7 @@ export class TurnType {
      */
     #turnTypes;
     #turnCount;
+    #autoId;
 
     /**
      * ターンタイプクラスのインスタンスを作成する
@@ -17,10 +18,12 @@ export class TurnType {
      * @param {Number} turnCount ターン数
      * @param {Object<String, Number>} critearia 評価基準オブジェクト
      */
-    constructor (turnCount, critearia, turnTypes) {
+    constructor (turnCount, critearia, turnTypes, autoId) {
         this.#turnTypes = new Array(turnCount).fill('');
         const criteariaRank = this.#setCriteariaRank(critearia);
         const typeCount = this.#setTurnCount(turnCount, criteariaRank, turnTypes);
+
+        this.#autoId=autoId;
 
         // ラスト3ターンを流行3位->流行2位->流行1位の順にする
         this.#turnTypes[this.#turnTypes.length-3] = criteariaRank[2];
@@ -49,13 +52,16 @@ export class TurnType {
         typeCount[criteariaRank[1]] -= 1;
         typeCount[criteariaRank[2]] -= 1;
 
-        //const array = [typeCount['vocal'], typeCount['dance'], typeCount['visual']];
         const array = [typeCount[criteariaRank[0]], typeCount[ criteariaRank[1]], typeCount[criteariaRank[2]]];
 
-        //const typeIdx = ['vocal', 'dance', 'visual'];
         for (let i = turnCountStart; i < turnCount - 3; i++) {
-            const chooseIdx = this.#getRandomIndex(array);
-            //this.#turnTypes[i] = typeIdx[chooseIdx];
+            let chooseIdx;
+            if(autoId==0){
+                chooseIdx = this.#getNewRandomIndex(array);
+            }
+            else{
+                chooseIdx = this.#getRandomIndex(array);
+            }
             this.#turnTypes[i] = criteariaRank[chooseIdx];
             array[chooseIdx]--;
         }
@@ -66,17 +72,17 @@ export class TurnType {
      * @param {Array<Number>} array 数値配列
      * @returns {Number} 入力配列のindex
      */
-    // #getRandomIndex (array) {
-    //     const totalCount = array.reduce((pre, crt) => pre+crt, 0);
-    //     const randomNumber = Math.floor(Math.random()*totalCount);
-    //     for (let i = 0, currentNumber = 0; i < array.length; i++) {
-    //         currentNumber += array[i];
-    //         if (randomNumber < currentNumber) {
-    //             return i;
-    //         }
-    //     }
-    // }
     #getRandomIndex (array) {
+        const totalCount = array.reduce((pre, crt) => pre+crt, 0);
+        const randomNumber = Math.floor(Math.random()*totalCount);
+        for (let i = 0, currentNumber = 0; i < array.length; i++) {
+            currentNumber += array[i];
+            if (randomNumber < currentNumber) {
+                return i;
+            }
+        }
+    }
+    #getNewRandomIndex (array) {
         if(Math.random()<0.7&&array[0]>0)
             return 0
         if(Math.random()<0.7&&array[1]>0)
