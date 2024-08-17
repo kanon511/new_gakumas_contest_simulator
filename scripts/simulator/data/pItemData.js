@@ -23,6 +23,7 @@ const pItemData = [
             { type: 'score', value: 6 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2101011,
@@ -33,6 +34,7 @@ const pItemData = [
             { type: 'score', value: 11 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2101020,
@@ -43,6 +45,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2101021,
@@ -53,6 +56,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 3,
+        plan: 'logic',
     },
     {
         id: 2102010,
@@ -63,6 +67,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2102011,
@@ -73,6 +78,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 6 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2102020,
@@ -83,6 +89,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2102021,
@@ -93,6 +100,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 3,
+        plan: 'logic',
     },
     {
         id: 2103010,
@@ -103,6 +111,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2103011,
@@ -113,6 +122,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 3,
+        plan: 'logic',
     },
     {
         id: 2103020,
@@ -123,6 +133,7 @@ const pItemData = [
             { type: 'status', target: '好調', value: 2 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2103021,
@@ -134,6 +145,7 @@ const pItemData = [
             { type: '固定元気', value: 5 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2104010,
@@ -144,6 +156,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 1 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2104011,
@@ -154,6 +167,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2105010,
@@ -164,6 +178,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 3 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2105011,
@@ -174,6 +189,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2106010,
@@ -184,6 +200,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2106011,
@@ -194,6 +211,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2107010,
@@ -204,6 +222,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 1 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2107011,
@@ -214,6 +233,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 1 },
         ],
         limit: 3,
+        plan: 'sense',
     },
     {
         id: 2108010,
@@ -225,6 +245,7 @@ const pItemData = [
             { type: 'direct_hp', value: -1 },
         ],
         limit: null,
+        plan: 'logic',
     },
     {
         id: 2108011,
@@ -236,6 +257,7 @@ const pItemData = [
             { type: 'direct_hp', value: -1 },
         ],
         limit: null,
+        plan: 'logic',
     },
     {
         id: 2109010,
@@ -246,6 +268,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2109011,
@@ -256,6 +279,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2110010,
@@ -266,6 +290,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2110011,
@@ -276,6 +301,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     /*
         SRアイドル固有
@@ -289,6 +315,7 @@ const pItemData = [
             { type: 'block', value: 9 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2201011,
@@ -299,6 +326,7 @@ const pItemData = [
             { type: 'block', value: 12 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2202010,
@@ -310,6 +338,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2202011,
@@ -321,6 +350,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 4 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2203010,
@@ -331,6 +361,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 4 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2203011,
@@ -341,6 +372,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2204010,
@@ -351,6 +383,7 @@ const pItemData = [
             { type: 'status', target: '好調', value: 3 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2204011,
@@ -361,6 +394,7 @@ const pItemData = [
             { type: 'status', target: '好調', value: 4 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2205010,
@@ -371,6 +405,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 3 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2205011,
@@ -381,6 +416,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 4 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2206010,
@@ -392,6 +428,7 @@ const pItemData = [
             { type: 'direct_hp', value: -2 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2206011,
@@ -403,6 +440,7 @@ const pItemData = [
             { type: 'direct_hp', value: -2 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2207010,
@@ -413,6 +451,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2207011,
@@ -423,6 +462,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2208010,
@@ -433,6 +473,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 5 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2208011,
@@ -443,6 +484,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 6 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2209010,
@@ -453,6 +495,7 @@ const pItemData = [
             { type: 'hp', value: 2 },
         ],
         limit: 3,
+        plan: 'sense',
     },
     {
         id: 2209011,
@@ -463,6 +506,7 @@ const pItemData = [
             { type: 'hp', value: 2 },
         ],
         limit: 4,
+        plan: 'sense',
     },
     {
         id: 2210010,
@@ -473,6 +517,7 @@ const pItemData = [
             { type: 'block', value: 5 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2210011,
@@ -483,6 +528,7 @@ const pItemData = [
             { type: 'block', value: 5 },
         ],
         limit: 3,
+        plan: 'logic',
     },
     /*
         SRサポ
@@ -568,6 +614,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 1300040,
@@ -579,6 +626,7 @@ const pItemData = [
             { type: 'status', target: '好調', value: 2 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 1300050,
@@ -590,6 +638,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 3 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 1300060,
@@ -601,6 +650,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     /**
      * SSRアイドル固有
@@ -615,6 +665,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2301011,
@@ -627,6 +678,7 @@ const pItemData = [
             { type: 'block', value: 5 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2301020,
@@ -637,6 +689,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: 4,
+        plan: 'logic',
     },
     {
         id: 2301021,
@@ -647,6 +700,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: null,
+        plan: 'logic',
     },
     {
         id: 2301030,
@@ -657,6 +711,7 @@ const pItemData = [
             { type: 'hp', value: 4 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2301031,
@@ -667,6 +722,7 @@ const pItemData = [
             { type: 'hp', value: 5 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2302010,
@@ -678,6 +734,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 1 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2302011,
@@ -689,6 +746,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2302020,
@@ -700,6 +758,7 @@ const pItemData = [
             { type: 'block', value: 3 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2302021,
@@ -711,6 +770,7 @@ const pItemData = [
             { type: 'block', value: 3 },
         ],
         limit: 3,
+        plan: 'logic',
     },
     {
         id: 2303010,
@@ -722,6 +782,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2303011,
@@ -733,6 +794,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2303020,
@@ -744,6 +806,7 @@ const pItemData = [
             { type: '固定元気', value: 5 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2303021,
@@ -755,6 +818,7 @@ const pItemData = [
             { type: '固定元気', value: 11 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2303030,
@@ -767,6 +831,7 @@ const pItemData = [
             { type: 'direct_hp', value: -1 },
         ],
         limit: 4,
+        plan: 'logic',
     },
     {
         id: 2303031,
@@ -779,6 +844,7 @@ const pItemData = [
             { type: 'direct_hp', value: -1 },
         ],
         limit: null,
+        plan: 'logic',
     },
     {
         id: 2304010,
@@ -790,6 +856,7 @@ const pItemData = [
             { type: 'block', value: 1 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2304011,
@@ -801,6 +868,7 @@ const pItemData = [
             { type: 'block', value: 1 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2304020,
@@ -811,6 +879,7 @@ const pItemData = [
             { type: 'block', value: 10 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2304021,
@@ -821,6 +890,7 @@ const pItemData = [
             { type: 'block', value: 14 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2305010,
@@ -832,6 +902,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2305011,
@@ -843,6 +914,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2305020,
@@ -853,6 +925,7 @@ const pItemData = [
             { type: 'status', target: '好調', value: 2 },
         ],
         limit: 4,
+        plan: 'sense',
     },
     {
         id: 2305021,
@@ -863,6 +936,7 @@ const pItemData = [
             { type: 'status', target: '好調', value: 2 },
         ],
         limit: 4,
+        plan: 'sense',
     },
     {
         id: 2306010,
@@ -873,6 +947,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 2,
+        plan: 'logic',
     },
     {
         id: 2306011,
@@ -883,6 +958,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 3,
+        plan: 'logic',
     },
     {
         id: 2307010,
@@ -893,6 +969,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2307011,
@@ -903,6 +980,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 4 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2307020,
@@ -914,6 +992,7 @@ const pItemData = [
             { type: 'direct_hp', value: -2 },
         ],
         limit: 4,
+        plan: 'logic',
     },
     {
         id: 2307021,
@@ -925,6 +1004,7 @@ const pItemData = [
             { type: 'direct_hp', value: -2 },
         ],
         limit: 4,
+        plan: 'logic',
     },
     {
         id: 2308010,
@@ -936,6 +1016,7 @@ const pItemData = [
             { type: 'direct_hp', value: -1 },
         ],
         limit: null,
+        plan: 'logic',
     },
     {
         id: 2308011,
@@ -947,6 +1028,7 @@ const pItemData = [
             { type: 'direct_hp', value: -1 },
         ],
         limit: null,
+        plan: 'logic',
     },
     { 
         id: 2308020,
@@ -959,6 +1041,7 @@ const pItemData = [
             { type: 'upgrade', value: null },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2308021,
@@ -971,6 +1054,7 @@ const pItemData = [
             { type: 'upgrade', value: null },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 2309010,
@@ -981,6 +1065,7 @@ const pItemData = [
             { type: 'score', value: 5 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2309011,
@@ -991,6 +1076,7 @@ const pItemData = [
             { type: 'score', value: 5 },
         ],
         limit: 3,
+        plan: 'sense',
     },
     {
         id: 2309020,
@@ -1002,6 +1088,7 @@ const pItemData = [
             { type: 'draw', value: 1 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 2309021,
@@ -1013,6 +1100,7 @@ const pItemData = [
             { type: 'draw', value: 1 },
         ],
         limit: 3,
+        plan: 'sense',
     },
     {
         id: 2310010,
@@ -1024,6 +1112,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 2310011,
@@ -1035,6 +1124,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     /**
      * SSRサポ
@@ -1048,6 +1138,7 @@ const pItemData = [
             { type: 'status', target: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 3,
+        plan: 'free',
     },
     {
         id: 3300020,
@@ -1058,6 +1149,7 @@ const pItemData = [
             { type: '固定元気', value: 2 },
         ],
         limit: null,
+        plan: 'free',
     },
     {
         id: 3300030,
@@ -1068,6 +1160,7 @@ const pItemData = [
             { type: 'status', target: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 3,
+        plan: 'free',
     },
     {
         id: 3300040,
@@ -1078,6 +1171,7 @@ const pItemData = [
             { type: 'hp', value: 2 },
         ],
         limit: 3,
+        plan: 'free',
     },
     {
         id: 3300050,
@@ -1089,6 +1183,7 @@ const pItemData = [
             { type: '固定元気', value: 2 },
         ],
         limit: 3,
+        plan: 'free',
     },
     {
         id: 3300060,
@@ -1103,6 +1198,7 @@ const pItemData = [
             { type: 'hp', value: 2 },
         ],
         limit: 3,
+        plan: 'free',
     },
     {
         id: 3300080,
@@ -1113,6 +1209,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'free',
     },
     {
         id: 3300090,
@@ -1123,6 +1220,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'free',
     },
     {
         id: 3300100,
@@ -1133,6 +1231,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
+        plan: 'free',
     },
     {
         id: 3300110,
@@ -1143,6 +1242,7 @@ const pItemData = [
             { type: 'hp', value: 2 },
         ],
         limit: 3,
+        plan: 'free',
     },
     {
         id: 3300120,
@@ -1153,6 +1253,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 50 }] },
         ],
         limit: null,
+        plan: 'logic',
     },
     {
         id: 3300130,
@@ -1164,6 +1265,7 @@ const pItemData = [
             { type: 'direct_hp', value: 2 },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 3300140,
@@ -1175,6 +1277,7 @@ const pItemData = [
             { type: 'hp', value: 1 },
         ],
         limit: 2,
+        plan: 'logic',
     },
 
 
@@ -1206,6 +1309,7 @@ const pItemData = [
             { type: 'block', value: 15 },
         ],
         limit: 1,
+        plan: 'free',
     },
     {
         id: 4240512,
@@ -1217,6 +1321,7 @@ const pItemData = [
             { type: 'status', target: 'パラメータ上昇量増加', value: 4, options: [{ type: '上昇量', value: 50 }] },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 4240513,
@@ -1228,6 +1333,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 50 }] },
         ],
         limit: null,
+        plan: 'logic',
     },
 
     {
@@ -1239,6 +1345,7 @@ const pItemData = [
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: null,
+        plan: 'sense',
     },
     {
         id: 4240613,
@@ -1249,6 +1356,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
         ],
         limit: null,
+        plan: 'logic',
     },
 
     {
@@ -1260,6 +1368,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 2 }] },
         ],
         limit: 1,
+        plan: 'sense',
     },
     {
         id: 4240622,
@@ -1270,6 +1379,7 @@ const pItemData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 170 }] },
         ],
         limit: 3,
+        plan: 'logic',
     },
     {
         id: 4240623,
@@ -1280,6 +1390,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 4 },
         ],
         limit: 2,
+        plan: 'logic',
     },
 
     {
@@ -1293,6 +1404,7 @@ const pItemData = [
             { type: 'hp', value: -3 },
         ],
         limit: 3,
+        plan: 'sense',
     },
     {
         id: 4240713,
@@ -1303,6 +1415,7 @@ const pItemData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 4,
+        plan: 'logic',
     },
 
     {
@@ -1315,6 +1428,7 @@ const pItemData = [
             { type: 'status', target: '消費体力増加', value: 1 },
         ],
         limit: 2,
+        plan: 'sense',
     },
     {
         id: 4240723,
@@ -1326,6 +1440,7 @@ const pItemData = [
             { type: 'status', target: '元気増加無効', value: 1 },
         ],
         limit: 6,
+        plan: 'logic',
     },
 
     {
@@ -1337,6 +1452,7 @@ const pItemData = [
             { type: 'status', target: 'パラメータ上昇量増加', value: 100, options: [{ type: '上昇量', value: 15 }] },
         ],
         limit: null,
+        plan: 'free',
     },
     {
         id: 4240812,
@@ -1348,6 +1464,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 6 },
         ],
         limit: 1,
+        plan: 'logic',
     },
     {
         id: 4240813,
@@ -1359,6 +1476,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 4 },
         ],
         limit: 1,
+        plan: 'logic',
     },
 
 ];
