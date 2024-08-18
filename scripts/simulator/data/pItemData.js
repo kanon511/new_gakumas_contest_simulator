@@ -1364,7 +1364,7 @@ const pItemData = [
         condition: 'turnType==vocal',
         effects: [
             { type: 'status', target: '集中', value: 4 },
-            { type: 'direct_hp', value: 2 },
+            { type: 'direct_hp', value: -2 },
         ],
         limit: 1,
         plan: 'sense',
