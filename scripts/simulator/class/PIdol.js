@@ -122,13 +122,21 @@ export class PIdol {
     }
 
     rest () {
+        const status = this.#getStatus();
         const source = { name: '休憩' };
         const executions = this.#simulateActions([
             { type: 'use', sourceType: 'pRest', source: source },
             { type: 'effect', sourceType: 'pRest', target: { type: 'hp', value: 2 } },
             { type: 'end' },
-        ]);
+        ], status);
+
+        const scheduledActions = [];
+        this.#getPItemAction('end_turn', status).forEach(action=>scheduledActions.push(action));
+        this.#getPStatusAction('end_turn', status).forEach(action=>scheduledActions.push(action));
+
         this.#executeActions(executions);
+        
+        this.#endExecutions = this.#simulateActions(scheduledActions, status);
     }
 
     end () {
