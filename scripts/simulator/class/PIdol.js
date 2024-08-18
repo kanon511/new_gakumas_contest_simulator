@@ -341,6 +341,7 @@ export class PIdol {
                 if (status.block < block) {
                     executes.push({ type: 'block', args: [status.block-block] });
                 }
+                status.hp = Math.max(status.hp, 0);
                 if (status.hp < hp) {
                     executes.push({ type: 'hp', args: [status.hp-hp] });
                     if (action.sourceType == 'skillCard') {
