@@ -220,6 +220,10 @@ export class ContestData {
         return this.#contestData[this.#index[id]];
     }
 
+    static has (id) {
+        return id in this.#index;
+    }
+
     /**
      * コンテストオブジェクトを返します※非推奨
      * @returns {Array<Object>} コンテストオブジェクトリスト

@@ -14,12 +14,12 @@ const props = defineProps(["vocal", "dance", "visual"]);
 
 <style scoped>
 .parent {
-  width: calc(100% - 20px);
-  height: 6px;
-  margin: auto;
+  width: calc(100% - 12px);
+  height: 4px;
+  margin: 0 auto;
   background-color: gray;
   overflow: hidden;
-  border-radius: 6px;
+  border-radius: 4px;
   display: flex;
 }
 .parent > * {
