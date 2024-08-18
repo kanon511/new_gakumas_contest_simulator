@@ -2,6 +2,7 @@ import { PIdolData } from './simulator/data/pIdolData.js';
 import { SkillCardData } from './simulator/data/skillCardData.js';
 import { ContestData } from './simulator/data/contestData.js';
 import { PItemData } from './simulator/data/pItemData.js';
+import { onTest } from './setting.js';
 
 function DOM_text_to_elememt (text) {
     const temporaryDiv = document.createElement('div');
@@ -664,10 +665,16 @@ document.addEventListener('DOMContentLoaded', () => {
 async function runWebWorker(data) {
     return new Promise((resolve)=>{
         let numWorkers = 1;
-        if (navigator.hardwareConcurrency) {
-            numWorkers = Math.min(navigator.hardwareConcurrency, 8);
+
+        let totalRuns = 1;
+
+        if(!onTest){
+            if (navigator.hardwareConcurrency) {
+                numWorkers = Math.min(navigator.hardwareConcurrency, 8);
+            }
+            totalRuns = 2000;
         }
-        const totalRuns = 2000;
+
         const runsPerWorker = Math.ceil(totalRuns / numWorkers);
         const rndLogNumber = Math.floor(Math.random()*numWorkers);
 

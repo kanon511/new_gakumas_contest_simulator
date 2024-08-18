@@ -2202,6 +2202,8 @@ const AutoEvaluation = {
     }
 }
 
+import { onTest } from "../../setting.js";
+
 export class AutoEvaluationData {
     static data=AutoEvaluation;
     static a={
@@ -2279,8 +2281,9 @@ export class AutoEvaluationData {
             info=eva[remainTurn];
         }
         info=info[this.a[type]];
-        if(Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000)>3000000)
-            console.log(info,n,unitValue,Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000))
-        return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000);
+
+        if(onTest) console.log(remainTurn,type,info,n,unitValue,Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000))
+
+        return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000);
     }
 }

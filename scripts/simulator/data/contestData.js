@@ -196,7 +196,6 @@ const contestData = [
     {
         id: 240821,
         name: '第7期コンテスト', 
-        period: '2024/08/21 - 8/10',
         criteria: { 'vocal': 15, 'dance': 50, 'visual': 35 },
         stages: [
             {

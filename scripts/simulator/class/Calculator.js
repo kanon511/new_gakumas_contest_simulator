@@ -10,7 +10,10 @@ export class Calculator {
         const goodImpActiveTurn = (goodImp > remainTurn) ? remainTurn : goodImp;
         return goodImpActiveTurn * goodImp - (goodImpActiveTurn * (goodImpActiveTurn-1) >> 1);
     }
-    static calcActionEvaluation (action, status, parameter, trendVonusCoef, autoId) {
+    static calcActionEvaluation (action, status, parameter, trendVonusCoef, autoId, nowTurn) {
+        if(!autoId){
+            autoId=1
+        }
         if(autoId==0||autoId==2){
             let { type, args } = action;
             if(!args){
@@ -20,9 +23,18 @@ export class Calculator {
             if (type == 'status') {
                 const statusType = args[1];
                 const coef = trendVonusCoef[statusType] ?? 1;
-                return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],unitValue,autoId)
+                return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
             }
-            return AutoEvaluationData.get(status.trend,type,status.remainTurn-status.extraTurn,args[0],unitValue,autoId)
+
+            if (type == 'delay' && autoId==2) { //延迟效果
+                if (args[2]>status.remainTurn+status.turn) {
+                    return 0;
+                }
+                type = args[3].type;
+                args = [args[0], args[1]];
+            }
+
+            return AutoEvaluationData.get(status.trend,type,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
         }else{
             let { type, args } = action;
             const unitValue = parameter['avg'] / 100;

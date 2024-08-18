@@ -243,7 +243,7 @@ export class PIdol {
 
     #evaluateExecutions (executions) {
         return Math.floor(executions.reduce((acc, curr) => {
-            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef,this.#autoId);
+            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef, this.#autoId, this.#turnType.getType(this.#status.turn));
             return acc + evaluation;
         }, 0));
     }

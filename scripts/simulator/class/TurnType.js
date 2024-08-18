@@ -10,7 +10,6 @@ export class TurnType {
      */
     #turnTypes;
     #turnCount;
-    #autoId;
 
     /**
      * ターンタイプクラスのインスタンスを作成する
@@ -22,8 +21,6 @@ export class TurnType {
         this.#turnTypes = new Array(turnCount).fill('');
         const criteariaRank = this.#setCriteariaRank(critearia);
         const typeCount = this.#setTurnCount(turnCount, criteariaRank, turnTypes);
-
-        this.#autoId=autoId;
 
         // ラスト3ターンを流行3位->流行2位->流行1位の順にする
         this.#turnTypes[this.#turnTypes.length-3] = criteariaRank[2];

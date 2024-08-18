@@ -7,7 +7,7 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>コンテストシミュレーター</title>
+    <title>学马仕竞技场AI模拟器</title>
     <meta name="title" content="コンテストシミュレーター">
     <meta name="description" content="学マスのコンテストデッキ作成をサポートするツールです。">
     <meta name="keywords" content="学園アイドルマスター,学マス,コンテスト,シミュレーター">
@@ -74,16 +74,16 @@
                 </div>
             </div>
             <div id="card-box-information">
-                <div>固有以外の重複不可カードも重複します<br>重複させない場合は片方で「-」を選択してください</div>
-                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，麻烦点个Star谢谢了</div>
+                <div>角色固有卡以外的卡也可以重复<br>不想重复的话请选择「-」<br>新版本数据均来自解包文件内容</div>
+                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了，有建议可以提issues</div>
             </div>
             <div class="section">
-                <label>AI选择</label>
+                <label>AI选择（感性建议使用原AI）</label>
                 <div class="input-group">
                     <select id="contest-auto">
-                        <option value="2">解包AI2.0（AI正在核实准确率中，其中夹带了点个人猜测，有可能会出错，目前认为理性体系中是较接近游戏内的AI）</option>
-                        <option value="0">解包AI（AI正在核实准确率中）</option>
-                        <option value="1">原AI（原网站作者自写的一套AI，目前认为是最接近游戏内AI）</option>
+                        <option value="2">解包AI2.0（AI正在核实准确率中，有可能会出错，目前认为是最接近游戏内AI）</option>
+                        <option value="0">解包AI（感性不准，尽量别用）</option>
+                        <option value="1">原AI（原网站作者自写的一套AI，目前最稳定的）</option>
                     </select>
                 </div>
             </div>
@@ -97,7 +97,7 @@
             <table class="result-table">
                 <tbody>
                     <tr>
-                        <th>平均値</th><th>中央値</th><th>最頻値</th>
+                        <th>平均值</th><th>中央值</th><th>最频值</th>
                     </tr>
                     <tr>
                         <td id="result-score-mean">-</td><td id="result-score-median">-</td><td id="result-score-mode">-</td>
@@ -111,11 +111,11 @@
                 ログ
                 <div class="result-log-button">
                     <input type="radio" id="result-log-button-min" name="result-log-button">
-                    <label for="result-log-button-min" class="radio-box">最低値</label>
+                    <label for="result-log-button-min" class="radio-box">最低值</label>
                     <input type="radio" id="result-log-button-rnd" name="result-log-button">
-                    <label for="result-log-button-rnd" class="radio-box">ランダム</label>
+                    <label for="result-log-button-rnd" class="radio-box">随机</label>
                     <input type="radio" id="result-log-button-max" name="result-log-button">
-                    <label for="result-log-button-max" class="radio-box">最高値</label>
+                    <label for="result-log-button-max" class="radio-box">最高值</label>
                 </div>
                 <div id="contest-log">
                     <div id="contest-log-min">最低値のログが表示されます</div>
