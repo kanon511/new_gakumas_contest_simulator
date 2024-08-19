@@ -267,7 +267,7 @@ export class Calculator {
         }
         if (effect.type == 'hp' || effect.type == 'direct_hp') {
             const value = effect.value;
-            if (value < 0) {
+            if (value <= 0) {
                 const increaseHpConsumption = status.pStatus.has('消費体力増加') ? 2.0 : 1.0;
                 const decreaseHpConsumption = status.pStatus.has('消費体力減少') ? 0.5 : 1.0;
                 const reductionHpComsumption = status.pStatus.getValue('消費体力削減');
