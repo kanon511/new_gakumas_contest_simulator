@@ -272,7 +272,7 @@ export class Calculator {
                 const decreaseHpConsumption = status.pStatus.has('消費体力減少') ? 0.5 : 1.0;
                 const reductionHpComsumption = status.pStatus.getValue('消費体力削減');
                 const increaseHpComsumption = status.pStatus.getValue('消費体力追加');
-                const actualValue = Math.floor(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption + increaseHpComsumption;
+                const actualValue = Math.floor(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption - increaseHpComsumption;
                 return Math.min(0, actualValue);
             }
             return value;
