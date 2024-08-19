@@ -63,6 +63,16 @@ const statusList = [
         is_reduce_turnend: false,
     },
     {
+        id: 10007,
+        name: '消費体力追加',
+        description: '',
+        value: 0,
+        type: 'debuff',
+        activate_timing: null,
+        condition: null,
+        is_reduce_turnend: false,
+    },
+    {
         id: 100011,
         name: '絶好調',
         description: '',
