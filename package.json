@@ -1,6 +1,6 @@
 {
   "name": "gakumas_contest_simulator",
-  "version": "",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
