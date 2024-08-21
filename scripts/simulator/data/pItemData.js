@@ -263,7 +263,7 @@ const pItemData = [
         condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: null,
         plan: 'logic',
@@ -276,7 +276,7 @@ const pItemData = [
         condition: 'remain_turn==1',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: null,
         plan: 'logic',
@@ -363,7 +363,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'block==0',
         effects: [
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 }, // 違うかも
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 2,
@@ -376,7 +376,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'block==0',
         effects: [
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
             { type: 'status', target: '集中', value: 4 },
         ],
         limit: 2,
@@ -462,7 +462,7 @@ const pItemData = [
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 60 }] },
-            { type: 'direct_hp', value: -2 },
+            { type: 'fixed_direct_hp', value: -2 },
         ],
         limit: 2,
         plan: 'logic',
@@ -475,7 +475,7 @@ const pItemData = [
         condition: 'cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 70 }] },
-            { type: 'direct_hp', value: -2 },
+            { type: 'fixed_direct_hp', value: -2 },
         ],
         limit: 2,
         plan: 'logic',
@@ -893,7 +893,7 @@ const pItemData = [
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
             { type: 'status', target: 'やる気', value: 2 },
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: 4,
         plan: 'logic',
@@ -907,7 +907,7 @@ const pItemData = [
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
             { type: 'status', target: 'やる気', value: 3 },
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: null,
         plan: 'logic',
@@ -1068,7 +1068,7 @@ const pItemData = [
         condition: 'cardType==active&やる気>=12',
         effects: [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 270 }] },
-            { type: 'direct_hp', value: -2 },
+            { type: 'fixed_direct_hp', value: -2 },
         ],
         limit: 4,
         plan: 'logic',
@@ -1081,7 +1081,7 @@ const pItemData = [
         condition: 'cardType==active&やる気>=12',
         effects: [
             { type: 'score', value: null, options: [{ type: 'やる気', value: 340 }] },
-            { type: 'direct_hp', value: -2 },
+            { type: 'fixed_direct_hp', value: -2 },
         ],
         limit: 4,
         plan: 'logic',
@@ -1094,7 +1094,7 @@ const pItemData = [
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: null,
         plan: 'logic',
@@ -1107,7 +1107,7 @@ const pItemData = [
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 65 }] },
-            { type: 'direct_hp', value: -1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: null,
         plan: 'logic',
@@ -1364,7 +1364,7 @@ const pItemData = [
         condition: 'turnType==vocal',
         effects: [
             { type: 'status', target: '集中', value: 4 },
-            { type: 'direct_hp', value: -2 },
+            { type: 'fixed_direct_hp', value: -2 },
         ],
         limit: 1,
         plan: 'sense',

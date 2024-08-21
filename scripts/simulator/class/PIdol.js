@@ -325,7 +325,7 @@ export class PIdol {
             executes.push({ type: 'score', args: [actualValue] });
             return executes;
         }
-        if (type == 'hp' || type == 'direct_hp') {
+        if (type == 'hp' || type == 'direct_hp' || type == 'fixed_direct_hp') {
             if (actualValue > 0) { 
                 // 回復
                 const hp = status.hp;
@@ -335,7 +335,7 @@ export class PIdol {
             else if (actualValue < 0) { 
                 // 消費
                 const block = status.block, hp = status.hp;
-                if (type == 'direct_hp') {
+                if (type == 'direct_hp' || type == 'fixed_direct_hp') {
                     status.hp = hp + actualValue;
                 }
                 else if (block < -actualValue) {
