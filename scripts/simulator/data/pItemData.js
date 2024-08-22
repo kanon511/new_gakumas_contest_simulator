@@ -1172,7 +1172,7 @@ const pItemData = [
         condition: 'turnType==dance',
         effects: [
             { type: 'status', target: '好印象', value: 2 },
-            { type: 'hp', value: -1 },
+            { type: 'hp', value: 1 },
         ],
         limit: 2,
     },

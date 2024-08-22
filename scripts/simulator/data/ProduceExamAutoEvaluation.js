@@ -2270,7 +2270,7 @@ export class AutoEvaluationData {
         }
 
         if(autoId==2&&type=='score'){
-            unitValue*=unitValue/10
+            unitValue*=(unitValue/10-1)/3+1 //主观臆断
         }
 
         let eva = this.data[this.b[IdolType]]["evaluations"];
