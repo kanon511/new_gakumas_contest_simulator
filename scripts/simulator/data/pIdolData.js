@@ -318,6 +318,17 @@ const pIdolData = [
         unique_pItem_id: 2306010,
     },
     {
+        id: 30602,
+        rarity: 'SSR',
+        episode_name: '日々、発見的ステップ！',
+        character_id: 106,
+        name: '倉本千奈',
+        plan: 'sense',
+        trend: '好調',
+        unique_skillCard_id: 4206020,
+        unique_pItem_id: 2306020,
+    },
+    {
         id: 10701,
         rarity: 'R',
         episode_name: '学園生活',

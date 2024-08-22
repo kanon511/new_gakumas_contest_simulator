@@ -224,6 +224,7 @@ export class Calculator {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
                         case '集中'  : optionCoef['集中'] = effectOption.value; break;
+                        case '使用したスキルカード数': optionCoef['score'] = effectOption.value * status.usedCardCount; break;
                         case '好印象': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
                         case 'block': optionCoef['score'] = (effectOption.value/100) * status.block; break;
                         case 'やる気': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('やる気'); break;

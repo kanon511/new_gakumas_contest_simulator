@@ -1037,6 +1037,31 @@ const pItemData = [
         plan: 'logic',
     },
     {
+        id: 2306020,
+        name: 'ときめきのいっぱい',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'remain_turn==1',
+        effects: [
+            { type: 'score', value: 3, options: [{ type: '使用したスキルカード数', value: 3 }] },
+            { type: 'fixed_direct_hp', value: -2 },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 2306021,
+        name: 'ときめきのいっぱい+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'remain_turn==1',
+        effects: [
+            { type: 'score', value: 5, options: [{ type: '使用したスキルカード数', value: 3 }] },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
         id: 2307010,
         name: 'ゲーセンの戦利品',
         description: '',
@@ -1381,6 +1406,10 @@ const pItemData = [
         ],
         limit: 2,
         plan: 'logic',
+    },
+    {
+        id: 3300150,
+        name: 'ほっこりまんぷく',
     },
 
 
