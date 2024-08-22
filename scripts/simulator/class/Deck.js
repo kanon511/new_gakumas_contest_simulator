@@ -167,11 +167,12 @@ export class Deck {
     }
 
     discard (number) {
+        if (this.#index_drawPile.length == 0) {
+            this.#index_drawPile = this.#index_discardPile;
+            this.#index_discardPile = [];
+            this.shuffle(this.#index_drawPile);
+        }
         this.resetCard(this.getHandCardByNumber(number));
-        // const card = this.getHandCardByNumber(number);
-        // card.executions = null;
-        // card.evaluation = 0;
-        // card.scheduledExecutions = null;
         this.#index_discardPile.push(...this.#index_handCards.splice(number, 1));
     }
 
