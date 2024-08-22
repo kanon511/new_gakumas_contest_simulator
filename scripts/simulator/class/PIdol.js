@@ -108,6 +108,7 @@ export class PIdol {
         const executions = usedCard.executions;
         this.#endExecutions = usedCard.scheduledExecutions;
         this.#deck.useCard(cardNumber);
+        this.#status.handCount--;
         this.#executeActions(executions);
         this.#status.usedCardCount++;
         if (this.#status.pStatus.has('スキルカード使用数追加')) {
@@ -139,13 +140,18 @@ export class PIdol {
         this.#endExecutions = this.#simulateActions(scheduledActions, status);
     }
 
+    discardAll () {
+        this.#deck.discardAll();
+        this.#status.handCount = this.getDeck('handCards').length;
+    }
+
     end () {
         if (this.#endExecutions) {
             this.#executeActions(this.#endExecutions);
             this.#endExecutions = null;
         }
         this.#status.pStatus.reduceInTurnend();
-        this.#deck.discardAll();
+        this.discardAll();
         this.#status.remainTurn--;
     }
 
@@ -274,8 +280,9 @@ export class PIdol {
     }
 
     #drawSkillCard (number) {
-        this.#deck.draw(number);
+        const result = this.#deck.draw(number);
         this.#status.handCount = this.getDeck('handCards').length;
+        return result;
     }
 
     getDeck (type) {
@@ -463,8 +470,14 @@ export class PIdol {
             return `追加行動`;
         }
         if (type == 'draw') {
-            this.#drawSkillCard(args[0]);
-            return `${args[0]}枚カードを引いた`;
+            if (this.#status.handCount >= 5) {
+                return `カードが引けなかった`;
+            }
+            const result = this.#drawSkillCard(args[0]);
+            if (result.response < result.request) {
+                return `${result.response}枚カードを引いた(${result.request-result.response}枚捨て札に送られた)`;
+            }
+            return `${result.response}枚カードを引いた`;
         }
         if (type == 'delay') {
             this.#status.pStatus.addDelayEffect(args[1], args[2], args[3]);
@@ -475,7 +488,7 @@ export class PIdol {
             return `手札を強化した`;
         }
         if (type == 'discard') {
-            this.#deck.discardAll();
+            this.discardAll();
             return `手札を捨てた`;
         }
         if (type == 'generate') {
