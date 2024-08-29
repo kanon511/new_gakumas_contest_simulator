@@ -461,6 +461,17 @@ const pIdolData = [
         unique_pItem_id: 2309020,
     },
     {
+        id: 30903,
+        rarity: 'SSR',
+        episode_name: 'ようこそ初星温泉',
+        character_id: 109,
+        name: '姫崎莉波',
+        plan: 'logic',
+        trend: '好調',
+        unique_skillCard_id: 4209030,
+        unique_pItem_id: 2309030,
+    },
+    {
         id: 11001,
         rarity: 'R',
         episode_name: '学園生活',

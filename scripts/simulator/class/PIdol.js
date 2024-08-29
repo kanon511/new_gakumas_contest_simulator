@@ -110,7 +110,6 @@ export class PIdol {
         this.#deck.useCard(cardNumber);
         this.#status.handCount--;
         this.#executeActions(executions);
-        this.#status.usedCardCount++;
         if (this.#status.pStatus.has('スキルカード使用数追加')) {
             this.#executeActions(this.#simulateActions([
                 { type: 'effect', sourceType: 'pIdol', target: { type: 'status', target: 'スキルカード使用数追加', value: -1 } },
@@ -314,7 +313,14 @@ export class PIdol {
     }
 
     #simulateAction (action, status) {
-        if (action.type == 'use' || action.type == 'end') return [action];
+        if (action.type == 'use' || action.type == 'end') {
+            const executes = [action];
+            if (action.type == 'use' && action.sourceType == 'skillCard') {
+                status.usedCardCount++;
+                executes.push({ type: 'used_card_count', args: [1] });
+            }
+            return executes;
+        }
         const { type, target, value, options, delay, condition } = action.target;
         const actualValue = Calculator.calcActualValue(action.target, status, this.#parameter);
         if (!ConditionChecker.check(condition, this.#status)) return [];
@@ -490,6 +496,10 @@ export class PIdol {
         if (type == 'discard') {
             this.discardAll();
             return `手札を捨てた`;
+        }
+        if (type == 'used_card_count') {
+            this.#status.usedCardCount++;
+            return ``;
         }
         if (type == 'generate') {
             let name;

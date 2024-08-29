@@ -639,6 +639,10 @@ const pItemData = [
         id: 3200150,
         name: 'ハンターの戦利品',
     },
+    {
+        id: 3200151,
+        name: '',
+    },
     /**
      * シナリオ
      */
@@ -1216,6 +1220,32 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2309030,
+        name: 'ぱたぱたうちわ+',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'usedCardCountMultiple==3',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: 'status', target: 'やる気', value: 4 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
+        id: 2309031,
+        name: 'ぱたぱたうちわ+',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'usedCardCountMultiple==3',
+        effects: [
+            { type: 'block', value: 2 },
+            { type: 'status', target: 'やる気', value: 4 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
         id: 2310010,
         name: '転がり続ける元気の源',
         description: '',
@@ -1487,7 +1517,7 @@ const pItemData = [
         id: 4240613,
         name: '初星ライト（紫）',
         description: 'スキルカードを2枚使用する度、元気の50%分スコア上昇',
-        activate_timing: 'before_use_card',
+        activate_timing: 'after_use_card',
         condition: 'usedCardCountMultiple==2',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 50 }] },

@@ -23,6 +23,9 @@ export class Calculator {
         if (type == 'use') {
             return 0;
         }
+        if (type == 'used_card_count') {
+            return 0;
+        }
         if (type == 'end') {
             return 0;
         }
@@ -245,19 +248,20 @@ export class Calculator {
         }
         if (effect.type == 'block') {
             let baseValue = effect.value ?? 0;
-            const optionCoef = { 'block': 0, '割合減少': 0 };
+            const optionCoef = { 'block': 0, '割合減少': 0, 'やる気': 1 };
             if (effect.options) {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
                         case '使用したスキルカード数': optionCoef['block'] = effectOption.value * status.usedCardCount; break;
                         case '好印象': optionCoef['block'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
+                        case 'やる気'  : optionCoef['やる気'] = effectOption.value; break;
                         case '割合減少': baseValue = -Math.ceil(status.block * effectOption.value / 100);
                     }
                 });
             }
             let actualValue;
             if (baseValue >= 0) {
-                actualValue = baseValue + status.pStatus.getValue('やる気') + optionCoef['block'];
+                actualValue = Math.ceil(baseValue + status.pStatus.getValue('やる気') * optionCoef['やる気'] + optionCoef['block']);
                 if (status.pStatus.has('元気増加無効')) {
                     actualValue = 0;
                 }
