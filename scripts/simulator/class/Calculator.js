@@ -48,6 +48,9 @@ export class Calculator {
             if (type == 'use') {
                 return 0;
             }
+            if (type == 'used_card_count') {
+                return 0;
+            }
             if (type == 'end') {
                 return 0;
             }
@@ -58,12 +61,18 @@ export class Calculator {
                 return unitValue * args[0] * Math.sqrt(status.remainTurn+5) * 0.75;
             }
             if (type == 'block') {
-                if (args[0] < 0) {
-                    if (status.remainTurn<2){
-                        return 15 * args[0]; //重写
-                    }
-                    return 15 * args[0] * status.remainTurn * status.remainTurn / 4; //重写
-                }
+                // if (args[0] < 0) {
+                //     return unitValue * args[0] / (status.hp + status.block) * status.remainTurn * 9;
+                // }
+                //
+
+                // Issue #5: やる気システムのAIロジックを変更(Proposed by kanon511)
+                if (args[0] < 0) { 
+                    if (status.remainTurn<2){ 
+                        return 15 * args[0]; //重写 
+                    } 
+                    return 15 * args[0] * status.remainTurn * status.remainTurn / 4; //重写 
+                } 
                 return unitValue * args[0] * Math.sqrt(status.remainTurn+5) * 0.75;
             }
             if (type == 'score') {
@@ -244,6 +253,7 @@ export class Calculator {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
                         case '集中'  : optionCoef['集中'] = effectOption.value; break;
+                        case '使用したスキルカード数': optionCoef['score'] = effectOption.value * status.usedCardCount; break;
                         case '好印象': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
                         case 'block': optionCoef['score'] = (effectOption.value/100) * status.block; break;
                         case 'やる気': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('やる気'); break;
@@ -264,19 +274,20 @@ export class Calculator {
         }
         if (effect.type == 'block') {
             let baseValue = effect.value ?? 0;
-            const optionCoef = { 'block': 0, '割合減少': 0 };
+            const optionCoef = { 'block': 0, '割合減少': 0, 'やる気': 1 };
             if (effect.options) {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
                         case '使用したスキルカード数': optionCoef['block'] = effectOption.value * status.usedCardCount; break;
                         case '好印象': optionCoef['block'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
+                        case 'やる気'  : optionCoef['やる気'] = effectOption.value; break;
                         case '割合減少': baseValue = -Math.ceil(status.block * effectOption.value / 100);
                     }
                 });
             }
             let actualValue;
             if (baseValue >= 0) {
-                actualValue = baseValue + status.pStatus.getValue('やる気') + optionCoef['block'];
+                actualValue = Math.ceil(baseValue + status.pStatus.getValue('やる気') * optionCoef['やる気'] + optionCoef['block']);
                 if (status.pStatus.has('元気増加無効')) {
                     actualValue = 0;
                 }
@@ -287,12 +298,12 @@ export class Calculator {
         }
         if (effect.type == 'hp' || effect.type == 'direct_hp') {
             const value = effect.value;
-            if (value < 0) {
+            if (value <= 0) {
                 const increaseHpConsumption = status.pStatus.has('消費体力増加') ? 2.0 : 1.0;
                 const decreaseHpConsumption = status.pStatus.has('消費体力減少') ? 0.5 : 1.0;
                 const reductionHpComsumption = status.pStatus.getValue('消費体力削減');
-                const addHpComsumption = status.pStatus.getValue('消費体力追加');
-                const actualValue = Math.floor(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption - addHpComsumption;
+                const increaseHpComsumption = status.pStatus.getValue('消費体力追加');
+                const actualValue = Math.floor(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption - increaseHpComsumption;
                 return Math.min(0, actualValue);
             }
             return value;

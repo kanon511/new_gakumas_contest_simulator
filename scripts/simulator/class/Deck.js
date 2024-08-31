@@ -57,12 +57,29 @@ export class Deck {
         this.#index_drawPile = createRange(0, this.skillCards.length);
 
         // レッスン開始時手札に入るカードのインデックスリスト
-        this.#index_first_draw = this.#index_drawPile
-            .filter(item=>this.skillCards[item].pre_effects
-                ?.map(effects=>effects.type)
-                    .includes('レッスン開始時手札に入る'));
+        // this.#index_first_draw = this.#index_drawPile
+        //     .filter(item=>this.skillCards[item].pre_effects
+        //         ?.map(effects=>effects.type)
+        //             .includes('レッスン開始時手札に入る'));
         
         this.shuffle(this.#index_drawPile);
+
+        this.#index_first_draw = [];
+        for (let i = 0; i < this.#index_drawPile.length; i++) {
+            if (!('pre_effects' in this.skillCards[this.#index_drawPile[i]])) {
+                continue;
+            }
+            if (
+                this.skillCards[this.#index_drawPile[i]].pre_effects
+                .map(effect=>effect.type)
+                .includes('レッスン開始時手札に入る')
+            ) {
+                this.#index_first_draw.push(this.#index_drawPile[i]);
+                this.#index_drawPile.splice(i, 1);
+                i--;
+            }
+        }
+
         // this.#index_drawPile = [7, 3, 10, 5, 9, 18, 12, 10, 2, 16, 4, 13, 11, 15, 0, 17, 14, 6, 8, 19];
         this.#index_handCards = [];
         this.#index_discardPile = [];
@@ -70,11 +87,18 @@ export class Deck {
     }
 
     draw (number) {
+        const handCardsCount = this.#index_handCards.length;
         if (this.#flag_first_draw) {
             // 最初のドローでレッスン開始時手札に入るを手札に入れる
             this.#flag_first_draw = false;
-            this.#index_first_draw.forEach(index=>this.addHandCards(index));
-            this.#index_first_draw.forEach(item=>this.#index_drawPile.splice(this.#index_drawPile.indexOf(item), 1));
+            for (let i = 0; i < this.#index_first_draw.length; i++) {
+                if (i < 5) {
+                    this.addHandCards(this.#index_first_draw[i]);
+                } else {
+                    this.#index_drawPile.unshift(this.#index_first_draw[i]);
+                }
+            }
+            // this.#index_first_draw.forEach(item=>this.#index_drawPile.splice(this.#index_drawPile.indexOf(item), 1));
             number -= this.#index_handCards.length;
         }
         for (let i = 0; i < number; i++) {
@@ -84,8 +108,13 @@ export class Deck {
                 this.#index_discardPile = [];
                 this.shuffle(this.#index_drawPile);
             }
-            this.addHandCards(this.#index_drawPile.shift());
+            if (this.#index_handCards.length < 5) {
+                this.addHandCards(this.#index_drawPile.shift());
+            } else {
+                this.#index_discardPile.push(this.#index_drawPile.shift());
+            }
         }
+        return { request: number, response: this.#index_handCards.length - handCardsCount }
     }
 
     addCardInDeck (cardId, position) {
@@ -138,11 +167,12 @@ export class Deck {
     }
 
     discard (number) {
+        if (this.#index_drawPile.length == 0) {
+            this.#index_drawPile = this.#index_discardPile;
+            this.#index_discardPile = [];
+            this.shuffle(this.#index_drawPile);
+        }
         this.resetCard(this.getHandCardByNumber(number));
-        // const card = this.getHandCardByNumber(number);
-        // card.executions = null;
-        // card.evaluation = 0;
-        // card.scheduledExecutions = null;
         this.#index_discardPile.push(...this.#index_handCards.splice(number, 1));
     }
 

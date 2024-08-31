@@ -1,4 +1,4 @@
-import { deep_copy } from "../../util/utility.js";
+import { deep_copy } from "../../../scripts/util/utility.js";
 
 const statusList = [
     // センス
@@ -67,7 +67,7 @@ const statusList = [
         name: '消費体力追加',
         description: '',
         value: 0,
-        type: 'buff',
+        type: 'debuff',
         activate_timing: null,
         condition: null,
         is_reduce_turnend: false,
