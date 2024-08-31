@@ -9,11 +9,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -87,11 +87,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 75.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 250.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 1000.0,
@@ -243,11 +243,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
-                    "examStatusEnchantCoefficientPermil": 497.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 500.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 2145.0,
@@ -399,11 +399,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 301.0,
-                    "examStatusEnchantCoefficientPermil": 502.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 1000.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 3290.0,
@@ -559,11 +559,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -637,11 +637,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 75.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 250.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 2000.0,
@@ -711,7 +711,7 @@ const AutoEvaluation = {
             "3": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 259.0,
-                    "examStatusEnchantCoefficientPermil": 2251.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 75.0,
@@ -789,15 +789,15 @@ const AutoEvaluation = {
             "4": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 167.0,
-                    "examStatusEnchantCoefficientPermil": 1551.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
-                    "examStatusEnchantCoefficientPermil": 497.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 500.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 4290.0,
@@ -867,7 +867,7 @@ const AutoEvaluation = {
             "5": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 96.0,
-                    "examStatusEnchantCoefficientPermil": 1740.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
@@ -949,11 +949,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 301.0,
-                    "examStatusEnchantCoefficientPermil": 502.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 1000.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 6580.0,
@@ -1109,11 +1109,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1187,11 +1187,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 87.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 250.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1343,11 +1343,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 174.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 500.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1499,11 +1499,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 348.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 1000.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1659,11 +1659,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 0.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1737,11 +1737,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 335.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 250.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1893,11 +1893,11 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 521.0,
-                    "examStatusEnchantCoefficientPermil": 643.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 500.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,
@@ -1971,7 +1971,7 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 931.0,
-                    "examStatusEnchantCoefficientPermil": 560.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 500.0,
@@ -2053,7 +2053,7 @@ const AutoEvaluation = {
                 },
                 "ProduceExamAutoEvaluationType_Stamina": {
                     "evaluation": 1000.0,
-                    "examStatusEnchantCoefficientPermil": 500.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_ExamLessonBuff": {
                     "evaluation": 0.0,

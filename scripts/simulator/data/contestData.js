@@ -8,7 +8,8 @@
 const contestData = [
     {
         id: 240516,
-        name: '第１回（05月16日～）', 
+        name: '第1期コンテスト', 
+        period: '2024/05/16 - 05/31',
         criteria: { 'vocal': 40, 'dance': 27, 'visual': 33 },
         stages: [
             {
@@ -39,7 +40,8 @@ const contestData = [
     },
     {
         id: 240602,
-        name: '第２回（06月02日～）', 
+        name: '第2期コンテスト', 
+        period: '2024/06/02 - 06/16',
         criteria: { 'vocal': 33, 'dance': 40, 'visual': 27 },
         stages: [
             {
@@ -70,7 +72,8 @@ const contestData = [
     },
     {
         id: 240617,
-        name: '第３回（06月17日～）', 
+        name: '第3期コンテスト', 
+        period: '2024/06/17 - 07/01',
         criteria: { 'vocal': 27, 'dance': 33, 'visual': 40 },
         stages: [
             {
@@ -101,7 +104,8 @@ const contestData = [
     },
     {
         id: 240703,
-        name: '第４回（07月03日～）', 
+        name: '第4期コンテスト', 
+        period: '2024/07/03 - 07/18',
         criteria: { 'vocal': 15, 'dance': 45, 'visual': 40 },
         stages: [
             {
@@ -132,7 +136,8 @@ const contestData = [
     },
     {
         id: 240719,
-        name: '第５回（07月19日～）', 
+        name: '第5期コンテスト', 
+        period: '2024/07/19 - 08/03',
         criteria: { 'vocal': 35, 'dance': 30, 'visual': 35 },
         stages: [
             {
@@ -163,7 +168,8 @@ const contestData = [
     },
     {
         id: 240804,
-        name: '第６回（08月04日～）', 
+        name: '第6期コンテスト', 
+        period: '2024/08/04 - 08/20',
         criteria: { 'vocal': 10, 'dance': 45, 'visual': 45 },
         stages: [
             {
@@ -192,10 +198,10 @@ const contestData = [
             },
         ],
     },
-
     {
-        id: 240821,
+        id: 240822,
         name: '第7期コンテスト', 
+        period: '2024/08/22 - ----',
         criteria: { 'vocal': 15, 'dance': 50, 'visual': 35 },
         stages: [
             {
@@ -244,6 +250,10 @@ export class ContestData {
             throw new Error('idと一致するコンテストがありません。');
         }
         return this.#contestData[this.#index[id]];
+    }
+
+    static has (id) {
+        return id in this.#index;
     }
 
     /**

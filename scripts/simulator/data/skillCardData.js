@@ -28,6 +28,8 @@ export const skillCardData = [
             { type: 'score', value: 9 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1010011,
@@ -40,6 +42,8 @@ export const skillCardData = [
             { type: 'score', value: 14 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1010020,
@@ -52,7 +56,9 @@ export const skillCardData = [
             { type: 'score', value: 2 },
             { type: 'block', value: 2 },
         ],
-        limit: -1
+        limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1010021,
@@ -65,7 +71,9 @@ export const skillCardData = [
             { type: 'score', value: 6 },
             { type: 'block', value: 4 },
         ],
-        limit: -1
+        limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * ベーシックカード(アクティブ/センス)
@@ -81,7 +89,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 25 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1011011,
@@ -93,7 +103,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 37 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1011020,
@@ -106,7 +118,9 @@ export const skillCardData = [
             { type: 'score', value: 8 },
             { type: 'score', value: 8 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1011021,
@@ -119,7 +133,9 @@ export const skillCardData = [
             { type: 'score', value: 10 },
             { type: 'score', value: 10 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * ベーシックカード(アクティブ/ロジック)
@@ -136,7 +152,9 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 2 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1012011,
@@ -149,7 +167,9 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 3 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1012020,
@@ -161,7 +181,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1012021,
@@ -173,7 +195,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 110 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * ベーシックカード(メンタル/フリー)
@@ -190,6 +214,8 @@ export const skillCardData = [
             { type: 'block', value: 4 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1020011,
@@ -202,6 +228,8 @@ export const skillCardData = [
             { type: 'block', value: 7 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * ベーシックカード(メンタル/センス)
@@ -219,6 +247,8 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1021011,
@@ -232,6 +262,8 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1021020,
@@ -245,6 +277,8 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1021021,
@@ -258,6 +292,8 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * ベーシックカード(メンタル/ロジック)
@@ -275,6 +311,8 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1022011,
@@ -288,6 +326,8 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1022020,
@@ -301,6 +341,8 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     {
         id: 1022021,
@@ -314,6 +356,8 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: -1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * トラブルカード(メンタル/トラブル)
@@ -329,6 +373,8 @@ export const skillCardData = [
         effects: [
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: true,
     },
     /**
      * 白カード(アクティブ/フリー)
@@ -351,6 +397,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2011011,
@@ -365,6 +412,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2011020,
@@ -378,6 +426,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2011021,
@@ -391,6 +440,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2011030,
@@ -405,6 +455,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2011031,
@@ -419,6 +470,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2011040,
@@ -432,6 +484,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2011041,
@@ -445,6 +498,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2011050,
@@ -459,6 +513,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2011051,
@@ -473,6 +528,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2011060,
@@ -486,6 +542,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2011061,
@@ -499,6 +556,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2011070,
@@ -512,6 +570,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2011071,
@@ -525,6 +584,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     /**
      * 白カード(アクティブ/ロジック)
@@ -543,6 +603,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2012011,
@@ -557,6 +618,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2012020,
@@ -571,6 +633,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2012021,
@@ -585,6 +648,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2012030,
@@ -599,6 +663,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2012031,
@@ -613,6 +678,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2012040,
@@ -626,6 +692,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2012041,
@@ -639,6 +706,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2012050,
@@ -652,6 +720,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2012051,
@@ -665,6 +734,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     /**
      * 白カード(メンタル/フリー)
@@ -683,6 +753,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2020011,
@@ -697,6 +768,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2020020,
@@ -711,6 +783,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: false,
     },
     {
         id: 2020021,
@@ -725,6 +798,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: false,
     },
     /**
      * 白カード(メンタル/センス)
@@ -742,6 +816,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2021011,
@@ -756,6 +831,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2021020,
@@ -770,6 +846,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2021021,
@@ -784,6 +861,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2021030,
@@ -798,6 +876,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2021031,
@@ -812,6 +891,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2021040, // id
@@ -826,6 +906,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: false,
     },
     {
         id: 2021041,
@@ -840,6 +921,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: false,
     },
     /**
      * 白カード(メンタル/ロジック)
@@ -858,6 +940,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2022011,
@@ -872,6 +955,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2022020,
@@ -886,6 +970,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2022021,
@@ -900,6 +985,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2022030,
@@ -913,6 +999,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 30,
+        allow_duplicate: true,
     },
     {
         id: 2022031,
@@ -926,6 +1013,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 39,
+        allow_duplicate: true,
     },
     {
         id: 2022040,
@@ -940,6 +1028,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2022041,
@@ -954,6 +1043,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2022050,
@@ -968,6 +1058,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2022051,
@@ -996,6 +1087,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2022061,
@@ -1010,6 +1102,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     {
         id: 2022070,
@@ -1023,6 +1116,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 45,
+        allow_duplicate: true,
     },
     {
         id: 2022071,
@@ -1036,6 +1130,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 60,
+        allow_duplicate: true,
     },
     /**
      * 白カード(キャラ固有)
@@ -1052,6 +1147,8 @@ export const skillCardData = [
             { type: 'score', value: 17 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2201011,
@@ -1064,6 +1161,8 @@ export const skillCardData = [
             { type: 'score', value: 25 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2201020,
@@ -1076,6 +1175,8 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 190 }] },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2201021,
@@ -1088,6 +1189,8 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2202010,
@@ -1101,6 +1204,8 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2202011,
@@ -1114,6 +1219,8 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 5 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2202020,
@@ -1126,6 +1233,8 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2202021,
@@ -1138,6 +1247,8 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 8 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2203010,
@@ -1151,6 +1262,8 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 5 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2203011,
@@ -1164,6 +1277,8 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 6 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2203020,
@@ -1177,6 +1292,8 @@ export const skillCardData = [
             { type: 'status', target: '絶好調', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2203021,
@@ -1190,6 +1307,8 @@ export const skillCardData = [
             { type: 'status', target: '絶好調', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2204010,
@@ -1203,6 +1322,8 @@ export const skillCardData = [
             { type: 'score', value: 3, condition: '好調>0' },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2204011,
@@ -1216,6 +1337,8 @@ export const skillCardData = [
             { type: 'score', value: 5, condition: '好調>0' },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2205010,
@@ -1229,6 +1352,8 @@ export const skillCardData = [
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2205011,
@@ -1242,6 +1367,8 @@ export const skillCardData = [
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2206010,
@@ -1256,6 +1383,8 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2206011,
@@ -1270,6 +1399,8 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2207010,
@@ -1283,6 +1414,8 @@ export const skillCardData = [
             { type: 'score', value: 10, condition: '集中>=6' },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2207011,
@@ -1296,6 +1429,8 @@ export const skillCardData = [
             { type: 'score', value: 12 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2208010,
@@ -1309,6 +1444,8 @@ export const skillCardData = [
             { type: 'block', value: 3, condition: 'やる気>=6' },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2208011,
@@ -1322,6 +1459,8 @@ export const skillCardData = [
             { type: 'block', value: 5, condition: 'やる気>=6' },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2209010,
@@ -1336,6 +1475,8 @@ export const skillCardData = [
             { type: 'hp', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2209011,
@@ -1350,6 +1491,8 @@ export const skillCardData = [
             { type: 'hp', value: 2 },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2210010,
@@ -1362,6 +1505,8 @@ export const skillCardData = [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 3 }] },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 2210011,
@@ -1374,6 +1519,8 @@ export const skillCardData = [
             { type: 'block', value: 4, options: [{ type: '使用したスキルカード数', value: 4 }] },
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     /**
      * 金カード(アクティブ/フリー)
@@ -1392,6 +1539,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3010011,
@@ -1406,6 +1554,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     /**
      * 金カード(アクティブ/センス)
@@ -1423,6 +1572,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3011011,
@@ -1436,6 +1586,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3011020,
@@ -1450,6 +1601,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3011021,
@@ -1464,6 +1616,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3011030,
@@ -1478,6 +1631,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3011031,
@@ -1492,6 +1646,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3011040,
@@ -1506,6 +1661,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3011041,
@@ -1520,6 +1676,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3011050,
@@ -1534,6 +1691,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3011051,
@@ -1548,6 +1706,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3011060,
@@ -1563,6 +1722,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3011061,
@@ -1578,6 +1738,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3011070,
@@ -1594,6 +1755,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3011071,
@@ -1610,6 +1772,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3011080,
@@ -1625,6 +1788,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3011081,
@@ -1640,6 +1804,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3011090,
@@ -1655,6 +1820,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3011091,
@@ -1670,6 +1836,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     /**
      * 金カード(アクティブ/ロジック)
@@ -1688,6 +1855,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3012011,
@@ -1702,6 +1870,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3012020,
@@ -1716,6 +1885,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3012021,
@@ -1730,6 +1900,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3012030,
@@ -1744,6 +1915,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3012031,
@@ -1758,6 +1930,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3012040,
@@ -1773,6 +1946,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3012041,
@@ -1788,6 +1962,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3012050,
@@ -1802,6 +1977,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3012051,
@@ -1816,6 +1992,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     /**
      * 金カード(メンタル/フリー)
@@ -1834,6 +2011,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3020011,
@@ -1849,6 +2027,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3020020,
@@ -1864,6 +2043,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3020021,
@@ -1879,6 +2059,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     /**
      * 金カード(メンタル/センス)
@@ -1897,6 +2078,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3021011,
@@ -1911,6 +2093,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3021020,
@@ -1925,6 +2108,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3021021,
@@ -1939,6 +2123,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3021030,
@@ -1953,6 +2138,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3021031,
@@ -1967,6 +2153,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3021040,
@@ -1981,6 +2168,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3021041,
@@ -1995,6 +2183,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3021050,
@@ -2012,6 +2201,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3021051,
@@ -2029,6 +2219,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3021060,
@@ -2042,6 +2233,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3021061,
@@ -2055,6 +2247,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3021070,
@@ -2069,6 +2262,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3021071,
@@ -2083,6 +2277,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3021080,
@@ -2097,6 +2292,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3021081,
@@ -2111,6 +2307,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3021090,
@@ -2125,6 +2322,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3021091,
@@ -2139,6 +2337,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3021100,
@@ -2153,6 +2352,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3021101,
@@ -2167,6 +2367,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     /**
      * 金カード(メンタル/ロジック)
@@ -2185,6 +2386,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3022011,
@@ -2199,6 +2401,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3022020,
@@ -2213,6 +2416,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 75,
+        allow_duplicate: true,
     },
     {
         id: 3022021,
@@ -2227,6 +2431,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 102,
+        allow_duplicate: true,
     },
     {
         id: 3022030,
@@ -2240,6 +2445,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3022031,
@@ -2253,6 +2459,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3022040,
@@ -2267,6 +2474,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3022041,
@@ -2281,6 +2489,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3022050,
@@ -2295,6 +2504,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3022051,
@@ -2309,6 +2519,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3022060,
@@ -2326,6 +2537,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3022061,
@@ -2343,6 +2555,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3022070,
@@ -2358,6 +2571,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3022071,
@@ -2373,6 +2587,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3022080,
@@ -2387,6 +2602,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3022081,
@@ -2401,6 +2617,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3022090,
@@ -2415,6 +2632,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: true,
     },
     {
         id: 3022091,
@@ -2429,6 +2647,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: true,
     },
     {
         id: 3022100,
@@ -2443,6 +2662,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3022101,
@@ -2457,6 +2677,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3022110,
@@ -2472,6 +2693,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3022111,
@@ -2487,6 +2709,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     {
         id: 3022120,
@@ -2501,6 +2724,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 105,
+        allow_duplicate: false,
     },
     {
         id: 3022121,
@@ -2516,6 +2740,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 141,
+        allow_duplicate: false,
     },
     /**
      * 金カード(キャラ固有)
@@ -2532,7 +2757,9 @@ export const skillCardData = [
             { type: 'score', value: 18 },
             { type: 'status', target: '好調', value: 3 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3201011,
@@ -2545,7 +2772,9 @@ export const skillCardData = [
             { type: 'score', value: 26 },
             { type: 'status', target: '好調', value: 4 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3202010,
@@ -2558,7 +2787,9 @@ export const skillCardData = [
             { type: 'score', value: 12 },
             { type: 'score', value: 12, condition: '集中>=3' },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3202011,
@@ -2571,7 +2802,9 @@ export const skillCardData = [
             { type: 'score', value: 12 },
             { type: 'score', value: 12, condition: '集中>=3' },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3203010,
@@ -2583,7 +2816,9 @@ export const skillCardData = [
         effects: [
             { type: 'status', target: '好印象', value: 6 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3203011,
@@ -2595,7 +2830,9 @@ export const skillCardData = [
         effects: [
             { type: 'status', target: '好印象', value: 8 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3204010,
@@ -2608,7 +2845,9 @@ export const skillCardData = [
             { type: 'score', value: 4 },
             { type: 'status', target: '集中', value: 3, condition: '好調>0' },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3204011,
@@ -2621,7 +2860,9 @@ export const skillCardData = [
             { type: 'score', value: 6 },
             { type: 'status', target: '集中', value: 4, condition: '好調>0' },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3205010,
@@ -2634,7 +2875,9 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 2 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 120 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3205011,
@@ -2647,7 +2890,9 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 2 },
             { type: 'score', value: null, options: [{ type: '好印象', value: 160 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3206010,
@@ -2660,7 +2905,9 @@ export const skillCardData = [
             { type: 'block', value: 1 },
             { type: 'status', target: 'やる気', value: 5 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3206011,
@@ -2673,7 +2920,9 @@ export const skillCardData = [
             { type: 'block', value: 4 },
             { type: 'status', target: 'やる気', value: 6 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3207010,
@@ -2685,7 +2934,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 17, options: [{ type: '集中', value: 2 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3207011,
@@ -2697,7 +2948,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 24, options: [{ type: '集中', value: 2.5 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3208010,
@@ -2710,7 +2963,9 @@ export const skillCardData = [
             { type: 'block', value: 6 },
             { type: 'score', value: null, options: [{ type: 'やる気', value: 250 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3208011,
@@ -2723,7 +2978,9 @@ export const skillCardData = [
             { type: 'block', value: 7 },
             { type: 'score', value: null, options: [{ type: 'やる気', value: 350 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3209010,
@@ -2736,7 +2993,9 @@ export const skillCardData = [
             { type: 'block', value: 10 },
             { type: 'status', target: '集中', value: 4 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3209011,
@@ -2749,7 +3008,9 @@ export const skillCardData = [
             { type: 'block', value: 12 }, 
             { type: 'status', target: '集中', value: 5 },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3210010,
@@ -2762,7 +3023,9 @@ export const skillCardData = [
             { type: 'block', value: 3 },
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 3210011,
@@ -2775,7 +3038,9 @@ export const skillCardData = [
             { type: 'block', value: 3 },
             { type: 'score', value: null, options: [{ type: 'block', value: 140 }] },
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     /**
      * 金カード(サポ固有)
@@ -2796,6 +3061,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300011,
@@ -2812,6 +3078,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300020,
@@ -2827,6 +3094,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300021,
@@ -2842,6 +3110,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300030,
@@ -2857,6 +3126,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300031,
@@ -2872,6 +3142,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300040,
@@ -2887,6 +3158,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300041,
@@ -2902,6 +3174,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300050,
@@ -2916,6 +3189,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300051,
@@ -2930,6 +3204,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300060,
@@ -2945,6 +3220,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300061,
@@ -2960,6 +3236,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300070,
@@ -2974,6 +3251,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300071,
@@ -2988,6 +3266,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 3300080,
@@ -3002,6 +3281,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 3300081,
@@ -3016,6 +3296,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(アクティブ/フリー)
@@ -3038,6 +3319,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4011011,
@@ -3052,6 +3334,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4011020,
@@ -3065,6 +3348,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4011021,
@@ -3078,6 +3362,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4011030,
@@ -3092,6 +3377,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4011031,
@@ -3106,6 +3392,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4011040,
@@ -3120,6 +3407,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4011041,
@@ -3134,6 +3422,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4011050,
@@ -3147,6 +3436,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4011051,
@@ -3161,6 +3451,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4011060,
@@ -3176,6 +3467,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4011061,
@@ -3191,6 +3483,7 @@ export const skillCardData = [
         ],
         limit: -1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(アクティブ/ロジック)
@@ -3209,6 +3502,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4012011,
@@ -3223,6 +3517,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4012020,
@@ -3237,6 +3532,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4012021,
@@ -3251,6 +3547,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4012030,
@@ -3265,6 +3562,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4012031,
@@ -3279,6 +3577,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4012040,
@@ -3293,6 +3592,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4012041,
@@ -3307,6 +3607,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4012050,
@@ -3322,6 +3623,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4012051,
@@ -3337,6 +3639,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(メンタル/フリー)
@@ -3355,6 +3658,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4020011,
@@ -3369,6 +3673,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4020020,
@@ -3383,6 +3688,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4020021,
@@ -3397,6 +3703,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4020030,
@@ -3414,6 +3721,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4020031,
@@ -3432,6 +3740,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4020040,
@@ -3448,6 +3757,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4020041,
@@ -3464,6 +3774,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(メンタル/センス)
@@ -3482,6 +3793,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4021011,
@@ -3497,6 +3809,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4021020,
@@ -3513,6 +3826,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4021021,
@@ -3528,6 +3842,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4021030,
@@ -3543,6 +3858,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4021031,
@@ -3558,6 +3874,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4021040,
@@ -3572,6 +3889,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4021041,
@@ -3586,6 +3904,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(メンタル/ロジック)
@@ -3604,6 +3923,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4022011,
@@ -3619,6 +3939,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4022020,
@@ -3633,6 +3954,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4022021,
@@ -3648,6 +3970,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4022030,
@@ -3663,6 +3986,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4022031,
@@ -3678,6 +4002,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4022040,
@@ -3692,6 +4017,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4022041,
@@ -3706,6 +4032,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4022050,
@@ -3720,6 +4047,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4022051,
@@ -3734,6 +4062,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     {
         id: 4022060,
@@ -3748,6 +4077,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 150,
+        allow_duplicate: false,
     },
     {
         id: 4022061,
@@ -3762,6 +4092,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 204,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(キャラ固有)
@@ -3777,7 +4108,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 34 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4201011,
@@ -3789,7 +4122,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: 48 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4201020,
@@ -3801,7 +4136,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 250 }] }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4201021,
@@ -3813,7 +4150,9 @@ export const skillCardData = [
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 260 }] }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4201030,
@@ -3828,6 +4167,8 @@ export const skillCardData = [
             { type: 'draw', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4201031,
@@ -3842,6 +4183,8 @@ export const skillCardData = [
             { type: 'draw', value: 1 }, 
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4202010,
@@ -3854,7 +4197,9 @@ export const skillCardData = [
             { type: 'score', value: 14 }, 
             { type: 'status', target: '集中', value: 5 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4202011,
@@ -3867,7 +4212,9 @@ export const skillCardData = [
             { type: 'score', value: 15 }, 
             { type: 'status', target: '集中', value: 5 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4202020,
@@ -3882,7 +4229,9 @@ export const skillCardData = [
         effects: [
             { type: 'status', target: '好印象', value: 8 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4202021,
@@ -3897,7 +4246,9 @@ export const skillCardData = [
         effects: [
             { type: 'status', target: '好印象', value: 10 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4203010,
@@ -3910,7 +4261,9 @@ export const skillCardData = [
             { type: 'block', value: 2 }, 
             { type: 'status', target: '好印象', value: 7 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4203011,
@@ -3923,7 +4276,9 @@ export const skillCardData = [
             { type: 'block', value: 4 }, 
             { type: 'status', target: '好印象', value: 9 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4203020, 
@@ -3936,7 +4291,9 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 3 }, 
             { type: 'status', target: '絶好調', value: 4 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4203021, 
@@ -3949,7 +4306,9 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 4 }, 
             { type: 'status', target: '絶好調', value: 5 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4203030,
@@ -3966,7 +4325,9 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 2 }, 
             { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4203031,
@@ -3983,7 +4344,9 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 3 }, 
             { type: 'status', target: '元気効果のスキルカード使用後、好印象+1', value: 1 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4204010,
@@ -3996,7 +4359,9 @@ export const skillCardData = [
             { type: 'score', value: 12 }, 
             { type: 'score', value: 14, condition: '好調>0' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4204011,
@@ -4009,7 +4374,9 @@ export const skillCardData = [
             { type: 'score', value: 18 }, 
             { type: 'score', value: 20, condition: '好調>0' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4204020,
@@ -4023,7 +4390,9 @@ export const skillCardData = [
             { type: 'score', value: 9 }, 
             { type: 'score', value: 9 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4204021,
@@ -4037,7 +4406,9 @@ export const skillCardData = [
             { type: 'score', value: 14 }, 
             { type: 'score', value: 14 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4205010, 
@@ -4050,7 +4421,9 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 3 }, 
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4205011, 
@@ -4063,7 +4436,9 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 4 }, 
             { type: 'status', target: 'ターン終了時、好印象+1', value: 1 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4205020, 
@@ -4077,6 +4452,8 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好調', value: 200 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4205021, 
@@ -4090,6 +4467,8 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好調', value: 300 }] }, 
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4206010, 
@@ -4103,7 +4482,9 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] }, 
             { type: 'status', target: 'やる気', value: 2 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4206011, 
@@ -4117,7 +4498,43 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: 'block', value: 120 }] }, 
             { type: 'status', target: 'やる気', value: 3 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
+    },
+    {
+        id: 4206020, 
+        name: 'お茶会へようこそ♪',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -4 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 3 }, 
+            { type: 'status', target: '絶好調', value: 2 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'draw', value: 1 }, 
+        ],
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
+    },
+    {
+        id: 4206021, 
+        name: 'お茶会へようこそ♪+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -3 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 5 }, 
+            { type: 'status', target: '絶好調', value: 3 }, 
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+            { type: 'draw', value: 1 }, 
+        ],
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4207010,
@@ -4131,7 +4548,9 @@ export const skillCardData = [
             { type: 'score', value: 7 }, 
             { type: 'score', value: 7, condition: '集中>=6' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4207011,
@@ -4145,7 +4564,9 @@ export const skillCardData = [
             { type: 'score', value: 9 }, 
             { type: 'score', value: 9, condition: '集中>=6' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4207020,
@@ -4158,7 +4579,9 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 7 }, 
             { type: 'status', target: 'やる気', value: 3, condition: 'やる気>=6' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4207021,
@@ -4171,7 +4594,9 @@ export const skillCardData = [
             { type: 'status', target: 'やる気', value: 8 }, 
             { type: 'status', target: 'やる気', value: 5, condition: 'やる気>=3' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4208010, 
@@ -4184,7 +4609,9 @@ export const skillCardData = [
             { type: 'block', value: 5 }, 
             { type: 'block', value: 4, condition: 'やる気>=3' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4208011, 
@@ -4197,7 +4624,9 @@ export const skillCardData = [
             { type: 'block', value: 7 }, 
             { type: 'block', value: 7, condition: 'やる気>=3' }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4208020, 
@@ -4211,6 +4640,8 @@ export const skillCardData = [
             { type: 'block', value: 6, condition: 'hpPer<=50' }, 
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4208021, 
@@ -4224,6 +4655,8 @@ export const skillCardData = [
             { type: 'block', value: 12, condition: 'hpPer<=50' }, 
         ],
         limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4209010,
@@ -4236,7 +4669,9 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 4 }, 
             { type: 'hp', value: 4 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4209011,
@@ -4249,7 +4684,9 @@ export const skillCardData = [
             { type: 'status', target: '集中', value: 5 }, 
             { type: 'hp', value: 5 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4209020,
@@ -4263,7 +4700,9 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 3 }, 
             { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4209021,
@@ -4277,7 +4716,41 @@ export const skillCardData = [
             { type: 'status', target: '好調', value: 5 }, 
             { type: 'status', target: '消費体力減少', value: 2 }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
+    },
+    {
+        id: 4209030,
+        name: 'さっぱりひといき+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct_hp', value: -4 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2, options: [{ type: 'やる気', value: 2.3 }] }, 
+            { type: 'score', value: null, options: [{ type: 'block', value: 90 }] }, 
+            { type: 'status', target: '消費体力削減', value: 1 }, 
+        ],
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
+    },
+    {
+        id: 4209031,
+        name: 'さっぱりひといき+',
+        type: 'mental',
+        plan: 'logic',
+        cost: { type: 'direct_hp', value: -4 },
+        condition: '',
+        effects: [
+            { type: 'block', value: 2, options: [{ type: 'やる気', value: 2.3 }] }, 
+            { type: 'score', value: null, options: [{ type: 'block', value: 90 }] }, 
+            { type: 'status', target: '消費体力削減', value: 1 }, 
+        ],
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4210010, 
@@ -4289,7 +4762,9 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 5 }] }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     {
         id: 4210011, 
@@ -4301,7 +4776,9 @@ export const skillCardData = [
         effects: [
             { type: 'block', value: 2, options: [{ type: '使用したスキルカード数', value: 8 }] }, 
         ],
-        limit: 1
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
     },
     /**
      * 虹カード(サポ固有)
@@ -4321,6 +4798,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300011, 
@@ -4336,6 +4814,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300020, 
@@ -4350,6 +4829,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300021, 
@@ -4364,6 +4844,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300030, 
@@ -4380,6 +4861,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300031, 
@@ -4396,6 +4878,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300040, 
@@ -4410,6 +4893,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300041, 
@@ -4425,6 +4909,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300050, 
@@ -4439,6 +4924,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300051, 
@@ -4453,6 +4939,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300060, 
@@ -4470,6 +4957,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300061, 
@@ -4487,6 +4975,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300070, 
@@ -4502,6 +4991,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300071, 
@@ -4517,6 +5007,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300080, 
@@ -4532,6 +5023,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     }, 
     {
         id: 4300081, 
@@ -4547,6 +5039,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300090, 
@@ -4562,6 +5055,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300091, 
@@ -4577,6 +5071,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300100, 
@@ -4591,6 +5086,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300101, 
@@ -4605,6 +5101,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300110, 
@@ -4618,6 +5115,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300111, 
@@ -4632,6 +5130,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300120, 
@@ -4646,6 +5145,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300121, 
@@ -4660,6 +5160,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
     {
         id: 4300130, 
@@ -4674,6 +5175,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 96,
+        allow_duplicate: false,
     },
     {
         id: 4300131, 
@@ -4688,6 +5190,7 @@ export const skillCardData = [
         ],
         limit: 1,
         card_cost: 126,
+        allow_duplicate: false,
     },
 ];
 

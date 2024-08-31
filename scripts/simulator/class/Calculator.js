@@ -62,7 +62,7 @@ export class Calculator {
                     if (status.remainTurn<2){
                         return 15 * args[0]; //重写
                     }
-                    return 15 * args[0] * status.remainTurn *status.remainTurn / 4; //重写
+                    return 15 * args[0] * status.remainTurn * status.remainTurn / 4; //重写
                 }
                 return unitValue * args[0] * Math.sqrt(status.remainTurn+5) * 0.75;
             }
