@@ -230,6 +230,38 @@ const contestData = [
             },
         ],
     },
+    {
+        id: 240906,
+        name: '第8期コンテスト', 
+        period: '2024/08/22 - ----',
+        criteria: { 'vocal': 15, 'dance': 40, 'visual': 45 },
+        stages: [
+            // {
+            //     name: 'ステージ1',
+            //     turn: 8,
+            //     stageEffects: [],
+            //     stagePItemIds: [4240911],
+            //     plan: 'free',
+            //     turnTypes: [2, 2, 4],
+            // },
+            {
+                name: 'ステージ2',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240912],
+                plan: 'sense',
+                turnTypes: [2, 4, 6],
+            },
+            {
+                name: 'ステージ3',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240913],
+                plan: 'logic',
+                turnTypes: [2, 2, 4],
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {

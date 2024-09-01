@@ -51,6 +51,7 @@ export class ConditionChecker {
         } else 
         if (key == 'usedCardCountMultiple') {
             targetValue = status.usedCardCount % Number(value) == 0 ? value : -1;
+            console.log(status.usedCardCount, value, targetValue);
         } else 
         if (key == 'remain_turn') {
             targetValue = status.remainTurn;

@@ -1683,6 +1683,44 @@ const pItemData = [
         plan: 'sense',
     },
 
+    {
+        id: 4240911,
+        name: '初星バッチ（赤）',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'usedCardCountMultiple==2',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加', value: 5, options: [{ type: '上昇量', value: 30 }]  },
+        ],
+        limit: 3,
+        plan: 'free',
+    },
+    {
+        id: 4240912,
+        name: '初星オブジェ（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'start_turn',
+        effects: [
+            { type: 'status', target: '集中', value: 2 },
+        ],
+        limit: 4,
+        plan: 'sense',
+    },
+    {
+        id: 4240913,
+        name: '初星ライト（紫）',
+        description: 'ターン開始時、やる気+4、好印象+4（1回）',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: 'やる気', value: 6 },
+            { type: 'status', target: '消費体力増加', value: 1 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+
 ];
 
 export class PItem {
