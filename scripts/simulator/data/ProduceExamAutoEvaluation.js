@@ -2218,7 +2218,7 @@ export class AutoEvaluationData {
         '消費体力増加':"ProduceExamAutoEvaluationType_ExamStaminaConsumptionAdd",
         '消費体力削減':"ProduceExamAutoEvaluationType_ExamStaminaConsumptionDownFix",
         //'スキルカード使用数追加':"ProduceExamAutoEvaluationType_PlayableValueAdd",
-        'スキルカード使用数追加':"ProduceExamAutoEvaluationType_ExamExtraTurn",
+        'スキルカード使用数追加':"ProduceExamAutoEvaluationType_ExamExtraTurn",//再动优先级改为最高
         '絶好調':"ProduceExamAutoEvaluationType_ParameterBuffMultiplePerTurn",
         //"ProduceExamAutoEvaluationType_ParameterBuffOverTurn"?未知
         'extra_turn':"ProduceExamAutoEvaluationType_ExamExtraTurn",

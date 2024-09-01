@@ -1700,7 +1700,7 @@ const pItemData = [
         name: '初星オブジェ（紫）',
         description: '',
         activate_timing: 'start_turn',
-        condition: 'start_turn',
+        condition: '',
         effects: [
             { type: 'status', target: '集中', value: 2 },
         ],
@@ -1710,7 +1710,7 @@ const pItemData = [
     {
         id: 4240913,
         name: '初星ライト（紫）',
-        description: 'ターン開始時、やる気+4、好印象+4（1回）',
+        description: '',
         activate_timing: 'start_turn',
         condition: '',
         effects: [
