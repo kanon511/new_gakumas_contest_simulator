@@ -1688,7 +1688,7 @@ const pItemData = [
         name: '初星バッチ（赤）',
         description: '',
         activate_timing: 'before_use_card',
-        condition: 'usedCardCountMultiple==2',
+        condition: 'usedCardTurnCountMultiple==2',
         effects: [
             { type: 'status', target: 'パラメータ上昇量増加', value: 5, options: [{ type: '上昇量', value: 30 }]  },
         ],

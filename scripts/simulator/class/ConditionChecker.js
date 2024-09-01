@@ -50,8 +50,10 @@ export class ConditionChecker {
             targetValue = status.lastUsedCard?.effects.some(effect=>effect.target==value || effect.type == value) ? value : -1;
         } else 
         if (key == 'usedCardCountMultiple') {
-            targetValue = status.usedCardCount % Number(value) == 0 ? value : -1;
-            console.log(status.usedCardCount, value, targetValue);
+            targetValue = (status.usedCardCount + 1) % Number(value) == 0 ? value : -1;//
+        } else 
+        if (key == 'usedCardTurnCountMultiple') {
+            targetValue = (status.usedCardTurnCount + 1) % Number(value) == 0 ? value : -1;//
         } else 
         if (key == 'remain_turn') {
             targetValue = status.remainTurn;

@@ -45,6 +45,7 @@ export class PIdol {
             turnCount: 0,
             lastUsedCard: null,
             usedCardCount: 0,
+            usedCardTurnCount: 0,
             pStatus: new PIdolStatus(),
             handCount: null,
             turnType: null,
@@ -156,6 +157,7 @@ export class PIdol {
         this.#status.pStatus.reduceInTurnend();
         this.discardAll();
         this.#status.remainTurn--;
+        this.#status.usedCardTurnCount = 0;
     }
 
     checkAdditionalAction () {
@@ -275,6 +277,7 @@ export class PIdol {
             turnCount: this.#status.turnCount,
             lastUsedCard: this.#status.lastUsedCard,
             usedCardCount: this.#status.usedCardCount,
+            usedCardTurnCount: this.#status.usedCardTurnCount,
             pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
             handCount: this.getDeck('handCards').length,
             turnType: this.#status.turnType,
@@ -321,6 +324,7 @@ export class PIdol {
             const executes = [action];
             if (action.type == 'use' && action.sourceType == 'skillCard') {
                 status.usedCardCount++;
+                status.usedCardTurnCount++;
                 executes.push({ type: 'used_card_count', args: [1] });
             }
             return executes;
@@ -503,6 +507,7 @@ export class PIdol {
         }
         if (type == 'used_card_count') {
             this.#status.usedCardCount++;
+            this.#status.usedCardTurnCount++;
             return ``;
         }
         if (type == 'generate') {

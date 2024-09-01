@@ -236,14 +236,14 @@ const contestData = [
         period: '2024/08/22 - ----',
         criteria: { 'vocal': 15, 'dance': 40, 'visual': 45 },
         stages: [
-            // {
-            //     name: 'ステージ1',
-            //     turn: 8,
-            //     stageEffects: [],
-            //     stagePItemIds: [4240911],
-            //     plan: 'free',
-            //     turnTypes: [2, 2, 4],
-            // },
+            {
+                name: 'ステージ1',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240911],
+                plan: 'free',
+                turnTypes: [2, 2, 4],
+            },
             {
                 name: 'ステージ2',
                 turn: 12,
