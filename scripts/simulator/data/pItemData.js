@@ -306,6 +306,30 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2109020,
+        name: '初声の証・莉波',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'usedCardCountMultiple==3',
+        effects: [
+            { type: 'status', target: 'やる気', value: 2 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
+        id: 2109021,
+        name: '初声の証・莉波+',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'usedCardCountMultiple==3',
+        effects: [
+            { type: 'status', target: 'やる気', value: 3 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
         id: 2110010,
         name: 'テクノドッグ',
         description: '',
@@ -1221,13 +1245,13 @@ const pItemData = [
     },
     {
         id: 2309030,
-        name: 'ぱたぱたうちわ+',
+        name: 'ぱたぱたうちわ',
         description: '',
         activate_timing: 'after_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
-            { type: 'block', value: 2 },
-            { type: 'status', target: 'やる気', value: 4 },
+            { type: 'block', value: 1 },
+            { type: 'status', target: 'やる気', value: 3 },
         ],
         limit: 2,
         plan: 'logic',

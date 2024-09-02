@@ -428,6 +428,17 @@ const pIdolData = [
         unique_pItem_id: 2109010,
     },
     {
+        id: 10902,
+        rarity: 'R',
+        episode_name: '初心',
+        character_id: 109,
+        name: '姫崎莉波',
+        plan: 'logic',
+        trend: 'やる気',
+        unique_skillCard_id: 2209020,
+        unique_pItem_id: 2109020,
+    },
+    {
         id: 20901,
         rarity: 'SR',
         episode_name: '『私らしさ』のはじまり',
