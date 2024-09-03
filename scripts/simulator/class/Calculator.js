@@ -26,6 +26,9 @@ export class Calculator {
         if (type == 'used_card_count') {
             return 0;
         }
+        if (type == 'use_card_count_one_turn') {
+            return 0;
+        }
         if (type == 'end') {
             return 0;
         }

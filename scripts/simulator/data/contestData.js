@@ -201,7 +201,7 @@ const contestData = [
     {
         id: 240822,
         name: '第7期コンテスト', 
-        period: '2024/08/22 - ----',
+        period: '2024/08/22 - 09/05',
         criteria: { 'vocal': 15, 'dance': 50, 'visual': 35 },
         stages: [
             {
@@ -227,6 +227,38 @@ const contestData = [
                 stagePItemIds: [4240813],
                 plan: 'logic',
                 turnTypes: [2, 6, 4],
+            },
+        ],
+    },
+    {
+        id: 240906,
+        name: '第8期コンテスト(属性不明)', 
+        period: '2024/09/06 - 09/20',
+        criteria: { 'vocal': 40, 'dance': 27, 'visual': 33 },
+        stages: [
+            {
+                name: 'ステージ1ターン不明',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240911],
+                plan: 'free',
+                turnTypes: [4, 2, 2],
+            },
+            {
+                name: 'ステージ2ターン不明',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240912],
+                plan: 'sense',
+                turnTypes: [5, 4, 3],
+            },
+            {
+                name: 'ステージ3ターン不明',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240913],
+                plan: 'logic',
+                turnTypes: [4, 2, 2],
             },
         ],
     },

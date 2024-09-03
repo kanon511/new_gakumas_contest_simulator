@@ -52,6 +52,9 @@ export class ConditionChecker {
         if (key == 'usedCardCountMultiple') {
             targetValue = status.usedCardCount % Number(value) == 0 ? value : -1;
         } else 
+        if (key == 'use_card_count_multiple_one_turn') {
+            targetValue = status.use_card_count_one_turn % Number(value) == 0 ? value : -1;
+        } else 
         if (key == 'remain_turn') {
             targetValue = status.remainTurn;
         } else {
