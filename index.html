@@ -73,6 +73,13 @@
                     </div>
                 </div>
             </div>
+            <div class="section">
+                <!-- <label>カード選択<a>切换视图</a></label> -->
+                <div>
+                    <div id="main-character-cards-box-image" class="character-cards-box-image"></div>
+                    <div id="sub-character-cards-box-image" class="character-cards-box-image"></div>
+                </div>
+            </div>
             <div id="card-box-information">
                 <div>角色固有卡以外的卡也可以重复，不想重复的话请选择「-」<br>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/">原网站</a></div>
                 <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了，有建议可以提issues</div>
@@ -124,6 +131,19 @@
                     <div id="contest-log-max">最大値のログが表示されます</div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="modalOverlay" class="modal-overlay">
+        <div id="modalContent" class="modal-content">
+            <div class="category-bar">
+                <button data-category="all" class="active">全部分类</button>
+                <button data-category="2">R</button>
+                <button data-category="3">SR</button>
+                <button data-category="4">SSR</button>
+                <button id="windowEvolveButton">切换强化</button>
+            </div>
+            <div class="button-container" id="buttonContainer"></div>
         </div>
     </div>
 </body>

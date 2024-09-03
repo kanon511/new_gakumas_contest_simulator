@@ -23,6 +23,27 @@ body {
     box-sizing: border-box;
 }
 
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    width: 90%;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+    height: 60%;
+}
+
 @media screen and (min-width: 750px) {
     #wrapper {
         flex-direction: row;
@@ -37,6 +58,10 @@ body {
 
     .container:last-child {
         margin-right: 0;
+    }
+
+    .modal-content {
+        width: 50%;
     }
 }
 
@@ -93,11 +118,6 @@ body {
 .container-character-cards-box {
     flex: 1 1 calc(50% - 10px);
     align-items: center;
-}
-
-.character-cards-box {
-    /* flex: 1 1 calc(50% - 10px);
-    align-items: center; */
 }
 
 .character-cards-box > .character-cards {
@@ -282,4 +302,70 @@ a {
 #card-box-information {
     text-align: center;
     font-size: 12px;
+}
+
+.category-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 40px;
+}
+.category-bar button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #f0f0f0;
+    cursor: pointer;
+    flex: 1;
+    max-width: 150px;
+    text-align: center;
+    transition: background 0.3s, color 0.3s;
+}
+.category-bar button.active {
+    background: rgb(67, 138, 245);
+    color: white;
+}
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    height: calc(100% - 100px);
+    padding: 20px;
+    box-sizing: border-box;
+}
+.windowButton {
+    width: 100px;
+    height: 100px;
+    background: #f0f0f0;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.windowButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.character-cards-box-image{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+.imgButton {
+    width: 15%;
+    height: 100%;
+    border: none;
+    padding: 0;
+    background-color: #f9f9f9;
+    overflow: hidden;
+}
+.imgButton img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }

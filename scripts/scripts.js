@@ -3,6 +3,10 @@ import { SkillCardData } from './simulator/data/skillCardData.js';
 import { ContestData } from './simulator/data/contestData.js';
 import { PItemData } from './simulator/data/pItemData.js';
 import { onTest } from './setting.js';
+import { init,setPlan,imgPath,filterButtons } from './window.js';
+
+export let setSelectImageCard = null;
+export let isEvolveButtonPressed = false; // 初始状态为未按下
 
 function DOM_text_to_elememt (text) {
     const temporaryDiv = document.createElement('div');
@@ -51,6 +55,35 @@ function DOM_set_characterCards (parent, number, type) {
     return Array.from(parent.children).map(element=>element.querySelector('select'));
 }
 
+function DOM_set_characterImageCards (parent, number, text) {
+    const textElement_card = `
+    <button class="imgButton">
+        <img></img>
+    </button>`;
+    const fragment = document.createDocumentFragment();
+    for (let i = 0; i < number; i++) {
+        const element = DOM_text_to_elememt(textElement_card);
+        fragment.appendChild(element);
+        element.addEventListener('click', () => {
+            document.getElementById('modalOverlay').style.display = 'flex';
+            setSelectImageCard = (id) => {
+                if(id==-1){
+                    text[i].value = -1;
+                    text[i].parentNode.getElementsByClassName("checkbox")[0].checked = false;
+                    text[i].dispatchEvent(new Event("change"));
+                    return;
+                }
+                text[i].value = 2 * Math.floor(id / 2);
+                text[i].parentNode.getElementsByClassName("checkbox")[0].checked = id % 2 > 0;
+                text[i].dispatchEvent(new Event("change"));
+            }
+        })
+    }
+    DOM_delete_allChildren(parent);
+    parent.appendChild(fragment);
+    return Array.from(parent.children).map(element=>element.querySelector('img'));
+}
+
 function DOM_set_character (parent, pIdolList) {
     const fragment = document.createDocumentFragment();
     pIdolList.forEach(item=>{
@@ -79,25 +112,6 @@ function DOM_set_select_options (select, item_list, isBlank) {
     });
     DOM_delete_allChildren(select);
     select.appendChild(fragment);
-}
-
-function parseSimulationLog (simulationLog) {
-    const container = document.createElement('div');
-    for (const log of simulationLog.log) {
-        const textElement = `
-        <div>
-            <div class="log-turn" data-turnType="${log.turnType}">
-                ${log.turn}ターン目　
-                ${log.turnType}
-                <i class="fa-solid fa-star"></i>${log.status.score}
-                <i class="fa-solid fa-heart"></i>${log.status.hp}
-                <i class="fa-solid fa-shield-halved"></i>${log.status.block}
-            </div>
-        </div>`;
-        container.appendChild(DOM_text_to_elememt(textElement));
-        container.appendChild(parseExecutionLog(log.executionLog));
-    }
-    return container;
 }
 
 function parseExecutionLog (executionLog) {
@@ -138,6 +152,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const element_main_cards = DOM_set_characterCards(element_main_card_box, 6, 'main');
     const element_sub_cards  = DOM_set_characterCards(element_sub_card_box, 6, 'sub');
 
+    const element_main_card_box_image = document.getElementById('main-character-cards-box-image');
+    const element_sub_card_box_image  = document.getElementById('sub-character-cards-box-image');
+    
+    const element_main_cards_image = DOM_set_characterImageCards(element_main_card_box_image, 6, element_main_cards);
+    const element_sub_cards_image  = DOM_set_characterImageCards(element_sub_card_box_image, 6, element_sub_cards);
+
     const element_pItem_box  = document.getElementById('main-character-pItem-box');
     const element_pItems = DOM_set_characterCards(element_pItem_box, 4, 'pItem');
 
@@ -163,6 +183,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 return acc + cost;
             }, 0);
             e.target.parentNode.parentNode.parentNode.parentNode.getElementsByClassName('cost-display')[0].textContent = totalCost;
+
+            const main_cards_id = element_main_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
+            const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
+            main_cards_id.forEach((item,index)=>{
+                if(item==-1){
+                    element_main_cards_image[index].src="../kanon.png"
+                    return;
+                }
+                element_main_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
+            })
+            sub_cards_id.forEach((item,index)=>{
+                if(item==-1){
+                    element_sub_cards_image[index].src="../kanon.png"
+                    return;
+                }
+                element_sub_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
+            })
         })
     });
 
@@ -238,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // プランが変わったらカード選択を更新
         if (current_main_plan != pIdol.plan) {
             current_main_plan = pIdol.plan;
+            setPlan(pIdol.plan);
             DOM_set_otherSkillCards(current_main_plan);
         }
 
@@ -437,6 +475,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     element_contest_result_buttons[0].click();
+
+        
+    // 弹窗设置
+    document.getElementById('modalOverlay').addEventListener('click', function(event) {
+        if (event.target === this) {
+            this.style.display = 'none';
+        }
+    });
+    const toggleButton = document.getElementById('windowEvolveButton');
+
+    toggleButton.addEventListener('click', () => {
+        if (isEvolveButtonPressed) {
+            toggleButton.className = '';
+            isEvolveButtonPressed = false;
+            filterButtons();
+        } else {
+            toggleButton.className = 'active';
+            isEvolveButtonPressed = true;
+            filterButtons();
+        }
+    });
+    init();
 
     // 実行
     let run_flag = false;
