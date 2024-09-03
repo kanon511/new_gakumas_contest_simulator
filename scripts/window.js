@@ -2,6 +2,7 @@ import { SkillCardData } from './simulator/data/skillCardData.js';
 import { setSelectImageCard,isEvolveButtonPressed } from './scripts.js';
 
 export const imgPath = 'https://katabami83.github.io/gakumas_file/images/';
+export const addImgPath = 'https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png';
 let plan = ""
 let category = "all"
 
@@ -20,7 +21,7 @@ function createButtons(nodes) {
     }
 
     const img = document.createElement('img');
-    img.src = "https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png";
+    img.src = addImgPath;
     button.appendChild(img);
 
     container.appendChild(button);

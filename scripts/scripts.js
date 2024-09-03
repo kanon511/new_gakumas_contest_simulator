@@ -3,7 +3,7 @@ import { SkillCardData } from './simulator/data/skillCardData.js';
 import { ContestData } from './simulator/data/contestData.js';
 import { PItemData } from './simulator/data/pItemData.js';
 import { onTest } from './setting.js';
-import { init,setPlan,imgPath,filterButtons } from './window.js';
+import { init,setPlan,imgPath,filterButtons,addImgPath } from './window.js';
 
 export let setSelectImageCard = null;
 export let isEvolveButtonPressed = false; // 初始状态为未按下
@@ -188,14 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
             main_cards_id.forEach((item,index)=>{
                 if(item==-1){
-                    element_main_cards_image[index].src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"
+                    element_main_cards_image[index].src=addImgPath;
                     return;
                 }
                 element_main_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
             })
             sub_cards_id.forEach((item,index)=>{
                 if(item==-1){
-                    element_sub_cards_image[index].src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"
+                    element_sub_cards_image[index].src=addImgPath;
                     return;
                 }
                 element_sub_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
@@ -484,7 +484,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     const toggleButton = document.getElementById('windowEvolveButton');
-
     toggleButton.addEventListener('click', () => {
         if (isEvolveButtonPressed) {
             toggleButton.className = '';
@@ -496,6 +495,25 @@ document.addEventListener('DOMContentLoaded', () => {
             filterButtons();
         }
     });
+
+    document.getElementById('modalOverlayItem').addEventListener('click', function(event) {
+        if (event.target === this) {
+            this.style.display = 'none';
+        }
+    });
+    const toggleButtonItem = document.getElementById('windowEvolveButtonItem');
+    toggleButtonItem.addEventListener('click', () => {
+        if (isEvolveButtonPressed) {
+            toggleButtonItem.className = '';
+            isEvolveButtonPressed = false;
+            filterButtons();
+        } else {
+            toggleButtonItem.className = 'active';
+            isEvolveButtonPressed = true;
+            filterButtons();
+        }
+    });
+
     init();
 
     // 実行
