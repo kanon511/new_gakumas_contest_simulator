@@ -20,7 +20,7 @@ function createButtons(nodes) {
     }
 
     const img = document.createElement('img');
-    img.src = "../kanon.png";
+    img.src = "https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png";
     button.appendChild(img);
 
     container.appendChild(button);
@@ -51,7 +51,7 @@ export function filterButtons() {
     const buttons = document.querySelectorAll('.windowButton');
     buttons.forEach(button => {
         if ((category === 'all' || button.dataset.type === category) && (plan===button.dataset.plan || button.dataset.plan==='free') && (button.dataset.evolve=="-1" || button.dataset.evolve==(isEvolveButtonPressed?'1':'0'))) {
-            button.style.display = 'block';
+            button.style.display = 'flex';
         } else {
             button.style.display = 'none';
         }

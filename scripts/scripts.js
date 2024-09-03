@@ -188,14 +188,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
             main_cards_id.forEach((item,index)=>{
                 if(item==-1){
-                    element_main_cards_image[index].src="../kanon.png"
+                    element_main_cards_image[index].src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"
                     return;
                 }
                 element_main_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
             })
             sub_cards_id.forEach((item,index)=>{
                 if(item==-1){
-                    element_sub_cards_image[index].src="../kanon.png"
+                    element_sub_cards_image[index].src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"
                     return;
                 }
                 element_sub_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
