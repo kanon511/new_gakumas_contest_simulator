@@ -337,8 +337,9 @@ a {
     box-sizing: border-box;
 }
 .windowButton {
-    width: 17%;
-    margin-bottom: 2%;
+    width: 16%;
+    max-width: 6rem;
+    margin: 1%;
     display: flex;
     justify-content: center;
     align-items: center;
