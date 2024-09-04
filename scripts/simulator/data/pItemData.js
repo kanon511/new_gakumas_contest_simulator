@@ -360,7 +360,7 @@ const pItemData = [
         id: 2109020,
         name: '初心の証・莉波',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'status', target: 'やる気', value: 2 },
@@ -372,7 +372,7 @@ const pItemData = [
         id: 2109021,
         name: '初心の証・莉波+',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'status', target: 'やる気', value: 3 },
@@ -1298,7 +1298,7 @@ const pItemData = [
         id: 2309030,
         name: 'ぱたぱたうちわ',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'block', value: 1 },
@@ -1311,7 +1311,7 @@ const pItemData = [
         id: 2309031,
         name: 'ぱたぱたうちわ+',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'block', value: 2 },
@@ -1762,7 +1762,7 @@ const pItemData = [
         id: 4240911,
         name: '初星バッチ（赤）',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'use_card_count_multiple_one_turn==2',
         effects: [
             { type: 'status', target: 'パラメータ上昇量増加', value: 5, options: [{ type: '上昇量', value: 30 }] },
