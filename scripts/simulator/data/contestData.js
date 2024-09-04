@@ -232,12 +232,12 @@ const contestData = [
     },
     {
         id: 240906,
-        name: '第8期コンテスト(属性不明)', 
+        name: '第8期コンテスト', 
         period: '2024/09/06 - 09/20',
         criteria: { 'vocal': 15, 'dance': 40, 'visual': 45 },
         stages: [
             {
-                name: 'ステージ1ターン不明',
+                name: 'ステージ1',
                 turn: 8,
                 stageEffects: [],
                 stagePItemIds: [4240911],
@@ -245,7 +245,7 @@ const contestData = [
                 turnTypes: [2, 2, 4],
             },
             {
-                name: 'ステージ2ターン不明',
+                name: 'ステージ2',
                 turn: 12,
                 stageEffects: [],
                 stagePItemIds: [4240912],
@@ -253,7 +253,7 @@ const contestData = [
                 turnTypes: [2, 4, 6],
             },
             {
-                name: 'ステージ3ターン不明',
+                name: 'ステージ3',
                 turn: 8,
                 stageEffects: [],
                 stagePItemIds: [4240913],
