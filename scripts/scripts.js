@@ -496,23 +496,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    document.getElementById('modalOverlayItem').addEventListener('click', function(event) {
-        if (event.target === this) {
-            this.style.display = 'none';
-        }
-    });
-    const toggleButtonItem = document.getElementById('windowEvolveButtonItem');
-    toggleButtonItem.addEventListener('click', () => {
-        if (isEvolveButtonPressed) {
-            toggleButtonItem.className = '';
-            isEvolveButtonPressed = false;
-            filterButtons();
-        } else {
-            toggleButtonItem.className = 'active';
-            isEvolveButtonPressed = true;
-            filterButtons();
-        }
-    });
+    // document.getElementById('modalOverlayItem').addEventListener('click', function(event) {
+    //     if (event.target === this) {
+    //         this.style.display = 'none';
+    //     }
+    // });
+    // const toggleButtonItem = document.getElementById('windowEvolveButtonItem');
+    // toggleButtonItem.addEventListener('click', () => {
+    //     if (isEvolveButtonPressed) {
+    //         toggleButtonItem.className = '';
+    //         isEvolveButtonPressed = false;
+    //         filterButtons();
+    //     } else {
+    //         toggleButtonItem.className = 'active';
+    //         isEvolveButtonPressed = true;
+    //         filterButtons();
+    //     }
+    // });
 
     init();
 
