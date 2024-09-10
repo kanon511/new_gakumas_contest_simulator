@@ -1141,6 +1141,32 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2306030,
+        name: '温泉の後のお楽しみ+',
+        description: '',
+        activate_timing: 'use_card',
+        condition: 'usedCardCountMultiple==4',
+        effects: [
+            { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 1.3 }] },
+            { type: 'fixed_block', value: 7 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 2306031,
+        name: '温泉の後のお楽しみ+',
+        description: '',
+        activate_timing: 'use_card',
+        condition: 'usedCardCountMultiple==4',
+        effects: [
+            { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 1.3 }] },
+            { type: 'fixed_block', value: 7 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
         id: 2307010,
         name: 'ゲーセンの戦利品',
         description: '',
