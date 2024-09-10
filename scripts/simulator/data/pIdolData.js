@@ -351,6 +351,17 @@ const pIdolData = [
         unique_pItem_id: 2306020,
     },
     {
+        id: 30603,
+        rarity: 'SSR',
+        episode_name: 'ようこそ初星温泉',
+        character_id: 106,
+        name: '倉本千奈',
+        plan: 'sense',
+        trend: '集中',
+        unique_skillCard_id: 4206030,
+        unique_pItem_id: 2306030,
+    },
+    {
         id: 10701,
         rarity: 'R',
         episode_name: '学園生活',
