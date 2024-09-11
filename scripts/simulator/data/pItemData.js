@@ -1142,13 +1142,13 @@ const pItemData = [
     },
     {
         id: 2306030,
-        name: '温泉の後のお楽しみ+',
+        name: '温泉の後のお楽しみ',
         description: '',
         activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==4',
         effects: [
             { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 1.3 }] },
-            { type: '固定元気', value: 7 },
+            { type: '固定元気', value: 2 },
         ],
         limit: 2,
         plan: 'sense',
@@ -1819,6 +1819,44 @@ const pItemData = [
             { type: 'status', target: '消費体力増加', value: 1 },
         ],
         limit: 2,
+        plan: 'logic',
+    },
+
+    {
+        id: 4240921,
+        name: '初星バッチ（赤）',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'cardEffectInclude==消費体力減少',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加', value: 6, options: [{ type: '上昇量', value: 30 }]  },
+        ],
+        limit: 3,
+        plan: 'free',
+    },
+    {
+        id: 4240922,
+        name: '初星オブジェ（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好印象', value: 6 },
+            { type: 'block', value: 5 },
+        ],
+        limit: 1,
+        plan: 'logic',
+    },
+    {
+        id: 4240923,
+        name: '初星ライト（紫）',
+        description: '',
+        activate_timing: 'end_turn',
+        condition: '好印象>=8',
+        effects: [
+            { type: 'status', target: 'やる気', value: 5 },
+        ],
+        limit: 3,
         plan: 'logic',
     },
 

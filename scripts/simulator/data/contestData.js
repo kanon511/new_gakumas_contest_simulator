@@ -262,6 +262,38 @@ const contestData = [
             },
         ],
     },
+    {
+        id: 240923,
+        name: '第9期コンテスト', 
+        period: '2024/08/22 - ----',
+        criteria: { 'vocal': 40, 'dance': 30, 'visual': 30 },
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240921],
+                plan: 'free',
+                turnTypes: [6, 3, 3],
+            },
+            {
+                name: 'ステージ2',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240922],
+                plan: 'sense',
+                turnTypes: [6, 3, 3],
+            },
+            {
+                name: 'ステージ3',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4240923],
+                plan: 'logic',
+                turnTypes: [4, 2, 2],
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {
