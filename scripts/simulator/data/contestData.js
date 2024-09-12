@@ -281,7 +281,7 @@ const contestData = [
                 turn: 12,
                 stageEffects: [],
                 stagePItemIds: [4240922],
-                plan: 'sense',
+                plan: 'logic',
                 turnTypes: [6, 3, 3],
             },
             {
