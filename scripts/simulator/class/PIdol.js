@@ -13,11 +13,11 @@ export class PIdol {
     #parameter;
     #status;
     #pItemsManager;
-    #deck;
+    deck;
     #isAdditional;
     #endExecutions;
     #log;
-    #turnType;
+    turnType;
     #trendEvaluationVonusCoef;
     #autoId;
 
@@ -52,7 +52,7 @@ export class PIdol {
         };
 
         this.#pItemsManager = new PItemManager(pItemIds);
-        this.#deck = new Deck(skillCardIds);
+        this.deck = new Deck(skillCardIds);
         this.#log = new PIdolLog();
 
         this.#trendEvaluationVonusCoef = {}
@@ -62,13 +62,13 @@ export class PIdol {
     }
 
     init (turnCount, critearia, turnTypes) {
-        this.#turnType = new TurnType(turnCount, critearia, turnTypes, this.#autoId);
-        this.#status.turnType = this.#turnType;
+        this.turnType = new TurnType(turnCount, critearia, turnTypes, this.#autoId);
+        this.#status.turnType = this.turnType;
         this.#status.remainTurn = turnCount;
         this.#status.turnCount = turnCount;
         this.#parameter.avg = 
             Math.floor(['vocal', 'dance', 'visual'].reduce((acc, curr)=>{
-                return acc + this.#turnType.getCount(curr) * this.#parameter[curr];
+                return acc + this.turnType.getCount(curr) * this.#parameter[curr];
             }, 0) / turnCount);
     }
 
@@ -84,7 +84,7 @@ export class PIdol {
      */
     start () {
         this.#status.turn++;
-        this.#status.currentTurnType = this.#turnType.getType(this.#status.turn);
+        this.#status.currentTurnType = this.turnType.getType(this.#status.turn);
         this.#log.nextTurn({ score: this.#status.score, hp: this.#status.hp, block: this.#status.block, turnType: this.#status.currentTurnType });
         const defaultActions = [
             { type: 'effect', sourceType: 'pIdol', target: { type: 'draw', value: 3 } },
@@ -108,11 +108,11 @@ export class PIdol {
     
 
     useCard (cardNumber) {
-        const usedCard = this.#deck.getHandCardByNumber(cardNumber);
+        const usedCard = this.deck.getHandCardByNumber(cardNumber);
         this.#status.lastUsedCard = usedCard;
         const executions = usedCard.executions;
         this.#endExecutions = usedCard.scheduledExecutions;
-        this.#deck.useCard(cardNumber);
+        this.deck.useCard(cardNumber);
         this.#status.handCount--;
         this.#executeActions(executions);
         if (this.#status.pStatus.has('スキルカード使用数追加')) {
@@ -145,7 +145,7 @@ export class PIdol {
     }
 
     discardAll () {
-        this.#deck.discardAll();
+        this.deck.discardAll();
         this.#status.handCount = this.getDeck('handCards').length;
     }
 
@@ -258,7 +258,7 @@ export class PIdol {
 
     #evaluateExecutions (executions) {
         return Math.floor(executions.reduce((acc, curr) => {
-            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef, this.#autoId, this.#turnType.getType(this.#status.turn));
+            let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef, this.#autoId, this.turnType.getType(this.#status.turn));
             return acc + evaluation;
         }, 0));
     }
@@ -286,13 +286,13 @@ export class PIdol {
     }
 
     #drawSkillCard (number) {
-        const result = this.#deck.draw(number);
+        const result = this.deck.draw(number);
         this.#status.handCount = this.getDeck('handCards').length;
         return result;
     }
 
     getDeck (type) {
-        return this.#deck[type];
+        return this.deck[type];
     }
 
     #setSkillCardAvailale (skillCard) {
@@ -498,7 +498,7 @@ export class PIdol {
             return `予約効果登録：${args[1]}(${args[2]}ターン目)`;
         }
         if (type == 'upgrade') {
-            this.#deck.upgrade('allhands');
+            this.deck.upgrade('allhands');
             return `手札を強化した`;
         }
         if (type == 'discard') {
@@ -521,7 +521,7 @@ export class PIdol {
                     String(item.id)[1] != '3' // サポ固有削除)
                 );
                 const targetCard = targetCards[Math.floor(Math.random()*targetCards.length)];
-                this.#deck.addCardInDeck(targetCard.id, 'handCards');
+                this.deck.addCardInDeck(targetCard.id, 'handCards');
                 name = targetCard.name;
             }
             return `${name}を手札に加えた`;

@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./styles/simulationLog.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <script src="./min.js"></script>
-    <script type="module" src="./scripts/scripts.js"></script>
+    <script type="module" src="./scripts/test/scripts.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -81,10 +81,10 @@
                 </div>
             </div>
             <div id="card-box-information">
-                <div>角色固有卡以外的卡也可以重复，不想重复的话请选择「-」<br>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/">原网站</a></div>
+                <div>使用方法(第一次使用必看)：</div>
+                <div>按照游戏中jjc配置数据进行配置，相同卡的第二张请选择「-」，无论是否可以重复，强化卡和未强化卡算两张不同的卡，卡牌位置没有影响，检查无误后运行</div>
+                <div>发现有问题后，请截图联系作者QQ:2750368249/kanon511@qq.com/github提供issue。<br>截图内容需要模拟器ai发生差异的回合信息，以及游戏内模拟的对应回合的截图，要能够说明模拟器和实际ai的选择差异</div>
                 <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249</div>
-                <div>最后更新时间：2024/09/11。更新第九期jjc数据，修复了第九期第二场的类型限制问题。</div>
-                <div>怀疑数据不准？使用<a href="test.html">测试用网站</a>分析AI准确率</div>
             </div>
             <div class="section">
                 <label>AI选择（感性建议使用原AI）</label>
@@ -101,6 +101,32 @@
                 <input id="save-button" type="button" value="生成卡组链接">
             </div>
         </div>
+
+        <div class="container">
+            <div class="section character-select-box">
+                <label for="main-character">请选择本回合的回合颜色</label>
+                <select id="turn-color">
+                    <option value="vocal">vocal</option>
+                    <option value="dance">dance</option>
+                    <option value="visual">visual</option>
+                </select>
+            </div>
+            <div class="section character-select-box">
+                <label for="main-character">请选择本回合ai的手牌，包括如果ai使用了抽牌能力抽上的牌，请按照抽牌顺序选择<br>所选手牌：</label>
+                <div id="selected-hand-card-text">
+
+                </div>
+                <select id="use_card_list">
+                    <option value="">select</option>
+                </select>
+            </div>
+            <div class="run-button">
+                <input id="section-button" type="button" value="选择手牌卡牌" style="margin-bottom: 1%;">
+                <input id="use-button" type="button" value="确认选择运行下一回合">
+            </div>
+        </div>
+
+
         <div class="container">
             <!--<div id="contest-score">スコア：0</div>-->
             <table class="result-table">

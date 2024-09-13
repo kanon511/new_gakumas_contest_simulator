@@ -8,7 +8,7 @@ export class TurnType {
     /**
      * @type {Array<Stirng>} ターンごとのタイプ
      */
-    #turnTypes;
+    turnTypes;
     #turnCount;
 
     /**
@@ -18,28 +18,28 @@ export class TurnType {
      * @param {Object<String, Number>} critearia 評価基準オブジェクト
      */
     constructor (turnCount, critearia, turnTypes, autoId) {
-        this.#turnTypes = new Array(turnCount).fill('');
+        this.turnTypes = new Array(turnCount).fill('');
         const criteariaRank = this.#setCriteariaRank(critearia);
         const typeCount = this.#setTurnCount(turnCount, criteariaRank, turnTypes);
 
         // ラスト3ターンを流行3位->流行2位->流行1位の順にする
-        this.#turnTypes[this.#turnTypes.length-3] = criteariaRank[2];
-        this.#turnTypes[this.#turnTypes.length-2] = criteariaRank[1];
-        this.#turnTypes[this.#turnTypes.length-1] = criteariaRank[0];
+        this.turnTypes[this.turnTypes.length-3] = criteariaRank[2];
+        this.turnTypes[this.turnTypes.length-2] = criteariaRank[1];
+        this.turnTypes[this.turnTypes.length-1] = criteariaRank[0];
         // 最初のターンを流行1位に固定する
         let turnCountStart = 0;
         const totalTurnCount = turnTypes.reduce((p,c)=>p+c, 0);
         if (totalTurnCount < 12 || (typeCount[criteariaRank[0]] >= typeCount[criteariaRank[1]] + typeCount[criteariaRank[2]])) {
-            this.#turnTypes[0] = criteariaRank[0];
+            this.turnTypes[0] = criteariaRank[0];
             typeCount[criteariaRank[0]] -= 1;
             turnCountStart++;
         } else {
             if (Math.random() < 0.8) {
-                this.#turnTypes[0] = criteariaRank[0];
+                this.turnTypes[0] = criteariaRank[0];
                 typeCount[criteariaRank[0]] -= 1;
                 turnCountStart++;
             } else {
-                this.#turnTypes[0] = criteariaRank[1];
+                this.turnTypes[0] = criteariaRank[1];
                 typeCount[criteariaRank[1]] -= 1;
                 turnCountStart++;
             }
@@ -59,7 +59,7 @@ export class TurnType {
             else{
                 chooseIdx = this.#getRandomIndex(array);
             }
-            this.#turnTypes[i] = criteariaRank[chooseIdx];
+            this.turnTypes[i] = criteariaRank[chooseIdx];
             array[chooseIdx]--;
         }
     }
@@ -127,10 +127,10 @@ export class TurnType {
     getType (turn) {
         const idx = turn-1;
         // 最大ターンを超過していたら最後の要素(流行1位)を返す
-        if (idx > this.#turnTypes.length - 1) {
-            return this.#turnTypes[this.#turnTypes.length-1];
+        if (idx > this.turnTypes.length - 1) {
+            return this.turnTypes[this.turnTypes.length-1];
         }
-        return this.#turnTypes[idx];
+        return this.turnTypes[idx];
     }
 
     getCount (type) {
@@ -142,6 +142,6 @@ export class TurnType {
      * @returns {Array<String>}
      */
     getAllTypes () {
-        return deep_copy(this.#turnTypes);
+        return deep_copy(this.turnTypes);
     }
 }
