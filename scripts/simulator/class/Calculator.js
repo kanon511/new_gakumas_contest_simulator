@@ -304,7 +304,7 @@ export class Calculator {
                     switch (effectOption.type) {
                         case 'multiple': optionalValue = status.pStatus.getValue(effect.target) * (effectOption.value-1); break;
                     }
-                    optionalValue = Math.floor(optionalValue);
+                    optionalValue = Math.ceil(optionalValue);
                 });
             }
             const actualValue = baseValue + optionalValue;
