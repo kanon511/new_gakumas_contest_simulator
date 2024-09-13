@@ -4,7 +4,6 @@ main.js
 .vscode
 html_test/
 trash/
-test/
 public/
 src/
 deno.lock
