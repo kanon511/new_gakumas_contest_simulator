@@ -4637,8 +4637,7 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: 'status', target: '集中', value: 4 }, 
-            { type: 'status', target: '消費体力減少', value: 1 }, 
+            { type: 'status', target: '集中', value: 3 }, 
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },  
         ],
         limit: 1,

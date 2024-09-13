@@ -1148,7 +1148,7 @@ const pItemData = [
         condition: 'usedCardCountMultiple==4',
         effects: [
             { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 1.3 }] },
-            { type: '固定元気', value: 7 },
+            { type: '固定元気', value: 2 },
         ],
         limit: 2,
         plan: 'sense',
@@ -1541,6 +1541,21 @@ const pItemData = [
     {
         id: 3300150,
         name: 'ほっこりまんぷく',
+    },
+    {
+        id: 3300160,
+        name: 'みんなの教科書',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==vocal&hpPer<=50',
+        effects: [
+            { type: 'hp', value: 4 },
+        ],
+        limit: 1,
+    },
+    {
+        id: 3300170,
+        name: 'とうちょーのきろく',
     },
 
 
