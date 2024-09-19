@@ -328,7 +328,7 @@ const statusList = [
     },
     {
         id: 1108,
-        name: '好印象効果スキルカード使用後、好印象の50%分パラメータ',
+        name: '好印象効果のスキルカード使用後、好印象の50%分パラメータ',
         description: '',
         value: 0,
         type: 'buff',

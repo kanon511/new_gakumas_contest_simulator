@@ -4509,7 +4509,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'status', target: 'やる気', value: 3 }, 
-            { type: 'status', target: '好印象効果スキルカード使用後、好印象の50%分パラメータ', value: 1 },
+            { type: 'status', target: '好印象効果のスキルカード使用後、好印象の50%分パラメータ', value: 1 },
         ],
         limit: 1,
         card_cost: 0,
@@ -4524,7 +4524,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'status', target: 'やる気', value: 3 }, 
-            { type: 'status', target: '好印象効果スキルカード使用後、好印象の50%分パラメータ', value: 1 },
+            { type: 'status', target: '好印象効果のスキルカード使用後、好印象の50%分パラメータ', value: 1 },
         ],
         limit: 1,
         card_cost: 0,

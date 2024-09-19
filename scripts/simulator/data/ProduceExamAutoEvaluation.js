@@ -2246,23 +2246,23 @@ export class AutoEvaluationData {
         }
         else if (type.slice(0,14) == 'アクティブスキルカード使用時') {
             let [ ltype,n ] = type.slice(14).split('+')
-            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.9)
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.9)
         }
         else if (type.slice(0,13) == 'メンタルスキルカード使用時') {
             let [ ltype,n ] = type.slice(13).split('+')
-            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.9)
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.9)
         }
         else if (type.slice(0,17) == 'ターン終了時、集中が3以上の場合、') {
             let [ ltype,n ] = type.slice(17).split('+')
-            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.8)
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.8)
         }
         else if (type.slice(0,18) == 'ターン終了時、好印象が3以上の場合、') {
             let [ ltype,n ] = type.slice(18).split('+')
-            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*0.8)
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.8)
         }
         else if (type.slice(0,7) == 'ターン終了時、') {
             let [ ltype,n ] = type.slice(7).split('+')
-            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.0)
+            return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*2.0)
         }
 
         if(!this.a[type]){
