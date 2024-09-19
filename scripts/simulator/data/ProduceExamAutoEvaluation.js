@@ -2280,6 +2280,12 @@ export class AutoEvaluationData {
         }else{
             info=eva[remainTurn];
         }
+
+        if(autoId==3&&type.slice(0,16)=='好印象効果のスキルカード使用後、'){//仅新mao AI3.0测试
+            info=info["ProduceExamAutoEvaluationType_ExamExtraTurn"];
+            return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000);
+        }
+
         info=info[this.a[type]];
 
         if(onTest) console.log(remainTurn,type,info,n,unitValue,Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000))
