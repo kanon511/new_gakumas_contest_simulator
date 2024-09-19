@@ -17,6 +17,7 @@ export const run = (data) => {
         pIdol: pIdol,
         maxTurn: data.turn,
         criteria: data.criteria,
+        turnRank: data.turnRank,
         turnTypes: data.turnTypes,
     });
 

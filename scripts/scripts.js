@@ -579,6 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const run_data = {
             turn: contestStage.turn,
             criteria: contestDetail.criteria,
+            turnRank: contestDetail.rank,
             turnTypes: contestStage.turnTypes,
             parameter: {
                 vocal : vocal,

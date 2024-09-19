@@ -17,9 +17,9 @@ export class TurnType {
      * @param {Number} turnCount ターン数
      * @param {Object<String, Number>} critearia 評価基準オブジェクト
      */
-    constructor (turnCount, critearia, turnTypes, autoId) {
+    constructor (turnCount, critearia, turnRank, turnTypes, autoId) {
         this.turnTypes = new Array(turnCount).fill('');
-        const criteariaRank = this.#setCriteariaRank(critearia);
+        const criteariaRank = this.#setCriteariaRank(turnRank);
         const typeCount = this.#setTurnCount(turnCount, criteariaRank, turnTypes);
 
         // ラスト3ターンを流行3位->流行2位->流行1位の順にする
@@ -96,9 +96,19 @@ export class TurnType {
      * @param {Object} critearia 評価基準オブジェクト
      * @returns {Array<String>} 流行順位配列
      */
-    #setCriteariaRank (critearia) {
-        const entries = Object.entries(critearia).sort((a, b) => b[1] - a[1]);
-        const criteariaRank = entries.map(item=>item[0]);
+    #setCriteariaRank (turnRank) {
+        let criteariaRank = [];
+        for (let i = 1; 3 > criteariaRank.length; i++){
+            if (i > 3){
+                throw new Error('赛季属性排名大于3');
+            }
+
+            for (let key in turnRank) {
+                if (turnRank[key] == i) {
+                    criteariaRank.push(key);
+                }
+            }
+        }
         return criteariaRank;
     }
 

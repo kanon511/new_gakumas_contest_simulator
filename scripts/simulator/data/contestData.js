@@ -11,6 +11,7 @@ const contestData = [
         name: '第1期コンテスト', 
         period: '2024/05/16 - 05/31',
         criteria: { 'vocal': 40, 'dance': 27, 'visual': 33 },
+        rank: {'vocal': 1, 'dance': 3, 'visual': 2},
         stages: [
             {
                 name: 'ステージ1',
@@ -43,6 +44,7 @@ const contestData = [
         name: '第2期コンテスト', 
         period: '2024/06/02 - 06/16',
         criteria: { 'vocal': 33, 'dance': 40, 'visual': 27 },
+        rank: {'vocal': 2, 'dance': 1, 'visual': 3},
         stages: [
             {
                 name: 'ステージ1',
@@ -75,6 +77,7 @@ const contestData = [
         name: '第3期コンテスト', 
         period: '2024/06/17 - 07/01',
         criteria: { 'vocal': 27, 'dance': 33, 'visual': 40 },
+        rank: {'vocal': 3, 'dance': 2, 'visual': 1},
         stages: [
             {
                 name: 'ステージ1',
@@ -107,6 +110,7 @@ const contestData = [
         name: '第4期コンテスト', 
         period: '2024/07/03 - 07/18',
         criteria: { 'vocal': 15, 'dance': 45, 'visual': 40 },
+        rank: {'vocal': 3, 'dance': 1, 'visual': 2},
         stages: [
             {
                 name: 'ステージ1',
@@ -139,6 +143,7 @@ const contestData = [
         name: '第5期コンテスト', 
         period: '2024/07/19 - 08/03',
         criteria: { 'vocal': 35, 'dance': 30, 'visual': 35 },
+        rank: {'vocal': 1, 'dance': 3, 'visual': 2},
         stages: [
             {
                 name: 'ステージ1',
@@ -171,6 +176,7 @@ const contestData = [
         name: '第6期コンテスト', 
         period: '2024/08/04 - 08/20',
         criteria: { 'vocal': 10, 'dance': 45, 'visual': 45 },
+        rank: {'vocal': 3, 'dance': 1, 'visual': 2},
         stages: [
             {
                 name: 'ステージ1',
@@ -203,6 +209,7 @@ const contestData = [
         name: '第7期コンテスト', 
         period: '2024/08/22 - ----',
         criteria: { 'vocal': 15, 'dance': 50, 'visual': 35 },
+        rank: {'vocal': 3, 'dance': 1, 'visual': 2},
         stages: [
             {
                 name: 'ステージ1',
@@ -235,6 +242,7 @@ const contestData = [
         name: '第8期コンテスト', 
         period: '2024/08/22 - ----',
         criteria: { 'vocal': 15, 'dance': 40, 'visual': 45 },
+        rank: {'vocal': 3, 'dance': 2, 'visual': 1},
         stages: [
             {
                 name: 'ステージ1',
@@ -267,6 +275,7 @@ const contestData = [
         name: '第9期コンテスト', 
         period: '2024/08/22 - ----',
         criteria: { 'vocal': 40, 'dance': 30, 'visual': 30 },
+        rank: {'vocal': 1, 'dance': 2, 'visual': 2},
         stages: [
             {
                 name: 'ステージ1',
