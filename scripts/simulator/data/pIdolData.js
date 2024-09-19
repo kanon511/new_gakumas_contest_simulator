@@ -241,6 +241,17 @@ const pIdolData = [
         unique_pItem_id: 2304020,
     },
     {
+        id: 30403,
+        rarity: 'SSR',
+        episode_name: 'Feel Jewel Dream',
+        character_id: 104,
+        name: '有村麻央',
+        plan: 'logic',
+        trend: '好印象',
+        unique_skillCard_id: 4204030,
+        unique_pItem_id: 2304030,
+    },
+    {
         id: 10501,
         rarity: 'R',
         episode_name: '学園生活',
