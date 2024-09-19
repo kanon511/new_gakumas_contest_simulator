@@ -14,7 +14,7 @@ export class Calculator {
         if(!autoId){
             autoId=1
         }
-        if(autoId==0||autoId==2){
+        if(autoId!=1){
             let { type, args } = action;
             if(!args){
                 return 0;

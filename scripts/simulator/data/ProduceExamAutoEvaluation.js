@@ -2265,11 +2265,7 @@ export class AutoEvaluationData {
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*2.0)
         }
 
-        if(!this.a[type]){
-            return 0;
-        }
-
-        if(autoId==2&&type=='score'){
+        if(autoId>=2&&type=='score'){
             unitValue*=(unitValue/10-1)/3+1 //主观臆断
         }
 
@@ -2286,6 +2282,9 @@ export class AutoEvaluationData {
             return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000);
         }
 
+        if(!this.a[type]){
+            return 0;
+        }
         info=info[this.a[type]];
 
         if(onTest) console.log(remainTurn,type,info,n,unitValue,Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000))
