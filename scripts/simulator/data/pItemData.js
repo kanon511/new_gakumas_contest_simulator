@@ -1042,6 +1042,32 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2304030,
+        name: 'スタイリッシュモ一ド+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=3',
+        effects: [
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'やる気', value: -1 },
+        ],
+        limit: 4,
+        plan: 'logic',
+    },
+    {
+        id: 2304031,
+        name: 'スタイリッシュモ一ド+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=3',
+        effects: [
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'やる気', value: -1 },
+        ],
+        limit: 4,
+        plan: 'logic',
+    },
+    {
         id: 2305010,
         name: '夢へのライフログ',
         description: '',
@@ -1541,6 +1567,18 @@ const pItemData = [
     {
         id: 3300150,
         name: 'ほっこりまんぷく',
+    },
+    {
+        id: 3300160,
+        name: 'とろけた時間',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==vocal',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加', value: 1, options: [{ type: '上昇量', value: 50 }] },
+        ],
+        limit: 3,
+        plan: 'free',
     },
 
 
