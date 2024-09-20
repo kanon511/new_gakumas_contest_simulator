@@ -5,7 +5,7 @@ const AutoEvaluation = {
             "1": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 156.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
@@ -161,7 +161,7 @@ const AutoEvaluation = {
             "3": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 156.0,
-                    "examStatusEnchantCoefficientPermil": 2000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 75.0,
@@ -239,7 +239,7 @@ const AutoEvaluation = {
             "4": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 156.0,
-                    "examStatusEnchantCoefficientPermil": 3000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
@@ -317,7 +317,7 @@ const AutoEvaluation = {
             "5": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 156.0,
-                    "examStatusEnchantCoefficientPermil": 4000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
@@ -395,7 +395,7 @@ const AutoEvaluation = {
             "6": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 156.0,
-                    "examStatusEnchantCoefficientPermil": 5000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 301.0,
@@ -473,7 +473,7 @@ const AutoEvaluation = {
             "7": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 156.0,
-                    "examStatusEnchantCoefficientPermil": 6000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 301.0,
@@ -555,7 +555,7 @@ const AutoEvaluation = {
             "1": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 583.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
@@ -711,7 +711,7 @@ const AutoEvaluation = {
             "3": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 259.0,
-                    "examStatusEnchantCoefficientPermil": 2000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 75.0,
@@ -789,7 +789,7 @@ const AutoEvaluation = {
             "4": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 167.0,
-                    "examStatusEnchantCoefficientPermil": 3000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
@@ -867,7 +867,7 @@ const AutoEvaluation = {
             "5": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 96.0,
-                    "examStatusEnchantCoefficientPermil": 4000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 151.0,
@@ -945,7 +945,7 @@ const AutoEvaluation = {
             "6": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 96.0,
-                    "examStatusEnchantCoefficientPermil": 5000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 301.0,
@@ -1023,7 +1023,7 @@ const AutoEvaluation = {
             "7": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 96.0,
-                    "examStatusEnchantCoefficientPermil": 6000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 301.0,
@@ -1105,7 +1105,7 @@ const AutoEvaluation = {
             "1": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
@@ -1183,7 +1183,7 @@ const AutoEvaluation = {
             "2": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 2000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 87.0,
@@ -1261,7 +1261,7 @@ const AutoEvaluation = {
             "3": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 4000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 87.0,
@@ -1339,7 +1339,7 @@ const AutoEvaluation = {
             "4": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 6000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 174.0,
@@ -1417,7 +1417,7 @@ const AutoEvaluation = {
             "5": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 8000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 174.0,
@@ -1495,7 +1495,7 @@ const AutoEvaluation = {
             "6": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 10000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 348.0,
@@ -1573,7 +1573,7 @@ const AutoEvaluation = {
             "7": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 12000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 348.0,
@@ -1655,7 +1655,7 @@ const AutoEvaluation = {
             "1": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 0.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 0.0,
@@ -1733,7 +1733,7 @@ const AutoEvaluation = {
             "2": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 2000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 335.0,
@@ -1811,7 +1811,7 @@ const AutoEvaluation = {
             "3": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 4000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 335.0,
@@ -1889,7 +1889,7 @@ const AutoEvaluation = {
             "4": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 6000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 521.0,
@@ -1967,7 +1967,7 @@ const AutoEvaluation = {
             "5": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 8000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 931.0,
@@ -2045,7 +2045,7 @@ const AutoEvaluation = {
             "6": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 10000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 931.0,
@@ -2123,7 +2123,7 @@ const AutoEvaluation = {
             "7": {
                 "ProduceExamAutoEvaluationType_Parameter": {
                     "evaluation": 186.0,
-                    "examStatusEnchantCoefficientPermil": 12000.0
+                    "examStatusEnchantCoefficientPermil": 1000.0
                 },
                 "ProduceExamAutoEvaluationType_Block": {
                     "evaluation": 931.0,
