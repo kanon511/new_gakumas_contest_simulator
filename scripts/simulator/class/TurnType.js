@@ -17,7 +17,7 @@ export class TurnType {
      * @param {Number} turnCount ターン数
      * @param {Object<String, Number>} critearia 評価基準オブジェクト
      */
-    constructor (turnCount, critearia, turnRank, turnTypes, autoId) {
+    constructor (turnCount, critearia, turnRank, firstTurn, turnTypes, autoId) {
         this.turnTypes = new Array(turnCount).fill('');
         const criteariaRank = this.#setCriteariaRank(turnRank);
         const typeCount = this.#setTurnCount(turnCount, criteariaRank, turnTypes);
@@ -27,21 +27,16 @@ export class TurnType {
         this.turnTypes[this.turnTypes.length-2] = criteariaRank[1];
         this.turnTypes[this.turnTypes.length-1] = criteariaRank[0];
         // 最初のターンを流行1位に固定する
-        let turnCountStart = 0;
-        const totalTurnCount = turnTypes.reduce((p,c)=>p+c, 0);
-        if (totalTurnCount < 12 || (typeCount[criteariaRank[0]] >= typeCount[criteariaRank[1]] + typeCount[criteariaRank[2]])) {
-            this.turnTypes[0] = criteariaRank[0];
-            typeCount[criteariaRank[0]] -= 1;
-            turnCountStart++;
-        } else {
-            if (Math.random() < 0.8) {
-                this.turnTypes[0] = criteariaRank[0];
-                typeCount[criteariaRank[0]] -= 1;
-                turnCountStart++;
-            } else {
-                this.turnTypes[0] = criteariaRank[1];
-                typeCount[criteariaRank[1]] -= 1;
-                turnCountStart++;
+        var firstTurnChance = 0;
+        var randomNum = Math.random();
+        var turnCountStart = 0;
+        for(let i in firstTurn){
+            firstTurnChance += firstTurn[i] * 0.01;
+            if (randomNum <= firstTurnChance) {
+                this.turnTypes[0] = i;
+                typeCount[i] -= 1;
+                turnCountStart += 1;
+                break;
             }
         }
         // その分カウントを減らす

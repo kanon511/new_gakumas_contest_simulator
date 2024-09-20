@@ -580,6 +580,7 @@ document.addEventListener('DOMContentLoaded', () => {
             turn: contestStage.turn,
             criteria: contestDetail.criteria,
             turnRank: contestDetail.rank,
+            firstTurn: contestStage.firstTurn,
             turnTypes: contestStage.turnTypes,
             parameter: {
                 vocal : vocal,

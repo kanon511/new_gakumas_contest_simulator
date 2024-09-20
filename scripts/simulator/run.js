@@ -18,6 +18,7 @@ export const run = (data) => {
         maxTurn: data.turn,
         criteria: data.criteria,
         turnRank: data.turnRank,
+        firstTurn: data.firstTurn,
         turnTypes: data.turnTypes,
     });
 

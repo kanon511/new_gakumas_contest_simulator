@@ -21,10 +21,11 @@ export class Contest {
             maxTurn,
             criteria,
             turnRank,
+            firstTurn,
             turnTypes,
         } = parameters;
         this.#pIdol = pIdol;
-        this.#pIdol.init(maxTurn, criteria, turnRank, turnTypes);
+        this.#pIdol.init(maxTurn, criteria, turnRank, firstTurn, turnTypes);
     }
 
     /**
