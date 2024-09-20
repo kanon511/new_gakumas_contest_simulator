@@ -4506,14 +4506,14 @@ export const skillCardData = [
     },
     {
         id: 4204030, 
-        name: '月夜のランウェイ+',
+        name: '月夜のランウェイ',
         type: 'active',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
             { type: 'status', target: 'やる気', value: 3 }, 
-            { type: 'status', target: '好印象効果のスキルカード使用後、好印象の50%分のパラメータ', value: 1 }, 
+            { type: 'status', target: '好印象効果のスキルカード使用後、好印象の30%分のパラメータ', value: 1 }, 
         ],
         limit: 1,
         card_cost: 0,
