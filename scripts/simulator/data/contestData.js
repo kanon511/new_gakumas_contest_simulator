@@ -274,7 +274,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240921],
                 plan: 'free',
-                turnTypes: [5, 4, 3],
+                turnTypes: [5, 3, 4],
             },
             {
                 name: 'ステージ2',
@@ -282,7 +282,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4240922],
                 plan: 'logic',
-                turnTypes: [5, 4, 3],
+                turnTypes: [5, 3, 4],
             },
             {
                 name: 'ステージ3',
