@@ -23,30 +23,30 @@
     <div id="wrapper">
         <div class="container">
             <div class="section">
-                <label>コンテスト</label>
+                <label>赛季场次选择</label>
                 <div class="input-group">
                     <select id="contest-select">
-                        <option value="">コンテスト選択</option>
+                        <option value="">赛季选择</option>
                     </select>
                     <select id="contest-stage-select">
-                        <option value="">ステージ選択</option>
+                        <option value="">场次选择</option>
                     </select>
                 </div>
             </div>
             <div class="section character-select-box">
-                <label for="main-character">メインキャラクター選択</label>
+                <label for="main-character">角色选择</label>
                 <select id="main-character">
                     <option value="">select</option>
                 </select>
             </div>
             <div class="section character-select-box">
-                <label for="sub-character">サブキャラクター選択</label>
+                <label for="sub-character">支援卡选择</label>
                 <select id="sub-character">
                     <option value="">select</option>
                 </select>
             </div>
             <div class="section">
-                <label>ステータス（倍率%）</label>
+                <label>属性倍率（填写百分比）</label>
                 <div class="input-group">
                     <input type="text" id="status-vocal" inputmode="numeric" pattern="\d*" placeholder="Vocal%"  required="required" value="1000">
                     <input type="text" id="status-dance" inputmode="numeric" pattern="\d*" placeholder="Dance%"  required="required" value="1000">
@@ -55,13 +55,13 @@
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>Pアイテム選択（☑で+化）</label>
+                <label>P道具选择（选择☑时强化）</label>
                 <div id="pItem-box-container">
                     <div id="main-character-pItem-box" class="character-cards-box"><!--ここにPアイテムセレクト--></div>
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>カード選択（☑で+化）</label>
+                <label>卡组选择（选择☑时强化）</label>
                 <div id="card-box-container">
                     <div class="container-character-cards-box">
                         <div id="main-character-cards-box" class="character-cards-box"><!--ここにカードセレクト--></div>
@@ -81,18 +81,18 @@
                 </div>
             </div>
             <div id="card-box-information">
-                <div>角色固有卡以外的卡也可以重复，不想重复的话请选择「-」<br>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/">原网站</a></div>
+                <div>角色固有卡以外的限一卡可以重复，不重复的话请选择「-」<br>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/">原网站</a></div>
                 <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249</div>
-                <div>最后更新时间：2024/09/19。更新新mao强化后数据，新maoAI2.0不会打角色卡，暂未有对该角色卡优先度的信息，想测试新卡建议使用ai2.1，仅供当前测试使用。</div>
-                <div>怀疑数据不准？使用<a href="test.html">测试用网站</a>分析AI准确率</div>
+                <div>最后更新时间：2024/09/22。新maoAI2.0不会打角色卡，暂未有对该角色卡优先度的信息，想测试新卡建议使用ai2.1，仅供当前测试使用，有关于新mao角色卡优先级信息欢迎联系。</div>
+                <!-- <div>怀疑数据不准？使用<a href="test.html">测试用网站</a>分析AI准确率</div> -->
             </div>
             <div class="section">
                 <label>AI选择（感性建议使用原AI）</label>
                 <div class="input-group">
                     <select id="contest-auto">
-                        <option value="2">解包AI2.0（在原有解包AI基础上做了点修改，有可能会出错，最接近游戏内AI）</option>
-                        <option value="1">原AI（原网站作者自写的一套AI，目前最稳定的，感性较准）</option>
-                        <option value="0">解包AI（感性不准，尽量别用）</option>
+                        <option value="2">解包AI2.0（大部分使用解包数据，有可能会出错，最接近游戏内AI）</option>
+                        <option value="1">原AI（原网站作者自写的一套AI）</option>
+                        <!-- <option value="0">解包AI（感性不准，尽量别用）</option> -->
                         <option value="3">解包AI2.1（在2.0基础上修改新mao技能卡优先级最高，仅测试使用）</option>
                     </select>
                 </div>
@@ -128,9 +128,9 @@
                     <label for="result-log-button-max" class="radio-box">最高值</label>
                 </div>
                 <div id="contest-log">
-                    <div id="contest-log-min">最低値のログが表示されます</div>
-                    <div id="contest-log-rnd">ランダムな回のログが表示されます</div>
-                    <div id="contest-log-max">最大値のログが表示されます</div>
+                    <div id="contest-log-min">所有模拟中最低值的记录表示</div>
+                    <div id="contest-log-rnd">模拟中随机的一个记录表示</div>
+                    <div id="contest-log-max">所有模拟中最高值的记录表示</div>
                 </div>
             </div>
         </div>

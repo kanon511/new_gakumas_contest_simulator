@@ -1043,7 +1043,7 @@ const pItemData = [
     },
     {
         id: 2304030,
-        name: 'スタイリッシュモ一ド+',
+        name: 'スタイリッシュモ一ド',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=3',
@@ -1051,7 +1051,7 @@ const pItemData = [
             { type: 'status', target: '好印象', value: 3 },
             { type: 'status', target: 'やる気', value: -1 },
         ],
-        limit: 4,
+        limit: 3,
         plan: 'logic',
     },
     {

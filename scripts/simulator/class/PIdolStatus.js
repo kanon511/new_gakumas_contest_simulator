@@ -328,6 +328,19 @@ const statusList = [
     },
     {
         id: 1108,
+        name: '好印象効果のスキルカード使用後、好印象の30%分パラメータ',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'after_use_card',
+        condition: 'cardEffectInclude==好印象',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 30 }] }, 
+        ],
+        is_reduce_turnend: false,
+    },
+    {
+        id: 1109,
         name: '好印象効果のスキルカード使用後、好印象の50%分パラメータ',
         description: '',
         value: 0,

@@ -215,7 +215,7 @@ export class Calculator {
                         .map((type)=>parameter[type]*5)
                         .reduce((pre, crt)=>pre+crt, 0));
                 }
-                if (statusType == 'スキルカード使用時、好印象の30%分パラメータ') {
+                if (statusType == 'スキルカード使用時、好印象の30%分パラメータ' || statusType == '好印象効果のスキルカード使用後、好印象の30%分パラメータ') {
                     return (status.turnType.getAllTypes()
                         .slice(status.turn+1)
                         .map((type)=>parameter[type]*status.pStatus.getValue('好印象')*0.3)
