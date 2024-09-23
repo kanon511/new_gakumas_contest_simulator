@@ -2273,7 +2273,6 @@ export class AutoEvaluationData {
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.9)
         }
         else if (type.slice(0,10) == 'スキルカード使用時、') {
-            console.log(type)
             let [ ltype,n ] = type.slice(7).split('+')
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*2.0)
         }

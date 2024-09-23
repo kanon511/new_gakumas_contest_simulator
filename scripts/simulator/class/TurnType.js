@@ -94,8 +94,9 @@ export class TurnType {
     #setCriteariaRank (turnRank) {
         let criteariaRank = [];
         for (let i = 1; 3 > criteariaRank.length; i++){
-            if (i > 3){
-                throw new Error('赛季属性排名大于3');
+            if (i > 3) {
+                console.error(turnRank,criteariaRank.length)
+                throw new Error('赛季属性排名大于3，值：' + i);
             }
 
             for (let key in turnRank) {
