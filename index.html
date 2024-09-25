@@ -98,7 +98,13 @@
                 </div>
             </div>
             <div class="run-button">
-                <input id="run-button" type="button" value="运行" style="margin-bottom: 1%;">
+                <div style="margin-bottom: 1%; display: flex; justify-content: space-between;">
+                    <div style="text-align: left; width: 7rem;">
+                        运行次数：
+                    </div>
+                    <input type="text" id="run-count" inputmode="numeric" pattern="\d*" placeholder="运行次数"  required="required" value="2000" style="margin-right: 1%;">
+                    <input id="run-button" type="button" value="运行">
+                </div>
                 <input id="save-button" type="button" value="生成卡组链接">
             </div>
         </div>

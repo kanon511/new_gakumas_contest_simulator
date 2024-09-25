@@ -572,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const contestDetail = ContestData.getById(contestId);
         const contestStage  = contestDetail.stages[stageId];
 
-        const simulateCount = 2000;
+        const simulateCount = Number(document.getElementById('run-count').value);
 
         const autoId = document.getElementById('contest-auto').value;
 
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', () => {
             skillCardIds: skillCardIds, 
             autoId: autoId,
 
-            count: simulateCount,
+            //count: simulateCount,
         };
         
         console.time('run');
@@ -749,7 +749,7 @@ async function runWebWorker(data) {
             if (navigator.hardwareConcurrency) {
                 numWorkers = Math.min(navigator.hardwareConcurrency, 8);
             }
-            totalRuns = 2000;
+            totalRuns = Number(document.getElementById('run-count').value);;
         }
 
         const runsPerWorker = Math.ceil(totalRuns / numWorkers);

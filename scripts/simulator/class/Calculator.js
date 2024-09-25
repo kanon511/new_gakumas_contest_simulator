@@ -26,7 +26,7 @@ export class Calculator {
                 return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
             }
 
-            if (type == 'delay' && autoId==2) { //延迟效果
+            if (type == 'delay' && autoId>=2) { //延迟效果
                 if (args[2]>status.remainTurn+status.turn) {
                     return 0;
                 }
