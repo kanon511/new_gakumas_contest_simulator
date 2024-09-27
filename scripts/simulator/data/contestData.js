@@ -275,6 +275,7 @@ const contestData = [
                 stagePItemIds: [4240921],
                 plan: 'free',
                 turnTypes: [5, 3, 4],
+                firstTurnFirstTypeProb: 0.86,
             },
             {
                 name: 'ステージ2',
@@ -283,6 +284,7 @@ const contestData = [
                 stagePItemIds: [4240922],
                 plan: 'logic',
                 turnTypes: [5, 3, 4],
+                firstTurnFirstTypeProb: 0.86,
             },
             {
                 name: 'ステージ3',
@@ -291,6 +293,7 @@ const contestData = [
                 stagePItemIds: [4240923],
                 plan: 'logic',
                 turnTypes: [3, 3, 2],
+                firstTurnFirstTypeProb: 0.8,
             },
         ],
     },

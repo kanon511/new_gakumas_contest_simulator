@@ -139,6 +139,7 @@ const simulate = async () => {
     turn: contestStage.turn,
     criteria: contestDetail.criteria,
     turnTypes: contestStage.turnTypes,
+    firstTurnFirstTypeProb: contestStage.firstTurnFirstTypeProb,
     parameter: {
       vocal: vocal,
       dance: dance,

@@ -57,8 +57,8 @@ export class PIdol {
         this.#trendEvaluationVonusCoef[trend] = 1.5;
     }
 
-    init (turnCount, critearia, turnTypes) {
-        this.#turnType = new TurnType(turnCount, critearia, turnTypes);
+    init (turnCount, critearia, turnTypes, firstTurnFirstTypeProb) {
+        this.#turnType = new TurnType(turnCount, critearia, turnTypes, firstTurnFirstTypeProb);
         this.#status.turnType = this.#turnType;
         this.#status.remainTurn = turnCount;
         this.#status.turnCount = turnCount;

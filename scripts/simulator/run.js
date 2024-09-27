@@ -17,6 +17,7 @@ export const run = (data) => {
         maxTurn: data.turn,
         criteria: data.criteria,
         turnTypes: data.turnTypes,
+        firstTurnFirstTypeProb: data.firstTurnFirstTypeProb,
     });
 
     const autoContest = new AutoContest(contest);
