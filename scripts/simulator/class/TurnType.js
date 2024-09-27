@@ -33,7 +33,6 @@ export class TurnType {
 
         // 最初のターンを流行1位に固定する
         let turnCountStart = 0;
-        console.log(firstTurnFirstTypeProb)
         if (firstTurnFirstTypeProb) {
             if (Math.random() < firstTurnFirstTypeProb) {
                 this.#turnTypes[0] = criteariaRank[0];
