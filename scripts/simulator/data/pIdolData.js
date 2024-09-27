@@ -384,6 +384,17 @@ const pIdolData = [
         unique_pItem_id: 2306030,
     },
     {
+        id: 30604,
+        rarity: 'SSR',
+        episode_name: '仮装狂騒曲',
+        character_id: 106,
+        name: '倉本千奈',
+        plan: 'sense',
+        trend: '集中',
+        unique_skillCard_id: 4206040,
+        unique_pItem_id: 2306040,
+    },
+    {
         id: 10701,
         rarity: 'R',
         episode_name: '学園生活',

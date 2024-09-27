@@ -1221,6 +1221,30 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2306040,
+        name: 'う～ら〜め〜し～や〜+',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
+            { type: '固定元気', value: 7 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 2306041,
+        name: 'う～ら〜め〜し～や〜+',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
+            { type: '固定元気', value: 7 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
         id: 2307010,
         name: 'ゲーセンの戦利品',
         description: '',
