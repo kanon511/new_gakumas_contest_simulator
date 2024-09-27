@@ -715,8 +715,28 @@ const pItemData = [
         name: 'ハンターの戦利品',
     },
     {
-        id: 3200151,
-        name: '',
+        id: 3200160,
+        name: 'きっかけの帯',
+    },
+    {
+        id: 3200170,
+        name: '大きくてつやつや',
+    },
+    {
+        id: 3200180,
+        name: '優しさミルクシュガー',
+    },
+    {
+        id: 3200190,
+        name: 'お嬢様の恩返し',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance&好印象>=6',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 80 }] },
+        ],
+        limit: 2,
+        plan: 'logic',
     },
     /**
      * シナリオ
@@ -1646,6 +1666,18 @@ const pItemData = [
         ],
         limit: 3,
         plan: 'free',
+    },
+    {
+        id: 3300190,
+        name: 'いじっぱりバルーン',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance&好印象>=3',
+        effects: [
+            { type: 'status', target: 'やる気', value: 3 },
+        ],
+        limit: 2,
+        plan: 'logic',
     },
 
 
