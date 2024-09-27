@@ -131,6 +131,17 @@ const pIdolData = [
         unique_pItem_id: 2302020,
     },
     {
+        id: 30203,
+        rarity: 'SSR',
+        episode_name: '仮装狂騒曲',
+        character_id: 102,
+        name: '月村手毬',
+        plan: 'logic',
+        trend: 'やる気',
+        unique_skillCard_id: 4202030,
+        unique_pItem_id: 2302030,
+    },
+    {
         id: 10301,
         rarity: 'R',
         episode_name: '学園生活',
