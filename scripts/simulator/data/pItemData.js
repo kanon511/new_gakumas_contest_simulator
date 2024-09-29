@@ -718,6 +718,30 @@ const pItemData = [
         id: 3200151,
         name: '',
     },
+    {
+        id: 3200160,
+        name: 'きっかけの帯',
+    },
+    {
+        id: 3200170,
+        name: '大きくてつやつや',
+    },
+    {
+        id: 3200180,
+        name: '優しさミルクシュガー',
+    },
+    {
+        id: 3200190,
+        name: 'お嬢様の恩返し',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance&好印象>=6',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好印象', value: 80 }] },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
     /**
      * シナリオ
      */
@@ -907,6 +931,34 @@ const pItemData = [
         effects: [
             { type: 'score', value: null, options: [{ type: '好印象', value: 100 }] },
             { type: 'block', value: 3 },
+        ],
+        limit: 3,
+        plan: 'logic',
+    },
+    {
+        id: 2302030,
+        name: 'ぶきっちょコウモリ+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '好印象>=3&turnMultiple==3',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 230 }] },
+            { type: 'status', target: '好印象', value: -2 },
+        ],
+        limit: 3,
+        plan: 'logic',
+    },
+    {
+        id: 2302031,
+        name: 'ぶきっちょコウモリ+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '好印象>=3&turnMultiple==3',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 230 }] },
+            { type: 'status', target: '好印象', value: -2 },
         ],
         limit: 3,
         plan: 'logic',
@@ -1187,6 +1239,30 @@ const pItemData = [
         condition: 'usedCardCountMultiple==4',
         effects: [
             { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 1.3 }] },
+            { type: '固定元気', value: 7 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 2306040,
+        name: 'う～ら〜め〜し～や〜+',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
+            { type: '固定元気', value: 7 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 2306041,
+        name: 'う～ら〜め〜し～や〜+',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'cardType==active',
+        effects: [
             { type: '固定元気', value: 7 },
         ],
         limit: 2,
@@ -1579,6 +1655,29 @@ const pItemData = [
         ],
         limit: 3,
         plan: 'free',
+    },
+    {
+        id: 3300170,
+        name: 'みんなの教科書',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==vocal&hpPer<=50',
+        effects: [
+            { type: 'hp', value: 4 },
+        ],
+        limit: 1,
+    },
+    {
+        id: 3300190,
+        name: 'いじっぱりバルーン',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance&好印象>=3',
+        effects: [
+            { type: 'status', target: 'やる気', value: 3 },
+        ],
+        limit: 2,
+        plan: 'logic',
     },
 
 
