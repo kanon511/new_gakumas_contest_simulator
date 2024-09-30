@@ -86,16 +86,16 @@ export class PIdol {
             { type: 'effect', sourceType: 'pIdol', target: { type: 'draw', value: 3 } },
         ];
         const pItemActions = this.#getPItemAction('start_turn', this.#status);
-        const pItemAfterActions = this.#getPItemAction('start_turn_after', this.#status);
         const pStatusActions = this.#getPStatusAction('start_turn', this.#status);
         const pDelayActions = this.#getPDelayAction(this.#status);
+        const pItemAfterActions = this.#getPItemAction('start_turn_after', this.#status);
         //
         const actions = [];
         defaultActions.forEach(action=>actions.push(action));
         pItemActions.forEach(action=>actions.push(action));
-        pItemAfterActions.forEach(action=>actions.push(action));
         pStatusActions.forEach(action=>actions.push(action));
         pDelayActions.forEach(action=>actions.push(action));
+        pItemAfterActions.forEach(action=>actions.push(action));
         // const actions = defaultActions.concat(pItemActions, pStatusActions, pDelayActions);
         //
         const executions = this.#simulateActions(actions);
