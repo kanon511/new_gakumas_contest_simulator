@@ -631,7 +631,7 @@ const pItemData = [
         id: 2210010,
         name: '柴犬ポシェット',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: 'turnMultiple==2', // 2ターンごと
         effects: [
             { type: 'block', value: 5 },
@@ -643,7 +643,7 @@ const pItemData = [
         id: 2210011,
         name: '柴犬ポシェット+',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: 'turnMultiple==2', // 2ターンごと
         effects: [
             { type: 'block', value: 5 },
@@ -1015,7 +1015,7 @@ const pItemData = [
         id: 2303030,
         name: 'ぱちぱち線香花火',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=6&turnMultiple==3',
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
@@ -1029,7 +1029,7 @@ const pItemData = [
         id: 2303031,
         name: 'ぱちぱち線香花火+',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=6&turnMultiple==3',
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
