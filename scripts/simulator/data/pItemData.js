@@ -933,13 +933,13 @@ const pItemData = [
     },
     {
         id: 2302030,
-        name: 'ぶきっちょコウモリ+',
+        name: 'ぶきっちょコウモリ',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=3&turnMultiple==3',
         effects: [
-            { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
-            { type: 'score', value: null, options: [{ type: 'やる気', value: 230 }] },
+            { type: 'score', value: null, options: [{ type: 'block', value: 90 }] },
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 160 }] },
             { type: 'status', target: '好印象', value: -2 },
         ],
         limit: 3,
@@ -949,7 +949,7 @@ const pItemData = [
         id: 2302031,
         name: 'ぶきっちょコウモリ+',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=3&turnMultiple==3',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
@@ -1242,12 +1242,12 @@ const pItemData = [
     },
     {
         id: 2306040,
-        name: 'う～ら〜め〜し～や〜+',
+        name: 'う～ら〜め〜し～や〜',
         description: '',
         activate_timing: 'before_use_card',
         condition: 'cardType==active',
         effects: [
-            { type: '固定元気', value: 7 },
+            { type: '固定元気', value: 5 },
         ],
         limit: 2,
         plan: 'sense',
