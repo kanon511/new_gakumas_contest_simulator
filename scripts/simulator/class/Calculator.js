@@ -104,8 +104,12 @@ export class Calculator {
             }
             if (statusType == '絶好調') {
                 if (status.pStatus.getValue('好調') > 4) {
-                    let activeTurn = Math.max(0, (status.remainTurn-1) - args[0]);
-                    return coef*1300 * activeTurn * (1+(status.pStatus.getValue('好調'))*0.1);
+                    const greatCondition = status.pStatus.getValue('絶好調');
+                    const remainNotGreatConditionTurn = status.remainTurn - greatCondition;
+                    if (remainNotGreatConditionTurn > 0) {
+                        let activeTurn = Math.max(0, (status.remainTurn-1) - args[0]);
+                        return coef*1300 * activeTurn * (1+(status.pStatus.getValue('好調'))*0.1);
+                    }
                 }
                 return 0;
             }
