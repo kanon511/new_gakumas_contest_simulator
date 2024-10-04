@@ -4346,14 +4346,14 @@ export const skillCardData = [
     },
     {
         id: 4202030,
-        name: '悪戦苦闘ハンドメイド+',
+        name: '悪戦苦闘ハンドメイド',
         type: 'mental',
         plan: 'logic',
         cost: { type: 'direct_hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'status', target: '好印象', value: 6 }, 
-            { type: 'status', target: 'やる気', value: 5 }, 
+            { type: 'status', target: '好印象', value: 4 }, 
+            { type: 'status', target: 'やる気', value: 4 }, 
             { type: 'status', target: 'スキルカード使用数追加', value: 1, condition: '好印象>=3' }, 
         ],
         limit: 1,
@@ -4694,7 +4694,7 @@ export const skillCardData = [
     },
     {
         id: 4206030, 
-        name: 'こくりとひとくち+',
+        name: 'こくりとひとくち',
         type: 'mental',
         plan: 'sense',
         cost: { type: 'hp', value: -5 },
