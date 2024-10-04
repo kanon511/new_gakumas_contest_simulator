@@ -343,7 +343,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4241011],
                 plan: 'free',
-                turnTypes: [5, 3, 4],
+                turnTypes: [5, 3, 2],
                 firstTurn: {'vocal': 100, 'dance': 0, 'visual': 0},
             },
             {
@@ -352,7 +352,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4241012],
                 plan: 'sense',
-                turnTypes: [5, 3, 4],
+                turnTypes: [6, 4, 2],
                 firstTurn: {'vocal': 100, 'dance': 0, 'visual': 0},
             },
             {
