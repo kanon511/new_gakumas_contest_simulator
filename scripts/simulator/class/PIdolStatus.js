@@ -534,8 +534,9 @@ export class PIdolStatus {
         return Object.fromEntries(this.#status.map(item => [item.name, item.value]))
     }
 
-    add (name, value, availableFirstAdded, options) { 
+    add (name, value, _availableFirstAdded, options) { 
         const status = this.#get(name);
+        const availableFirstAdded = _availableFirstAdded || options?.some(item=>item.type=='immune_decrease');
         if (status.valueStack) {
             const item = {
                 value: options[0].value,
