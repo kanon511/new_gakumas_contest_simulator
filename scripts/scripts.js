@@ -203,6 +203,9 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     });
 
+    //自动强化角色卡
+    element_main_cards[0].parentNode.getElementsByClassName('checkbox')[0].checked = true;
+    element_sub_cards[0].parentNode.getElementsByClassName('checkbox')[0].checked = true;
 
 
     function DOM_set_select_contest_pItem (id) {
@@ -543,6 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const main_cards_id = element_main_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
         const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
         const skillCardIds = main_cards_id.concat(sub_cards_id).filter(id=>id&&id!='-1');
+
         // 重複を削除する機構がないため、仮削除
         if (element_main_cards[0].value == element_sub_cards[0].value) {
             let delete_number = skillCardIds.lastIndexOf(Number(element_main_cards[0].value));

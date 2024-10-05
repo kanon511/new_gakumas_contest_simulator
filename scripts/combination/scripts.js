@@ -559,7 +559,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         let pIdol_main_card_id = pIdol.unique_skillCard_id+1
         let pIdol_sub_card_id = PIdolData.getById(element_sub_character_select.value).unique_skillCard_id+1
-        console.log(pIdol_main_card_id,pIdol_sub_card_id)
         default_skillCardIds.push(pIdol_main_card_id)
         if(pIdol_sub_card_id!=pIdol_main_card_id){
             default_skillCardIds.push(pIdol_sub_card_id)
