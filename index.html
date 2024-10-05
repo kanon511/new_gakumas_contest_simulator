@@ -12,7 +12,6 @@
     <meta name="description" content="学マスのコンテストデッキ作成をサポートするツールです。">
     <meta name="keywords" content="学園アイドルマスター,学マス,コンテスト,シミュレーター">
     <meta name="robots" content="index, follow">
-    <meta name="language" content="Japanese">
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="stylesheet" href="./styles/simulationLog.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
@@ -64,11 +63,11 @@
                 <label>卡组选择（选择☑时强化）</label>
                 <div id="card-box-container">
                     <div class="container-character-cards-box">
-                        <div id="main-character-cards-box" class="character-cards-box"><!--ここにカードセレクト--></div>
+                        <div id="main-character-cards-box" class="character-cards-box" style="display: none;"><!--ここにカードセレクト--></div>
                         <div class="cost-display">0</div>
                     </div>
                     <div class="container-character-cards-box">
-                        <div id="sub-character-card-box" class="character-cards-box"><!--ここにカードセレクト--></div>
+                        <div id="sub-character-card-box" class="character-cards-box" style="display: none;"><!--ここにカードセレクト--></div>
                         <div class="cost-display">0</div>
                     </div>
                 </div>
@@ -87,7 +86,7 @@
                 <div>使用<a href="test.html">测试用网站</a>分析AI准确率，仅供参考</div>
             </div>
             <div class="section">
-                <label>AI选择（感性建议使用原AI）</label>
+                <label>AI选择</label>
                 <div class="input-group">
                     <select id="contest-auto">
                         <option value="2">解包AI2.0（大部分使用解包数据，有可能会出错，最接近游戏内AI）</option>

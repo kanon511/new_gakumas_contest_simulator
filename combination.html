@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>动态图片添加与删除</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link rel="stylesheet" href="./styles/simulationLog.css">
+    <style>
+        /* 背景遮罩样式 */
+        .overlay {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* 半透明黑色背景 */
+            z-index: 999; /* 确保在悬浮窗之下显示 */
+        }
+
+        /* 容器样式 */
+        .image-container {
+            border: 1px solid #ccc;
+            margin: auto;
+            width: 95%;
+            min-height: 100px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        /* 图片项样式 */
+        .item {
+            position: relative;
+            margin: 5px;
+        }
+        .item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        /* 删除按钮样式 */
+        .remove-btn {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            background-color: red;
+            color: white;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .remove-btn::before {
+            content: '';
+            width: 20px;
+            height: 4px;
+            background-color: white;
+            border-radius: 2px;
+            display: block;
+        }
+
+        /* 悬浮窗样式 */
+        .modal {
+            display: none; /* 默认隐藏 */
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            z-index: 1000; /* 确保在前面显示 */
+            padding: 10px;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+        .modal-header button {
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            cursor: pointer;
+            color: red;
+        }
+        .image-selector {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+        .image-option {
+            margin: 5px;
+            cursor: pointer;
+        }
+        .image-option img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 2px solid transparent;
+            border-radius: 5px;
+        }
+        .image-option.selected img {
+            border-color: blue;
+        }
+    </style>
+    <script type="module" src="./scripts/combination/scripts.js"></script>
+</head>
+<body>
+    <div class="overlay" id="overlay" onclick="closeAllImageSelectors()"></div>
+
+    <div id="wrapper">
+        <div class="container">
+            <div class="section">
+                <label>赛季场次选择</label>
+                <div class="input-group">
+                    <select id="contest-select">
+                        <option value="">赛季选择</option>
+                    </select>
+                    <select id="contest-stage-select">
+                        <option value="">场次选择</option>
+                    </select>
+                </div>
+            </div>
+            <div class="section character-select-box">
+                <label for="main-character">角色选择</label>
+                <select id="main-character">
+                    <option value="">select</option>
+                </select>
+            </div>
+            <div class="section character-select-box">
+                <label for="sub-character">支援卡选择</label>
+                <select id="sub-character">
+                    <option value="">select</option>
+                </select>
+            </div>
+            <div class="section">
+                <label>属性倍率（填写百分比）</label>
+                <div class="input-group">
+                    <input type="text" id="status-vocal" inputmode="numeric" pattern="\d*" placeholder="Vocal%"  required="required" value="1000">
+                    <input type="text" id="status-dance" inputmode="numeric" pattern="\d*" placeholder="Dance%"  required="required" value="1000">
+                    <input type="text" id="status-visual" inputmode="numeric" pattern="\d*" placeholder="Visual%"  required="required" value="1000">
+                    <input type="text" id="status-hp" inputmode="numeric" pattern="\d*" placeholder="体力"  required="required" value="30">
+                </div>
+            </div>
+            <div class="section card-select-box">
+                <label>P道具选择（选择☑时强化）</label>
+                <div id="pItem-box-container">
+                    <div id="main-character-pItem-box" class="character-cards-box"><!--ここにPアイテムセレクト--></div>
+                </div>
+            </div>
+            <div class="section card-select-box">
+                <label>卡组容量输入（使用空格分隔，编号1-5，编号含义请查看卡牌选择区对应说明）</label>
+                <div class="input-group">
+                    <input type="text" id="card-capacity-1" inputmode="numeric" pattern="\d*" required="required">
+                    <input type="text" id="card-capacity-2" inputmode="numeric" pattern="\d*" required="required">
+                </div>
+            </div>
+
+            <div id="card-box-information">
+                <div>角色固有卡以外的限一卡可以重复，不重复的话请选择「-」<br>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/">原网站</a></div>
+                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249</div>
+                <div>最后更新时间：2024/10/04。S10更新。</div>
+                <div>使用<a href="test.html">测试用网站</a>分析AI准确率，仅供参考</div>
+            </div>
+            <div class="section">
+                <label>AI选择</label>
+                <div class="input-group">
+                    <select id="contest-auto">
+                        <option value="2">解包AI2.0（大部分使用解包数据，有可能会出错，最接近游戏内AI）</option>
+                        <option value="1">原AI（原网站作者自写的一套AI）</option>
+                        <!-- <option value="0">解包AI（感性不准，尽量别用）</option> -->
+                        <option value="3">解包AI2.1（在2.0基础上修改新mao技能卡优先级最高，仅测试使用）</option>
+                    </select>
+                </div>
+            </div>
+            <div class="run-button">
+                <div style="margin-bottom: 1%; display: flex; justify-content: space-between;">
+                    <div style="text-align: left; width: 7rem;">
+                        运行次数：
+                    </div>
+                    <input type="text" id="run-count" inputmode="numeric" pattern="\d*" placeholder="运行次数"  required="required" value="100" style="margin-right: 1%;">
+                    <input id="run-button" type="button" value="运行">
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <label>编号：1 / 弱蓝，弱蓝+，强蓝 （卡牌容量0-50）卡牌选择</label>
+            <div class="image-container" id="container-0">
+                <div class="item" id="kanon-item-0"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
+            </div>
+            <div class="modal" id="imageSelector-0">
+                <div class="image-selector" id="imageSelectorContainer-0"></div>
+            </div>
+
+            <label>编号：2 / 强蓝+，弱金 （卡牌容量51-90）卡牌选择</label>
+            <div class="image-container" id="container-1">
+                <div class="item" id="kanon-item-1"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
+            </div>
+            <div class="modal" id="imageSelector-1">
+                <div class="image-selector" id="imageSelectorContainer-1"></div>
+            </div>
+
+            <label>编号：3 / 弱金+，高金，支援卡 （卡牌容量91-120）卡牌选择</label>
+            <div class="image-container" id="container-2">
+                <div class="item" id="kanon-item-2"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
+            </div>
+            <div class="modal" id="imageSelector-2">
+                <div class="image-selector" id="imageSelectorContainer-2"></div>
+            </div>
+
+            <label>编号：4 / 高金+，彩，支援卡+ （卡牌容量121-160）卡牌选择</label>
+            <div class="image-container" id="container-3">
+                <div class="item" id="kanon-item-3"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
+            </div>
+            <div class="modal" id="imageSelector-3">
+                <div class="image-selector" id="imageSelectorContainer-3"></div>
+            </div>
+
+            <label>编号：5 / 彩+ （卡牌容量161-260）卡牌选择</label>
+            <div class="image-container" id="container-4">
+                <div class="item" id="kanon-item-4"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
+            </div>
+            <div class="modal" id="imageSelector-4">
+                <div class="image-selector" id="imageSelectorContainer-4"></div>
+            </div>
+        </div>
+
+        <div class="container" id="result-container">
+
+        </div>
+    </div>
+
+    <script>
+        function closeAllImageSelectors() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.style.display = 'none';
+            });
+            document.getElementById('overlay').style.display = 'none'; // 隐藏背景遮罩
+        }
+
+        function removeImage(button) {
+            const item = button.parentElement;
+            item.remove();
+        }
+    </script>
+</body>
+</html>

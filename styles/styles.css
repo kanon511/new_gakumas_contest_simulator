@@ -53,7 +53,7 @@ body {
     .container {
         margin-bottom: 0;
         margin-right: 10px;
-        width: calc(50% - 5px);
+        /* width: calc(50% - 5px); */
     }
 
     .container:last-child {
