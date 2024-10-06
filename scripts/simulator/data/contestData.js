@@ -361,7 +361,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4241013],
                 plan: 'logic',
-                turnTypes: [3, 3, 2],
+                turnTypes: [4, 3, 1],
                 firstTurn: {'vocal': 100, 'dance': 0, 'visual': 0},
             },
         ],
