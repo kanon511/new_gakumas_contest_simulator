@@ -1383,7 +1383,7 @@ const pItemData = [
             { type: 'hp', value: 6 },
             { type: 'status', target: '元気増加無効', value: 2 },
         ],
-        limit: 1,
+        limit: 2,
         plan: 'sense',
     },
     {
@@ -1396,7 +1396,7 @@ const pItemData = [
             { type: 'status', target: '集中', value: 7 },
             { type: 'status', target: '元気増加無効', value: 3 },
         ],
-        limit: 1,
+        limit: 2,
         plan: 'sense',
     },
     {
