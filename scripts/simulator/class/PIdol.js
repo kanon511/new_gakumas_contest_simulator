@@ -375,9 +375,9 @@ export class PIdol {
                 status.hp = Math.max(status.hp, 0);
                 if (status.hp < hp) {
                     executes.push({ type: 'hp', args: [status.hp-hp] });
-                    
+
                     //全局消费体力数
-                    this.#status.countHpCount += hp - status.hp;
+                    status.countHpCount += hp - status.hp;
 
                     if (action.sourceType == 'skillCard') {
                         this.#simulateActions(this.#getPItemAction('consume_hp', status), status)
@@ -473,6 +473,10 @@ export class PIdol {
         if (type == 'hp') {
             const hp = this.#status.hp;
             this.#status.hp += args[0];
+
+            // 全局消费体力数
+            this.#status.countHpCount += hp - this.#status.hp;
+
             return `HP：${hp}→${this.#status.hp}(${this.#status.hp-hp})`;
         }
         if (type == 'score') {
