@@ -4884,6 +4884,44 @@ export const skillCardData = [
         allow_duplicate: false,
     },
     {
+        id: 4208030, 
+        name: '正确无比一堆日本字+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -6 },
+        condition: '',
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
+        effects: [
+            { type: 'status', target: '好調', value: 5 },
+            { type: 'status', target: '低下状態無効', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+        ],
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
+    },
+    {
+        id: 4208031, 
+        name: '正确无比一堆日本字+',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -6 },
+        condition: '',
+        pre_effects: [
+            { type: 'レッスン開始時手札に入る', value: null }
+        ],
+        effects: [
+            { type: 'status', target: '好調', value: 5 },
+            { type: 'status', target: '低下状態無効', value: 1 },
+            { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
+        ],
+        limit: 1,
+        card_cost: 0,
+        allow_duplicate: false,
+    },
+    {
         id: 4209010,
         name: '距離感',
         type: 'mental',

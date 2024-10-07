@@ -1372,6 +1372,33 @@ const pItemData = [
         limit: 1,
         plan: 'sense',
     },
+    { 
+        id: 2308030,
+        name: '一堆日本字+',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'hpPer<=50',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '消费体力数', value: 220 }] },
+            { type: 'hp', value: 6 },
+            { type: 'status', target: '元気増加無効', value: 2 },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 2308031,
+        name: '一堆日本字+',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'hpPer<=50',
+        effects: [
+            { type: 'status', target: '集中', value: 7 },
+            { type: 'status', target: '元気増加無効', value: 3 },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
     {
         id: 2309010,
         name: '等身大のレディリップ',

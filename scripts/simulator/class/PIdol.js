@@ -45,6 +45,7 @@ export class PIdol {
             turnCount: 0,
             lastUsedCard: null,
             usedCardCount: 0,
+            countHpCount: 0,
             usedCardTurnCount: 0,
             pStatus: new PIdolStatus(),
             handCount: null,
@@ -277,6 +278,7 @@ export class PIdol {
             turnCount: this.#status.turnCount,
             lastUsedCard: this.#status.lastUsedCard,
             usedCardCount: this.#status.usedCardCount,
+            countHpCount: this.#status.countHpCount,
             usedCardTurnCount: this.#status.usedCardTurnCount,
             pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
             handCount: this.getDeck('handCards').length,
@@ -373,6 +375,10 @@ export class PIdol {
                 status.hp = Math.max(status.hp, 0);
                 if (status.hp < hp) {
                     executes.push({ type: 'hp', args: [status.hp-hp] });
+                    
+                    //全局消费体力数
+                    this.#status.countHpCount += hp - status.hp;
+
                     if (action.sourceType == 'skillCard') {
                         this.#simulateActions(this.#getPItemAction('consume_hp', status), status)
                             .forEach(execution=>executes.push(execution));

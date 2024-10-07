@@ -483,6 +483,17 @@ const pIdolData = [
         unique_pItem_id: 2308020, 
     },
     {
+        id: 30803,
+        rarity: 'SSR',
+        episode_name: '新的',
+        character_id: 108,
+        name: '篠澤広',
+        plan: 'sense',
+        trend: '好調',
+        unique_skillCard_id: 4208030, 
+        unique_pItem_id: 2308030, 
+    },
+    {
         id: 10901,
         rarity: 'R',
         episode_name: '学園生活',
