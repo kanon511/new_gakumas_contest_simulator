@@ -3388,6 +3388,36 @@ export const skillCardData = [
         card_cost: 126,
         allow_duplicate: false,
     },
+    {
+        id: 3300090,
+        name: '新支援卡',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -5 },
+        condition: '',
+        effects: [
+            { type: 'status', target: '集中', value: 4 },
+            { type: 'upgrade', value: null, delay: 1 , condition: '集中>=3' },
+        ],
+        limit: 1,
+        card_cost: 126,
+        allow_duplicate: false,
+    },
+    {
+        id: 3300091,
+        name: '新支援卡',
+        type: 'mental',
+        plan: 'sense',
+        cost: { type: 'hp', value: -5 },
+        condition: '',
+        effects: [
+            { type: 'status', target: '集中', value: 4 },
+            { type: 'upgrade', value: null, delay: 1 , condition: '集中>=3' },
+        ],
+        limit: 1,
+        card_cost: 126,
+        allow_duplicate: false,
+    },
     /**
      * 虹カード(アクティブ/フリー)
      * 4010010 ~
