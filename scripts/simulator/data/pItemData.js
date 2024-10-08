@@ -1374,13 +1374,13 @@ const pItemData = [
     },
     { 
         id: 2308030,
-        name: '一堆日本字+',
+        name: 'いたずらパペット',
         description: '',
         activate_timing: 'after_use_card',
         condition: 'hpPer<=50',
         effects: [
-            { type: 'score', value: null, options: [{ type: '消费体力数', value: 220 }] },
-            { type: 'hp', value: 6 },
+            { type: 'score', value: null, options: [{ type: '消费体力数', value: 180 }] },
+            { type: 'hp', value: 5 },
             { type: 'status', target: '元気増加無効', value: 2 },
         ],
         limit: 2,
@@ -1388,7 +1388,7 @@ const pItemData = [
     },
     {
         id: 2308031,
-        name: '一堆日本字+',
+        name: 'いたずらパペット+',
         description: '',
         activate_timing: 'after_use_card',
         condition: 'hpPer<=50',

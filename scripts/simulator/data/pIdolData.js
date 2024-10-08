@@ -485,7 +485,7 @@ const pIdolData = [
     {
         id: 30803,
         rarity: 'SSR',
-        episode_name: '新的',
+        episode_name: '仮装狂騒曲',
         character_id: 108,
         name: '篠澤広',
         plan: 'sense',

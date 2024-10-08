@@ -3390,7 +3390,7 @@ export const skillCardData = [
     },
     {
         id: 3300090,
-        name: '新支援卡',
+        name: '気になる……',
         type: 'mental',
         plan: 'sense',
         cost: { type: 'hp', value: -5 },
@@ -3405,13 +3405,13 @@ export const skillCardData = [
     },
     {
         id: 3300091,
-        name: '新支援卡',
+        name: '気になる……+',
         type: 'mental',
         plan: 'sense',
-        cost: { type: 'hp', value: -5 },
+        cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
-            { type: 'status', target: '集中', value: 4 },
+            { type: 'status', target: '集中', value: 5 },
             { type: 'upgrade', value: null, delay: 1 , condition: '集中>=3' },
         ],
         limit: 1,
@@ -4915,7 +4915,7 @@ export const skillCardData = [
     },
     {
         id: 4208030, 
-        name: '正确无比一堆日本字+',
+        name: '正確無比な看板づくり',
         type: 'mental',
         plan: 'sense',
         cost: { type: 'hp', value: -6 },
@@ -4924,7 +4924,7 @@ export const skillCardData = [
             { type: 'レッスン開始時手札に入る', value: null }
         ],
         effects: [
-            { type: 'status', target: '好調', value: 5 },
+            { type: 'status', target: '好調', value: 3 },
             { type: 'status', target: '低下状態無効', value: 1 },
             { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
@@ -4934,7 +4934,7 @@ export const skillCardData = [
     },
     {
         id: 4208031, 
-        name: '正确无比一堆日本字+',
+        name: '正確無比な看板づくり+',
         type: 'mental',
         plan: 'sense',
         cost: { type: 'hp', value: -6 },
