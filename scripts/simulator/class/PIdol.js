@@ -44,6 +44,7 @@ export class PIdol {
             lastUsedCard: null,
             usedCardCount: 0,
             use_card_count_one_turn: 0,
+            consumedHp: 0,
             pStatus: new PIdolStatus(),
             handCount: null,
             turnType: null,
@@ -242,6 +243,7 @@ export class PIdol {
         const evaluation = this.#evaluateExecutions(totalExecution);
 
         if (isNaN(evaluation)) {
+            console.log(JSON.stringify(totalExecution, null, 2));
             throw new Error(`evaluation is NaN: ${skillCard.name}`);
         }
 
@@ -281,6 +283,7 @@ export class PIdol {
             lastUsedCard: this.#status.lastUsedCard,
             usedCardCount: this.#status.usedCardCount,
             use_card_count_one_turn: this.#status.use_card_count_one_turn,
+            consumedHp: this.#status.consumedHp,
             pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
             handCount: this.getDeck('handCards').length,
             turnType: this.#status.turnType,
@@ -381,6 +384,8 @@ export class PIdol {
                         this.#simulateActions(this.#getPItemAction('consume_hp', status), status)
                             .forEach(execution=>executes.push(execution));
                     }
+                    status.consumedHp += hp-status.hp;
+                    executes.push({ type: 'consumedHp', args: [hp-status.hp] });
                 }
             } else {
                 executes.push({ type: 'hp', args: [0] });
@@ -515,6 +520,10 @@ export class PIdol {
         }
         if (type == 'use_card_count_one_turn') {
             this.#status.use_card_count_one_turn++;
+            return ``;
+        }
+        if (type == 'consumedHp') {
+            this.#status.consumedHp += args[0];
             return ``;
         }
         if (type == 'generate') {

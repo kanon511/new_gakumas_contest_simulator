@@ -327,7 +327,7 @@ const contestData = [
                 stageEffects: [],
                 stagePItemIds: [4241013],
                 plan: 'logic',
-                turnTypes: [4, 2, 2],
+                turnTypes: [4, 3, 1],
                 firstTurnFirstTypeProb: 1,
             },
         ],

@@ -29,6 +29,9 @@ export class Calculator {
         if (type == 'use_card_count_one_turn') {
             return 0;
         }
+        if (type == 'consumedHp') {
+            return 0;
+        }
         if (type == 'end') {
             return 0;
         }
@@ -241,6 +244,7 @@ export class Calculator {
                         case 'block': optionCoef['score'] = (effectOption.value/100) * status.block; break;
                         case 'やる気': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('やる気'); break;
                         case '好調' : optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('好調'); break;
+                        case 'consumedHp' : optionCoef['score'] = (effectOption.value/100) * status.consumedHp; break;
                     }
                 });
             }
