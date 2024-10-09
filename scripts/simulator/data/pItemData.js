@@ -1376,7 +1376,7 @@ const pItemData = [
         id: 2308030,
         name: 'いたずらパペット',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'hpPer<=50',
         effects: [
             { type: 'score', value: null, options: [{ type: '消费体力数', value: 180 }] },
@@ -1390,7 +1390,7 @@ const pItemData = [
         id: 2308031,
         name: 'いたずらパペット+',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'hpPer<=50',
         effects: [
             { type: 'score', value: null, options: [{ type: '消费体力数', value: 220 }] },
