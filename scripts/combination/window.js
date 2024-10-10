@@ -22,6 +22,8 @@ function closeImageSelector(containerIndex) {
 }
 
 function populateImageSelector(containerIndex) {
+    const cardImagePath = imgPath+"cards/card_";
+
     const container = document.getElementById(`imageSelectorContainer-${containerIndex}`);
     container.innerHTML = ''; // 清空容器内容
 
@@ -30,19 +32,28 @@ function populateImageSelector(containerIndex) {
         const option = document.createElement('div');
         option.className = 'image-option';
         option.onclick = () => selectAndAddImage(containerIndex, item); // 直接选择并添加的函数
-        option.innerHTML = `<img src="${item.url}" alt="${item.value}">`;
+        option.innerHTML = `<img src="${cardImagePath+item+".webp"}" alt="${item}">`;
         container.appendChild(option);
     });
 }
 
-function selectAndAddImage(containerIndex, item) {
+function closeAllImageSelectors() {
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.style.display = 'none';
+    });
+    document.getElementById('overlay').style.display = 'none'; // 隐藏背景遮罩
+}
+
+export function selectAndAddImage(containerIndex, item) {
+    const cardImagePath = imgPath+"cards/card_";
+
     const newItem = document.createElement('div');
     newItem.className = 'item';
     newItem.innerHTML = `
-        <img src="${item.url}" alt="${item.value}">
+        <img src="${cardImagePath+item+".webp"}" alt="${item}">
         <button class="remove-btn" onclick="removeImage(this)"></button>
     `;
-    newItem.setAttribute('data-value', item.value); // 将值附加到元素上
+    newItem.setAttribute('data-value', item); // 将值附加到元素上
     document.getElementById(`container-${containerIndex}`).appendChild(newItem);
 
     // 关闭悬浮窗
@@ -65,21 +76,21 @@ export function setPlan(plan){
         if((i.plan == plan || i.plan == "free") && i.id[0]!= "0"){
             if(i.card_cost){
                 if(i.card_cost<50){
-                    imageUrls[0].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
+                    imageUrls[0].push(i.id);
                 }
                 else if(i.card_cost<90){
-                    imageUrls[1].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
+                    imageUrls[1].push(i.id);
                 }
                 else if(i.card_cost<120){
-                    imageUrls[2].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
+                    imageUrls[2].push(i.id);
                 }
                 else if(i.card_cost<160){
-                    imageUrls[3].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
+                    imageUrls[3].push(i.id);
                 }
                 else if(i.card_cost<250){
-                    imageUrls[4].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
+                    imageUrls[4].push(i.id);
                 }
-                imageUrls[5].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
+                imageUrls[5].push(i.id);
             }
         }
     }

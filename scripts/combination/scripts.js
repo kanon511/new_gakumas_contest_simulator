@@ -3,7 +3,7 @@ import { SkillCardData } from '../simulator/data/skillCardData.js';
 import { ContestData } from '../simulator/data/contestData.js';
 import { PItemData } from '../simulator/data/pItemData.js';
 import { onTest } from '../setting.js';
-import { setPlan,imgPath,getSelectedValues } from './window.js';
+import { setPlan,imgPath,getSelectedValues,selectAndAddImage } from './window.js';
 
 function uniqueCombinations(arr, n) {
     const results = new Set(); // 使用 Set 来存储唯一的组合
@@ -332,7 +332,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const pIdol = urlParams.get("p_idol");
         const status = urlParams.get("status");
         const pItems = urlParams.get("p_items");
-        const cards = urlParams.get("cards");
+        const capacity = urlParams.get("capacity");
+        
+        if (capacity) {
+            document.getElementById("card-capacity").value = capacity.split(':').join(' ');
+        } 
 
         if (contestStage) {
             const contestId = contestStage.split(":")[0];
@@ -364,28 +368,34 @@ document.addEventListener('DOMContentLoaded', () => {
                 elem.dispatchEvent(new Event("change"));
             });
         }
-        if (cards) {
-            const cardIds = cards.split("_").map((cardGroup) => cardGroup.split(":"));
-            element_main_cards.forEach((elem, idx) => {
-                elem.value = 2 * Math.floor(cardIds[0][idx] / 2);
-                elem.parentNode.getElementsByClassName("checkbox")[0].checked =
-                    cardIds[0][idx] % 2 > 0;
-                elem.dispatchEvent(new Event("change"));
-            });
-            element_sub_cards.forEach((elem, idx) => {
-                elem.value = 2 * Math.floor(cardIds[1][idx] / 2);
-                elem.parentNode.getElementsByClassName("checkbox")[0].checked =
-                    cardIds[1][idx] % 2 > 0;
-                elem.dispatchEvent(new Event("change"));
-            });
+        for (let i = 0; i < 6; i++) {
+            const cards = urlParams.get("cards"+i);
+            if (cards) {
+                const cardIds = cards.split(":").map(Number);
+                for (let j of cardIds){
+                    selectAndAddImage(i,j);
+                }
+            }
         }
     }
 
     function saveOptiostoSearchParams() {
-        let str='https://kanon511.github.io/new_gakumas_contest_simulator?'
+        let str='https://kanon511.github.io/new_gakumas_contest_simulator/combination.html?'
         +`contest_stage=${element_contest_stage_select.value}&`
         +`p_idol=${element_main_character_select.value}:${element_sub_character_select.value}&`
         +`status=${document.getElementById("status-vocal").value}:${document.getElementById("status-dance").value}:${document.getElementById("status-visual").value}:${document.getElementById("status-hp").value}&`
+        +`capacity=${document.getElementById("card-capacity").value.split(' ').join(':')}&`
+        +`${(()=>{
+            let j=''
+            for(let i=0;i<6;i++){
+                let cards = getSelectedValues(i).map(Number).join(':');
+                if(cards){
+                    j+=`cards${i}=${cards}&`
+                }
+            }
+            console.log(j)
+            return j
+        })()}`
         +`p_items=${(()=>{
             let j=''
             element_pItems.slice(1).forEach((elem, idx) => {
@@ -397,40 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     i=-1
                 }
                 j+=i
-                if(idx!=element_main_cards.length-1){
-                    j+=':'
-                }
-            })
-            return j
-        })()}&`
-        +`cards=${(()=>{
-            let j=''
-            element_main_cards.forEach((elem, idx) => {
-                let i=Number(elem.value)
-                if(elem.parentNode.getElementsByClassName("checkbox")[0].checked){
-                    i+=1
-                }
-                if(elem==-1){
-                    i=-1
-                }
-                j+=i
-                if(idx!=element_main_cards.length-1){
-                    j+=':'
-                }
-            })
-            return j
-        })()}_${(()=>{
-            let j=''
-            element_sub_cards.forEach((elem, idx) => {
-                let i=Number(elem.value)
-                if(elem.parentNode.getElementsByClassName("checkbox")[0].checked){
-                    i+=1
-                }
-                if(elem==-1){
-                    i=-1
-                }
-                j+=i
-                if(idx!=element_sub_cards.length-1){
+                if(idx!=element_pItems.length-1){
                     j+=':'
                 }
             })
@@ -799,38 +776,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-        const scoreList = result.scoreList;
-        scoreList.sort((a, b) => a - b);
+        // const scoreList = result.scoreList;
+        // scoreList.sort((a, b) => a - b);
 
-        const aryMax = function (a, b) {return Math.max(a, b);}
-        const aryMin = function (a, b) {return Math.min(a, b);}
+        // const aryMax = function (a, b) {return Math.max(a, b);}
+        // const aryMin = function (a, b) {return Math.min(a, b);}
         
-        const minscore = Math.floor(scoreList.reduce(aryMin)/1000);
-        const maxscore = Math.floor(scoreList.reduce(aryMax)/1000);
-        const count = Math.floor((maxscore - minscore))+1;
-        const data = new Array(count).fill(0);
-        for (let i = 0; i < scoreList.length; i++) {
-            const kaikyu = Math.floor(scoreList[i]/1000) - minscore;
-            data[kaikyu]++;
-        }
+        // const minscore = Math.floor(scoreList.reduce(aryMin)/1000);
+        // const maxscore = Math.floor(scoreList.reduce(aryMax)/1000);
+        // const count = Math.floor((maxscore - minscore))+1;
+        // const data = new Array(count).fill(0);
+        // for (let i = 0; i < scoreList.length; i++) {
+        //     const kaikyu = Math.floor(scoreList[i]/1000) - minscore;
+        //     data[kaikyu]++;
+        // }
 
-        document.getElementById('result-score-mean').textContent = Math.floor(scoreList.reduce((pre, crt)=>pre+crt, 0)/scoreList.length);
-        document.getElementById('result-score-median').textContent = scoreList[Math.floor(scoreList.length/2)];
-        document.getElementById('result-score-mode').textContent = (minscore + data.reduce((pre, crt, i)=>pre[0]<crt?[crt, i]:pre, [-1, 0])[1])*1000;
+        // document.getElementById('result-score-mean').textContent = Math.floor(scoreList.reduce((pre, crt)=>pre+crt, 0)/scoreList.length);
+        // document.getElementById('result-score-median').textContent = scoreList[Math.floor(scoreList.length/2)];
+        // document.getElementById('result-score-mode').textContent = (minscore + data.reduce((pre, crt, i)=>pre[0]<crt?[crt, i]:pre, [-1, 0])[1])*1000;
 
-        // chart.data = {
-        //     labels:  new Array(count).fill(0).map((_,i)=>(i+minscore)*1000),
-        //     datasets: [
-        //         {
-        //             label: `スコア（N=${simulateCount}）`,
-        //             data: data
-        //         }
-        //     ]
-        // };
-        // chart.update();
+        // // chart.data = {
+        // //     labels:  new Array(count).fill(0).map((_,i)=>(i+minscore)*1000),
+        // //     datasets: [
+        // //         {
+        // //             label: `スコア（N=${simulateCount}）`,
+        // //             data: data
+        // //         }
+        // //     ]
+        // // };
+        // // chart.update();
         
-        run_flag = false;
+        // run_flag = false;
     }, false);
+
+    const element_save_button = document.getElementById('save-button');
+    element_save_button.addEventListener('click', saveOptiostoSearchParams)
 }, false);
 
 async function runWebWorker(data) {
