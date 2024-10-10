@@ -427,8 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
             cardIdList = cardIdList.slice(0, 10);
         }
 
-        let str= url + '?'
-        +`contest_stage=${element_contest_stage_select.value}&`
+        let str = `contest_stage=${element_contest_stage_select.value}&`
         +`p_idol=${element_main_character_select.value}:${element_sub_character_select.value}&`
         +`status=${document.getElementById("status-vocal").value}:${document.getElementById("status-dance").value}:${document.getElementById("status-visual").value}:${document.getElementById("status-hp").value}&`
         +`p_items=${(()=>{
