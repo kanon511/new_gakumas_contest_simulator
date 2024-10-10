@@ -2,7 +2,7 @@ import { PIdolData } from '../simulator/data/pIdolData.js';
 import { SkillCardData } from '../simulator/data/skillCardData.js';
 import { ContestData } from '../simulator/data/contestData.js';
 import { PItemData } from '../simulator/data/pItemData.js';
-import { onTest } from '../setting.js';
+import { onTest,url } from '../setting.js';
 import { setPlan,imgPath,getSelectedValues,selectAndAddImage } from './window.js';
 
 function uniqueCombinations(arr, n) {
@@ -333,7 +333,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const status = urlParams.get("status");
         const pItems = urlParams.get("p_items");
         const capacity = urlParams.get("capacity");
-        
+
         if (capacity) {
             document.getElementById("card-capacity").value = capacity.split(':').join(' ');
         } 
@@ -380,7 +380,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function saveOptiostoSearchParams() {
-        let str='https://kanon511.github.io/new_gakumas_contest_simulator/combination.html?'
+        let str= url + '/combination.html?'
         +`contest_stage=${element_contest_stage_select.value}&`
         +`p_idol=${element_main_character_select.value}:${element_sub_character_select.value}&`
         +`status=${document.getElementById("status-vocal").value}:${document.getElementById("status-dance").value}:${document.getElementById("status-visual").value}:${document.getElementById("status-hp").value}&`
@@ -393,7 +393,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     j+=`cards${i}=${cards}&`
                 }
             }
-            console.log(j)
             return j
         })()}`
         +`p_items=${(()=>{
@@ -419,6 +418,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             alert("复制链接失败")
         }
+    }
+
+    function generateCardsLink(main_card_id, sub_card_id, cardIdList) {
+        if (cardIdList.length < 10) {
+            cardIdList = cardIdList.concat(Array(10 - cardIdList.length).fill(-1));
+        } else if (cardIdList.length > 10) {
+            cardIdList = cardIdList.slice(0, 10);
+        }
+
+        let str= url + '?'
+        +`contest_stage=${element_contest_stage_select.value}&`
+        +`p_idol=${element_main_character_select.value}:${element_sub_character_select.value}&`
+        +`status=${document.getElementById("status-vocal").value}:${document.getElementById("status-dance").value}:${document.getElementById("status-visual").value}:${document.getElementById("status-hp").value}&`
+        +`p_items=${(()=>{
+            let j=''
+            element_pItems.slice(1).forEach((elem, idx) => {
+                let i=Number(elem.value)
+                if(elem.parentNode.getElementsByClassName("checkbox")[0].checked){
+                    i+=1
+                }
+                if(elem==-1){
+                    i=-1
+                }
+                j+=i
+                if(idx!=element_pItems.length-1){
+                    j+=':'
+                }
+            })
+            return j
+        })()}&`
+        +`cards=${main_card_id}:${cardIdList.slice(0,5).join(':')}_${sub_card_id}:${cardIdList.slice(5,10).join(':')}`
+
+        return str;
     }
 
     element_contest_select.dispatchEvent(new Event('change'));
@@ -645,11 +677,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const card_list = document.createElement('div');
             const main_card_list = document.createElement('div');
             const sub_card_list = document.createElement('div');
+
             card_list.appendChild(DOM_text_to_elememt(`
                 <div>
                     <label>平均分：${mean}，中间值：${median}，最频值：${mode}</label>
                 </div>
             `))
+
             card_list.appendChild(main_card_list);
             card_list.appendChild(sub_card_list);
             card_list.classList.add('container');
@@ -667,6 +701,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 else{
                     sub_card_list.appendChild(DOM_text_to_elememt(str));
                 }
+            }
+            if(skillCards.length<=10){
+                card_list.appendChild(DOM_text_to_elememt(`
+                    <div>
+                        <a href="${url + '?' + generateCardsLink(pIdol_main_card_id, pIdol_sub_card_id, skillCards)}" target="_blank">跳转至卡组计算模拟器</a>
+                    </div>
+                `))
+            }else{
+                card_list.appendChild(DOM_text_to_elememt(`
+                    <div>
+                        卡牌数大于10，无法显示卡组计算模拟器链接
+                    </div>
+                `))
             }
             rank_table.appendChild(card_list);
         }
