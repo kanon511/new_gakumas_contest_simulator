@@ -529,10 +529,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const pItemIds = Array.from(new Set(pItemIds_tmp));
 
         // カード
-        const card_capacity_1 = document.getElementById('card-capacity-1').value == "" ? [] : document.getElementById('card-capacity-1').value.split(' ').map(Number);
-        const card_capacity_2 = document.getElementById('card-capacity-2').value == "" ? [] : document.getElementById('card-capacity-2').value.split(' ').map(Number);
+        const card_capacity_1 = document.getElementById('card-capacity').value == "" ? [] : document.getElementById('card-capacity').value.split(' ').map(Number);
         const card_capacity = [0,0,0,0,0];
-        [].concat(card_capacity_1,card_capacity_2).forEach(num=>card_capacity[num-1]+=1);
+        card_capacity_1.forEach(num=>card_capacity[num-1]+=1);
         // const main_cards_id = element_main_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
         // const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
         // const skillCardIds = main_cards_id.concat(sub_cards_id).filter(id=>id&&id!='-1');
@@ -582,6 +581,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if(i && i>=0)
                 singleSkillCardCombinationIds.push(uniqueCombinations(getSelectedValues(i),card_capacity[i]))
         }
+
+        const requiredSkillCardId = getSelectedValues(5);
+
         const skillCardCombinationIds = [];
         for(let i of singleSkillCardCombinationIds[0]){
             for(let j of singleSkillCardCombinationIds[1]){
@@ -603,6 +605,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rank_table.innerText=`计算中：${Number(j)+1}/${skillCardCombinationIds.length}`;
 
             let i = skillCardCombinationIds[j];
+            i.push(...requiredSkillCardId)
 
             const skillCardIds = i.concat();
             i.push(...default_skillCardIds)

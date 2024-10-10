@@ -4,7 +4,7 @@ export const imgPath = 'https://katabami83.github.io/gakumas_file/images/';
 
 // 每个容器对应的图片URL和对应值
 let imageUrls = [
-    [],[],[],[],[]
+    [],[],[],[],[],[]
 ];
 
 function openImageSelector(containerIndex) {
@@ -59,7 +59,7 @@ export function getSelectedValues(containerIndex) {
 export function setPlan(plan){
     let allImageIds = SkillCardData.getAll()
     imageUrls = [
-        [],[],[],[],[]
+        [],[],[],[],[],[]
     ];
     for(let i of allImageIds){
         if((i.plan == plan || i.plan == "free") && i.id[0]!= "0"){
@@ -79,13 +79,14 @@ export function setPlan(plan){
                 else if(i.card_cost<250){
                     imageUrls[4].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
                 }
+                imageUrls[5].push({url:imgPath+"cards/card_"+i.id+".webp",value:i.id});
             }
         }
     }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    for(let i=0;i<5;i++){
+    for(let i=0;i<6;i++){
         document.getElementById(`kanon-item-${i}`).onclick = () => openImageSelector(i);
     }
 });

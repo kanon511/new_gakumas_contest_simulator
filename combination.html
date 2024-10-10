@@ -24,7 +24,6 @@
             border: 1px solid #ccc;
             margin: auto;
             width: 95%;
-            min-height: 100px;
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 20px;
@@ -75,6 +74,8 @@
             left: 50%;
             transform: translate(-50%, -50%);
             width: 80%;
+            height: 80%;
+            overflow-y: auto;
             background-color: white;
             border: 1px solid #ccc;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -112,6 +113,12 @@
         }
         .image-option.selected img {
             border-color: blue;
+        }
+
+        @media screen and (min-width: 750px) {
+            .modal {
+                width: 50%;
+            }
         }
     </style>
     <script type="module" src="./scripts/combination/scripts.js"></script>
@@ -160,16 +167,15 @@
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>卡组容量输入（使用空格分隔，编号1-5，编号含义请查看卡牌选择区对应说明）</label>
+                <label>未知卡组容量输入（使用空格分隔，编号1-5，编号含义请查看卡牌选择区对应说明，不输入必选卡牌）</label>
                 <div class="input-group">
-                    <input type="text" id="card-capacity-1" inputmode="numeric" pattern="\d*" required="required">
-                    <input type="text" id="card-capacity-2" inputmode="numeric" pattern="\d*" required="required">
+                    <input type="text" id="card-capacity" inputmode="numeric" pattern="\d*" required="required">
                 </div>
             </div>
 
             <div id="card-box-information">
-                <div>使用说明：按照卡组容量大小组合卡组，例如1蓝+4金+卡组请填写2 4 4 4 4，3蓝+2彩+请填写2 2 2 5 5。<br>右侧为各个容量你想尝试的卡的可能，运行时，穷举所有可能的组合，并计算出最优的卡组。</div>
-                <div>由于使用穷举法，运行时间可能会很长，单次运行请不要放置过多的卡，尽可能通过人工筛选，去掉一些不符合条件的卡。</div>
+                <div>使用说明：按照卡组容量大小组合卡组，例如1蓝+4金+卡组和3蓝+2彩+卡组（即4蓝+4金+2彩+卡组）请填写2 4 4 4 4 2 2 2 5 5。<br>右侧为各个容量你想尝试的卡的可能，运行时，穷举所有可能的组合，并计算出最优的卡组。</div>
+                <div>由于使用穷举法，运行时间可能会很长，单次运行请不要放置过多的卡，尽可能通过人工筛选，去掉一些不符合条件的卡，或添加一些符合条件必选的卡。</div>
                 <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，项目如果对你有用麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249</div>
             </div>
             <div class="section">
@@ -195,6 +201,14 @@
         </div>
 
         <div class="container">
+            <label>无编号 / 请选择必定使用的卡牌</label>
+            <div class="image-container" id="container-5">
+                <div class="item" id="kanon-item-5"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
+            </div>
+            <div class="modal" id="imageSelector-5">
+                <div class="image-selector" id="imageSelectorContainer-5"></div>
+            </div>
+
             <label>编号：1 / 弱蓝，弱蓝+，强蓝 （卡牌容量0-50）卡牌选择</label>
             <div class="image-container" id="container-0">
                 <div class="item" id="kanon-item-0"><img src="https://kanon511.github.io/new_gakumas_contest_simulator/kanon.png"></div>
