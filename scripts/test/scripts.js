@@ -190,14 +190,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const main_cards_id = element_main_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
             const sub_cards_id = element_sub_cards.map(element=>Number(element.value)+(element.parentNode.getElementsByClassName('checkbox')[0].checked && element.value % 10 == 0 ? 1 : 0));
             main_cards_id.forEach((item,index)=>{
-                if(item==-1){
+                if(item==-1||item==0){
                     element_main_cards_image[index].src=addImgPath;
                     return;
                 }
                 element_main_cards_image[index].src=imgPath+"cards/card_"+item+".webp"
             })
             sub_cards_id.forEach((item,index)=>{
-                if(item==-1){
+                if(item==-1||item==0){
                     element_sub_cards_image[index].src=addImgPath;
                     return;
                 }
