@@ -93,12 +93,14 @@ export class PIdol {
         const pItemActions = this.#getPItemAction('start_turn', this.#status);
         const pStatusActions = this.#getPStatusAction('start_turn', this.#status);
         const pDelayActions = this.#getPDelayAction(this.#status);
+        const pItemAfterActions = this.#getPItemAction('start_turn_after', this.#status);
         //
         const actions = [];
         defaultActions.forEach(action=>actions.push(action));
         pItemActions.forEach(action=>actions.push(action));
         pStatusActions.forEach(action=>actions.push(action));
         pDelayActions.forEach(action=>actions.push(action));
+        pItemAfterActions.forEach(action=>actions.push(action));
         // const actions = defaultActions.concat(pItemActions, pStatusActions, pDelayActions);
         //
         const executions = this.#simulateActions(actions);
@@ -219,14 +221,17 @@ export class PIdol {
 
     #setSkillCardActions (skillCard) {
         this.#status.lastUsedCard = skillCard;
+        const preActions = [];
+        preActions.push({ type: 'use', sourceType: 'skillCard', source: skillCard });
+        preActions.push({ type: 'effect', sourceType: 'skillCard', name: skillCard.name, target: skillCard.cost });
+        
+        const status = this.#getStatus();
+        const preExecutions = this.#simulateActions(preActions, status);
         const actions = [];
-        actions.push({ type: 'use', sourceType: 'skillCard', source: skillCard });
-        actions.push({ type: 'effect', sourceType: 'skillCard', name: skillCard.name, target: skillCard.cost });
-        this.#getPItemAction('before_use_card', this.#status).forEach(action=>actions.push(action));
-        this.#getPStatusAction('before_use_card', this.#status).forEach(action=>actions.push(action));
+        this.#getPItemAction('before_use_card', status).forEach(action=>actions.push(action));
+        this.#getPStatusAction('before_use_card', status).forEach(action=>actions.push(action));
         this.#getSkillCardActions(skillCard).forEach(action=>actions.push(action));
 
-        const status = this.#getStatus();
         const executions = this.#simulateActions(actions, status);
 
         const afterActions = [];
@@ -235,7 +240,7 @@ export class PIdol {
         afterActions.push({ type: 'end' });
         const afterExecution = this.#simulateActions(afterActions, status);
 
-        const totalExecution = executions.concat(afterExecution);
+        const totalExecution = preExecutions.concat(executions, afterExecution);
 
         const evaluation = this.#evaluateExecutions(totalExecution);
 

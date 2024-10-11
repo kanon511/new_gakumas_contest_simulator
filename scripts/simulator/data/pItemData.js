@@ -358,9 +358,9 @@ const pItemData = [
     },
     {
         id: 2109020,
-        name: '初声の証・莉波',
+        name: '初心の証・莉波',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'status', target: 'やる気', value: 2 },
@@ -370,9 +370,9 @@ const pItemData = [
     },
     {
         id: 2109021,
-        name: '初声の証・莉波+',
+        name: '初心の証・莉波+',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'status', target: 'やる気', value: 3 },
@@ -631,7 +631,7 @@ const pItemData = [
         id: 2210010,
         name: '柴犬ポシェット',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: 'turnMultiple==2', // 2ターンごと
         effects: [
             { type: 'block', value: 5 },
@@ -643,7 +643,7 @@ const pItemData = [
         id: 2210011,
         name: '柴犬ポシェット+',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: 'turnMultiple==2', // 2ターンごと
         effects: [
             { type: 'block', value: 5 },
@@ -937,9 +937,9 @@ const pItemData = [
     },
     {
         id: 2302030,
-        name: 'ぶきっちょコウモリ+',
+        name: 'ぶきっちょコウモリ',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=3&turnMultiple==3',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 90 }] },
@@ -953,7 +953,7 @@ const pItemData = [
         id: 2302031,
         name: 'ぶきっちょコウモリ+',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=3&turnMultiple==3',
         effects: [
             { type: 'score', value: null, options: [{ type: 'block', value: 100 }] },
@@ -1019,7 +1019,7 @@ const pItemData = [
         id: 2303030,
         name: 'ぱちぱち線香花火',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=6&turnMultiple==3',
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
@@ -1033,7 +1033,7 @@ const pItemData = [
         id: 2303031,
         name: 'ぱちぱち線香花火+',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'start_turn_after',
         condition: '好印象>=6&turnMultiple==3',
         effects: [
             { type: 'block', value: null, options: [{type: '好印象', value: 100}] },
@@ -1454,7 +1454,7 @@ const pItemData = [
         id: 2309030,
         name: 'ぱたぱたうちわ',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'block', value: 1 },
@@ -1467,7 +1467,7 @@ const pItemData = [
         id: 2309031,
         name: 'ぱたぱたうちわ+',
         description: '',
-        activate_timing: 'after_use_card',
+        activate_timing: 'before_use_card',
         condition: 'usedCardCountMultiple==3',
         effects: [
             { type: 'block', value: 2 },
@@ -2029,10 +2029,10 @@ const pItemData = [
         id: 4241011,
         name: '初星バッチ（赤）',
         description: '',
-        activate_timing: 'start_turn',
-        condition: 'turnMultiple==3&hpPer>=50',
+        activate_timing: 'start_turn_after',
+        condition: 'hpPer>=50&turnMultiple==3',
         effects: [
-            { type: 'status', target: 'パラメータ上昇量増加', value: 4, options: [{ type: '上昇量', value: 70 }]  },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 4, options: [{ type: '上昇量', value: 70 }] },
         ],
         limit: 3,
         plan: 'free',
@@ -2044,9 +2044,9 @@ const pItemData = [
         activate_timing: 'before_use_card',
         condition: 'cardType==mental',
         effects: [
-            { type: 'status', target: '絶好調', value: 2 },
+            { type: 'status', target: '絶好調', value: 2, options: [{ type: 'immune_decrease', value: 1 }] },
             { type: 'hp', value: 3 },
-            { type: 'status', target: '消費体力増加', value: 1 },
+            { type: 'status', target: '消費体力増加', value: 1, options: [{ type: 'immune_decrease', value: 1 }] },
         ],
         limit: null,
         plan: 'sense',
