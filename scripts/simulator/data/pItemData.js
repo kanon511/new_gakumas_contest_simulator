@@ -1379,7 +1379,7 @@ const pItemData = [
         activate_timing: 'before_use_card',
         condition: 'hpPer<=50&cardType==active',
         effects: [
-            { type: 'score', value: null, options: [{ type: '消费体力数', value: 180 }] },
+            { type: 'score', value: null, options: [{ type: 'consumedHp', value: 180 }] },
             { type: 'hp', value: 5 },
             { type: 'status', target: '元気増加無効', value: 2 },
         ],
@@ -1393,7 +1393,7 @@ const pItemData = [
         activate_timing: 'before_use_card',
         condition: 'hpPer<=50&cardType==active',
         effects: [
-            { type: 'score', value: null, options: [{ type: '消费体力数', value: 220 }] },
+            { type: 'score', value: null, options: [{ type: 'consumedHp', value: 220 }] },
             { type: 'hp', value: 6 },
             { type: 'status', target: '元気増加無効', value: 2 },
         ],

@@ -45,7 +45,7 @@ export class PIdol {
             turnCount: 0,
             lastUsedCard: null,
             usedCardCount: 0,
-            countHpCount: 0,
+            consumedHp: 0,
             usedCardTurnCount: 0,
             pStatus: new PIdolStatus(),
             handCount: null,
@@ -226,10 +226,10 @@ export class PIdol {
         preActions.push({ type: 'effect', sourceType: 'skillCard', name: skillCard.name, target: skillCard.cost });
         
         const status = this.#getStatus();
-        const preExecutions = this.#simulateActions(preActions, status);
         const actions = [];
         this.#getPItemAction('before_use_card', status).forEach(action=>actions.push(action));
         this.#getPStatusAction('before_use_card', status).forEach(action=>actions.push(action));
+        const preExecutions = this.#simulateActions(preActions, status);
         this.#getSkillCardActions(skillCard).forEach(action=>actions.push(action));
 
         const executions = this.#simulateActions(actions, status);
@@ -283,7 +283,7 @@ export class PIdol {
             turnCount: this.#status.turnCount,
             lastUsedCard: this.#status.lastUsedCard,
             usedCardCount: this.#status.usedCardCount,
-            countHpCount: this.#status.countHpCount,
+            consumedHp: this.#status.consumedHp,
             usedCardTurnCount: this.#status.usedCardTurnCount,
             pStatus: new _PStatus(this.#status.pStatus._deepcopy()),
             handCount: this.getDeck('handCards').length,
@@ -381,13 +381,12 @@ export class PIdol {
                 if (status.hp < hp) {
                     executes.push({ type: 'hp', args: [status.hp-hp] });
 
-                    //全局消费体力数
-                    status.countHpCount += hp - status.hp;
-
                     if (action.sourceType == 'skillCard') {
                         this.#simulateActions(this.#getPItemAction('consume_hp', status), status)
                             .forEach(execution=>executes.push(execution));
                     }
+                    status.consumedHp += hp-status.hp;
+                    executes.push({ type: 'consumedHp', args: [hp-status.hp] });
                 }
             } else {
                 executes.push({ type: 'hp', args: [0] });
@@ -478,10 +477,6 @@ export class PIdol {
         if (type == 'hp') {
             const hp = this.#status.hp;
             this.#status.hp += args[0];
-
-            // 全局消费体力数
-            this.#status.countHpCount += hp - this.#status.hp;
-
             return `HP：${hp}→${this.#status.hp}(${this.#status.hp-hp})`;
         }
         if (type == 'score') {
@@ -523,6 +518,10 @@ export class PIdol {
         if (type == 'used_card_count') {
             this.#status.usedCardCount++;
             this.#status.usedCardTurnCount++;
+            return ``;
+        }
+        if (type == 'consumedHp') {
+            this.#status.consumedHp += args[0];
             return ``;
         }
         if (type == 'generate') {

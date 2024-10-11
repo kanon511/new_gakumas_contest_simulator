@@ -2244,6 +2244,12 @@ export class AutoEvaluationData {
         else if(type=='パラメータ'){
             type='score'
         }
+        else if(type=='、パラメータ'){
+            n=0.5
+        }
+        // else if(type=='hp'){
+        //     n=n*2
+        // }
         else if (type.slice(0,14) == 'アクティブスキルカード使用時') {
             let [ ltype,n ] = type.slice(14).split('+')
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.9)

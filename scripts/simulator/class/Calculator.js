@@ -258,8 +258,7 @@ export class Calculator {
                         case 'block': optionCoef['score'] = (effectOption.value/100) * status.block; break;
                         case 'やる気': optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('やる気'); break;
                         case '好調' : optionCoef['score'] = (effectOption.value/100) * status.pStatus.getValue('好調'); break;
-
-                        case '消费体力数': optionCoef['score'] = effectOption.value * status.countHpCount / 100; break;//
+                        case 'consumedHp' : optionCoef['score'] = (effectOption.value/100) * status.consumedHp; break;
                     }
                 });
             }
