@@ -283,8 +283,7 @@ export class Calculator {
                         case '好印象': optionCoef['block'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
                         case 'やる気'  : optionCoef['やる気'] = effectOption.value; break;
                         case '割合減少': baseValue = -Math.ceil(status.block * effectOption.value / 100);
-
-                        case '消费体力数': optionCoef['block'] = effectOption.value * status.countHpCount / 100; break;//
+                        case 'consumedHp' : optionCoef['block'] = (effectOption.value/100) * status.consumedHp; break;
                     }
                 });
             }
