@@ -1377,7 +1377,7 @@ const pItemData = [
         name: 'いたずらパペット',
         description: '',
         activate_timing: 'before_use_card',
-        condition: 'hpPer<=50',
+        condition: 'hpPer<=50&cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: '消费体力数', value: 180 }] },
             { type: 'hp', value: 5 },
@@ -1391,7 +1391,7 @@ const pItemData = [
         name: 'いたずらパペット+',
         description: '',
         activate_timing: 'before_use_card',
-        condition: 'hpPer<=50',
+        condition: 'hpPer<=50&cardType==active',
         effects: [
             { type: 'score', value: null, options: [{ type: '消费体力数', value: 220 }] },
             { type: 'hp', value: 6 },
