@@ -141,6 +141,14 @@ export class Deck {
                     this.skillCards[index] = new SkillCard(Number(targetCard.id)+1);
                 }
             }
+        } else {
+            for (let i = 0; i < type; i++) {
+                const random = Math.floor(Math.random()*this.#index_handCards.length);
+                const targetCard = this.skillCards[this.#index_handCards[random]];
+                if (Number(targetCard.id) % 10 == 0) { // 強化前なら
+                    this.skillCards[this.#index_handCards[random]] = new SkillCard(Number(targetCard.id)+1);
+                }
+            }
         }
     }
 

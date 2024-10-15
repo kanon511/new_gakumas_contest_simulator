@@ -507,8 +507,13 @@ export class PIdol {
             return `予約効果登録：${args[1]}(${args[2]}ターン目)`;
         }
         if (type == 'upgrade') {
-            this.#deck.upgrade('allhands');
-            return `手札を強化した`;
+            if (args[0] == null) {
+                this.#deck.upgrade('allhands');
+                return `手札を全て強化した`;
+            } else {
+                this.#deck.upgrade(args[0]);
+                return `手札を1枚強化した`;
+            }
         }
         if (type == 'discard') {
             this.discardAll();
