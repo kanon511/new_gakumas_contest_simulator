@@ -60,14 +60,14 @@
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>卡组选择（选择☑时强化）</label>
+                <label>卡组选择（选择☑时强化） <a id="card-list-text-button" onclick="displayCardListText(true)">显示卡组文字</a></label>
                 <div id="card-box-container">
                     <div class="container-character-cards-box">
-                        <div id="main-character-cards-box" class="character-cards-box" style="display: none;"><!--ここにカードセレクト--></div>
+                        <div id="main-character-cards-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
                         <div class="cost-display">0</div>
                     </div>
                     <div class="container-character-cards-box">
-                        <div id="sub-character-card-box" class="character-cards-box" style="display: none;"><!--ここにカードセレクト--></div>
+                        <div id="sub-character-card-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
                         <div class="cost-display">0</div>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
             </div>
             <div id="card-box-information">
                 <div>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/" target="_blank">原网站</a></div>
-                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249</div>
+                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249，邮箱:kanon511@qq.com</div>
                 <div>最后更新时间：2024/10/11。新感性广P道具修复，至高优先级修复，修复加号图标显示。</div>
                 <div>使用<a href="test.html" target="_blank">测试用网站</a>分析AI准确率，仅供参考；使用<a href="combination.html" target="_blank">穷举组合网站</a>查找最佳卡组</div>
             </div>
@@ -89,10 +89,9 @@
                 <label>AI选择</label>
                 <div class="input-group">
                     <select id="contest-auto">
-                        <option value="2">解包AI2.0（大部分使用解包数据，有可能会出错，最接近游戏内AI）</option>
-                        <option value="1">原AI（原网站作者自写的一套AI）</option>
-                        <!-- <option value="0">解包AI（感性不准，尽量别用）</option> -->
-                        <option value="3">解包AI2.1（在2.0基础上修改盾mao（fjd）角色技技能卡优先级最高，仅测试使用）</option>
+                        <option value="2">解包AI2.0</option>
+                        <option value="1">解包AI2.1（在2.0基础上修改盾mao（fjd）角色技技能卡优先级最高，仅测试使用）</option>
+                        <option value="3">解包AI3.0（实验版本，不清楚作用请不要选择）</option>
                     </select>
                 </div>
             </div>
@@ -166,5 +165,23 @@
             <div class="button-container" id="buttonContainer"></div>
         </div>
     </div>
+
+    <script>
+        function displayCardListText(n){
+            if(n){
+                let a = document.getElementById("card-list-text-button")
+                a.innerHTML = "隐藏卡组文字"
+                a.onclick = function(){displayCardListText(false)}
+                document.getElementById("main-character-cards-box").className="character-cards-box"
+                document.getElementById("sub-character-card-box").className="character-cards-box"
+            }else{
+                let a = document.getElementById("card-list-text-button")
+                a.innerHTML = "显示卡组文字"
+                a.onclick = function(){displayCardListText(true)}
+                document.getElementById("main-character-cards-box").className="character-cards-box hide"
+                document.getElementById("sub-character-card-box").className="character-cards-box hide"
+            }
+        }
+    </script>
 </body>
 </html>

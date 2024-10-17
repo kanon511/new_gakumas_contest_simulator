@@ -48,12 +48,7 @@ export class TurnType {
 
         for (let i = turnCountStart; i < turnCount - 3; i++) {
             let chooseIdx;
-            if(autoId==0||autoId==2){
-                chooseIdx = this.#getNewRandomIndex(array);
-            }
-            else{
-                chooseIdx = this.#getRandomIndex(array);
-            }
+            chooseIdx = this.#getNewRandomIndex(array);
             this.turnTypes[i] = criteariaRank[chooseIdx];
             array[chooseIdx]--;
         }
