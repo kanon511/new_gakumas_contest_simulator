@@ -95,14 +95,15 @@ export class Calculator {
             return actualValue;
         }
         if (effect.type == 'hp' || effect.type == 'direct_hp') {
-            const value = effect.value ?? 0;
+            let value = effect.value ?? 0;
             if (effect.options) {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
-                        case 'hpPer': effect.value += status.maxHp * effectOption.value / 100; break;
+                        case 'hpPer': value += status.maxHp * effectOption.value / 100; break;
                     }
                 });
             }
+            value = Math.ceil(value);
             if (value <= 0) {
                 const increaseHpConsumption = status.pStatus.has('消費体力増加') ? 2.0 : 1.0;
                 const decreaseHpConsumption = status.pStatus.has('消費体力減少') ? 0.5 : 1.0;
@@ -111,7 +112,7 @@ export class Calculator {
                 const actualValue = Math.ceil(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption - increaseHpComsumption;
                 return Math.min(0, actualValue);
             }
-            return Math.ceil(value);
+            return value;
         }
         if (effect.type == 'draw') {
             let actualValue = effect.value;
