@@ -285,15 +285,27 @@ export class Calculator {
         }
         if (effect.type == 'hp' || effect.type == 'direct_hp') {
             const value = effect.value;
-            if (value <= 0) {
+            if (value <= 0 && value != null) {
                 const increaseHpConsumption = status.pStatus.has('消費体力増加') ? 2.0 : 1.0;
                 const decreaseHpConsumption = status.pStatus.has('消費体力減少') ? 0.5 : 1.0;
                 const reductionHpComsumption = status.pStatus.getValue('消費体力削減');
                 const increaseHpComsumption = status.pStatus.getValue('消費体力追加');
                 const actualValue = Math.floor(value * increaseHpConsumption * decreaseHpConsumption) + reductionHpComsumption - increaseHpComsumption;
                 return Math.min(0, actualValue);
+            } else {
+                const baseValue = value ?? 0;
+                let optionalValue = 0;
+                if (effect.options) {
+                    effect.options.forEach(effectOption => {
+                        switch (effectOption.type) {
+                            case '最大体力': optionalValue = status.maxHp * (effectOption.value/100); break;
+                        }
+                        optionalValue = Math.ceil(optionalValue);
+                    });
+                }
+                const actualValue = baseValue + optionalValue;
+                return actualValue;
             }
-            return value;
         }
         if (effect.type == 'draw') {
             let actualValue = effect.value;
@@ -313,6 +325,7 @@ export class Calculator {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
                         case 'multiple': optionalValue = status.pStatus.getValue(effect.target) * (effectOption.value-1); break;
+                        case 'block': optionalValue = status.block * (effectOption.value/100); break;
                     }
                     optionalValue = Math.ceil(optionalValue);
                 });

@@ -593,6 +593,17 @@ const pIdolData = [
         unique_pItem_id: 2309030,
     },
     {
+        id: 30904,
+        rarity: 'SSR',
+        episode_name: 'L.U.V',
+        character_id: 109,
+        name: '姫崎莉波',
+        plan: 'logic',
+        trend: '好印象',
+        unique_skillCard_id: 4209040,
+        unique_pItem_id: 2309040,
+    },
+    {
         id: 11001,
         rarity: 'R',
         episode_name: '学園生活',
