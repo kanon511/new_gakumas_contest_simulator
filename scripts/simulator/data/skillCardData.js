@@ -5015,14 +5015,14 @@ export const skillCardData = [
     },
     {
         id: 4209030,
-        name: 'さっぱりひといき+',
+        name: 'さっぱりひといき',
         type: 'mental',
         plan: 'logic',
-        cost: { type: 'direct_hp', value: -4 },
+        cost: { type: 'direct_hp', value: -5 },
         condition: '',
         effects: [
             { type: 'block', value: 2, options: [{ type: 'やる気', value: 2.3 }] }, 
-            { type: 'score', value: null, options: [{ type: 'block', value: 90 }] }, 
+            { type: 'score', value: null, options: [{ type: 'block', value: 50 }] }, 
             { type: 'status', target: '消費体力削減', value: 1 }, 
         ],
         limit: 1,
