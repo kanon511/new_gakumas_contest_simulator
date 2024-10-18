@@ -374,7 +374,7 @@ const contestData = [
         rank: {'vocal': 3, 'dance': 2, 'visual': 1},
         stages: [
             {
-                name: 'ステージ1(2/3/5)',
+                name: 'ステージ1',
                 turn: 10,
                 stageEffects: [],
                 stagePItemIds: [4241021],
@@ -383,7 +383,7 @@ const contestData = [
                 firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
             },
             {
-                name: 'ステージ2(2/3/5)',
+                name: 'ステージ2',
                 turn: 10,
                 stageEffects: [],
                 stagePItemIds: [4241022],
@@ -392,7 +392,7 @@ const contestData = [
                 firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
             },
             {
-                name: 'ステージ3(2/4/6)',
+                name: 'ステージ3',
                 turn: 12,
                 stageEffects: [],
                 stagePItemIds: [4240813],

@@ -21,6 +21,12 @@
 <body>
     <div id="wrapper">
         <div class="container">
+            <div id="card-box-information" class="container">
+                <div>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/" target="_blank">原网站</a></div>
+                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249，邮箱:kanon511@qq.com</div>
+                <div>最后更新时间：2024/10/18。S11更新，修复2.1AI。未更新至最新版本时请刷新网页或重启浏览器。</div>
+                <div>使用<a href="test.html" target="_blank">测试用网站</a>分析AI准确率；使用<a href="combination.html" target="_blank">穷举组合网站</a>查找最佳卡组</div>
+            </div>
             <div class="section">
                 <label>赛季场次选择</label>
                 <div class="input-group">
@@ -33,16 +39,15 @@
                 </div>
             </div>
             <div class="section character-select-box">
-                <label for="main-character">角色选择</label>
+                <label for="main-character">主副角色选择</label>
+                <div class="input-group">
                 <select id="main-character">
                     <option value="">select</option>
                 </select>
-            </div>
-            <div class="section character-select-box">
-                <label for="sub-character">支援卡选择</label>
                 <select id="sub-character">
                     <option value="">select</option>
                 </select>
+                </div>
             </div>
             <div class="section">
                 <label>属性倍率（填写百分比）</label>
@@ -54,13 +59,13 @@
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>P道具选择（选择☑时强化）</label>
+                <label>P道具选择</label>
                 <div id="pItem-box-container">
                     <div id="main-character-pItem-box" class="character-cards-box"><!--ここにPアイテムセレクト--></div>
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>卡组选择（选择☑时强化） <a id="card-list-text-button" onclick="displayCardListText(true)">显示卡组文字</a></label>
+                <label>卡组选择 <a id="card-list-text-button" onclick="displayCardListText(true)">显示卡组文字</a></label>
                 <div id="card-box-container">
                     <div class="container-character-cards-box">
                         <div id="main-character-cards-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
@@ -79,12 +84,7 @@
                     <div id="sub-character-cards-box-image" class="character-cards-box-image"></div>
                 </div>
             </div>
-            <div id="card-box-information">
-                <div>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/" target="_blank">原网站</a></div>
-                <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249，邮箱:kanon511@qq.com</div>
-                <div>最后更新时间：2024/10/18。S11更新，修复2.1AI。未更新至最新版本时请刷新网页或重启浏览器。</div>
-                <div>使用<a href="test.html" target="_blank">测试用网站</a>分析AI准确率，仅供参考；使用<a href="combination.html" target="_blank">穷举组合网站</a>查找最佳卡组</div>
-            </div>
+            
             <div class="section">
                 <label>AI选择</label>
                 <div class="input-group">

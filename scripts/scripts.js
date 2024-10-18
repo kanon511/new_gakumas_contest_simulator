@@ -307,8 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const fragment = document.createDocumentFragment();
         contestDetail.stages.forEach((item, i)=>{
             const option = document.createElement('option');
-            const translate_plan = { 'free': 'フリー', 'sense': 'センス', 'logic': 'ロジック' };
-            option.innerHTML = `${item.name}(${item.turn}T/${translate_plan[item.plan]})`;
+            const translate_plan = { 'free': '不限', 'sense': '感性', 'logic': '理性' };
+            option.innerHTML = `${item.name}（${item.turn}T/${translate_plan[item.plan]}）【${item.turnTypes.toString()}】`;
             option.value = `${id}:${i}`;
             fragment.appendChild(option);
         });
