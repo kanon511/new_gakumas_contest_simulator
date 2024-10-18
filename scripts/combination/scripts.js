@@ -473,6 +473,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // 判断是否存在重复卡牌
+    function isDuplicateCard(card_list) {
+        for(let i=0;i<card_list.length;i++){
+            for(let j=i+1;j<card_list.length;j++){
+                if(SkillCardData.getById(card_list[i]).limit==1 && Math.floor(card_list[i]/10) == Math.floor(card_list[j]/10)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
         
     // 弹窗设置
     // document.getElementById('modalOverlay').addEventListener('click', function(event) {
@@ -617,6 +628,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const skillCardIds = i.concat();
             i.push(...default_skillCardIds)
+
+            if(isDuplicateCard(i)){ // 存在重复卡牌
+                continue;
+            }
+
             const run_data = {
                 turn: contestStage.turn,
                 criteria: contestDetail.criteria,
