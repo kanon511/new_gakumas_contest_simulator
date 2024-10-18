@@ -2280,7 +2280,7 @@ export class AutoEvaluationData {
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*2.0)
         }
 
-        if(autoId>=2&&type=='score'){
+        if(autoId<=2&&type=='score'){
             unitValue*=(unitValue/10-1)/3+1 //主观臆断
         }
 
@@ -2292,7 +2292,7 @@ export class AutoEvaluationData {
             info=eva[remainTurn];
         }
 
-        if(autoId==3&&type.slice(0,16)=='好印象効果のスキルカード使用後、'){//仅新mao AI3.0测试
+        if(autoId==1&&type.slice(0,16)=='好印象効果のスキルカード使用後、'){//仅新mao AI3.0测试
             info=info["ProduceExamAutoEvaluationType_ExamExtraTurn"];
             return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000);
         }
