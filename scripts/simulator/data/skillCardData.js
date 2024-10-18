@@ -5047,15 +5047,15 @@ export const skillCardData = [
     },
     {
         id: 4209040,
-        name: '明日+',
+        name: 'また、明日',
         type: 'mental',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
         condition: '好印象>=1',
         effects: [
             { type: 'hp', value: null, options: [{ type: 'hpPer', value: 10 }]},
-            { type: 'status', target: '好印象', value: 5 }, 
-            { type: 'block', value: 10 }, 
+            { type: 'status', target: '好印象', value: 3 }, 
+            { type: 'block', value: 5 }, 
             { type: 'status', target: 'スキルカード使用数追加', value: 1 },
         ],
         limit: 1,
@@ -5064,7 +5064,7 @@ export const skillCardData = [
     },
     {
         id: 4209041,
-        name: '明日+',
+        name: 'また、明日+',
         type: 'mental',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },

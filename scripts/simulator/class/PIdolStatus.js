@@ -155,6 +155,17 @@ const statusList = [
         is_reduce_turnend: true,
     },
 
+    {
+        id: 20001,
+        name: '不調',
+        description: '',
+        value: 0,
+        type: 'debuff',
+        activate_timing: null,
+        condition: null,
+        is_reduce_turnend: true,
+    },
+
     // {
     //     id: 100,
     //     name: '使用したスキルカード数',

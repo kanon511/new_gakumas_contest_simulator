@@ -366,6 +366,42 @@ const contestData = [
             },
         ],
     },
+    {
+        id: 241023,
+        name: '第11期コンテスト', 
+        period: '2024/08/22 - ----',
+        criteria: { 'vocal': 15, 'dance': 35, 'visual': 50 },
+        rank: {'vocal': 3, 'dance': 2, 'visual': 1},
+        stages: [
+            {
+                name: 'ステージ1(2/3/5)',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4241021],
+                plan: 'free',
+                turnTypes: [2, 3, 5],
+                firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
+            },
+            {
+                name: 'ステージ2(2/3/5)',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4241022],
+                plan: 'sense',
+                turnTypes: [2, 3, 5],
+                firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
+            },
+            {
+                name: 'ステージ3(2/4/6)',
+                turn: 12,
+                stageEffects: [],
+                stagePItemIds: [4240813],
+                plan: 'logic',
+                turnTypes: [2, 4, 6],
+                firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {

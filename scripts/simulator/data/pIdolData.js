@@ -562,7 +562,7 @@ const pIdolData = [
     {
         id: 30904,
         rarity: 'SSR',
-        episode_name: '新的',
+        episode_name: 'L.U.V',
         character_id: 109,
         name: '姫崎莉波',
         plan: 'logic',

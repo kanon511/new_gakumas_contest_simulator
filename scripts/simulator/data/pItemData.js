@@ -1478,23 +1478,23 @@ const pItemData = [
     },
     {
         id: 2309040,
-        name: '一堆日本字+',
+        name: 'これでばっちり',
         description: '',
         activate_timing: 'after_use_card',
         condition: 'cardEffectInclude==hp',
         effects: [
-            { type: 'status', target: '好印象', value: null, options: [{ type: 'block', value: 70 }] },
+            { type: 'status', target: '好印象', value: null, options: [{ type: 'block', value: 50 }] },
             { type: 'block', value: null, options: [{ type: '割合減少', value: 100 }]},
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
             { type: 'fixed_direct_hp', value: -5 },
             
         ],
-        limit: 2,
+        limit: 1,
         plan: 'logic',
     },
     {
         id: 2309041,
-        name: '一堆日本字+',
+        name: 'これでばっちり+',
         description: '',
         activate_timing: 'after_use_card',
         condition: 'cardEffectInclude==hp',
@@ -1505,7 +1505,7 @@ const pItemData = [
             { type: 'fixed_direct_hp', value: -5 },
             
         ],
-        limit: 2,
+        limit: 1,
         plan: 'logic',
     },
     {
@@ -2094,6 +2094,32 @@ const pItemData = [
         ],
         limit: 3,
         plan: 'logic',
+    },
+
+    {
+        id: 4241021,
+        name: '初星バッチ（赤）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==2',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加', value: 8, options: [{ type: '上昇量', value: 70 }] },
+            { type: 'status', target: '不調', value: 8 },
+        ],
+        limit: 1,
+        plan: 'free',
+    },
+    {
+        id: 4241022,
+        name: '初星オブジェ（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好調', value: 9 },
+        ],
+        limit: 1,
+        plan: 'sense',
     },
 
 ];
