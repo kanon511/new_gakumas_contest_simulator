@@ -5137,15 +5137,15 @@ export const skillCardData = [
     },
     {
         id: 4209040,
-        name: 'また、明日+',
+        name: 'また、明日',
         type: 'mental',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
         condition: '好印象>0',
         effects: [
             { type: 'hp', value: null, options: [{ type: '最大体力', value: 10 }] }, 
-            { type: 'status', target: '好印象', value: 5 }, 
-            { type: 'block', value: 10 }, 
+            { type: 'status', target: '好印象', value: 3 }, 
+            { type: 'block', value: 5 }, 
             { type: 'status', target: 'スキルカード使用数追加', value: 1 }, 
         ],
         limit: 1,

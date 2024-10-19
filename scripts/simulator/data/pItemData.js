@@ -1554,12 +1554,12 @@ const pItemData = [
     },
     {
         id: 2309040,
-        name: 'これでばっちり+',
+        name: 'これでばっちり',
         description: '',
         activate_timing: 'after_use_card',
         condition: 'cardEffectInclude==hp',
         effects: [
-            { type: 'status', target: '好印象', value: null, options: [{ type: 'block', value: 70 }] },
+            { type: 'status', target: '好印象', value: null, options: [{ type: 'block', value: 50 }] },
             { type: 'block', value: null, options: [{ type: '割合減少', value: 100 }]},
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
             { type: 'fixed_direct_hp', value: -5 },
