@@ -13,6 +13,16 @@ const statusList = [
         is_reduce_turnend: true,
     },
     {
+        id: 100019,
+        name: '不調',
+        description: '',
+        value: 0,
+        type: 'debuff',
+        activate_timing: null,
+        condition: null,
+        is_reduce_turnend: true,
+    },
+    {
         id: 10002,
         name: '集中',
         description: '',
@@ -112,6 +122,7 @@ const statusList = [
         condition: null,
         is_reduce_turnend: false,
     },
+
     {
         id: 11,
         name: 'スキルカード使用数追加',

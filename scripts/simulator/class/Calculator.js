@@ -227,6 +227,7 @@ export class Calculator {
         if (effect.type == 'score') {
             const concentrationCoef = status.pStatus.getValue('集中');
             const goodConditionCoef = status.pStatus.has('好調') ? 1.5 : 1;
+            const badConditionCoef = status.pStatus.has('不調') ? 0.67 : 1;
             const greatConditionCoef = status.pStatus.has('絶好調') ? status.pStatus.getValue('好調') * 0.1 : 0;
             const parameterRateIncreasedCoef = 1 + status.pStatus.getValue('パラメータ上昇量増加')/100;
             const parameterRateCoef = (()=>{
@@ -253,7 +254,7 @@ export class Calculator {
             const actualValue = 
                 Math.ceil(
                     Math.ceil(
-                        adjustScore * (goodConditionCoef + greatConditionCoef)
+                        adjustScore * (goodConditionCoef + greatConditionCoef) * badConditionCoef
                     ) * parameterRateCoef * parameterRateIncreasedCoef
                 );
             // console.log(`base=${baseScore}, 集中=${concentrationCoef * optionCoef['集中']}, addition=${optionCoef['score']}, 好調=${goodConditionCoef}, 絶好調=${greatConditionCoef}, 上昇量=${parameterRateIncreasedCoef}, 倍率=${parameterRateCoef} => ${actualValue}`)

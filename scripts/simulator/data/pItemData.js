@@ -2176,6 +2176,46 @@ const pItemData = [
         plan: 'logic',
     },
 
+    {
+        id: 4241021,
+        name: '初星バッチ（赤）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==2',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加', value: 8, options: [{ type: '上昇量', value: 70 }, [{ type: 'immune_decrease', value: 1 }] ] },
+            { type: 'status', target: '不調', value: 8 , options: [{ type: 'immune_decrease', value: 1 }] },
+        ],
+        limit: 1,
+        plan: 'free',
+    },
+    {
+        id: 4241022,
+        name: '初星オブジェ（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好調', value: 9, options: [{ type: 'immune_decrease', value: 1 }] },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+
+    {
+        id: 4241033,
+        name: '初星ライト（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: 'やる気', value: 4 },
+            { type: 'status', target: '好印象', value: 4, options: [{ type: 'immune_decrease', value: 1 }]  },
+        ],
+        limit: 1,
+        plan: 'logic',
+    },
+
 ];
 
 export class PItem {
