@@ -134,6 +134,7 @@ export class Calculator {
                     switch (effectOption.type) {
                         case 'multiple': optionalValue = status.pStatus.getValue(effect.target) * (effectOption.value-1); break;
                         case 'block': optionalValue = (effectOption.value/100) * status.block; break;
+                        case '好調' : optionalValue = (effectOption.value/100) * status.pStatus.getValue('好調'); break;
                     }
                     optionalValue = Math.ceil(optionalValue);
                 });

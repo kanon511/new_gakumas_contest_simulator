@@ -890,7 +890,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnMultiple==2',
         effects: [
-            { type: 'score', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
+            { type: 'status', target: '集中', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
             { type: 'status', target: '集中', value: 1 },
             { type: 'block', value: 3 }
         ],
@@ -904,7 +904,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turnMultiple==2',
         effects: [
-            { type: 'score', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
+            { type: 'status', target: '集中', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
             { type: 'status', target: '集中', value: 1 },
             { type: 'block', value: 3 }
         ],
