@@ -363,6 +363,19 @@ const statusList = [
         ],
         is_reduce_turnend: false,
     },
+    {
+        id: 1112,
+        name: '5ターンの間ターン終了時スコア+4',
+        description: '',
+        valueStack: [],
+        type: 'buff',
+        activate_timing: 'end_turn',
+        condition: '',
+        effects: [
+            { type: 'score', value: 4 }, 
+        ],
+        is_reduce_turnend: true,
+    },
 
     {
         id: 9999,
@@ -450,7 +463,8 @@ export class _PStatus {
     }
 
     getByTiming (timing) {
-        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        const result = this.#status.filter(
+            item=>item.activate_timing==timing && (item.valueStack ? item.valueStack.length > 0 : item.value>0));
         return result;
     }
 }
@@ -635,7 +649,8 @@ export class PIdolStatus {
         //     if (status.value == 0) continue;
         //     result.push(status);
         // }
-        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        const result = this.#status.filter(
+            item=>item.activate_timing==timing && (item.valueStack ? item.valueStack.length > 0 : item.value>0));
         return result;
     }
 

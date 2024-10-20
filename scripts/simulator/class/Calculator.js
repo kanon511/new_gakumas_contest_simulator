@@ -218,6 +218,12 @@ export class Calculator {
                 const goodImp = status.pStatus.getValue('好印象');
                 return this.calcActionEvaluation({ type: 'status', args: [status.remainTurn, '好印象'] }, status, parameter, trendVonusCoef);
             }
+            if (statusType == '5ターンの間ターン終了時スコア+4') {
+                return (status.turnType.getAllTypes()
+                    .slice(status.turn, status.turn+5)
+                    .map((type)=>parameter[type]*4)
+                    .reduce((pre, crt)=>pre+crt, 0));
+            }
             throw new Error(`次のステータスは定義されていません -> ${statusType}`);
         }
         throw new Error(`次のアクションタイプは定義されていません -> ${Object.entries(action).map(item=>`${item[0]}->${item[1]}`).join(', ')}`);
@@ -327,6 +333,7 @@ export class Calculator {
                     switch (effectOption.type) {
                         case 'multiple': optionalValue = status.pStatus.getValue(effect.target) * (effectOption.value-1); break;
                         case 'block': optionalValue = status.block * (effectOption.value/100); break;
+                        case '好調' : optionalValue = (effectOption.value/100) * status.pStatus.getValue('好調'); break;
                     }
                     optionalValue = Math.ceil(optionalValue);
                 });
