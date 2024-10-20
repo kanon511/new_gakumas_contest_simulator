@@ -363,6 +363,20 @@ const statusList = [
         ],
         is_reduce_turnend: false,
     },
+    {
+        id: 1110,
+        name: '之后x回合，每回合结束时，分数+4',
+        description: '',
+        value: 0,
+        statusList: [],
+        type: 'buff',
+        activate_timing: 'end_turn',
+        condition: '',
+        effects: [
+            { type: 'score', value: 4 }, 
+        ],
+        is_reduce_turnend: true,
+    },
 
     {
         id: 9999,
@@ -411,6 +425,9 @@ export class _PStatus {
         if (status.valueStack) {
             return status.valueStack.reduce((pre, crt) => pre+crt.value, 0);
         }
+        else if (status.statusList) {
+            return status.statusList.length;
+        }
         else {
             return status.value;
         }
@@ -432,6 +449,12 @@ export class _PStatus {
             }
             status.valueStack.push(item);
         }
+        else if (status.statusList) {
+            const item = {
+                turn: value
+            };
+            status.statusList.push(item);
+        }
         else {
             if (status.value == 0 && availableFirstAdded) {
                 status.firstAdded = true;
@@ -450,7 +473,13 @@ export class _PStatus {
     }
 
     getByTiming (timing) {
-        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        const status = this.#status.map((item)=>{
+            if (item.statusList){
+                item.value = item.statusList.length;
+            }
+            return item;
+        });
+        const result = status.filter(item=>item.value>0 && item.activate_timing==timing);
         return result;
     }
 }
@@ -493,6 +522,21 @@ export class PIdolStatus {
                     }
                 }
             }
+            else if (status.statusList) {
+                for (let i = 0; i < status.statusList.length; i++) {
+                    const item = status.statusList[i];
+                    if (item.firstAdded) {
+                        item.firstAdded = false;
+                        continue;
+                    }
+                    item.turn--;
+                    console.log(item.turn);
+                    if (item.turn <= 0) {
+                        status.statusList.splice(i, 1);
+                        i--;
+                    }
+                }
+            }
             else {
                 if (status.value <= 0) continue;
                 if (status.firstAdded) {
@@ -526,6 +570,9 @@ export class PIdolStatus {
         if (status.valueStack) {
             return status.valueStack.reduce((pre, crt) => pre+crt.value, 0);
         }
+        else if (status.statusList) {
+            return status.statusList.length;
+        }
         else {
             return status.value;
         }
@@ -557,6 +604,12 @@ export class PIdolStatus {
                 item.firstAdded = true;
             }
             status.valueStack.push(item);
+        }
+        else if (status.statusList) {
+            const item = {
+                turn: value
+            };
+            status.statusList.push(item);
         }
         else {
             if (status.value == 0 && availableFirstAdded) {
@@ -620,7 +673,18 @@ export class PIdolStatus {
                     // i--;
                 }
             //}
-        } else {
+        }
+        else if (status.statusList) {
+            //for (let i = 0; i < status.valueStack.length; i++) {
+                const item = status.statusList[0];
+                item.value--;
+                if (item.value <= 0) {
+                    status.statusList.splice(0, 1);
+                    // i--;
+                }
+            //}
+        }
+        else {
             status.value -= value;
             if (status.value < 0) {
                 status.value = 0;
@@ -635,7 +699,14 @@ export class PIdolStatus {
         //     if (status.value == 0) continue;
         //     result.push(status);
         // }
-        const result = this.#status.filter(item=>item.value>0 && item.activate_timing==timing);
+        const status = this.#status.map((item)=>{
+            if (item.statusList){
+                const _item = deep_copy(item);
+                _item.value = _item.statusList.length;
+            }
+            return item;
+        });
+        const result = status.filter(item=>item.value>0 && item.activate_timing==timing);
         return result;
     }
 

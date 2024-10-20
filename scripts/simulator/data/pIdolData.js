@@ -76,6 +76,17 @@ const pIdolData = [
         unique_pItem_id: 2301030,
     },
     {
+        id: 30104,
+        rarity: 'SSR',
+        episode_name: '古今东西',
+        character_id: 101,
+        name: '花海咲季',
+        plan: 'sense',
+        trend: '好調',
+        unique_skillCard_id: 4201040,
+        unique_pItem_id: 2301040,
+    },
+    {
         id: 10201,
         rarity: 'R',
         episode_name: '学園生活',

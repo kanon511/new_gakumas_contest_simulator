@@ -884,6 +884,34 @@ const pItemData = [
         plan: 'logic',
     },
     {
+        id: 2301040,
+        name: '装备+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnMultiple==2',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
+            { type: 'status', target: '集中', value: 1 },
+            { type: 'block', value: 3 }
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 2301041,
+        name: '装备+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnMultiple==2',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
+            { type: 'status', target: '集中', value: 1 },
+            { type: 'block', value: 3 }
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
         id: 2302010,
         name: '自分を守るイヤホン',
         description: '',
