@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function isDuplicateCard(card_list) {
         for(let i=0;i<card_list.length;i++){
             for(let j=i+1;j<card_list.length;j++){
-                if(SkillCardData.getById(card_list[i]).limit==1 && Math.floor(card_list[i]/10) == Math.floor(card_list[j]/10)){
+                if(!SkillCardData.getById(card_list[i]).allow_duplicate && Math.floor(card_list[i]/10) == Math.floor(card_list[j]/10)){
                     return true;
                 }
             }
