@@ -184,6 +184,32 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2104020,
+        name: '初恋の証・麻央',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=3',
+        effects: [
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'やる気', value: -1 },
+        ],
+        limit: 1,
+        plan: 'logic',
+    },
+    {
+        id: 2104021,
+        name: '初恋の証・麻央+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=3',
+        effects: [
+            { type: 'status', target: '好印象', value: 3 },
+            { type: 'status', target: 'やる気', value: -1 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
         id: 2105010,
         name: '緑のお揃いブレス',
         description: '',
@@ -307,6 +333,32 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2107020,
+        name: '初恋の証・清夏',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'やる気>=8',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 150 }] },
+            { type: 'fixed_direct_hp', value: -1 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
+        id: 2107021,
+        name: '初恋の証・清夏+',
+        description: '',
+        activate_timing: 'after_use_card',
+        condition: 'やる気>=8',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 210 }] },
+            { type: 'fixed_direct_hp', value: -1 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
         id: 2108010,
         name: '超絶あんみんマスク',
         description: '',
@@ -331,6 +383,34 @@ const pItemData = [
         ],
         limit: null,
         plan: 'logic',
+    },
+    { 
+        id: 2108020,
+        name: '初恋の証・広',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'hpPer<=50',
+        effects: [
+            { type: 'status', target: '集中', value: 2 },
+            { type: 'status', target: '消費体力削減', value: 1 },
+            { type: 'upgrade', value: 1 },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    { 
+        id: 2108021,
+        name: '初恋の証・広+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'hpPer<=50',
+        effects: [
+            { type: 'status', target: '集中', value: 4 },
+            { type: 'status', target: '消費体力削減', value: 2 },
+            { type: 'upgrade', value: 1 },
+        ],
+        limit: 1,
+        plan: 'sense',
     },
     {
         id: 2109010,
@@ -715,10 +795,6 @@ const pItemData = [
         name: 'ハンターの戦利品',
     },
     {
-        id: 3200151,
-        name: '',
-    },
-    {
         id: 3200160,
         name: 'きっかけの帯',
     },
@@ -885,28 +961,28 @@ const pItemData = [
     },
     {
         id: 2301040,
-        name: '装备+',
+        name: 'アニメイト装備+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'turnMultiple==2',
         effects: [
             { type: 'status', target: '集中', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
             { type: 'status', target: '集中', value: 1 },
-            { type: 'block', value: 3 }
+            { type: 'block', value: 3 },
         ],
         limit: 2,
         plan: 'sense',
     },
     {
         id: 2301041,
-        name: '装备+',
+        name: 'アニメイト装備+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'turnMultiple==2',
         effects: [
             { type: 'status', target: '集中', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
             { type: 'status', target: '集中', value: 1 },
-            { type: 'block', value: 3 }
+            { type: 'block', value: 3 },
         ],
         limit: 2,
         plan: 'sense',
@@ -1123,7 +1199,7 @@ const pItemData = [
     },
     {
         id: 2304030,
-        name: 'スタイリッシュモ一ド',
+        name: 'スタイリッシュモード',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=3',
@@ -1136,7 +1212,7 @@ const pItemData = [
     },
     {
         id: 2304031,
-        name: 'スタイリッシュモ一ド+',
+        name: 'スタイリッシュモード+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=3',
@@ -1405,23 +1481,23 @@ const pItemData = [
         name: 'いたずらパペット',
         description: '',
         activate_timing: 'before_use_card',
-        condition: 'hpPer<=50&cardType==active',
+        condition: 'cardType==active&hpPer<=50',
         effects: [
-            { type: 'score', value: null, options: [{ type: 'consumedHp', value: 180 }] },
+            { type: 'score', value: null, options: [{ type: 'consumedHp', value: 180 }]  },
             { type: 'hp', value: 5 },
             { type: 'status', target: '元気増加無効', value: 2 },
         ],
         limit: 2,
         plan: 'sense',
     },
-    {
+    { 
         id: 2308031,
         name: 'いたずらパペット+',
         description: '',
         activate_timing: 'before_use_card',
-        condition: 'hpPer<=50&cardType==active',
+        condition: 'cardType==active&hpPer<=50',
         effects: [
-            { type: 'score', value: null, options: [{ type: 'consumedHp', value: 220 }] },
+            { type: 'score', value: null, options: [{ type: 'consumedHp', value: 220 }]  },
             { type: 'hp', value: 6 },
             { type: 'status', target: '元気増加無効', value: 2 },
         ],
@@ -1515,7 +1591,6 @@ const pItemData = [
             { type: 'block', value: null, options: [{ type: '割合減少', value: 100 }]},
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
             { type: 'fixed_direct_hp', value: -5 },
-            
         ],
         limit: 1,
         plan: 'logic',
@@ -1531,7 +1606,6 @@ const pItemData = [
             { type: 'block', value: null, options: [{ type: '割合減少', value: 100 }]},
             { type: 'score', value: null, options: [{ type: '好印象', value: 200 }] },
             { type: 'fixed_direct_hp', value: -5 },
-            
         ],
         limit: 1,
         plan: 'logic',
@@ -2016,7 +2090,7 @@ const pItemData = [
         activate_timing: 'before_use_card',
         condition: 'usedCardTurnCountMultiple==2',
         effects: [
-            { type: 'status', target: 'パラメータ上昇量増加', value: 5, options: [{ type: '上昇量', value: 30 }]  },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 5, options: [{ type: '上昇量', value: 30 }] },
         ],
         limit: 3,
         plan: 'free',
@@ -2054,14 +2128,14 @@ const pItemData = [
         activate_timing: 'before_use_card',
         condition: 'cardEffectInclude==消費体力減少',
         effects: [
-            { type: 'status', target: 'パラメータ上昇量増加', value: 6, options: [{ type: '上昇量', value: 30 }]  },
+            { type: 'status', target: 'パラメータ上昇量増加', value: 6, options: [{ type: '上昇量', value: 30 }] },
         ],
         limit: 3,
         plan: 'free',
     },
     {
         id: 4240922,
-        name: '初星オブジェ（紫）',
+        name: '初星オブジェ（オレンジ）',
         description: '',
         activate_timing: 'start_turn',
         condition: '',
