@@ -2231,7 +2231,7 @@ const pItemData = [
     },
 
     {
-        id: 4241033,
+        id: 4241023,
         name: '初星ライト（紫）',
         description: '',
         activate_timing: 'start_turn',
