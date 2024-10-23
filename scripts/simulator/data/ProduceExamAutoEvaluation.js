@@ -2247,7 +2247,8 @@ export class AutoEvaluationData {
         else if(type=='、パラメータ'){
             n=0.5
         }
-        else if (type.slice(0,14) == 'アクティブスキルカード使用時') {
+        
+        if (type.slice(0,14) == 'アクティブスキルカード使用時') {
             let [ ltype,n ] = type.slice(14).split('+')
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*1.9)
         }
@@ -2292,7 +2293,7 @@ export class AutoEvaluationData {
             info=eva[remainTurn];
         }
 
-        if(autoId==1&&type.slice(0,16)=='好印象効果のスキルカード使用後、'){//仅新mao AI3.0测试
+        if(autoId==1&&type.slice(0,16)=='好印象効果のスキルカード使用後、'){//仅新mao
             info=info["ProduceExamAutoEvaluationType_ExamExtraTurn"];
             return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000);
         }

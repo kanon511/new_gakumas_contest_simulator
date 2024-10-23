@@ -18,7 +18,9 @@ export class Calculator {
         const unitValue = parameter['avg'] / 100;
         if (type == 'status') {
             const statusType = args[1];
-            const coef = trendVonusCoef[statusType] ?? 1;
+            if(autoId >= 3 && statusType=='スキルカード使用数追加' && status.pStatus.has('スキルカード使用数追加')){
+                args[0] *= 0.3;
+            }
             return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
         }
 
