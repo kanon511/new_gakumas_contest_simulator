@@ -17,20 +17,20 @@
     <link rel="stylesheet" href="./styles/simulationLog.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.4.2/css/all.css">
     <script src="./min.js"></script>
-    <script type="module" src="./scripts/scripts.js"></script>
+    <script type="module" src="./scripts/gvg/scripts.js"></script>
 </head>
 <body>
     <div id="wrapper">
         <div class="container">
             <div id="card-box-information" class="container">
+                <div>把角色卡和主卡角色卡相同，其他留空即可实现未解锁卡组</div>
                 <div>新版本数据均来自解包文件内容，项目改编自<a href="https://katabami83.github.io/gakumas_contest_simulator/" target="_blank">原网站</a></div>
                 <div><a href="https://github.com/kanon511/new_gakumas_contest_simulator/" target="_blank">项目github仓库地址</a>，喜欢这个项目麻烦点个Star谢谢了<br>有建议和问题可以提issues，或者联系QQ:2750368249，邮箱:kanon511@qq.com</div>
                 <div>最后更新时间：2024/10/28。古今东西未强化版本更新。未更新至最新版本时请刷新网页或重启浏览器。</div>
-                <div><a href="gvg.html" target="_blank">公会战模拟器</a></div>
                 <div>使用<a href="test.html" target="_blank">测试用网站</a>分析AI准确率；使用<a href="combination.html" target="_blank">穷举组合网站</a>查找最佳卡组</div>
             </div>
             <div class="section">
-                <label>赛季场次选择</label>
+                <label>赛季场次轮数选择</label>
                 <div class="input-group">
                     <select id="contest-select">
                         <option value="">赛季选择</option>
@@ -38,17 +38,32 @@
                     <select id="contest-stage-select">
                         <option value="">场次选择</option>
                     </select>
+                    <select id="contest-round-select">
+                        <option value="">轮数选择</option>
+                    </select>
                 </div>
             </div>
             <div class="section character-select-box">
-                <label for="main-character">主副角色选择</label>
-                <div class="input-group">
+                <label for="main-character">主角色选择</label>
                 <select id="main-character">
                     <option value="">select</option>
                 </select>
-                <select id="sub-character">
-                    <option value="">select</option>
-                </select>
+                <label for="main-character">副角色选择</label>
+                <div class="input-group">
+                    <select id="sub1-character">
+                        <option value="">select</option>
+                    </select>
+                    <select id="sub2-character">
+                        <option value="">select</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <select id="sub3-character">
+                        <option value="">select</option>
+                    </select>
+                    <select id="sub4-character">
+                        <option value="">select</option>
+                    </select>
                 </div>
             </div>
             <div class="section">
@@ -67,14 +82,26 @@
                 </div>
             </div>
             <div class="section card-select-box">
-                <label>卡组选择 <a id="card-list-text-button" onclick="displayCardListText(true)">显示卡组文字</a></label>
+                <label>卡组选择 <!--<a id="card-list-text-button" onclick="displayCardListText(true)">显示卡组文字</a>--></label>
                 <div id="card-box-container">
                     <div class="container-character-cards-box">
                         <div id="main-character-cards-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
                         <div class="cost-display">0</div>
                     </div>
                     <div class="container-character-cards-box">
-                        <div id="sub-character-card-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
+                        <div id="sub1-character-card-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
+                        <div class="cost-display">0</div>
+                    </div>
+                    <div class="container-character-cards-box">
+                        <div id="sub2-character-card-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
+                        <div class="cost-display">0</div>
+                    </div>
+                    <div class="container-character-cards-box">
+                        <div id="sub3-character-card-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
+                        <div class="cost-display">0</div>
+                    </div>
+                    <div class="container-character-cards-box">
+                        <div id="sub4-character-card-box" class="character-cards-box hide"><!--ここにカードセレクト--></div>
                         <div class="cost-display">0</div>
                     </div>
                 </div>
@@ -83,7 +110,10 @@
                 <!-- <label>カード選択<a>切换视图</a></label> -->
                 <div>
                     <div id="main-character-cards-box-image" class="character-cards-box-image"></div>
-                    <div id="sub-character-cards-box-image" class="character-cards-box-image"></div>
+                    <div id="sub1-character-cards-box-image" class="character-cards-box-image"></div>
+                    <div id="sub2-character-cards-box-image" class="character-cards-box-image"></div>
+                    <div id="sub3-character-cards-box-image" class="character-cards-box-image"></div>
+                    <div id="sub4-character-cards-box-image" class="character-cards-box-image"></div>
                 </div>
             </div>
             

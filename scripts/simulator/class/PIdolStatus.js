@@ -533,7 +533,6 @@ export class PIdolStatus {
                         continue;
                     }
                     item.turn--;
-                    console.log(item.turn);
                     if (item.turn <= 0) {
                         status.statusList.splice(i, 1);
                         i--;

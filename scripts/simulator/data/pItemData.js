@@ -2,7 +2,7 @@
 /**
  * IDの付け方
  * 0_0_0000_0
- * タイプ　　：シナリオ1, キャラ固有2, サポ固有3, コンテスト4
+ * タイプ　　：シナリオ1, キャラ固有2, サポ固有3, コンテスト4，公会战效果5
  * レアレティ：白1, 金2, 虹3
  * 固有番号　：4桁番号
  * 強化　　　：強化前0, 強化後1
@@ -2221,6 +2221,128 @@ const pItemData = [
         ],
         limit: 1,
         plan: 'sense',
+    },
+
+    {
+        id: 5000111,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==5',
+        effects: [
+            { type: 'status', target: '絶好調', value: 6, conditions: '集中>=5' },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 5000112,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==10',
+        effects: [
+            { type: 'score', value: 7 },
+            { type: 'score', value: 7 },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 5000121,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==4',
+        effects: [
+            { type: 'hp', value: 6, conditions: '好調>=5' },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 5000122,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==8',
+        effects: [
+            { type: 'status', target: '集中', value: null, options: [{ type: 'multiple', value: 1.7 }], conditions: '消費体力減少>0' },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 5000131,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==6',
+        effects: [
+            { type: 'status', target: 'スキルカード使用数追加', value: 2, conditions: '集中>=11' },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 5000132,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==10',
+        effects: [
+            { type: 'score', value: 5, options: [{ type: '使用したスキルカード数', value: 2 }], conditions: '集中>=14' },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
+    {
+        id: 5000141,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==2',
+        effects: [
+            { type: 'status', target: 'extra_turn', value: 1, conditions: '好印象>=7' },
+        ],
+        limit: 1,
+        plan: 'logic',
+    },
+    {
+        id: 5000142,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==10',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加',  value: 4, options: [{ type: '上昇量', value: 90 }], conditions: '好印象>=34' },
+        ],
+        limit: 1,
+        plan: 'logic',
+    },
+    {
+        id: 5000151,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==6',
+        effects: [
+            { type: 'block', value: 7, options: [{ type: 'やる気', value: 2 }], conditions: 'やる気>=9' },
+        ],
+        limit: 1,
+        plan: 'logic',
+    },
+    {
+        id: 5000152,
+        name: '公会战效果',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turn==10',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'block', value: 150 }], conditions: 'hpPer>=50' },
+        ],
+        limit: 1,
+        plan: 'logic',
     },
 
 ];
