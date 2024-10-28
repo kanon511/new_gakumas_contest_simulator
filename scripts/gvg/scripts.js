@@ -515,7 +515,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function saveOptiostoSearchParams() {
-        let str='https://kanon511.github.io/new_gakumas_contest_simulator?'
+        let str='https://kanon511.github.io/new_gakumas_contest_simulator/gvg.html?'
         +`contest_stage=${element_contest_stage_select.value}:${element_contest_round_select.value}&`
         +`p_idol=${element_main_character_select.value}:${element_sub1_character_select.value}:${element_sub2_character_select.value}:${element_sub3_character_select.value}:${element_sub4_character_select.value}&`
         +`status=${document.getElementById("status-vocal").value}:${document.getElementById("status-dance").value}:${document.getElementById("status-visual").value}:${document.getElementById("status-hp").value}&`
