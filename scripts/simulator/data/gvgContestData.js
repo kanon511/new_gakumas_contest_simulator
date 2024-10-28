@@ -30,7 +30,7 @@ const contestData = [
                 stagePItemIds: [4240722],
                 plan: 'sense',
                 turnTypes: [5, 3, 4],
-                firstTurn: {'vocal': 0, 'dance': 80, 'visual': 20},
+                firstTurn: {'vocal': 80, 'dance': 0, 'visual': 20},
             },
             {
                 name: 'C场',
@@ -52,7 +52,7 @@ const contestData = [
                 stagePItemIds: [4240723],
                 plan: 'logic',
                 turnTypes: [5, 3, 4],
-                firstTurn: {'vocal': 0, 'dance': 80, 'visual': 20},
+                firstTurn: {'vocal': 80, 'dance': 0, 'visual': 20},
             },
             {
                 name: 'E场',
