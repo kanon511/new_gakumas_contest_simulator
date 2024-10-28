@@ -961,14 +961,13 @@ const pItemData = [
     },
     {
         id: 2301040,
-        name: 'アニメイト装備+',
+        name: 'アニメイト装備',
         description: '',
         activate_timing: 'start_turn',
         condition: 'turnMultiple==2',
         effects: [
-            { type: 'status', target: '集中', value: null, options: [{ type: '好調', value: 50 }], condition: '好調>=1' },
+            { type: 'status', target: '集中', value: null, options: [{ type: '好調', value: 40 }], condition: '好調>=1' },
             { type: 'status', target: '集中', value: 1 },
-            { type: 'block', value: 3 },
         ],
         limit: 2,
         plan: 'sense',

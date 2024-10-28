@@ -365,7 +365,7 @@ const statusList = [
     },
     {
         id: 1110,
-        name: '之后x回合，每回合结束时，分数+4',
+        name: '之后x+1回合，每回合结束时，分数+4',
         description: '',
         value: 0,
         statusList: [],
@@ -453,6 +453,9 @@ export class _PStatus {
             const item = {
                 turn: value
             };
+            if (availableFirstAdded) {
+                item.firstAdded = true;
+            }
             status.statusList.push(item);
         }
         else {
@@ -609,6 +612,9 @@ export class PIdolStatus {
             const item = {
                 turn: value
             };
+            if (availableFirstAdded) {
+                item.firstAdded = true;
+            }
             status.statusList.push(item);
         }
         else {

@@ -2208,6 +2208,7 @@ export class AutoEvaluationData {
     static data=AutoEvaluation;
     static a={
         'score':"ProduceExamAutoEvaluationType_Parameter",
+        'パラメータ':"ProduceExamAutoEvaluationType_Parameter",
         'block':"ProduceExamAutoEvaluationType_Block",
         'hp':"ProduceExamAutoEvaluationType_Stamina",
         '集中':"ProduceExamAutoEvaluationType_ExamLessonBuff",
@@ -2231,6 +2232,10 @@ export class AutoEvaluationData {
         '好印象':"ProduceExamEffectType_ExamReview",
         'やる気':"ProduceExamEffectType_ExamCardPlayAggressive"
     };
+
+    static round(number, precision) {
+        return Math.round(+number + "e" + precision) / Math.pow(10, precision);
+    }
 
     static get(IdolType,type,remainTurn,n,unitValue,autoId){
         if(remainTurn<1){
@@ -2306,5 +2311,91 @@ export class AutoEvaluationData {
         if(onTest) console.log(remainTurn,type,info,n,unitValue,Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000))
 
         return Math.floor(info["evaluation"]*info["examStatusEnchantCoefficientPermil"]*n*unitValue/1000000);
+    }
+
+    static judge_parameter(score, parameter, info){
+        return this.round(score*300/(parameter["vocal"]+parameter["dance"]+parameter["visual"])+0.00009999999975,6) * info[this.a["score"]]["evaluation"];
+    }
+
+    static get_effect_evaluation(status, info){
+        return status.pStatus.getValue("集中") *info[this.a["集中"]]["evaluation"] +
+            status.pStatus.getValue("好印象") *info[this.a["好印象"]]["evaluation"] +
+            status.pStatus.getValue("やる気") *info[this.a["やる気"]]["evaluation"] +
+            status.pStatus.getValue("好調") *info[this.a["好調"]]["evaluation"] +
+            status.pStatus.getValue("消費体力削減") *info[this.a["消費体力削減"]]["evaluation"] +
+            status.pStatus.getValue("スキルカード使用数追加") *info[this.a["スキルカード使用数追加"]]["evaluation"]
+    }
+
+    static get_buff_evaluation(status, info){
+        return Math.min(status.pStatus.getValue("好調"),status.remainTurn) *info[this.a["好調"]]["evaluation"] +
+            Math.min(status.pStatus.getValue("絶好調"),status.remainTurn) *info[this.a["絶好調"]]["evaluation"] +
+            Math.min(status.pStatus.getValue("消費体力減少"),status.remainTurn) *info[this.a["消費体力減少"]]["evaluation"] +
+            Math.min(status.pStatus.getValue("消費体力増加"),status.remainTurn) *info[this.a["消費体力増加"]]["evaluation"]
+    }
+
+    static get_trigger_evaluation(IdolType,type,remainTurn,n,parameter,autoId){
+        let eva = this.data[this.b[IdolType]]["evaluations"];
+        let info;
+        if(!eva[remainTurn]){
+            info=eva[this.data["maxRemainingTerm"]];
+        }else{
+            info=eva[remainTurn];
+        }
+
+        let multiplier1 = (0.001 * remainTurn + 0.0001) * n;
+
+        if (type.slice(0,15) == 'アクティブスキルカード使用時、') {
+            let [ ltype,n ] = type.slice(15).split('+')
+            return this.a[ltype] ? multiplier1 * 0.9 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * info[this.a["score"]]["evaluation"] * (ltype == "パラメータ" ? n * parameter["avg"]/100 : n) : 0;
+        }
+        else if (type.slice(0,14) == 'メンタルスキルカード使用時、') {
+            let [ ltype,n ] = type.slice(14).split('+')
+            return this.a[ltype] ? multiplier1 * 0.9 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+        else if (type.slice(0,17) == 'ターン終了時、集中が3以上の場合、') {
+            let [ ltype,n ] = type.slice(17).split('+')
+            return this.a[ltype] ? multiplier1 * 0.8 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+        else if (type.slice(0,18) == 'ターン終了時、好印象が3以上の場合、') {
+            let [ ltype,n ] = type.slice(18).split('+')
+            return this.a[ltype] ? multiplier1 * 0.8 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+        else if (type.slice(0,7) == 'ターン終了時、') {
+            let [ ltype,n ] = type.slice(7).split('+')
+            return this.a[ltype] ? multiplier1 * 1 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+        else if (type.slice(0,16) == '好印象効果のスキルカード使用後、') {
+            let [ ltype,n ] = type.slice(7).split('+')
+            return this.a[ltype] ? multiplier1 * 0.9 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+        else if (type.slice(0,15) == '元気効果のスキルカード使用後、') {
+            let [ ltype,n ] = type.slice(7).split('+')
+            return this.a[ltype] ? multiplier1 * 0.9 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+        else if (type.slice(0,10) == 'スキルカード使用時、') {
+            let [ ltype,n ] = type.slice(7).split('+')
+            return this.a[ltype] ? multiplier1 * 1 * info[this.a[ltype]]["examStatusEnchantCoefficientPermil"] * n: 0;
+        }
+
+        return 0;
+    }
+
+    static get_evaluation (status, parameter){
+        let eva = this.data[this.b[status.trend]]["evaluations"];
+        let info;
+        if(!eva[status.remainTurn]){
+            info=eva[this.data["maxRemainingTerm"]];
+        }else{
+            info=eva[status.remainTurn];
+        }
+
+        return Math.floor(
+            this.judge_parameter(status.score, parameter, info) +
+            status.block * info[this.a["block"]]["evaluation"] +
+            status.hp * info[this.a["hp"]]["evaluation"] +
+            (status.extra_turn ?? 0) * info[this.a["extra_turn"]]["evaluation"] +
+            this.get_effect_evaluation(status, info) +
+            this.get_buff_evaluation(status, info)
+        );
     }
 }

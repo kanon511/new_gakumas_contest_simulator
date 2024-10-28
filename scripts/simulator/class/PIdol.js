@@ -7,6 +7,7 @@ import { PIdolLog } from './PIdolLog.js';
 import { ConditionChecker } from './ConditionChecker.js';
 import { Calculator } from './Calculator.js';
 import { deep_copy } from '../../../scripts/util/utility.js';
+import { AutoEvaluationData } from '../data/ProduceExamAutoEvaluation.js';
 
 export class PIdol {
 
@@ -242,7 +243,7 @@ export class PIdol {
 
         const totalExecution = preExecutions.concat(executions, afterExecution);
 
-        const evaluation = this.#evaluateExecutions(totalExecution);
+        const evaluation = this.#evaluateExecutions(totalExecution, status);
 
         if (isNaN(evaluation)) {
             throw new Error(`evaluation is NaN: ${skillCard.name}`);
@@ -256,13 +257,13 @@ export class PIdol {
         this.#getPItemAction('end_turn', status).forEach(action=>scheduledActions.push(action));
         this.#getPStatusAction('end_turn', status).forEach(action=>scheduledActions.push(action));
         const scheduledExecutions = this.#simulateActions(scheduledActions, status);
-        const scheduledEvaluation = this.#evaluateExecutions(scheduledExecutions);
+        const scheduledEvaluation = this.#evaluateExecutions(scheduledExecutions, status);
         skillCard.scheduledExecutions = scheduledExecutions;
 
-        skillCard.evaluation = evaluation + scheduledEvaluation;
+        skillCard.evaluation = evaluation + scheduledEvaluation + (this.#autoId >= 3 ? AutoEvaluationData.get_evaluation(status, this.#parameter) : 0);
     }
 
-    #evaluateExecutions (executions) {
+    #evaluateExecutions (executions, status) {
         return Math.floor(executions.reduce((acc, curr) => {
             let evaluation = Calculator.calcActionEvaluation(curr, this.#status, this.#parameter, this.#trendEvaluationVonusCoef, this.#autoId, this.turnType.getType(this.#status.turn));
             return acc + evaluation;
@@ -276,6 +277,7 @@ export class PIdol {
             block: this.#status.block,
             score: this.#status.score,
             plan: this.#status.plan,
+            trend: this.#status.trend,
             turn: this.#status.turn,
             currentTurnType: this.#status.currentTurnType,
             extraTurn: this.#status.extraTurn,

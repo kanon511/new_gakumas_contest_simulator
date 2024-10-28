@@ -4409,7 +4409,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'status', target: '好調', value: 2 }, 
-            { type: 'status', target: '之后5回合，每回合结束时，分数+4', value: 5 },  
+            { type: 'status', target: '之后x+1回合，每回合结束时，分数+4', value: 3 },  
         ],
         limit: 1,
         card_cost: 0,
@@ -4424,7 +4424,7 @@ export const skillCardData = [
         condition: '',
         effects: [
             { type: 'status', target: '好調', value: 2 }, 
-            { type: 'status', target: '之后x回合，每回合结束时，分数+4', value: 5 },  
+            { type: 'status', target: '之后x+1回合，每回合结束时，分数+4', value: 5 },  
         ],
         limit: 1,
         card_cost: 0,

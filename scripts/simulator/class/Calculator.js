@@ -11,28 +11,50 @@ export class Calculator {
         return goodImpActiveTurn * goodImp - (goodImpActiveTurn * (goodImpActiveTurn-1) >> 1);
     }
     static calcActionEvaluation (action, status, parameter, trendVonusCoef, autoId, nowTurn) {
-        let { type, args } = action;
-        if(!args){
-            return 0;
-        }
-        const unitValue = parameter['avg'] / 100;
-        if (type == 'status') {
-            const statusType = args[1];
-            if(autoId >= 3 && statusType=='スキルカード使用数追加' && status.pStatus.has('スキルカード使用数追加')){
-                args[0] *= 0.3;
-            }
-            return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
-        }
-
-        if (type == 'delay') { //延迟效果
-            if (args[2]>status.remainTurn+status.turn) {
+        if (autoId < 3){
+            let { type, args } = action;
+            if(!args){
                 return 0;
             }
-            type = args[3].type;
-            args = [args[0], args[1]];
-        }
+            const unitValue = parameter['avg'] / 100;
 
-        return AutoEvaluationData.get(status.trend,type,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
+            if (type == 'status') {
+                const statusType = args[1];
+                if(statusType=='スキルカード使用数追加' && status.pStatus.has('スキルカード使用数追加')){
+                    args[0] *= 0.3;
+                }
+                return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
+            }
+
+            if (type == 'delay') { //延迟效果
+                if (args[2]>status.remainTurn+status.turn) {
+                    return 0;
+                }
+                type = args[3].type;
+                args = [args[0], args[1]];
+            }
+
+            return AutoEvaluationData.get(status.trend,type,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
+        }else{
+            let { type, args } = action;
+            if(!args){
+                return 0;
+            }
+
+            if (type == 'status') {
+                const statusType = args[1];
+
+                if (AutoEvaluationData.get_trigger_evaluation(status.trend,statusType,status.remainTurn,args[0],parameter,autoId) != 0)
+                    console.log(AutoEvaluationData.get_trigger_evaluation(status.trend,statusType,status.remainTurn,args[0],parameter,autoId));
+
+                return AutoEvaluationData.get_trigger_evaluation(status.trend,statusType,status.remainTurn,args[0],parameter,autoId)
+            }
+
+            if (AutoEvaluationData.get_trigger_evaluation(status.trend,type,status.remainTurn,args[0],parameter,autoId) != 0)
+                console.log(AutoEvaluationData.get_trigger_evaluation(status.trend,type,status.remainTurn,args[0],parameter,autoId));
+
+            return AutoEvaluationData.get_trigger_evaluation(status.trend,type,status.remainTurn,args[0],parameter,autoId);
+        }
     }
 
     static calcActualValue (effect, status, parameter) {
