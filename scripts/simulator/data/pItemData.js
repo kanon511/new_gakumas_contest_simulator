@@ -2303,7 +2303,7 @@ const pItemData = [
         activate_timing: 'start_turn',
         condition: 'turn==2',
         effects: [
-            { type: 'status', target: 'extra_turn', value: 1, conditions: '好印象>=7' },
+            { type: 'extra_turn', value: 1, conditions: '好印象>=7' },
         ],
         limit: 1,
         plan: 'logic',
