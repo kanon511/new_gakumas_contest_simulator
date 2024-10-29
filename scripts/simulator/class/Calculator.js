@@ -21,7 +21,7 @@ export class Calculator {
             if (type == 'status') {
                 const statusType = args[1];
                 if(statusType=='スキルカード使用数追加' && status.pStatus.has('スキルカード使用数追加')){
-                    args[0] *= 0.3;
+                    return 0;
                 }
                 return AutoEvaluationData.get(status.trend,statusType,status.remainTurn-status.extraTurn,args[0],parameter[nowTurn]/100,autoId)
             }
