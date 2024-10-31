@@ -402,6 +402,42 @@ const contestData = [
             },
         ],
     },
+    {
+        id: 241108,
+        name: '第12期コンテスト', 
+        period: '2024/08/22 - ----',
+        criteria: { 'vocal': 35, 'dance': 15, 'visual': 50 },
+        rank: {'vocal': 2, 'dance': 3, 'visual': 1},
+        stages: [
+            {
+                name: 'ステージ1',
+                turn: 6,
+                stageEffects: [],
+                stagePItemIds: [4241111],
+                plan: 'free',
+                turnTypes: [2, 1, 3],
+                firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
+            },
+            {
+                name: 'ステージ2',
+                turn: 8,
+                stageEffects: [],
+                stagePItemIds: [4241112],
+                plan: 'free',
+                turnTypes: [3, 1, 4],
+                firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
+            },
+            {
+                name: 'ステージ3',
+                turn: 10,
+                stageEffects: [],
+                stagePItemIds: [4241022],
+                plan: 'sense',
+                turnTypes: [3, 2, 5],
+                firstTurn: {'vocal': 0, 'dance': 0, 'visual': 100},
+            },
+        ],
+    },
 ]; 
 
 export class ContestData {

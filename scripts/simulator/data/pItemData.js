@@ -2224,6 +2224,32 @@ const pItemData = [
     },
 
     {
+        id: 4241111,
+        name: '初星バッチ（赤）',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: 'usedCardTurnCountMultiple==2',
+        effects: [
+            { type: 'score', value: 2 },
+            { type: 'score', value: 2 },
+        ],
+        limit: 1,
+        plan: 'free',
+    },
+    {
+        id: 4241112,
+        name: '初星オブジェ（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加', value: 3, options: [{ type: '上昇量', value: 80 }] },
+        ],
+        limit: 1,
+        plan: 'free',
+    },
+
+    {
         id: 5000111,
         name: '公会战效果',
         description: '',
