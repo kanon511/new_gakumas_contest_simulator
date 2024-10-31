@@ -2233,7 +2233,7 @@ const pItemData = [
             { type: 'score', value: 2 },
             { type: 'score', value: 2 },
         ],
-        limit: 1,
+        limit: null,
         plan: 'free',
     },
     {
