@@ -1,78 +1,24 @@
 <template>
-  <div class="pIdol-selection mb-2" style="margin-top: -100px">
-    <PIdolSelector
-      :contestPlan="contestPlan"
-      v-model:selectedPIdol="selectedPIdol"
-      v-model:sameSelectedPIdols="sameSelectedPIdols"
-    />
+  <div class="pIdol-selection mb-2" style="">
+    <IdolSelector />
   </div>
   <div class="pItem-selectors mb-2">
-    <PItemSet
-      :pIdolPItemIds="pIdolPItemIds"
-      :contestPItemIds="props.contestPItemIds"
-    />
+    <StagePItemSet />
+  </div>
+  <div class="pItem-selectors mb-2">
+    <PItemSet />
   </div>
   <div class="deck-container">
-    <CardDeckSet
-      :pIdolPlan="pIdolPlan"
-      :pIdolCardIds="pIdolCardIds"
-      :samePIdolCardIds="samePIdolCardIds"
-    />
+    <CardDeckSet />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, defineProps } from "vue";
-import PIdolSelector from "../common/PIdolSelector.vue";
-import PItemSet from "../common/PItemSet.vue";
-import CardDeckSet from "../common/CardDeckSet.vue";
-
-const selectedPIdol = ref(null);
-const sameSelectedPIdols = ref(null);
-const props = defineProps({
-  contestPItemIds: {
-    type: Array,
-    required: true,
-  },
-  contestPlan: {
-    type: String,
-    required: true,
-  },
-});
-// const selectedPItems = ref([null, null, null, null]);
-const pIdolPItemIds = computed(() => {
-  if (selectedPIdol.value) {
-    return [
-      selectedPIdol.value.unique_pItem_id,
-      selectedPIdol.value.unique_pItem_id + 1,
-    ];
-  }
-  return [];
-});
-const pIdolPlan = computed(() => selectedPIdol.value?.plan ?? "");
-const pIdolCardIds = computed(() => {
-  if (selectedPIdol.value) {
-    return [
-      selectedPIdol.value.unique_skillCard_id,
-      selectedPIdol.value.unique_skillCard_id + 1,
-    ];
-  }
-  return [];
-});
-// or watch
-const samePIdolCardIds = computed(() => {
-  if (sameSelectedPIdols.value) {
-    const array = [];
-    for (let i = 0; i < sameSelectedPIdols.value.length; i++) {
-      if (sameSelectedPIdols.value[i].plan == pIdolPlan.value) {
-        array.push(sameSelectedPIdols.value[i].unique_skillCard_id);
-        array.push(sameSelectedPIdols.value[i].unique_skillCard_id + 1);
-      }
-    }
-    return array;
-  }
-  return [];
-});
+import { ref, computed } from 'vue';
+import IdolSelector from '../common/selector/IdolSelector.vue';
+import PItemSet from '../common/PItemSet.vue';
+import CardDeckSet from '../common/CardDeckSet.vue';
+import StagePItemSet from '../common/StagePItemSet.vue';
 </script>
 
 <style scoped>

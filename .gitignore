@@ -20,9 +20,11 @@ pnpm-debug.log*
 *.sln
 *.sw?
 .eslintrc.*
+*.log
 
 .vscode
 dist/
 trash/
 test/
 public/images/
+*TEMP*

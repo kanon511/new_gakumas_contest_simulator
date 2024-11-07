@@ -18,8 +18,8 @@
 </template>
 
 <script setup>
-import { defineModel, defineProps, ref, watch } from "vue";
-import CardSelector from "./CardSelector.vue";
+import { defineModel, defineProps, ref, watch, onMounted } from 'vue';
+import CardSelector from './selector/CardSelector.vue';
 
 const cost = ref(0);
 
@@ -37,11 +37,10 @@ const props = defineProps({
   },
 });
 
-const selectedCards = defineModel("selectedCards");
+const selectedCards = defineModel('selectedCards');
 
-watch(
-  () => selectedCards,
-  () => {
+onMounted(() => {
+  const selectedCardsWatch = () => {
     let total = 0;
     for (let i = 0; i < selectedCards.value.length; i++) {
       if (selectedCards.value[i]) {
@@ -49,9 +48,10 @@ watch(
       }
     }
     cost.value = total;
-  },
-  { deep: true }
-);
+  };
+  watch(selectedCards, selectedCardsWatch, { deep: true });
+  selectedCardsWatch();
+});
 </script>
 
 <style scoped>

@@ -7,7 +7,7 @@
     >
       <v-img
         v-if="selectedPItem"
-        :src="`https://katabami83.github.io/gakumas_file/images/pItems/pItem_${selectedPItem.id}.webp`"
+        :src="`${baseImageURL}/pItems/pItem_${selectedPItem.id}.webp`"
         class="pItem-image"
         contain
       ></v-img>
@@ -35,12 +35,17 @@
               class="pItem-container"
               @click="selectpItem(pItem)"
             >
-              <v-img
-                :src="`https://katabami83.github.io/gakumas_file/images/pItems/pItem_${pItem.id}.webp`"
-                class="pItem-option"
-                contain
-              ></v-img>
-              <!-- <div class="pItem-name">{{ pItem.name }}</div> -->
+              <v-tooltip location="top">
+                <template v-slot:activator="{ props }">
+                  <v-img
+                    v-bind="props"
+                    :src="`${baseImageURL}/pItems/pItem_${pItem.id}.webp`"
+                    class="pItem-option"
+                    contain
+                  ></v-img>
+                </template>
+                <p>{{ pItem.name }}</p>
+              </v-tooltip>
             </div>
           </div>
         </v-card-text>
@@ -54,7 +59,8 @@
 </template>
 
 <script setup>
-import { ref, defineModel, defineProps, watch } from "vue";
+import { ref, defineModel, defineProps, watch, onMounted } from 'vue';
+import { baseImageURL } from '@/components/store/constant.js';
 
 const props = defineProps({
   autoSelect: {
@@ -65,25 +71,30 @@ const props = defineProps({
     require: true,
   },
 });
-const selectedPItem = defineModel("selectedPItem");
+const selectedPItem = defineModel('selectedPItem');
 
 const dialog = ref(false);
 
-watch(
-  () => props.pItemList,
-  (pItemList) => {
+onMounted(() => {
+  const pItemListWatch = () => {
     if (selectedPItem.value) {
-      if (!pItemList.some((item) => selectedPItem.value.id == item.id)) {
+      if (!props.pItemList.some((item) => selectedPItem.value.id == item.id)) {
         selectedPItem.value = null;
       } else {
         return;
       }
     }
-    if (props.autoSelect == "true" && pItemList && pItemList.length > 0) {
-      selectedPItem.value = pItemList[0];
+    if (
+      props.autoSelect == 'true' &&
+      props.pItemList &&
+      props.pItemList.length > 0
+    ) {
+      selectedPItem.value = props.pItemList[0];
     }
-  }
-);
+  };
+  watch(() => props.pItemList, pItemListWatch);
+  pItemListWatch();
+});
 
 const selectpItem = (pItem) => {
   selectedPItem.value = pItem;
@@ -123,8 +134,8 @@ const selectpItem = (pItem) => {
 
 .pItem-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
   gap: 8px;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
 }
 
 .pItem-container {
@@ -132,6 +143,12 @@ const selectpItem = (pItem) => {
   flex-direction: column;
   align-items: center;
   cursor: pointer;
+  transition: all 0.3s;
+}
+
+.pItem-container:hover {
+  transform: scale(1.08);
+  opacity: 0.5;
 }
 
 .pItem-option {
@@ -145,6 +162,6 @@ const selectpItem = (pItem) => {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
-  max-width: 60px; /* pItem-optionと同じ幅 */
+  max-width: 60px;
 }
 </style>

@@ -87,17 +87,17 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watch, defineProps } from "vue";
-import Chart from "chart.js/auto";
-import BoxPlot from "../common/BoxPlot.vue";
+import { onMounted, ref, watch, defineProps } from 'vue';
+import Chart from 'chart.js/auto';
+import BoxPlot from '../common/BoxPlot.vue';
 
 const props = defineProps({ resultData: { type: Object } });
-const selectedBox = ref("1");
-const selectedLog = ref("1");
+const selectedBox = ref('1');
+const selectedLog = ref('1');
 const loghtmls = ref({
-  min: "最小値のログが表示されます",
-  rnd: "ランダムな回のログが表示されます",
-  max: "最大値のログが表示されます",
+  min: '最小値のログが表示されます',
+  rnd: 'ランダムな回のログが表示されます',
+  max: '最大値のログが表示されます',
 });
 let histgram;
 
@@ -105,7 +105,7 @@ function calculateBoxPlotValues(sortedArray) {
   const n = sortedArray.length;
 
   if (n === 0) {
-    throw new Error("配列が空です");
+    throw new Error('配列が空です');
   }
 
   const min = sortedArray[0];
@@ -129,57 +129,144 @@ function calculateBoxPlotValues(sortedArray) {
 
 const boxPlotData = ref([]);
 
-function parseExecutionLog(executeLog) {
-  let htmlString = "<div>";
-  for (const log of executeLog) {
-    if (log.type == "use") {
-      if (log.sourceType == "skillCard") {
-        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.source.name}」</div><div class="log-block-content">`;
-      } else if (log.sourceType == "pItem") {
-        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.source.name}」</div><div class="log-block-content">`;
-      } else if (log.sourceType == "pDrink") {
-        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-wine-bottle"></i>Pドリンク「${log.source.name}」</div><div class="log-block-content">`;
-      } else if (log.sourceType == "pStatus") {
-        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-forward"></i>ステータス効果「${log.source.name}」</div><div class="log-block-content">`;
-      } else if (log.sourceType == "pDelay") {
-        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-link"></i>予約効果「${log.source.name}」</div><div class="log-block-content">`;
+// function parseExecutionLog(executeLog) {
+//   let htmlString = "<div>";
+//   for (const log of executeLog) {
+//     if (log.type == "use") {
+//       if (log.sourceType == "skillCard") {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.source.name}」</div><div class="log-block-content">`;
+//       } else if (log.sourceType == "pItem") {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.source.name}」</div><div class="log-block-content">`;
+//       } else if (log.sourceType == "pDrink") {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-wine-bottle"></i>Pドリンク「${log.source.name}」</div><div class="log-block-content">`;
+//       } else if (log.sourceType == "pStatus") {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-forward"></i>ステータス効果「${log.source.name}」</div><div class="log-block-content">`;
+//       } else if (log.sourceType == "pDelay") {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-link"></i>予約効果「${log.source.name}」</div><div class="log-block-content">`;
+//       }
+//       // else if (log.sourceType == 'pIdol') {
+//       //     htmlString += `<div><div><i class="fa-solid fa-person-rays"></i>${log.source.name}を使った</div>`;
+//       // }
+//       else if (log.sourceType == "pRest") {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-bed"></i>${log.source.name}</div><div class="log-block-content">`;
+//       }
+//     } else if (log.type == "end") {
+//       htmlString += "</div></div>";
+//     } else if (log.type == "show") {
+//       htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-book-open"></i>${log.message}</div><div class="log-block-content">`;
+//     } else {
+//       htmlString += `<div>${log.message}</div>`;
+//     }
+//   }
+//   htmlString += "</div>";
+//   return htmlString;
+// }
+
+// function parseSimulationLog(simulationLog) {
+//   let text = "";
+//   for (const log of simulationLog.log) {
+//     const textElement = `
+//         <div>
+//             <div class="log-turn" data-turnType="${log.turnType}">
+//                 <div>${log.turn}ターン目</div>
+//                 <div class="log-turn-status">
+//                     <i class="fa-solid fa-star"></i>${log.status.score}
+//                     <i class="fa-solid fa-heart"></i>${log.status.hp}
+//                     <i class="fa-solid fa-shield-halved"></i>${log.status.block}
+//                 </div>
+//             </div>
+//         </div>`;
+//     text += textElement;
+//     text += parseExecutionLog(log.executionLog);
+//   }
+//   return text;
+// }
+
+// function parseExecutionLog(logResult) {
+//   let htmlString = '<div>';
+//   for (const log of logResult) {
+//     if (log.type == 'use') {
+//       if (log.target == 'card') {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.message}」</div><div class="log-block-content">`;
+//       } else if (log.target == 'pItem') {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.message}」</div><div class="log-block-content">`;
+//       } else if (log.target == 'pDrink') {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-wine-bottle"></i>Pドリンク「${log.message}」</div><div class="log-block-content">`;
+//       } else if (log.target == 'status') {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-forward"></i>ステータス効果「${log.message}」</div><div class="log-block-content">`;
+//       } else if (log.target == 'delay') {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-link"></i>予約効果「${log.message}」</div><div class="log-block-content">`;
+//       } else if (log.target == 'rest') {
+//         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-bed"></i>${log.message}</div><div class="log-block-content">`;
+//       }
+//     } else if (log.type == 'end') {
+//       htmlString += '</div></div>';
+//     } else if (log.type == 'show') {
+//       htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-book-open"></i>${log.message}</div><div class="log-block-content">`;
+//     } else {
+//       htmlString += `<div>${log.message}</div>`;
+//     }
+//   }
+//   htmlString += '</div>';
+//   return htmlString;
+// }
+
+// function parseSimulationLog(simulationLog) {
+//   let text = '';
+//   for (const log of simulationLog.log) {
+//     const textElement = `
+//         <div>
+//             <div class="log-turn" data-turnType="${log.turnType}">
+//                 <div>${log.turn}ターン目</div>
+//                 <div class="log-turn-status">
+//                     <i class="fa-solid fa-star"></i>${log.score}
+//                     <i class="fa-solid fa-heart"></i>${log.hp}
+//                     <i class="fa-solid fa-shield-halved"></i>${log.genki}
+//                 </div>
+//             </div>
+//         </div>`;
+//     text += textElement;
+//     text += parseExecutionLog(log.log);
+//   }
+//   return text;
+// }
+
+function parseSimulationLog(simulationLog) {
+  let htmlString = '';
+  for (const log of simulationLog.log) {
+    if (log.type == 'newTurn') {
+      const [turn, turnType, score, hp, genki] = log.message.split(':');
+      htmlString += `<div class="log-turn" data-turnType="${turnType}">
+          <div>${turn}ターン目</div>
+          <div class="log-turn-status">
+              <i class="fa-solid fa-star"></i>${score}
+              <i class="fa-solid fa-heart"></i>${hp}
+              <i class="fa-solid fa-shield-halved"></i>${genki}
+          </div>
+      </div>`;
+    } else if (log.type == 'use') {
+      if (log.target == 'card') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.message}」</div><div class="log-block-content">`;
+      } else if (log.target == 'pItem') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.message}」</div><div class="log-block-content">`;
+      } else if (log.target == 'pDrink') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-wine-bottle"></i>Pドリンク「${log.message}」</div><div class="log-block-content">`;
+      } else if (log.target == 'status') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-forward"></i>ステータス効果「${log.message}」</div><div class="log-block-content">`;
+      } else if (log.target == 'delay') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-link"></i>予約効果「${log.message}」</div><div class="log-block-content">`;
+      } else if (log.target == 'rest') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-bed"></i>${log.message}</div><div class="log-block-content">`;
       }
-      // else if (log.sourceType == 'pIdol') {
-      //     htmlString += `<div><div><i class="fa-solid fa-person-rays"></i>${log.source.name}を使った</div>`;
-      // }
-      else if (log.sourceType == "pRest") {
-        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-bed"></i>${log.source.name}</div><div class="log-block-content">`;
-      }
-    } else if (log.type == "end") {
-      htmlString += "</div></div>";
-    } else if (log.type == "show") {
+    } else if (log.type == 'end') {
+      htmlString += '</div></div>';
+    } else if (log.type == 'show') {
       htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-book-open"></i>${log.message}</div><div class="log-block-content">`;
     } else {
       htmlString += `<div>${log.message}</div>`;
     }
   }
-  htmlString += "</div>";
   return htmlString;
-}
-
-function parseSimulationLog(simulationLog) {
-  let text = "";
-  for (const log of simulationLog.log) {
-    const textElement = `
-        <div>
-            <div class="log-turn" data-turnType="${log.turnType}">
-                <div>${log.turn}ターン目</div>
-                <div class="log-turn-status">
-                    <i class="fa-solid fa-star"></i>${log.status.score}
-                    <i class="fa-solid fa-heart"></i>${log.status.hp}
-                    <i class="fa-solid fa-shield-halved"></i>${log.status.block}
-                </div>
-            </div>
-        </div>`;
-    text += textElement;
-    text += parseExecutionLog(log.executionLog);
-  }
-  return text;
 }
 
 watch(
@@ -204,12 +291,12 @@ watch(
       data[kaikyu]++;
     }
 
-    document.getElementById("result-score-mean").textContent = Math.floor(
+    document.getElementById('result-score-mean').textContent = Math.floor(
       scoreList.reduce((pre, crt) => pre + crt, 0) / scoreList.length
     );
-    document.getElementById("result-score-median").textContent =
+    document.getElementById('result-score-median').textContent =
       scoreList[Math.floor(scoreList.length / 2)];
-    document.getElementById("result-score-mode").textContent =
+    document.getElementById('result-score-mode').textContent =
       (minscore +
         data.reduce(
           (pre, crt, i) => (pre[0] < crt ? [crt, i] : pre),
@@ -239,7 +326,7 @@ watch(
       rnd: resultData.rndLog,
       max: resultData.maxLog,
     };
-    const logKeys = ["min", "rnd", "max"];
+    const logKeys = ['min', 'rnd', 'max'];
     for (const key of logKeys) {
       loghtmls.value[key] = parseSimulationLog(logs[key]);
     }
@@ -247,8 +334,8 @@ watch(
 );
 
 onMounted(() => {
-  histgram = new Chart(document.getElementById("chart-histgram"), {
-    type: "bar",
+  histgram = new Chart(document.getElementById('chart-histgram'), {
+    type: 'bar',
   });
 });
 </script>
@@ -321,13 +408,13 @@ onMounted(() => {
   display: flex;
 }
 
-.log-turn[data-turnType="vocal"] {
+.log-turn[data-turnType='vocal'] {
   background: linear-gradient(to right, #f13584, #f461a1);
 }
-.log-turn[data-turnType="dance"] {
+.log-turn[data-turnType='dance'] {
   background: linear-gradient(to right, #1d84ed, #4b9ef0);
 }
-.log-turn[data-turnType="visual"] {
+.log-turn[data-turnType='visual'] {
   background: linear-gradient(to right, #f7b12f, #f8c25d);
 }
 .log-turn > :first-child {

@@ -1,22 +1,18 @@
 <template>
   <v-container class="sp-pa-0">
     <v-row>
-      <v-col cols="8">
-        <ContestSelector
-          v-model:contestPlan="contestPlan"
-          v-model:contestPItemIds="contestPItemIds"
-        />
+      <v-col cols="12">
+        <ContestSelector />
       </v-col>
-      <v-col cols="4">
+    </v-row>
+    <v-row>
+      <v-col cols="12">
         <StatusInputor />
       </v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
-        <CompositionBuilder
-          :contestPlan="contestPlan"
-          :contestPItemIds="contestPItemIds"
-        />
+        <CompositionBuilder />
       </v-col>
     </v-row>
     <v-row>
@@ -49,27 +45,25 @@
 </template>
 
 <script setup>
-import { ref, defineEmits, defineProps } from "vue";
-import ContestSelector from "./ContestSelector.vue";
-import StatusInputor from "./StatusInputor.vue";
-import CompositionBuilder from "./CompositionBuilder.vue";
+import { ref, defineEmits, defineProps } from 'vue';
+import ContestSelector from './ContestSelector.vue';
+import StatusInputor from './StatusInputor.vue';
+import CompositionBuilder from './CompositionBuilder.vue';
 
-const emits = defineEmits(["runSimulation"]);
+const emits = defineEmits(['runSimulation']);
 const sendEvent = () => {
   copyText.value = location.href;
-  emits("runSimulation");
+  emits('runSimulation');
 };
-const props = defineProps(["waitingFinishedRun"]);
+const props = defineProps(['waitingFinishedRun']);
 
 /**
  * 双方向データ
  */
-const contestPlan = ref("");
-const contestPItemIds = ref([]);
-const copyText = ref("編成URLが表示されます");
+const copyText = ref('編成URLが表示されます');
 
 const copyToClipboard = () => {
-  if (copyText.value.indexOf("http") == -1) return;
+  if (copyText.value.indexOf('http') == -1) return;
   navigator.clipboard
     .writeText(copyText.value)
     .then(() => {
