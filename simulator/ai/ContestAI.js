@@ -23,7 +23,12 @@ export default class ContestAI {
 
   searchAllActions(player, depth, actionHistory) {
     if (depth === player.turnManager.currentTurn || player.isGameOver) {
-      return [{ actions: actionHistory, score: this.evaluate(player) }];
+      return [
+        {
+          actions: actionHistory,
+          score: this.evaluate(player),
+        },
+      ];
     }
 
     let results = [];
@@ -34,7 +39,10 @@ export default class ContestAI {
         action.index == -1 ? -1 : nextPlayer.deck.handCardIndexes[action.index];
       nextPlayer.next(action.index);
 
-      const newHistory = [...actionHistory, [cardIndex, action.index]];
+      const newHistory = [
+        ...actionHistory,
+        [cardIndex, action.index, player.turnManager.currentTurn],
+      ];
       const futureResults = this.searchAllActions(
         nextPlayer,
         depth,

@@ -48,50 +48,64 @@ export function run(data, isLog) {
       allActions[0]
     );
 
-    player.log.add('show', null, '手札');
-    const handCards = player.deck.getHandCards();
     const actionMap = new Map();
     for (const action of allActions) {
-      const handCardIndex = action.actions[0][1];
-      if (
-        actionMap.has(handCardIndex) &&
-        actionMap.get(handCardIndex) > action.score
-      ) {
+      const cardIndex = action.actions[0][0];
+      if (actionMap.has(cardIndex) && actionMap.get(cardIndex) > action.score) {
         continue;
       }
-      actionMap.set(handCardIndex, action.score);
+      actionMap.set(cardIndex, action.score);
     }
-    for (let i = 0; i < handCards.length; i++) {
-      const maxScore = actionMap.get(i);
-      if (maxScore == void 0) {
-        player.log.add('message', null, `×${handCards[i].name}(-)`);
-      } else {
-        player.log.add('message', null, `○${handCards[i].name}(${maxScore})`);
-      }
-    }
-    player.log.add('end');
 
     if (isLog) {
-      for (const action of allActions) {
-        console.log(
-          action.actions
-            .map(([cardIndex]) => player.deck.cards[cardIndex]?.name ?? '休憩')
-            .join(' => '),
-          action.score
+      console.log(actionMap);
+      // for (const action of allActions) {
+      //   console.log(
+      //     action.actions
+      //       .map(([cardIndex]) => player.deck.cards[cardIndex]?.name ?? '休憩')
+      //       .join(' => '),
+      //     action.score
+      //   );
+      // }
+    }
+
+    const currentTurn = player.turnManager.currentTurn;
+
+    for (let actionIndex = 0; actionIndex < bestActionPath.actions.length; actionIndex++) {
+      const action = bestActionPath.actions[actionIndex];
+      if (action[2] != currentTurn) {
+        break;
+      }
+
+      player.log.add('show', null, '手札');
+
+      for (const cardInfo of player.getHandCardInfo()) {
+        if (cardInfo.available) {
+          const score = actionMap.get(cardInfo.cardIndex);
+          player.log.add('message', null, `○${cardInfo.card.name}(${score ?? '-'})`);
+        } else {
+          player.log.add('message', null, `×${cardInfo.card.name}(-)`);
+        }
+      }
+
+      if (actionIndex + 1 < bestActionPath.actions.length) {
+        actionMap.set(
+          bestActionPath.actions[actionIndex + 1][0],
+          actionMap.get(bestActionPath.actions[actionIndex][0])
         );
       }
-    }
-    const action = bestActionPath.actions[0];
-    const actionName = player.deck.cards[action[0]]?.name ?? '休憩';
+      player.log.add('end');
 
-    player.next(action[1]);
+      // const action = bestActionPath.actions[0];
+      const actionName = player.deck.cards[action[0]]?.name ?? '休憩';
 
-    if (isLog) {
-      console.log(
-        `Action: ${actionName}, Score: ${player.score}, HP: ${player.hp}\n`
-      );
-      console.log(player);
-      console.log(player.status);
+      player.next(action[1]);
+
+      if (isLog) {
+        console.log(`Action: ${actionName}, Score: ${player.score}, HP: ${player.hp}\n`);
+        // console.log(player);
+        // console.log(player.status);
+      }
     }
   }
   const result = {
