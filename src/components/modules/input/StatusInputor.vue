@@ -3,11 +3,7 @@
     <v-col cols="3" class="pa-0">
       <div class="status-block">
         <p class="status-title red">ボーカル</p>
-        <input
-          type="number"
-          v-model.number="inputStatus.vocal"
-          class="status-input"
-        />
+        <input type="number" v-model.number="inputStatus.vocal" class="status-input" />
         <div class="adjusted-value-box red">
           <p>{{ status.vocal }}%</p>
         </div>
@@ -17,11 +13,7 @@
     <v-col cols="3" class="pa-0">
       <div class="status-block">
         <p class="status-title blue">ダンス</p>
-        <input
-          type="number"
-          v-model.number="inputStatus.dance"
-          class="status-input"
-        />
+        <input type="number" v-model.number="inputStatus.dance" class="status-input" />
         <div class="adjusted-value-box blue">
           <p>{{ status.dance }}%</p>
         </div>
@@ -31,11 +23,7 @@
     <v-col cols="3" class="pa-0">
       <div class="status-block">
         <p class="status-title yellow">ビジュアル</p>
-        <input
-          type="number"
-          v-model.number="inputStatus.visual"
-          class="status-input"
-        />
+        <input type="number" v-model.number="inputStatus.visual" class="status-input" />
         <div class="adjusted-value-box yellow">
           <p>{{ status.visual }}%</p>
         </div>
@@ -46,16 +34,8 @@
     <v-col cols="3" class="pa-0">
       <div class="status-block">
         <p class="status-title green">体力</p>
-        <input
-          type="number"
-          v-model.number="inputStatus.hp"
-          class="status-input"
-        />
-        <input
-          type="number"
-          v-model.number="inputStatus.supportBonus"
-          class="status-input"
-        />
+        <input type="number" v-model.number="inputStatus.hp" class="status-input" />
+        <input type="number" v-model.number="inputStatus.supportBonus" class="status-input" />
       </div>
     </v-col>
   </v-row>
@@ -69,17 +49,14 @@ import ParameterCalculator from '/simulator/game/calculator/ParameterCalculator.
 onMounted(() => {
   const calc = () => {
     const adjustedStatus = ParameterCalculator.get(
-      [
-        inputStatus.value.vocal,
-        inputStatus.value.dance,
-        inputStatus.value.visual,
-      ],
+      [inputStatus.value.vocal, inputStatus.value.dance, inputStatus.value.visual],
       [criteria.value.vocal, criteria.value.dance, criteria.value.visual],
       Number(inputStatus.value.supportBonus) / 100
     );
     status.value.vocal = adjustedStatus[0];
     status.value.dance = adjustedStatus[1];
     status.value.visual = adjustedStatus[2];
+    status.value.hp = inputStatus.value.hp;
   };
   calc();
 
@@ -89,6 +66,7 @@ onMounted(() => {
       inputStatus.value.dance,
       inputStatus.value.visual,
       inputStatus.value.supportBonus,
+      inputStatus.value.hp,
       criteria.value.vocal,
       criteria.value.dance,
       criteria.value.visual,
@@ -137,7 +115,7 @@ onMounted(() => {
 }
 
 .red {
-  color: #B71C1C;
+  color: #b71c1c;
 }
 
 .red.adjusted-value-box {
@@ -145,14 +123,14 @@ onMounted(() => {
 }
 
 .blue {
-  color: #0D47A1;
+  color: #0d47a1;
 }
 .blue.adjusted-value-box {
   background-color: #e3f2fd;
 }
 
 .yellow {
-  color: #F57F17;
+  color: #f57f17;
 }
 .yellow.adjusted-value-box {
   background-color: #fff8e1;
