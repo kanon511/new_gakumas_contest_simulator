@@ -76,9 +76,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
     ],
     limit: 2,
@@ -94,9 +92,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
     ],
     limit: 3,
@@ -264,9 +260,7 @@ export const data = [
       {
         type: 'score',
         value: 2,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 1 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 1 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -283,9 +277,7 @@ export const data = [
       {
         type: 'score',
         value: 6,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 1 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 1 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -316,15 +308,13 @@ export const data = [
     id: 2107020,
     name: '初恋の証・清夏',
     description: '',
-    trigger: 'after_use_card',
+    trigger: 'after_play_card',
     condition: 'やる気>=8',
     effects: [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 150 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 150 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -335,15 +325,13 @@ export const data = [
     id: 2107021,
     name: '初恋の証・清夏+',
     description: '',
-    trigger: 'after_use_card',
+    trigger: 'after_play_card',
     condition: 'やる気>=8',
     effects: [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 210 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 210 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -360,9 +348,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -379,9 +365,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 70 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 70 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -607,9 +591,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 60 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 60 }],
       },
       { type: 'fixed_direct_hp', value: -2 },
     ],
@@ -626,9 +608,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 70 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 70 }],
       },
       { type: 'fixed_direct_hp', value: -2 },
     ],
@@ -750,9 +730,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 80 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 80 }],
       },
     ],
     limit: 2,
@@ -902,9 +880,7 @@ export const data = [
         type: 'status',
         target: '集中',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好調', value: 40 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好調', value: 40 }],
       },
       { type: 'status', target: '集中', value: 1 },
     ],
@@ -922,9 +898,7 @@ export const data = [
         type: 'status',
         target: '集中',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好調', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好調', value: 50 }],
       },
       { type: 'status', target: '集中', value: 1 },
       { type: 'genki', value: 3 },
@@ -968,9 +942,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
       { type: 'genki', value: 3 },
     ],
@@ -987,9 +959,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
       { type: 'genki', value: 3 },
     ],
@@ -1006,16 +976,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'block', value: 90 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'block', value: 90 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 160 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 160 }],
       },
       { type: 'status', target: '好印象', value: -2 },
     ],
@@ -1032,16 +998,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'block', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'block', value: 100 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 230 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 230 }],
       },
       { type: 'status', target: '好印象', value: -2 },
     ],
@@ -1110,9 +1072,7 @@ export const data = [
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
       { type: 'status', target: 'やる気', value: 2 },
       { type: 'fixed_direct_hp', value: -1 },
@@ -1130,9 +1090,7 @@ export const data = [
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
       { type: 'status', target: 'やる気', value: 3 },
       { type: 'fixed_direct_hp', value: -1 },
@@ -1223,16 +1181,12 @@ export const data = [
         type: 'status',
         target: '好印象',
         value: 0,
-        options: [
-          { type: 'increase_by_factor-1', target: '好印象', value: 1.5 },
-        ],
+        options: [{ type: 'increase_by_factor-1', target: '好印象', value: 1.5 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 30 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 30 }],
       },
     ],
     limit: 1,
@@ -1249,16 +1203,12 @@ export const data = [
         type: 'status',
         target: '好印象',
         value: 0,
-        options: [
-          { type: 'increase_by_factor-1', target: '好印象', value: 1.5 },
-        ],
+        options: [{ type: 'increase_by_factor-1', target: '好印象', value: 1.5 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
     ],
     limit: 1,
@@ -1314,9 +1264,7 @@ export const data = [
       {
         type: 'score',
         value: 3,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 3 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 3 }],
       },
       { type: 'fixed_direct_hp', value: -2 },
     ],
@@ -1333,9 +1281,7 @@ export const data = [
       {
         type: 'score',
         value: 5,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 3 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 3 }],
       },
     ],
     limit: 1,
@@ -1427,9 +1373,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 270 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 270 }],
       },
       { type: 'fixed_direct_hp', value: -2 },
     ],
@@ -1446,9 +1390,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 340 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 340 }],
       },
       { type: 'fixed_direct_hp', value: -2 },
     ],
@@ -1465,9 +1407,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -1484,9 +1424,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 65 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 65 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -1531,9 +1469,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'consumedHp', value: 180 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'consumedHp', value: 180 }],
       },
       { type: 'heal', value: 5 },
       { type: 'status', target: '元気増加無効', value: 2 },
@@ -1551,9 +1487,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'consumedHp', value: 220 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'consumedHp', value: 220 }],
       },
       { type: 'heal', value: 6 },
       { type: 'status', target: '元気増加無効', value: 2 },
@@ -1637,30 +1571,24 @@ export const data = [
     id: 2309040,
     name: 'これでばっちり',
     description: '',
-    trigger: 'after_use_card',
+    trigger: 'after_play_card',
     condition: 'card_contains_effect==heal',
     effects: [
       {
         type: 'status',
         target: '好印象',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: -100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: -100 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 200 }],
       },
       { type: 'fixed_direct_hp', value: -5 },
     ],
@@ -1671,30 +1599,24 @@ export const data = [
     id: 2309041,
     name: 'これでばっちり+',
     description: '',
-    trigger: 'after_use_card',
+    trigger: 'after_play_card',
     condition: 'card_contains_effect==heal',
     effects: [
       {
         type: 'status',
         target: '好印象',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 70 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 70 }],
       },
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: -100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: -100 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 200 }],
       },
       { type: 'fixed_direct_hp', value: -5 },
     ],
@@ -1863,9 +1785,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 50 }],
       },
     ],
     limit: -1,
@@ -1960,8 +1880,7 @@ export const data = [
   {
     id: 4240512,
     name: '初星オブジェ（紫）',
-    description:
-      'ターン開始時、好調3ターン、スコア上昇量増加50%（4ターン）（1回）',
+    description: 'ターン開始時、好調3ターン、スコア上昇量増加50%（4ターン）（1回）',
     trigger: 'start_turn',
     condition: '',
     effects: [
@@ -1979,8 +1898,7 @@ export const data = [
   {
     id: 4240513,
     name: '初星ライト（オレンジ）',
-    description:
-      '好印象が増加後、好印象が10以上の場合、好印象+4、好印象の50%分スコア上昇',
+    description: '好印象が増加後、好印象が10以上の場合、好印象+4、好印象の50%分スコア上昇',
     trigger: 'increased_status:好印象',
     condition: '好印象>=10',
     effects: [
@@ -1988,9 +1906,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 50 }],
       },
     ],
     limit: -1,
@@ -2017,9 +1933,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
     ],
     limit: -1,
@@ -2045,17 +1959,14 @@ export const data = [
   {
     id: 4240622,
     name: '初星ライト（オレンジ）',
-    description:
-      'アクティブスキルカード使用時、好印象の170%分スコア上昇（3回）',
+    description: 'アクティブスキルカード使用時、好印象の170%分スコア上昇（3回）',
     trigger: 'before_play_card',
     condition: 'card_type==active',
     effects: [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 170 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 170 }],
       },
     ],
     limit: 3,
@@ -2074,8 +1985,7 @@ export const data = [
   {
     id: 4240711,
     name: '初星オブジェ（銀）',
-    description:
-      '消費体力減少効果のスキルカード使用時、集中+3、好調3ターン、体力消費3（3回）',
+    description: '消費体力減少効果のスキルカード使用時、集中+3、好調3ターン、体力消費3（3回）',
     trigger: 'before_play_card',
     condition: 'card_contains_effect==消費体力減少',
     effects: [
@@ -2135,8 +2045,7 @@ export const data = [
   {
     id: 4240812,
     name: '初星オブジェ（紫）',
-    description:
-      'ターン開始時、好調が6ターン以上の場合、好調6ターン、集中+6（1回）',
+    description: 'ターン開始時、好調が6ターン以上の場合、好調6ターン、集中+6（1回）',
     trigger: 'start_turn',
     condition: '好調>=6',
     effects: [
