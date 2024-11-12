@@ -260,7 +260,7 @@ export const data = [
       {
         type: 'score',
         value: 2,
-        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 1 }],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 1 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -277,7 +277,7 @@ export const data = [
       {
         type: 'score',
         value: 6,
-        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 1 }],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 1 }],
       },
       { type: 'fixed_direct_hp', value: -1 },
     ],
@@ -1264,7 +1264,7 @@ export const data = [
       {
         type: 'score',
         value: 3,
-        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 3 }],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 3 }],
       },
       { type: 'fixed_direct_hp', value: -2 },
     ],
@@ -1281,7 +1281,7 @@ export const data = [
       {
         type: 'score',
         value: 5,
-        options: [{ type: 'increase_by_factor', target: 'card_play_count', value: 3 }],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 3 }],
       },
     ],
     limit: 1,

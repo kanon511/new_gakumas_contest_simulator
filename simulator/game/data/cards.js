@@ -126,9 +126,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
     ],
     limit: 1,
@@ -147,9 +145,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 120 }],
       },
     ],
     limit: 1,
@@ -167,9 +163,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 100 }],
       },
     ],
     limit: 1,
@@ -187,9 +181,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 110 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 110 }],
       },
     ],
     limit: 1,
@@ -621,9 +613,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 60 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 60 }],
       },
     ],
     limit: 1,
@@ -642,9 +632,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 80 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 80 }],
       },
     ],
     limit: 1,
@@ -692,9 +680,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 150 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 150 }],
       },
     ],
     limit: 1,
@@ -712,9 +698,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 200 }],
       },
     ],
     limit: 1,
@@ -732,9 +716,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 110 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 110 }],
       },
     ],
     limit: 1,
@@ -752,9 +734,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 120 }],
       },
     ],
     limit: 1,
@@ -1208,9 +1188,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 190 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 190 }],
       },
     ],
     limit: 1,
@@ -1228,9 +1206,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 200 }],
       },
     ],
     limit: 1,
@@ -1392,9 +1368,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 80 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 80 }],
       },
       { type: 'status', target: 'やる気', value: 3 },
     ],
@@ -1413,9 +1387,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 120 }],
       },
       { type: 'status', target: 'やる気', value: 3 },
     ],
@@ -1464,9 +1436,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好調', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好調', value: 200 }],
       },
     ],
     limit: 1,
@@ -1484,9 +1454,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好調', value: 250 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好調', value: 250 }],
       },
     ],
     limit: 1,
@@ -1505,9 +1473,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
       { type: 'status', target: 'やる気', value: 2 },
     ],
@@ -1527,9 +1493,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 70 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 70 }],
       },
       { type: 'status', target: 'やる気', value: 3 },
     ],
@@ -1738,16 +1702,12 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor-1', target: 'やる気', value: 1.5 },
-        ],
+        options: [{ type: 'increase_by_factor-1', target: 'やる気', value: 1.5 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 40 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 40 }],
       },
       { type: 'status', target: '消費体力削減', value: 1 },
     ],
@@ -1766,16 +1726,12 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor-1', target: 'やる気', value: 1.5 },
-        ],
+        options: [{ type: 'increase_by_factor-1', target: 'やる気', value: 1.5 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
       { type: 'status', target: '消費体力削減', value: 1 },
     ],
@@ -1794,9 +1750,7 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 3 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 3 }],
       },
     ],
     limit: 1,
@@ -1814,9 +1768,7 @@ export const data = [
       {
         type: 'genki',
         value: 4,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 4 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 4 }],
       },
     ],
     limit: 1,
@@ -2168,9 +2120,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 60 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 60 }],
       },
     ],
     limit: -1,
@@ -2189,9 +2139,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 80 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 80 }],
       },
     ],
     limit: -1,
@@ -2210,9 +2158,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 40 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 40 }],
       },
     ],
     limit: 1,
@@ -2231,9 +2177,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 70 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 70 }],
       },
     ],
     limit: 1,
@@ -2251,16 +2195,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 130 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 130 }],
       },
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: -50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: -50 }],
       },
     ],
     limit: 1,
@@ -2278,16 +2218,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 180 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 180 }],
       },
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: -50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: -50 }],
       },
     ],
     limit: 1,
@@ -2306,9 +2242,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 200 }],
       },
       { type: 'status', target: '消費体力増加', value: 2 },
     ],
@@ -2328,9 +2262,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 250 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 250 }],
       },
       { type: 'status', target: '消費体力増加', value: 2 },
     ],
@@ -2349,9 +2281,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 90 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 90 }],
       },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
     ],
@@ -2370,9 +2300,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 120 }],
       },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
     ],
@@ -3286,9 +3214,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 120 }],
       },
     ],
     limit: 1,
@@ -3307,9 +3233,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 160 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 160 }],
       },
     ],
     limit: 1,
@@ -3394,9 +3318,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 250 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 250 }],
       },
     ],
     limit: 1,
@@ -3415,9 +3337,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 350 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 350 }],
       },
     ],
     limit: 1,
@@ -3466,9 +3386,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 100 }],
       },
     ],
     limit: 1,
@@ -3487,9 +3405,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 140 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 140 }],
       },
     ],
     limit: 1,
@@ -3795,9 +3711,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 90 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 90 }],
       },
     ],
     limit: 1,
@@ -3816,9 +3730,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
     ],
     limit: 1,
@@ -4047,9 +3959,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 100 }],
       },
     ],
     limit: 1,
@@ -4068,9 +3978,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 170 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 170 }],
       },
     ],
     limit: 1,
@@ -4089,9 +3997,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 200 }],
       },
     ],
     limit: 1,
@@ -4110,9 +4016,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 300 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 300 }],
       },
     ],
     limit: 1,
@@ -4130,16 +4034,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 160 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 160 }],
       },
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: -100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: -100 }],
       },
     ],
     limit: 1,
@@ -4157,16 +4057,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 220 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 220 }],
       },
       {
         type: 'genki',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: -100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: -100 }],
       },
     ],
     limit: 1,
@@ -4223,16 +4119,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 100 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 150 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 150 }],
       },
     ],
     limit: 1,
@@ -4251,16 +4143,12 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 130 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 130 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'やる気', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'やる気', value: 200 }],
       },
     ],
     limit: 1,
@@ -4794,9 +4682,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 250 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 250 }],
       },
     ],
     limit: 1,
@@ -4814,9 +4700,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 260 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 260 }],
       },
     ],
     limit: 1,
@@ -5237,9 +5121,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好調', value: 200 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好調', value: 200 }],
       },
     ],
     limit: 1,
@@ -5258,9 +5140,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好調', value: 300 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好調', value: 300 }],
       },
     ],
     limit: 1,
@@ -5279,9 +5159,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 100 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 100 }],
       },
       { type: 'status', target: 'やる気', value: 2 },
     ],
@@ -5301,9 +5179,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 120 }],
       },
       { type: 'status', target: 'やる気', value: 3 },
     ],
@@ -5663,16 +5539,12 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor-1', target: 'やる気', value: 2.3 },
-        ],
+        options: [{ type: 'increase_by_factor-1', target: 'やる気', value: 2.3 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
       },
       { type: 'status', target: '消費体力削減', value: 1 },
     ],
@@ -5691,16 +5563,12 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor-1', target: 'やる気', value: 2.3 },
-        ],
+        options: [{ type: 'increase_by_factor-1', target: 'やる気', value: 2.3 }],
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 90 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 90 }],
       },
       { type: 'status', target: '消費体力削減', value: 1 },
     ],
@@ -5719,9 +5587,7 @@ export const data = [
       {
         type: 'heal',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'maxHp', value: 10 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'maxHp', value: 10 }],
       },
       { type: 'status', target: '好印象', value: 3 },
       { type: 'genki', value: 5 },
@@ -5742,9 +5608,7 @@ export const data = [
       {
         type: 'heal',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'maxHp', value: 10 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'maxHp', value: 10 }],
       },
       { type: 'status', target: '好印象', value: 5 },
       { type: 'genki', value: 10 },
@@ -5765,9 +5629,7 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 5 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 5 }],
       },
     ],
     limit: 1,
@@ -5785,9 +5647,7 @@ export const data = [
       {
         type: 'genki',
         value: 2,
-        options: [
-          { type: 'increase_by_factor', target: 'card_play_count', value: 5 },
-        ],
+        options: [{ type: 'increase_by_factor', target: 'cardPlayCount', value: 5 }],
       },
     ],
     limit: 1,
@@ -6222,17 +6082,13 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 120 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 120 }],
         condition: '好印象>=3',
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 50 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 50 }],
         condition: 'やる気>=3',
       },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
@@ -6252,17 +6108,13 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: '好印象', value: 150 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: '好印象', value: 150 }],
         condition: '好印象>=3',
       },
       {
         type: 'score',
         value: 0,
-        options: [
-          { type: 'increase_by_percentage', target: 'genki', value: 70 },
-        ],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 70 }],
         condition: 'やる気>=3',
       },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
