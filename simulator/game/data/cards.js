@@ -2528,7 +2528,7 @@ export const data = [
     plan: 'sense',
     cost: { type: 'hp', value: -4 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '集中', value: 3 },
       { type: 'status', target: '好調', value: 2 },
@@ -2544,7 +2544,7 @@ export const data = [
     plan: 'sense',
     cost: { type: 'hp', value: -4 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '集中', value: 4 },
       { type: 'status', target: '好調', value: 3 },
@@ -2871,7 +2871,7 @@ export const data = [
     plan: 'logic',
     cost: { type: 'hp', value: -5 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '好印象', value: 4 },
       { type: 'status', target: 'やる気', value: 3 },
@@ -2887,7 +2887,7 @@ export const data = [
     plan: 'logic',
     cost: { type: 'hp', value: -5 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '好印象', value: 5 },
       { type: 'status', target: 'やる気', value: 4 },
@@ -4229,7 +4229,7 @@ export const data = [
     plan: 'free',
     cost: { type: 'hp', value: -2 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'genki', value: 6 },
       { type: 'status', target: '低下状態無効', value: 1 },
@@ -4246,7 +4246,7 @@ export const data = [
     plan: 'free',
     cost: { type: 'hp', value: -2 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'genki', value: 6 },
       { type: 'status', target: '低下状態無効', value: 1 },
@@ -4816,7 +4816,7 @@ export const data = [
     plan: 'logic',
     cost: { type: 'hp', value: -8 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [{ type: 'status', target: '好印象', value: 8 }],
     limit: 1,
     card_cost: 0,
@@ -4829,7 +4829,7 @@ export const data = [
     plan: 'logic',
     cost: { type: 'hp', value: -8 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [{ type: 'status', target: '好印象', value: 10 }],
     limit: 1,
     card_cost: 0,
@@ -4944,7 +4944,7 @@ export const data = [
     plan: 'logic',
     cost: { type: 'direct_hp', value: -4 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '好印象', value: 3 },
       { type: 'status', target: 'やる気', value: 2 },
@@ -4965,7 +4965,7 @@ export const data = [
     plan: 'logic',
     cost: { type: 'direct_hp', value: -4 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '好印象', value: 4 },
       { type: 'status', target: 'やる気', value: 3 },
@@ -5228,7 +5228,7 @@ export const data = [
     plan: 'sense',
     cost: { type: 'hp', value: -5 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '集中', value: 3 },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
@@ -5244,7 +5244,7 @@ export const data = [
     plan: 'sense',
     cost: { type: 'hp', value: -5 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '集中', value: 4 },
       { type: 'status', target: '消費体力減少', value: 1 },
@@ -5423,7 +5423,7 @@ export const data = [
     plan: 'sense',
     cost: { type: 'hp', value: -6 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '好調', value: 3 },
       { type: 'status', target: '低下状態無効', value: 1 },
@@ -5440,7 +5440,7 @@ export const data = [
     plan: 'sense',
     cost: { type: 'hp', value: -6 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '好調', value: 5 },
       { type: 'status', target: '低下状態無効', value: 1 },
@@ -5825,7 +5825,7 @@ export const data = [
     plan: 'free',
     cost: { type: 'hp', value: -5 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '消費体力減少', value: 2 },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
@@ -5841,7 +5841,7 @@ export const data = [
     plan: 'free',
     cost: { type: 'hp', value: -4 },
     condition: '',
-    pre_effects: [{ type: 'レッスン開始時手札に入る', value: null }],
+    pre_effects: [{ type: 'レッスン開始時手札に入る', value: 0 }],
     effects: [
       { type: 'status', target: '消費体力減少', value: 4 },
       { type: 'status', target: 'スキルカード使用数追加', value: 1 },
