@@ -1730,7 +1730,7 @@ export const data = [
     name: '満開ペアヘアピン',
     description: '',
     trigger: 'before_play_card',
-    condition: 'turn_type==vocal&card_type==active',
+    condition: 'turn_type==visual&card_type==active',
     effects: [{ type: 'heal', value: 2 }],
     limit: 3,
     plan: 'free',
