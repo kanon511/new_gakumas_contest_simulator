@@ -43,7 +43,7 @@
 
 <script setup>
 import { onMounted, ref, watchEffect, computed, watch } from 'vue';
-import { inputStatus, status, criteria } from '@/components/store/store.js';
+import { inputStatus, status, criteria } from '@/store/store.js';
 import ParameterCalculator from '/simulator/game/calculator/ParameterCalculator.js';
 
 onMounted(() => {

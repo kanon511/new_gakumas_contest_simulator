@@ -1,11 +1,8 @@
 <template>
-  <v-container class="sp-pa-0">
+  <v-container>
     <v-row>
       <v-col cols="12" sm="6" md="5" lg="5" xl="5" xxl="5">
-        <SimulatorInput
-          @run-simulation="runSimulation"
-          :waitingFinishedRun="waitingFinishedRun"
-        />
+        <SimulatorInput @run-simulation="runSimulation" :waitingFinishedRun="waitingFinishedRun" />
         <div class="link-container mt-2">
           <v-btn
             target="_blank"
@@ -13,9 +10,7 @@
           >
             更新履歴
           </v-btn>
-          <v-btn target="_blank" href="https://gkcontest.ris.moe/">
-            @risりす
-          </v-btn>
+          <v-btn target="_blank" href="https://gkcontest.ris.moe/"> @risりす </v-btn>
         </div>
       </v-col>
       <v-col cols="12" sm="6" md="7" lg="7" xl="7" xxl="7">
@@ -26,10 +21,10 @@
 </template>
 
 <script setup>
-import SimulatorInput from '../modules/input/SimulatorInput.vue';
-import SimulatorOutput from '../modules/output/SimulatorOutput.vue';
+import SimulatorInput from '@/components/common/SimulatorInput.vue';
+import SimulatorOutput from '@/components/common/SimulatorOutput.vue';
 import { ref } from 'vue';
-import { getData } from '../store/store.js';
+import { getData } from '@/store/store.js';
 
 const simulationResult = ref(null);
 const waitingFinishedRun = ref(false);
@@ -89,16 +84,10 @@ async function runWebWorker(data) {
         const result = e.data;
 
         results.scoreList = results.scoreList.concat(result.scoreList);
-        if (
-          !results.minLog ||
-          results.minLog.finalScore > result.minLog.finalScore
-        ) {
+        if (!results.minLog || results.minLog.finalScore > result.minLog.finalScore) {
           results.minLog = result.minLog;
         }
-        if (
-          !results.maxLog ||
-          results.maxLog.finalScore < result.maxLog.finalScore
-        ) {
+        if (!results.maxLog || results.maxLog.finalScore < result.maxLog.finalScore) {
           results.maxLog = result.maxLog;
         }
         if (completedWorkers == rndLogNumber) {
@@ -112,9 +101,7 @@ async function runWebWorker(data) {
       };
 
       worker.onerror = (error) => {
-        console.log(
-          `Worker error: ${error.message} in ${error.filename} at line ${error.lineno}`
-        );
+        console.log(`Worker error: ${error.message} in ${error.filename} at line ${error.lineno}`);
         worker.terminate();
       };
     }

@@ -4,7 +4,7 @@
       v-model:selectedCard="selectedCards[0]"
       :availableSelectedCard="availableSelectedCards[0]"
       :cardList="props.uniqueCards"
-      autoSelect="true"
+      :autoSelect="true"
     />
     <CardSelector
       :cardList="props.normalCards"
@@ -18,7 +18,7 @@
 </template>
 
 <script setup>
-import { defineModel, defineProps, ref, watch, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import CardSelector from './selector/CardSelector.vue';
 
 const cost = ref(0);

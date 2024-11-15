@@ -5,66 +5,37 @@
       variant="text"
       @click="dialog = true"
     >
-      <v-img
-        v-if="selectedPItem"
-        :src="`${baseImageURL}/pItems/pItem_${selectedPItem.id}.webp`"
-        class="pItem-image"
-        contain
-      ></v-img>
+      <v-tooltip v-if="selectedPItem" location="top">
+        <template v-slot:activator="{ props }">
+          <v-img
+            v-bind="props"
+            :src="`${baseImageURL}/pItems/pItem_${selectedPItem.id}.webp`"
+            class="pItem-image"
+            contain
+          ></v-img>
+        </template>
+        <PItemDescription :entity="selectedPItem" />
+      </v-tooltip>
       <v-icon v-else class="placeholder-icon">mdi-plus</v-icon>
     </v-card>
-
-    <v-dialog v-model="dialog" scrollable max-width="600px">
-      <v-card>
-        <v-card-title>Pアイテムを選択</v-card-title>
-        <v-divider></v-divider>
-        <v-card-text>
-          <div class="pItem-grid">
-            <div
-              v-if="autoSelect != 'true'"
-              class="pItem-container"
-              @click="selectpItem(null)"
-            >
-              <v-icon class="pItem-option placeholder-icon unselected-container"
-                >mdi-plus</v-icon
-              >
-            </div>
-            <div
-              v-for="pItem in props.pItemList"
-              :key="pItem.id"
-              class="pItem-container"
-              @click="selectpItem(pItem)"
-            >
-              <v-tooltip location="top">
-                <template v-slot:activator="{ props }">
-                  <v-img
-                    v-bind="props"
-                    :src="`${baseImageURL}/pItems/pItem_${pItem.id}.webp`"
-                    class="pItem-option"
-                    contain
-                  ></v-img>
-                </template>
-                <p>{{ pItem.name }}</p>
-              </v-tooltip>
-            </div>
-          </div>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn text @click="dialog = false">閉じる</v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-dialog>
+    <PItemDialog
+      :autoSelect="autoSelect"
+      :itemList="pItemList"
+      v-model:selectedItem="selectedPItem"
+      v-model:dialog="dialog"
+    />
   </div>
 </template>
 
 <script setup>
-import { ref, defineModel, defineProps, watch, onMounted } from 'vue';
-import { baseImageURL } from '@/components/store/constant.js';
+import { ref, watch, onMounted, computed } from 'vue';
+import { baseImageURL } from '@/store/constant.js';
+import PItemDescription from '../description/PItemDescription.vue';
+import PItemDialog from '../dialog/PItemDialog.vue';
 
 const props = defineProps({
   autoSelect: {
-    type: String,
+    type: Boolean,
   },
   pItemList: {
     type: Array,
@@ -84,11 +55,7 @@ onMounted(() => {
         return;
       }
     }
-    if (
-      props.autoSelect == 'true' &&
-      props.pItemList &&
-      props.pItemList.length > 0
-    ) {
+    if (props.autoSelect && props.pItemList && props.pItemList.length > 0) {
       selectedPItem.value = props.pItemList[0];
     }
   };
@@ -103,6 +70,12 @@ const selectpItem = (pItem) => {
 </script>
 
 <style scoped>
+.v-tooltip :deep(.v-overlay__content) {
+  background-color: rgba(250, 250, 250, 0.9) !important;
+  border: solid 1px black;
+  color: black;
+}
+
 .pItem-box {
   width: 60px;
   height: 60px;

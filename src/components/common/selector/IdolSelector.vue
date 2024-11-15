@@ -58,22 +58,20 @@
 
 <script setup>
 import { ref, watch, onMounted } from 'vue';
-import { baseImageURL } from '@/components/store/constant.js';
+import { baseImageURL } from '@/store/constant.js';
 import {
   contestPlan,
   selectedPIdol,
   sameSelectedPIdols as selectedPIdolEpisodes,
   pIdolCharacterMap,
   pIdolList,
-} from '@/components/store/store.js';
+} from '@/store/store.js';
 
 const availablePIdolList = ref([]);
 onMounted(() => {
   const selectedPIdolWatch = () => {
     if (selectedPIdol.value) {
-      selectedPIdolEpisodes.value = pIdolCharacterMap.get(
-        selectedPIdol.value.character_id
-      );
+      selectedPIdolEpisodes.value = pIdolCharacterMap.get(selectedPIdol.value.character_id);
     }
   };
   watch(selectedPIdol, selectedPIdolWatch);
@@ -81,19 +79,14 @@ onMounted(() => {
 
   const contestPlanWatch = () => {
     // コンテストプランとアイドルプランが一致しないなら選択を外す
-    if (
-      contestPlan.value != 'free' &&
-      contestPlan.value != selectedPIdol.value?.plan
-    ) {
+    if (contestPlan.value != 'free' && contestPlan.value != selectedPIdol.value?.plan) {
       selectedPIdol.value = null;
     }
     // コンテストプランによって選択できるキャラクターを制限する
     if (contestPlan.value == 'free') {
       availablePIdolList.value = pIdolList;
     } else {
-      availablePIdolList.value = pIdolList.filter(
-        (v) => v.plan == contestPlan.value
-      );
+      availablePIdolList.value = pIdolList.filter((v) => v.plan == contestPlan.value);
     }
   };
   watch(contestPlan, contestPlanWatch);

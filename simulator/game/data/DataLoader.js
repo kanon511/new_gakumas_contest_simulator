@@ -38,6 +38,7 @@ export default class DataLoader {
     if (user_custom_data.contest) {
       this.add_custom_data(this.contest_map, user_custom_data.contest, 'id');
     }
+    this.initialize = () => {};
   }
 
   static convert_to_map(data_array, key_field) {

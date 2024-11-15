@@ -1,51 +1,49 @@
 <template>
-  <v-container class="sp-pa-0">
-    <v-row>
-      <v-col cols="12">
-        <ContestSelector />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <StatusInputor />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <CompositionBuilder />
-      </v-col>
-    </v-row>
-    <v-row>
-      <v-col cols="12">
-        <v-btn
-          :loading="props.waitingFinishedRun"
-          color="green-darken-2"
-          height="48"
-          block
-          variant="elevated"
-          @click="sendEvent"
-        >
-          実行
-        </v-btn>
-      </v-col>
-    </v-row>
-    <v-row class="sp-hide">
-      <v-col>
-        <v-text-field
-          v-model="copyText"
-          label="編成URL"
-          readonly
-          variant="solo"
-          prepend-inner-icon="mdi-content-copy"
-          @click:prependInner="copyToClipboard"
-        ></v-text-field>
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-row>
+    <v-col cols="12">
+      <ContestSelector />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12">
+      <StatusInputor />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12">
+      <CompositionBuilder />
+    </v-col>
+  </v-row>
+  <v-row>
+    <v-col cols="12">
+      <v-btn
+        :loading="props.waitingFinishedRun"
+        color="green-darken-2"
+        height="48"
+        block
+        variant="elevated"
+        @click="sendEvent"
+      >
+        実行
+      </v-btn>
+    </v-col>
+  </v-row>
+  <v-row class="sp-hide">
+    <v-col>
+      <v-text-field
+        v-model="copyText"
+        label="編成URL"
+        readonly
+        variant="solo"
+        prepend-inner-icon="mdi-content-copy"
+        @click:prependInner="copyToClipboard"
+      ></v-text-field>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup>
-import { ref, defineEmits, defineProps } from 'vue';
+import { ref } from 'vue';
 import ContestSelector from './ContestSelector.vue';
 import StatusInputor from './StatusInputor.vue';
 import CompositionBuilder from './CompositionBuilder.vue';

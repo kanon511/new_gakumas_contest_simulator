@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref, defineProps, computed, watch, watchEffect } from 'vue';
+import { onMounted, ref, computed, watch, watchEffect } from 'vue';
 import CardDeck from './CardDeck.vue';
 import DataLoader from '/simulator/game/data/DataLoader';
 import {
@@ -23,12 +23,16 @@ import {
   samePIdolCards,
   selectedCardsList,
   availableSelectedCardsList,
-} from '@/components/store/store.js';
+} from '@/store/store.js';
+import CardDialog from './dialog/CardDialog.vue';
+
+const dialog = ref(true);
+const selectedItem = ref(null);
+const autoSelect = ref(false);
 
 const cardMap = DataLoader.cardMap;
 
 const normalCards = ref(Array.from(DataLoader.cardMap).map((item) => item[1]));
-
 onMounted(() => {
   const pIdolPlanWatch = () => {
     normalCards.value = Array.from(DataLoader.cardMap)
@@ -78,9 +82,7 @@ onMounted(() => {
       }
     });
     result.forEach(
-      (bool, index) =>
-        (availableSelectedCardsList.value[Math.floor(index / 6)][index % 6] =
-          bool)
+      (bool, index) => (availableSelectedCardsList.value[Math.floor(index / 6)][index % 6] = bool)
     );
   };
   watch(selectedCardsList, cardAvailableWatch, { deep: true });

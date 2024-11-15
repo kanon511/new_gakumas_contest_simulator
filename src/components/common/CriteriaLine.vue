@@ -16,16 +16,14 @@
 </template>
 
 <script setup>
-import { defineProps } from "vue";
-// eslint-disable-next-line no-unused-vars
-const props = defineProps(["vocal", "dance", "visual"]);
+const props = defineProps(['vocal', 'dance', 'visual']);
 </script>
 
 <style scoped>
 .parent {
   width: calc(100% - 12px);
   margin: 0 auto;
-  overflow: hidden; 
+  overflow: hidden;
   display: flex;
   text-align: center;
   font-size: 12px;
@@ -35,19 +33,19 @@ const props = defineProps(["vocal", "dance", "visual"]);
   background-color: gray;
 }
 .vocal {
-  color: #B71C1C;
+  color: #b71c1c;
 }
 .vocal .line {
   background-color: #ff3366;
 }
 .dance {
-  color: #0D47A1;
+  color: #0d47a1;
 }
 .dance .line {
   background-color: #0066ff;
 }
 .visual {
-  color: #F57F17;
+  color: #f57f17;
 }
 .visual .line {
   background-color: #ffcc00;

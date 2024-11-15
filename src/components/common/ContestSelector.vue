@@ -15,11 +15,7 @@
       <span>{{ item.raw.selectedTitle }}</span>
     </template>
     <template v-slot:item="{ item, props }">
-      <v-list-item
-        v-if="item.raw.type === 'item'"
-        v-bind="props"
-        :disabled="item.raw.disabled"
-      >
+      <v-list-item v-if="item.raw.type === 'item'" v-bind="props" :disabled="item.raw.disabled">
         <template v-slot:prepend>
           <v-img :src="item.raw.src" width="30" height="30" />
         </template>
@@ -31,26 +27,18 @@
         :dance="item.raw.dance"
         :visual="item.raw.visual"
       />
-      <v-list-subheader
-        v-else-if="item.raw.type === 'subheader'"
-        >{{ item.title }}</v-list-subheader
-      >
+      <v-list-subheader v-else-if="item.raw.type === 'subheader'">{{
+        item.title
+      }}</v-list-subheader>
     </template>
   </v-select>
-  <CriteriaLine
-    :vocal="criteria.vocal"
-    :dance="criteria.dance"
-    :visual="criteria.visual"
-  />
+  <CriteriaLine :vocal="criteria.vocal" :dance="criteria.dance" :visual="criteria.visual" />
 </template>
 
 <script setup>
 import CriteriaLine from '../common/CriteriaLine.vue';
-import {
-  contestStageId,
-  criteria,
-  contestList,
-} from '@/components/store/store.js';
+import { contestStageId, criteria, contestList } from '@/store/store.js';
+import { baseImageURL } from '@/store/constant.js';
 
 const selectList = contestList.reduce((acc, contest) => {
   acc.push({
@@ -68,11 +56,9 @@ const selectList = contestList.reduce((acc, contest) => {
       id: `${contest.id}:${index}`,
       type: 'item',
       title: `${stage.name}（${stage.turn}T）`,
-      selectedTitle: `${contest.name.replace('コンテスト', '')}  ${
-        stage.name
-      }（${stage.turn}T）`,
+      selectedTitle: `${contest.name.replace('コンテスト', '')}  ${stage.name}（${stage.turn}T）`,
       plan: stage.plan,
-      src: `${__BASE_IMAGE_URL__}/icons/icon_${stage.plan ?? 'free'}.png`,
+      src: `${baseImageURL}/icons/icon_${stage.plan ?? 'free'}.png`,
     });
   });
   return acc;

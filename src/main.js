@@ -1,23 +1,17 @@
-import { createApp } from "vue";
-import App from "./App.vue";
-import vuetify from "./plugins/vuetify";
-import { loadFonts } from "./plugins/webfontloader";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+/**
+ * main.js
+ *
+ * Bootstraps Vuetify and other plugins then mounts the App`
+ */
 
-loadFonts();
+// Plugins
+import { registerPlugins } from '@/plugins';
 
-// import { library } from "@fortawesome/fontawesome-svg-core";
-// import { fas } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-
-// library.add(fas);
-
-const app = createApp(App);
-
-// app.component("font-awesome-icon", FontAwesomeIcon);
+// Components
+import App from './App.vue';
 
 let isAlertError = true;
-window.addEventListener("error", (event) => {
+window.addEventListener('error', (event) => {
   if (isAlertError) {
     isAlertError = false;
     alert(event.message);
@@ -26,4 +20,11 @@ window.addEventListener("error", (event) => {
   }
 });
 
-app.use(vuetify).mount("#app");
+// Composables
+import { createApp } from 'vue';
+
+const app = createApp(App);
+
+registerPlugins(app);
+
+app.mount('#app');

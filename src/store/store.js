@@ -1,15 +1,13 @@
 import { ref, watchEffect, computed, watch } from 'vue';
-import DataLoader from '/simulator/game/data/DataLoader';
+import DataLoader from '/simulator/game/data/DataLoader.js';
 
 DataLoader.initialize();
 
-export const contestList = Array.from(DataLoader.contest_map).map(
-  (item) => item[1]
-).reverse();
+export const contestList = Array.from(DataLoader.contest_map)
+  .map((item) => item[1])
+  .reverse();
 
-export const pIdolList = Array.from(DataLoader.p_idol_map).map(
-  (item) => item[1]
-);
+export const pIdolList = Array.from(DataLoader.p_idol_map).map((item) => item[1]);
 
 export const pIdolCharacterMap = new Map();
 pIdolList.forEach((pIdol) => {
@@ -57,10 +55,7 @@ if (statusParam) {
   inputStatus.value.dance = correct(qStatus[1], inputStatus.value.dance);
   inputStatus.value.visual = correct(qStatus[2], inputStatus.value.visual);
   inputStatus.value.hp = correct(qStatus[3], inputStatus.value.hp);
-  inputStatus.value.supportBonus = correct(
-    qStatus[4],
-    inputStatus.value.supportBonus
-  );
+  inputStatus.value.supportBonus = correct(qStatus[4], inputStatus.value.supportBonus);
 }
 /* コンテスト */
 export const contestStageId = ref(null);
@@ -164,10 +159,9 @@ if (stagePItemIdParam) {
 
 export const pIdolPItems = computed(() => {
   if (selectedPIdol.value) {
-    return [
-      selectedPIdol.value.unique_pItem_id,
-      selectedPIdol.value.unique_pItem_id + 1,
-    ].map((id) => DataLoader.getPItemById(id));
+    return [selectedPIdol.value.unique_pItem_id, selectedPIdol.value.unique_pItem_id + 1].map(
+      (id) => DataLoader.getPItemById(id)
+    );
   }
   return [];
 });
@@ -213,28 +207,10 @@ export const getData = () => {
   });
   switch (selectedPIdol.value.plan) {
     case 'sense':
-      skillCardIds.push(
-        1010010,
-        1010010,
-        1011010,
-        1011020,
-        1021010,
-        1021010,
-        1021020,
-        1021020
-      );
+      skillCardIds.push(1010010, 1010010, 1011010, 1011020, 1021010, 1021010, 1021020, 1021020);
       break;
     case 'logic':
-      skillCardIds.push(
-        1012010,
-        1012020,
-        1020010,
-        1020010,
-        1022010,
-        1022010,
-        1022020,
-        1022020
-      );
+      skillCardIds.push(1012010, 1012020, 1020010, 1020010, 1022010, 1022010, 1022020, 1022020);
       break;
   }
   const pItemIds = [];
@@ -297,17 +273,9 @@ watchEffect(() => {
   );
   urlParams.set(
     'cards',
-    selectedCardsList.value
-      .map((deck) => deck.map((card) => card?.id).join(':'))
-      .join('_')
+    selectedCardsList.value.map((deck) => deck.map((card) => card?.id).join(':')).join('_')
   );
-  urlParams.set(
-    'stage_p_items',
-    selectedStagePItems.value.map((pItem) => pItem?.id).join(':')
-  );
-  urlParams.set(
-    'p_items',
-    selectedIdolPItems.value.map((pItem) => pItem?.id).join(':')
-  );
+  urlParams.set('stage_p_items', selectedStagePItems.value.map((pItem) => pItem?.id).join(':'));
+  urlParams.set('p_items', selectedIdolPItems.value.map((pItem) => pItem?.id).join(':'));
   window.history.replaceState(null, null, '?' + urlParams.toString());
 });

@@ -1,7 +1,7 @@
 <template>
   <PItemSelector
     :pItemList="pIdolPItems"
-    autoSelect="true"
+    :autoSelect="true"
     v-model:selectedPItem="selectedIdolPItems[0]"
   />
   <PItemSelector
@@ -13,10 +13,10 @@
 </template>
 
 <script setup>
-import { onMounted, ref, watchEffect, computed, defineProps } from 'vue';
+import { onMounted, ref, watchEffect, computed } from 'vue';
 import PItemSelector from './selector/PItemSelector.vue';
 import DataLoader from '/simulator/game/data/DataLoader';
-import { selectedIdolPItems, pIdolPItems } from '@/components/store/store.js';
+import { selectedIdolPItems, pIdolPItems } from '@/store/store.js';
 
 const normalPItems = Array.from(DataLoader.p_item_map)
   .map((item) => item[1])

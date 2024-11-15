@@ -1,67 +1,79 @@
+# Vuetify (Default)
 
-## 構成
-<pre>
-├── score_dataset # コンテスト編成とそのスコアのデータセット
-│   ├── convert.py
-│   └── data
-│       ├── dataset.csv
-│       ├── dataset.js
-│       └── dataset.json
-│
-├── scripts # メインスクリプト
-│   ├── scripts.js # 過去の遺産
-│   ├── simulator # シミュレーターの本体
-│   │   ├── class
-│   │   │   ├── AutoContest.js
-│   │   │   ├── Calculator.js # 効果量と評価値の計算クラス
-│   │   │   ├── ConditionChecker.js # 発動条件チェッククラス
-│   │   │   ├── Contest.js
-│   │   │   ├── Deck.js # デッキ. ドロー処理など
-│   │   │   ├── PIdol.js # メインロジック
-│   │   │   ├── PIdolLog.js
-│   │   │   ├── PIdolStatus.js # ステータス効果
-│   │   │   ├── PItemManager.js
-│   │   │   └── TurnType.js 
-│   │   ├── data
-│   │   │   ├── contestData.js # コンテストデータ
-│   │   │   ├── pIdolData.js # Pアイドルデータ
-│   │   │   ├── pItemData.js # Pアイテムデータ
-│   │   │   └── skillCardData.js # スキルカードデータ
-│   │   └── run.js
-│   ├── util
-│   │   └── utility.js
-│   └── worker.js # 
-│
-└── src # GithubPages用
-</pre>
----
+This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
 
-## メモ（備忘録）
+## ❗️ Important Links
 
-### ごまかしてる項目
-* ターンタイプ（Vo/Da/Vi）のターン数と生成アルゴリズム
-  * 多分ターン数と審査基準比でターン数が決まる
-  * ターンごとの配色アルゴリズムもちょっと特殊なことをしていて、それで1Tの属性が確定するか決まってると思う
-* オートの挙動
-  * わからん
-  * 編成とスコアのデータセットを作って合わせに行きたい
-  * 未来視とどう付き合うか
-* ステータス効果
-  * モノによって、ターンが蓄積するもの(好調)、効果量が蓄積するもの(集中)、効果が独立して蓄積するもの（パラメータ上昇量・次のカードを発動）があって、ちゃんと定義したい。
-* 名称
-  * 元気をとりあえず'block'としているが、元気の方がいい?
-* 実行時間
-  * 作り直したときに実行時間が4倍ぐらいになり、2000回実行も1並列だと6秒ぐらいかかるようになってしまった。(3秒ぐらいが限度)
-    * とりあえずWebWorkerで並列させることで無理やり解決
+- 📄 [Docs](https://vuetifyjs.com/)
+- 🚨 [Issues](https://issues.vuetifyjs.com/)
+- 🏬 [Store](https://store.vuetifyjs.com/)
+- 🎮 [Playground](https://play.vuetifyjs.com/)
+- 💬 [Discord](https://community.vuetifyjs.com)
 
-### 未実装項目
-* 応援/トラブルの実装
-* メモリーアビリティの実装
-* デバフ系のステータス効果
-* アイドルの道にある特殊効果（廃棄札を山札にinなど）
+## 💿 Install
 
-### 放置してるバグ
-* ティーパーティで手札強化したときにティーパーティ自体も強化してる
-  * 現状関係ないので放置
-* ターン開始時に手札に入るが6枚以上あるとき6枚目以降は山札のトップに置かれる
-  * 現状関係ないので放置
+Set up your project using your preferred package manager. Use the corresponding command to install the dependencies:
+
+| Package Manager                                                | Command        |
+|---------------------------------------------------------------|----------------|
+| [yarn](https://yarnpkg.com/getting-started)                   | `yarn install` |
+| [npm](https://docs.npmjs.com/cli/v7/commands/npm-install)     | `npm install`  |
+| [pnpm](https://pnpm.io/installation)                          | `pnpm install` |
+| [bun](https://bun.sh/#getting-started)                        | `bun install`  |
+
+After completing the installation, your environment is ready for Vuetify development.
+
+## ✨ Features
+
+- 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
+- 🗃️ **State Management**: Integrated with [Pinia](https://pinia.vuejs.org/), the intuitive, modular state management solution for Vue.
+- 🚦 **Routing and Layouts**: Utilizes Vue Router for SPA navigation and vite-plugin-vue-layouts for organizing Vue file layouts. [Vue Router](https://router.vuejs.org/) | [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
+- ⚡ **Next-Gen Tooling**: Powered by Vite, experience fast cold starts and instant HMR (Hot Module Replacement). [Vite](https://vitejs.dev/)
+- 🧩 **Automated Component Importing**: Streamline your workflow with unplugin-vue-components, automatically importing components as you use them. [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
+
+These features are curated to provide a seamless development experience from setup to deployment, ensuring that your Vuetify application is both powerful and maintainable.
+
+## 💡 Usage
+
+This section covers how to start the development server and build your project for production.
+
+### Starting the Development Server
+
+To start the development server with hot-reload, run the following command. The server will be accessible at [http://localhost:3000](http://localhost:3000):
+
+```bash
+yarn dev
+```
+
+(Repeat for npm, pnpm, and bun with respective commands.)
+
+> Add NODE_OPTIONS='--no-warnings' to suppress the JSON import warnings that happen as part of the Vuetify import mapping. If you are on Node [v21.3.0](https://nodejs.org/en/blog/release/v21.3.0) or higher, you can change this to NODE_OPTIONS='--disable-warning=5401'. If you don't mind the warning, you can remove this from your package.json dev script.
+
+### Building for Production
+
+To build your project for production, use:
+
+```bash
+yarn build
+```
+
+(Repeat for npm, pnpm, and bun with respective commands.)
+
+Once the build process is completed, your application will be ready for deployment in a production environment.
+
+## 💪 Support Vuetify Development
+
+This project is built with [Vuetify](https://vuetifyjs.com/en/), a UI Library with a comprehensive collection of Vue components. Vuetify is an MIT licensed Open Source project that has been made possible due to the generous contributions by our [sponsors and backers](https://vuetifyjs.com/introduction/sponsors-and-backers/). If you are interested in supporting this project, please consider:
+
+- [Requesting Enterprise Support](https://support.vuetifyjs.com/)
+- [Sponsoring John on Github](https://github.com/users/johnleider/sponsorship)
+- [Sponsoring Kael on Github](https://github.com/users/kaelwd/sponsorship)
+- [Supporting the team on Open Collective](https://opencollective.com/vuetify)
+- [Becoming a sponsor on Patreon](https://www.patreon.com/vuetify)
+- [Becoming a subscriber on Tidelift](https://tidelift.com/subscription/npm/vuetify)
+- [Making a one-time donation with Paypal](https://paypal.me/vuetify)
+
+## 📑 License
+[MIT](http://opensource.org/licenses/MIT)
+
+Copyright (c) 2016-present Vuetify, LLC

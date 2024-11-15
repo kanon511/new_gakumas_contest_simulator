@@ -1,5 +1,6 @@
 .DS_Store
 node_modules
+_node_modules
 
 # local env files
 .env.local
@@ -28,3 +29,4 @@ trash/
 test/
 public/images/
 *TEMP*
+_src/
