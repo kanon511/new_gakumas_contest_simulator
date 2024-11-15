@@ -114,6 +114,7 @@ const select = (item) => {
 .scroller {
   margin: 0 auto;
 }
+
 .v-tooltip :deep(.v-overlay__content) {
   background-color: rgba(250, 250, 250, 0.9) !important;
   border: solid 1px black;
@@ -147,6 +148,7 @@ const select = (item) => {
 .item-option {
   width: 75px;
   height: 75px;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 400px) {

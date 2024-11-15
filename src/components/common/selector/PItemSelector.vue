@@ -96,6 +96,10 @@ const selectpItem = (pItem) => {
   height: 100%;
 }
 
+.pItem-image :deep(.v-img__img) {
+  pointer-events: none;
+}
+
 .placeholder-icon {
   font-size: 32px;
 }
@@ -122,11 +126,6 @@ const selectpItem = (pItem) => {
 .pItem-container:hover {
   transform: scale(1.08);
   opacity: 0.5;
-}
-
-.pItem-option {
-  width: 60px;
-  height: 60px;
 }
 
 .pItem-name {

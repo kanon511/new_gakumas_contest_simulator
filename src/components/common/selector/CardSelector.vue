@@ -102,6 +102,10 @@ onMounted(() => {
   height: 100%;
 }
 
+.card-image :deep(.v-img__img) {
+  pointer-events: none;
+}
+
 .placeholder-icon {
   font-size: 32px;
 }
@@ -130,10 +134,5 @@ onMounted(() => {
 .card-container.hover {
   transform: scale(1.08);
   opacity: 0.5;
-}
-
-.card-option {
-  width: 100%;
-  height: 100%;
 }
 </style>
