@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" scrollable width="100%" max-width="600px">
     <v-card>
-      <v-card-title>カードを選択</v-card-title>
+      <v-card-title>Pアイテムを選択</v-card-title>
       <v-divider></v-divider>
       <v-card-text>
         <div class="card-grid">
@@ -15,9 +15,6 @@
             @click="select(item)"
             @mouseenter="hoveredIndex = index"
             @mouseleave="hoveredIndex = null"
-            @touchstart="hoveredIndex = index"
-            @touchmove="hoveredIndex = index"
-            @touchend="hoveredIndex = null"
           >
             <v-img
               :src="`${baseImageURL}/pItems/pItem_${item.id}.webp`"

@@ -26,9 +26,6 @@
               @click="select(item)"
               @mouseenter="hoveredIndex = index"
               @mouseleave="hoveredIndex = null"
-              @touchstart="hoveredIndex = index"
-              @touchmove="hoveredIndex = index"
-              @touchend="hoveredIndex = null"
             >
               <v-img
                 :src="`${baseImageURL}/cards/card_${item.id}.webp`"
