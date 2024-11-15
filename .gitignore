@@ -24,7 +24,6 @@ pnpm-debug.log*
 *.log
 
 .vscode
-dist/
 trash/
 test/
 public/images/
