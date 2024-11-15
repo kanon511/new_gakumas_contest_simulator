@@ -638,6 +638,17 @@ export const data = [
     unique_pItem_id: 2310010,
   },
   {
+    id: 21101,
+    rarity: 'SSR',
+    episode_name: '一番星',
+    character_id: 111,
+    name: '十王星南',
+    plan: 'anomaly',
+    trend: '?',
+    unique_skillCard_id: 3211010,
+    unique_pItem_id: 2211010,
+  },
+  {
     id: 31101,
     rarity: 'SSR',
     episode_name: '小さな野望',

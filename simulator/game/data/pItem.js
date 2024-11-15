@@ -695,6 +695,30 @@ export const data = [
     limit: 3,
     plan: 'logic',
   },
+  {
+    id: 2211010,
+    name: 'みんなの憧れ+',
+    trigger: 'before_play_card',
+    condition: '指針==4',
+    effects: [
+      { type: 'score', value: 18 },
+      { type: 'genki', value: 9 },
+    ],
+    limit: 1,
+    plan: 'anomaly',
+  },
+  {
+    id: 2211011,
+    name: 'みんなの憧れ+',
+    trigger: 'before_play_card',
+    condition: '指針==4',
+    effects: [
+      { type: 'score', value: 18 },
+      { type: 'genki', value: 9 },
+    ],
+    limit: 1,
+    plan: 'anomaly',
+  },
   //  ## ##   ### ##             ## ##   ##  ###  ### ##   ### ##    ## ##   ### ##   #### ##
   // ##   ##   ##  ##           ##   ##  ##   ##   ##  ##   ##  ##  ##   ##   ##  ##  # ## ##
   // ####      ##  ##           ####     ##   ##   ##  ##   ##  ##  ##   ##   ##  ##    ##

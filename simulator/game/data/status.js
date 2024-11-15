@@ -97,6 +97,13 @@ export const data = [
   },
   {
     id: 1300010,
+    name: '全力値', // おそらくマントラみたいなもの？
+    valueType: 'number',
+    type: 'buff',
+    isDecay: false,
+  },
+  {
+    id: 1300011,
     name: '熱意',
     valueType: 'number',
     type: 'buff',

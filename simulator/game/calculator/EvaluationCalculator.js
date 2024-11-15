@@ -81,6 +81,7 @@ export class EvaluationCalculator {
         return -100;
       case '指針':
       case '熱意':
+      case '全力値':
         return 0;
       default:
         console.log(`${status.name}がないよ`);
