@@ -22,17 +22,13 @@ export class EvaluationCalculator {
         return (
           player.turnManager.turnTypeList
             .slice(player.turnManager.currentTurn)
-            .map(
-              (turnType) => player.parameter.getScale(turnType) * status.value
-            )
+            .map((turnType) => player.parameter.getScale(turnType) * status.value)
             .reduce((total, current) => total + current, 0) * 1.2
         );
 
       case '好調':
         return (
-          (Math.log(
-            Math.min(player.turnManager.remainTurn, status.value) + 0.01
-          ) -
+          (Math.log(Math.min(player.turnManager.remainTurn, status.value) + 0.01) -
             Math.log(0.01)) *
           (15 + player.status.getValue('集中')) *
           player.parameter.getScale('average')
@@ -40,14 +36,10 @@ export class EvaluationCalculator {
 
       case '不調':
         return player.turnManager.turnTypeList
-          .slice(
-            player.turnManager.currentTurn,
-            player.turnManager.currentTurn + status.value
-          )
+          .slice(player.turnManager.currentTurn, player.turnManager.currentTurn + status.value)
           .map(
             (turnType) =>
-              player.parameter.getScale(turnType) *
-              -(10 + player.status.getValue('集中'))
+              player.parameter.getScale(turnType) * -(10 + player.status.getValue('集中'))
           )
           .reduce((total, current) => total + current, 0);
 
@@ -61,19 +53,15 @@ export class EvaluationCalculator {
 
       case '好印象':
         return (
-          this.calc_good_impression_score(
-            status.value,
-            player.turnManager.remainTurn
-          ) * player.parameter.getScale('average')
+          this.calc_good_impression_score(status.value, player.turnManager.remainTurn) *
+          player.parameter.getScale('average')
         );
 
       case 'パラメータ上昇量増加':
         return status.valueList
           .map(
             (item) =>
-              ((Math.min(player.turnManager.remainTurn, item.turn) *
-                item.value) /
-                100) *
+              ((Math.min(player.turnManager.remainTurn, item.turn) * item.value) / 100) *
               10 *
               player.parameter.getScale('average')
           )
@@ -91,7 +79,9 @@ export class EvaluationCalculator {
       case '元気増加無効':
       case '消費体力追加':
         return -100;
-
+      case '指針':
+      case '熱意':
+        return 0;
       default:
         console.log(`${status.name}がないよ`);
         return 0;
@@ -116,18 +106,14 @@ export class EvaluationCalculator {
         return player.turnManager.turnTypeList
           .slice(player.turnManager.currentTurn)
           .map(
-            (turnType) =>
-              player.parameter.getScale(turnType) *
-              (4 + player.status.getValue('集中'))
+            (turnType) => player.parameter.getScale(turnType) * (4 + player.status.getValue('集中'))
           )
           .reduce((total, current) => total + current, 0);
       case 'アクティブスキルカード使用時、パラメータ+5':
         return player.turnManager.turnTypeList
           .slice(player.turnManager.currentTurn)
           .map(
-            (turnType) =>
-              player.parameter.getScale(turnType) *
-              (5 + player.status.getValue('集中'))
+            (turnType) => player.parameter.getScale(turnType) * (5 + player.status.getValue('集中'))
           )
           .reduce((total, current) => total + current, 0);
       case 'ターン終了時スコア+4':
@@ -137,9 +123,7 @@ export class EvaluationCalculator {
             player.turnManager.currentTurn + (status.value?.turn ?? 0 + 1)
           )
           .map(
-            (turnType) =>
-              player.parameter.getScale(turnType) *
-              (4 + player.status.getValue('集中'))
+            (turnType) => player.parameter.getScale(turnType) * (4 + player.status.getValue('集中'))
           )
           .reduce((total, current) => total + current, 0);
       case 'アクティブスキルカード使用時集中+1':
@@ -150,9 +134,7 @@ export class EvaluationCalculator {
       case 'ターン終了時、集中が3以上の場合、集中+2':
         return player.turnManager.turnTypeList
           .slice(player.turnManager.currentTurn)
-          .map(
-            (turnType, i) => player.parameter.getScale(turnType) * (i * 2 + 1)
-          )
+          .map((turnType, i) => player.parameter.getScale(turnType) * (i * 2 + 1))
           .reduce((total, current) => total + current, 0);
       case 'メンタルスキルカード使用時好印象+1':
         return player.turnManager.turnTypeList
@@ -172,9 +154,7 @@ export class EvaluationCalculator {
       case 'ターン終了時、好印象が3以上の場合、好印象+3':
         return player.turnManager.turnTypeList
           .slice(player.turnManager.currentTurn)
-          .map(
-            (turnType, i) => player.parameter.getScale(turnType) * (i * 3 + 1)
-          )
+          .map((turnType, i) => player.parameter.getScale(turnType) * (i * 3 + 1))
           .reduce((total, current) => total + current, 0);
       case 'スキルカード使用時、好印象の30%分パラメータ':
       case '好印象効果のスキルカード使用後、好印象の30%分のパラメータ':
@@ -182,9 +162,7 @@ export class EvaluationCalculator {
           .slice(player.turnManager.currentTurn)
           .map(
             (turnType) =>
-              player.parameter.getScale(turnType) *
-              player.status.getValue('好印象') *
-              0.3
+              player.parameter.getScale(turnType) * player.status.getValue('好印象') * 0.3
           )
           .reduce((total, current) => total + current, 0);
       case 'スキルカード使用時、好印象の50%分パラメータ':
@@ -193,9 +171,7 @@ export class EvaluationCalculator {
           .slice(player.turnManager.currentTurn)
           .map(
             (turnType) =>
-              player.parameter.getScale(turnType) *
-              player.status.getValue('好印象') *
-              0.5
+              player.parameter.getScale(turnType) * player.status.getValue('好印象') * 0.5
           )
           .reduce((total, current) => total + current, 0);
       case '元気効果のスキルカード使用後、好印象+1':
@@ -219,21 +195,17 @@ export class EvaluationCalculator {
       total += Math.ceil(this.calcPassiveEvaluation(status, player));
       if (isNaN(total)) {
         throw new Error(
-          `${
-            status.name
-          }でエラー: ${total}, ${player.turnManager.turnTypeList.join(',')}, ${
+          `${status.name}でエラー: ${total}, ${player.turnManager.turnTypeList.join(',')}, ${
             player.turnManager.currentTurn
-          }, ${player.parameter.vocal}, ${player.parameter.dance}, ${
-            player.parameter.visual
-          }, ${status.value}`
+          }, ${player.parameter.vocal}, ${player.parameter.dance}, ${player.parameter.visual}, ${
+            status.value
+          }`
         );
       }
     }
     for (const activeStatusEffects of statusMgr.activeStatusEffectMap.values()) {
       for (let i = activeStatusEffects.length - 1; 0 <= i; i--) {
-        total += Math.ceil(
-          this.calcActiveEvaluation(activeStatusEffects[i], player)
-        );
+        total += Math.ceil(this.calcActiveEvaluation(activeStatusEffects[i], player));
         if (isNaN(total)) {
           throw new Error(`${activeStatusEffects[i].name}でエラー: ${total}`);
         }
@@ -260,8 +232,7 @@ export class EvaluationCalculator {
         (1 -
           player.turnManager.currentTurn /
             (player.turnManager.turnCount + player.turnManager.extraTurn)) *
-        (Math.log(((player.hp + player.genki) / player.maxHp) * 10 + 0.2) -
-          Math.log(0.2))
+        (Math.log(((player.hp + player.genki) / player.maxHp) * 10 + 0.2) - Math.log(0.2))
     );
 
     // score

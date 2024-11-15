@@ -102,6 +102,8 @@ function parseSimulationLog(simulationLog) {
     } else if (log.type == 'use') {
       if (log.target == 'card') {
         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>スキルカード「${log.message}」</div><div class="log-block-content">`;
+      } else if (log.target == 'grow') {
+        htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-clone"></i>成長「${log.message}」</div><div class="log-block-content">`;
       } else if (log.target == 'pItem') {
         htmlString += `<div class="log-block"><div class="log-block-title"><i class="fa-solid fa-chess-rook"></i>Pアイテム「${log.message}」</div><div class="log-block-content">`;
       } else if (log.target == 'pDrink') {

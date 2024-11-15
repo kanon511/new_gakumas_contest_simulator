@@ -212,6 +212,9 @@ export const getData = () => {
     case 'logic':
       skillCardIds.push(1012010, 1012020, 1020010, 1020010, 1022010, 1022010, 1022020, 1022020);
       break;
+    case 'anomaly':
+      skillCardIds.push(1010010, 1010010, 1013010, 1013010, 1023010, 1023010, 1013020, 1013020);
+      break;
   }
   const pItemIds = [];
   selectedStagePItems.value.forEach((pItem) => {

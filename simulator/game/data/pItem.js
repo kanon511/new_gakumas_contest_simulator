@@ -1649,6 +1649,30 @@ export const data = [
     limit: 1,
     plan: 'logic',
   },
+  {
+    id: 2311010,
+    name: '新しい、私+',
+    trigger: 'after_play_card',
+    condition: 'card_type==active&指針==3',
+    effects: [
+      { type: 'score', value: 12 },
+      { type: 'heal', value: 6 },
+    ],
+    limit: 1,
+    plan: 'anomaly',
+  },
+  {
+    id: 2311011,
+    name: '新しい、私+',
+    trigger: 'after_play_card',
+    condition: 'card_type==active&指針==3',
+    effects: [
+      { type: 'score', value: 12 },
+      { type: 'heal', value: 6 },
+    ],
+    limit: 1,
+    plan: 'anomaly',
+  },
   //  ## ##    ## ##   ### ##             ## ##   ##  ###  ### ##   ### ##    ## ##   ### ##   #### ##
   // ##   ##  ##   ##   ##  ##           ##   ##  ##   ##   ##  ##   ##  ##  ##   ##   ##  ##  # ## ##
   // ####     ####      ##  ##           ####     ##   ##   ##  ##   ##  ##  ##   ##   ##  ##    ##

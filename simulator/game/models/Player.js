@@ -295,6 +295,7 @@ export default class Player extends Clone {
   triggerEvent(trigger) {
     const pItemEvents = this.pItemBundle.getEvents(trigger, this);
     const statusEvents = this.status.getEvents(trigger, this);
+    this.deck.triggerEvents(trigger, this, this.log);
     // Pアイテム実行
     for (let i = 0; i < pItemEvents.length; i++) {
       const event = pItemEvents[i];
@@ -445,6 +446,28 @@ export default class Player extends Clone {
           const _value = this.status.getValue('低下状態無効');
           this.log.add('effect', null, `低下状態無効：${_value + 1}→${_value}(-1)`);
         } else {
+          /* 暫定 */
+          if (target == '指針') {
+            const guideline = this.status.getValue(target);
+            const guidelineTexts = ['無し', '無し', '温存', '強気', '全力'];
+            if (guideline != value) {
+              // this.triggerEvent(`change_guideline:${value}`);
+              if (guideline == 2 && (value == 3 || value == 4)) {
+                const zeal = this.status.getValue('熱意');
+                this.status.add('熱意', 5);
+                this.log.add('effect', null, `熱意：${zeal}→${zeal + 5}(5)`);
+              }
+              this.status.add('指針', value);
+              this.log.add(
+                'effect',
+                null,
+                `指針：${guidelineTexts[guideline]}→${guidelineTexts[value]}`
+              );
+            } else {
+              this.log.add('effect', null, `指針：${guidelineTexts[guideline]}(変化なし)`);
+            }
+            return;
+          }
           const _value = this.status.getValue(target);
           this.status.add(target, value, options, this.phase);
           this.log.add('effect', null, `${target}：${_value}→${_value + value}(${value})`);

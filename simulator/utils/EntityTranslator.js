@@ -25,6 +25,14 @@ export default class EntityTranslator {
     free: 'フリー',
     sense: 'センス',
     logic: 'ロジック',
+    anomaly: 'アノマリー',
+  };
+  static guidelineTranslation = {
+    0: '無',
+    1: '無',
+    2: '温存',
+    3: '強気',
+    4: '全力',
   };
   static effectTypeTranslation = {
     score: 'スコア',
@@ -40,6 +48,7 @@ export default class EntityTranslator {
     upgrade: '手札強化',
     generate: '生成',
     extra_turn: '追加ターン',
+    cost: 'コスト',
   };
 
   static translateEffectType(type, target) {
@@ -60,6 +69,15 @@ export default class EntityTranslator {
 
   static translateTargetName(target) {
     return this.targetNameTranslation[target] ?? target;
+  }
+  static translateGrowth(growth) {
+    if (!growth) {
+      return '';
+    }
+    const trigger = this.translateTrigger(growth.trigger);
+    const condition = this.translateCondition(growth.condition);
+    const effects = growth.effects?.map((effect) => this.translateEffect(effect)) ?? '';
+    return `成長：${trigger}、${condition}なら、${effects.join('、')}`;
   }
   static translatePreEffect(preEffect) {
     if (!preEffect) {
@@ -86,7 +104,9 @@ export default class EntityTranslator {
     }
     const effects = card.effects?.map((effect) => this.translateEffect(effect)) ?? [];
     const preEffects = card.pre_effects?.map((effect) => this.translatePreEffect(effect)) ?? [];
+    const growths = card.growths?.map((effect) => this.translateGrowth(effect)) ?? [];
     return {
+      growths: growths,
       plan: this.cardPlanTranslation[card.plan],
       type: this.cardTypeTranslation[card.type],
       condition: this.translateCondition(card?.condition),
@@ -174,7 +194,11 @@ export default class EntityTranslator {
       return `${this.cardTypeTranslation[value]}カード`;
     }
     if (key == 'card_contains_effect') {
-      return `${this.effectTypeTranslation[value] ?? value}効果のカード`;
+      const [type, target] = value.split(':');
+      if (type == '指針' && target) {
+        return `${this.guidelineTranslation[target]}効果のカード`;
+      }
+      return `${this.effectTypeTranslation[type] ?? type}効果のカード`;
     }
     if (key == 'card_play_count_multiple_of') {
       return `使用したカード数が${value}の倍数`;
@@ -184,6 +208,9 @@ export default class EntityTranslator {
     }
     if (key == 'remain_turn') {
       return `残り${value}ターン`;
+    }
+    if (key == '指針') {
+      return `指針:${this.guidelineTranslation[value]}`;
     }
     return `${key}が${value}`;
   }

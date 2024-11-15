@@ -1,6 +1,7 @@
 <template>
   <div class="title">{{ card.name }}</div>
   <div v-for="effect in content.preEffects">{{ effect }}</div>
+  <div v-if="content.growths" v-for="growth in content.growths">{{ growth }}</div>
   <div v-if="content.condition">{{ content.condition }}なら使用可能</div>
   <div>・{{ content.cost }}</div>
   <div v-for="effect in content.effects">・{{ effect }}</div>

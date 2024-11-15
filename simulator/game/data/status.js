@@ -95,6 +95,14 @@ export const data = [
     type: 'buff',
     isDecay: false,
   },
+  {
+    id: 1300010,
+    name: '熱意',
+    valueType: 'number',
+    type: 'buff',
+    isDecay: true,
+    isDecay_amount: 'all',
+  },
 
   {
     id: 1001010,
@@ -412,6 +420,13 @@ export const data = [
         ],
       },
     ],
+    isDecay: false,
+  },
+  {
+    id: 9210020,
+    name: '指針',
+    valueType: 'toggle',
+    type: 'buff',
     isDecay: false,
   },
 ];

@@ -57,7 +57,7 @@ class ConditionItem {
   /**
    * 条件比較のためplayerからkeyのvalueを取得する
    * @param {String} key
-   * @param {Number} value
+   * @param {String} value
    * @param {Player} player
    */
   getValueOfKey(key, value, player) {
@@ -81,17 +81,19 @@ class ConditionItem {
       case 'card_type':
         return player.lastPlayCard?.type;
       case 'card_contains_effect':
-        return player.lastPlayCard?.effects.some(
-          (effect) => effect.target == value || effect.type == value,
-        )
+        const [type, target] = value.split(':');
+        return player.lastPlayCard?.effects.some((effect) => {
+          return (
+            (effect.target == type || effect.type == type) &&
+            (!target || player.status.getValue(type) == Number(target))
+          );
+        })
           ? value
           : -1;
       case 'card_play_count_multiple_of':
         return player.cardPlayCount % Number(value) == 0 ? value : -1;
       case 'current_turn_card_play_count_multiple_of':
-        return player.currentTurnCardPlayCount % Number(value) == 0
-          ? value
-          : -1;
+        return player.currentTurnCardPlayCount % Number(value) == 0 ? value : -1;
       case 'remain_turn':
         return player.turnManager.remainTurn;
       default:

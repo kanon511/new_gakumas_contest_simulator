@@ -2,6 +2,7 @@ import DataLoader from '../data/DataLoader.js';
 import { Clone, createRange, RandomGenerator } from '../../utils/helpers.js';
 import Card from './Card.js';
 import Player from './Player.js';
+import Condition from './Condition.js';
 
 /**
  * カード管理クラス
@@ -26,6 +27,7 @@ export default class Deck extends Clone {
     this.exhaustedPileIndexes = [];
     /** 乱数器 @type {RandomGenerator} */
     this.random = random;
+    this.growthEffectMap = new Map();
   }
 
   setRandom(random) {
@@ -43,6 +45,53 @@ export default class Deck extends Clone {
     }
   }
 
+  triggerEvents(trigger, player, log) {
+    const targets = this.growthEffectMap.get(trigger);
+    if (!targets) {
+      return [];
+    }
+    const remains = [];
+    for (let i = 0; i < targets.length; i++) {
+      const target = targets[i];
+      if (!target.condition || target.condition.check(player)) {
+        const targetCard = this.cards[target.cardIndex];
+        log.add('use', 'grow', targetCard.name);
+        target.effects.forEach((effect) => {
+          if (effect.type == 'score') {
+            targetCard.effects.forEach((cardEffect, index) => {
+              if (cardEffect.type == 'score') {
+                log.add(
+                  'effect',
+                  null,
+                  `スコア：${targetCard.effects[index].value}→${
+                    targetCard.effects[index].value + effect.value
+                  }(${effect.value})`
+                );
+                targetCard.effects[index].value += effect.value;
+              }
+            });
+          } else if (effect.type == 'cost') {
+            log.add(
+              'effect',
+              null,
+              `コスト：${targetCard.cost.value}→${
+                targetCard.cost.value - effect.value
+              }(${-effect.value})`
+            );
+            targetCard.cost.value -= effect.value;
+          }
+        });
+        log.add('end');
+        if (target.use()) {
+          remains.push(target);
+        }
+      } else {
+        remains.push(target);
+      }
+    }
+    this.growthEffectMap.set(trigger, remains);
+  }
+
   /**
    * Init a deck and apply pre-effect to player.
    * @param {Player} player - プレイヤー
@@ -53,9 +102,21 @@ export default class Deck extends Clone {
     const drawPileIndexes = [];
     const topDrawPileIndexes = [];
 
-    // 「レッスン開始時手札に入る」カードを手札に入れる
-    // 6枚目以降はデッキトップに置く
+    // preeffects
     for (let i = 0; i < initCardIndexes.length; i += 1) {
+      const growths = this.cards[initCardIndexes[i]]['growths'];
+      if (growths) {
+        growths.forEach((growth) => {
+          const trigger = growth.trigger;
+          if (!this.growthEffectMap.has(trigger)) {
+            this.growthEffectMap.set(trigger, []);
+          }
+          growth.setCardIndex([initCardIndexes[i]]);
+          this.growthEffectMap.get(trigger).push(growth);
+        });
+      }
+      // 「レッスン開始時手札に入る」カードを手札に入れる
+      // 6枚目以降はデッキトップに置く
       const pre_effects = this.cards[initCardIndexes[i]]['preEffects'];
       if (!pre_effects) {
         drawPileIndexes.push(initCardIndexes[i]);

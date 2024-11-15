@@ -18,6 +18,8 @@ export default class StatusEffectManager extends Clone {
     this.passiveStatusEffectMap = new Map();
     /** 特殊バフ/デバフや予約効果のトリガーマップ @type {Map<String, Array<ActiveStatusEffect>>} */
     this.activeStatusEffectMap = new Map();
+    //
+    // this.toggleEffectMap = new Map();
   }
 
   getType(name) {
@@ -30,10 +32,7 @@ export default class StatusEffectManager extends Clone {
       return 0;
     }
     if (statusEffect.valueType == 'list') {
-      return statusEffect.valueList.reduce(
-        (prev, crnt) => prev + crnt.value,
-        0
-      );
+      return statusEffect.valueList.reduce((prev, crnt) => prev + crnt.value, 0);
     } else {
       return statusEffect.value;
     }
@@ -70,9 +69,7 @@ export default class StatusEffectManager extends Clone {
         return statusEffect;
       }
     }
-    throw new Error(
-      `PStatus::load(): ステータス効果"${name}"のデータがありません`
-    );
+    throw new Error(`PStatus::load(): ステータス効果"${name}"のデータがありません`);
   }
 
   add(key, value, options, phase) {
@@ -91,26 +88,18 @@ export default class StatusEffectManager extends Clone {
             return;
           }
         }
-        const statusEffectValue = new StatusEffectValue(
-          turn,
-          limit,
-          value,
-          isSkipDecay
-        );
+        const statusEffectValue = new StatusEffectValue(turn, limit, value, isSkipDecay);
         statusEffect.valueList.push(statusEffectValue);
-      } else {
+      } else if (statusEffect.valueType == 'number') {
         if (statusEffect.value == 0) {
           statusEffect.isSkipDecay = isSkipDecay;
         }
         statusEffect.value += value;
+      } else if (statusEffect.valueType == 'toggle') {
+        statusEffect.value = value;
       }
     } else if (statusEffect instanceof ActiveStatusEffect) {
-      statusEffect.value = new StatusEffectValue(
-        turn,
-        limit,
-        value,
-        isSkipDecay
-      );
+      statusEffect.value = new StatusEffectValue(turn, limit, value, isSkipDecay);
       // console.log('effectssssss', statusEffect.value);
     }
   }
@@ -122,9 +111,7 @@ export default class StatusEffectManager extends Clone {
       return;
     }
     if (statusEffect.valueType == 'list') {
-      throw new Error(
-        'status::reduce: valueType == list no reduce ha kyokasareteimasen'
-      );
+      throw new Error('status::reduce: valueType == list no reduce ha kyokasareteimasen');
     }
     statusEffect.value -= value;
     if (statusEffect.value <= 0) {
@@ -246,11 +233,7 @@ export default class StatusEffectManager extends Clone {
     for (const activeStatusEffects of this.activeStatusEffectMap.values()) {
       for (let i = 0; i < activeStatusEffects.length; i++) {
         const statusEffect = activeStatusEffects[i];
-        console.log(
-          statusEffect.name,
-          statusEffect,
-          statusEffect.condition.conditionTree
-        );
+        console.log(statusEffect.name, statusEffect, statusEffect.condition.conditionTree);
       }
     }
   }
