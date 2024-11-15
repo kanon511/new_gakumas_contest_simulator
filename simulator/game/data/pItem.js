@@ -976,7 +976,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [{ type: 'increase_by_percentage', target: 'block', value: 90 }],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 90 }],
       },
       {
         type: 'score',
@@ -998,7 +998,7 @@ export const data = [
       {
         type: 'score',
         value: 0,
-        options: [{ type: 'increase_by_percentage', target: 'block', value: 100 }],
+        options: [{ type: 'increase_by_percentage', target: 'genki', value: 100 }],
       },
       {
         type: 'score',
