@@ -3,13 +3,11 @@
     <v-row>
       <v-col cols="12" sm="6" md="5" lg="5" xl="5" xxl="5">
         <SimulatorInput @run-simulation="runSimulation" :waitingFinishedRun="waitingFinishedRun" />
+        <div class="mt-2">
+          运行次数：<input type="number" v-model.number="totalRuns" class="status-input" />
+        </div>
         <div class="link-container mt-2">
-          <v-btn
-            target="_blank"
-            href="https://wikiwiki.jp/gakumas/%E3%82%B3%E3%83%B3%E3%83%86%E3%82%B9%E3%83%88%E3%82%B7%E3%83%9F%E3%83%A5%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC%E6%9B%B4%E6%96%B0%E5%B1%A5%E6%AD%B4"
-          >
-            更新履歴
-          </v-btn>
+          <v-btn target="_blank" href="https://katabami83.github.io/gakumas_contest_simulator/"> @katabami83 </v-btn>
           <v-btn target="_blank" href="https://gkcontest.ris.moe/"> @risりす </v-btn>
         </div>
       </v-col>
@@ -28,6 +26,8 @@ import { getData } from '@/store/store.js';
 
 const simulationResult = ref(null);
 const waitingFinishedRun = ref(false);
+
+let totalRuns = ref(1000);
 
 const runSimulation = async () => {
   if (waitingFinishedRun.value) {
@@ -61,8 +61,8 @@ async function runWebWorker(data) {
     if (navigator.hardwareConcurrency) {
       numWorkers = Math.min(navigator.hardwareConcurrency, 8);
     }
-    const totalRuns = 1000;
-    const runsPerWorker = Math.ceil(totalRuns / numWorkers);
+
+    const runsPerWorker = Math.ceil(totalRuns.value / numWorkers);
     const rndLogNumber = Math.floor(Math.random() * numWorkers);
 
     // let completedRuns = 0;

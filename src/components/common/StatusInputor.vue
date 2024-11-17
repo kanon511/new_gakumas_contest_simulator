@@ -33,7 +33,7 @@
     <!-- 4列目: 体力 & サポートボーナス -->
     <v-col cols="3" class="pa-0">
       <div class="status-block">
-        <p class="status-title green">体力</p>
+        <p class="status-title green">体力/加成</p>
         <input type="number" v-model.number="inputStatus.hp" class="status-input" />
         <input type="number" v-model.number="inputStatus.supportBonus" class="status-input" />
       </div>
