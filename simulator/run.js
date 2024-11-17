@@ -1,6 +1,8 @@
 import Player from './game/models/Player.js';
 import ContestAI from './ai/ContestAI.js';
 
+import AutoEvaluationData from './game/calculator/AutoEvaluation.js';
+
 import DataLoader from './game/data/DataLoader.js';
 import { deep_copy } from './utils/helpers.js';
 
@@ -42,7 +44,7 @@ export function run(data, isLog) {
     }
     ai.setPlayer(player);
 
-    const allActions = ai.simulate(3);
+    const allActions = ai.simulate(AutoEvaluationData.calculateTurnMapping[player.plan]);
     const bestActionPath = allActions.reduce(
       (best, current) => (current.score > best.score ? current : best),
       allActions[0]
@@ -73,9 +75,9 @@ export function run(data, isLog) {
 
     for (let actionIndex = 0; actionIndex < bestActionPath.actions.length; actionIndex++) {
       const action = bestActionPath.actions[actionIndex];
-      if (action[2] != currentTurn) {
-        break;
-      }
+      // if (action[2] != currentTurn) {
+      //   break;
+      // }
 
       player.log.add('show', null, '手札');
 

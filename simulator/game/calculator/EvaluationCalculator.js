@@ -1,6 +1,10 @@
 import ActiveStatusEffect from '../models/ActiveStatusEffect.js';
+import AutoEvaluationData from './AutoEvaluation.js';
 import PassiveStatusEffect from '../models/PassiveStatusEffect.js';
 import Player from '../models/Player.js';
+import EffectCalculator from './EffectCalculator.js';
+import Effect from '../models/Effect.js';
+import { effect } from 'vue';
 
 export class EvaluationCalculator {
   static calc_good_impression_score(n, k) {
@@ -96,104 +100,82 @@ export class EvaluationCalculator {
    * @returns
    */
   static calcActiveEvaluation(status, player) {
+    let total = AutoEvaluationData.get_trigger_evaluation(status, player);
     switch (status.name) {
-      case '次に使用するスキルカードの効果を発動':
-        return 500;
-      case '次に使用するアクティブスキルカードの効果を発動':
-        return 500;
       case 'アクティブスキルカード使用時固定元気+2':
-        return 50 * player.turnManager.remainTurn;
-      case 'アクティブスキルカード使用時、パラメータ+4':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map(
-            (turnType) => player.parameter.getScale(turnType) * (4 + player.status.getValue('集中'))
-          )
-          .reduce((total, current) => total + current, 0);
-      case 'アクティブスキルカード使用時、パラメータ+5':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map(
-            (turnType) => player.parameter.getScale(turnType) * (5 + player.status.getValue('集中'))
-          )
-          .reduce((total, current) => total + current, 0);
+          var effect = new Effect({ type: 'genki', value: 2 });
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
+      
       case 'ターン終了時スコア+4':
-        return player.turnManager.turnTypeList
-          .slice(
-            player.turnManager.currentTurn,
-            player.turnManager.currentTurn + (status.value?.turn ?? 0 + 1)
-          )
-          .map(
-            (turnType) => player.parameter.getScale(turnType) * (4 + player.status.getValue('集中'))
-          )
-          .reduce((total, current) => total + current, 0);
+      case 'アクティブスキルカード使用時、パラメータ+4':
+          var effect = new Effect({ type: 'parameter', value: 4 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
+      case 'アクティブスキルカード使用時、パラメータ+5':
+          var effect = new Effect({ type: 'parameter', value: 5 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
+      
       case 'アクティブスキルカード使用時集中+1':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i + 1))
-          .reduce((total, current) => total + current, 0);
+          var effect = new Effect({ type: '集中', value: 1 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
       case 'ターン終了時、集中が3以上の場合、集中+2':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i * 2 + 1))
-          .reduce((total, current) => total + current, 0);
-      case 'メンタルスキルカード使用時好印象+1':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i + 1))
-          .reduce((total, current) => total + current, 0);
-      case 'メンタルスキルカード使用時やる気+1':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i + 1))
-          .reduce((total, current) => total + current, 0);
+          var effect = new Effect({ type: '集中', value: 2 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
+      
       case 'ターン終了時、好印象+1':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i + 1))
-          .reduce((total, current) => total + current, 0);
+      case 'メンタルスキルカード使用時好印象+1':
+      case '元気効果のスキルカード使用後、好印象+1':
+          var effect = new Effect({ type: '好印象', value: 1 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player, true);
       case 'ターン終了時、好印象が3以上の場合、好印象+3':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i * 3 + 1))
-          .reduce((total, current) => total + current, 0);
+          var effect = new Effect({ type: '好印象', value: 3 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player, true);
+      
+      case 'メンタルスキルカード使用時やる気+1':
+          var effect = new Effect({ type: 'やる気', value: 1 });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
+
       case 'スキルカード使用時、好印象の30%分パラメータ':
       case '好印象効果のスキルカード使用後、好印象の30%分のパラメータ':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map(
-            (turnType) =>
-              player.parameter.getScale(turnType) * player.status.getValue('好印象') * 0.3
-          )
-          .reduce((total, current) => total + current, 0);
+          var effect = new Effect({
+            type: 'score',
+            value: 0,
+            options: [{ type: 'increase_by_percentage', target: '好印象', value: 30 }],
+          });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
       case 'スキルカード使用時、好印象の50%分パラメータ':
       case '好印象効果のスキルカード使用後、好印象の50%分のパラメータ':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map(
-            (turnType) =>
-              player.parameter.getScale(turnType) * player.status.getValue('好印象') * 0.5
-          )
-          .reduce((total, current) => total + current, 0);
-      case '元気効果のスキルカード使用後、好印象+1':
-        return player.turnManager.turnTypeList
-          .slice(player.turnManager.currentTurn)
-          .map((turnType, i) => player.parameter.getScale(turnType) * (i + 1))
-          .reduce((total, current) => total + current, 0);
+          var effect = new Effect({
+            type: 'score',
+            value: 0,
+            options: [{ type: 'increase_by_percentage', target: '好印象', value: 50 }],
+          });
+          effect.value = EffectCalculator.calcValue(effect, player);
+          return total * AutoEvaluationData.get_enchant_coefficient_evaluation(effect, player);
+
+      case '次に使用するスキルカードの効果を発動':
+      case '次に使用するアクティブスキルカードの効果を発動':
       case '好印象効果':
-        return 0;
       case '予約効果':
-        return 0;
+          return 0;
+
       default:
-        console.log(`${status.name}がないよ`);
-        return 0;
+          console.log(`${status.name}がないよ`);
+          return 0;
     }
   }
 
   static calcStatusEvaluation(statusMgr, player) {
     let total = 0;
     for (const [_, status] of statusMgr.passiveStatusEffectMap) {
-      total += Math.ceil(this.calcPassiveEvaluation(status, player));
+      total += Math.ceil(AutoEvaluationData.get_status_evaluation(status, player));
       if (isNaN(total)) {
         throw new Error(
           `${status.name}でエラー: ${total}, ${player.turnManager.turnTypeList.join(',')}, ${
@@ -222,32 +204,8 @@ export class EvaluationCalculator {
    */
   static calcEvaluation(player) {
     let total_evaluation = 0;
-    let unitValue = player.parameter.getScale('average');
-    const remainTurn = player.turnManager.remainTurn;
-    // hp
-    // genki
-    // total_evaluation += unitValue * (player.maxHp - (player.hp + player.genki)) * remainTurn * 0.1;
-    total_evaluation += Math.ceil(
-      unitValue *
-        2 *
-        (1 -
-          player.turnManager.currentTurn /
-            (player.turnManager.turnCount + player.turnManager.extraTurn)) *
-        (Math.log(((player.hp + player.genki) / player.maxHp) * 10 + 0.2) - Math.log(0.2))
-    );
-
-    // score
-    total_evaluation +=
-      player.score *
-      (0.8 +
-        (player.turnManager.currentTurn /
-          (player.turnManager.turnCount + player.turnManager.extraTurn)) *
-          0.2);
-    // remain_turn
-    total_evaluation += unitValue * remainTurn * remainTurn * 10;
-    //status
+    total_evaluation += AutoEvaluationData.get_basic_evaluation(player);
     total_evaluation += this.calcStatusEvaluation(player.status, player);
-
     return Math.ceil(total_evaluation);
   }
 }
