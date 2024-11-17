@@ -6400,7 +6400,7 @@ export default class AutoEvaluationData {
         }
 
         return player.score * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["score"]]["evaluation"]
-            * 3000 / (player.parameter.vocal + player.parameter.dance + player.parameter.visual) + 0.00009999999975
+            * 300 / (player.parameter.vocal + player.parameter.dance + player.parameter.visual) + 0.00009999999975
             + player.genki * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["genki"]]["evaluation"]
             + player.hp * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["hp"]]["evaluation"]
             + player.turnManager.extraTurn * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["extra_turn"]]["evaluation"]
