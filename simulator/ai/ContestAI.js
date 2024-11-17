@@ -23,10 +23,16 @@ export default class ContestAI {
 
   searchAllActions(player, depth, actionHistory) {
     if (depth === player.turnManager.currentTurn || player.isGameOver) {
+      var s = this.evaluate(player)
+      // console.log(player.turnManager.currentTurn);
+      // player.status.print();
+      // console.log(JSON.stringify(actionHistory));
+      // console.log(s);
+      // console.log("-----------------------------------------------------");
       return [
         {
           actions: actionHistory,
-          score: this.evaluate(player),
+          score: s,
         },
       ];
     }

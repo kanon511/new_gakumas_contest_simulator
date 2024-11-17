@@ -6399,6 +6399,13 @@ export default class AutoEvaluationData {
             rawRemainTurn = AutoEvaluation["maxRemainingTerm"];
         }
 
+        // console.log("score",player.score * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["score"]]["evaluation"]
+        //     * 300 / (player.parameter.vocal + player.parameter.dance + player.parameter.visual) + 0.00009999999975)
+        // console.log("genki",player.genki * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["genki"]]["evaluation"]);
+        // console.log("hp",player.hp * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["hp"]]["evaluation"]);
+        // console.log("extra_turn",player.turnManager.extraTurn * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["extra_turn"]]["evaluation"]);
+        // console.log("hand_card_count",player.deck.handCardIndexes.length * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["手牌数"]]["evaluation"]);
+
         return player.score * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["score"]]["evaluation"]
             * 300 / (player.parameter.vocal + player.parameter.dance + player.parameter.visual) + 0.00009999999975
             + player.genki * AutoEvaluation[this.jobNameToIdMapping[player.trend]]["evaluations"][rawRemainTurn][this.effectNameToIdMapping["genki"]]["evaluation"]
@@ -6431,18 +6438,21 @@ export default class AutoEvaluationData {
         if (status.isDecay){
             eva += AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping[status.name]]
-            ["evaluation"] * Math.min(status.value, remainTurn);
+            ["evaluation"] * Math.min(status.value, remainTurn) * status.value;
+            //console.log(status.name, eva);
         }
         else{
             eva += AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping[status.name]]
-            ["evaluation"] * remainTurn;
+            ["evaluation"] * status.value;
+            //console.log(status.name, eva);
         }
         
         if (status.name == "好調"){
             eva += AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping["好調_f"]]
-            ["evaluation"] * remainTurn;
+            ["evaluation"] * status.value ;
+            //console.log("好調_f", eva);
         }
 
         return eva;
@@ -6491,7 +6501,7 @@ export default class AutoEvaluationData {
         else{
             eva += AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping[status.type]]
-            ["evaluation"] * remainTurn *
+            ["evaluation"] * status.value *
             AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping[status.type]]
             ["examStatusEnchantCoefficientPermil"] / 1000;
@@ -6500,7 +6510,7 @@ export default class AutoEvaluationData {
         if (status.type == "好調"){
             eva += AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping["好調_f"]]
-            ["evaluation"] * remainTurn *
+            ["evaluation"] * status.value *
             AutoEvaluation[this.jobNameToIdMapping[player.trend]]
             ["evaluations"][rawRemainTurn][this.effectNameToIdMapping["好調_f"]]
             ["examStatusEnchantCoefficientPermil"] / 1000;

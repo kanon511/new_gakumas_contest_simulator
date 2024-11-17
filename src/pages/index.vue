@@ -58,8 +58,10 @@ const simulate = async () => {
 async function runWebWorker(data) {
   return new Promise((resolve) => {
     let numWorkers = 1;
-    if (navigator.hardwareConcurrency) {
-      numWorkers = Math.min(navigator.hardwareConcurrency, 8);
+    if (totalRuns.value > 100){
+      if (navigator.hardwareConcurrency) {
+        numWorkers = Math.min(navigator.hardwareConcurrency, 8);
+      }
     }
 
     const runsPerWorker = Math.ceil(totalRuns.value / numWorkers);
