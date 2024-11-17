@@ -1,5 +1,5 @@
 {
-  "name": "gakumas_contest_simulator",
+  "name": "new_gakumas_contest_simulator",
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
@@ -16,6 +16,7 @@
     "chart.js": "^4.4.6",
     "core-js": "^3.37.1",
     "gakumas_contest_simulator": "file:",
+    "new_gakumas_contest_simulator": "file:",
     "roboto-fontface": "*",
     "vue": "^3.4.31",
     "vue-chartjs": "^5.3.2",
