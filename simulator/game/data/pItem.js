@@ -2350,6 +2350,45 @@ export const data = [
     limit: 1,
     plan: 'sense',
   },
+  {
+    id: 4241121,
+    name: '初星バッチ（赤）',
+    description: '',
+    trigger: 'before_play_card',
+    condition: 'current_turn_card_play_count_multiple_of==2',
+    effects: [
+      { type: 'score', value: 2 },
+      { type: 'score', value: 2 },
+    ],
+    limit: 2,
+    plan: 'free',
+  },
+  {
+    id: 4241122,
+    name: '初星オブジェ（紫）',
+    description: '',
+    trigger: 'start_turn',
+    condition: 'turn==10',
+    effects: [
+      { type: 'status', target: '好調', value: 10 },
+      { type: 'status', target: '絶好調', value: 3 },
+    ],
+    limit: 1,
+    plan: 'sense',
+  },
+  {
+    id: 4241123,
+    name: '初星ライト（紫）',
+    description: '',
+    trigger: 'after_play_card',
+    condition: 'card_contains_effect==やる気',
+    effects: [
+      { type: 'genki', value: 1 },
+      { type: 'status', target: '好印象', value: 3 },
+    ],
+    limit: 3,
+    plan: 'logic',
+  },
   //   ####   ### ##    ## ##   ####              ### ##    ## ##     ##     ### ##
   //    ##     ##  ##  ##   ##   ##                ##  ##  ##   ##     ##     ##  ##
   //    ##     ##  ##  ##   ##   ##                ##  ##  ##   ##   ## ##    ##  ##
