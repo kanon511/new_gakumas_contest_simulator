@@ -2231,7 +2231,7 @@ export const skillCardData = [
             { type: 'draw', value: 2, delay: 1 },
         ],
         limit: -1,
-        card_cost: 105,
+        card_cost: 141,
         allow_duplicate: false,
     },
     /**
@@ -5850,7 +5850,7 @@ export const skillCardData = [
             { type: 'status', target: '好印象', value: 4, condition: 'block>=30' }, 
         ],
         limit: 1,
-        card_cost: 96,
+        card_cost: 126,
         allow_duplicate: false,
     },
 ];
