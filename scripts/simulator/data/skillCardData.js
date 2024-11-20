@@ -3604,7 +3604,7 @@ export const skillCardData = [
         id: 3300110,
         name: 'こうかい……？',
         type: 'active',
-        plan: 'free',
+        plan: 'logic',
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
@@ -3619,7 +3619,7 @@ export const skillCardData = [
         id: 3300111,
         name: 'こうかい……？+',
         type: 'active',
-        plan: 'free',
+        plan: 'logic',
         cost: { type: 'hp', value: -4 },
         condition: '',
         effects: [
