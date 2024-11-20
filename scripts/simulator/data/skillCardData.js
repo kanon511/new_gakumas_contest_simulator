@@ -2220,8 +2220,8 @@ export const skillCardData = [
         allow_duplicate: false,
     },
     {
-        id: 3012060,
-        name: 'きらきら紙吹雪',
+        id: 3012061,
+        name: 'きらきら紙吹雪+',
         type: 'active',
         plan: 'logic',
         cost: { type: 'status', target: 'やる気', value: -2 },
