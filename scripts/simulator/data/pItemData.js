@@ -2372,19 +2372,6 @@ const pItemData = [
     },
 
     {
-        id: 4241121,
-        name: '初星バッチ（赤）',
-        description: '',
-        activate_timing: 'before_use_card',
-        condition: 'usedCardTurnCountMultiple==2',
-        effects: [
-            { type: 'score', value: 2 },
-            { type: 'score', value: 2 },
-        ],
-        limit: 2,
-        plan: 'free',
-    },
-    {
         id: 4241122,
         name: '初星オブジェ（紫）',
         description: '',
