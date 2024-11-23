@@ -2285,6 +2285,10 @@ export class AutoEvaluationData {
             let [ ltype,n ] = type.slice(7).split('+')
             return Math.floor(this.get(IdolType,ltype,remainTurn,n,unitValue)*2.0)
         }
+        
+        if(type=='ターン開始時、好調+2'){
+            return Math.floor(this.get(IdolType,"extra_turn",remainTurn,1,unitValue))//
+        }
 
         if(autoId<=2&&type=='score'){
             unitValue*=(unitValue/10-1)/3+1 //主观臆断

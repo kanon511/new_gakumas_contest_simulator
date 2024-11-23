@@ -1147,6 +1147,30 @@ const pItemData = [
         plan: 'logic',
     },
     {
+        id: 2303040,
+        name: '免费爱情Max+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=5',
+        effects: [
+            { type: 'block', value: 6 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
+        id: 2303041,
+        name: '免费爱情Max+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=5',
+        effects: [
+            { type: 'block', value: 6 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
+    {
         id: 2304010,
         name: '内なる光の耳飾り',
         description: '',
@@ -1634,6 +1658,30 @@ const pItemData = [
         ],
         limit: 1,
         plan: 'logic',
+    },
+    {
+        id: 2310020,
+        name: '一堆日本字的道具+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'remain_turn<=2',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好調', value: 70 }] },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 2310021,
+        name: '一堆日本字的道具+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'remain_turn<=2',
+        effects: [
+            { type: 'score', value: null, options: [{ type: '好調', value: 70 }] },
+        ],
+        limit: 2,
+        plan: 'sense',
     },
     /**
      * SSRサポ

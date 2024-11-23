@@ -377,6 +377,19 @@ const statusList = [
         ],
         is_reduce_turnend: true,
     },
+    {
+        id: 1111,
+        name: 'ターン開始時、好調+2',
+        description: '',
+        value: 0,
+        type: 'buff',
+        activate_timing: 'start_turn',
+        condition: '',
+        effects: [
+            { type: 'status', target: '好調', value: 2 }, 
+        ],
+        is_reduce_turnend: false,
+    },
 
     {
         id: 9999,

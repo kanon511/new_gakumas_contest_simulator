@@ -219,6 +219,17 @@ const pIdolData = [
         unique_pItem_id: 2303030,
     },
     {
+        id: 30304,
+        rarity: 'SSR',
+        episode_name: 'White Night! White Wish!',
+        character_id: 103,
+        name: '藤田ことね',
+        plan: 'logic',
+        trend: '好印象',
+        unique_skillCard_id: 4203040,
+        unique_pItem_id: 2303040,
+    },
+    {
         id: 10401,
         rarity: 'R',
         episode_name: '学園生活',
@@ -646,6 +657,17 @@ const pIdolData = [
         trend: 'やる気',
         unique_skillCard_id: 4210010,
         unique_pItem_id: 2310010,
+    },
+    {
+        id: 31002,
+        rarity: 'SSR',
+        episode_name: 'White Night! White Wish!',
+        character_id: 110,
+        name: '花海佑芽',
+        plan: 'sense',
+        trend: '好調',
+        unique_skillCard_id: 4210020,
+        unique_pItem_id: 2310020,
     },
 ];
 
