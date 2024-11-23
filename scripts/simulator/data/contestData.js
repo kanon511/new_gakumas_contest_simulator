@@ -461,7 +461,7 @@ const contestData = [
                 stagePItemIds: [4241122],
                 plan: 'sense',
                 turnTypes: [5, 4, 3],
-                firstTurn: {'vocal': 85, 'dance': 15, 'visual': 0},
+                firstTurn: {'vocal': 88, 'dance': 12, 'visual': 0},
             },
             {
                 name: 'ステージ3',
@@ -470,7 +470,7 @@ const contestData = [
                 stagePItemIds: [4241123],
                 plan: 'logic',
                 turnTypes: [5, 4, 3],
-                firstTurn: {'vocal': 85, 'dance': 15, 'visual': 0},
+                firstTurn: {'vocal': 88, 'dance': 12, 'visual': 0},
             },
         ],
     },
