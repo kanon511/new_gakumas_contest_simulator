@@ -100,7 +100,7 @@ export class Calculator {
             if (effect.options) {
                 effect.options.forEach(effectOption => {
                     switch (effectOption.type) {
-                        case '使用したスキルカード数': optionCoef['block'] = effectOption.value * status.usedCardCount; break;
+                        case '使用したスキルカード数': optionCoef['block'] = effectOption.value * (status.usedCardCount-1); break;
                         case '好印象': optionCoef['block'] = (effectOption.value/100) * status.pStatus.getValue('好印象'); break;
                         case 'やる気'  : optionCoef['やる気'] = effectOption.value; break;
                         case '割合減少': baseValue = -Math.ceil(status.block * effectOption.value / 100);
