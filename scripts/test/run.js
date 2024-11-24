@@ -116,10 +116,28 @@ export const run = (data,container) => {
     function addEvent() {
         pIdol.turnType.turnTypes[kanon]=element_turn_color.value
         kanon++
-        pIdol.deck.index_first_draw = []
         pIdol.deck.skillCards = handSkillCardIds.map(id => new SkillCard(id));
+        pIdol.deck.index_first_draw = []
         pIdol.deck.index_drawPile = []
+        
+        if(kanon==1){
+            for (let i = 0; i < handSkillCardIds.length; i++) {
+                if (!('pre_effects' in pIdol.deck.skillCards[i])) {
+                    continue;
+                }
+                if (
+                    pIdol.deck.skillCards[i].pre_effects
+                    .map(effect=>effect.type)
+                    .includes('レッスン開始時手札に入る')
+                ) {
+                    pIdol.deck.index_first_draw.push(i);
+                    handSkillCardIds[i] = -1;
+                }
+            }
+        }
+        
         for (let i = 0; i < handSkillCardIds.length; i++) {
+            if (handSkillCardIds[i] == -1) continue;
             pIdol.deck.index_drawPile.push(i)
         }
         handSkillCardIds = []
