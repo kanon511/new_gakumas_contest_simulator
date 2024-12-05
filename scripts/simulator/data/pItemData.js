@@ -818,6 +818,19 @@ const pItemData = [
         limit: 2,
         plan: 'logic',
     },
+    {
+        id: 3200200,
+        name: 'イケてるセーター',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance&集中>=1',
+        effects: [
+            { type: 'status', target: '好調', value: 3 },
+            { type: 'status', target: '集中', value: -1 },
+        ],
+        limit: 1,
+        plan: 'sense',
+    },
     /**
      * シナリオ
      */
@@ -1148,19 +1161,19 @@ const pItemData = [
     },
     {
         id: 2303040,
-        name: '免费爱情Max+',
+        name: '費用0円愛情MAX',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=5',
         effects: [
-            { type: 'block', value: 6 },
+            { type: 'block', value: 4 },
         ],
         limit: 2,
         plan: 'logic',
     },
     {
         id: 2303041,
-        name: '免费爱情Max+',
+        name: '費用0円愛情MAX+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=5',
@@ -1661,19 +1674,20 @@ const pItemData = [
     },
     {
         id: 2310020,
-        name: '一堆日本字的道具+',
+        name: 'めりくりライオン',
         description: '',
         activate_timing: 'start_turn',
         condition: 'remain_turn<=2',
         effects: [
             { type: 'score', value: null, options: [{ type: '好調', value: 70 }] },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: 2,
         plan: 'sense',
     },
     {
         id: 2310021,
-        name: '一堆日本字的道具+',
+        name: 'めりくりライオン+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'remain_turn<=2',
@@ -2441,6 +2455,31 @@ const pItemData = [
         effects: [
             { type: 'block', value: 1 },
             { type: 'status', target: '好印象', value: 3 },
+        ],
+        limit: 3,
+        plan: 'logic',
+    },
+
+    {
+        id: 4241211,
+        name: '初星バッチ（赤）',
+        description: '',
+        activate_timing: 'before_use_card',
+        condition: '',
+        effects: [
+            { type: 'status', target: 'パラメータ上昇量増加',  value: 3, options: [{ type: '上昇量', value: 30 }] },
+        ],
+        limit: 5,
+        plan: 'free',
+    },
+    {
+        id: 4241213,
+        name: '初星ライト（紫）',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=12',
+        effects: [
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 500 }] },
         ],
         limit: 3,
         plan: 'logic',
