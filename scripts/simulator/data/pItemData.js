@@ -819,7 +819,7 @@ const pItemData = [
         plan: 'logic',
     },
     {
-        id: 3200210,
+        id: 3200200,
         name: '小さい秋見つけた',
         description: '',
         activate_timing: 'start_turn',
