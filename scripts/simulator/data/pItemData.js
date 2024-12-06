@@ -819,7 +819,19 @@ const pItemData = [
         plan: 'logic',
     },
     {
-        id: 3200200,
+        id: 3200210,
+        name: '小さい秋見つけた',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'turnType==dance&集中>=5',
+        effects: [
+            { type: 'score', value: 10 },
+        ],
+        limit: 2,
+        plan: 'sense',
+    },
+    {
+        id: 3200210,
         name: 'イケてるセーター',
         description: '',
         activate_timing: 'start_turn',
