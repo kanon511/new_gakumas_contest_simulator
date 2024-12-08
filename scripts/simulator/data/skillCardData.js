@@ -4962,7 +4962,7 @@ export const skillCardData = [
         type: 'active',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
-        condition: '好調>0',
+        condition: '',
         effects: [
             { type: 'block', value: 6, options: [{ type: 'やる気', value: 2 }]}, 
             { type: 'score', value: null, options: [{ type: 'やる気', value: 400 }] }, 
@@ -4977,7 +4977,7 @@ export const skillCardData = [
         type: 'active',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
-        condition: '好調>0',
+        condition: '',
         effects: [
             { type: 'block', value: 6, options: [{ type: 'やる気', value: 2 }]}, 
             { type: 'score', value: null, options: [{ type: 'やる気', value: 400 }] }, 
