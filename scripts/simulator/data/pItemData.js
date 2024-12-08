@@ -1322,6 +1322,32 @@ const pItemData = [
         plan: 'sense',
     },
     {
+        id: 2305030,
+        name: 'Item+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=5',
+        effects: [
+            { type: 'status', target: 'やる気', value: null, options: [{ type: 'multiple', value: 1.3 }] },
+            { type: 'draw', value: 1 },
+        ],
+        limit: 3,
+        plan: 'logic',
+    },
+    {
+        id: 2305031,
+        name: 'Item+',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=5',
+        effects: [
+            { type: 'status', target: 'やる気', value: null, options: [{ type: 'multiple', value: 1.3 }] },
+            { type: 'draw', value: 1 },
+        ],
+        limit: 3,
+        plan: 'logic',
+    },
+    {
         id: 2306010,
         name: 'ひみつ特訓カーデ',
         description: '',
@@ -1914,7 +1940,18 @@ const pItemData = [
         limit: 2,
         plan: 'logic',
     },
-
+    {
+        id: 3300200,
+        name: 'S_Item',
+        description: '',
+        activate_timing: 'start_turn',
+        condition: 'やる気>=5',
+        effects: [
+            { type: 'block', value: 2 },
+        ],
+        limit: 2,
+        plan: 'logic',
+    },
 
 
 

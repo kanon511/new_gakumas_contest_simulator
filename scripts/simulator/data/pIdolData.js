@@ -351,6 +351,17 @@ const pIdolData = [
         unique_pItem_id: 2305020,
     },
     {
+        id: 30503,
+        rarity: 'SSR',
+        episode_name: 'White Night! White Wish!',
+        character_id: 105,
+        name: '葛城リーリヤ',
+        plan: 'logic',
+        trend: 'やる気',
+        unique_skillCard_id: 4205030,
+        unique_pItem_id: 2305030,
+    },
+    {
         id: 10601,
         rarity: 'R',
         episode_name: '学園生活',
