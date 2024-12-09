@@ -1945,7 +1945,7 @@ const pItemData = [
         name: 'S_Item',
         description: '',
         activate_timing: 'start_turn',
-        condition: 'やる気>=5',
+        condition: 'turnType==visual&やる気>=5',
         effects: [
             { type: 'block', value: 2 },
         ],
