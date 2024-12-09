@@ -1944,7 +1944,7 @@ const pItemData = [
         id: 3300200,
         name: 'S_Item',
         description: '',
-        activate_timing: 'start_turn',
+        activate_timing: 'before_use_card',
         condition: 'turnType==visual&やる気>=5',
         effects: [
             { type: 'block', value: 2 },
