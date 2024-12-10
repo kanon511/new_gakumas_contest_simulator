@@ -11,7 +11,7 @@ export class Calculator {
         return goodImpActiveTurn * goodImp - (goodImpActiveTurn * (goodImpActiveTurn-1) >> 1);
     }
     static calcActionEvaluation (action, status, parameter, trendVonusCoef, autoId, nowTurn) {
-        if (autoId < 3){
+        if (autoId < 5){
             let { type, args } = action;
             if(!args){
                 return 0;
