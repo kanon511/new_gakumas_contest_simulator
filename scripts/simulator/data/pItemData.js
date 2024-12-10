@@ -2516,7 +2516,7 @@ const pItemData = [
         activate_timing: 'before_use_card',
         condition: '',
         effects: [
-            { type: 'status', target: 'パラメータ上昇量増加',  value: 3, options: [{ type: '上昇量', value: 30 }] },
+            { type: 'status', target: 'パラメータ上昇量増加',  value: 3, options: [{ type: '上昇量', value: 30 },{type: 'immune_decrease', value: 1}] },
         ],
         limit: 5,
         plan: 'free',
