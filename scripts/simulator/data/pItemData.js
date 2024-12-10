@@ -1323,20 +1323,21 @@ const pItemData = [
     },
     {
         id: 2305030,
-        name: 'Item+',
+        name: '海の向こうまで+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=5',
         effects: [
             { type: 'status', target: 'やる気', value: null, options: [{ type: 'multiple', value: 1.3 }] },
             { type: 'draw', value: 1 },
+            { type: 'fixed_direct_hp', value: -1 },
         ],
         limit: 3,
         plan: 'logic',
     },
     {
         id: 2305031,
-        name: 'Item+',
+        name: '海の向こうまで+',
         description: '',
         activate_timing: 'start_turn',
         condition: 'やる気>=5',

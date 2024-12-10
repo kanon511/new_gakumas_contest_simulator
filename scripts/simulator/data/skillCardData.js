@@ -4958,14 +4958,14 @@ export const skillCardData = [
     },
     {
         id: 4205030, 
-        name: 'Card+',
+        name: '愛を込めて',
         type: 'active',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
         condition: '',
         effects: [
-            { type: 'block', value: 6, options: [{ type: 'やる気', value: 2 }]}, 
-            { type: 'score', value: null, options: [{ type: 'やる気', value: 400 }] }, 
+            { type: 'block', value: 6, options: [{ type: 'やる気', value: 1.8 }]}, 
+            { type: 'score', value: null, options: [{ type: 'やる気', value: 300 }] }, 
         ],
         limit: 1,
         card_cost: 0,
@@ -4973,7 +4973,7 @@ export const skillCardData = [
     },
     {
         id: 4205031, 
-        name: 'Card+',
+        name: '愛を込めて+',
         type: 'active',
         plan: 'logic',
         cost: { type: 'hp', value: -6 },
