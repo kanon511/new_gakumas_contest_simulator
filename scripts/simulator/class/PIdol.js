@@ -260,7 +260,7 @@ export class PIdol {
         const scheduledEvaluation = this.#evaluateExecutions(scheduledExecutions, status);
         skillCard.scheduledExecutions = scheduledExecutions;
 
-        skillCard.evaluation = evaluation + scheduledEvaluation + (this.#autoId >= 3 ? AutoEvaluationData.get_evaluation(status, this.#parameter) : 0);
+        skillCard.evaluation = evaluation + scheduledEvaluation + (this.#autoId >= 5 ? AutoEvaluationData.get_evaluation(status, this.#parameter) : 0);
     }
 
     #evaluateExecutions (executions, status) {
