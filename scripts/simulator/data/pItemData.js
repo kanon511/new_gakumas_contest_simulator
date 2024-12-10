@@ -1943,7 +1943,7 @@ const pItemData = [
     },
     {
         id: 3300200,
-        name: 'S_Item',
+        name: 'ぬくもりふたりぶん',
         description: '',
         activate_timing: 'before_use_card',
         condition: 'turnType==visual&やる気>=5',
