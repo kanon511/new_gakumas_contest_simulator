@@ -3988,7 +3988,7 @@ export const skillCardData = [
         allow_duplicate: false,
     },
     {
-        id: 4012060,
+        id: 4012061,
         name: 'キセキの魔法+',
         type: 'active',
         plan: 'logic',
@@ -3998,7 +3998,7 @@ export const skillCardData = [
             { type: 'score', value: null, options: [{ type: '好印象', value: 340 }] },
         ],
         limit: 1,
-        card_cost: 150,
+        card_cost: 204,
         allow_duplicate: false,
     },
     /**
